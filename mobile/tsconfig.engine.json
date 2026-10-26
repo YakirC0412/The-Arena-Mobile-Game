@@ -11,7 +11,7 @@
   },
   "include": [
     "src/game/**/*.ts",
-    "scripts/engine-smoke.ts"
+    "tests/**/*.ts"
   ],
   "exclude": [
     "node_modules"

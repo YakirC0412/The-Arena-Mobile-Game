@@ -65,7 +65,9 @@ THE_Arena/            git root (run git commands here)
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
   stay drawable. Current code is correct – do not "fix" it.
-- **Open rule bugs**: `returnToArena` does not
+- Streak/bonus (decision 2, revised 26.10.26): defender win counts as streak win 1; any return to arena
+  resets `winStreak` (not `bonusReady`); bonus auto-applies in the next duel in any role. See GAME_RULES §5.
+- **Open rule bugs**: engine skips defender wins in the streak; `returnToArena` does not
   reset `winStreak`; correct-answer pause is 300 ms (rule: 0.7–1.0 s); bot continue/attack logic lives in
   UI (`ai-decision-screen`, `battle-view`); RNG is `Math.random` + `Date.now` ids; alias "נמר" duplicated.
 - Human eliminated → must show loss screen → champion screen → main menu (decision 5, not built yet).

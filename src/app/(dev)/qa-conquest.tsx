@@ -6,7 +6,7 @@ import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ConquestAnimationScreen } from '@/features/battle/battle-transitions';
+import { ConquestAnimationScreen } from '@/features/battle/conquest-animation-screen';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import {
   createBattleSetup,

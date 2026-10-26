@@ -5,11 +5,9 @@ import { Pressable, StyleSheet } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import {
-  AiTargetSelectionScreen,
-  BattleOutcomeScreen,
-  ConquestAnimationScreen,
-} from '@/features/battle/battle-transitions';
+import { AiTargetSelectionScreen } from '@/features/battle/ai-target-selection-screen';
+import { BattleOutcomeScreen } from '@/features/battle/battle-outcome-screen';
+import { ConquestAnimationScreen } from '@/features/battle/conquest-animation-screen';
 import {
   chooseAiTarget,
   createBattleSetup,

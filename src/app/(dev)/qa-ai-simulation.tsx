@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 
-import { AiBattleSimulationScreen } from '@/features/battle/battle-transitions';
+import { AiBattleSimulationScreen } from '@/features/battle/ai-battle-simulation-screen';
 import { createBattleSetup, createInitialGame, getNeighborPlayerIds } from '@/game/engine';
 
 const FIXED_RANDOM = () => 0.42;

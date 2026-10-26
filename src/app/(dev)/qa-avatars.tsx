@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText as Text } from '@/design/app-text';
 
-import { BattleIntroScreen } from '@/features/battle/battle-transitions';
+import { BattleIntroScreen } from '@/features/battle/battle-intro-screen';
 import { createBattleSetup, createInitialGame, getNeighborPlayerIds } from '@/game/engine';
 
 const FIXED_RANDOM = () => 0.18;

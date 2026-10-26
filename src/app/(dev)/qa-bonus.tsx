@@ -6,7 +6,7 @@ import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { BattleIntroScreen } from '@/features/battle/battle-transitions';
+import { BattleIntroScreen } from '@/features/battle/battle-intro-screen';
 import { BattleView } from '@/features/battle/battle-view';
 import { BonusEarnedPopup } from '@/features/battle/bonus-earned-popup';
 import {

@@ -23,7 +23,8 @@ import { type PlayerProfile } from '@/features/onboarding/player-profile';
 import { WelcomeScreen } from '@/features/onboarding/welcome-screen';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import { DEFAULT_AVATAR_ID } from '@/content/avatars';
-import { chooseAiTarget, createFinalBattleSetup, createBattleSetup, createInitialGame, drawPlayer, getChampion, getFinalCategoryChooser, getNeighborPlayerIds, getRoundProgress, resolveBattle, simulateAiBattle } from '@/game/engine';
+import { chooseAiTarget, createFinalBattleSetup, createBattleSetup, createInitialGame, decideAiContinue, drawPlayer, getChampion, getFinalCategoryChooser, getNeighborPlayerIds, getRoundProgress, resolveBattle, returnWinnerToArena, simulateAiBattle } from '@/game/engine';
+import { createSeed, createSeededRandom } from '@/game/rng';
 import type { BattleResolution, BattleSetup, GameState } from '@/game/types';
 import { SetupScreen } from './setup-screen';
 import { ResultScreen } from './result-screen';
@@ -44,9 +45,14 @@ export function GameFlow() {
   const [selectingTarget, setSelectingTarget] = useState(false);
   const [selectedTargetId, setSelectedTargetId] = useState<string | null>(null);
   const [battleNumber, setBattleNumber] = useState(0);
+  const [aiContinues, setAiContinues] = useState(false);
+  // One seeded random source per game: every draw, bot choice and duel uses it.
+  const [random, setRandom] = useState(() => createSeededRandom(createSeed()));
 
   const startGame = () => {
-    setGame(createInitialGame(selectedCategoryId, Math.random, profile.nickname || 'אני', profile.avatar));
+    const gameRandom = createSeededRandom(createSeed());
+    setRandom(() => gameRandom);
+    setGame(createInitialGame(selectedCategoryId, gameRandom, profile.nickname || 'אני', profile.avatar));
     setScreen('building');
     setSelectingTarget(false);
     setBattle(null);
@@ -78,9 +84,9 @@ export function GameFlow() {
       setScreen('battle');
       return;
     }
-    setAiWinnerId(simulateAiBattle(game, battle));
+    setAiWinnerId(simulateAiBattle(game, battle, random));
     setScreen('aiBattle');
-  }, [battle, game]);
+  }, [battle, game, random]);
 
   const resolvePreparedBattle = useCallback((winnerId: string) => {
     if (!battleOrigin || !battle) return;
@@ -92,7 +98,7 @@ export function GameFlow() {
 
   const handleDraw = () => {
     if (!game) return;
-    const next = drawPlayer(game);
+    const next = drawPlayer(game, random);
     setGame(next);
     setSelectingTarget(false);
     setScreen('draw');
@@ -108,7 +114,7 @@ export function GameFlow() {
       return;
     }
 
-    const targetId = chooseAiTarget(game, selected.id);
+    const targetId = chooseAiTarget(game, selected.id, random);
     if (targetId) {
       setAiTargetId(targetId);
       setResolution(null);
@@ -132,7 +138,7 @@ export function GameFlow() {
 
   const returnToArena = () => {
     if (!game) return;
-    setGame({ ...game, selectedPlayerId: null });
+    setGame(returnWinnerToArena(game, resolution?.winnerId ?? null));
     setResolution(null);
     setBattle(null);
     setBattleOrigin(null);
@@ -166,6 +172,7 @@ export function GameFlow() {
       return;
     }
 
+    setAiContinues(decideAiContinue(game, winner.id, random));
     setScreen('decision');
   };
 
@@ -176,7 +183,7 @@ export function GameFlow() {
       returnToArena();
       return;
     }
-    const target = chooseAiTarget(game, winner.id);
+    const target = chooseAiTarget(game, winner.id, random);
     if (target) {
       setAiTargetId(target);
       setScreen('aiTarget');
@@ -273,7 +280,7 @@ export function GameFlow() {
   if (screen === 'battle' && battle) {
     return (
       <SafeAreaView style={styles.safe}>
-        <BattleView onComplete={finishInteractiveBattle} setup={battle} state={game} />
+        <BattleView onComplete={finishInteractiveBattle} random={random} setup={battle} state={game} />
       </SafeAreaView>
     );
   }
@@ -328,7 +335,7 @@ export function GameFlow() {
     const winner = game.players[resolution.winnerId];
     return (
       <AiDecisionScreen
-        canContinue={getNeighborPlayerIds(game, winner.id).length > 0}
+        continues={aiContinues}
         onDecision={finishAiDecision}
         winnerName={winner.name}
       />
@@ -356,6 +363,7 @@ export function GameFlow() {
         <FinalCategoryScreen
           chooserId={chooser.id}
           onSelect={selectFinalCategory}
+          random={random}
           state={game}
         />
       );

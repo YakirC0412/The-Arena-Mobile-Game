@@ -7,8 +7,9 @@ import type {
   CategoryItem,
   GameState,
 } from './types';
+import type { RandomSource } from './rng';
 
-export type RandomSource = () => number;
+export type { RandomSource } from './rng';
 
 const PLAYER_COLORS = [
   '#21C7A8', '#FF5D73', '#FFBE3D', '#3287FF',
@@ -110,7 +111,8 @@ export function createInitialGame(
     humanPlayerId: 'human',
     round: 1,
     selectedPlayerId: null,
-    events: [{ id: 'start', text: 'הזירה מוכנה. הגרילו את המתמודד הראשון.' }],
+    events: [{ id: 'event-0', text: 'הזירה מוכנה. הגרילו את המתמודד הראשון.' }],
+    eventCount: 1,
   };
 }
 
@@ -210,9 +212,10 @@ export function drawPlayer(
     players,
     selectedPlayerId: selected.id,
     events: [
-      { id: `draw-${Date.now()}`, text: `${selected.name} הוגרל/ה לשחק.` },
+      { id: `event-${state.eventCount}`, text: `${selected.name} הוגרל/ה לשחק.` },
       ...state.events,
     ].slice(0, 6),
+    eventCount: state.eventCount + 1,
   };
 }
 
@@ -267,20 +270,11 @@ export function createFinalBattleSetup(
   return { ...setup, categoryId, isFinal: true };
 }
 
-function nextWinnerProgress(
-  player: ArenaPlayer,
-  usedBonus: boolean,
-  countsTowardStreak: boolean,
-) {
+// Decision 2 (GAME_RULES §5): every win counts toward the streak, defending
+// included. A duel played with the bonus ends it and restarts the streak at 0.
+function nextWinnerProgress(player: ArenaPlayer, usedBonus: boolean) {
   if (usedBonus) {
     return { winStreak: 0, bonusReady: false, earnedBonus: false };
-  }
-  if (!countsTowardStreak) {
-    return {
-      winStreak: player.winStreak,
-      bonusReady: player.bonusReady,
-      earnedBonus: false,
-    };
   }
   const winStreak = player.winStreak + 1;
   return {
@@ -309,7 +303,7 @@ export function resolveBattle(
   const loserUsedBonus = loserId === setup.attackerId
     ? setup.attackerUsesBonus
     : setup.defenderUsesBonus;
-  const progress = nextWinnerProgress(winner, winnerUsedBonus, !winnerWasDefender);
+  const progress = nextWinnerProgress(winner, winnerUsedBonus);
   const categoryId = winnerWasDefender ? loser.categoryId : winner.categoryId;
   const conqueredCells = [...new Set([...winner.cellIds, ...loser.cellIds])]
     .sort((a, b) => a - b);
@@ -347,13 +341,27 @@ export function resolveBattle(
       cells,
       players,
       selectedPlayerId: winnerId,
-      events: [{ id: `battle-${Date.now()}`, text: summary }, ...state.events].slice(0, 6),
+      events: [{ id: `event-${state.eventCount}`, text: summary }, ...state.events].slice(0, 6),
+      eventCount: state.eventCount + 1,
     },
     winnerId,
     loserId,
     inheritedCategory,
     winnerEarnedBonus: progress.earnedBonus,
     summary,
+  };
+}
+
+// The winner stops attacking and the arena draws again. Returning ends the
+// winner's streak, but a bonus that was already earned stays banked.
+export function returnWinnerToArena(state: GameState, winnerId: string | null): GameState {
+  const winner = winnerId ? state.players[winnerId] : null;
+  return {
+    ...state,
+    selectedPlayerId: null,
+    players: winner
+      ? { ...state.players, [winner.id]: { ...winner, winStreak: 0 } }
+      : state.players,
   };
 }
 
@@ -419,4 +427,116 @@ export function chooseAiTarget(
     .sort((left, right) => right.score - left.score);
 
   return ranked[0].targetId;
+}
+
+// --- Bot decisions -----------------------------------------------------------
+// Bots never read Math.random directly; screens pass the game's seeded source.
+
+const AI_CONTINUE_CHANCE = 0.38;
+const AI_FINAL_OWN_CATEGORY_CHANCE = 0.65;
+
+export function decideAiContinue(
+  state: GameState,
+  winnerId: string,
+  random: RandomSource = Math.random,
+): boolean {
+  return getNeighborPlayerIds(state, winnerId).length > 0 && random() < AI_CONTINUE_CHANCE;
+}
+
+export function chooseAiFinalCategory(
+  state: GameState,
+  chooserId: string,
+  random: RandomSource = Math.random,
+): string {
+  const chooser = state.players[chooserId];
+  const opponent = getActivePlayers(state).find((player) => player.id !== chooserId);
+  if (!opponent) return chooser.categoryId;
+  return random() < AI_FINAL_OWN_CATEGORY_CHANCE ? chooser.categoryId : opponent.categoryId;
+}
+
+export type AiDuelOutcome = 'correct' | 'skip' | 'retry';
+
+// A bot attempt in a live duel against the human happens in two steps: it
+// "thinks" for aiThinkDelayMs, then decideAiDuelOutcome picks what it does
+// with the time it has left. Harder items are slower and answered less often.
+export function aiThinkDelayMs(
+  difficulty: CategoryItem['difficulty'],
+  random: RandomSource = Math.random,
+): number {
+  return 850 + difficulty * 450 + Math.floor(random() * 500);
+}
+
+export function decideAiDuelOutcome(
+  difficulty: CategoryItem['difficulty'],
+  remainingMs: number,
+  random: RandomSource = Math.random,
+): AiDuelOutcome {
+  if (random() < 0.92 - difficulty * 0.15) return 'correct';
+  return remainingMs < 6500 || random() < 0.45 ? 'skip' : 'retry';
+}
+
+// --- Duel timing -------------------------------------------------------------
+
+export const SKIP_PENALTY_MS = 3000;
+export const CORRECT_PAUSE_MIN_MS = 700;
+export const CORRECT_PAUSE_MAX_MS = 1000;
+
+// GAME_RULES §3: after a correct answer the turn passes after 0.7–1.0 s,
+// with both clocks stopped.
+export function correctAnswerPauseMs(random: RandomSource = Math.random): number {
+  return CORRECT_PAUSE_MIN_MS + Math.round(random() * (CORRECT_PAUSE_MAX_MS - CORRECT_PAUSE_MIN_MS));
+}
+
+// --- Whole-game simulation ---------------------------------------------------
+
+export type AutoPlayResult = {
+  state: GameState;
+  duels: number;
+  champion: ArenaPlayer;
+};
+
+// Plays the game to the end with every contestant acting as a bot, following
+// the same order as the screens: draw → target → duel → continue or return,
+// and the final when two remain. Used by tests, and to finish a game in the
+// background after the human is eliminated (decision 5).
+export function autoPlayGame(
+  initialState: GameState,
+  random: RandomSource = Math.random,
+  maxDuels = 100,
+): AutoPlayResult {
+  let state = initialState;
+  let duels = 0;
+  let attackerId: string | null = null;
+
+  while (!getChampion(state)) {
+    if (duels >= maxDuels) throw new Error('Auto-play did not finish');
+
+    let setup: BattleSetup;
+    const chooser = getFinalCategoryChooser(state);
+    if (chooser) {
+      setup = createFinalBattleSetup(state, chooser.id, chooseAiFinalCategory(state, chooser.id, random));
+    } else {
+      if (!attackerId) {
+        state = drawPlayer(state, random);
+        attackerId = state.selectedPlayerId!;
+      }
+      const targetId = chooseAiTarget(state, attackerId, random);
+      if (!targetId) throw new Error(`${attackerId} has no neighbor to attack`);
+      setup = createBattleSetup(state, attackerId, targetId);
+    }
+
+    const result = resolveBattle(state, setup, simulateAiBattle(state, setup, random));
+    state = result.state;
+    duels += 1;
+
+    if (getChampion(state) || getFinalCategoryChooser(state)) continue;
+    if (decideAiContinue(state, result.winnerId, random)) {
+      attackerId = result.winnerId;
+    } else {
+      state = returnWinnerToArena(state, result.winnerId);
+      attackerId = null;
+    }
+  }
+
+  return { state, duels, champion: getChampion(state)! };
 }

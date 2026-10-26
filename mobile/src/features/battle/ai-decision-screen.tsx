@@ -4,26 +4,26 @@ import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { styles } from './battle-transition-styles';
 
+// Only animates a decision the engine already made (decideAiContinue).
 export function AiDecisionScreen({
-  canContinue,
+  continues,
   onDecision,
   winnerName,
 }: {
-  canContinue: boolean;
+  continues: boolean;
   onDecision: (continues: boolean) => void;
   winnerName: string;
 }) {
   const [choice, setChoice] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const decision = canContinue && Math.random() < 0.38;
-    const revealTimer = setTimeout(() => setChoice(decision), 1250);
-    const completeTimer = setTimeout(() => onDecision(decision), 2600);
+    const revealTimer = setTimeout(() => setChoice(continues), 1250);
+    const completeTimer = setTimeout(() => onDecision(continues), 2600);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(completeTimer);
     };
-  }, [canContinue, onDecision]);
+  }, [continues, onDecision]);
 
   return (
     <SafeAreaView style={styles.safe}>

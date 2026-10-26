@@ -23,7 +23,14 @@ import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
 import { useGameFeedback } from '@/services/use-game-feedback';
 import { CATEGORY_BY_ID } from '@/content/categories';
-import { createBattleDeck, isCorrectAnswer } from '@/game/engine';
+import {
+  aiThinkDelayMs,
+  correctAnswerPauseMs,
+  createBattleDeck,
+  decideAiDuelOutcome,
+  isCorrectAnswer,
+  SKIP_PENALTY_MS,
+} from '@/game/engine';
 import type { BattleSetup, GameState } from '@/game/types';
 import { ITEM_IMAGES } from '@/content/item-images';
 
@@ -168,32 +175,30 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
 
   useEffect(() => {
     if (isHumanTurn || transitioning || finishedRef.current) return;
-    const difficulty = item.difficulty;
-    const delay = 850 + difficulty * 450 + Math.floor(random() * 500);
     const timeout = setTimeout(() => {
       if (finishedRef.current) return;
-      const successChance = 0.92 - difficulty * 0.15;
-      if (random() < successChance) {
+      const role: BattleRole = activeId === setup.attackerId ? 'attacker' : 'defender';
+      const outcome = decideAiDuelOutcome(item.difficulty, clockRef.current?.getRemaining(role) ?? 0, random);
+      if (outcome === 'correct') {
         animateCorrect();
         playCorrectFeedback();
         setTransitioning(true);
         setFeedback('נכון!');
-        scheduleAdvance(true, 350);
+        scheduleAdvance(true, correctAnswerPauseMs(random));
         return;
       }
 
-      const role: BattleRole = activeId === setup.attackerId ? 'attacker' : 'defender';
-      if ((clockRef.current?.getRemaining(role) ?? 0) < 6500 || random() < 0.45) {
+      if (outcome === 'skip') {
         animateSkip();
         playSkipFeedback();
-        clockRef.current?.penalize(role, 3000);
+        clockRef.current?.penalize(role, SKIP_PENALTY_MS);
         setTransitioning(true);
         setFeedback('דילגת: ‎−3 שניות');
         scheduleAdvance(false, 350);
       } else {
         setAiAttempt((value) => value + 1);
       }
-    }, delay);
+    }, aiThinkDelayMs(item.difficulty, random));
     return () => clearTimeout(timeout);
   }, [activeId, aiAttempt, animateCorrect, animateSkip, isHumanTurn, item.difficulty, playCorrectFeedback, playSkipFeedback, random, scheduleAdvance, setup.attackerId, transitioning]);
 
@@ -205,7 +210,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       playCorrectFeedback();
       setTransitioning(true);
       setFeedback('נכון!');
-      scheduleAdvance(true, 300);
+      scheduleAdvance(true, correctAnswerPauseMs(random));
     }
   };
 
@@ -220,7 +225,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     setTransitioning(true);
     animateSkip();
     playSkipFeedback();
-    clockRef.current?.penalize(activeRole, 3000);
+    clockRef.current?.penalize(activeRole, SKIP_PENALTY_MS);
     setFeedback('דילגת: ‎−3 שניות');
     scheduleAdvance(false, 250);
   };

@@ -49,6 +49,8 @@ export type GameState = {
   round: number;
   selectedPlayerId: string | null;
   events: ArenaEvent[];
+  // Monotonic counter for event ids, so ids stay deterministic for a seed.
+  eventCount: number;
 };
 
 export type BattleSetup = {

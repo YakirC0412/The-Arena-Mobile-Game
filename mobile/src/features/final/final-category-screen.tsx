@@ -6,7 +6,7 @@ import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CATEGORY_BY_ID } from '@/content/categories';
-import { getActivePlayers } from '@/game/engine';
+import { chooseAiFinalCategory, getActivePlayers } from '@/game/engine';
 import type { GameState } from '@/game/types';
 
 export function FinalCategoryScreen({
@@ -27,14 +27,14 @@ export function FinalCategoryScreen({
 
   useEffect(() => {
     if (chooser.isHuman) return;
-    const categoryId = random() < 0.65 ? chooser.categoryId : opponent.categoryId;
+    const categoryId = chooseAiFinalCategory(state, chooser.id, random);
     const revealTimer = setTimeout(() => setAiChoice(categoryId), 1300);
     const completeTimer = setTimeout(() => onSelect(categoryId), 2800);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(completeTimer);
     };
-  }, [chooser.categoryId, chooser.isHuman, onSelect, opponent.categoryId, random]);
+  }, [chooser.id, chooser.isHuman, onSelect, random, state]);
 
   return (
     <SafeAreaView style={styles.safe}>

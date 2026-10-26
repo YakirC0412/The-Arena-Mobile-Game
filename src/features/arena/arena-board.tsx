@@ -2,11 +2,11 @@ import * as Haptics from 'expo-haptics';
 import { useMemo } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { AvatarPortrait } from '@/components/avatar-portrait';
+import { AvatarPortrait } from '@/design/avatar-portrait';
 import { AppText } from '@/design/app-text';
 import { colors, radii, spacing, typeScale } from '@/design/tokens';
-import { CATEGORY_BY_ID } from '@/game/content';
-import { getTerritoryLabelRegion } from '@/game/territory-layout';
+import { CATEGORY_BY_ID } from '@/content/categories';
+import { getTerritoryLabelRegion } from '@/features/arena/territory-layout';
 import type { GameState } from '@/game/types';
 
 export type ArenaBoardMode = 'select-target' | 'simulation' | 'overview';

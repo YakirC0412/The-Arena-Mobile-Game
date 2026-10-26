@@ -2,13 +2,13 @@ import { useEffect, useMemo, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing, Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AvatarPortrait } from '@/components/avatar-portrait';
+import { AvatarPortrait } from '@/design/avatar-portrait';
 import { AppText as Text } from '@/design/app-text';
 import { colors } from '@/design/tokens';
 import { useReducedMotion } from '@/design/use-reduced-motion';
-import { CATEGORY_BY_ID } from '@/game/content';
+import { CATEGORY_BY_ID } from '@/content/categories';
 import { getActivePlayers } from '@/game/engine';
-import { getTerritoryLabelRegion } from '@/game/territory-layout';
+import { getTerritoryLabelRegion } from '@/features/arena/territory-layout';
 import type { GameState } from '@/game/types';
 
 export function FinalRevealScreen({ onComplete, state }: { onComplete: () => void; state: GameState }) {

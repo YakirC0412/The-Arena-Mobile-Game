@@ -1,8 +1,8 @@
 import { colors } from '@/design/tokens';
 import { Image, StyleSheet, View } from 'react-native';
 
-import { DEFAULT_AVATAR_ID } from '@/game/avatars';
-import { AVATAR_IMAGES } from '@/media/avatar-images';
+import { DEFAULT_AVATAR_ID } from '@/content/avatars';
+import { AVATAR_IMAGES } from '@/content/avatar-images';
 
 export function AvatarPortrait({
   avatarId,

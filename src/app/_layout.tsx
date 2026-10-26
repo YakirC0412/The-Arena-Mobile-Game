@@ -27,7 +27,8 @@ export default function RootLayout() {
 
   if (!fontsLoaded && !fontError) return null;
 
-  if (!__DEV__ && String(segments[0] ?? '').startsWith('qa-')) {
+  // QA screens live in the (dev) route group and are hidden from production builds.
+  if (!__DEV__ && (segments as string[]).includes('(dev)')) {
     return <Redirect href="/" />;
   }
 

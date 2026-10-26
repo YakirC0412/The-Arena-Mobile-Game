@@ -17,15 +17,15 @@ import {
   BattleClockCards,
   type BattleClockHandle,
   type BattleRole,
-} from '@/components/battle-clock-cards';
-import { ArenaBattleMiniMap } from '@/components/arena-battle-mini-map';
+} from '@/features/battle/battle-clock-cards';
+import { ArenaBattleMiniMap } from '@/features/arena/arena-battle-mini-map';
 import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
-import { useGameFeedback } from '@/design/use-game-feedback';
-import { CATEGORY_BY_ID } from '@/game/content';
+import { useGameFeedback } from '@/services/use-game-feedback';
+import { CATEGORY_BY_ID } from '@/content/categories';
 import { createBattleDeck, isCorrectAnswer } from '@/game/engine';
 import type { BattleSetup, GameState } from '@/game/types';
-import { ITEM_IMAGES } from '@/media/item-images';
+import { ITEM_IMAGES } from '@/content/item-images';
 
 type BattleViewProps = {
   state: GameState;

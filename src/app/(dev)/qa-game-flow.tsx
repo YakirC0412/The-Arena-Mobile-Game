@@ -6,7 +6,7 @@ import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { GameOverScreen } from '@/components/game-over-screen';
+import { GameOverScreen } from '@/features/final/game-over-screen';
 import {
   createBattleSetup,
   createInitialGame,

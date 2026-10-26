@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AvatarPortrait } from '@/components/avatar-portrait';
-import { CATEGORY_BY_ID } from '@/game/content';
+import { AvatarPortrait } from '@/design/avatar-portrait';
+import { CATEGORY_BY_ID } from '@/content/categories';
 import { getActivePlayers, getChampion } from '@/game/engine';
 import type { GameState } from '@/game/types';
 

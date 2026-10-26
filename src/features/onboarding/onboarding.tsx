@@ -11,8 +11,8 @@ TextInput,
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AvatarPortrait } from '@/components/avatar-portrait';
-import { AVATARS, DEFAULT_AVATAR_ID } from '@/game/avatars';
+import { AvatarPortrait } from '@/design/avatar-portrait';
+import { AVATARS, DEFAULT_AVATAR_ID } from '@/content/avatars';
 
 export type PlayerProfile = {
   fullName: string;

@@ -6,7 +6,7 @@ import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { BattleView } from '@/components/battle-view';
+import { BattleView } from '@/features/battle/battle-view';
 import { createBattleSetup, createInitialGame, getNeighborPlayerIds } from '@/game/engine';
 
 const STRONG_AI_RANDOM = () => 0;

@@ -1,4 +1,4 @@
-import type { Category, CategoryItem, Difficulty } from './types';
+import type { Category, CategoryItem, Difficulty } from '../game/types';
 
 type RawItem = [visual: string, answer: string, aliases?: string[]];
 

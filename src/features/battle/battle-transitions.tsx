@@ -5,13 +5,13 @@ import { AccessibilityInfo, Animated, Easing, Image, Pressable, ScrollView, Styl
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ArenaBoard } from '@/components/arena-board';
-import { AvatarPortrait } from '@/components/avatar-portrait';
-import { CATEGORY_BY_ID } from '@/game/content';
+import { ArenaBoard } from '@/features/arena/arena-board';
+import { AvatarPortrait } from '@/design/avatar-portrait';
+import { CATEGORY_BY_ID } from '@/content/categories';
 import { getNeighborPlayerIds } from '@/game/engine';
 import type { BattleResolution, BattleSetup, GameState } from '@/game/types';
-import { ITEM_IMAGES } from '@/media/item-images';
-import { useGameFeedback } from '@/design/use-game-feedback';
+import { ITEM_IMAGES } from '@/content/item-images';
+import { useGameFeedback } from '@/services/use-game-feedback';
 import { useReducedMotion } from '@/design/use-reduced-motion';
 
 type SimulationFrame = {

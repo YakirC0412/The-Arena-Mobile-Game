@@ -9,7 +9,7 @@ import {
   AiTargetSelectionScreen,
   BattleOutcomeScreen,
   ConquestAnimationScreen,
-} from '@/components/battle-transitions';
+} from '@/features/battle/battle-transitions';
 import {
   chooseAiTarget,
   createBattleSetup,

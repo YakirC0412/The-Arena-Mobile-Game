@@ -15,8 +15,8 @@ import {
   isCorrectAnswer,
   resolveBattle,
 } from '../src/game/engine';
-import { CATEGORIES } from '../src/game/content';
-import { AVATARS } from '../src/game/avatars';
+import { CATEGORIES } from '../src/content/categories';
+import { AVATARS } from '../src/content/avatars';
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message);

@@ -6,8 +6,8 @@ import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { FinalCategoryScreen } from '@/components/final-category-screen';
-import { CATEGORY_BY_ID } from '@/game/content';
+import { FinalCategoryScreen } from '@/features/final/final-category-screen';
+import { CATEGORY_BY_ID } from '@/content/categories';
 import { createFinalBattleSetup, createInitialGame, getFinalCategoryChooser } from '@/game/engine';
 
 const FIXED_RANDOM = () => 0;

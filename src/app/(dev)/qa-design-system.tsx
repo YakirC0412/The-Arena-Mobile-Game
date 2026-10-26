@@ -11,7 +11,7 @@ import { ActivityIndicator, Pressable, ScrollView, StyleSheet, View } from 'reac
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AvatarPortrait } from '@/components/avatar-portrait';
+import { AvatarPortrait } from '@/design/avatar-portrait';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
 
 const BOARD_CELLS = [

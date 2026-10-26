@@ -5,7 +5,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { CATEGORY_BY_ID } from '@/game/content';
+import { CATEGORY_BY_ID } from '@/content/categories';
 import { getActivePlayers } from '@/game/engine';
 import type { GameState } from '@/game/types';
 

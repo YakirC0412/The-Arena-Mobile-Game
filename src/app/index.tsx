@@ -10,11 +10,11 @@ View,
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ArenaBoard } from '@/components/arena-board';
-import { ArenaBuildScreen } from '@/components/arena-build-screen';
-import { BattleView } from '@/components/battle-view';
-import { BonusEarnedPopup } from '@/components/bonus-earned-popup';
-import { ChampionCelebrationScreen } from '@/components/champion-celebration-screen';
+import { ArenaBoard } from '@/features/arena/arena-board';
+import { ArenaBuildScreen } from '@/features/arena/arena-build-screen';
+import { BattleView } from '@/features/battle/battle-view';
+import { BonusEarnedPopup } from '@/features/battle/bonus-earned-popup';
+import { ChampionCelebrationScreen } from '@/features/final/champion-celebration-screen';
 import {
   AiBattleSimulationScreen,
   AiDecisionScreen,
@@ -22,20 +22,20 @@ import {
   BattleIntroScreen,
   BattleOutcomeScreen,
   ConquestAnimationScreen,
-} from '@/components/battle-transitions';
-import { DrawAnimationScreen } from '@/components/draw-animation-screen';
-import { GameOverScreen } from '@/components/game-over-screen';
-import { FinalCategoryScreen } from '@/components/final-category-screen';
-import { FinalRevealScreen } from '@/components/final-reveal-screen';
+} from '@/features/battle/battle-transitions';
+import { DrawAnimationScreen } from '@/features/arena/draw-animation-screen';
+import { GameOverScreen } from '@/features/final/game-over-screen';
+import { FinalCategoryScreen } from '@/features/final/final-category-screen';
+import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
 import {
   AuthScreen,
   GameModeScreen,
   GuideScreen,
   type PlayerProfile,
   WelcomeScreen,
-} from '@/components/onboarding';
-import { CATEGORIES, CATEGORY_BY_ID } from '@/game/content';
-import { DEFAULT_AVATAR_ID } from '@/game/avatars';
+} from '@/features/onboarding/onboarding';
+import { CATEGORIES, CATEGORY_BY_ID } from '@/content/categories';
+import { DEFAULT_AVATAR_ID } from '@/content/avatars';
 import {
   chooseAiTarget,
   createFinalBattleSetup,

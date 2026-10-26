@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-import { ChampionCelebrationScreen } from '@/components/champion-celebration-screen';
+import { ChampionCelebrationScreen } from '@/features/final/champion-celebration-screen';
 import { createFinalBattleSetup, createInitialGame, resolveBattle } from '@/game/engine';
 
 const FIXED_RANDOM = () => 0;

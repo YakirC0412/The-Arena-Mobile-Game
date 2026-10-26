@@ -6,7 +6,7 @@ import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { DrawAnimationScreen } from '@/components/draw-animation-screen';
+import { DrawAnimationScreen } from '@/features/arena/draw-animation-screen';
 import { createInitialGame, drawPlayer, getDrawCandidates } from '@/game/engine';
 
 const FIXED_RANDOM = () => 0;

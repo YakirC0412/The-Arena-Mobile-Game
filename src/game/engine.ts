@@ -1,5 +1,5 @@
-import { CATEGORIES, CATEGORY_BY_ID } from './content';
-import { AVATARS, DEFAULT_AVATAR_ID } from './avatars';
+import { CATEGORIES, CATEGORY_BY_ID } from '../content/categories';
+import { AVATARS, DEFAULT_AVATAR_ID } from '../content/avatars';
 import type {
   ArenaPlayer,
   BattleResolution,

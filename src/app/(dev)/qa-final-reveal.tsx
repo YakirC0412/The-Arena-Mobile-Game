@@ -5,7 +5,7 @@ import { Pressable, StyleSheet } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { FinalRevealScreen } from '@/components/final-reveal-screen';
+import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
 import { createInitialGame } from '@/game/engine';
 
 const FIXED_RANDOM = () => 0;

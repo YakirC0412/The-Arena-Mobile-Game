@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ArenaBoard } from '@/components/arena-board';
+import { ArenaBoard } from '@/features/arena/arena-board';
 import { AppText } from '@/design/app-text';
 import { colors, radii, spacing, typeScale } from '@/design/tokens';
 import { createBattleSetup, createInitialGame, getNeighborPlayerIds, resolveBattle } from '@/game/engine';

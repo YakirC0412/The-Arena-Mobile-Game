@@ -19,7 +19,9 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Node: `C:/Program Files/nodejs` (v24). In Bash first run `export PATH="/c/Program Files/nodejs:$PATH"`.
 - No pnpm on the machine yet; use `npm run` / `npx` from `mobile/`.
 - Dev server: browser preview config `arena-web` in `.claude/launch.json` → http://localhost:8090.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm run test:engine` · lint is broken (see Known issues).
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (28 tests incl. 1000 seeded games) · lint is broken.
+- Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
+  New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
 
 ## Repo map
@@ -34,13 +36,15 @@ THE_Arena/            git root (run git commands here)
 └─ mobile/            Expo SDK 58 app (expo-router, reanimated, RN web)
    ├─ AGENTS.md       Expo rules – read before touching any Expo/RN API
    ├─ assets/         app/ (icons, splash) · avatars/ · items/<category>/ · sounds/ · expo.icon (iOS)
-   ├─ scripts/        engine-smoke.ts (engine tests) · generate-feedback-sounds.js
+   ├─ scripts/        generate-feedback-sounds.js
+   ├─ tests/          engine, rules, random-games, content tests
    └─ src/
       ├─ app/         routes only: _layout.tsx · index.tsx (renders GameFlow) · (dev)/qa-*.tsx
-      ├─ game/        engine.ts + types.ts – pure TS, no React, relative imports only
+      ├─ game/        engine.ts (rules, bot decisions, autoPlayGame) · rng.ts (seeded) · types.ts
+      │               pure TS, no React, relative imports only; never call Math.random – take a RandomSource
       ├─ content/     categories.ts (16×24 items) · avatars.ts · item-images.ts · avatar-images.ts
       ├─ features/
-      │  ├─ flow/        game-flow.tsx = screen state machine (useState) · setup · result
+      │  ├─ flow/        game-flow.tsx = screen state machine (useState) + per-game seeded random · setup · result
       │  ├─ onboarding/  welcome · auth · game-mode · guide
       │  ├─ arena/       arena-board · build · draw animation · mini-map · territory-layout
       │  ├─ battle/      battle-view (human duel) · clock cards · intro · AI target/decision/simulation
@@ -60,18 +64,18 @@ THE_Arena/            git root (run git commands here)
 
 ## Status (update every step)
 - 26.10.26 – Phase 0 done: Node installed, git history started, folder restructured, big files split.
-- Next: Phase 1 – rule fixes and real tests (see docs/ROADMAP.md).
+- 26.10.26 – Phase 1 done: streak/bonus rules, seeded RNG, bot decisions in engine, 0.7–1.0 s pause,
+  28 tests, web.output = single. Bot levels postponed.
+- Next: Phase 2 – screen flow (reducer) and decision 5 (use `autoPlayGame` to finish the game).
 
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
   stay drawable. Current code is correct – do not "fix" it.
 - Streak/bonus (decision 2, revised 26.10.26): defender win counts as streak win 1; any return to arena
   resets `winStreak` (not `bonusReady`); bonus auto-applies in the next duel in any role. See GAME_RULES §5.
-- **Open rule bugs**: engine skips defender wins in the streak; `returnToArena` does not
-  reset `winStreak`; correct-answer pause is 300 ms (rule: 0.7–1.0 s); bot continue/attack logic lives in
-  UI (`ai-decision-screen`, `battle-view`); RNG is `Math.random` + `Date.now` ids; alias "נמר" duplicated.
+- Bot skip in the human duel shows "דילגת" (you skipped) – wording should name the bot.
+- Deep links to QA screens need a full page load (`/qa-duel`); they work since web.output = single.
 - Human eliminated → must show loss screen → champion screen → main menu (decision 5, not built yet).
-- `app.json` `web.output: "server"` breaks deep links (e.g. /qa-duel → 500 "unknown module"); plan: switch to `single`.
 - ESLint crashes: "Cannot find native binding" (unrs-resolver from the Codex pnpm install). Fix by
   reinstalling deps with pnpm once pnpm is available.
 - The sandbox blocks renaming/moving `.git` folders and `mobile/assets/expo.icon`; ask the user to do it.

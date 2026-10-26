@@ -1,0 +1,28 @@
+import type { ImageSourcePropType } from 'react-native';
+
+export const ITEM_IMAGES: Record<string, ImageSourcePropType> = {
+  'animals-1': require('../../assets/game/animals/lion.png'),
+  'animals-2': require('../../assets/game/animals/elephant.png'),
+  'animals-3': require('../../assets/game/animals/dog.png'),
+  'animals-4': require('../../assets/game/animals/tiger.png'),
+  'animals-5': require('../../assets/game/animals/crocodile.png'),
+  'animals-6': require('../../assets/game/animals/whale.png'),
+  'animals-7': require('../../assets/game/animals/orangutan.png'),
+  'animals-8': require('../../assets/game/animals/seal.png'),
+  'animals-9': require('../../assets/game/animals/sloth.png'),
+  'animals-10': require('../../assets/game/animals/zebra.png'),
+  'animals-11': require('../../assets/game/animals/giraffe.png'),
+  'animals-12': require('../../assets/game/animals/rhinoceros.png'),
+  'fruit-1': require('../../assets/game/fruit/apple.png'),
+  'fruit-2': require('../../assets/game/fruit/banana.png'),
+  'fruit-3': require('../../assets/game/fruit/orange.png'),
+  'fruit-4': require('../../assets/game/fruit/pineapple.png'),
+  'fruit-5': require('../../assets/game/fruit/watermelon.png'),
+  'fruit-6': require('../../assets/game/fruit/peach.png'),
+  'fruit-7': require('../../assets/game/fruit/kiwi.png'),
+  'fruit-8': require('../../assets/game/fruit/blueberries.png'),
+  'fruit-9': require('../../assets/game/fruit/olive.png'),
+  'fruit-10': require('../../assets/game/fruit/grapes.png'),
+  'fruit-11': require('../../assets/game/fruit/mango.png'),
+  'fruit-12': require('../../assets/game/fruit/pear.png'),
+};

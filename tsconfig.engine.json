@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": false,
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "noEmit": false,
+    "outDir": ".engine-test",
+    "rootDir": ".",
+    "types": []
+  },
+  "include": [
+    "src/game/**/*.ts",
+    "scripts/engine-smoke.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

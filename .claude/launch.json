@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "arena-web",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": ["mobile/node_modules/expo/bin/cli", "start", "mobile", "--web", "--port", "8090"],
+      "port": 8090, "autoPort": false
+    }
+  ]
+}

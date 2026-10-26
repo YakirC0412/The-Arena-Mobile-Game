@@ -63,7 +63,9 @@ THE_Arena/            git root (run git commands here)
 - Next: Phase 1 – rule fixes and real tests (see docs/ROADMAP.md).
 
 ## Known issues / gotchas
-- **Open rule bugs**: defender not marked `hasPlayedThisRound` (decision 1); `returnToArena` does not
+- Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
+  stay drawable. Current code is correct – do not "fix" it.
+- **Open rule bugs**: `returnToArena` does not
   reset `winStreak`; correct-answer pause is 300 ms (rule: 0.7–1.0 s); bot continue/attack logic lives in
   UI (`ai-decision-screen`, `battle-view`); RNG is `Math.random` + `Date.now` ids; alias "נמר" duplicated.
 - Human eliminated → must show loss screen → champion screen → main menu (decision 5, not built yet).

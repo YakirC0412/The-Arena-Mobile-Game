@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { AccessibilityInfo, Animated, Easing, Platform, Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
+import { AccessibilityInfo, Animated, Easing, Platform, StyleSheet, useWindowDimensions, View } from 'react-native';
 
 import { AppText as Text } from '@/design/app-text';
 import { ArenaLogo, BrandBackground } from '@/design/brand';
@@ -13,7 +13,7 @@ const TOTAL_MS = 2900;
 
 // A short opening before the welcome or home screen: the logo lands with a
 // shockwave of light, the 16 arena cells light up as a loading bar, and the
-// tagline appears. Tap anywhere to skip.
+// tagline "BE THE ① TO CONQUER THE ARENA" appears. Not skippable.
 export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: () => void }) {
   const { width } = useWindowDimensions();
   const logoSize = Math.min(280, Math.max(190, width * 0.66));
@@ -33,7 +33,7 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
   };
 
   useEffect(() => {
-    AccessibilityInfo.announceForAccessibility('THE ARENA. המטרה: לכבוש את הזירה');
+    AccessibilityInfo.announceForAccessibility('THE ARENA. Be the one to conquer the arena');
     if (reducedMotion) {
       [logoIn, glow, ring, tagline, ...cells].forEach((value) => value.setValue(1));
       const timer = setTimeout(finish, 1400);
@@ -76,11 +76,7 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
 
   return (
     <BrandBackground>
-      <Pressable
-        accessibilityHint="הקשה מדלגת על הפתיח"
-        accessibilityLabel="פתיח המשחק"
-        onPress={finish}
-        style={styles.fill}>
+      <View accessibilityLabel="פתיח המשחק" style={styles.fill}>
         <Animated.View style={[styles.stage, { opacity: exit }]}>
           <View style={[styles.logoStage, { width: logoSize, height: logoSize }]}>
             <Animated.View
@@ -127,8 +123,15 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
                 transform: [{ translateY: tagline.interpolate({ inputRange: [0, 1], outputRange: [14, 0] }) }],
               },
             ]}>
-            <Text style={styles.taglineEnglish} weight="black">CONQUER THE ARENA</Text>
-            <Text style={styles.taglineHebrew} weight="bold">המטרה: לכבוש את הזירה</Text>
+            <View accessibilityLabel="Be the one" style={styles.taglineRow}>
+              <Text style={styles.taglineEnglish} weight="black">BE THE</Text>
+              <View style={styles.oneBadge}>
+                <Text style={styles.oneBadgeText} weight="black">1</Text>
+              </View>
+            </View>
+            <Text style={styles.taglineEnglish} weight="black">
+              TO CONQUER THE <Text style={styles.taglineArena} weight="black">ARENA</Text>
+            </Text>
             {greeting ? <Text style={styles.greeting}>{greeting}</Text> : null}
           </Animated.View>
 
@@ -147,9 +150,8 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
             ))}
           </View>
 
-          <Text style={styles.skipHint}>הקישו לדילוג</Text>
         </Animated.View>
-      </Pressable>
+      </View>
     </BrandBackground>
   );
 }
@@ -176,9 +178,25 @@ const styles = StyleSheet.create({
     textShadowColor: colors.brandBlue,
     textShadowRadius: 14,
   },
-  taglineHebrew: { color: colors.brandSky, fontSize: typeScale.button, textAlign: 'center' },
+  // Keep the English line left-to-right inside the RTL app.
+  taglineRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  taglineArena: { color: colors.brandBlue, textShadowColor: colors.brandSky, textShadowRadius: 10 },
+  oneBadge: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: colors.brandSky,
+    borderWidth: 2,
+    borderColor: colors.textPrimary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: colors.brandSky,
+    shadowOpacity: 0.9,
+    shadowRadius: 14,
+    elevation: 8,
+  },
+  oneBadgeText: { color: colors.brandInk, fontSize: 24, lineHeight: 30, textAlign: 'center', writingDirection: 'ltr' },
   greeting: { color: colors.textSecondary, fontSize: typeScale.body, textAlign: 'center', marginTop: spacing.xs },
   cells: { flexDirection: 'row', gap: 5, marginTop: spacing.xl },
   cell: { width: 12, height: 12, borderRadius: 3, backgroundColor: colors.brandSky },
-  skipHint: { position: 'absolute', bottom: spacing.xl, color: colors.textSecondary, fontSize: typeScale.caption, opacity: 0.7 },
 });

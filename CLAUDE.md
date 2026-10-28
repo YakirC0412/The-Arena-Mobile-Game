@@ -72,7 +72,8 @@ THE_Arena/            git root (run git commands here)
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
-- 28.10.26 – Intro animation (~3 s, tap to skip) on every visit and after sign-in, before home.
+- 28.10.26 – Intro animation (~3 s, not skippable, "BE THE ① TO CONQUER THE ARENA") on every visit
+  and after sign-in, before home.
 - Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web), and
   move the rest of the app to the brand palette.
 

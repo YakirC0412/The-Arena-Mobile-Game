@@ -13,6 +13,7 @@ const TEST_USER: FlowUser = { id: 'u-1', fullName: 'בדיקה', email: 'test@ex
 function nextAction(state: FlowState, policy: HumanPolicy, random: RandomSource, seed: number): FlowAction | null {
   const game = state.game;
   switch (state.screen) {
+    case 'intro': return { type: 'INTRO_COMPLETE' };
     case 'welcome': return { type: 'SIGNED_IN', user: TEST_USER };
     case 'home': return { type: 'HOME_GUIDE' };
     case 'guide': return { type: 'GUIDE_COMPLETE' };
@@ -76,12 +77,17 @@ function playThrough(seed: number, policy: HumanPolicy) {
 }
 
 suite('screen flow', () => {
-  test('sign-in leads home; home opens the guide or a new game; sign-out returns to welcome', () => {
+  test('intro → welcome → sign-in → intro → home; home opens the guide or a new game; sign-out', () => {
     let state = createFlowState(1);
-    assertEqual(state.screen, 'welcome', 'Signed-out start');
+    assertEqual(state.screen, 'intro', 'Every visit opens with the intro');
+    state = flowReducer(state, { type: 'INTRO_COMPLETE' });
+    assertEqual(state.screen, 'welcome', 'Signed-out visitors go to welcome');
     state = flowReducer(state, { type: 'SIGNED_IN', user: TEST_USER });
-    assertEqual(state.screen, 'home', 'Home after sign-in');
-    assertEqual(createFlowState(1, TEST_USER).screen, 'home', 'A remembered user starts at home');
+    assertEqual(state.screen, 'intro', 'The intro plays after sign-in');
+    state = flowReducer(state, { type: 'INTRO_COMPLETE' });
+    assertEqual(state.screen, 'home', 'Home after the intro');
+    const remembered = flowReducer(createFlowState(1, TEST_USER), { type: 'INTRO_COMPLETE' });
+    assertEqual(remembered.screen, 'home', 'A remembered user goes from the intro straight home');
     assertEqual(flowReducer(state, { type: 'HOME_GUIDE' }).screen, 'guide', 'Instructions');
     assertEqual(flowReducer(flowReducer(state, { type: 'HOME_GUIDE' }), { type: 'GUIDE_BACK' }).screen, 'home', 'Back from the guide');
     const setup = flowReducer(state, { type: 'HOME_NEW_GAME' });

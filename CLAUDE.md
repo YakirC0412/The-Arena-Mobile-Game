@@ -45,7 +45,7 @@ THE_Arena/            git root (run git commands here)
       ├─ content/     categories.ts (16×24 items) · avatars.ts · item-images.ts · avatar-images.ts
       ├─ features/
       │  ├─ flow/        game-flow.tsx renders FlowState → screens · arena-screen · setup · result
-      │  ├─ onboarding/  welcome-screen (logo + sign-up/sign-in) · home-screen (signed in) · guide
+      │  ├─ onboarding/  intro-screen (animated opening) · welcome-screen (sign-up/sign-in) · home-screen · guide
       │  ├─ arena/       arena-board · build · draw animation · mini-map · territory-layout
       │  ├─ battle/      battle-view (human duel) · clock cards · intro · AI target/decision/simulation
       │  │               · outcome · conquest animation · bonus popup
@@ -72,6 +72,7 @@ THE_Arena/            git root (run git commands here)
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- 28.10.26 – Intro animation (~3 s, tap to skip) on every visit and after sign-in, before home.
 - Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web), and
   move the rest of the app to the brand palette.
 

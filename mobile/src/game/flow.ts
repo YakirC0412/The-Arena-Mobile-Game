@@ -23,8 +23,8 @@ import { createRandomCursor, type RandomSource } from './rng';
 import type { BattleResolution, BattleSetup, GameState } from './types';
 
 export type FlowScreen =
-  // sign-up / sign-in, then the signed-in home
-  | 'welcome' | 'home' | 'guide' | 'setup'
+  // animated opening, sign-up / sign-in, then the signed-in home
+  | 'intro' | 'welcome' | 'home' | 'guide' | 'setup'
   // arena
   | 'building' | 'arena' | 'draw' | 'aiTarget'
   // duel
@@ -65,6 +65,7 @@ export type FlowState = {
 };
 
 export type FlowAction =
+  | { type: 'INTRO_COMPLETE' }
   | { type: 'SIGNED_IN'; user: FlowUser }
   | { type: 'SIGN_OUT' }
   | { type: 'HOME_GUIDE' }
@@ -92,10 +93,10 @@ export type FlowAction =
   | { type: 'ELIMINATED_CONTINUE' }
   | { type: 'VICTORY_COMPLETE' };
 
-// A remembered user (from a previous visit) starts on the home screen.
+// Every visit opens with the intro; a remembered user then lands on home.
 export function createFlowState(seed: number, user: FlowUser | null = null): FlowState {
   return {
-    screen: user ? 'home' : 'welcome',
+    screen: 'intro',
     user,
     selectedCategoryId: 'animals',
     randomState: seed >>> 0,
@@ -140,7 +141,9 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
   const at = (screen: FlowScreen): FlowState => ({ ...state, screen });
 
   switch (action.type) {
-    case 'SIGNED_IN': return { ...state, user: action.user, screen: 'home' };
+    case 'INTRO_COMPLETE': return at(state.user ? 'home' : 'welcome');
+    // The intro plays again before the home screen, as a welcome.
+    case 'SIGNED_IN': return { ...state, user: action.user, screen: 'intro' };
     case 'SIGN_OUT': return { ...state, ...CLEARED_BATTLE, user: null, game: null, screen: 'welcome' };
     case 'HOME_GUIDE': return at('guide');
     case 'HOME_NEW_GAME': return at('setup');

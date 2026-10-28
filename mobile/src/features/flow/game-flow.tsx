@@ -16,6 +16,7 @@ import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
 import { GameOverScreen } from '@/features/final/game-over-screen';
 import { GuideScreen } from '@/features/onboarding/guide-screen';
 import { HomeScreen } from '@/features/onboarding/home-screen';
+import { IntroScreen } from '@/features/onboarding/intro-screen';
 import { WelcomeScreen } from '@/features/onboarding/welcome-screen';
 import { getFinalCategoryChooser, getNeighborPlayerIds } from '@/game/engine';
 import { createFlowState, flowReducer, type FlowUser } from '@/game/flow';
@@ -35,6 +36,7 @@ export function GameFlow() {
   const [flow, dispatch] = useReducer(flowReducer, undefined, () => createFlowState(createSeed(), getCurrentUser(loadAccountStore())));
   // Stable callbacks, so screens' timers are not restarted on every render.
   const on = useMemo(() => ({
+    introComplete: () => dispatch({ type: 'INTRO_COMPLETE' }),
     signedIn: (user: FlowUser) => dispatch({ type: 'SIGNED_IN', user }),
     signOut: () => {
       saveAccountStore(signOut(loadAccountStore()));
@@ -71,6 +73,13 @@ export function GameFlow() {
   const { battle, battleOrigin, game, resolution, screen } = flow;
 
   switch (screen) {
+    case 'intro':
+      return (
+        <IntroScreen
+          greeting={flow.user ? `ברוכים הבאים, ${flow.user.nickname}` : undefined}
+          onDone={on.introComplete}
+        />
+      );
     case 'welcome':
       return <WelcomeScreen onSignedIn={on.signedIn} />;
     case 'home':

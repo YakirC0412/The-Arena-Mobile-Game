@@ -90,7 +90,7 @@ export function ArenaBoard({
           const fillColor = territoryState === 'selected' || territoryState === 'target'
             ? colors.territoryTarget
             : territoryState === 'overview'
-              ? colors.surface
+              ? colors.arenaFloor
               : colors.boardCellDark;
           const borderColor = territoryState === 'selected'
             ? colors.territorySelected
@@ -99,7 +99,7 @@ export function ArenaBoard({
               : territoryState === 'me'
                 ? colors.territoryMeBorder
                 : territoryState === 'overview'
-                  ? colors.border
+                  ? colors.arenaFloorBorder
                   : colors.boardCellDarkBorder;
 
           return (

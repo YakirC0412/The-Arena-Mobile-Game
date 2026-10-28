@@ -72,10 +72,11 @@ THE_Arena/            git root (run git commands here)
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- 28.10.26 – Brand palette everywhere (decision 12): root gradient in _layout + transparent screens
+  (`colors.screen`); arena uses 4 colors with one meaning each (see tokens.ts comment).
 - 28.10.26 – Intro animation (~3 s, not skippable, "BE THE ① TO CONQUER THE ARENA") on every visit
   and after sign-in, before home.
-- Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web), and
-  move the rest of the app to the brand palette.
+- Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web).
 
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
@@ -94,5 +95,8 @@ THE_Arena/            git root (run git commands here)
   in `signUpWithGoogle` but the button is disabled until OAuth exists (multiplayer phase).
 - Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound.
   On web, expo-haptics calls navigator.vibrate and logs "Blocked call" errors before a real tap.
+- Full-screen containers use `backgroundColor: colors.screen` (transparent), never `colors.bg`
+  (`bg` is dark ink for text on light buttons). The navigator theme in _layout must stay transparent.
+- Player colors (`PLAYER_COLORS` in engine.ts, `design/colors.ts`) are no longer shown on boards.
 - Screen changes: add an action to `FlowAction` + a case in `flowReducer` + a flow test; never
   set screen state inside components.

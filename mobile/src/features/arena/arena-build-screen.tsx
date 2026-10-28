@@ -12,7 +12,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { CATEGORY_BY_ID } from '@/content/categories';
-import { getContrastColor } from '@/design/colors';
 import type { GameState } from '@/game/types';
 import { useReducedMotion } from '@/design/use-reduced-motion';
 
@@ -116,14 +115,18 @@ export function ArenaBuildScreen({
             {state.cells.map((cell, index) => {
               const owner = state.players[cell.ownerId];
               const category = CATEGORY_BY_ID[owner.categoryId];
-              const foreground = getContrastColor(owner.color);
+              // Same arena colors as everywhere: your own cell is the light-blue "active" one.
+              const isMe = owner.isHuman;
+              const foreground = isMe ? colors.boardFrame : colors.textPrimary;
               const animation = cellAnimations[index];
               return (
                 <Animated.View
                   key={cell.id}
                   style={[
                     styles.cell,
-                    { backgroundColor: owner.color },
+                    isMe
+                      ? { backgroundColor: colors.territoryMeEnd, borderColor: colors.territoryMeBorder }
+                      : { backgroundColor: colors.arenaFloor, borderColor: colors.arenaFloorBorder },
                     {
                       opacity: animation,
                       transform: [{ scale: animation.interpolate({ inputRange: [0, 1], outputRange: [0.86, 1] }) }],

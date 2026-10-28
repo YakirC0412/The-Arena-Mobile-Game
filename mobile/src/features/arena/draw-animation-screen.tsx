@@ -122,7 +122,7 @@ export function DrawAnimationScreen({
                   style={[
                     styles.cell,
                     {
-                      backgroundColor: isHighlighted ? colors.territoryMeEnd : colors.boardCellDark,
+                      backgroundColor: isHighlighted ? colors.territoryMeEnd : colors.arenaFloor,
                       borderTopWidth: joinsTop ? 0 : isHighlighted ? 3 : 1,
                       borderBottomWidth: joinsBottom ? 0 : isHighlighted ? 3 : 1,
                       borderLeftWidth: joinsLeft ? 0 : isHighlighted ? 3 : 1,
@@ -172,10 +172,10 @@ const styles = StyleSheet.create({
   bonusNoticeText: { color: colors.accentGold, fontSize: 12, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl' },
   boardFrame: { width: '100%', maxWidth: 380, aspectRatio: 1, borderRadius: 20, backgroundColor: colors.boardFrame, borderWidth: 2, borderColor: colors.boardFrameBorder, padding: 8, alignSelf: 'center', shadowColor: colors.boardFrameBorder, shadowOpacity: 0.4, shadowRadius: 14, elevation: 8 },
   board: { flex: 1, position: 'relative' },
-  cell: { position: 'absolute', width: '25%', height: '25%', borderColor: colors.boardCellDarkBorder, paddingHorizontal: 4, justifyContent: 'center', alignItems: 'center', opacity: 1 },
+  cell: { position: 'absolute', width: '25%', height: '25%', borderColor: colors.arenaFloorBorder, paddingHorizontal: 4, justifyContent: 'center', alignItems: 'center', opacity: 1 },
   inactiveCell: { opacity: 0.24 },
   highlightedCell: { opacity: 1, borderColor: colors.territoryMeBorder, zIndex: 3 },
-  landedCell: { borderColor: colors.territoryMeBorder },
+  landedCell: { borderColor: colors.territorySelected },
   ownerRow: { maxWidth: '100%', flexDirection: 'row-reverse', alignItems: 'center', gap: 4, marginTop: 2 },
   cellName: { flexShrink: 1, fontSize: 12, lineHeight: 15, fontWeight: '800', textAlign: 'center', writingDirection: 'rtl' },
   cellCategory: { maxWidth: '100%', fontSize: 15, lineHeight: 18, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl' },

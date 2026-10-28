@@ -94,7 +94,7 @@ export function ConquestAnimationScreen({
             style={[
               styles.conquestWave,
               {
-                borderColor: colors.territoryTargetBorder,
+                borderColor: colors.territoryMeBorder,
                 opacity: wave.interpolate({ inputRange: [0, 0.35, 1], outputRange: [0, 0.95, 0] }),
                 transform: [{ scale: wave.interpolate({ inputRange: [0, 1], outputRange: [0.65, 1.12] }) }],
               },

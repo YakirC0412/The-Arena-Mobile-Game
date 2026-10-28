@@ -16,14 +16,20 @@ export const colors = {
   accentGold: '#F8C95C',
   warning: '#FFB020',
   danger: '#FF4D4D',
-  boardFrame: '#0A2A7A',
+  // Arena colors – one meaning each, in every board situation (decision 12):
+  // floor = ordinary territory · active (light blue) = me / drawn / winner
+  // target (blue + cyan outline) = can be attacked · selected (gold) = chosen
+  // dark = not relevant right now (only while choosing a target).
+  boardFrame: '#0B2470',
   boardFrameBorder: '#3FA9FF',
-  boardCellDark: '#08122E',
-  boardCellDarkBorder: '#14234F',
+  arenaFloor: '#0A1F5C',
+  arenaFloorBorder: '#1C3C8C',
+  boardCellDark: '#06123A',
+  boardCellDarkBorder: '#102456',
   territoryMeStart: '#B4EBFF',
-  territoryMeEnd: '#58C4FF',
+  territoryMeEnd: '#7CCBFF',
   territoryMeBorder: '#D9F7FF',
-  territoryTarget: '#1747C9',
+  territoryTarget: '#1F6BFF',
   territoryTargetBorder: '#4DF3FF',
   territorySelected: '#FFD25A',
   overlay: 'rgba(3, 10, 36, 0.82)',

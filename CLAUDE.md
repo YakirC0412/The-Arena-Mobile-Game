@@ -19,7 +19,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Node: `C:/Program Files/nodejs` (v24). In Bash first run `export PATH="/c/Program Files/nodejs:$PATH"`.
 - No pnpm on the machine yet; use `npm run` / `npx` from `mobile/`.
 - Dev server: browser preview config `arena-web` in `.claude/launch.json` → http://localhost:8090.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (28 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (33 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -40,11 +40,11 @@ THE_Arena/            git root (run git commands here)
    ├─ tests/          engine, rules, random-games, content tests
    └─ src/
       ├─ app/         routes only: _layout.tsx · index.tsx (renders GameFlow) · (dev)/qa-*.tsx
-      ├─ game/        engine.ts (rules, bot decisions, autoPlayGame) · rng.ts (seeded) · types.ts
+      ├─ game/        engine.ts (rules, bot decisions, autoPlayGame) · flow.ts (screen reducer) · rng.ts · types.ts
       │               pure TS, no React, relative imports only; never call Math.random – take a RandomSource
       ├─ content/     categories.ts (16×24 items) · avatars.ts · item-images.ts · avatar-images.ts
       ├─ features/
-      │  ├─ flow/        game-flow.tsx = screen state machine (useState) + per-game seeded random · setup · result
+      │  ├─ flow/        game-flow.tsx renders FlowState → screens · arena-screen · setup · result
       │  ├─ onboarding/  welcome · auth · game-mode · guide
       │  ├─ arena/       arena-board · build · draw animation · mini-map · territory-layout
       │  ├─ battle/      battle-view (human duel) · clock cards · intro · AI target/decision/simulation
@@ -66,7 +66,9 @@ THE_Arena/            git root (run git commands here)
 - 26.10.26 – Phase 0 done: Node installed, git history started, folder restructured, big files split.
 - 26.10.26 – Phase 1 done: streak/bonus rules, seeded RNG, bot decisions in engine, 0.7–1.0 s pause,
   28 tests, web.output = single. Bot levels postponed.
-- Next: Phase 2 – screen flow (reducer) and decision 5 (use `autoPlayGame` to finish the game).
+- 28.10.26 – Phase 2 done: all screen transitions in `game/flow.ts` (pure reducer, seeded via
+  `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
+- Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web).
 
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
@@ -75,9 +77,11 @@ THE_Arena/            git root (run git commands here)
   resets `winStreak` (not `bonusReady`); bonus auto-applies in the next duel in any role. See GAME_RULES §5.
 - Bot skip in the human duel shows "דילגת" (you skipped) – wording should name the bot.
 - Deep links to QA screens need a full page load (`/qa-duel`); they work since web.output = single.
-- Human eliminated → must show loss screen → champion screen → main menu (decision 5, not built yet).
 - ESLint crashes: "Cannot find native binding" (unrs-resolver from the Codex pnpm install). Fix by
   reinstalling deps with pnpm once pnpm is available.
 - The sandbox blocks renaming/moving `.git` folders and `mobile/assets/expo.icon`; ask the user to do it.
 - Old Codex Expo servers may still hold ports 8081–8083 (a reboot clears them); we use 8090.
 - Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound.
+  On web, expo-haptics calls navigator.vibrate and logs "Blocked call" errors before a real tap.
+- Screen changes: add an action to `FlowAction` + a case in `flowReducer` + a flow test; never
+  set screen state inside components.

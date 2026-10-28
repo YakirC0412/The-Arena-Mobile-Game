@@ -5,6 +5,7 @@ import { AppText as Text } from '@/design/app-text';
 import { ArenaLogo, BrandBackground } from '@/design/brand';
 import { colors, spacing, typeScale } from '@/design/tokens';
 import { useReducedMotion } from '@/design/use-reduced-motion';
+import { NumberOneBadge } from './number-one-badge';
 
 const NATIVE = Platform.OS !== 'web';
 const CELLS = 16;
@@ -22,6 +23,7 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
   const [glow] = useState(() => new Animated.Value(0));
   const [ring] = useState(() => new Animated.Value(0));
   const [tagline] = useState(() => new Animated.Value(0));
+  const [badge] = useState(() => new Animated.Value(0));
   const [exit] = useState(() => new Animated.Value(1));
   const [cells] = useState(() => Array.from({ length: CELLS }, () => new Animated.Value(0)));
   const doneRef = useRef(false);
@@ -35,7 +37,7 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
   useEffect(() => {
     AccessibilityInfo.announceForAccessibility('THE ARENA. Be the one to conquer the arena');
     if (reducedMotion) {
-      [logoIn, glow, ring, tagline, ...cells].forEach((value) => value.setValue(1));
+      [logoIn, glow, ring, tagline, badge, ...cells].forEach((value) => value.setValue(1));
       const timer = setTimeout(finish, 1400);
       return () => clearTimeout(timer);
     }
@@ -54,6 +56,11 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
       Animated.sequence([
         Animated.delay(800),
         Animated.timing(tagline, { toValue: 1, duration: 500, easing: Easing.out(Easing.cubic), useNativeDriver: NATIVE }),
+      ]),
+      // The "1" coin spins in just after the words.
+      Animated.sequence([
+        Animated.delay(1050),
+        Animated.timing(badge, { toValue: 1, duration: 700, easing: Easing.out(Easing.back(1.4)), useNativeDriver: NATIVE }),
       ]),
       Animated.stagger(CELL_STEP_MS, cells.map((value) => (
         Animated.sequence([
@@ -125,11 +132,9 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
             ]}>
             <View accessibilityLabel="Be the one" style={styles.taglineRow}>
               <Text style={styles.taglineEnglish} weight="black">BE THE</Text>
-              <View style={styles.oneBadge}>
-                <Text style={styles.oneBadgeText} weight="black">1</Text>
-              </View>
+              <NumberOneBadge appear={badge} />
             </View>
-            <Text style={styles.taglineEnglish} weight="black">
+            <Text numberOfLines={1} style={styles.taglineEnglish} weight="black">
               TO CONQUER THE <Text style={styles.taglineArena} weight="black">ARENA</Text>
             </Text>
             {greeting ? <Text style={styles.greeting}>{greeting}</Text> : null}
@@ -169,10 +174,11 @@ const styles = StyleSheet.create({
   },
   ring: { position: 'absolute', borderWidth: 3, borderColor: colors.brandSky },
   taglineBlock: { alignItems: 'center', marginTop: spacing.lg, gap: spacing.xs },
+  // Sized so 'TO CONQUER THE ARENA' fits one line on a 360 px wide phone.
   taglineEnglish: {
     color: colors.textPrimary,
-    fontSize: 24,
-    letterSpacing: 4,
+    fontSize: 21,
+    letterSpacing: 2,
     textAlign: 'center',
     writingDirection: 'ltr',
     textShadowColor: colors.brandBlue,
@@ -180,22 +186,8 @@ const styles = StyleSheet.create({
   },
   // Keep the English line left-to-right inside the RTL app.
   taglineRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  taglineArena: { color: colors.brandBlue, textShadowColor: colors.brandSky, textShadowRadius: 10 },
-  oneBadge: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: colors.brandSky,
-    borderWidth: 2,
-    borderColor: colors.textPrimary,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: colors.brandSky,
-    shadowOpacity: 0.9,
-    shadowRadius: 14,
-    elevation: 8,
-  },
-  oneBadgeText: { color: colors.brandInk, fontSize: 24, lineHeight: 30, textAlign: 'center', writingDirection: 'ltr' },
+  // Blue word with a tight white halo, so it stays readable on navy.
+  taglineArena: { color: colors.brandBlue, textShadowColor: 'rgba(255, 255, 255, 0.9)', textShadowRadius: 4, textShadowOffset: { width: 0, height: 0 } },
   greeting: { color: colors.textSecondary, fontSize: typeScale.body, textAlign: 'center', marginTop: spacing.xs },
   cells: { flexDirection: 'row', gap: 5, marginTop: spacing.xl },
   cell: { width: 12, height: 12, borderRadius: 3, backgroundColor: colors.brandSky },

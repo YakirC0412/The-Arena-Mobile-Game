@@ -3,6 +3,7 @@ import './engine.test';
 import './rules.test';
 import './random-games.test';
 import './content.test';
+import './flow.test';
 import { runAll } from './harness';
 
 runAll();

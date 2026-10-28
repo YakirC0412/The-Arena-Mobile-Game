@@ -10,11 +10,15 @@ import { CATEGORY_BY_ID } from '@/content/categories';
 import { getActivePlayers, getChampion } from '@/game/engine';
 import type { GameState } from '@/game/types';
 
+// The loss screen (decision 5): shown when the human is eliminated, before
+// the rest of the game is played out and its champion revealed.
 export function GameOverScreen({
-  onRestart,
+  eliminatedById,
+  onContinue,
   state,
 }: {
-  onRestart: () => void;
+  eliminatedById?: string | null;
+  onContinue: () => void;
   state: GameState;
 }) {
   const champion = getChampion(state);
@@ -23,6 +27,7 @@ export function GameOverScreen({
   const activePlayers = getActivePlayers(state).length;
   const leadingPlayer = champion ?? getActivePlayers(state)
     .sort((left, right) => right.cellIds.length - left.cellIds.length)[0];
+  const eliminatedBy = eliminatedById ? state.players[eliminatedById] : null;
 
   useEffect(() => {
     AccessibilityInfo.announceForAccessibility(won ? 'כבשת את הזירה' : 'הודחת מהזירה');
@@ -37,8 +42,8 @@ export function GameOverScreen({
         {won
           ? 'כל 16 המשבצות נמצאות בשליטתך. הזירה כולה היא שטח אחד.'
           : champion
-            ? `${champion.name} כבש/ה את כל הזירה והפך/ה לאלוף/ה.`
-            : `המסע שלך הסתיים. ${activePlayers} מתמודדים עדיין נשארו בזירה.`}
+            ? `${champion.name} ניצח/ה אותך בגמר וכבש/ה את כל הזירה.`
+            : `${eliminatedBy ? `${eliminatedBy.name} ניצח/ה אותך בדו־קרב. ` : ''}${activePlayers} מתמודדים עדיין נשארו בזירה.`}
       </Text>
 
       {leadingPlayer && (
@@ -55,8 +60,8 @@ export function GameOverScreen({
         </View>
       )}
 
-      <Pressable accessibilityLabel="התחלת משחק חדש" accessibilityRole="button" onPress={onRestart} style={styles.button}>
-        <Text style={styles.buttonText}>משחק חדש</Text>
+      <Pressable accessibilityRole="button" onPress={onContinue} style={styles.button}>
+        <Text style={styles.buttonText}>{won ? 'המשך' : 'מי זוכה בזירה?'}</Text>
       </Pressable>
     </SafeAreaView>
   );

@@ -1,478 +1,224 @@
-import { useCallback, useState } from 'react';
-import { Pressable, ScrollView, View } from 'react-native';
-import { AppText as Text } from '@/design/app-text';
+import { useMemo, useReducer } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ArenaBoard } from '@/features/arena/arena-board';
+
+import { DEFAULT_AVATAR_ID } from '@/content/avatars';
 import { ArenaBuildScreen } from '@/features/arena/arena-build-screen';
-import { BattleView } from '@/features/battle/battle-view';
-import { ChampionCelebrationScreen } from '@/features/final/champion-celebration-screen';
+import { DrawAnimationScreen } from '@/features/arena/draw-animation-screen';
 import { AiBattleSimulationScreen } from '@/features/battle/ai-battle-simulation-screen';
 import { AiDecisionScreen } from '@/features/battle/ai-decision-screen';
 import { AiTargetSelectionScreen } from '@/features/battle/ai-target-selection-screen';
 import { BattleIntroScreen } from '@/features/battle/battle-intro-screen';
 import { BattleOutcomeScreen } from '@/features/battle/battle-outcome-screen';
+import { BattleView } from '@/features/battle/battle-view';
 import { ConquestAnimationScreen } from '@/features/battle/conquest-animation-screen';
-import { DrawAnimationScreen } from '@/features/arena/draw-animation-screen';
-import { GameOverScreen } from '@/features/final/game-over-screen';
+import { ChampionCelebrationScreen } from '@/features/final/champion-celebration-screen';
 import { FinalCategoryScreen } from '@/features/final/final-category-screen';
 import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
+import { GameOverScreen } from '@/features/final/game-over-screen';
 import { AuthScreen } from '@/features/onboarding/auth-screen';
 import { GameModeScreen } from '@/features/onboarding/game-mode-screen';
 import { GuideScreen } from '@/features/onboarding/guide-screen';
-import { type PlayerProfile } from '@/features/onboarding/player-profile';
 import { WelcomeScreen } from '@/features/onboarding/welcome-screen';
-import { CATEGORY_BY_ID } from '@/content/categories';
-import { DEFAULT_AVATAR_ID } from '@/content/avatars';
-import { chooseAiTarget, createFinalBattleSetup, createBattleSetup, createInitialGame, decideAiContinue, drawPlayer, getChampion, getFinalCategoryChooser, getNeighborPlayerIds, getRoundProgress, resolveBattle, returnWinnerToArena, simulateAiBattle } from '@/game/engine';
+import { getFinalCategoryChooser, getNeighborPlayerIds } from '@/game/engine';
+import { createFlowState, flowReducer } from '@/game/flow';
 import { createSeed, createSeededRandom } from '@/game/rng';
-import type { BattleResolution, BattleSetup, GameState } from '@/game/types';
-import { SetupScreen } from './setup-screen';
-import { ResultScreen } from './result-screen';
+import { ArenaScreen } from './arena-screen';
 import { styles } from './flow-styles';
+import { ResultScreen } from './result-screen';
+import { SetupScreen } from './setup-screen';
 
-type Screen = 'welcome' | 'auth' | 'mode' | 'guide' | 'setup' | 'building' | 'arena' | 'draw' | 'selection' | 'aiBattle' | 'battle' | 'outcome' | 'conquest' | 'result' | 'decision' | 'aiTarget' | 'finalReveal' | 'finalCategory' | 'victory' | 'gameover';
-
+// Renders the screen for the current flow state. Every transition lives in
+// game/flow.ts (flowReducer); this component only maps screens to components
+// and buttons to actions.
 export function GameFlow() {
-  const [screen, setScreen] = useState<Screen>('welcome');
-  const [profile, setProfile] = useState<PlayerProfile>({ fullName: '', nickname: '', avatar: DEFAULT_AVATAR_ID });
-  const [selectedCategoryId, setSelectedCategoryId] = useState('animals');
-  const [game, setGame] = useState<GameState | null>(null);
-  const [battle, setBattle] = useState<BattleSetup | null>(null);
-  const [battleOrigin, setBattleOrigin] = useState<GameState | null>(null);
-  const [aiWinnerId, setAiWinnerId] = useState<string | null>(null);
-  const [resolution, setResolution] = useState<BattleResolution | null>(null);
-  const [aiTargetId, setAiTargetId] = useState<string | null>(null);
-  const [selectingTarget, setSelectingTarget] = useState(false);
-  const [selectedTargetId, setSelectedTargetId] = useState<string | null>(null);
-  const [battleNumber, setBattleNumber] = useState(0);
-  const [aiContinues, setAiContinues] = useState(false);
-  // One seeded random source per game: every draw, bot choice and duel uses it.
-  const [random, setRandom] = useState(() => createSeededRandom(createSeed()));
+  const [flow, dispatch] = useReducer(flowReducer, undefined, () => createFlowState(createSeed(), DEFAULT_AVATAR_ID));
+  // Stable callbacks, so screens' timers are not restarted on every render.
+  const on = useMemo(() => ({
+    welcomeContinue: () => dispatch({ type: 'WELCOME_CONTINUE' }),
+    authBack: () => dispatch({ type: 'AUTH_BACK' }),
+    authComplete: (profile: Parameters<typeof AuthScreen>[0]['initialProfile']) => dispatch({ type: 'AUTH_COMPLETE', profile }),
+    modeBack: () => dispatch({ type: 'MODE_BACK' }),
+    modeComputer: () => dispatch({ type: 'MODE_COMPUTER' }),
+    guideBack: () => dispatch({ type: 'GUIDE_BACK' }),
+    guideComplete: () => dispatch({ type: 'GUIDE_COMPLETE' }),
+    setupBack: () => dispatch({ type: 'SETUP_BACK' }),
+    setupSelect: (categoryId: string) => dispatch({ type: 'SETUP_SELECT_CATEGORY', categoryId }),
+    startGame: () => dispatch({ type: 'START_GAME', seed: createSeed() }),
+    buildComplete: () => dispatch({ type: 'BUILD_COMPLETE' }),
+    draw: () => dispatch({ type: 'DRAW' }),
+    drawComplete: () => dispatch({ type: 'DRAW_COMPLETE' }),
+    selectTarget: (targetId: string) => dispatch({ type: 'SELECT_TARGET', targetId }),
+    confirmTarget: () => dispatch({ type: 'CONFIRM_TARGET' }),
+    aiTargetComplete: () => dispatch({ type: 'AI_TARGET_COMPLETE' }),
+    battleIntroComplete: () => dispatch({ type: 'BATTLE_INTRO_COMPLETE' }),
+    battleComplete: (winnerId: string) => dispatch({ type: 'BATTLE_COMPLETE', winnerId }),
+    outcomeComplete: () => dispatch({ type: 'OUTCOME_COMPLETE' }),
+    conquestComplete: () => dispatch({ type: 'CONQUEST_COMPLETE' }),
+    resultContinue: () => dispatch({ type: 'RESULT_CONTINUE' }),
+    returnToArena: () => dispatch({ type: 'RETURN_TO_ARENA' }),
+    aiDecisionComplete: () => dispatch({ type: 'AI_DECISION_COMPLETE' }),
+    finalRevealComplete: () => dispatch({ type: 'FINAL_REVEAL_COMPLETE' }),
+    finalCategorySelect: (categoryId: string) => dispatch({ type: 'FINAL_CATEGORY_SELECT', categoryId }),
+    eliminatedContinue: () => dispatch({ type: 'ELIMINATED_CONTINUE' }),
+    victoryComplete: () => dispatch({ type: 'VICTORY_COMPLETE' }),
+  }), []);
+  // The live duel gets its own seeded source, fixed for the whole duel.
+  const battleRandom = useMemo(() => createSeededRandom(flow.battleSeed), [flow.battleSeed]);
 
-  const startGame = () => {
-    const gameRandom = createSeededRandom(createSeed());
-    setRandom(() => gameRandom);
-    setGame(createInitialGame(selectedCategoryId, gameRandom, profile.nickname || 'אני', profile.avatar));
-    setScreen('building');
-    setSelectingTarget(false);
-    setBattle(null);
-    setBattleOrigin(null);
-    setAiWinnerId(null);
-    setResolution(null);
-    setAiTargetId(null);
-    setSelectedTargetId(null);
-    setBattleNumber(0);
-  };
+  const { battle, battleOrigin, game, resolution, screen } = flow;
 
-  const launchBattle = useCallback((state: GameState, attackerId: string, defenderId: string) => {
-    const setup = createBattleSetup(state, attackerId, defenderId);
-    setGame(state);
-    setBattle(setup);
-    setBattleOrigin(state);
-    setAiWinnerId(null);
-    setSelectingTarget(false);
-    setSelectedTargetId(null);
-    setBattleNumber((current) => current + 1);
-    setScreen('selection');
-  }, []);
-
-  const beginPreparedBattle = useCallback(() => {
-    if (!game || !battle) return;
-    const attacker = game.players[battle.attackerId];
-    const defender = game.players[battle.defenderId];
-    if (attacker.isHuman || defender.isHuman) {
-      setScreen('battle');
-      return;
-    }
-    setAiWinnerId(simulateAiBattle(game, battle, random));
-    setScreen('aiBattle');
-  }, [battle, game, random]);
-
-  const resolvePreparedBattle = useCallback((winnerId: string) => {
-    if (!battleOrigin || !battle) return;
-    const result = resolveBattle(battleOrigin, battle, winnerId);
-    setGame(result.state);
-    setResolution(result);
-    setScreen('outcome');
-  }, [battle, battleOrigin]);
-
-  const handleDraw = () => {
-    if (!game) return;
-    const next = drawPlayer(game, random);
-    setGame(next);
-    setSelectingTarget(false);
-    setScreen('draw');
-  };
-
-  const finishDraw = useCallback(() => {
-    if (!game?.selectedPlayerId) return;
-    const selected = game.players[game.selectedPlayerId];
-    if (selected.isHuman) {
-      setSelectingTarget(true);
-      setSelectedTargetId(null);
-      setScreen('arena');
-      return;
-    }
-
-    const targetId = chooseAiTarget(game, selected.id, random);
-    if (targetId) {
-      setAiTargetId(targetId);
-      setResolution(null);
-      setScreen('aiTarget');
-    }
-    else setScreen('gameover');
-  }, [game]);
-
-  const chooseTarget = (defenderId: string) => {
-    setSelectedTargetId(defenderId);
-  };
-
-  const confirmTarget = () => {
-    if (!game?.selectedPlayerId || !selectedTargetId) return;
-    launchBattle(game, game.selectedPlayerId, selectedTargetId);
-  };
-
-  const finishInteractiveBattle = useCallback((winnerId: string) => {
-    resolvePreparedBattle(winnerId);
-  }, [resolvePreparedBattle]);
-
-  const returnToArena = () => {
-    if (!game) return;
-    setGame(returnWinnerToArena(game, resolution?.winnerId ?? null));
-    setResolution(null);
-    setBattle(null);
-    setBattleOrigin(null);
-    setAiWinnerId(null);
-    setAiTargetId(null);
-    setSelectedTargetId(null);
-    setSelectingTarget(false);
-    setScreen('arena');
-  };
-
-  const continueWinner = () => {
-    if (!game || !resolution) return;
-    if (!game.players[game.humanPlayerId].isActive) {
-      setScreen('gameover');
-      return;
-    }
-    const winner = game.players[resolution.winnerId];
-    const targets = getNeighborPlayerIds(game, winner.id);
-    if (targets.length === 0) {
-      setScreen('gameover');
-      return;
-    }
-
-    if (winner.isHuman) {
-      setGame({ ...game, selectedPlayerId: winner.id });
-      setSelectingTarget(true);
-      setSelectedTargetId(null);
-      setResolution(null);
-      setBattle(null);
-      setScreen('arena');
-      return;
-    }
-
-    setAiContinues(decideAiContinue(game, winner.id, random));
-    setScreen('decision');
-  };
-
-  const finishAiDecision = (continues: boolean) => {
-    if (!game || !resolution) return;
-    const winner = game.players[resolution.winnerId];
-    if (!continues) {
-      returnToArena();
-      return;
-    }
-    const target = chooseAiTarget(game, winner.id, random);
-    if (target) {
-      setAiTargetId(target);
-      setScreen('aiTarget');
-    }
-    else returnToArena();
-  };
-
-  const selectFinalCategory = (categoryId: string) => {
-    if (!game) return;
-    const chooser = getFinalCategoryChooser(game);
-    if (!chooser) return;
-    const setup = createFinalBattleSetup(game, chooser.id, categoryId);
-    setBattle(setup);
-    setBattleOrigin(game);
-    setAiWinnerId(null);
-    setResolution(null);
-    setAiTargetId(null);
-    setBattleNumber((current) => current + 1);
-    setScreen('selection');
-  };
-
-  if (screen === 'welcome') {
-    return <WelcomeScreen onContinue={() => setScreen('auth')} />;
-  }
-
-  if (screen === 'auth') {
-    return (
-      <AuthScreen
-        initialProfile={profile}
-        onBack={() => setScreen('welcome')}
-        onComplete={(nextProfile) => {
-          setProfile(nextProfile);
-          setScreen('mode');
-        }}
-      />
-    );
-  }
-
-  if (screen === 'mode') {
-    return (
-      <GameModeScreen
-        nickname={profile.nickname}
-        onBack={() => setScreen('auth')}
-        onComputer={() => setScreen('guide')}
-      />
-    );
-  }
-
-  if (screen === 'guide') {
-    return (
-      <GuideScreen
-        onBack={() => setScreen('mode')}
-        onComplete={() => setScreen('setup')}
-      />
-    );
-  }
-
-  if (screen === 'setup') {
-    return (
-      <SetupScreen
-        onSelect={setSelectedCategoryId}
-        onBack={() => setScreen('mode')}
-        onStart={startGame}
-        selectedCategoryId={selectedCategoryId}
-      />
-    );
+  switch (screen) {
+    case 'welcome':
+      return <WelcomeScreen onContinue={on.welcomeContinue} />;
+    case 'auth':
+      return <AuthScreen initialProfile={flow.profile} onBack={on.authBack} onComplete={on.authComplete} />;
+    case 'mode':
+      return <GameModeScreen nickname={flow.profile.nickname} onBack={on.modeBack} onComputer={on.modeComputer} />;
+    case 'guide':
+      return <GuideScreen onBack={on.guideBack} onComplete={on.guideComplete} />;
+    case 'setup':
+      return (
+        <SetupScreen
+          onBack={on.setupBack}
+          onSelect={on.setupSelect}
+          onStart={on.startGame}
+          selectedCategoryId={flow.selectedCategoryId}
+        />
+      );
   }
 
   if (!game) return null;
 
-  if (screen === 'building') {
-    return <ArenaBuildScreen onComplete={() => setScreen('arena')} state={game} />;
-  }
+  switch (screen) {
+    case 'building':
+      return <ArenaBuildScreen onComplete={on.buildComplete} state={game} />;
 
-  if (screen === 'draw') {
-    return <DrawAnimationScreen onComplete={finishDraw} state={game} />;
-  }
-
-  if (screen === 'selection' && battle) {
-    return <BattleIntroScreen battleNumber={battleNumber} onComplete={beginPreparedBattle} setup={battle} state={game} />;
-  }
-
-  if (screen === 'aiBattle' && battle && aiWinnerId) {
-    return (
-      <AiBattleSimulationScreen
-        onComplete={resolvePreparedBattle}
-        setup={battle}
-        state={game}
-        winnerId={aiWinnerId}
-      />
-    );
-  }
-
-  if (screen === 'battle' && battle) {
-    return (
-      <SafeAreaView style={styles.safe}>
-        <BattleView onComplete={finishInteractiveBattle} random={random} setup={battle} state={game} />
-      </SafeAreaView>
-    );
-  }
-
-  if (screen === 'outcome' && resolution) {
-    return (
-      <BattleOutcomeScreen
-        onComplete={() => setScreen(getChampion(game) ? 'victory' : 'conquest')}
-        resolution={resolution}
-      />
-    );
-  }
-
-  if (screen === 'victory' && battleOrigin && resolution) {
-    return (
-      <ChampionCelebrationScreen
-        beforeState={battleOrigin}
-        onComplete={() => setScreen('setup')}
-        resolution={resolution}
-      />
-    );
-  }
-
-  if (screen === 'conquest' && battleOrigin && resolution) {
-    return (
-      <ConquestAnimationScreen
-        beforeState={battleOrigin}
-        onComplete={() => {
-          if (getFinalCategoryChooser(game)) setScreen('finalReveal');
-          else setScreen('result');
-        }}
-        resolution={resolution}
-      />
-    );
-  }
-
-  if (screen === 'result' && resolution) {
-    const winner = game.players[resolution.winnerId];
-    const canContinue = getNeighborPlayerIds(game, winner.id).length > 0;
-    return (
-      <ResultScreen
-        canContinue={canContinue}
-        onContinue={continueWinner}
-        onReturn={returnToArena}
-        resolution={resolution}
-        state={game}
-      />
-    );
-  }
-
-  if (screen === 'decision' && resolution) {
-    const winner = game.players[resolution.winnerId];
-    return (
-      <AiDecisionScreen
-        continues={aiContinues}
-        onDecision={finishAiDecision}
-        winnerName={winner.name}
-      />
-    );
-  }
-
-  if (screen === 'aiTarget' && aiTargetId) {
-    const chooserId = resolution?.winnerId ?? game.selectedPlayerId;
-    const winner = chooserId ? game.players[chooserId] : null;
-    if (!winner) return null;
-    return (
-      <AiTargetSelectionScreen
-        onComplete={(targetId) => launchBattle(game, winner.id, targetId)}
-        state={game}
-        targetId={aiTargetId}
-        winnerId={winner.id}
-      />
-    );
-  }
-
-  if (screen === 'finalCategory') {
-    const chooser = getFinalCategoryChooser(game);
-    if (chooser) {
+    case 'arena':
       return (
-        <FinalCategoryScreen
-          chooserId={chooser.id}
-          onSelect={selectFinalCategory}
-          random={random}
+        <ArenaScreen
+          game={game}
+          onConfirmTarget={on.confirmTarget}
+          onDraw={on.draw}
+          onSelectTarget={on.selectTarget}
+          selectedTargetId={flow.selectedTargetId}
+          selectingTarget={flow.selectingTarget}
+        />
+      );
+
+    case 'draw':
+      return <DrawAnimationScreen onComplete={on.drawComplete} state={game} />;
+
+    case 'aiTarget':
+      if (!flow.aiAttackerId || !flow.aiTargetId) return null;
+      return (
+        <AiTargetSelectionScreen
+          onComplete={on.aiTargetComplete}
+          state={game}
+          targetId={flow.aiTargetId}
+          winnerId={flow.aiAttackerId}
+        />
+      );
+
+    case 'selection':
+      if (!battle) return null;
+      return (
+        <BattleIntroScreen
+          battleNumber={flow.battleNumber}
+          onComplete={on.battleIntroComplete}
+          setup={battle}
+          state={game}
+        />
+      );
+
+    case 'battle':
+      if (!battle) return null;
+      return (
+        <SafeAreaView style={styles.safe}>
+          <BattleView onComplete={on.battleComplete} random={battleRandom} setup={battle} state={game} />
+        </SafeAreaView>
+      );
+
+    case 'aiBattle':
+      if (!battle || !flow.aiWinnerId) return null;
+      return (
+        <AiBattleSimulationScreen
+          onComplete={on.battleComplete}
+          setup={battle}
+          state={game}
+          winnerId={flow.aiWinnerId}
+        />
+      );
+
+    case 'outcome':
+      if (!resolution) return null;
+      return <BattleOutcomeScreen onComplete={on.outcomeComplete} resolution={resolution} />;
+
+    case 'conquest':
+      if (!battleOrigin || !resolution) return null;
+      return (
+        <ConquestAnimationScreen
+          beforeState={battleOrigin}
+          onComplete={on.conquestComplete}
+          resolution={resolution}
+        />
+      );
+
+    case 'result': {
+      if (!resolution) return null;
+      return (
+        <ResultScreen
+          canContinue={getNeighborPlayerIds(game, resolution.winnerId).length > 0}
+          onContinue={on.resultContinue}
+          onReturn={on.returnToArena}
+          resolution={resolution}
           state={game}
         />
       );
     }
-  }
 
-  if (screen === 'finalReveal') {
-    return <FinalRevealScreen onComplete={() => setScreen('finalCategory')} state={game} />;
-  }
-
-  if (screen === 'gameover') {
-    return <GameOverScreen onRestart={() => setScreen('setup')} state={game} />;
-  }
-
-  const human = game.players[game.humanPlayerId];
-  const targetIds = selectingTarget && game.selectedPlayerId
-    ? getNeighborPlayerIds(game, game.selectedPlayerId)
-    : [];
-  const selected = game.selectedPlayerId ? game.players[game.selectedPlayerId] : null;
-  const selectedTarget = selectedTargetId ? game.players[selectedTargetId] : null;
-  const selectedTargetCategory = selectedTarget
-    ? CATEGORY_BY_ID[selectedTarget.categoryId]
-    : null;
-  const roundProgress = getRoundProgress(game);
-
-  return (
-    <SafeAreaView style={styles.safe}>
-      <ScrollView contentContainerStyle={styles.arenaScreen}>
-        <View style={styles.arenaHeader}>
-          <Text style={styles.logo}>THE ARENA</Text>
-          <Text style={styles.arenaHeaderSubtitle}>הזירה שלך</Text>
-        </View>
-
-        <View style={styles.hudRow}>
-          <View style={styles.hudChip}>
-            <Text style={styles.hudChipLabel}>סבב</Text>
-            <Text style={styles.hudChipValue}>{game.round}</Text>
-            <Text style={styles.hudChipMeta}>{roundProgress.drawn}/{roundProgress.total} הוגרלו</Text>
-          </View>
-          <View style={[styles.hudChip, styles.hudChipPrimary]}>
-            <Text style={styles.hudChipLabel}>השטח שלי</Text>
-            <Text style={styles.hudChipValue}>{human.cellIds.length} משבצות</Text>
-            <Text style={styles.hudChipMeta}>{CATEGORY_BY_ID[human.categoryId].name}</Text>
-          </View>
-          <View style={[styles.hudChip, human.bonusReady && styles.hudChipBonus]}>
-            <Text style={styles.hudChipLabel}>{human.bonusReady ? 'בונוס' : 'רצף'}</Text>
-            <Text style={styles.hudChipValue}>{human.bonusReady ? '+5' : `${human.winStreak}/3`}</Text>
-            <Text style={styles.hudChipMeta}>{human.bonusReady ? 'מוכן לקרב' : 'ניצחונות'}</Text>
-          </View>
-        </View>
-
-        <ArenaBoard
-          meId={selectingTarget ? game.selectedPlayerId : game.humanPlayerId}
-          mode={selectingTarget ? 'select-target' : 'overview'}
-          onSelectTarget={chooseTarget}
-          selectedId={selectedTargetId}
-          state={game}
-          targetIds={targetIds}
+    case 'decision':
+      if (!resolution) return null;
+      return (
+        <AiDecisionScreen
+          continues={flow.aiContinues}
+          onDecision={on.aiDecisionComplete}
+          winnerName={game.players[resolution.winnerId].name}
         />
+      );
 
-        {selectingTarget ? (
-          <View style={styles.arenaLegend}>
-            <View style={styles.arenaLegendItem}>
-              <View style={[styles.arenaLegendDot, styles.arenaLegendMe]} />
-              <Text style={styles.arenaLegendText}>השטח שלך</Text>
-            </View>
-            <View style={styles.arenaLegendItem}>
-              <View style={[styles.arenaLegendDot, styles.arenaLegendTarget]} />
-              <Text style={styles.arenaLegendText}>ניתן לתקוף</Text>
-            </View>
-          </View>
-        ) : null}
+    case 'finalReveal':
+      return <FinalRevealScreen onComplete={on.finalRevealComplete} state={game} />;
 
-        {selectingTarget ? (
-          <View style={styles.targetCard}>
-            <Text style={styles.targetCardTitle}>בחרו יריב להתקפה</Text>
-            {selectedTarget && selectedTargetCategory ? (
-              <View style={styles.targetSummary}>
-                <Text style={styles.targetCategory}>{selectedTargetCategory.name}</Text>
-                <Text style={styles.targetName}>{selectedTarget.name} · {selectedTarget.cellIds.length} משבצות</Text>
-              </View>
-            ) : (
-              <Text style={styles.targetHint}>בחרו שטח זוהר בזירה</Text>
-            )}
-            <Pressable
-              accessibilityRole="button"
-              disabled={!selectedTarget}
-              onPress={confirmTarget}
-              style={[styles.confirmTargetButton, !selectedTarget && styles.confirmTargetButtonDisabled]}>
-              <Text style={styles.confirmTargetButtonText}>
-                {selectedTarget ? `תקפו את ${selectedTarget.name}` : 'בחרו יעד בזירה'}
-              </Text>
-            </Pressable>
-          </View>
-        ) : (
-          <>
-            <View style={styles.instructionCard}>
-              <Text style={styles.instructionTitle}>
-                {selected ? `${selected.name} נבחר/ה לשחק` : 'הזירה ממתינה להגרלה'}
-              </Text>
-              <Text style={styles.instructionText}>{game.events[0]?.text}</Text>
-            </View>
-            <Pressable accessibilityLabel="הגרלת מתמודד" onPress={handleDraw} style={styles.drawButton}>
-              <Text style={styles.drawButtonIcon}>🎲</Text>
-            </Pressable>
-          </>
-        )}
+    case 'finalCategory': {
+      const chooser = getFinalCategoryChooser(game);
+      if (!chooser) return null;
+      return (
+        <FinalCategoryScreen
+          aiCategoryId={flow.aiFinalCategoryId}
+          chooserId={chooser.id}
+          onSelect={on.finalCategorySelect}
+          state={game}
+        />
+      );
+    }
 
-      </ScrollView>
-    </SafeAreaView>
-  );
+    case 'eliminated':
+      return (
+        <GameOverScreen
+          eliminatedById={resolution?.winnerId}
+          onContinue={on.eliminatedContinue}
+          state={game}
+        />
+      );
+
+    case 'victory':
+      if (!battleOrigin || !resolution) return null;
+      return (
+        <ChampionCelebrationScreen
+          beforeState={battleOrigin}
+          onComplete={on.victoryComplete}
+          resolution={resolution}
+        />
+      );
+  }
 }

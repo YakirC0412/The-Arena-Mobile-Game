@@ -493,6 +493,9 @@ export type AutoPlayResult = {
   state: GameState;
   duels: number;
   champion: ArenaPlayer;
+  // The deciding duel, for the champion celebration. Missing when the game
+  // was already over before auto-play started.
+  lastBattle?: { before: GameState; resolution: BattleResolution };
 };
 
 // Plays the game to the end with every contestant acting as a bot, following
@@ -502,11 +505,13 @@ export type AutoPlayResult = {
 export function autoPlayGame(
   initialState: GameState,
   random: RandomSource = Math.random,
-  maxDuels = 100,
+  options: { attackerId?: string | null; maxDuels?: number } = {},
 ): AutoPlayResult {
+  const maxDuels = options.maxDuels ?? 100;
   let state = initialState;
   let duels = 0;
-  let attackerId: string | null = null;
+  let attackerId: string | null = options.attackerId ?? null;
+  let lastBattle: AutoPlayResult['lastBattle'];
 
   while (!getChampion(state)) {
     if (duels >= maxDuels) throw new Error('Auto-play did not finish');
@@ -526,6 +531,7 @@ export function autoPlayGame(
     }
 
     const result = resolveBattle(state, setup, simulateAiBattle(state, setup, random));
+    lastBattle = { before: state, resolution: result };
     state = result.state;
     duels += 1;
 
@@ -538,5 +544,5 @@ export function autoPlayGame(
     }
   }
 
-  return { state, duels, champion: getChampion(state)! };
+  return { state, duels, champion: getChampion(state)!, lastBattle };
 }

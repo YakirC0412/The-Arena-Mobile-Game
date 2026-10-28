@@ -1,7 +1,3 @@
 
 
-export type PlayerProfile = {
-  fullName: string;
-  nickname: string;
-  avatar: string;
-};
+export type { FlowProfile as PlayerProfile } from '@/game/flow';

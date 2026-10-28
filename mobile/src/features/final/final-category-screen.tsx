@@ -6,18 +6,20 @@ import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CATEGORY_BY_ID } from '@/content/categories';
-import { chooseAiFinalCategory, getActivePlayers } from '@/game/engine';
+import { getActivePlayers } from '@/game/engine';
 import type { GameState } from '@/game/types';
 
+// When a bot chooses, the flow has already decided (aiCategoryId); this
+// screen only reveals it.
 export function FinalCategoryScreen({
+  aiCategoryId,
   chooserId,
   onSelect,
-  random = Math.random,
   state,
 }: {
+  aiCategoryId?: string | null;
   chooserId: string;
   onSelect: (categoryId: string) => void;
-  random?: () => number;
   state: GameState;
 }) {
   const finalists = getActivePlayers(state);
@@ -26,15 +28,15 @@ export function FinalCategoryScreen({
   const [aiChoice, setAiChoice] = useState<string | null>(null);
 
   useEffect(() => {
-    if (chooser.isHuman) return;
-    const categoryId = chooseAiFinalCategory(state, chooser.id, random);
+    if (chooser.isHuman || !aiCategoryId) return;
+    const categoryId = aiCategoryId;
     const revealTimer = setTimeout(() => setAiChoice(categoryId), 1300);
     const completeTimer = setTimeout(() => onSelect(categoryId), 2800);
     return () => {
       clearTimeout(revealTimer);
       clearTimeout(completeTimer);
     };
-  }, [chooser.id, chooser.isHuman, onSelect, random, state]);
+  }, [aiCategoryId, chooser.isHuman, onSelect]);
 
   return (
     <SafeAreaView style={styles.safe}>

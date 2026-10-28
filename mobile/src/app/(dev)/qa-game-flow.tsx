@@ -66,7 +66,7 @@ export default function GameFlowQaScreen() {
     );
   }
 
-  return <GameOverScreen onRestart={() => setRestarted(true)} state={state} />;
+  return <GameOverScreen onContinue={() => setRestarted(true)} state={state} />;
 }
 
 const styles = StyleSheet.create({

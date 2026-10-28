@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { FinalCategoryScreen } from '@/features/final/final-category-screen';
 import { CATEGORY_BY_ID } from '@/content/categories';
-import { createFinalBattleSetup, createInitialGame, getFinalCategoryChooser } from '@/game/engine';
+import { createFinalBattleSetup, createInitialGame, getFinalCategoryChooser, chooseAiFinalCategory } from '@/game/engine';
 
 const FIXED_RANDOM = () => 0;
 
@@ -46,7 +46,7 @@ export default function QaFinalCategoryScreen() {
           createFinalBattleSetup(state, chooser.id, categoryId);
           setSelectedCategoryId(categoryId);
         }}
-        random={FIXED_RANDOM}
+        aiCategoryId={chooser.isHuman ? null : chooseAiFinalCategory(state, chooser.id, FIXED_RANDOM)}
         state={state}
       />
     );

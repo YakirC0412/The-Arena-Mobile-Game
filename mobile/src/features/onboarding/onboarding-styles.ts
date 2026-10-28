@@ -2,7 +2,7 @@ import { colors } from '@/design/tokens';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.bg },
+  safe: { flex: 1, backgroundColor: colors.screen },
   welcomeScreen: { flex: 1, paddingHorizontal: 24, paddingVertical: 28, justifyContent: 'space-between' },
   brandMark: { alignSelf: 'center', width: 126, height: 126, borderRadius: 36, backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, justifyContent: 'center', alignItems: 'center', marginTop: 22 },
   brandGrid: { width: 66, height: 66, flexDirection: 'row-reverse', flexWrap: 'wrap', gap: 4, transform: [{ rotate: '45deg' }] },

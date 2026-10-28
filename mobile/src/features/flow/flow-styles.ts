@@ -2,7 +2,7 @@ import { colors } from '@/design/tokens';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.bg },
+  safe: { flex: 1, backgroundColor: colors.screen },
   setupScreen: { padding: 20, paddingBottom: 40 },
   setupBackButton: { width: 42, height: 42, borderRadius: 14, backgroundColor: colors.surface, justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-end' },
   setupBackText: { color: colors.textPrimary, fontSize: 21, fontWeight: '900' },
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
   confirmTargetButtonText: { color: colors.bg, fontSize: 16, fontWeight: '900', writingDirection: 'rtl' },
   drawButton: { width: 62, height: 62, borderRadius: 31, backgroundColor: colors.success, borderWidth: 2, borderColor: colors.territoryMeBorder, alignSelf: 'center', justifyContent: 'center', alignItems: 'center', shadowColor: colors.success, shadowOpacity: 0.55, shadowRadius: 12, elevation: 8 },
   drawButtonIcon: { fontSize: 31, lineHeight: 38 },
-  resultScreen: { flex: 1, backgroundColor: colors.bg, padding: 24, justifyContent: 'center' },
+  resultScreen: { flex: 1, backgroundColor: colors.screen, padding: 24, justifyContent: 'center' },
   resultIcon: { fontSize: 66, textAlign: 'center' },
   resultEyebrow: { color: colors.accentGold, fontSize: 12, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl', marginTop: 8 },
   resultTitle: { color: colors.textPrimary, fontSize: 28, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl', marginTop: 4 },

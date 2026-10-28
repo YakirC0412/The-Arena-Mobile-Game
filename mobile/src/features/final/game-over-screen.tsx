@@ -68,7 +68,7 @@ export function GameOverScreen({
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.bg, padding: 28, justifyContent: 'center', alignItems: 'stretch' },
+  screen: { flex: 1, backgroundColor: colors.screen, padding: 28, justifyContent: 'center', alignItems: 'stretch' },
   icon: { fontSize: 76, textAlign: 'center' },
   eyebrow: { color: colors.accentGold, fontSize: 13, fontWeight: '900', textAlign: 'center', letterSpacing: 1.5, marginTop: 8 },
   title: { color: colors.textPrimary, fontSize: 30, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl', marginTop: 4 },

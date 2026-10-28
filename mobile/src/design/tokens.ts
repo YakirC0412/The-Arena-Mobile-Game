@@ -1,11 +1,18 @@
+// The whole game uses the logo's navy / light-blue palette (decision 12).
 export const colors = {
-  bg: '#0B1A24',
-  surface: '#12293A',
-  surfaceMuted: '#0F2230',
-  border: '#24414E',
+  // Full screens are transparent over the shared brand gradient in _layout.
+  screen: 'transparent',
+  // Darkest navy: text on light buttons, inputs and deep wells.
+  bg: '#04112F',
+  surface: '#0C2466',
+  surfaceMuted: '#0A1D55',
+  border: '#1E3F95',
   textPrimary: '#FFFFFF',
-  textSecondary: '#B9C8D1',
-  success: '#21C7A8',
+  textSecondary: '#B8CBEA',
+  // Primary actions and "your turn" (light blue, was turquoise).
+  success: '#7CCBFF',
+  // Correct-answer feedback keeps a real green.
+  correct: '#3DDC97',
   accentGold: '#F8C95C',
   warning: '#FFB020',
   danger: '#FF4D4D',
@@ -19,11 +26,10 @@ export const colors = {
   territoryTarget: '#1747C9',
   territoryTargetBorder: '#4DF3FF',
   territorySelected: '#FFD25A',
-  overlay: 'rgba(5, 14, 22, 0.78)',
-  successSoft: 'rgba(33, 199, 168, 0.2)',
-  boardLabelMuted: 'rgba(7, 21, 31, 0.75)',
-  // Brand palette from the THE ARENA logo (navy + light blue). Used by the
-  // welcome and home screens; the rest of the app moves to it in Phase 3.
+  overlay: 'rgba(3, 10, 36, 0.82)',
+  successSoft: 'rgba(124, 203, 255, 0.18)',
+  boardLabelMuted: 'rgba(4, 17, 47, 0.75)',
+  // Brand palette from the THE ARENA logo (navy + light blue).
   brandNavyDeep: '#030A24',
   brandNavy: '#071A4D',
   brandSurface: '#0C2466',

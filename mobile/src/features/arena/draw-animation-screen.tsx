@@ -162,7 +162,7 @@ export function DrawAnimationScreen({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.bg },
+  safe: { flex: 1, backgroundColor: colors.screen },
   screen: { flex: 1, width: '100%', maxWidth: 430, alignSelf: 'center', padding: 18, paddingTop: 24, paddingBottom: 18, justifyContent: 'space-between' },
   copy: { alignItems: 'center' },
   eyebrow: { color: colors.accentGold, fontSize: 12, fontWeight: '900', letterSpacing: 1.2, writingDirection: 'rtl' },

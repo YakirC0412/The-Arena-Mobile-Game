@@ -104,7 +104,7 @@ export function FinalRevealScreen({ onComplete, state }: { onComplete: () => voi
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.bg },
+  safe: { flex: 1, backgroundColor: colors.screen },
   screen: { flex: 1, width: '100%', maxWidth: 430, alignSelf: 'center', justifyContent: 'center', paddingHorizontal: 22, paddingVertical: 18 },
   kicker: { color: colors.accentGold, fontSize: 13, textAlign: 'center', writingDirection: 'rtl' },
   title: { color: colors.textPrimary, fontSize: 36, lineHeight: 44, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl', marginTop: 2 },

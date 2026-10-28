@@ -2,7 +2,7 @@ import { colors } from '@/design/tokens';
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.bg },
+  safe: { flex: 1, backgroundColor: colors.screen },
   centerScreen: { flexGrow: 1, width: '100%', maxWidth: 430, alignSelf: 'center', paddingHorizontal: 16, paddingVertical: 14, justifyContent: 'center' },
   eyebrow: { color: colors.accentGold, fontSize: 12, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl' },
   introTitle: { color: colors.textPrimary, fontSize: 27, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl', marginTop: 5 },

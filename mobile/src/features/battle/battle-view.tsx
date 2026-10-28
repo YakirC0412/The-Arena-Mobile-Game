@@ -283,7 +283,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         {
           borderColor: correctGlow.interpolate({
             inputRange: [0, 1],
-            outputRange: [colors.territoryMeBorder, colors.success],
+            outputRange: [colors.territoryMeBorder, colors.correct],
           }),
           opacity: imageOpacity,
           transform: [{ scale: imageScale }],
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: layout.maxContentWidth,
     alignSelf: 'center',
-    backgroundColor: colors.bg,
+    backgroundColor: colors.screen,
     paddingHorizontal: spacing.lg,
     paddingTop: spacing.sm,
     paddingBottom: spacing.md,

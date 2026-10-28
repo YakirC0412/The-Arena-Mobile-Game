@@ -89,7 +89,7 @@ export function FinalCategoryScreen({
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: colors.bg },
+  safe: { flex: 1, backgroundColor: colors.screen },
   screen: { flex: 1, width: '100%', maxWidth: 430, alignSelf: 'center', justifyContent: 'center', padding: 22 },
   eyebrow: { color: colors.accentGold, fontSize: 12, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl' },
   title: { color: colors.textPrimary, fontSize: 29, lineHeight: 36, fontWeight: '900', textAlign: 'center', writingDirection: 'rtl', marginTop: 4 },

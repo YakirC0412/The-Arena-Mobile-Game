@@ -9,10 +9,12 @@
 ידנית, מתוך התיקייה `mobile`:
 
 ```bash
-npx expo start --web --port 8090
+npx.cmd expo start --web --port 8090
 ```
 
 ואז לפתוח בדפדפן: http://localhost:8090
+
+(ב-Windows משתמשים ב-`npx.cmd` ולא ב-`npx`, כי PowerShell חוסם הרצת סקריפטים במחשב הזה.)
 
 ## איפה נמצא מה
 | תיקייה | מה יש בה |

@@ -81,6 +81,8 @@ THE_Arena/            git root (run git commands here)
   reinstalling deps with pnpm once pnpm is available.
 - The sandbox blocks renaming/moving `.git` folders and `mobile/assets/expo.icon`; ask the user to do it.
 - Old Codex Expo servers may still hold ports 8081–8083 (a reboot clears them); we use 8090.
+- The user's PowerShell blocks .ps1 scripts: in their Terminal panel run `npx.cmd expo start --web --port 8090`
+  from `mobile/` (a long-lived server there outlives our turns; the preview server stops at turn end).
 - Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound.
   On web, expo-haptics calls navigator.vibrate and logs "Blocked call" errors before a real tap.
 - Screen changes: add an action to `FlowAction` + a case in `flowReducer` + a flow test; never

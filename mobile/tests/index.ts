@@ -4,6 +4,7 @@ import './rules.test';
 import './random-games.test';
 import './content.test';
 import './flow.test';
+import './accounts.test';
 import { runAll } from './harness';
 
 runAll();

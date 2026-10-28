@@ -22,6 +22,18 @@ export const colors = {
   overlay: 'rgba(5, 14, 22, 0.78)',
   successSoft: 'rgba(33, 199, 168, 0.2)',
   boardLabelMuted: 'rgba(7, 21, 31, 0.75)',
+  // Brand palette from the THE ARENA logo (navy + light blue). Used by the
+  // welcome and home screens; the rest of the app moves to it in Phase 3.
+  brandNavyDeep: '#030A24',
+  brandNavy: '#071A4D',
+  brandSurface: '#0C2466',
+  brandSurfaceRaised: '#123180',
+  brandBorder: '#2B53B8',
+  brandBlue: '#1F6BFF',
+  brandSky: '#7CCBFF',
+  brandSkySoft: 'rgba(124, 203, 255, 0.16)',
+  brandInk: '#04112F',
+  brandError: '#FF8A8A',
 } as const;
 
 export const spacing = {

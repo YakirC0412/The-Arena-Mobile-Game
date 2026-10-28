@@ -1,7 +1,6 @@
 import { useMemo, useReducer } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { DEFAULT_AVATAR_ID } from '@/content/avatars';
 import { ArenaBuildScreen } from '@/features/arena/arena-build-screen';
 import { DrawAnimationScreen } from '@/features/arena/draw-animation-screen';
 import { AiBattleSimulationScreen } from '@/features/battle/ai-battle-simulation-screen';
@@ -15,13 +14,14 @@ import { ChampionCelebrationScreen } from '@/features/final/champion-celebration
 import { FinalCategoryScreen } from '@/features/final/final-category-screen';
 import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
 import { GameOverScreen } from '@/features/final/game-over-screen';
-import { AuthScreen } from '@/features/onboarding/auth-screen';
-import { GameModeScreen } from '@/features/onboarding/game-mode-screen';
 import { GuideScreen } from '@/features/onboarding/guide-screen';
+import { HomeScreen } from '@/features/onboarding/home-screen';
 import { WelcomeScreen } from '@/features/onboarding/welcome-screen';
 import { getFinalCategoryChooser, getNeighborPlayerIds } from '@/game/engine';
-import { createFlowState, flowReducer } from '@/game/flow';
+import { createFlowState, flowReducer, type FlowUser } from '@/game/flow';
 import { createSeed, createSeededRandom } from '@/game/rng';
+import { loadAccountStore, saveAccountStore } from '@/services/accounts/account-storage';
+import { getCurrentUser, signOut } from '@/services/accounts/accounts';
 import { ArenaScreen } from './arena-screen';
 import { styles } from './flow-styles';
 import { ResultScreen } from './result-screen';
@@ -31,14 +31,17 @@ import { SetupScreen } from './setup-screen';
 // game/flow.ts (flowReducer); this component only maps screens to components
 // and buttons to actions.
 export function GameFlow() {
-  const [flow, dispatch] = useReducer(flowReducer, undefined, () => createFlowState(createSeed(), DEFAULT_AVATAR_ID));
+  // A user who signed in on an earlier visit lands straight on the home screen.
+  const [flow, dispatch] = useReducer(flowReducer, undefined, () => createFlowState(createSeed(), getCurrentUser(loadAccountStore())));
   // Stable callbacks, so screens' timers are not restarted on every render.
   const on = useMemo(() => ({
-    welcomeContinue: () => dispatch({ type: 'WELCOME_CONTINUE' }),
-    authBack: () => dispatch({ type: 'AUTH_BACK' }),
-    authComplete: (profile: Parameters<typeof AuthScreen>[0]['initialProfile']) => dispatch({ type: 'AUTH_COMPLETE', profile }),
-    modeBack: () => dispatch({ type: 'MODE_BACK' }),
-    modeComputer: () => dispatch({ type: 'MODE_COMPUTER' }),
+    signedIn: (user: FlowUser) => dispatch({ type: 'SIGNED_IN', user }),
+    signOut: () => {
+      saveAccountStore(signOut(loadAccountStore()));
+      dispatch({ type: 'SIGN_OUT' });
+    },
+    homeGuide: () => dispatch({ type: 'HOME_GUIDE' }),
+    homeNewGame: () => dispatch({ type: 'HOME_NEW_GAME' }),
     guideBack: () => dispatch({ type: 'GUIDE_BACK' }),
     guideComplete: () => dispatch({ type: 'GUIDE_COMPLETE' }),
     setupBack: () => dispatch({ type: 'SETUP_BACK' }),
@@ -69,11 +72,18 @@ export function GameFlow() {
 
   switch (screen) {
     case 'welcome':
-      return <WelcomeScreen onContinue={on.welcomeContinue} />;
-    case 'auth':
-      return <AuthScreen initialProfile={flow.profile} onBack={on.authBack} onComplete={on.authComplete} />;
-    case 'mode':
-      return <GameModeScreen nickname={flow.profile.nickname} onBack={on.modeBack} onComputer={on.modeComputer} />;
+      return <WelcomeScreen onSignedIn={on.signedIn} />;
+    case 'home':
+      if (!flow.user) return null;
+      return (
+        <HomeScreen
+          avatar={flow.user.avatar}
+          nickname={flow.user.nickname}
+          onGuide={on.homeGuide}
+          onNewGame={on.homeNewGame}
+          onSignOut={on.signOut}
+        />
+      );
     case 'guide':
       return <GuideScreen onBack={on.guideBack} onComplete={on.guideComplete} />;
     case 'setup':

@@ -52,7 +52,7 @@ export function GuideScreen({
       <View style={styles.guideScreen}>
         <View style={styles.guideTopBar}>
           <Pressable
-            accessibilityLabel={pageIndex === 0 ? 'חזרה לבחירת משחק' : 'לעמוד הקודם'}
+            accessibilityLabel={pageIndex === 0 ? 'חזרה למסך הבית' : 'לעמוד הקודם'}
             accessibilityRole="button"
             onPress={pageIndex === 0 ? onBack : () => setPageIndex((current) => current - 1)}
             style={styles.backButton}>

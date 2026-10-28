@@ -19,7 +19,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Node: `C:/Program Files/nodejs` (v24). In Bash first run `export PATH="/c/Program Files/nodejs:$PATH"`.
 - No pnpm on the machine yet; use `npm run` / `npx` from `mobile/`.
 - Dev server: browser preview config `arena-web` in `.claude/launch.json` → http://localhost:8090.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (33 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (40 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -35,7 +35,7 @@ THE_Arena/            git root (run git commands here)
 ├─ .claude/           launch.json for the preview server
 └─ mobile/            Expo SDK 58 app (expo-router, reanimated, RN web)
    ├─ AGENTS.md       Expo rules – read before touching any Expo/RN API
-   ├─ assets/         app/ (icons, splash) · avatars/ · items/<category>/ · sounds/ · expo.icon (iOS)
+   ├─ assets/         app/ (icons, splash, arena-logo.webp) · avatars/ · items/<category>/ · sounds/ · expo.icon
    ├─ scripts/        generate-feedback-sounds.js
    ├─ tests/          engine, rules, random-games, content tests
    └─ src/
@@ -45,13 +45,15 @@ THE_Arena/            git root (run git commands here)
       ├─ content/     categories.ts (16×24 items) · avatars.ts · item-images.ts · avatar-images.ts
       ├─ features/
       │  ├─ flow/        game-flow.tsx renders FlowState → screens · arena-screen · setup · result
-      │  ├─ onboarding/  welcome · auth · game-mode · guide
+      │  ├─ onboarding/  welcome-screen (logo + sign-up/sign-in) · home-screen (signed in) · guide
       │  ├─ arena/       arena-board · build · draw animation · mini-map · territory-layout
       │  ├─ battle/      battle-view (human duel) · clock cards · intro · AI target/decision/simulation
       │  │               · outcome · conquest animation · bonus popup
       │  └─ final/       final reveal · final category · champion celebration · game over
-      ├─ design/      tokens.ts (all colors/sizes) · app-text · buttons · avatar-portrait · colors
-      └─ services/    use-game-feedback.ts (sound + haptics, session mute)
+      ├─ design/      tokens.ts (all colors/sizes, brand* = logo palette) · brand.tsx (gradient bg, logo,
+      │               brand buttons) · app-text · buttons · avatar-portrait · colors
+      └─ services/    use-game-feedback.ts (sound + haptics) · accounts/ (local accounts: pure accounts.ts +
+                      sha256.ts, account-storage.ts = browser localStorage)
 ```
 
 ## Rules for changes
@@ -68,7 +70,10 @@ THE_Arena/            git root (run git commands here)
   28 tests, web.output = single. Bot levels postponed.
 - 28.10.26 – Phase 2 done: all screen transitions in `game/flow.ts` (pure reducer, seeded via
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
-- Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web).
+- 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
+  disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web), and
+  move the rest of the app to the brand palette.
 
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
@@ -83,6 +88,8 @@ THE_Arena/            git root (run git commands here)
 - Old Codex Expo servers may still hold ports 8081–8083 (a reboot clears them); we use 8090.
 - The user's PowerShell blocks .ps1 scripts: in their Terminal panel run `npx.cmd expo start --web --port 8090`
   from `mobile/` (a long-lived server there outlives our turns; the preview server stops at turn end).
+- Accounts are local only (localStorage, salted SHA-256): not real security. Google sign-up is modelled
+  in `signUpWithGoogle` but the button is disabled until OAuth exists (multiplayer phase).
 - Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound.
   On web, expo-haptics calls navigator.vibrate and logs "Blocked call" errors before a real tap.
 - Screen changes: add an action to `FlowAction` + a case in `flowReducer` + a flow test; never

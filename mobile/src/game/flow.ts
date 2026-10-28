@@ -18,12 +18,13 @@ import {
   returnWinnerToArena,
   simulateAiBattle,
 } from './engine';
+import { DEFAULT_AVATAR_ID } from '../content/avatars';
 import { createRandomCursor, type RandomSource } from './rng';
 import type { BattleResolution, BattleSetup, GameState } from './types';
 
 export type FlowScreen =
-  // onboarding
-  | 'welcome' | 'auth' | 'mode' | 'guide' | 'setup'
+  // sign-up / sign-in, then the signed-in home
+  | 'welcome' | 'home' | 'guide' | 'setup'
   // arena
   | 'building' | 'arena' | 'draw' | 'aiTarget'
   // duel
@@ -31,15 +32,18 @@ export type FlowScreen =
   // end of game
   | 'finalReveal' | 'finalCategory' | 'eliminated' | 'victory';
 
-export type FlowProfile = {
+// The signed-in player as the flow sees it (see services/accounts).
+export type FlowUser = {
+  id: string;
   fullName: string;
+  email: string;
   nickname: string;
   avatar: string;
 };
 
 export type FlowState = {
   screen: FlowScreen;
-  profile: FlowProfile;
+  user: FlowUser | null;
   selectedCategoryId: string;
   randomState: number;
   game: GameState | null;
@@ -61,11 +65,10 @@ export type FlowState = {
 };
 
 export type FlowAction =
-  | { type: 'WELCOME_CONTINUE' }
-  | { type: 'AUTH_BACK' }
-  | { type: 'AUTH_COMPLETE'; profile: FlowProfile }
-  | { type: 'MODE_BACK' }
-  | { type: 'MODE_COMPUTER' }
+  | { type: 'SIGNED_IN'; user: FlowUser }
+  | { type: 'SIGN_OUT' }
+  | { type: 'HOME_GUIDE' }
+  | { type: 'HOME_NEW_GAME' }
   | { type: 'GUIDE_BACK' }
   | { type: 'GUIDE_COMPLETE' }
   | { type: 'SETUP_BACK' }
@@ -89,10 +92,11 @@ export type FlowAction =
   | { type: 'ELIMINATED_CONTINUE' }
   | { type: 'VICTORY_COMPLETE' };
 
-export function createFlowState(seed: number, defaultAvatar: string): FlowState {
+// A remembered user (from a previous visit) starts on the home screen.
+export function createFlowState(seed: number, user: FlowUser | null = null): FlowState {
   return {
-    screen: 'welcome',
-    profile: { fullName: '', nickname: '', avatar: defaultAvatar },
+    screen: user ? 'home' : 'welcome',
+    user,
     selectedCategoryId: 'animals',
     randomState: seed >>> 0,
     game: null,
@@ -136,14 +140,13 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
   const at = (screen: FlowScreen): FlowState => ({ ...state, screen });
 
   switch (action.type) {
-    case 'WELCOME_CONTINUE': return at('auth');
-    case 'AUTH_BACK': return at('welcome');
-    case 'AUTH_COMPLETE': return { ...state, profile: action.profile, screen: 'mode' };
-    case 'MODE_BACK': return at('auth');
-    case 'MODE_COMPUTER': return at('guide');
-    case 'GUIDE_BACK': return at('mode');
+    case 'SIGNED_IN': return { ...state, user: action.user, screen: 'home' };
+    case 'SIGN_OUT': return { ...state, ...CLEARED_BATTLE, user: null, game: null, screen: 'welcome' };
+    case 'HOME_GUIDE': return at('guide');
+    case 'HOME_NEW_GAME': return at('setup');
+    case 'GUIDE_BACK': return at('home');
     case 'GUIDE_COMPLETE': return at('setup');
-    case 'SETUP_BACK': return at('mode');
+    case 'SETUP_BACK': return at('home');
     case 'SETUP_SELECT_CATEGORY': return { ...state, selectedCategoryId: action.categoryId };
 
     case 'START_GAME': {
@@ -152,8 +155,8 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
       const game = createInitialGame(
         state.selectedCategoryId,
         gameCursor.random,
-        state.profile.nickname || 'אני',
-        state.profile.avatar,
+        state.user?.nickname || 'אני',
+        state.user?.avatar ?? DEFAULT_AVATAR_ID,
       );
       return {
         ...state,
@@ -288,8 +291,9 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
       };
     }
 
+    // Decision 5: after the champion screen, back to the home screen.
     case 'VICTORY_COMPLETE':
-      return at(state.humanEliminated ? 'mode' : 'setup');
+      return at('home');
   }
 
   return state;

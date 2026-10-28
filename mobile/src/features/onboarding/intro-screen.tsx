@@ -135,7 +135,7 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
               <NumberOneBadge appear={badge} />
             </View>
             <Text numberOfLines={1} style={styles.taglineEnglish} weight="black">
-              TO CONQUER THE <Text style={styles.taglineArena} weight="black">ARENA</Text>
+              TO CONQUER THE ARENA
             </Text>
             {greeting ? <Text style={styles.greeting}>{greeting}</Text> : null}
           </Animated.View>
@@ -186,8 +186,6 @@ const styles = StyleSheet.create({
   },
   // Keep the English line left-to-right inside the RTL app.
   taglineRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
-  // Blue word with a tight white halo, so it stays readable on navy.
-  taglineArena: { color: colors.brandBlue, textShadowColor: 'rgba(255, 255, 255, 0.9)', textShadowRadius: 4, textShadowOffset: { width: 0, height: 0 } },
   greeting: { color: colors.textSecondary, fontSize: typeScale.body, textAlign: 'center', marginTop: spacing.xs },
   cells: { flexDirection: 'row', gap: 5, marginTop: spacing.xl },
   cell: { width: 12, height: 12, borderRadius: 3, backgroundColor: colors.brandSky },

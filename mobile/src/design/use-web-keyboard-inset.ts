@@ -15,7 +15,10 @@ export function useWebKeyboardInset() {
     if (Platform.OS !== 'web' || typeof window === 'undefined' || !window.visualViewport) return;
     const viewport = window.visualViewport;
     const update = () => {
-      const covered = window.innerHeight - viewport.height - viewport.offsetTop;
+      // Everything below the visible area is keyboard (incl. Safari's ✓ bar).
+      // offsetTop is not subtracted: Safari pans the view up while the
+      // keyboard opens, and the page is pinned back to the top just below.
+      const covered = window.innerHeight - viewport.height;
       // Ignore small differences such as Safari's collapsing toolbar.
       setInset(covered > 80 ? Math.round(covered) : 0);
       if (window.scrollY !== 0) window.scrollTo(0, 0);

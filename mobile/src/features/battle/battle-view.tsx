@@ -249,11 +249,6 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     checkAnswer(nextAnswer);
   };
 
-  const clearAnswer = () => {
-    if (!isHumanTurn || transitioning) return;
-    setAnswer('');
-    inputRef.current?.focus();
-  };
 
   const skip = () => {
     if (!isHumanTurn || transitioning) return;
@@ -339,7 +334,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       </Animated.View>
 
       <AppText accessibilityLiveRegion="polite" style={styles.feedback} weight="bold">
-        {feedback || 'זהו את מה שמופיע בתמונה'}
+        {feedback || (isHumanTurn ? 'זהו את מה שמופיע בתמונה' : `${activePlayer.name} חושב/ת…`)}
       </AppText>
 
       <View style={styles.controls}>
@@ -366,39 +361,17 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
             textAlign="right"
             value={answer}
           />
+          {/* Skip sits beside the field, so the iPhone keyboard bar never hides it. */}
           <Pressable
-            accessibilityLabel="מחיקת התשובה"
+            accessibilityLabel="דילוג על התמונה, מינוס 3 שניות"
             accessibilityRole="button"
-            disabled={!isHumanTurn || transitioning || !answer}
-            onPress={clearAnswer}
-            style={[styles.clearButton, (!isHumanTurn || transitioning || !answer) && styles.disabledControl]}>
-            <AppText style={styles.clearText} weight="bold">×</AppText>
+            disabled={!isHumanTurn || transitioning}
+            onPress={skip}
+            style={[styles.skipButton, (!isHumanTurn || transitioning) && styles.disabledControl]}>
+            <AppText style={styles.skipText} weight="black">דילוג</AppText>
+            <AppText style={styles.skipPenalty} weight="bold">‎−3 שנ׳</AppText>
           </Pressable>
         </View>
-
-        {isHumanTurn ? (
-          <View style={styles.actions}>
-            <Pressable
-              accessibilityRole="button"
-              disabled={transitioning}
-              onPress={skip}
-              style={[styles.skipButton, transitioning && styles.disabledControl]}>
-              <AppText style={styles.skipText} weight="black">דילוג · ‎−3</AppText>
-            </Pressable>
-            <View style={styles.autoSubmitHint}>
-              <AppText style={styles.autoSubmitHintText} weight="bold">נבדק אוטומטית כשהתשובה נכונה</AppText>
-            </View>
-          </View>
-        ) : (
-          <View style={styles.aiThinking}>
-            <AppText style={styles.aiThinkingText} weight="bold">{activePlayer.name} חושב/ת</AppText>
-            <View style={styles.thinkingDots}>
-              <View style={styles.thinkingDot} />
-              <View style={styles.thinkingDot} />
-              <View style={styles.thinkingDot} />
-            </View>
-          </View>
-        )}
       </View>
     </KeyboardAvoidingView>
   );
@@ -477,53 +450,16 @@ const styles = StyleSheet.create({
     writingDirection: 'rtl',
   },
   inputInactive: { backgroundColor: colors.surfaceMuted, borderColor: colors.border, color: colors.textSecondary },
-  clearButton: {
-    width: 52,
-    height: 52,
-    borderRadius: radii.control,
-    borderWidth: 1,
-    borderColor: colors.border,
-    backgroundColor: colors.surface,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  clearText: { color: colors.textPrimary, fontSize: 28, lineHeight: 32, textAlign: 'center' },
-  actions: { minHeight: 48, flexDirection: 'row-reverse', gap: spacing.sm },
-  autoSubmitHint: {
-    flex: 2,
-    minHeight: 48,
-    borderRadius: radii.control,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.success,
-    paddingHorizontal: spacing.sm,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  autoSubmitHintText: { color: colors.textSecondary, fontSize: typeScale.caption, lineHeight: 17, textAlign: 'center' },
   skipButton: {
-    flex: 1,
-    minHeight: 48,
+    width: 76,
+    height: 52,
     borderRadius: radii.control,
     borderWidth: 2,
     borderColor: colors.accentGold,
-    justifyContent: 'center',
     alignItems: 'center',
-  },
-  skipText: { color: colors.accentGold, fontSize: typeScale.body, textAlign: 'center' },
-  aiThinking: {
-    minHeight: 48,
-    borderRadius: radii.control,
-    backgroundColor: colors.surface,
-    borderWidth: 1,
-    borderColor: colors.border,
-    flexDirection: 'row-reverse',
-    gap: spacing.sm,
     justifyContent: 'center',
-    alignItems: 'center',
   },
-  aiThinkingText: { color: colors.textSecondary, fontSize: typeScale.body, textAlign: 'center' },
-  thinkingDots: { flexDirection: 'row', gap: spacing.xs },
-  thinkingDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: colors.success },
+  skipText: { color: colors.accentGold, fontSize: typeScale.body, lineHeight: 18, textAlign: 'center' },
+  skipPenalty: { color: colors.accentGold, fontSize: typeScale.caption, lineHeight: 15, textAlign: 'center' },
   disabledControl: { opacity: 0.5 },
 });

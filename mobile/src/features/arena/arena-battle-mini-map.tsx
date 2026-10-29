@@ -25,11 +25,13 @@ export function ArenaBattleMiniMap({ attackerId, defenderId, state }: ArenaBattl
             key={cell.id}
             style={[
               styles.cell,
+              // Arena colors: the attacker is the active light blue, the defender the
+              // chosen (gold) target, everything else floor.
               { backgroundColor: isAttacker
-                ? attacker.color
+                ? colors.territoryMeEnd
                 : isDefender
-                  ? defender.color
-                  : colors.border },
+                  ? colors.territorySelected
+                  : colors.arenaFloor },
               (isAttacker || isDefender) && styles.battleCell,
             ]}
           />

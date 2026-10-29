@@ -21,6 +21,7 @@ import {
 import { ArenaBattleMiniMap } from '@/features/arena/arena-battle-mini-map';
 import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
+import { useWebKeyboardInset } from '@/design/use-web-keyboard-inset';
 import { useGameFeedback } from '@/services/use-game-feedback';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import {
@@ -50,6 +51,8 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     timeUp: playTimeUpFeedback,
     toggleMuted,
   } = useGameFeedback();
+  // iPhone Safari: keep the whole duel above the keyboard (the image shrinks).
+  const keyboardInset = useWebKeyboardInset();
   const attacker = state.players[setup.attackerId];
   const defender = state.players[setup.defenderId];
   const category = CATEGORY_BY_ID[setup.categoryId];
@@ -193,14 +196,14 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         playSkipFeedback();
         clockRef.current?.penalize(role, SKIP_PENALTY_MS);
         setTransitioning(true);
-        setFeedback('דילגת: ‎−3 שניות');
+        setFeedback(`${activePlayer.name} דילג/ה: ‎−3 שניות`);
         scheduleAdvance(false, 350);
       } else {
         setAiAttempt((value) => value + 1);
       }
     }, aiThinkDelayMs(item.difficulty, random));
     return () => clearTimeout(timeout);
-  }, [activeId, aiAttempt, animateCorrect, animateSkip, isHumanTurn, item.difficulty, playCorrectFeedback, playSkipFeedback, random, scheduleAdvance, setup.attackerId, transitioning]);
+  }, [activeId, activePlayer.name, aiAttempt, animateCorrect, animateSkip, isHumanTurn, item.difficulty, playCorrectFeedback, playSkipFeedback, random, scheduleAdvance, setup.attackerId, transitioning]);
 
   const handleAnswerChange = (nextAnswer: string) => {
     if (!isHumanTurn || transitioning) return;
@@ -233,7 +236,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   return (
     <KeyboardAvoidingView
       behavior={Platform.select({ android: 'height', ios: 'padding' })}
-      style={styles.screen}>
+      style={[styles.screen, keyboardInset > 0 && { paddingBottom: keyboardInset + spacing.sm }]}>
       <View style={styles.header}>
         <View style={styles.miniMapPosition}>
           <ArenaBattleMiniMap

@@ -35,6 +35,7 @@ THE_Arena/            git root (run git commands here)
 ├─ .claude/           launch.json for the preview server
 └─ mobile/            Expo SDK 58 app (expo-router, reanimated, RN web)
    ├─ AGENTS.md       Expo rules – read before touching any Expo/RN API
+   ├─ public/         index.html (web page template: iPhone meta, no page-level dir!) · manifest + icons
    ├─ assets/         app/ (icons, splash, arena-logo.webp) · avatars/ · items/<category>/ · sounds/ · expo.icon
    ├─ scripts/        generate-feedback-sounds.js
    ├─ tests/          engine, rules, random-games, content tests
@@ -72,11 +73,14 @@ THE_Arena/            git root (run git commands here)
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- 29.10.26 – Phase 3 (code part): iPhone page setup + Add to Home Screen, duel fits above the iOS
+  keyboard (`useWebKeyboardInset`), shared sound players unlocked on first tap, web haptics guarded.
+  Waiting for the user's real iPhone test over Wi-Fi (http://<PC IPv4>:8090; PC was 10.0.0.44).
 - 28.10.26 – Brand palette everywhere (decision 12): root gradient in _layout + transparent screens
   (`colors.screen`); arena uses 4 colors with one meaning each (see tokens.ts comment).
 - 28.10.26 – Intro animation (~3 s, not skippable, "BE THE ① TO CONQUER THE ARENA") on every visit
   and after sign-in, before home.
-- Next: Phase 3 – iPhone Safari experience (keyboard, viewport, audio unlock, haptics on web).
+- Next: finish Phase 3 with the user's iPhone feedback, then Phase 4 (content).
 
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
@@ -93,8 +97,10 @@ THE_Arena/            git root (run git commands here)
   from `mobile/` (a long-lived server there outlives our turns; the preview server stops at turn end).
 - Accounts are local only (localStorage, salted SHA-256): not real security. Google sign-up is modelled
   in `signUpWithGoogle` but the button is disabled until OAuth exists (multiplayer phase).
-- Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound.
-  On web, expo-haptics calls navigator.vibrate and logs "Blocked call" errors before a real tap.
+- Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound – both are
+  handled in services/use-game-feedback.ts (sounds before the first tap are skipped).
+- iOS cannot open the keyboard from code (focus() outside a tap): the player taps the input once.
+- Windows WIC drops WebP alpha; icons were rendered from the logo in a browser canvas.
 - Full-screen containers use `backgroundColor: colors.screen` (transparent), never `colors.bg`
   (`bg` is dark ink for text on light buttons). The navigator theme in _layout must stay transparent.
 - Player colors (`PLAYER_COLORS` in engine.ts, `design/colors.ts`) are no longer shown on boards.

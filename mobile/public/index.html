@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- No dir="rtl" here: the app sets RTL per element, and a page-level dir flips its flex rows. -->
+<html lang="he">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <!-- viewport-fit=cover lets the app draw under the iPhone notch; the safe-area
+         insets keep content clear of it. resizes-content makes Android Chrome
+         shrink the layout when the keyboard opens (iOS uses visualViewport). -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <title>%WEB_TITLE%</title>
+    <meta name="theme-color" content="#030A24" />
+    <meta name="description" content="THE ARENA – משחק טריוויה חזותי: 16 מתמודדים, זירה אחת." />
+
+    <!-- Add to Home Screen (iPhone and Android) -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="THE ARENA" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+
+    <style id="expo-reset">
+      /* The react-native-web reset: full-height body and root, no body scroll. */
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        overflow: hidden;
+        margin: 0;
+        /* Brand navy behind everything, so overscroll and loading never flash white. */
+        background-color: #030a24;
+        /* No rubber-band bounce or pull-to-refresh inside the game. */
+        overscroll-behavior: none;
+        /* No grey flash on tap, no double-tap zoom, no font inflation on rotate. */
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        -webkit-text-size-adjust: 100%;
+      }
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>כדי לשחק צריך להפעיל JavaScript.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

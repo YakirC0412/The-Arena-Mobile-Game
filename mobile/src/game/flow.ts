@@ -11,6 +11,7 @@ import {
   createInitialGame,
   decideAiContinue,
   drawPlayer,
+  fastForwardToHuman,
   getChampion,
   getFinalCategoryChooser,
   getNeighborPlayerIds,
@@ -62,6 +63,8 @@ export type FlowState = {
   selectingTarget: boolean;
   selectedTargetId: string | null;
   humanEliminated: boolean;
+  // Duels the last "skip to my turn" played in the background (0 = none).
+  skippedDuels: number;
 };
 
 export type FlowAction =
@@ -77,6 +80,7 @@ export type FlowAction =
   | { type: 'START_GAME'; seed: number }
   | { type: 'BUILD_COMPLETE' }
   | { type: 'DRAW' }
+  | { type: 'SKIP_TO_MY_TURN' }
   | { type: 'DRAW_COMPLETE' }
   | { type: 'SELECT_TARGET'; targetId: string }
   | { type: 'CONFIRM_TARGET' }
@@ -114,6 +118,7 @@ export function createFlowState(seed: number, user: FlowUser | null = null): Flo
     selectingTarget: false,
     selectedTargetId: null,
     humanEliminated: false,
+    skippedDuels: 0,
   };
 }
 
@@ -127,6 +132,7 @@ const CLEARED_BATTLE = {
   aiFinalCategoryId: null,
   selectingTarget: false,
   selectedTargetId: null,
+  skippedDuels: 0,
 } as const;
 
 export function flowReducer(state: FlowState, action: FlowAction): FlowState {
@@ -181,7 +187,18 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
     case 'BUILD_COMPLETE': return at('arena');
 
     case 'DRAW':
-      return { ...state, game: drawPlayer(game, random), selectingTarget: false, screen: 'draw' };
+      return { ...state, game: drawPlayer(game, random), selectingTarget: false, skippedDuels: 0, screen: 'draw' };
+
+    case 'SKIP_TO_MY_TURN': {
+      // Bot-vs-bot duels run in the background until the human plays again.
+      if (state.selectingTarget || !game.players[game.humanPlayerId].isActive) return state;
+      const result = fastForwardToHuman(game, random);
+      const skipped = { ...state, ...CLEARED_BATTLE, game: result.state, skippedDuels: result.duels, battleNumber: state.battleNumber + result.duels };
+      if (result.stop.kind === 'humanDrawn') return { ...skipped, screen: 'draw' };
+      if (result.stop.kind === 'final') return { ...skipped, screen: 'finalReveal' };
+      const withSkip = launchBattle(skipped, result.state, createBattleSetup(result.state, result.stop.attackerId, game.humanPlayerId), random);
+      return { ...withSkip, skippedDuels: result.duels };
+    }
 
     case 'DRAW_COMPLETE': {
       const selected = game.selectedPlayerId ? game.players[game.selectedPlayerId] : null;

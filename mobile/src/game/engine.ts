@@ -546,3 +546,59 @@ export function autoPlayGame(
 
   return { state, duels, champion: getChampion(state)!, lastBattle };
 }
+
+// --- Skip to my turn --------------------------------------------------------
+
+export type FastForwardStop =
+  | { kind: 'humanDrawn' }
+  | { kind: 'humanAttacked'; attackerId: string }
+  | { kind: 'final' };
+
+export type FastForwardResult = {
+  state: GameState;
+  duels: number;
+  stop: FastForwardStop;
+};
+
+// Plays bot-vs-bot duels in the background, from the arena between duels,
+// until the human is involved again: drawn to attack, chosen as a bot's
+// target, or in the final (two left always includes the human). Follows the
+// same draw → target → duel → continue-or-return order as the screens, so the
+// human can never be eliminated by a skip.
+export function fastForwardToHuman(
+  initialState: GameState,
+  random: RandomSource = Math.random,
+  maxDuels = 100,
+): FastForwardResult {
+  const humanId = initialState.humanPlayerId;
+  if (!initialState.players[humanId].isActive) throw new Error('The human is no longer in the game');
+  let state = initialState;
+  let duels = 0;
+  let attackerId: string | null = null;
+
+  while (duels <= maxDuels) {
+    if (getFinalCategoryChooser(state)) return { state, duels, stop: { kind: 'final' } };
+    if (!attackerId) {
+      state = drawPlayer(state, random);
+      attackerId = state.selectedPlayerId!;
+      if (attackerId === humanId) return { state, duels, stop: { kind: 'humanDrawn' } };
+    }
+    const targetId = chooseAiTarget(state, attackerId, random);
+    if (!targetId) throw new Error(`${attackerId} has no neighbor to attack`);
+    if (targetId === humanId) {
+      return { state: { ...state, selectedPlayerId: attackerId }, duels, stop: { kind: 'humanAttacked', attackerId } };
+    }
+    const setup = createBattleSetup(state, attackerId, targetId);
+    const result = resolveBattle(state, setup, simulateAiBattle(state, setup, random));
+    state = result.state;
+    duels += 1;
+    if (getFinalCategoryChooser(state)) continue;
+    if (decideAiContinue(state, result.winnerId, random)) {
+      attackerId = result.winnerId;
+    } else {
+      state = returnWinnerToArena(state, result.winnerId);
+      attackerId = null;
+    }
+  }
+  throw new Error('Fast-forward did not reach the human');
+}

@@ -19,7 +19,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Node: `C:/Program Files/nodejs` (v24). In Bash first run `export PATH="/c/Program Files/nodejs:$PATH"`.
 - No pnpm on the machine yet; use `npm run` / `npx` from `mobile/`.
 - Dev server: browser preview config `arena-web` in `.claude/launch.json` → http://localhost:8090.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (40 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (43 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -73,6 +73,9 @@ THE_Arena/            git root (run git commands here)
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- 29.10.26 – iPhone feedback fixed: Enter no longer blurs the answer, raw DOM input/composition
+  listeners accept answers while the Hebrew keyboard composes, "start duel" tap primes the keyboard
+  (design/keyboard-primer.ts), "skip to my turn" (engine fastForwardToHuman + SKIP_TO_MY_TURN). 43 tests.
 - 29.10.26 – Phase 3 (code part): iPhone page setup + Add to Home Screen, duel fits above the iOS
   keyboard (`useWebKeyboardInset`), shared sound players unlocked on first tap, web haptics guarded.
   Waiting for the user's real iPhone test over Wi-Fi (http://<PC IPv4>:8090; PC was 10.0.0.44).
@@ -99,7 +102,8 @@ THE_Arena/            git root (run git commands here)
   in `signUpWithGoogle` but the button is disabled until OAuth exists (multiplayer phase).
 - Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound – both are
   handled in services/use-game-feedback.ts (sounds before the first tap are skipped).
-- iOS cannot open the keyboard from code (focus() outside a tap): the player taps the input once.
+- iOS opens the keyboard only from a tap: `primeWebKeyboard()` must run inside the tap that leads to a
+  text field; then keep that field focused (never blur on submit, refocus after button taps).
 - Windows WIC drops WebP alpha; icons were rendered from the logo in a browser canvas.
 - Full-screen containers use `backgroundColor: colors.screen` (transparent), never `colors.bg`
   (`bg` is dark ink for text on light buttons). The navigator theme in _layout must stay transparent.

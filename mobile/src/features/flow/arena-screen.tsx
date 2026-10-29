@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -15,6 +16,7 @@ export function ArenaScreen({
   onConfirmTarget,
   onDraw,
   onSelectTarget,
+  onSkipToMyTurn,
   selectedTargetId,
   selectingTarget,
 }: {
@@ -22,6 +24,7 @@ export function ArenaScreen({
   onConfirmTarget: () => void;
   onDraw: () => void;
   onSelectTarget: (targetId: string) => void;
+  onSkipToMyTurn: () => void;
   selectedTargetId: string | null;
   selectingTarget: boolean;
 }) {
@@ -33,6 +36,7 @@ export function ArenaScreen({
   const selectedTarget = selectedTargetId ? game.players[selectedTargetId] : null;
   const selectedTargetCategory = selectedTarget ? CATEGORY_BY_ID[selectedTarget.categoryId] : null;
   const roundProgress = getRoundProgress(game);
+  const [confirmingSkip, setConfirmingSkip] = useState(false);
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -114,9 +118,40 @@ export function ArenaScreen({
             <Pressable accessibilityLabel="הגרלת מתמודד" onPress={onDraw} style={styles.drawButton}>
               <Text style={styles.drawButtonIcon}>🎲</Text>
             </Pressable>
+            <Pressable
+              accessibilityHint="משחק את הדו־קרבות בין המחשבים ברקע עד שמגיע תורך"
+              accessibilityRole="button"
+              onPress={() => setConfirmingSkip(true)}
+              style={({ pressed }) => [styles.skipTurnButton, pressed && styles.skipTurnButtonPressed]}>
+              <Text style={styles.skipTurnText}>⏭  דלגו לתור שלי</Text>
+            </Pressable>
           </>
         )}
       </ScrollView>
+
+      {confirmingSkip ? (
+        <View accessibilityViewIsModal style={styles.confirmOverlay}>
+          <View style={styles.confirmCard}>
+            <Text style={styles.confirmTitle}>לדלג לתור שלך?</Text>
+            <Text style={styles.confirmBody}>
+              באישור, המערכת תדלג אוטומטית לתור שלך – בין אם הוגרלת לתקוף ובין אם נבחרת לשחק בדו־קרב.
+              הדו־קרבות בין המחשבים יוכרעו ברקע.
+            </Text>
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => {
+                setConfirmingSkip(false);
+                onSkipToMyTurn();
+              }}
+              style={styles.confirmPrimary}>
+              <Text style={styles.confirmPrimaryText}>דלגו לתור שלי</Text>
+            </Pressable>
+            <Pressable accessibilityRole="button" onPress={() => setConfirmingSkip(false)} style={styles.confirmSecondary}>
+              <Text style={styles.confirmSecondaryText}>ביטול</Text>
+            </Pressable>
+          </View>
+        </View>
+      ) : null}
     </SafeAreaView>
   );
 }

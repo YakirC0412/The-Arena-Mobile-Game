@@ -7,6 +7,7 @@ import { AvatarPortrait } from '@/design/avatar-portrait';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import type { BattleSetup, GameState } from '@/game/types';
 import { styles } from './battle-transition-styles';
+import { primeWebKeyboard } from '@/design/keyboard-primer';
 
 export function BattleIntroScreen({
   battleNumber = 1,
@@ -71,7 +72,14 @@ export function BattleIntroScreen({
           </View>
         )}
 
-        <Pressable accessibilityRole="button" onPress={onComplete} style={styles.startBattleButton}>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => {
+            // Open the iPhone keyboard inside this tap, before the duel screen mounts.
+            if (state.players[setup.attackerId].isHuman || state.players[setup.defenderId].isHuman) primeWebKeyboard();
+            onComplete();
+          }}
+          style={styles.startBattleButton}>
           <Text style={styles.startBattleButtonText}>התחלת דו־קרב</Text>
         </Pressable>
       </ScrollView>

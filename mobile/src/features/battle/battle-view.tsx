@@ -65,6 +65,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   const [transitioning, setTransitioning] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const finishedRef = useRef(false);
+  const acceptedRef = useRef(false);
   const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inputRef = useRef<ComponentRef<typeof TextInput>>(null);
   const clockRef = useRef<BattleClockHandle>(null);
@@ -135,6 +136,10 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     return focusInput();
   }, [focusInput, isHumanTurn, transitioning]);
 
+  // Take focus as soon as the duel opens, even on the bot's turn: on iPhone the
+  // keyboard opened by the "start duel" tap then simply stays up all duel.
+  useEffect(() => focusInput(), [focusInput]);
+
   const advanceImage = useCallback((switchTurn: boolean) => {
     let nextPosition = position + 1;
     if (nextPosition >= deck.length) {
@@ -146,6 +151,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       nextPosition = 0;
     }
     setPosition(nextPosition);
+    acceptedRef.current = false;
     setAnswer('');
     setFeedback(switchTurn ? 'התור עבר' : '');
     setAiAttempt(0);
@@ -205,16 +211,42 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     return () => clearTimeout(timeout);
   }, [activeId, activePlayer.name, aiAttempt, animateCorrect, animateSkip, isHumanTurn, item.difficulty, playCorrectFeedback, playSkipFeedback, random, scheduleAdvance, setup.attackerId, transitioning]);
 
+  // Accepts the answer the moment it matches. Called from onChangeText and,
+  // on the web, from raw DOM input/composition events (see below).
+  const checkAnswer = (text: string) => {
+    if (!isHumanTurn || transitioning || acceptedRef.current) return false;
+    if (!isCorrectAnswer(text, item.answer, item.aliases)) return false;
+    // Both listeners may see the same keystroke; accept each answer once.
+    acceptedRef.current = true;
+    animateCorrect();
+    playCorrectFeedback();
+    setTransitioning(true);
+    setFeedback('נכון!');
+    scheduleAdvance(true, correctAnswerPauseMs(random));
+    return true;
+  };
+  const checkAnswerRef = useRef(checkAnswer);
+  useEffect(() => {
+    checkAnswerRef.current = checkAnswer;
+  });
+
+  // iPhone's Hebrew keyboard keeps the word being typed in a "composition"
+  // (for its suggestions) and may only commit it on Enter, so onChangeText
+  // can miss it. Listening to the raw field catches every keystroke.
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    const field = inputRef.current as unknown as HTMLInputElement | null;
+    if (!field?.addEventListener) return;
+    const onRawInput = () => { checkAnswerRef.current(field.value); };
+    const events = ['input', 'compositionupdate', 'compositionend', 'keyup'] as const;
+    events.forEach((name) => field.addEventListener(name, onRawInput));
+    return () => events.forEach((name) => field.removeEventListener(name, onRawInput));
+  }, []);
+
   const handleAnswerChange = (nextAnswer: string) => {
     if (!isHumanTurn || transitioning) return;
     setAnswer(nextAnswer);
-    if (isCorrectAnswer(nextAnswer, item.answer, item.aliases)) {
-      animateCorrect();
-      playCorrectFeedback();
-      setTransitioning(true);
-      setFeedback('נכון!');
-      scheduleAdvance(true, correctAnswerPauseMs(random));
-    }
+    checkAnswer(nextAnswer);
   };
 
   const clearAnswer = () => {
@@ -226,6 +258,8 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   const skip = () => {
     if (!isHumanTurn || transitioning) return;
     setTransitioning(true);
+    // Tapping the button would otherwise take focus and close the keyboard.
+    inputRef.current?.focus();
     animateSkip();
     playSkipFeedback();
     clockRef.current?.penalize(activeRole, SKIP_PENALTY_MS);
@@ -316,7 +350,13 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
             autoCorrect={false}
             accessibilityHint="התשובה נבדקת אוטומטית בזמן ההקלדה"
             accessibilityLabel="תשובה"
+            // Enter never closes the keyboard; it only re-checks the answer.
+            blurOnSubmit={false}
+            submitBehavior="submit"
+            onSubmitEditing={() => checkAnswer(answer)}
             onChangeText={handleAnswerChange}
+            spellCheck={false}
+            autoComplete="off"
             placeholder={isHumanTurn ? 'הקלידו תשובה…' : `התור של ${activePlayer.name}`}
             placeholderTextColor={colors.textSecondary}
             maxFontSizeMultiplier={1.3}

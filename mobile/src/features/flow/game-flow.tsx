@@ -1,4 +1,5 @@
-import { useMemo, useReducer } from 'react';
+import { useMemo, useReducer, type ReactNode } from 'react';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ArenaBuildScreen } from '@/features/arena/arena-build-screen';
@@ -23,6 +24,7 @@ import { createFlowState, flowReducer, type FlowUser } from '@/game/flow';
 import { createSeed, createSeededRandom } from '@/game/rng';
 import { loadAccountStore, saveAccountStore } from '@/services/accounts/account-storage';
 import { getCurrentUser, signOut } from '@/services/accounts/accounts';
+import { AppText as Text } from '@/design/app-text';
 import { ArenaScreen } from './arena-screen';
 import { styles } from './flow-styles';
 import { ResultScreen } from './result-screen';
@@ -51,6 +53,7 @@ export function GameFlow() {
     startGame: () => dispatch({ type: 'START_GAME', seed: createSeed() }),
     buildComplete: () => dispatch({ type: 'BUILD_COMPLETE' }),
     draw: () => dispatch({ type: 'DRAW' }),
+    skipToMyTurn: () => dispatch({ type: 'SKIP_TO_MY_TURN' }),
     drawComplete: () => dispatch({ type: 'DRAW_COMPLETE' }),
     selectTarget: (targetId: string) => dispatch({ type: 'SELECT_TARGET', targetId }),
     confirmTarget: () => dispatch({ type: 'CONFIRM_TARGET' }),
@@ -119,13 +122,14 @@ export function GameFlow() {
           onConfirmTarget={on.confirmTarget}
           onDraw={on.draw}
           onSelectTarget={on.selectTarget}
+          onSkipToMyTurn={on.skipToMyTurn}
           selectedTargetId={flow.selectedTargetId}
           selectingTarget={flow.selectingTarget}
         />
       );
 
     case 'draw':
-      return <DrawAnimationScreen onComplete={on.drawComplete} state={game} />;
+      return withSkipNotice(flow.skippedDuels, <DrawAnimationScreen onComplete={on.drawComplete} state={game} />);
 
     case 'aiTarget':
       if (!flow.aiAttackerId || !flow.aiTargetId) return null;
@@ -140,14 +144,14 @@ export function GameFlow() {
 
     case 'selection':
       if (!battle) return null;
-      return (
+      return withSkipNotice(flow.skippedDuels, (
         <BattleIntroScreen
           battleNumber={flow.battleNumber}
           onComplete={on.battleIntroComplete}
           setup={battle}
           state={game}
         />
-      );
+      ));
 
     case 'battle':
       if (!battle) return null;
@@ -240,4 +244,19 @@ export function GameFlow() {
         />
       );
   }
+}
+
+// After "skip to my turn": a short note on how many duels were decided.
+function withSkipNotice(skippedDuels: number, screen: ReactNode) {
+  if (skippedDuels === 0) return screen;
+  return (
+    <View style={styles.safe}>
+      {screen}
+      <View pointerEvents="none" style={styles.skipNotice}>
+        <Text style={styles.skipNoticeText}>
+          {skippedDuels === 1 ? 'דו־קרב אחד הוכרע ברקע' : `${skippedDuels} דו־קרבות הוכרעו ברקע`}
+        </Text>
+      </View>
+    </View>
+  );
 }

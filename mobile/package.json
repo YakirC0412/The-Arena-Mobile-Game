@@ -46,7 +46,8 @@
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
     "test:engine": "tsc -p tsconfig.engine.json && node .engine-test/tests/index.js",
-    "test": "npm run test:engine"
+    "test": "npm run test:engine",
+    "images": "node scripts/build-item-images.js"
   },
   "private": true
 }

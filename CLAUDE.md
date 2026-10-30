@@ -75,6 +75,11 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- 30.10.26 – Picture pipeline + pilot: `npm run images` scans assets/items/<cat>/<cat>-<n>.<ext> and writes
+  item-images.generated.ts + image-manifest.ts; "pictures" categories unlock at 12 pictures. Pilot lists
+  (dog-breeds, world-cities, football-clubs, football-players, snacks, apps) await the user's review at
+  https://claude.ai/artifact/Btnu28dfQoutGYZBjZT6Ag (db collection `items`). Then: Wikimedia downloads
+  (ask first) for dogs/cities/players; the user collects clubs/snacks/apps.
 - 30.10.26 – Categories + ways built: content/categories.ts = 36-category pool (META/COMING_SOON/
   SECOND_WAY, statuses active|soon|reserve), engine drawArenaCategories + ArenaPlayer.wayId +
   BattleSetup.wayId (defender's way), picker with 2 pages + way choice, way shown on target pick and

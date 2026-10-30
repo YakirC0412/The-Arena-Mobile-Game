@@ -1,5 +1,7 @@
 import type { ImageSourcePropType } from 'react-native';
 
+import { GENERATED_ITEM_IMAGES } from './item-images.generated';
+
 export const ITEM_IMAGES: Record<string, ImageSourcePropType> = {
   'animals-1': require('../../assets/items/animals/lion.png'),
   'animals-2': require('../../assets/items/animals/elephant.png'),
@@ -25,4 +27,6 @@ export const ITEM_IMAGES: Record<string, ImageSourcePropType> = {
   'fruit-10': require('../../assets/items/fruit/grapes.png'),
   'fruit-11': require('../../assets/items/fruit/mango.png'),
   'fruit-12': require('../../assets/items/fruit/pear.png'),
+  // Pictures connected by scripts/build-item-images.js (npm run images).
+  ...GENERATED_ITEM_IMAGES,
 };

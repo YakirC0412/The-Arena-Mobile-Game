@@ -7,6 +7,7 @@ import type {
   Difficulty,
   WayId,
 } from '../game/types';
+import { IMAGED_ITEM_IDS } from './image-manifest';
 
 // The 36-category pool (docs/CATEGORIES.md, decisions 14–15). Each category
 // has a level, a status and up to two ways. Items are emoji or pictures with a
@@ -23,8 +24,11 @@ function category(id: string, name: string, icon: string, rows: RawItem[]): RawI
   return { id, name, icon, rows };
 }
 
-// Ways are [label, available].
-type Meta = { level: CategoryLevel; status: CategoryStatus; ways: [string, boolean][] };
+// Ways are [label, available]. A "pictures" category shows only items that
+// have a picture (npm run images) and unlocks once MIN_PICTURE_ITEMS have one.
+type Meta = { level: CategoryLevel; status: CategoryStatus; ways: [string, boolean][]; pictures?: true };
+const MIN_PICTURE_ITEMS = 12;
+const IMAGED = new Set(IMAGED_ITEM_IDS);
 const META: Record<string, Meta> = {
   animals: { level: 'easy', status: 'active', ways: [['תמונה ← שם החיה', true]] },
   countries: { level: 'easy', status: 'active', ways: [['דגל ← שם המדינה', true], ['דגל ← עיר הבירה', true]] },
@@ -39,6 +43,13 @@ const META: Record<string, Meta> = {
   landmarks: { level: 'medium', status: 'active', ways: [['אתר ← שם האתר', true], ['אתר ← המדינה', true]] },
   sea: { level: 'easy', status: 'active', ways: [['תמונה ← שם', true]] },
   kitchen: { level: 'easy', status: 'active', ways: [['תמונה ← שם הכלי', true]] },
+  // Pilot picture categories (item lists pending the user's review).
+  'dog-breeds': { level: 'medium', status: 'soon', pictures: true, ways: [['תמונה ← שם הגזע', true]] },
+  'world-cities': { level: 'medium', status: 'soon', pictures: true, ways: [['קו רקיע ← שם העיר', true], ['עיר ← המדינה', true]] },
+  'football-clubs': { level: 'medium', status: 'soon', pictures: true, ways: [['סמל ← שם המועדון', true]] },
+  'football-players': { level: 'medium', status: 'soon', pictures: true, ways: [['תמונה ← שם השחקן (שם משפחה מספיק)', true]] },
+  snacks: { level: 'easy', status: 'soon', pictures: true, ways: [['אריזה בלי השם ← שם החטיף', true]] },
+  apps: { level: 'easy', status: 'soon', pictures: true, ways: [['אייקון ← שם האפליקציה', true]] },
   // Removed by the user; kept only to fill arenas while new categories wait for pictures.
   weather: { level: 'easy', status: 'reserve', ways: [['תמונה ← שם', true]] },
   clothing: { level: 'easy', status: 'reserve', ways: [['תמונה ← שם הבגד', true]] },
@@ -48,8 +59,6 @@ const META: Record<string, Meta> = {
 
 // Categories that wait for pictures: listed in the picker as "coming soon".
 const COMING_SOON: [id: string, name: string, icon: string, level: CategoryLevel, ways: string[]][] = [
-  ['football-clubs', 'סמלי מועדוני כדורגל', '🛡️', 'medium', ['סמל ← שם המועדון']],
-  ['football-players', 'שחקני כדורגל', '🥅', 'medium', ['תמונה ← שם השחקן (שם משפחה מספיק)']],
   ['basketball-teams', 'קבוצות כדורסל', '🏀', 'hard', ['סמל ← שם הקבוצה']],
   ['playstation', 'משחקי פלייסטיישן', '🎮', 'medium', ['עטיפה בלי שם ← שם המשחק']],
   ['game-characters', 'דמויות משחקי וידאו', '👾', 'easy', ['דמות ← שם הדמות', 'דמות ← המשחק']],
@@ -62,13 +71,9 @@ const COMING_SOON: [id: string, name: string, icon: string, level: CategoryLevel
   ['divas', 'דיוות', '💃', 'easy', ['תמונה ← שם הזמרת']],
   ['israeli-singers', 'זמרים וזמרות ישראלים', '🎤', 'medium', ['תמונה ← שם']],
   ['israel-history', 'אתרים היסטוריים בישראל', '🏛️', 'medium', ['אתר ← שם האתר', 'אתר ← העיר']],
-  ['snacks', 'חטיפים', '🍿', 'easy', ['אריזה בלי השם ← שם החטיף']],
   ['brands', 'מותגים ולוגואים', '🏷️', 'easy', ['סמל בלי טקסט ← שם המותג']],
   ['cars', 'מכוניות', '🚘', 'medium', ['סמל היצרן ← שם היצרן']],
-  ['apps', 'אפליקציות', '📲', 'easy', ['אייקון ← שם האפליקציה']],
-  ['dog-breeds', 'גזעי כלבים', '🐕', 'medium', ['תמונה ← שם הגזע']],
   ['historical-figures', 'דמויות היסטוריות', '📜', 'hard', ['דיוקן ← שם']],
-  ['world-cities', 'ערים בעולם', '🏙️', 'medium', ['קו רקיע ← שם העיר', 'עיר ← המדינה']],
   ['clothing-brands', 'מותגי ביגוד', '👟', 'easy', ['סמל המותג ← שם המותג']],
   ['world-singers', 'זמרים מהעולם', '🎙️', 'medium', ['תמונה ← שם הזמר']],
 ];
@@ -86,6 +91,14 @@ const ORDER = [
 // Second-way answers, keyed by the item's first answer. Items missing here
 // are left out when the category is played its second way.
 const SECOND_WAY: Record<string, Record<string, RawAnswer>> = {
+  'world-cities': {
+    'פריז': ['צרפת'], 'ניו יורק': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']], 'לונדון': ['בריטניה', ['אנגליה']],
+    'טוקיו': ['יפן'], 'דובאי': ['איחוד האמירויות', ['האמירויות', 'אמירויות']], 'סידני': ['אוסטרליה'], 'רומא': ['איטליה'],
+    'ברצלונה': ['ספרד'], 'תל אביב': ['ישראל'], 'ירושלים': ['ישראל'], 'הונג קונג': ['סין'], 'סינגפור': ['סינגפור'],
+    'ריו דה ז׳ניירו': ['ברזיל'], 'איסטנבול': ['טורקיה'], 'אמסטרדם': ['הולנד'], 'ברלין': ['גרמניה'],
+    'סן פרנסיסקו': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']], 'לאס וגאס': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']],
+    'שנגחאי': ['סין'], 'מוסקבה': ['רוסיה'], 'קהיר': ['מצרים'], 'אתונה': ['יוון'], 'ונציה': ['איטליה'], 'פראג': ['צ׳כיה', ['צכיה']],
+  },
   countries: {
     'ישראל': ['ירושלים'], 'ארצות הברית': ['וושינגטון', ['וושינגטון די סי', 'וושינגטון דיסי']], 'צרפת': ['פריז', ['פאריס']],
     'יפן': ['טוקיו'], 'ברזיל': ['ברזיליה'], 'קנדה': ['אוטווה'], 'נפאל': ['קטמנדו'], 'אורוגוואי': ['מונטווידאו', ['מונטבידאו']],
@@ -111,7 +124,7 @@ const SECOND_WAY: Record<string, Record<string, RawAnswer>> = {
   },
 };
 
-function makeItems(categoryId: string, rows: RawItem[]): CategoryItem[] {
+function makeItems(categoryId: string, rows: RawItem[], pictures = false): CategoryItem[] {
   const tierSize = Math.ceil(rows.length / 3);
   const second = SECOND_WAY[categoryId] ?? {};
   return rows.map(([visual, answer, aliases = []], index) => {
@@ -119,7 +132,7 @@ function makeItems(categoryId: string, rows: RawItem[]): CategoryItem[] {
     return {
       id: `${categoryId}-${index + 1}`,
       visual,
-      imageKey: CATEGORIES_WITH_IMAGES.has(categoryId) ? `${categoryId}-${index + 1}` : undefined,
+      imageKey: CATEGORIES_WITH_IMAGES.has(categoryId) || pictures ? `${categoryId}-${index + 1}` : undefined,
       answer,
       aliases,
       secondAnswer: w2 ? { answer: w2[0], aliases: w2[1] ?? [] } : undefined,
@@ -285,6 +298,55 @@ const WITH_ITEMS: RawItems[] = [
     ['⚖️', 'משקל', ['משקל מטבח']], ['⏲️', 'טיימר', ['שעון מטבח']], ['🧽', 'ספוג'], ['🍷', 'כוס יין', ['גביע']],
     ['🥫', 'קופסת שימורים', ['שימורים']], ['🥡', 'קופסת אוכל', ['קופסה']], ['🥛', 'כוס'], ['🍼', 'בקבוק'],
   ]),
+  // Pilot picture categories – the picture for item n goes in assets/items/<id>/<id>-<n>.jpg
+  category('dog-breeds', 'גזעי כלבים', '🐕', [
+    ['🐕', 'לברדור', ['לברדור רטריבר']], ['🐕', 'גולדן רטריבר', ['גולדן']], ['🐕', 'רועה גרמני', ['רועה']], ['🐕', 'האסקי', ['האסקי סיבירי', 'הסקי']],
+    ['🐕', 'פודל', ['פודל ננסי']], ['🐕', 'בולדוג', ['בולדוג אנגלי']], ['🐕', 'בולדוג צרפתי'], ['🐕', 'ביגל'],
+    ['🐕', 'צ׳יוואווה', ['ציוואווה', 'צ׳יוואוה']], ['🐕', 'דלמטי', ['דלמטיני']], ['🐕', 'רוטווילר', ['רוטוויילר']], ['🐕', 'דוברמן', ['דוברמן פינצ׳ר']],
+    ['🐕', 'בוקסר'], ['🐕', 'פאג', ['פאג׳']], ['🐕', 'שיצו', ['שי טסו']], ['🐕', 'יורקשייר טרייר', ['יורקשייר', 'יורקי']],
+    ['🐕', 'תחש', ['דקסהונד', 'נקניקיה']], ['🐕', 'קורגי', ['וולש קורגי']], ['🐕', 'בורדר קולי', ['קולי']], ['🐕', 'צ׳או צ׳או', ['צאו צאו']],
+    ['🐕', 'סמויד'], ['🐕', 'סן ברנרד', ['סנט ברנרד']], ['🐕', 'שיבה אינו', ['שיבה']], ['🐕', 'כנעני', ['כלב כנעני']],
+  ]),
+  category('world-cities', 'ערים בעולם', '🏙️', [
+    ['🏙️', 'פריז', ['פאריס']], ['🏙️', 'ניו יורק', ['ניויורק']], ['🏙️', 'לונדון'], ['🏙️', 'טוקיו'],
+    ['🏙️', 'דובאי'], ['🏙️', 'סידני'], ['🏙️', 'רומא'], ['🏙️', 'ברצלונה'],
+    ['🏙️', 'תל אביב', ['תל-אביב']], ['🏙️', 'ירושלים'], ['🏙️', 'הונג קונג', ['הונגקונג']], ['🏙️', 'סינגפור'],
+    ['🏙️', 'ריו דה ז׳ניירו', ['ריו']], ['🏙️', 'איסטנבול'], ['🏙️', 'אמסטרדם'], ['🏙️', 'ברלין'],
+    ['🏙️', 'סן פרנסיסקו'], ['🏙️', 'לאס וגאס', ['וגאס']], ['🏙️', 'שנגחאי'], ['🏙️', 'מוסקבה'],
+    ['🏙️', 'קהיר'], ['🏙️', 'אתונה'], ['🏙️', 'ונציה'], ['🏙️', 'פראג'],
+  ]),
+  category('football-clubs', 'סמלי מועדוני כדורגל', '🛡️', [
+    ['🛡️', 'ברצלונה', ['בארסה']], ['🛡️', 'ריאל מדריד', ['ריאל']], ['🛡️', 'מנצ׳סטר יונייטד', ['יונייטד', 'מן יו']], ['🛡️', 'מנצ׳סטר סיטי', ['סיטי']],
+    ['🛡️', 'ליברפול'], ['🛡️', 'צ׳לסי', ['צלסי']], ['🛡️', 'ארסנל'], ['🛡️', 'טוטנהאם', ['טוטנהם', 'ספרס']],
+    ['🛡️', 'באיירן מינכן', ['באיירן']], ['🛡️', 'בורוסיה דורטמונד', ['דורטמונד']], ['🛡️', 'יובנטוס', ['יובה']], ['🛡️', 'מילאן', ['איי סי מילאן']],
+    ['🛡️', 'אינטר', ['אינטר מילאן']], ['🛡️', 'פריז סן ז׳רמן', ['פ.ס.ז׳', 'פסז']], ['🛡️', 'אתלטיקו מדריד', ['אתלטיקו']], ['🛡️', 'אייאקס', ['איאקס']],
+    ['🛡️', 'בנפיקה'], ['🛡️', 'פורטו'], ['🛡️', 'סלטיק'], ['🛡️', 'מכבי חיפה'],
+    ['🛡️', 'מכבי תל אביב'], ['🛡️', 'הפועל באר שבע', ['באר שבע']], ['🛡️', 'בית״ר ירושלים', ['ביתר']], ['🛡️', 'הפועל תל אביב'],
+  ]),
+  category('football-players', 'שחקני כדורגל', '🥅', [
+    ['🥅', 'מסי', ['ליונל מסי', 'ליאו מסי']], ['🥅', 'רונאלדו', ['כריסטיאנו רונאלדו', 'כריסטיאנו']], ['🥅', 'נימאר'], ['🥅', 'אמבפה', ['קיליאן אמבפה']],
+    ['🥅', 'הולאנד', ['ארלינג הולאנד']], ['🥅', 'סלאח', ['מוחמד סלאח']], ['🥅', 'דה בריינה', ['קווין דה בריינה']], ['🥅', 'לבנדובסקי'],
+    ['🥅', 'מודריץ׳', ['לוקה מודריץ׳']], ['🥅', 'בנזמה', ['קארים בנזמה']], ['🥅', 'איברהימוביץ׳', ['זלאטן']], ['🥅', 'רונאלדיניו'],
+    ['🥅', 'זידאן', ['זינדין זידאן']], ['🥅', 'בקהאם', ['דייוויד בקהאם']], ['🥅', 'פלה'], ['🥅', 'מראדונה', ['דייגו מראדונה']],
+    ['🥅', 'הנרי', ['תיירי הנרי']], ['🥅', 'אינייסטה', ['אנדרס אינייסטה']], ['🥅', 'ג׳ררד', ['סטיבן ג׳ררד']], ['🥅', 'טוטי', ['פרנצ׳סקו טוטי']],
+    ['🥅', 'קאקה'], ['🥅', 'ואן דייק', ['וירג׳יל ואן דייק']], ['🥅', 'בניון', ['יוסי בניון']], ['🥅', 'זהבי', ['ערן זהבי']],
+  ]),
+  category('snacks', 'חטיפים', '🍿', [
+    ['🍿', 'במבה'], ['🍿', 'ביסלי'], ['🍿', 'תפוצ׳יפס', ['תפוציפס']], ['🍿', 'דוריטוס'],
+    ['🍿', 'פרינגלס'], ['🍿', 'צ׳יטוס', ['ציטוס']], ['🍿', 'אפרופו'], ['🍿', 'קליק'],
+    ['🍿', 'פסק זמן'], ['🍿', 'קיט קט', ['קיטקט']], ['🍿', 'טוויקס'], ['🍿', 'סניקרס'],
+    ['🍿', 'מקופלת'], ['🍿', 'כיף כף', ['כיפכף']], ['🍿', 'שוקולד פרה', ['פרה']], ['🍿', 'קרמבו'],
+    ['🍿', 'אוראו', ['אוריאו']], ['🍿', 'לואקר'], ['🍿', 'מנטוס'], ['🍿', 'אם אנד אמס', ['אמנדאמס']],
+    ['🍿', 'טובלרון'], ['🍿', 'מילקה'], ['🍿', 'נוטלה'], ['🍿', 'ופלים', ['ופל']],
+  ]),
+  category('apps', 'אפליקציות', '📲', [
+    ['📲', 'וואטסאפ', ['ווטסאפ']], ['📲', 'אינסטגרם', ['אינסטה']], ['📲', 'פייסבוק'], ['📲', 'טיקטוק'],
+    ['📲', 'יוטיוב'], ['📲', 'ספוטיפיי', ['ספוטיפי']], ['📲', 'נטפליקס'], ['📲', 'וויז', ['ווייז']],
+    ['📲', 'גוגל מפות', ['מפות']], ['📲', 'ג׳ימייל', ['גימייל', 'גוגל מייל']], ['📲', 'טלגרם'], ['📲', 'סנאפצ׳ט', ['סנאפ']],
+    ['📲', 'אקס', ['טוויטר']], ['📲', 'לינקדאין'], ['📲', 'פינטרסט'], ['📲', 'אמזון'],
+    ['📲', 'אובר'], ['📲', 'זום'], ['📲', 'כרום', ['גוגל כרום']], ['📲', 'שאזאם'],
+    ['📲', 'דיסקורד'], ['📲', 'מוביט'], ['📲', 'ביט'], ['📲', 'פייבוקס'],
+  ]),
 ];
 
 const BY_ID = Object.fromEntries(WITH_ITEMS.map((raw) => [raw.id, raw]));
@@ -298,6 +360,12 @@ export const CATEGORIES: Category[] = ORDER.map((id): Category => {
   const raw = BY_ID[id];
   const meta = META[id];
   if (!raw || !meta) throw new Error(`Category ${id} has no items or meta`);
+  if (meta.pictures) {
+    const items = makeItems(id, raw.rows, true).filter((item) => IMAGED.has(item.id));
+    const ready = items.length >= MIN_PICTURE_ITEMS;
+    const ways = toWays(meta.ways.map(([label, available]) => [label, available && ready]));
+    return { id, name: raw.name, icon: raw.icon, level: meta.level, status: ready ? 'active' : 'soon', ways, items: ready ? items : [] };
+  }
   return { id, name: raw.name, icon: raw.icon, level: meta.level, status: meta.status, ways: toWays(meta.ways), items: makeItems(id, raw.rows) };
 });
 

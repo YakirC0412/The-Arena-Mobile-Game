@@ -75,6 +75,10 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- 30.10.26 – Pilot pictures in: 78 Wikimedia images (480px, free licenses) for dog-breeds, world-cities,
+  football-players → those 3 are playable. Credits in docs/IMAGE_CREDITS.md (keep it updated when adding
+  CC BY images). `/qa-duel?category=<id>` opens a duel on any category. Still "soon": football-clubs,
+  snacks, apps – the user collects those pictures (same file naming).
 - 30.10.26 – Picture pipeline + pilot: `npm run images` scans assets/items/<cat>/<cat>-<n>.<ext> and writes
   item-images.generated.ts + image-manifest.ts; "pictures" categories unlock at 12 pictures. Pilot lists
   (dog-breeds, world-cities, football-clubs, football-players, snacks, apps) await the user's review at

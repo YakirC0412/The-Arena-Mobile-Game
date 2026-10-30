@@ -6,6 +6,7 @@ import { AppText as Text } from '@/design/app-text';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { CATEGORY_BY_ID } from '@/content/categories';
 import { BattleView } from '@/features/battle/battle-view';
 import { createBattleSetup, createInitialGame, getNeighborPlayerIds } from '@/game/engine';
 
@@ -38,7 +39,8 @@ export default function QaDuelScreen() {
         ...base.players,
         [defenderId]: {
           ...base.players[defenderId],
-          categoryId: params.category === 'fruit' ? 'fruit' : 'animals',
+          categoryId: params.category && CATEGORY_BY_ID[params.category] ? params.category : 'animals',
+          wayId: 'w1' as const,
           name: 'המחשב',
         },
       },

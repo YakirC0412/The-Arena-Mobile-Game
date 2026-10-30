@@ -26,7 +26,8 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 
 ## Repo map
 ```
-THE_Arena/            git root (run git commands here)
+THE_Arena/            git root (run git commands here) · remote origin = private GitHub repo
+                      github.com/YakirC0412/The-Arena-Mobile-Game (branch main)
 ├─ CLAUDE.md          this file
 ├─ README.md          short Hebrew intro for the user
 ├─ docs/              GAME_RULES.md (rules source of truth) · DECISIONS.md · ROADMAP.md
@@ -62,7 +63,8 @@ THE_Arena/            git root (run git commands here)
 - `game/` and `content/categories.ts`, `content/avatars.ts` must not import React/RN/Expo
   (they compile under Node for `test:engine`). Use relative imports there, `@/` elsewhere.
 - A change to game behavior → update `docs/GAME_RULES.md` + a test. A product decision → `docs/DECISIONS.md`.
-- One git commit per step (Conventional Commits). Never delete user files – move them to `archive/`.
+- One git commit per step (Conventional Commits), then `git push` (user approved pushing to their private
+  repo, 30.10.26). Never delete user files – move them to `archive/`.
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)

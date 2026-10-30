@@ -77,7 +77,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
 - 30.10.26 – Decisions 14–15 (36-category pool, two "battle ways" per category). Proposal + user's
   keep/remove/replace choices live in the artifact https://claude.ai/artifact/Uz7SJPxqEAVmaEXjS8iqed
-  (db collection `decisions`, docs c01–c36; `notes/general`). Read them with ArtifactData before building.
+  (db collection `decisions`). The user finished: the final list is docs/CATEGORIES.md (source of truth).
 - 29.10.26 – iPhone feedback fixed: Enter no longer blurs the answer, raw DOM input/composition
   listeners accept answers while the Hebrew keyboard composes, "start duel" tap primes the keyboard
   (design/keyboard-primer.ts), "skip to my turn" (engine fastForwardToHuman + SKIP_TO_MY_TURN). 43 tests.

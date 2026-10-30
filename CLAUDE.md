@@ -19,7 +19,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Node: `C:/Program Files/nodejs` (v24). In Bash first run `export PATH="/c/Program Files/nodejs:$PATH"`.
 - No pnpm on the machine yet; use `npm run` / `npx` from `mobile/`.
 - Dev server: browser preview config `arena-web` in `.claude/launch.json` → http://localhost:8090.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (43 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (51 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -44,7 +44,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
       ├─ app/         routes only: _layout.tsx · index.tsx (renders GameFlow) · (dev)/qa-*.tsx
       ├─ game/        engine.ts (rules, bot decisions, autoPlayGame) · flow.ts (screen reducer) · rng.ts · types.ts
       │               pure TS, no React, relative imports only; never call Math.random – take a RandomSource
-      ├─ content/     categories.ts (16×24 items) · avatars.ts · item-images.ts · avatar-images.ts
+      ├─ content/     categories.ts (36-category pool, ways, getWayItems) · avatars.ts · item/avatar-images.ts
       ├─ features/
       │  ├─ flow/        game-flow.tsx renders FlowState → screens · arena-screen · setup · result
       │  ├─ onboarding/  intro-screen (animated opening) · welcome-screen (sign-up/sign-in) · home-screen · guide
@@ -75,6 +75,10 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
 - 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
   disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
+- 30.10.26 – Categories + ways built: content/categories.ts = 36-category pool (META/COMING_SOON/
+  SECOND_WAY, statuses active|soon|reserve), engine drawArenaCategories + ArenaPlayer.wayId +
+  BattleSetup.wayId (defender's way), picker with 2 pages + way choice, way shown on target pick and
+  duel intro. Intro now leaves on a timer (rAF-based Animated callbacks stall in background tabs). 51 tests.
 - 30.10.26 – Decisions 14–15 (36-category pool, two "battle ways" per category). Proposal + user's
   keep/remove/replace choices live in the artifact https://claude.ai/artifact/Uz7SJPxqEAVmaEXjS8iqed
   (db collection `decisions`). The user finished: the final list is docs/CATEGORIES.md (source of truth).

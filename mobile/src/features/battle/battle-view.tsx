@@ -23,7 +23,7 @@ import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
 import { useWebKeyboardInset } from '@/design/use-web-keyboard-inset';
 import { useGameFeedback } from '@/services/use-game-feedback';
-import { CATEGORY_BY_ID } from '@/content/categories';
+import { CATEGORY_BY_ID, getWay, getWayItems } from '@/content/categories';
 import {
   aiThinkDelayMs,
   correctAnswerPauseMs,
@@ -56,7 +56,10 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   const attacker = state.players[setup.attackerId];
   const defender = state.players[setup.defenderId];
   const category = CATEGORY_BY_ID[setup.categoryId];
-  const [deck, setDeck] = useState(() => createBattleDeck(category.items, random));
+  // The duel plays the defender's way: e.g. flag → capital instead of flag → country.
+  const way = getWay(category, setup.wayId);
+  const [wayItems] = useState(() => getWayItems(category, setup.wayId));
+  const [deck, setDeck] = useState(() => createBattleDeck(wayItems, random));
   const [activeId, setActiveId] = useState(setup.attackerId);
   const [position, setPosition] = useState(0);
   const [answer, setAnswer] = useState('');
@@ -143,7 +146,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   const advanceImage = useCallback((switchTurn: boolean) => {
     let nextPosition = position + 1;
     if (nextPosition >= deck.length) {
-      const nextDeck = createBattleDeck(category.items, random);
+      const nextDeck = createBattleDeck(wayItems, random);
       if (nextDeck[0]?.id === item.id && nextDeck.length > 1) {
         nextDeck.push(nextDeck.shift()!);
       }
@@ -161,7 +164,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         current === setup.attackerId ? setup.defenderId : setup.attackerId
       ));
     }
-  }, [category.items, deck.length, item.id, position, random, setup.attackerId, setup.defenderId]);
+  }, [wayItems, deck.length, item.id, position, random, setup.attackerId, setup.defenderId]);
 
   const scheduleAdvance = useCallback((switchTurn: boolean, delay: number) => {
     if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
@@ -285,6 +288,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         </Pressable>
         <AppText style={styles.eyebrow} weight="bold">דו־קרב · קטגוריית המגן</AppText>
         <AppText style={styles.title} weight="black">{category.name}</AppText>
+        <AppText style={styles.wayLine} weight="bold">{way.label}</AppText>
       </View>
 
       <BattleClockCards
@@ -405,6 +409,7 @@ const styles = StyleSheet.create({
   },
   muteButtonText: { color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center' },
   eyebrow: { color: colors.accentGold, fontSize: typeScale.caption, textAlign: 'center' },
+  wayLine: { color: colors.success, fontSize: typeScale.caption, textAlign: 'center' },
   title: { color: colors.textPrimary, fontSize: 24, lineHeight: 30, textAlign: 'center', marginTop: spacing.xs },
   turnPill: {
     alignSelf: 'center',

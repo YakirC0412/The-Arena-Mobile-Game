@@ -1,26 +1,138 @@
-import type { Category, CategoryItem, Difficulty } from '../game/types';
+import type {
+  Category,
+  CategoryItem,
+  CategoryLevel,
+  CategoryStatus,
+  CategoryWay,
+  Difficulty,
+  WayId,
+} from '../game/types';
+
+// The 36-category pool (docs/CATEGORIES.md, decisions 14–15). Each category
+// has a level, a status and up to two ways. Items are emoji or pictures with a
+// Hebrew answer (way 1) and, where the category has a second way, a second
+// answer looked up from SECOND_WAY by the item's first answer.
 
 type RawItem = [visual: string, answer: string, aliases?: string[]];
+type RawItems = { id: string; name: string; icon: string; rows: RawItem[] };
+type RawAnswer = [answer: string, aliases?: string[]];
 
 const CATEGORIES_WITH_IMAGES = new Set(['animals', 'fruit']);
 
+function category(id: string, name: string, icon: string, rows: RawItem[]): RawItems {
+  return { id, name, icon, rows };
+}
+
+// Ways are [label, available].
+type Meta = { level: CategoryLevel; status: CategoryStatus; ways: [string, boolean][] };
+const META: Record<string, Meta> = {
+  animals: { level: 'easy', status: 'active', ways: [['תמונה ← שם החיה', true]] },
+  countries: { level: 'easy', status: 'active', ways: [['דגל ← שם המדינה', true], ['דגל ← עיר הבירה', true]] },
+  fruit: { level: 'easy', status: 'active', ways: [['תמונה ← שם', true]] },
+  technology: { level: 'easy', status: 'active', ways: [['מכשיר ← שם המכשיר', true], ['מכשיר ← החברה (אייפון ← אפל)', false]] },
+  birds: { level: 'medium', status: 'active', ways: [['תמונה ← שם הציפור', true]] },
+  vehicles: { level: 'easy', status: 'active', ways: [['תמונה ← שם', true]] },
+  sports: { level: 'easy', status: 'active', ways: [['ציוד או מגרש ← שם הענף', true]] },
+  food: { level: 'easy', status: 'active', ways: [['מנה ← שם המנה', true], ['מנה ← מדינת המוצא', true]] },
+  instruments: { level: 'easy', status: 'active', ways: [['כלי ← שם הכלי', true]] },
+  professions: { level: 'easy', status: 'active', ways: [['כלי עבודה או ציוד ← המקצוע', true]] },
+  landmarks: { level: 'medium', status: 'active', ways: [['אתר ← שם האתר', true], ['אתר ← המדינה', true]] },
+  sea: { level: 'easy', status: 'active', ways: [['תמונה ← שם', true]] },
+  kitchen: { level: 'easy', status: 'active', ways: [['תמונה ← שם הכלי', true]] },
+  // Removed by the user; kept only to fill arenas while new categories wait for pictures.
+  weather: { level: 'easy', status: 'reserve', ways: [['תמונה ← שם', true]] },
+  clothing: { level: 'easy', status: 'reserve', ways: [['תמונה ← שם הבגד', true]] },
+  home: { level: 'easy', status: 'reserve', ways: [['תמונה ← שם החפץ', true]] },
+  plants: { level: 'medium', status: 'reserve', ways: [['תמונה ← שם', true]] },
+};
+
+// Categories that wait for pictures: listed in the picker as "coming soon".
+const COMING_SOON: [id: string, name: string, icon: string, level: CategoryLevel, ways: string[]][] = [
+  ['football-clubs', 'סמלי מועדוני כדורגל', '🛡️', 'medium', ['סמל ← שם המועדון']],
+  ['football-players', 'שחקני כדורגל', '🥅', 'medium', ['תמונה ← שם השחקן (שם משפחה מספיק)']],
+  ['basketball-teams', 'קבוצות כדורסל', '🏀', 'hard', ['סמל ← שם הקבוצה']],
+  ['playstation', 'משחקי פלייסטיישן', '🎮', 'medium', ['עטיפה בלי שם ← שם המשחק']],
+  ['game-characters', 'דמויות משחקי וידאו', '👾', 'easy', ['דמות ← שם הדמות', 'דמות ← המשחק']],
+  ['cartoons', 'דמויות מצוירות', '🐭', 'easy', ['דמות ← שם הדמות', 'דמות ← הסרט או הסדרה']],
+  ['superheroes', 'גיבורי-על', '🦸', 'easy', ['גיבור ← שם הגיבור']],
+  ['movies', 'סרטים', '🎬', 'medium', ['פוסטר בלי שם ← שם הסרט']],
+  ['tv-series', 'סדרות טלוויזיה', '📺', 'medium', ['פוסטר או פריים ← שם הסדרה', 'דמות ראשית ← שם הסדרה']],
+  ['actors', 'שחקנים מפורסמים', '🎭', 'medium', ['תמונה ← שם השחקן']],
+  ['comedians', 'קומיקאים', '😂', 'medium', ['תמונה ← שם']],
+  ['divas', 'דיוות', '💃', 'easy', ['תמונה ← שם הזמרת']],
+  ['israeli-singers', 'זמרים וזמרות ישראלים', '🎤', 'medium', ['תמונה ← שם']],
+  ['israel-history', 'אתרים היסטוריים בישראל', '🏛️', 'medium', ['אתר ← שם האתר', 'אתר ← העיר']],
+  ['snacks', 'חטיפים', '🍿', 'easy', ['אריזה בלי השם ← שם החטיף']],
+  ['brands', 'מותגים ולוגואים', '🏷️', 'easy', ['סמל בלי טקסט ← שם המותג']],
+  ['cars', 'מכוניות', '🚘', 'medium', ['סמל היצרן ← שם היצרן']],
+  ['apps', 'אפליקציות', '📲', 'easy', ['אייקון ← שם האפליקציה']],
+  ['dog-breeds', 'גזעי כלבים', '🐕', 'medium', ['תמונה ← שם הגזע']],
+  ['historical-figures', 'דמויות היסטוריות', '📜', 'hard', ['דיוקן ← שם']],
+  ['world-cities', 'ערים בעולם', '🏙️', 'medium', ['קו רקיע ← שם העיר', 'עיר ← המדינה']],
+  ['clothing-brands', 'מותגי ביגוד', '👟', 'easy', ['סמל המותג ← שם המותג']],
+  ['world-singers', 'זמרים מהעולם', '🎙️', 'medium', ['תמונה ← שם הזמר']],
+];
+
+// Picker order (docs/CATEGORIES.md), then the hidden reserve.
+const ORDER = [
+  'animals', 'countries', 'fruit', 'technology', 'birds', 'vehicles', 'sports', 'food', 'instruments',
+  'professions', 'landmarks', 'sea', 'football-clubs', 'football-players', 'basketball-teams', 'playstation',
+  'game-characters', 'cartoons', 'superheroes', 'movies', 'tv-series', 'actors', 'comedians', 'divas',
+  'israeli-singers', 'israel-history', 'snacks', 'brands', 'cars', 'apps', 'dog-breeds', 'kitchen',
+  'historical-figures', 'world-cities', 'clothing-brands', 'world-singers',
+  'weather', 'clothing', 'home', 'plants',
+];
+
+// Second-way answers, keyed by the item's first answer. Items missing here
+// are left out when the category is played its second way.
+const SECOND_WAY: Record<string, Record<string, RawAnswer>> = {
+  countries: {
+    'ישראל': ['ירושלים'], 'ארצות הברית': ['וושינגטון', ['וושינגטון די סי', 'וושינגטון דיסי']], 'צרפת': ['פריז', ['פאריס']],
+    'יפן': ['טוקיו'], 'ברזיל': ['ברזיליה'], 'קנדה': ['אוטווה'], 'נפאל': ['קטמנדו'], 'אורוגוואי': ['מונטווידאו', ['מונטבידאו']],
+    'בהוטן': ['תימפו', ['טימפו']], 'גרמניה': ['ברלין'], 'דרום אפריקה': ['פרטוריה', ['קייפטאון', 'קייפ טאון']],
+    'איסלנד': ['רייקיאוויק', ['רייקיאויק', 'רייקיוויק']], 'איטליה': ['רומא'], 'ספרד': ['מדריד'], 'בריטניה': ['לונדון'],
+    'יוון': ['אתונה'], 'הודו': ['ניו דלהי', ['דלהי']], 'סין': ['בייג׳ינג', ['בייג׳ין', 'בייגינג', 'בייגין']],
+    'אוסטרליה': ['קנברה'], 'מקסיקו': ['מקסיקו סיטי', ['מקסיקו']], 'פורטוגל': ['ליסבון'],
+    'ארגנטינה': ['בואנוס איירס', ['בואנוס אירס']], 'קוריאה הדרומית': ['סיאול', ['סול']], 'נורווגיה': ['אוסלו'],
+  },
+  food: {
+    'פיצה': ['איטליה'], 'המבורגר': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']], 'סושי': ['יפן'], 'טאקו': ['מקסיקו'],
+    'דים סאם': ['סין'], 'פונדו': ['שווייץ', ['שוויץ', 'שוויצריה']], 'פאייה': ['ספרד'], 'ראמן': ['יפן'],
+    'בוריטו': ['מקסיקו'], 'קרואסון': ['צרפת'], 'פסטה': ['איטליה'], 'וופל': ['בלגיה'], 'קארי': ['הודו'],
+    'בייגלה': ['גרמניה'], 'ציפס': ['בלגיה', ['צרפת']], 'פנקייק': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']],
+  },
+  landmarks: {
+    'מגדל אייפל': ['צרפת'], 'פסל החירות': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']], 'שער טוריי': ['יפן'],
+    'טירה יפנית': ['יפן'], 'פירמידה': ['מצרים'], 'הקולוסיאום': ['איטליה'], 'החומה הסינית': ['סין'],
+    'פסלי אי הפסחא': ['צ׳ילה', ['צילה']], 'גשר שער הזהב': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']],
+    'לונדון איי': ['בריטניה', ['אנגליה']], 'הר האוורסט': ['נפאל', ['סין']], 'הכעבה': ['ערב הסעודית', ['סעודיה']],
+    'מזרקת טרווי': ['איטליה'], 'ארמון בקינגהאם': ['בריטניה', ['אנגליה']], 'מגדל טוקיו': ['יפן'], 'הפרתנון': ['יוון'],
+    'טאג׳ מאהל': ['הודו'], 'הר פוג׳י': ['יפן'], 'כרייסט הגואל': ['ברזיל'],
+  },
+};
+
 function makeItems(categoryId: string, rows: RawItem[]): CategoryItem[] {
   const tierSize = Math.ceil(rows.length / 3);
-  return rows.map(([visual, answer, aliases = []], index) => ({
-    id: `${categoryId}-${index + 1}`,
-    visual,
-    imageKey: CATEGORIES_WITH_IMAGES.has(categoryId) ? `${categoryId}-${index + 1}` : undefined,
-    answer,
-    aliases,
-    difficulty: (index < tierSize ? 1 : index < tierSize * 2 ? 2 : 3) as Difficulty,
-  }));
+  const second = SECOND_WAY[categoryId] ?? {};
+  return rows.map(([visual, answer, aliases = []], index) => {
+    const w2 = second[answer];
+    return {
+      id: `${categoryId}-${index + 1}`,
+      visual,
+      imageKey: CATEGORIES_WITH_IMAGES.has(categoryId) ? `${categoryId}-${index + 1}` : undefined,
+      answer,
+      aliases,
+      secondAnswer: w2 ? { answer: w2[0], aliases: w2[1] ?? [] } : undefined,
+      difficulty: (index < tierSize ? 1 : index < tierSize * 2 ? 2 : 3) as Difficulty,
+    };
+  });
 }
 
-function category(id: string, name: string, icon: string, rows: RawItem[]): Category {
-  return { id, name, icon, items: makeItems(id, rows) };
+function toWays(ways: [string, boolean][]): CategoryWay[] {
+  return ways.map(([label, available], index) => ({ id: `w${index + 1}` as WayId, label, available }));
 }
 
-export const CATEGORIES: Category[] = [
+const WITH_ITEMS: RawItems[] = [
   category('animals', 'חיות', '🦁', [
     ['🦁', 'אריה'], ['🐘', 'פיל'], ['🐶', 'כלב'],
     ['🐯', 'טיגריס'], ['🐊', 'תנין'], ['🐋', 'לוויתן'],
@@ -39,7 +151,7 @@ export const CATEGORIES: Category[] = [
     ['🇮🇳', 'הודו'], ['🇨🇳', 'סין'], ['🇦🇺', 'אוסטרליה'], ['🇲🇽', 'מקסיקו'],
     ['🇵🇹', 'פורטוגל'], ['🇦🇷', 'ארגנטינה'], ['🇰🇷', 'קוריאה הדרומית', ['דרום קוריאה']], ['🇳🇴', 'נורווגיה'],
   ]),
-  category('fruit', 'פירות', '🍎', [
+  category('fruit', 'פירות וירקות', '🍎', [
     ['🍎', 'תפוח'], ['🍌', 'בננה'], ['🍊', 'תפוז'],
     ['🍍', 'אננס'], ['🍉', 'אבטיח'], ['🍑', 'אפרסק'],
     ['🥝', 'קיווי'], ['🫐', 'אוכמניות', ['אוכמנייה']], ['🫒', 'זית'],
@@ -57,7 +169,7 @@ export const CATEGORIES: Category[] = [
     ['🚀', 'חללית'], ['🛴', 'קורקינט'], ['🛵', 'קטנוע'], ['⛵', 'סירת מפרש'],
     ['🚇', 'רכבת תחתית', ['מטרו']], ['🚚', 'משאית'], ['🛻', 'טנדר'], ['🚐', 'מיניבוס'],
   ]),
-  category('sports', 'ספורט', '⚽', [
+  category('sports', 'ענפי ספורט', '🏅', [
     ['⚽', 'כדורגל'], ['🏀', 'כדורסל'], ['🎾', 'טניס'],
     ['🥊', 'אגרוף'], ['⛳', 'גולף'], ['🏹', 'קשתות', ['חץ וקשת']],
     ['🤺', 'סיף'], ['🥌', 'קרלינג'], ['🤽', 'כדורמים'],
@@ -165,8 +277,50 @@ export const CATEGORIES: Category[] = [
     ['🕋', 'הכעבה'], ['⛲', 'מזרקת טרווי'], ['🏰🇬🇧', 'ארמון בקינגהאם'], ['🗼🇯🇵', 'מגדל טוקיו'],
     ['🏛️🇬🇷', 'הפרתנון'], ['🕌🤍', 'טאג׳ מאהל', ['טאג מאהל']], ['⛰️🇯🇵', 'הר פוג׳י', ['הר פוגי']], ['🗽🇧🇷', 'כרייסט הגואל'],
   ]),
+  category('kitchen', 'כלי מטבח ובישול', '🍳', [
+    ['🍳', 'מחבת'], ['🥄', 'כף'], ['🔪', 'סכין'],
+    ['🍴', 'סכו״ם', ['סכום', 'מזלג']], ['🥢', 'מקלות אכילה', ['צ׳ופסטיקס', 'צופסטיקס']], ['🫖', 'קומקום'],
+    ['☕', 'ספל', ['כוס קפה']], ['🍽️', 'צלחת'], ['🥣', 'קערה'],
+    ['🧂', 'מלחייה', ['מלחיה']], ['🫙', 'צנצנת'], ['🍲', 'סיר'],
+    ['⚖️', 'משקל', ['משקל מטבח']], ['⏲️', 'טיימר', ['שעון מטבח']], ['🧽', 'ספוג'], ['🍷', 'כוס יין', ['גביע']],
+    ['🥫', 'קופסת שימורים', ['שימורים']], ['🥡', 'קופסת אוכל', ['קופסה']], ['🥛', 'כוס'], ['🍼', 'בקבוק'],
+  ]),
 ];
+
+const BY_ID = Object.fromEntries(WITH_ITEMS.map((raw) => [raw.id, raw]));
+
+export const CATEGORIES: Category[] = ORDER.map((id): Category => {
+  const soon = COMING_SOON.find(([soonId]) => soonId === id);
+  if (soon) {
+    const [, name, icon, level, ways] = soon;
+    return { id, name, icon, level, status: 'soon', ways: toWays(ways.map((label) => [label, false])), items: [] };
+  }
+  const raw = BY_ID[id];
+  const meta = META[id];
+  if (!raw || !meta) throw new Error(`Category ${id} has no items or meta`);
+  return { id, name: raw.name, icon: raw.icon, level: meta.level, status: meta.status, ways: toWays(meta.ways), items: makeItems(id, raw.rows) };
+});
 
 export const CATEGORY_BY_ID = Object.fromEntries(
   CATEGORIES.map((item) => [item.id, item]),
 ) as Record<string, Category>;
+
+// Categories a player may pick, and that arenas are drawn from first.
+export const PLAYABLE_CATEGORIES = CATEGORIES.filter((item) => item.status === 'active');
+
+export function getAvailableWays(category: Category): CategoryWay[] {
+  return category.ways.filter((way) => way.available);
+}
+
+export function getWay(category: Category, wayId: WayId): CategoryWay {
+  return category.ways.find((way) => way.id === wayId) ?? category.ways[0];
+}
+
+// The items of a category as played in one way, with that way's answer as
+// `answer`, so the duel code needs no knowledge of ways.
+export function getWayItems(category: Category, wayId: WayId): CategoryItem[] {
+  if (wayId === 'w1') return category.items;
+  return category.items
+    .filter((item) => item.secondAnswer)
+    .map((item) => ({ ...item, answer: item.secondAnswer!.answer, aliases: item.secondAnswer!.aliases }));
+}

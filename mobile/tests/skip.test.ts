@@ -1,6 +1,6 @@
 // "Skip to my turn": bot-vs-bot duels are played in the background and the
 // game stops exactly where the human plays again.
-import { CATEGORIES } from '../src/content/categories';
+import { PLAYABLE_CATEGORIES } from '../src/content/categories';
 import { createInitialGame, fastForwardToHuman, getActivePlayers, getNeighborPlayerIds } from '../src/game/engine';
 import { createFlowState, flowReducer, type FlowState } from '../src/game/flow';
 import { createSeededRandom } from '../src/game/rng';
@@ -21,7 +21,7 @@ suite('skip to my turn', () => {
     const kinds = new Set<string>();
     for (let seed = 1; seed <= 300; seed += 1) {
       const random = createSeededRandom(seed);
-      const game = createInitialGame(CATEGORIES[seed % 16].id, random);
+      const game = createInitialGame(PLAYABLE_CATEGORIES[seed % PLAYABLE_CATEGORIES.length].id, random);
       const { state, duels, stop } = fastForwardToHuman(game, random);
       kinds.add(stop.kind);
       const human = state.players[state.humanPlayerId];

@@ -1,11 +1,31 @@
 export type Difficulty = 1 | 2 | 3;
 
+// A "way" is how a category is played: what the picture shows and what the
+// player types (decision 15). w1 uses the item's answer; w2 its secondAnswer.
+export type WayId = 'w1' | 'w2';
+
+export type CategoryWay = {
+  id: WayId;
+  // Shown to players, e.g. "דגל ← שם המדינה".
+  label: string;
+  // False until its items have answers (or pictures) for this way.
+  available: boolean;
+};
+
+export type CategoryLevel = 'easy' | 'medium' | 'hard';
+
+// active = pickable and drawn into arenas · soon = listed, waiting for
+// pictures · reserve = hidden filler when too few categories are active.
+export type CategoryStatus = 'active' | 'soon' | 'reserve';
+
 export type CategoryItem = {
   id: string;
   visual: string;
   imageKey?: string;
   answer: string;
   aliases: string[];
+  // The answer when the category is played its second way (w2).
+  secondAnswer?: { answer: string; aliases: string[] };
   difficulty: Difficulty;
 };
 
@@ -13,6 +33,9 @@ export type Category = {
   id: string;
   name: string;
   icon: string;
+  level: CategoryLevel;
+  status: CategoryStatus;
+  ways: CategoryWay[];
   items: CategoryItem[];
 };
 
@@ -31,6 +54,8 @@ export type ArenaPlayer = {
   isHuman: boolean;
   isActive: boolean;
   categoryId: string;
+  // How this player's category is played when they defend (decision 15).
+  wayId: WayId;
   cellIds: number[];
   hasPlayedThisRound: boolean;
   winStreak: number;
@@ -57,6 +82,8 @@ export type BattleSetup = {
   attackerId: string;
   defenderId: string;
   categoryId: string;
+  // Duels use the defender's category and way (the final: the chosen one's).
+  wayId: WayId;
   attackerSeconds: number;
   defenderSeconds: number;
   attackerUsesBonus: boolean;

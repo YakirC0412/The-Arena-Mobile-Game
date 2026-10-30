@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { CATEGORY_BY_ID } from '@/content/categories';
+import { CATEGORY_BY_ID, getWay } from '@/content/categories';
 import { AppText as Text } from '@/design/app-text';
 import { ArenaBoard } from '@/features/arena/arena-board';
 import { getNeighborPlayerIds, getRoundProgress } from '@/game/engine';
@@ -93,6 +93,11 @@ export function ArenaScreen({
               <View style={styles.targetSummary}>
                 <Text style={styles.targetCategory}>{selectedTargetCategory.name}</Text>
                 <Text style={styles.targetName}>{selectedTarget.name} · {selectedTarget.cellIds.length} משבצות</Text>
+                {/* Decision 15: the duel is played the defender's way – show it before attacking. */}
+                <View style={styles.targetWay}>
+                  <Text style={styles.targetWayLabel}>הדו־קרב ישוחק כך</Text>
+                  <Text style={styles.targetWayValue}>{getWay(selectedTargetCategory, selectedTarget.wayId).label}</Text>
+                </View>
               </View>
             ) : (
               <Text style={styles.targetHint}>בחרו שטח זוהר בזירה</Text>

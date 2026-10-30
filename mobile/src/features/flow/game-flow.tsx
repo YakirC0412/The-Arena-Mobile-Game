@@ -22,6 +22,7 @@ import { WelcomeScreen } from '@/features/onboarding/welcome-screen';
 import { getFinalCategoryChooser, getNeighborPlayerIds } from '@/game/engine';
 import { createFlowState, flowReducer, type FlowUser } from '@/game/flow';
 import { createSeed, createSeededRandom } from '@/game/rng';
+import type { WayId } from '@/game/types';
 import { loadAccountStore, saveAccountStore } from '@/services/accounts/account-storage';
 import { getCurrentUser, signOut } from '@/services/accounts/accounts';
 import { AppText as Text } from '@/design/app-text';
@@ -50,6 +51,7 @@ export function GameFlow() {
     guideComplete: () => dispatch({ type: 'GUIDE_COMPLETE' }),
     setupBack: () => dispatch({ type: 'SETUP_BACK' }),
     setupSelect: (categoryId: string) => dispatch({ type: 'SETUP_SELECT_CATEGORY', categoryId }),
+    setupSelectWay: (wayId: WayId) => dispatch({ type: 'SETUP_SELECT_WAY', wayId }),
     startGame: () => dispatch({ type: 'START_GAME', seed: createSeed() }),
     buildComplete: () => dispatch({ type: 'BUILD_COMPLETE' }),
     draw: () => dispatch({ type: 'DRAW' }),
@@ -103,8 +105,10 @@ export function GameFlow() {
         <SetupScreen
           onBack={on.setupBack}
           onSelect={on.setupSelect}
+          onSelectWay={on.setupSelectWay}
           onStart={on.startGame}
           selectedCategoryId={flow.selectedCategoryId}
+          selectedWayId={flow.selectedWayId}
         />
       );
   }

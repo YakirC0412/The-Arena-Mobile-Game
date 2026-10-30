@@ -31,7 +31,11 @@ export function IntroScreen({ greeting, onDone }: { greeting?: string; onDone: (
   const finish = () => {
     if (doneRef.current) return;
     doneRef.current = true;
-    Animated.timing(exit, { toValue: 0, duration: reducedMotion ? 120 : 280, useNativeDriver: NATIVE }).start(() => onDone());
+    const fadeMs = reducedMotion ? 120 : 280;
+    Animated.timing(exit, { toValue: 0, duration: fadeMs, useNativeDriver: NATIVE }).start();
+    // Move on with a plain timer, not the animation's end callback: that callback
+    // waits for animation frames, which a backgrounded page never draws.
+    setTimeout(onDone, fadeMs + 20);
   };
 
   useEffect(() => {

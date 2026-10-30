@@ -6,6 +6,7 @@ import './content.test';
 import './flow.test';
 import './accounts.test';
 import './skip.test';
+import './ways.test';
 import { runAll } from './harness';
 
 runAll();

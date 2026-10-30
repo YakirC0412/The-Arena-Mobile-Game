@@ -20,8 +20,9 @@ import {
   simulateAiBattle,
 } from './engine';
 import { DEFAULT_AVATAR_ID } from '../content/avatars';
+import { CATEGORY_BY_ID, getAvailableWays } from '../content/categories';
 import { createRandomCursor, type RandomSource } from './rng';
-import type { BattleResolution, BattleSetup, GameState } from './types';
+import type { BattleResolution, BattleSetup, GameState, WayId } from './types';
 
 export type FlowScreen =
   // animated opening, sign-up / sign-in, then the signed-in home
@@ -46,6 +47,8 @@ export type FlowState = {
   screen: FlowScreen;
   user: FlowUser | null;
   selectedCategoryId: string;
+  // How the player's category is played (decision 15).
+  selectedWayId: WayId;
   randomState: number;
   game: GameState | null;
   // The duel being played: its setup and the board before it.
@@ -77,6 +80,7 @@ export type FlowAction =
   | { type: 'GUIDE_COMPLETE' }
   | { type: 'SETUP_BACK' }
   | { type: 'SETUP_SELECT_CATEGORY'; categoryId: string }
+  | { type: 'SETUP_SELECT_WAY'; wayId: WayId }
   | { type: 'START_GAME'; seed: number }
   | { type: 'BUILD_COMPLETE' }
   | { type: 'DRAW' }
@@ -103,6 +107,7 @@ export function createFlowState(seed: number, user: FlowUser | null = null): Flo
     screen: 'intro',
     user,
     selectedCategoryId: 'animals',
+    selectedWayId: 'w1',
     randomState: seed >>> 0,
     game: null,
     battle: null,
@@ -156,7 +161,17 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
     case 'GUIDE_BACK': return at('home');
     case 'GUIDE_COMPLETE': return at('setup');
     case 'SETUP_BACK': return at('home');
-    case 'SETUP_SELECT_CATEGORY': return { ...state, selectedCategoryId: action.categoryId };
+    case 'SETUP_SELECT_CATEGORY': {
+      // Only playable categories can be picked; the first available way is preselected.
+      const ways = getAvailableWays(CATEGORY_BY_ID[action.categoryId]);
+      if (ways.length === 0) return state;
+      return { ...state, selectedCategoryId: action.categoryId, selectedWayId: ways[0].id };
+    }
+    case 'SETUP_SELECT_WAY': {
+      const ways = getAvailableWays(CATEGORY_BY_ID[state.selectedCategoryId]);
+      if (!ways.some((way) => way.id === action.wayId)) return state;
+      return { ...state, selectedWayId: action.wayId };
+    }
 
     case 'START_GAME': {
       // A fresh seed per game, so one game's choices never leak into the next.
@@ -166,6 +181,7 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
         gameCursor.random,
         state.user?.nickname || 'אני',
         state.user?.avatar ?? DEFAULT_AVATAR_ID,
+        state.selectedWayId,
       );
       return {
         ...state,

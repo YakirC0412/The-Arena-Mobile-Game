@@ -4,7 +4,7 @@ import { Animated, Easing, Pressable, ScrollView, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AvatarPortrait } from '@/design/avatar-portrait';
-import { CATEGORY_BY_ID } from '@/content/categories';
+import { CATEGORY_BY_ID, getWay } from '@/content/categories';
 import type { BattleSetup, GameState } from '@/game/types';
 import { styles } from './battle-transition-styles';
 import { primeWebKeyboard } from '@/design/keyboard-primer';
@@ -23,6 +23,9 @@ export function BattleIntroScreen({
   const attacker = state.players[setup.attackerId];
   const defender = state.players[setup.defenderId];
   const category = CATEGORY_BY_ID[setup.categoryId];
+  const way = getWay(category, setup.wayId);
+  // Decision 15: an attacked human is warned how this duel is played.
+  const humanDefends = defender.isHuman;
   const hasBonusNotice = setup.attackerUsesBonus || setup.defenderUsesBonus;
   const [entrance] = useState(() => new Animated.Value(0));
 
@@ -60,6 +63,10 @@ export function BattleIntroScreen({
         <View style={styles.categoryCard}>
           <Text style={styles.categoryLabel}>הקטגוריה עליה מתחרים</Text>
           <Text style={styles.categoryValue}>{category.name}</Text>
+          <View style={[styles.wayNotice, humanDefends && styles.wayNoticeAlert]}>
+            <Text style={styles.wayNoticeLabel}>{humanDefends ? 'שימו לב – כך משחקים בדו־קרב הזה' : 'איך משחקים'}</Text>
+            <Text style={styles.wayNoticeValue}>{way.label}</Text>
+          </View>
         </View>
 
         {hasBonusNotice && (

@@ -1,4 +1,4 @@
-import { CATEGORIES } from '../src/content/categories';
+import { PLAYABLE_CATEGORIES } from '../src/content/categories';
 import { autoPlayGame, createInitialGame } from '../src/game/engine';
 import { createSeededRandom } from '../src/game/rng';
 import { assert, assertEqual, suite, test } from './harness';
@@ -7,7 +7,7 @@ const GAMES = 1000;
 
 function playSeed(seed: number) {
   const random = createSeededRandom(seed);
-  const categoryId = CATEGORIES[seed % CATEGORIES.length].id;
+  const categoryId = PLAYABLE_CATEGORIES[seed % PLAYABLE_CATEGORIES.length].id;
   return autoPlayGame(createInitialGame(categoryId, random), random);
 }
 

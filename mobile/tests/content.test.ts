@@ -1,14 +1,36 @@
-import { CATEGORIES } from '../src/content/categories';
+import { CATEGORIES, getAvailableWays, getWayItems, PLAYABLE_CATEGORIES } from '../src/content/categories';
 import { normalizeAnswer } from '../src/game/engine';
 import { assert, assertEqual, suite, test } from './harness';
 
+const MIN_ITEMS_PER_WAY = 8;
+
 suite('content', () => {
-  test('16 categories with 24 items each and unique ids', () => {
-    assertEqual(CATEGORIES.length, 16, 'Category count');
-    assertEqual(new Set(CATEGORIES.map((category) => category.id)).size, 16, 'Category ids must be unique');
+  test('36 listed categories plus a hidden reserve, with unique ids', () => {
+    const listed = CATEGORIES.filter((category) => category.status !== 'reserve');
+    assertEqual(listed.length, 36, 'Listed categories (docs/CATEGORIES.md)');
+    assertEqual(new Set(CATEGORIES.map((category) => category.id)).size, CATEGORIES.length, 'Category ids must be unique');
     for (const category of CATEGORIES) {
-      assertEqual(category.items.length, 24, `${category.id}: item count`);
-      assertEqual(new Set(category.items.map((item) => item.id)).size, 24, `${category.id}: item ids must be unique`);
+      assertEqual(new Set(category.items.map((item) => item.id)).size, category.items.length, `${category.id}: item ids must be unique`);
+      assert(category.ways.length >= 1 && category.ways.length <= 2, `${category.id}: one or two ways`);
+    }
+  });
+
+  test('every playable category, plus the reserve, can fill a duel in each available way', () => {
+    assert(PLAYABLE_CATEGORIES.length + CATEGORIES.filter((c) => c.status === 'reserve').length >= 16, 'Enough categories for an arena');
+    for (const category of CATEGORIES.filter((c) => c.status !== 'soon')) {
+      const ways = getAvailableWays(category);
+      assert(ways.length >= 1, `${category.id}: needs an available way`);
+      for (const way of ways) {
+        const items = getWayItems(category, way.id);
+        assert(items.length >= MIN_ITEMS_PER_WAY, `${category.id}/${way.id}: only ${items.length} items`);
+      }
+    }
+  });
+
+  test('coming-soon categories have no items and no available way', () => {
+    for (const category of CATEGORIES.filter((c) => c.status === 'soon')) {
+      assertEqual(category.items.length, 0, `${category.id}: items before pictures exist`);
+      assertEqual(getAvailableWays(category).length, 0, `${category.id}: no playable way yet`);
     }
   });
 
@@ -21,7 +43,16 @@ suite('content', () => {
     }
   });
 
-  test('no answer or alias belongs to two items in the same category', () => {
+  test('second-way answers are used only by categories that have a second way', () => {
+    for (const category of CATEGORIES) {
+      const hasSecond = category.items.some((item) => item.secondAnswer);
+      if (hasSecond) assert(category.ways.some((way) => way.id === 'w2'), `${category.id}: second answers without a second way`);
+    }
+  });
+
+  // Way 1 names the thing itself, so every item needs its own answers. Way 2
+  // answers repeat by design (two dishes from Italy), so it is not checked.
+  test('in way 1 no answer or alias belongs to two items of the same category', () => {
     const duplicates: string[] = [];
     for (const category of CATEGORIES) {
       const owners = new Map<string, string>();

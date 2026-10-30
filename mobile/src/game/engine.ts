@@ -1,11 +1,14 @@
-import { CATEGORIES, CATEGORY_BY_ID } from '../content/categories';
+import { CATEGORIES, CATEGORY_BY_ID, getAvailableWays } from '../content/categories';
 import { AVATARS, DEFAULT_AVATAR_ID } from '../content/avatars';
 import type {
   ArenaPlayer,
   BattleResolution,
   BattleSetup,
+  Category,
   CategoryItem,
+  CategoryLevel,
   GameState,
+  WayId,
 } from './types';
 import type { RandomSource } from './rng';
 
@@ -46,20 +49,58 @@ export function createBattleDeck(
   ));
 }
 
+// Decision 14: the 15 bot categories are drawn with a wide spread of levels.
+const ARENA_LEVEL_QUOTA: Record<CategoryLevel, number> = { hard: 3, medium: 6, easy: 6 };
+
+// Draws the other 15 arena categories: the level quotas first, then any active
+// category to fill a short level, and the hidden reserve only while too few
+// categories are active (most still wait for pictures).
+export function drawArenaCategories(
+  humanCategoryId: string,
+  random: RandomSource = Math.random,
+  count = 15,
+): string[] {
+  const pool = CATEGORIES.filter((item) => item.status === 'active' && item.id !== humanCategoryId);
+  const byLevel: Record<CategoryLevel, Category[]> = {
+    easy: shuffle(pool.filter((item) => item.level === 'easy'), random),
+    medium: shuffle(pool.filter((item) => item.level === 'medium'), random),
+    hard: shuffle(pool.filter((item) => item.level === 'hard'), random),
+  };
+  const picked: Category[] = [];
+  for (const level of ['hard', 'medium', 'easy'] as const) {
+    picked.push(...byLevel[level].splice(0, ARENA_LEVEL_QUOTA[level]));
+  }
+  const rest = shuffle([...byLevel.easy, ...byLevel.medium, ...byLevel.hard], random);
+  while (picked.length < count && rest.length > 0) picked.push(rest.shift()!);
+  const reserve = shuffle(
+    CATEGORIES.filter((item) => item.status === 'reserve' && item.id !== humanCategoryId),
+    random,
+  );
+  while (picked.length < count && reserve.length > 0) picked.push(reserve.shift()!);
+  if (picked.length < count) throw new Error('Not enough categories to fill the arena');
+  return shuffle(picked, random).map((item) => item.id);
+}
+
+// A bot plays its category in one of the available ways, at random.
+export function pickRandomWay(categoryId: string, random: RandomSource = Math.random): WayId {
+  const ways = getAvailableWays(CATEGORY_BY_ID[categoryId]);
+  return ways.length > 0 ? ways[Math.floor(random() * ways.length)].id : 'w1';
+}
+
 export function createInitialGame(
   humanCategoryId: string,
   random: RandomSource = Math.random,
   humanName = 'אני',
   humanAvatar = DEFAULT_AVATAR_ID,
+  humanWayId: WayId = 'w1',
 ): GameState {
-  if (!CATEGORY_BY_ID[humanCategoryId]) {
+  const humanCategory = CATEGORY_BY_ID[humanCategoryId];
+  if (!humanCategory) {
     throw new Error(`Unknown category: ${humanCategoryId}`);
   }
+  const humanWay = getAvailableWays(humanCategory).some((way) => way.id === humanWayId) ? humanWayId : 'w1';
 
-  const remainingCategories = shuffle(
-    CATEGORIES.filter((item) => item.id !== humanCategoryId),
-    random,
-  );
+  const remainingCategories = drawArenaCategories(humanCategoryId, random).map((id) => CATEGORY_BY_ID[id]);
   const selectedAvatar = AVATARS.find((avatar) => avatar.id === humanAvatar) ?? AVATARS[0];
   const remainingAvatars = shuffle(
     AVATARS.filter((avatar) => avatar.id !== selectedAvatar.id),
@@ -78,6 +119,7 @@ export function createInitialGame(
     const playerId = isHuman ? 'human' : `ai-${playerIndex}`;
     const aiCategoryIndex = cellId < humanCellId ? cellId : cellId - 1;
     const categoryId = isHuman ? humanCategoryId : remainingCategories[aiCategoryIndex].id;
+    const wayId = isHuman ? humanWay : pickRandomWay(categoryId, random);
     const aiAvatar = remainingAvatars[aiCategoryIndex];
     const aiName = isHuman
       ? humanName
@@ -91,6 +133,7 @@ export function createInitialGame(
       isHuman,
       isActive: true,
       categoryId,
+      wayId,
       cellIds: [cellId],
       hasPlayedThisRound: false,
       winStreak: 0,
@@ -234,6 +277,7 @@ export function createBattleSetup(
     attackerId,
     defenderId,
     categoryId: defender.categoryId,
+    wayId: defender.wayId,
     attackerSeconds: attacker.bonusReady ? 45 : 40,
     defenderSeconds: defender.bonusReady ? 45 : 40,
     attackerUsesBonus: attacker.bonusReady,
@@ -267,7 +311,9 @@ export function createFinalBattleSetup(
   }
   const opponent = finalists.find((player) => player.id !== chooserId)!;
   const setup = createBattleSetup(state, chooserId, opponent.id);
-  return { ...setup, categoryId, isFinal: true };
+  // The final is played the way its chosen category's owner plays it.
+  const owner = finalists.find((player) => player.categoryId === categoryId)!;
+  return { ...setup, categoryId, wayId: owner.wayId, isFinal: true };
 }
 
 // Decision 2 (GAME_RULES §5): every win counts toward the streak, defending
@@ -304,7 +350,9 @@ export function resolveBattle(
     ? setup.attackerUsesBonus
     : setup.defenderUsesBonus;
   const progress = nextWinnerProgress(winner, winnerUsedBonus);
+  // A winning defender inherits the attacker's category, and with it its way.
   const categoryId = winnerWasDefender ? loser.categoryId : winner.categoryId;
+  const wayId = winnerWasDefender ? loser.wayId : winner.wayId;
   const conqueredCells = [...new Set([...winner.cellIds, ...loser.cellIds])]
     .sort((a, b) => a - b);
 
@@ -313,6 +361,7 @@ export function resolveBattle(
     [winnerId]: {
       ...winner,
       categoryId,
+      wayId,
       cellIds: conqueredCells,
       winStreak: progress.winStreak,
       bonusReady: progress.bonusReady,

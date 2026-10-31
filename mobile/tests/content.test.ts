@@ -1,4 +1,5 @@
-import { CATEGORIES, getAvailableWays, getWayItems, PLAYABLE_CATEGORIES } from '../src/content/categories';
+import { CATEGORIES, getAvailableWays, getWayItems, MIN_PICTURE_ITEMS, PLAYABLE_CATEGORIES } from '../src/content/categories';
+import { IMAGED_ITEM_IDS } from '../src/content/image-manifest';
 import { normalizeAnswer } from '../src/game/engine';
 import { assert, assertEqual, suite, test } from './harness';
 
@@ -23,6 +24,16 @@ suite('content', () => {
       for (const way of ways) {
         const items = getWayItems(category, way.id);
         assert(items.length >= MIN_ITEMS_PER_WAY, `${category.id}/${way.id}: only ${items.length} items`);
+      }
+    }
+  });
+
+  // Pictures only, no emoji: a long duel must never run out of pictures.
+  test(`every playable category has at least ${MIN_PICTURE_ITEMS} items, each with a picture`, () => {
+    for (const category of PLAYABLE_CATEGORIES) {
+      assert(category.items.length >= MIN_PICTURE_ITEMS, `${category.id}: only ${category.items.length} pictures`);
+      for (const item of category.items) {
+        assert(Boolean(item.imageKey) && IMAGED_ITEM_IDS.includes(item.imageKey!), `${item.id}: no picture`);
       }
     }
   });

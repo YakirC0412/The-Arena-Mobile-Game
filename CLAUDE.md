@@ -68,6 +68,11 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 31.10.26 – Pictures only (decision 16): every category needs 30 items with a picture to be playable
+  (MIN_PICTURE_ITEMS, test). 480 Wikimedia pictures for 16 categories via `npm run wiki-images`
+  (scripts/fetch-wiki-images.js + scripts/wiki-sources.json: entry n = item n, a Wikipedia title or
+  "File:<commons name>"; `-- --force <ids>` re-downloads). Credits: assets/items/credits.json → docs/IMAGE_CREDITS.md.
+  Old animal/fruit illustrations moved to archive/. Clubs, snacks, apps still wait for the user (30 each).
 - 31.10.26 – iPhone duel fixes: skip acts on touch-down (raw touchstart/mousedown + preventDefault) so one tap
   skips and the keyboard stays open; the picture card is dark, nearly full height, never cropped.
 - 26.10.26 – Phase 0 done: Node installed, git history started, folder restructured, big files split.
@@ -110,6 +115,9 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   stay drawable. Current code is correct – do not "fix" it.
 - Streak/bonus (decision 2, revised 26.10.26): defender win counts as streak win 1; any return to arena
   resets `winStreak` (not `bonusReady`); bonus auto-applies in the next duel in any role. See GAME_RULES §5.
+- Picture review: put a contact sheet in mobile/public/ (served by the dev server), screenshot it, then
+  delete it. Wikipedia lead images are often paintings, diagrams or transparent PNGs – always look.
+- Ambulance/fire engine/police car pictures show the English word – accepted for now.
 - Bot skip in the human duel shows "דילגת" (you skipped) – wording should name the bot.
 - Deep links to QA screens need a full page load (`/qa-duel`); they work since web.output = single.
 - ESLint crashes: "Cannot find native binding" (unrs-resolver from the Codex pnpm install). Fix by

@@ -91,6 +91,14 @@ A picture that shows no name at all: `--ok 1,3,5` (removes "NAME VISIBLE" from t
 Hide full names, city names and initials written as text (FCB, CABJ). Keep monograms that are the
 crest itself (BVB, Juventus J). The shapes used are saved in credits.json (`blur`).
 
+## 5. Pictures from the user
+
+The user may send pictures (often a zip). Unzip into a new empty folder in the scratchpad, look at them
+on one sheet, match each to its item number, then
+`--file "2=<path>" --file "7=<path>"` – resized, saved, credited as "provided by the user". With
+hideName they come in as "NAME VISIBLE": blur or crop as in section 4. A trimmed copy (stray strips,
+borders) can be made first in the scratchpad.
+
 ## Keys
 
 Optional, in env vars or `.claude/skills/arena-images/keys.env` (git-ignored; never print it):

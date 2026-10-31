@@ -3005,6 +3005,16 @@
   "author": "Nsaum75",
   "page": "https://commons.wikimedia.org/wiki/File:Bamba_snack.jpg"
  },
+ "snacks-2": {
+  "source": "Bissli",
+  "via": "user",
+  "file": "snacks-2.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.02,0.2,0.94,0.32;0.04,0.4,0.42,0.27"
+ },
  "snacks-3": {
   "source": "Potato chip",
   "via": "wikipedia",
@@ -3037,6 +3047,36 @@
   "author": "Famartin",
   "page": "https://commons.wikimedia.org/wiki/File:2019-02-26_12_59_41_Cheetos_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg"
  },
+ "snacks-7": {
+  "source": "Apropo",
+  "via": "user",
+  "file": "snacks-7.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.2,0.24,0.6,0.25"
+ },
+ "snacks-8": {
+  "source": "Klik (snack)",
+  "via": "user",
+  "file": "snacks-8.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.2,0.16,0.54,0.33"
+ },
+ "snacks-9": {
+  "source": "Pesek Zman",
+  "via": "user",
+  "file": "snacks-9.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.37,0.42,0.41,0.14;0.08,0.4,0.13,0.2"
+ },
  "snacks-10": {
   "source": "File:2020-03-14 05 54 50 A Kit Kat bar broken in the middle in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
   "via": "wikipedia",
@@ -3045,6 +3085,16 @@
   "author": "Famartin",
   "page": "https://commons.wikimedia.org/wiki/File:2020-03-14_05_54_50_A_Kit_Kat_bar_broken_in_the_middle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg"
  },
+ "snacks-11": {
+  "source": "File:Twix-broken.jpg",
+  "via": "user",
+  "file": "snacks-11.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.12,0.16,0.72,0.38"
+ },
  "snacks-12": {
   "source": "Snickers",
   "via": "wikipedia",
@@ -3052,6 +3102,26 @@
   "license": "Public domain",
   "author": "Evan-Amos",
   "page": "https://commons.wikimedia.org/wiki/File:Snickers-broken.png"
+ },
+ "snacks-13": {
+  "source": "Mekupelet",
+  "via": "user",
+  "file": "snacks-13.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.19,0.41,0.5,0.14"
+ },
+ "snacks-14": {
+  "source": "Kif Kef",
+  "via": "user",
+  "file": "snacks-14.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.31,0.17,0.58,0.5"
  },
  "snacks-15": {
   "source": "Elite chocolate",
@@ -3076,6 +3146,26 @@
   "license": "Public domain",
   "author": "Evan-Amos",
   "page": "https://commons.wikimedia.org/wiki/File:Oreo-Two-Cookies.png"
+ },
+ "snacks-18": {
+  "source": "Loacker",
+  "via": "user",
+  "file": "snacks-18.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.15,0.2,0.44,0.16"
+ },
+ "snacks-19": {
+  "source": "Mentos",
+  "via": "user",
+  "file": "snacks-19.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.03,0.3,0.9,0.25"
  },
  "snacks-20": {
   "source": "M&M's",
@@ -3113,6 +3203,16 @@
   "hidden": "blur",
   "blur": "0.5,0.0,0.33,0.32"
  },
+ "snacks-24": {
+  "source": "Ad Hazot",
+  "via": "user",
+  "file": "snacks-24.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.24,0.36,0.62,0.2"
+ },
  "snacks-25": {
   "source": "Mars (chocolate bar)",
   "via": "wikipedia",
@@ -3131,6 +3231,16 @@
   "author": "Evan-Amos",
   "page": "https://commons.wikimedia.org/wiki/File:Bounty-Split.jpg"
  },
+ "snacks-27": {
+  "source": "Kinder Surprise",
+  "via": "user",
+  "file": "snacks-27.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.19,0.27,0.5,0.22"
+ },
  "snacks-28": {
   "source": "Maltesers",
   "via": "wikipedia",
@@ -3138,6 +3248,16 @@
   "license": "Public domain",
   "author": "Evan-Amos",
   "page": "https://commons.wikimedia.org/wiki/File:Maltesers-Pile-and-Split.jpg"
+ },
+ "snacks-29": {
+  "source": "Tami",
+  "via": "user",
+  "file": "snacks-29.jpg",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.4,0.36,0.34,0.24"
  },
  "snacks-30": {
   "source": "File:Popcorn in a bowl.jpg",

@@ -80,12 +80,12 @@
 | 21 | טובלרון | `snacks-21.jpg` |
 | 22 | מילקה | `snacks-22.jpg` |
 | 23 | נוטלה | `snacks-23.jpg` |
-| 24 | ופלים | `snacks-24.jpg` |
+| 24 | עד חצות | `snacks-24.jpg` |
 | 25 | מארס | `snacks-25.jpg` |
 | 26 | באונטי | `snacks-26.jpg` |
 | 27 | קינדר | `snacks-27.jpg` |
 | 28 | מלטיזרס | `snacks-28.jpg` |
-| 29 | אגוזי | `snacks-29.jpg` |
+| 29 | טעמי | `snacks-29.jpg` |
 | 30 | פופקורן | `snacks-30.jpg` |
 
 ## 📲 אפליקציות (30)

@@ -514,6 +514,7 @@ def main():
                    'padded to a square – a symbol without the name written next to it')
     p.add_argument("--ok", help="hideName: mark these items as checked – no name on the picture, e.g. 1,3,5")
     p.add_argument("--reject", help="take these pictures out of the game (to archive/replaced-images), e.g. 2,8")
+    p.add_argument("--file", action="append", help='use a picture the user gave: "<n>=<path>" (repeat for more)')
     p.add_argument("--min", type=int, default=400, help="min short side of searched photos (default 400)")
     p.add_argument("--sheet", action="store_true", help="only rebuild the contact sheet")
     p.add_argument("--grid", help="only make a gridded view of these items (up to 4), e.g. 3,4,5")
@@ -525,6 +526,19 @@ def main():
     entries = cfg["items"]
     credits = json.load(open(CREDITS, encoding="utf-8")) if os.path.exists(CREDITS) else {}
     edits = [(spec, "blur") for spec in a.boxes or []] + [(spec, "crop") for spec in a.crop or []]
+    for spec in a.file or []:
+        n, _, src = spec.partition("=")
+        item_id = f"{a.category}-{int(n)}"
+        data, _ = finalize(open(src, "rb").read(), cfg.get("kind", "photo"))
+        save(a.category, int(n), data)
+        old_reveal = reveal_path(a.category, item_id)
+        if os.path.exists(old_reveal):  # a new original: older blur/crop edits no longer apply
+            os.remove(old_reveal)
+        credits[item_id] = dict(source=entries[int(n) - 1].partition("::")[0], via="user", file=os.path.basename(src),
+                                license="provided by the user", author="—", page="",
+                                **({"needbox": True} if cfg.get("hideName") else {}))
+        print(f"FILE {item_id}" + (" (check the name)" if cfg.get("hideName") else ""))
+        edits.append(("", "ok"))
     for n in (a.reject or "").split(","):
         if n.strip() and existing(a.category, n.strip()):
             old = existing(a.category, n.strip())

@@ -492,22 +492,34 @@
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
 |---|---|---|---|---|
 | snacks-1 | Bamba (snack) | Nsaum75 | CC BY-SA 3.0 | [Bamba_snack.jpg](https://commons.wikimedia.org/wiki/File:Bamba_snack.jpg) |
+| snacks-2 | Bissli | — | provided by the user | snacks-2.jpg |
 | snacks-3 | Potato chip | Evan-Amos | Public domain | [Potato-Chips.jpg](https://commons.wikimedia.org/wiki/File:Potato-Chips.jpg) |
 | snacks-4 | Doritos | Larry D. Moore | CC BY 4.0 | [Nacho_Cheese_Flavor_Doritos_Ready_to_Party.jpg](https://commons.wikimedia.org/wiki/File:Nacho_Cheese_Flavor_Doritos_Ready_to_Party.jpg) |
 | snacks-5 | Pringles | Doctorine Dark | CC BY-SA 4.0 | [The_Pringles_Salt_&_Vinegar_chips.jpg](https://commons.wikimedia.org/wiki/File:The_Pringles_Salt_%26_Vinegar_chips.jpg) |
 | snacks-6 | Cheetos | Famartin | CC BY-SA 4.0 | [2019-02-26_12_59_41_Cheetos_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg](https://commons.wikimedia.org/wiki/File:2019-02-26_12_59_41_Cheetos_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg) |
+| snacks-7 | Apropo | — | provided by the user | snacks-7.jpg |
+| snacks-8 | Klik (snack) | — | provided by the user | snacks-8.jpg |
+| snacks-9 | Pesek Zman | — | provided by the user | snacks-9.jpg |
 | snacks-10 | File:2020-03-14 05 54 50 A Kit Kat bar broken in the middle in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg | Famartin | CC BY-SA 4.0 | [2020-03-14_05_54_50_A_Kit_Kat_bar_broken_in_the_middle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg](https://commons.wikimedia.org/wiki/File:2020-03-14_05_54_50_A_Kit_Kat_bar_broken_in_the_middle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg) |
+| snacks-11 | File:Twix-broken.jpg | — | provided by the user | snacks-11.jpg |
 | snacks-12 | Snickers | Evan-Amos | Public domain | [Snickers-broken.png](https://commons.wikimedia.org/wiki/File:Snickers-broken.png) |
+| snacks-13 | Mekupelet | — | provided by the user | snacks-13.jpg |
+| snacks-14 | Kif Kef | — | provided by the user | snacks-14.jpg |
 | snacks-15 | Elite chocolate | Tiia Monto | CC BY-SA 4.0 | [Elite_chocolate.jpg](https://commons.wikimedia.org/wiki/File:Elite_chocolate.jpg) |
 | snacks-16 | Krembo | Zivya | CC BY-SA 3.0 | [Krembo.JPG](https://commons.wikimedia.org/wiki/File:Krembo.JPG) |
 | snacks-17 | Oreo | Evan-Amos | Public domain | [Oreo-Two-Cookies.png](https://commons.wikimedia.org/wiki/File:Oreo-Two-Cookies.png) |
+| snacks-18 | Loacker | — | provided by the user | snacks-18.jpg |
+| snacks-19 | Mentos | — | provided by the user | snacks-19.jpg |
 | snacks-20 | M&M's | Evan-Amos | Public domain | [Plain-M&Ms-Pile.jpg](https://commons.wikimedia.org/wiki/File:Plain-M%26Ms-Pile.jpg) |
 | snacks-21 | Toblerone | Ashley Pomeroy | CC BY 3.0 | [Toblerone_3362.jpg](https://commons.wikimedia.org/wiki/File:Toblerone_3362.jpg) |
 | snacks-22 | File:Milka Alpine Milk Chocolate bar 100g with chunks broken off.jpg | Ubcule | CC BY-SA 4.0 | [Milka_Alpine_Milk_Chocolate_bar_100g_with_chunks_broken_off.jpg](https://commons.wikimedia.org/wiki/File:Milka_Alpine_Milk_Chocolate_bar_100g_with_chunks_broken_off.jpg) |
 | snacks-23 | Nutella | Janine from South Korea, United States | CC BY 2.0 | [Nutella_for_breakfast_-_Flickr_-_love.jsc.jpg](https://commons.wikimedia.org/wiki/File:Nutella_for_breakfast_-_Flickr_-_love.jsc.jpg) |
+| snacks-24 | Ad Hazot | — | provided by the user | snacks-24.jpg |
 | snacks-25 | Mars (chocolate bar) | Original uploader was Sannse at en.wikipedia | CC BY-SA 3.0 | [MBar_700.jpg](https://commons.wikimedia.org/wiki/File:MBar_700.jpg) |
 | snacks-26 | Bounty (chocolate bar) | Evan-Amos | Public domain | [Bounty-Split.jpg](https://commons.wikimedia.org/wiki/File:Bounty-Split.jpg) |
+| snacks-27 | Kinder Surprise | — | provided by the user | snacks-27.jpg |
 | snacks-28 | Maltesers | Evan-Amos | Public domain | [Maltesers-Pile-and-Split.jpg](https://commons.wikimedia.org/wiki/File:Maltesers-Pile-and-Split.jpg) |
+| snacks-29 | Tami | — | provided by the user | snacks-29.jpg |
 | snacks-30 | File:Popcorn in a bowl.jpg | Ziongarage | CC0 | [Popcorn_in_a_bowl.jpg](https://commons.wikimedia.org/wiki/File:Popcorn_in_a_bowl.jpg) |
 
 ## sports

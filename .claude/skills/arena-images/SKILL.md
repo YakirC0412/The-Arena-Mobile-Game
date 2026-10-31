@@ -35,6 +35,8 @@ If the category is not in `mobile/scripts/image-sources.json`, add it. Read the 
   AI description.
 - Choose `kind` from the category's battle way: a crest/icon/logo way → `logo` (logos allowed, padded on
   white); a packaging way → `product`; anything else → `photo`.
+- `"prefer": ["icon", "logo"]` when the article's lead image is a screenshot or a building (apps,
+  brands, companies): the article's first file with that word in its name is used instead.
 - `"hideName": true` when the answer must not be written on the picture (crests, packaging, app icons).
 - Write `prompt` so the AI picture answers the way: what must be visible, plain background, no text.
 - Categories missing here fall back to `wiki-sources.json` (kind photo).
@@ -77,6 +79,14 @@ Works on the saved pictures, offline, for any category; the unblurred original s
      0 = right, 90 = bottom, 270 = top, clockwise (top arc ≈ `195,345`, bottom arc ≈ `20,160`).
 3. All items in one call: `--boxes "4=0.2,0.25,0.6,0.07;0.27,0.39,0.46,0.15" --boxes "5=ring:0.5,0.5,0.42,0.27"`
 4. Check the gridded view again; text that is still readable → bigger shape, rerun that item.
+
+When the symbol stands next to the written name (TikTok, Spotify, Airbnb wordmarks), crop to the symbol
+instead of blurring: `--crop "4=0.02,0.35,0.29,0.3"` (rectangle, padded to a white square).
+
+A wrong picture nobody can fix now: `--reject 2,8` takes it out of the game (to archive/replaced-images);
+a later plain run tries to fill it again. A category is playable only with 30 good pictures.
+
+A picture that shows no name at all: `--ok 1,3,5` (removes "NAME VISIBLE" from the sheet).
 
 Hide full names, city names and initials written as text (FCB, CABJ). Keep monograms that are the
 crest itself (BVB, Juventus J). The shapes used are saved in credits.json (`blur`).

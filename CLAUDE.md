@@ -68,6 +68,10 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 31.10.26 – Snacks 18/30, apps 23/30 good pictures (both still "soon"). Skill gained `prefer` (icon/logo
+  file of the article), `--crop` (symbol without the wordmark), `--ok`, `--reject`. Missing: snacks 2,7,8,9,11,13,
+  14,18,19,24,27,29 (Israeli snacks have no free photos) and apps 2,18,21,23,27,28,30 – need an AI key or the
+  user's pictures. 17 "coming soon" categories wait for the user's item lists.
 - 31.10.26 – Club names hidden on 22 crests (user's choice): skill `--boxes` blurs rectangles/rings on saved
   pictures (originals in archive/reveal/, shapes in credits.json `blur`), `--grid` makes a 10% grid view.
   football-clubs has `hideName: true`; without an AI key a rerun saves the crest with its name (NEEDBOX).

@@ -209,6 +209,200 @@
   "author": "Peter Trimming",
   "page": "https://commons.wikimedia.org/wiki/File:Squirrel_posing.jpg"
  },
+ "apps-1": {
+  "source": "WhatsApp",
+  "via": "wikipedia",
+  "file": "WhatsApp_Logo_green.svg",
+  "license": "Public domain",
+  "author": "WhatsApp",
+  "page": "https://commons.wikimedia.org/wiki/File:WhatsApp_Logo_green.svg"
+ },
+ "apps-3": {
+  "source": "Facebook",
+  "via": "wikipedia",
+  "file": "2023_Facebook_icon.svg",
+  "license": "Public domain",
+  "author": "Facebook",
+  "page": "https://commons.wikimedia.org/wiki/File:2023_Facebook_icon.svg"
+ },
+ "apps-4": {
+  "source": "TikTok",
+  "via": "wikipedia",
+  "file": "TikTok_logo.svg",
+  "license": "PD",
+  "author": "ByteDance Ltd",
+  "page": "https://en.wikipedia.org/wiki/File:TikTok_logo.svg",
+  "hidden": "crop",
+  "crop": "0.02,0.35,0.29,0.3"
+ },
+ "apps-5": {
+  "source": "File:YouTube full-color icon (2017).svg",
+  "via": "wikipedia",
+  "file": "YouTube_full-color_icon_(2017).svg",
+  "license": "Public domain",
+  "author": "Original: YouTube Vector: Jarould",
+  "page": "https://commons.wikimedia.org/wiki/File:YouTube_full-color_icon_(2017).svg"
+ },
+ "apps-6": {
+  "source": "Spotify",
+  "via": "wikipedia",
+  "file": "2024_Spotify_Logo.svg",
+  "license": "Public domain",
+  "author": "Spotify AB, Dinamo Typefaces",
+  "page": "https://commons.wikimedia.org/wiki/File:2024_Spotify_Logo.svg",
+  "hidden": "crop",
+  "crop": "0.03,0.37,0.26,0.27"
+ },
+ "apps-7": {
+  "source": "File:Netflix icon.svg",
+  "via": "wikipedia",
+  "file": "Netflix_icon.svg",
+  "license": "Public domain",
+  "author": "CMetalCore",
+  "page": "https://commons.wikimedia.org/wiki/File:Netflix_icon.svg"
+ },
+ "apps-8": {
+  "source": "Waze",
+  "via": "wikipedia",
+  "file": "Logo_for_waze.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Logo_for_waze.svg",
+  "hidden": "crop",
+  "crop": "0.67,0.35,0.3,0.3"
+ },
+ "apps-9": {
+  "source": "Google Maps",
+  "via": "wikipedia",
+  "file": "Google_Maps_icon_(2026).svg",
+  "license": "Public domain",
+  "author": "Google Inc.",
+  "page": "https://commons.wikimedia.org/wiki/File:Google_Maps_icon_(2026).svg"
+ },
+ "apps-10": {
+  "source": "Gmail",
+  "via": "wikipedia",
+  "file": "Gmail_icon_(2026).svg",
+  "license": "Public domain",
+  "author": "Google",
+  "page": "https://commons.wikimedia.org/wiki/File:Gmail_icon_(2026).svg"
+ },
+ "apps-11": {
+  "source": "Telegram (software)",
+  "via": "wikipedia",
+  "file": "Telegram_2019_Logo.svg",
+  "license": "Public domain",
+  "author": "Telegram FZ LLC",
+  "page": "https://commons.wikimedia.org/wiki/File:Telegram_2019_Logo.svg"
+ },
+ "apps-12": {
+  "source": "Snapchat",
+  "via": "wikipedia",
+  "file": "Snapchat_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Snapchat_logo.svg"
+ },
+ "apps-13": {
+  "source": "Twitter",
+  "via": "wikipedia",
+  "file": "X_(formerly_Twitter)_logo_late_2025.svg",
+  "license": "Public domain",
+  "author": "X Corp.",
+  "page": "https://commons.wikimedia.org/wiki/File:X_(formerly_Twitter)_logo_late_2025.svg"
+ },
+ "apps-14": {
+  "source": "File:LinkedIn icon.svg",
+  "via": "wikipedia",
+  "file": "LinkedIn_icon.svg",
+  "license": "Public domain",
+  "author": "LinkedIn",
+  "page": "https://commons.wikimedia.org/wiki/File:LinkedIn_icon.svg"
+ },
+ "apps-15": {
+  "source": "File:Pinterest.svg",
+  "via": "wikipedia",
+  "file": "Pinterest.svg",
+  "license": "CC BY-SA 4.0",
+  "author": "Alexo88",
+  "page": "https://commons.wikimedia.org/wiki/File:Pinterest.svg"
+ },
+ "apps-16": {
+  "source": "File:Amazon icon.svg",
+  "via": "wikipedia",
+  "file": "Amazon_icon.svg",
+  "license": "Public domain",
+  "author": "Amazon.com, Inc.",
+  "page": "https://commons.wikimedia.org/wiki/File:Amazon_icon.svg"
+ },
+ "apps-17": {
+  "source": "Uber",
+  "via": "wikipedia",
+  "file": "Uber_App_Icon.svg",
+  "license": "Public domain",
+  "author": "Uber Technologies Inc.",
+  "page": "https://commons.wikimedia.org/wiki/File:Uber_App_Icon.svg"
+ },
+ "apps-19": {
+  "source": "Google Chrome",
+  "via": "wikipedia",
+  "file": "Google_Chrome_icon_(February_2022).svg",
+  "license": "Public domain",
+  "author": "Google",
+  "page": "https://commons.wikimedia.org/wiki/File:Google_Chrome_icon_(February_2022).svg"
+ },
+ "apps-20": {
+  "source": "File:Shazam icon.svg",
+  "via": "wikipedia",
+  "file": "Shazam_icon.svg",
+  "license": "Public domain",
+  "author": "Shazam",
+  "page": "https://commons.wikimedia.org/wiki/File:Shazam_icon.svg"
+ },
+ "apps-22": {
+  "source": "Moovit",
+  "via": "wikipedia",
+  "file": "Moovit-app-logo.png",
+  "license": "CC0",
+  "author": "Moovit Inc",
+  "page": "https://commons.wikimedia.org/wiki/File:Moovit-app-logo.png"
+ },
+ "apps-24": {
+  "source": "PayBox",
+  "via": "wikipedia",
+  "file": "PayBox_logo.webp",
+  "license": "Public domain",
+  "author": "PayBox",
+  "page": "https://commons.wikimedia.org/wiki/File:PayBox_logo.webp",
+  "hidden": "crop",
+  "crop": "0.03,0.35,0.3,0.3"
+ },
+ "apps-25": {
+  "source": "Google Drive",
+  "via": "wikipedia",
+  "file": "Google_Drive_icon_(2026).svg",
+  "license": "Public domain",
+  "author": "Google",
+  "page": "https://commons.wikimedia.org/wiki/File:Google_Drive_icon_(2026).svg"
+ },
+ "apps-26": {
+  "source": "ChatGPT",
+  "via": "wikipedia",
+  "file": "OpenAI_logo_2025_(symbol).svg",
+  "license": "Public domain",
+  "author": "OpenAI",
+  "page": "https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025_(symbol).svg"
+ },
+ "apps-29": {
+  "source": "Airbnb",
+  "via": "wikipedia",
+  "file": "Airbnb_Logo_Bélo.svg",
+  "license": "Public domain",
+  "author": "DesignStudio",
+  "page": "https://commons.wikimedia.org/wiki/File:Airbnb_Logo_B%C3%A9lo.svg",
+  "hidden": "crop",
+  "crop": "0.03,0.34,0.3,0.33"
+ },
  "birds-1": {
   "source": "Chicken",
   "file": "Male_and_female_chicken_sitting_together.jpg",
@@ -2802,6 +2996,156 @@
   "license": "CC BY-SA 4.0",
   "author": "пресс-служба ПАО \"Газпром нефть\"",
   "page": "https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B0%D1%80%D0%B2%D0%B0%D0%BB_%D0%B2_%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.jpg"
+ },
+ "snacks-1": {
+  "source": "Bamba (snack)",
+  "via": "wikipedia",
+  "file": "Bamba_snack.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Nsaum75",
+  "page": "https://commons.wikimedia.org/wiki/File:Bamba_snack.jpg"
+ },
+ "snacks-3": {
+  "source": "Potato chip",
+  "via": "wikipedia",
+  "file": "Potato-Chips.jpg",
+  "license": "Public domain",
+  "author": "Evan-Amos",
+  "page": "https://commons.wikimedia.org/wiki/File:Potato-Chips.jpg"
+ },
+ "snacks-4": {
+  "source": "Doritos",
+  "via": "wikipedia",
+  "file": "Nacho_Cheese_Flavor_Doritos_Ready_to_Party.jpg",
+  "license": "CC BY 4.0",
+  "author": "Larry D. Moore",
+  "page": "https://commons.wikimedia.org/wiki/File:Nacho_Cheese_Flavor_Doritos_Ready_to_Party.jpg"
+ },
+ "snacks-5": {
+  "source": "Pringles",
+  "via": "commons",
+  "file": "The_Pringles_Salt_&_Vinegar_chips.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Doctorine Dark",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Pringles_Salt_%26_Vinegar_chips.jpg"
+ },
+ "snacks-6": {
+  "source": "Cheetos",
+  "via": "commons",
+  "file": "2019-02-26_12_59_41_Cheetos_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Famartin",
+  "page": "https://commons.wikimedia.org/wiki/File:2019-02-26_12_59_41_Cheetos_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg"
+ },
+ "snacks-10": {
+  "source": "File:2020-03-14 05 54 50 A Kit Kat bar broken in the middle in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg",
+  "via": "wikipedia",
+  "file": "2020-03-14_05_54_50_A_Kit_Kat_bar_broken_in_the_middle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Famartin",
+  "page": "https://commons.wikimedia.org/wiki/File:2020-03-14_05_54_50_A_Kit_Kat_bar_broken_in_the_middle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg"
+ },
+ "snacks-12": {
+  "source": "Snickers",
+  "via": "wikipedia",
+  "file": "Snickers-broken.png",
+  "license": "Public domain",
+  "author": "Evan-Amos",
+  "page": "https://commons.wikimedia.org/wiki/File:Snickers-broken.png"
+ },
+ "snacks-15": {
+  "source": "Elite chocolate",
+  "via": "wikipedia",
+  "file": "Elite_chocolate.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Tiia Monto",
+  "page": "https://commons.wikimedia.org/wiki/File:Elite_chocolate.jpg"
+ },
+ "snacks-16": {
+  "source": "Krembo",
+  "via": "wikipedia",
+  "file": "Krembo.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Zivya",
+  "page": "https://commons.wikimedia.org/wiki/File:Krembo.JPG"
+ },
+ "snacks-17": {
+  "source": "Oreo",
+  "via": "wikipedia",
+  "file": "Oreo-Two-Cookies.png",
+  "license": "Public domain",
+  "author": "Evan-Amos",
+  "page": "https://commons.wikimedia.org/wiki/File:Oreo-Two-Cookies.png"
+ },
+ "snacks-20": {
+  "source": "M&M's",
+  "via": "wikipedia",
+  "file": "Plain-M&Ms-Pile.jpg",
+  "license": "Public domain",
+  "author": "Evan-Amos",
+  "page": "https://commons.wikimedia.org/wiki/File:Plain-M%26Ms-Pile.jpg"
+ },
+ "snacks-21": {
+  "source": "Toblerone",
+  "via": "wikipedia",
+  "file": "Toblerone_3362.jpg",
+  "license": "CC BY 3.0",
+  "author": "Ashley Pomeroy",
+  "page": "https://commons.wikimedia.org/wiki/File:Toblerone_3362.jpg",
+  "hidden": "blur",
+  "blur": "0.28,0.14,0.22,0.22;0.42,0.25,0.22,0.22;0.58,0.38,0.24,0.22;0.85,0.42,0.12,0.2"
+ },
+ "snacks-22": {
+  "source": "File:Milka Alpine Milk Chocolate bar 100g with chunks broken off.jpg",
+  "via": "wikipedia",
+  "file": "Milka_Alpine_Milk_Chocolate_bar_100g_with_chunks_broken_off.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Ubcule",
+  "page": "https://commons.wikimedia.org/wiki/File:Milka_Alpine_Milk_Chocolate_bar_100g_with_chunks_broken_off.jpg"
+ },
+ "snacks-23": {
+  "source": "Nutella",
+  "via": "wikipedia",
+  "file": "Nutella_for_breakfast_-_Flickr_-_love.jsc.jpg",
+  "license": "CC BY 2.0",
+  "author": "Janine from South Korea, United States",
+  "page": "https://commons.wikimedia.org/wiki/File:Nutella_for_breakfast_-_Flickr_-_love.jsc.jpg",
+  "hidden": "blur",
+  "blur": "0.5,0.0,0.33,0.32"
+ },
+ "snacks-25": {
+  "source": "Mars (chocolate bar)",
+  "via": "wikipedia",
+  "file": "MBar_700.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Original uploader was Sannse at en.wikipedia",
+  "page": "https://commons.wikimedia.org/wiki/File:MBar_700.jpg",
+  "hidden": "blur",
+  "blur": "0.6,0.48,0.4,0.3"
+ },
+ "snacks-26": {
+  "source": "Bounty (chocolate bar)",
+  "via": "wikipedia",
+  "file": "Bounty-Split.jpg",
+  "license": "Public domain",
+  "author": "Evan-Amos",
+  "page": "https://commons.wikimedia.org/wiki/File:Bounty-Split.jpg"
+ },
+ "snacks-28": {
+  "source": "Maltesers",
+  "via": "wikipedia",
+  "file": "Maltesers-Pile-and-Split.jpg",
+  "license": "Public domain",
+  "author": "Evan-Amos",
+  "page": "https://commons.wikimedia.org/wiki/File:Maltesers-Pile-and-Split.jpg"
+ },
+ "snacks-30": {
+  "source": "File:Popcorn in a bowl.jpg",
+  "via": "wikipedia",
+  "file": "Popcorn_in_a_bowl.jpg",
+  "license": "CC0",
+  "author": "Ziongarage",
+  "page": "https://commons.wikimedia.org/wiki/File:Popcorn_in_a_bowl.jpg"
  },
  "sports-1": {
   "source": "Association football",

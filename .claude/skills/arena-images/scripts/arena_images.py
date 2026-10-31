@@ -78,6 +78,24 @@ def wiki_lead(title, any_license):
     return pages[0].get("pageimage") if pages else None
 
 
+def wiki_named_file(title, words):
+    """First file used in the article whose name contains the item's name and one of words (in order),
+    e.g. ["icon", "logo"] -> "Instagram icon.png" before "Instagram logo 2022.svg"."""
+    d = get_json(WIKI_API + "?" + urllib.parse.urlencode({
+        "action": "query", "format": "json", "formatversion": 2, "redirects": 1, "prop": "images",
+        "imlimit": 100, "titles": title}))
+    pages = d.get("query", {}).get("pages", [])
+    names = [i["title"].split(":", 1)[1] for i in (pages[0].get("images") or [])] if pages else []
+    key = re.sub(r"\s*\(.*?\)", "", title).split()[0].lower().replace("-", "")  # "Amazon (company)" -> "amazon"
+    names = [n for n in names if key in n.lower().replace("-", "").replace("_", "")
+             and not re.search(r"oojs|commons-logo|wiki|edit|question_book|symbol_|padlock|ambox", n, re.I)]
+    for word in words:
+        for n in names:
+            if word.lower() in n.lower():
+                return n
+    return None
+
+
 def wiki_file(name):
     """Thumbnail url + license/author of a file on Wikipedia or Commons."""
     d = get_json(WIKI_API + "?" + urllib.parse.urlencode({
@@ -285,22 +303,39 @@ def reveal_path(category, item_id):
     return os.path.join(ARCHIVE, "reveal", category, f"{item_id}.jpg")
 
 
-def blur_item(category, n, spec, credits):
-    """Blur areas of an item's saved picture. The unblurred original is kept in archive/reveal/."""
+def crop_square(b, spec):
+    """Keep only the rectangle "x,y,w,h" (fractions), padded to a white square – e.g. a symbol next to its name."""
+    im = Image.open(io.BytesIO(b)).convert("RGB")
+    W, H = im.size
+    x, y, w, h = (float(v) for v in spec.split(","))
+    im = im.crop((int(x * W), int(y * H), int((x + w) * W), int((y + h) * H)))
+    data, _ = finalize(_jpeg(im), "logo")
+    return data
+
+
+def _jpeg(im):
+    buf = io.BytesIO()
+    im.save(buf, "JPEG", quality=92)
+    return buf.getvalue()
+
+
+def edit_item(category, n, spec, credits, how):
+    """Blur or crop an item's saved picture. The untouched original is kept in archive/reveal/."""
     item_id, cur = f"{category}-{n}", existing(category, n)
     if not cur:
-        return f"FAIL {item_id}: no picture to blur"
+        return f"FAIL {item_id}: no picture to {how}"
     rev = reveal_path(category, item_id)
     if not os.path.exists(rev):
         os.makedirs(os.path.dirname(rev), exist_ok=True)
         shutil.copy(cur, rev)
-    data = blur_shapes(open(rev, "rb").read(), spec)  # always from the original, so a rerun replaces the blur
+    original = open(rev, "rb").read()  # always from the original, so a rerun replaces the edit
+    data = blur_shapes(original, spec) if how == "blur" else crop_square(original, spec)
     os.remove(cur)
     with open(os.path.join(ITEMS_DIR, category, f"{item_id}.jpg"), "wb") as f:
         f.write(data)
-    credits.setdefault(item_id, {}).update(hidden="blur", blur=spec)
+    credits.setdefault(item_id, {}).update(hidden=how, **{how: spec})
     credits[item_id].pop("needbox", None)
-    return f"BLUR {item_id}"
+    return f"{how.upper()} {item_id}"
 
 
 # ---------- finding one item's picture ----------
@@ -311,6 +346,8 @@ def find_picture(entry, cfg, a):
     name, desc = name.strip(), (a.desc or desc.strip())
     if not a.ai:
         lead = name[5:] if name.startswith("File:") else None
+        if not lead and cfg.get("prefer"):
+            lead = wiki_named_file(name, cfg["prefer"])
         if not lead and cfg.get("wikipedia", True):
             lead = wiki_lead(name, any_license=kind == "logo")  # errors fail the item: better a rerun than an AI guess
         if lead and not (kind != "logo" and lead.lower().endswith(".svg")):
@@ -414,7 +451,7 @@ def contact_sheet(category, entries, credits):
         label = f"{n}. {entry.partition('::')[0].replace('File:', '')[:20]}"
         draw.text((x + 6, y + cell + 2), label, fill=color, font=font)
         note = ("MISSING" if not path else "AI - review" if cr.get("review") else "NAME VISIBLE" if cr.get("needbox")
-                else f'{cr.get("via", "")} {"(blurred)" if cr.get("hidden") else ""}')
+                else f'{cr.get("via", "")} {"(" + cr["hidden"] + ")" if cr.get("hidden") else ""}')
         draw.text((x + 6, y + cell + 17), note, fill=(255, 90, 90) if cr.get("needbox") else color, font=font)
     out = os.path.join(ARCHIVE, "image-review", f"{category}.jpg")
     os.makedirs(os.path.dirname(out), exist_ok=True)
@@ -473,6 +510,10 @@ def main():
     p.add_argument("--desc", help="AI description (use with --only for one item)")
     p.add_argument("--boxes", action="append", help='blur areas of saved pictures: "<n>=x,y,w,h;ring:cx,cy,ro,ri" '
                    '(fractions of the picture; repeat for more items; without "<n>=" it applies to --only)')
+    p.add_argument("--crop", action="append", help='keep only "<n>=x,y,w,h" (fractions) of saved pictures, '
+                   'padded to a square – a symbol without the name written next to it')
+    p.add_argument("--ok", help="hideName: mark these items as checked – no name on the picture, e.g. 1,3,5")
+    p.add_argument("--reject", help="take these pictures out of the game (to archive/replaced-images), e.g. 2,8")
     p.add_argument("--min", type=int, default=400, help="min short side of searched photos (default 400)")
     p.add_argument("--sheet", action="store_true", help="only rebuild the contact sheet")
     p.add_argument("--grid", help="only make a gridded view of these items (up to 4), e.g. 3,4,5")
@@ -483,12 +524,25 @@ def main():
     cfg = load_config(a.category)
     entries = cfg["items"]
     credits = json.load(open(CREDITS, encoding="utf-8")) if os.path.exists(CREDITS) else {}
-    if a.boxes:
-        for spec in a.boxes:
+    edits = [(spec, "blur") for spec in a.boxes or []] + [(spec, "crop") for spec in a.crop or []]
+    for n in (a.reject or "").split(","):
+        if n.strip() and existing(a.category, n.strip()):
+            old = existing(a.category, n.strip())
+            os.makedirs(os.path.join(ARCHIVE, "replaced-images"), exist_ok=True)
+            shutil.move(old, os.path.join(ARCHIVE, "replaced-images", f"{int(time.time())}-{os.path.basename(old)}"))
+            credits.pop(f"{a.category}-{n.strip()}", None)
+            print(f"REJECT {a.category}-{n.strip()}")
+            edits.append(("", "ok"))
+    for n in (a.ok or "").split(","):
+        if n.strip():
+            credits.setdefault(f"{a.category}-{n.strip()}", {}).pop("needbox", None)
+            edits.append(("", "ok"))
+    if edits:
+        for spec, how in edits:
             n, sep, shapes = spec.partition("=")
             items = [int(n)] if sep else [int(v) for v in (a.only or "").split(",") if v]
-            for item in items:
-                print(blur_item(a.category, item, shapes if sep else spec, credits))
+            for item in items if how != "ok" else []:
+                print(edit_item(a.category, item, shapes if sep else spec, credits, how))
     elif not a.sheet:
         only = {int(v) for v in a.only.split(",")} if a.only else None
         redo = a.force or a.ai
@@ -525,7 +579,7 @@ def main():
                 print(line, flush=True)
         if not todo:
             print("Nothing to do – every item already has a picture (use --only N --force to redo).")
-    if not a.sheet or a.boxes:
+    if not a.sheet or edits:
         ordered = dict(sorted(credits.items(), key=lambda kv: (kv[0].rsplit("-", 1)[0], int(kv[0].rsplit("-", 1)[1]))))
         with open(CREDITS, "w", encoding="utf-8") as f:
             f.write(json.dumps(ordered, indent=1, ensure_ascii=False) + "\n")

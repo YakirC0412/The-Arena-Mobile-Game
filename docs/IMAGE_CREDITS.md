@@ -39,6 +39,34 @@
 | animals-29 | Wolf | User:Mas3cf | CC BY-SA 4.0 | [Eurasian_wolf_2.jpg](https://commons.wikimedia.org/wiki/File:Eurasian_wolf_2.jpg) |
 | animals-30 | Red squirrel | Peter Trimming | CC BY 2.0 | [Squirrel_posing.jpg](https://commons.wikimedia.org/wiki/File:Squirrel_posing.jpg) |
 
+## apps
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| apps-1 | WhatsApp | WhatsApp | Public domain | [WhatsApp_Logo_green.svg](https://commons.wikimedia.org/wiki/File:WhatsApp_Logo_green.svg) |
+| apps-3 | Facebook | Facebook | Public domain | [2023_Facebook_icon.svg](https://commons.wikimedia.org/wiki/File:2023_Facebook_icon.svg) |
+| apps-4 | TikTok | ByteDance Ltd | PD | [TikTok_logo.svg](https://en.wikipedia.org/wiki/File:TikTok_logo.svg) |
+| apps-5 | File:YouTube full-color icon (2017).svg | Original: YouTube Vector: Jarould | Public domain | [YouTube_full-color_icon_(2017).svg](https://commons.wikimedia.org/wiki/File:YouTube_full-color_icon_(2017).svg) |
+| apps-6 | Spotify | Spotify AB, Dinamo Typefaces | Public domain | [2024_Spotify_Logo.svg](https://commons.wikimedia.org/wiki/File:2024_Spotify_Logo.svg) |
+| apps-7 | File:Netflix icon.svg | CMetalCore | Public domain | [Netflix_icon.svg](https://commons.wikimedia.org/wiki/File:Netflix_icon.svg) |
+| apps-8 | Waze | — | Fair use | [Logo_for_waze.svg](https://en.wikipedia.org/wiki/File:Logo_for_waze.svg) |
+| apps-9 | Google Maps | Google Inc. | Public domain | [Google_Maps_icon_(2026).svg](https://commons.wikimedia.org/wiki/File:Google_Maps_icon_(2026).svg) |
+| apps-10 | Gmail | Google | Public domain | [Gmail_icon_(2026).svg](https://commons.wikimedia.org/wiki/File:Gmail_icon_(2026).svg) |
+| apps-11 | Telegram (software) | Telegram FZ LLC | Public domain | [Telegram_2019_Logo.svg](https://commons.wikimedia.org/wiki/File:Telegram_2019_Logo.svg) |
+| apps-12 | Snapchat | — | Fair use | [Snapchat_logo.svg](https://en.wikipedia.org/wiki/File:Snapchat_logo.svg) |
+| apps-13 | Twitter | X Corp. | Public domain | [X_(formerly_Twitter)_logo_late_2025.svg](https://commons.wikimedia.org/wiki/File:X_(formerly_Twitter)_logo_late_2025.svg) |
+| apps-14 | File:LinkedIn icon.svg | LinkedIn | Public domain | [LinkedIn_icon.svg](https://commons.wikimedia.org/wiki/File:LinkedIn_icon.svg) |
+| apps-15 | File:Pinterest.svg | Alexo88 | CC BY-SA 4.0 | [Pinterest.svg](https://commons.wikimedia.org/wiki/File:Pinterest.svg) |
+| apps-16 | File:Amazon icon.svg | Amazon.com, Inc. | Public domain | [Amazon_icon.svg](https://commons.wikimedia.org/wiki/File:Amazon_icon.svg) |
+| apps-17 | Uber | Uber Technologies Inc. | Public domain | [Uber_App_Icon.svg](https://commons.wikimedia.org/wiki/File:Uber_App_Icon.svg) |
+| apps-19 | Google Chrome | Google | Public domain | [Google_Chrome_icon_(February_2022).svg](https://commons.wikimedia.org/wiki/File:Google_Chrome_icon_(February_2022).svg) |
+| apps-20 | File:Shazam icon.svg | Shazam | Public domain | [Shazam_icon.svg](https://commons.wikimedia.org/wiki/File:Shazam_icon.svg) |
+| apps-22 | Moovit | Moovit Inc | CC0 | [Moovit-app-logo.png](https://commons.wikimedia.org/wiki/File:Moovit-app-logo.png) |
+| apps-24 | PayBox | PayBox | Public domain | [PayBox_logo.webp](https://commons.wikimedia.org/wiki/File:PayBox_logo.webp) |
+| apps-25 | Google Drive | Google | Public domain | [Google_Drive_icon_(2026).svg](https://commons.wikimedia.org/wiki/File:Google_Drive_icon_(2026).svg) |
+| apps-26 | ChatGPT | OpenAI | Public domain | [OpenAI_logo_2025_(symbol).svg](https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025_(symbol).svg) |
+| apps-29 | Airbnb | DesignStudio | Public domain | [Airbnb_Logo_Bélo.svg](https://commons.wikimedia.org/wiki/File:Airbnb_Logo_B%C3%A9lo.svg) |
+
 ## birds
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
@@ -458,6 +486,29 @@
 | sea-28 | Whale shark | Abe Khao Lak | CC BY-SA 4.0 | [Similan_Dive_Center_-_great_whale_shark.jpg](https://commons.wikimedia.org/wiki/File:Similan_Dive_Center_-_great_whale_shark.jpg) |
 | sea-29 | Ocean sunfish | U.S. National Oceanic and Atmospheric Administration | Public domain | [Mola_mola.jpg](https://commons.wikimedia.org/wiki/File:Mola_mola.jpg) |
 | sea-30 | Narwhal | пресс-служба ПАО "Газпром нефть" | CC BY-SA 4.0 | [Нарвал_в_российской_Арктике.jpg](https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B0%D1%80%D0%B2%D0%B0%D0%BB_%D0%B2_%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.jpg) |
+
+## snacks
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| snacks-1 | Bamba (snack) | Nsaum75 | CC BY-SA 3.0 | [Bamba_snack.jpg](https://commons.wikimedia.org/wiki/File:Bamba_snack.jpg) |
+| snacks-3 | Potato chip | Evan-Amos | Public domain | [Potato-Chips.jpg](https://commons.wikimedia.org/wiki/File:Potato-Chips.jpg) |
+| snacks-4 | Doritos | Larry D. Moore | CC BY 4.0 | [Nacho_Cheese_Flavor_Doritos_Ready_to_Party.jpg](https://commons.wikimedia.org/wiki/File:Nacho_Cheese_Flavor_Doritos_Ready_to_Party.jpg) |
+| snacks-5 | Pringles | Doctorine Dark | CC BY-SA 4.0 | [The_Pringles_Salt_&_Vinegar_chips.jpg](https://commons.wikimedia.org/wiki/File:The_Pringles_Salt_%26_Vinegar_chips.jpg) |
+| snacks-6 | Cheetos | Famartin | CC BY-SA 4.0 | [2019-02-26_12_59_41_Cheetos_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg](https://commons.wikimedia.org/wiki/File:2019-02-26_12_59_41_Cheetos_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg) |
+| snacks-10 | File:2020-03-14 05 54 50 A Kit Kat bar broken in the middle in the Franklin Farm section of Oak Hill, Fairfax County, Virginia.jpg | Famartin | CC BY-SA 4.0 | [2020-03-14_05_54_50_A_Kit_Kat_bar_broken_in_the_middle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg](https://commons.wikimedia.org/wiki/File:2020-03-14_05_54_50_A_Kit_Kat_bar_broken_in_the_middle_in_the_Franklin_Farm_section_of_Oak_Hill,_Fairfax_County,_Virginia.jpg) |
+| snacks-12 | Snickers | Evan-Amos | Public domain | [Snickers-broken.png](https://commons.wikimedia.org/wiki/File:Snickers-broken.png) |
+| snacks-15 | Elite chocolate | Tiia Monto | CC BY-SA 4.0 | [Elite_chocolate.jpg](https://commons.wikimedia.org/wiki/File:Elite_chocolate.jpg) |
+| snacks-16 | Krembo | Zivya | CC BY-SA 3.0 | [Krembo.JPG](https://commons.wikimedia.org/wiki/File:Krembo.JPG) |
+| snacks-17 | Oreo | Evan-Amos | Public domain | [Oreo-Two-Cookies.png](https://commons.wikimedia.org/wiki/File:Oreo-Two-Cookies.png) |
+| snacks-20 | M&M's | Evan-Amos | Public domain | [Plain-M&Ms-Pile.jpg](https://commons.wikimedia.org/wiki/File:Plain-M%26Ms-Pile.jpg) |
+| snacks-21 | Toblerone | Ashley Pomeroy | CC BY 3.0 | [Toblerone_3362.jpg](https://commons.wikimedia.org/wiki/File:Toblerone_3362.jpg) |
+| snacks-22 | File:Milka Alpine Milk Chocolate bar 100g with chunks broken off.jpg | Ubcule | CC BY-SA 4.0 | [Milka_Alpine_Milk_Chocolate_bar_100g_with_chunks_broken_off.jpg](https://commons.wikimedia.org/wiki/File:Milka_Alpine_Milk_Chocolate_bar_100g_with_chunks_broken_off.jpg) |
+| snacks-23 | Nutella | Janine from South Korea, United States | CC BY 2.0 | [Nutella_for_breakfast_-_Flickr_-_love.jsc.jpg](https://commons.wikimedia.org/wiki/File:Nutella_for_breakfast_-_Flickr_-_love.jsc.jpg) |
+| snacks-25 | Mars (chocolate bar) | Original uploader was Sannse at en.wikipedia | CC BY-SA 3.0 | [MBar_700.jpg](https://commons.wikimedia.org/wiki/File:MBar_700.jpg) |
+| snacks-26 | Bounty (chocolate bar) | Evan-Amos | Public domain | [Bounty-Split.jpg](https://commons.wikimedia.org/wiki/File:Bounty-Split.jpg) |
+| snacks-28 | Maltesers | Evan-Amos | Public domain | [Maltesers-Pile-and-Split.jpg](https://commons.wikimedia.org/wiki/File:Maltesers-Pile-and-Split.jpg) |
+| snacks-30 | File:Popcorn in a bowl.jpg | Ziongarage | CC0 | [Popcorn_in_a_bowl.jpg](https://commons.wikimedia.org/wiki/File:Popcorn_in_a_bowl.jpg) |
 
 ## sports
 

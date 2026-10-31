@@ -34,8 +34,8 @@ If the category is not in `mobile/scripts/image-sources.json`, add it. Read the 
   usually the best picture). `File:<name>` pins a Wikimedia file. `Title::<AI description>` sets this item's
   AI description.
 - Choose `kind` from the category's battle way: a crest/icon/logo way → `logo` (logos allowed, padded on
-  white); a packaging way → `product` (+ `"hideName": true` when the way says "without the name");
-  anything else → `photo`.
+  white); a packaging way → `product`; anything else → `photo`.
+- `"hideName": true` when the answer must not be written on the picture (crests, packaging, app icons).
 - Write `prompt` so the AI picture answers the way: what must be visible, plain background, no text.
 - Categories missing here fall back to `wiki-sources.json` (kind photo).
 
@@ -44,8 +44,8 @@ If the category is not in `mobile/scripts/image-sources.json`, add it. Read the 
 - `OK <id> <WxH> <source>` – saved (`wikipedia`, `pexels`, `pixabay`, `openverse`, `commons`)
 - `AI <id> ... (review)` – nothing good was found; AI picture saved and marked for review
 - `FAIL <id> <item>: <reason>` – nothing saved; fix the entry (better title or `File:`) and rerun
-- `NEEDBOX <id> <reveal path>` – hideName failed: read that picture once, estimate text/logo rectangles
-  as fractions (x,y,w,h) and rerun with `--only <n> --boxes "x,y,w,h;..."`
+- `NEEDBOX <id> <path>` – hideName: the AI could not remove the name (no key / refused). The picture is
+  saved WITH the name and shown as "NAME VISIBLE" on the sheet – blur it (section 4).
 - last line `SHEET <path>` – contact sheet of the whole category (red frame = AI, needs review)
 
 The script also updates `assets/items/credits.json`, `docs/IMAGE_CREDITS.md` and the game's picture
@@ -63,6 +63,23 @@ the user, in Hebrew, which numbers look wrong. Show the user the sheet too. Fix:
 
 Replaced pictures move to `archive/replaced-images/` (never deleted). Then follow CLAUDE.md:
 typecheck, tests, open the category in `/qa-duel?category=<id>`, commit, push.
+
+## 4. Blur names by hand (`--boxes`)
+
+Works on the saved pictures, offline, for any category; the unblurred original stays in
+`archive/reveal/<category>/` and every rerun blurs from it, so just rerun with better shapes.
+
+1. `--grid 3,4,5,7` (up to 4 items) prints `GRID <path>`: the pictures side by side, each 420px square with
+   a line every 10% (magenta = 50%) under a 24px label strip. Read it and note where the text is.
+2. Shapes, as fractions of the picture, split by `;`:
+   - rectangle `x,y,w,h`
+   - ring `ring:cx,cy,r_out,r_in[,from,to]` – text running around a round badge; `from,to` in degrees,
+     0 = right, 90 = bottom, 270 = top, clockwise (top arc ≈ `195,345`, bottom arc ≈ `20,160`).
+3. All items in one call: `--boxes "4=0.2,0.25,0.6,0.07;0.27,0.39,0.46,0.15" --boxes "5=ring:0.5,0.5,0.42,0.27"`
+4. Check the gridded view again; text that is still readable → bigger shape, rerun that item.
+
+Hide full names, city names and initials written as text (FCB, CABJ). Keep monograms that are the
+crest itself (BVB, Juventus J). The shapes used are saved in credits.json (`blur`).
 
 ## Keys
 

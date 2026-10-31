@@ -1055,7 +1055,9 @@
   "file": "FC_Barcelona_(crest).svg",
   "license": "PD",
   "author": "FC Barcelona",
-  "page": "https://en.wikipedia.org/wiki/File:FC_Barcelona_(crest).svg"
+  "page": "https://en.wikipedia.org/wiki/File:FC_Barcelona_(crest).svg",
+  "hidden": "blur",
+  "blur": "0.32,0.42,0.36,0.12"
  },
  "football-clubs-2": {
   "source": "Real Madrid CF",
@@ -1071,7 +1073,9 @@
   "file": "Manchester_United_FC_crest.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Manchester_United_FC_crest.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Manchester_United_FC_crest.svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.55,0.44,0.29,195,345;0.25,0.69,0.52,0.2"
  },
  "football-clubs-4": {
   "source": "Liverpool F.C.",
@@ -1079,7 +1083,9 @@
   "file": "Liverpool_FC.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Liverpool_FC.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Liverpool_FC.svg",
+  "hidden": "blur",
+  "blur": "0.2,0.25,0.6,0.07;0.27,0.39,0.46,0.15;0.35,0.83,0.3,0.09"
  },
  "football-clubs-5": {
   "source": "FC Bayern Munich",
@@ -1087,7 +1093,9 @@
   "file": "FC_Bayern_München_logo_(2024).svg",
   "license": "Public domain",
   "author": "FC Bayern Munich",
-  "page": "https://commons.wikimedia.org/wiki/File:FC_Bayern_M%C3%BCnchen_logo_(2024).svg"
+  "page": "https://commons.wikimedia.org/wiki/File:FC_Bayern_M%C3%BCnchen_logo_(2024).svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.5,0.42,0.27"
  },
  "football-clubs-6": {
   "source": "Juventus FC",
@@ -1103,7 +1111,9 @@
   "file": "Chelsea_FC.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Chelsea_FC.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Chelsea_FC.svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.5,0.42,0.31,205,335;ring:0.5,0.5,0.42,0.31,25,155"
  },
  "football-clubs-8": {
   "source": "Arsenal F.C.",
@@ -1111,7 +1121,9 @@
   "file": "Arsenal_FC.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Arsenal_FC.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Arsenal_FC.svg",
+  "hidden": "blur",
+  "blur": "0.21,0.19,0.58,0.16"
  },
  "football-clubs-9": {
   "source": "Manchester City F.C.",
@@ -1119,7 +1131,9 @@
   "file": "Manchester_City_FC_badge.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Manchester_City_FC_badge.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Manchester_City_FC_badge.svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.5,0.41,0.29,190,350;0.35,0.77,0.3,0.12"
  },
  "football-clubs-10": {
   "source": "Paris Saint-Germain F.C.",
@@ -1127,7 +1141,9 @@
   "file": "Paris_Saint-Germain_F.C..svg",
   "license": "PD",
   "author": "Paris Saint-Germain Football Club",
-  "page": "https://en.wikipedia.org/wiki/File:Paris_Saint-Germain_F.C..svg"
+  "page": "https://en.wikipedia.org/wiki/File:Paris_Saint-Germain_F.C..svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.5,0.42,0.27,195,345;ring:0.5,0.5,0.43,0.3,20,160"
  },
  "football-clubs-11": {
   "source": "AC Milan",
@@ -1135,7 +1151,9 @@
   "file": "Logo_of_AC_Milan.svg",
   "license": "Public domain",
   "author": "A.C. Milan Uploaded by Vargklo at en.wikipedia",
-  "page": "https://commons.wikimedia.org/wiki/File:Logo_of_AC_Milan.svg"
+  "page": "https://commons.wikimedia.org/wiki/File:Logo_of_AC_Milan.svg",
+  "hidden": "blur",
+  "blur": "0.3,0.13,0.4,0.15;0.33,0.72,0.34,0.13"
  },
  "football-clubs-12": {
   "source": "Inter Milan",
@@ -1167,7 +1185,9 @@
   "file": "Tottenham_Hotspur.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Tottenham_Hotspur.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Tottenham_Hotspur.svg",
+  "hidden": "blur",
+  "blur": "0.26,0.73,0.48,0.21"
  },
  "football-clubs-16": {
   "source": "AFC Ajax",
@@ -1175,7 +1195,9 @@
   "file": "Logo_AFC_Ajax_(1928-1991,_2025-).png",
   "license": "Public domain",
   "author": "AFC Ajax",
-  "page": "https://commons.wikimedia.org/wiki/File:Logo_AFC_Ajax_(1928-1991,_2025-).png"
+  "page": "https://commons.wikimedia.org/wiki/File:Logo_AFC_Ajax_(1928-1991,_2025-).png",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.5,0.48,0.32,150,300"
  },
  "football-clubs-17": {
   "source": "Maccabi Tel Aviv F.C.",
@@ -1183,7 +1205,9 @@
   "file": "Maccabi_Tel_Aviv_F.C._logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Maccabi_Tel_Aviv_F.C._logo.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Maccabi_Tel_Aviv_F.C._logo.svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.585,0.37,0.24,190,350;0.37,0.83,0.27,0.09;0.32,0.69,0.1,0.1;0.57,0.69,0.1,0.1"
  },
  "football-clubs-18": {
   "source": "Maccabi Haifa F.C.",
@@ -1191,7 +1215,9 @@
   "file": "Maccabi_Haifa_F.C._logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Maccabi_Haifa_F.C._logo.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Maccabi_Haifa_F.C._logo.svg",
+  "hidden": "blur",
+  "blur": "ring:0.47,0.595,0.37,0.22,5,300"
  },
  "football-clubs-19": {
   "source": "Hapoel Be'er Sheva F.C.",
@@ -1199,7 +1225,9 @@
   "file": "Logo-hapoel-positive.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Logo-hapoel-positive.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Logo-hapoel-positive.svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.583,0.345,0.245,180,360;0.33,0.48,0.17,0.06"
  },
  "football-clubs-20": {
   "source": "Beitar Jerusalem F.C.",
@@ -1207,7 +1235,9 @@
   "file": "Beitar_Jerusalem_F.C._logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Beitar_Jerusalem_F.C._logo.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Beitar_Jerusalem_F.C._logo.svg",
+  "hidden": "blur",
+  "blur": "0.22,0.31,0.56,0.155;0.36,0.79,0.28,0.11"
  },
  "football-clubs-21": {
   "source": "SSC Napoli",
@@ -1223,7 +1253,9 @@
   "file": "AS_Roma_logo_(2017).svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:AS_Roma_logo_(2017).svg"
+  "page": "https://en.wikipedia.org/wiki/File:AS_Roma_logo_(2017).svg",
+  "hidden": "blur",
+  "blur": "0.24,0.56,0.52,0.13;0.37,0.73,0.26,0.1"
  },
  "football-clubs-23": {
   "source": "Sevilla FC",
@@ -1239,7 +1271,9 @@
   "file": "SL_Benfica_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:SL_Benfica_logo.svg"
+  "page": "https://en.wikipedia.org/wiki/File:SL_Benfica_logo.svg",
+  "hidden": "blur",
+  "blur": "0.38,0.53,0.3,0.27"
  },
  "football-clubs-25": {
   "source": "FC Porto",
@@ -1247,7 +1281,9 @@
   "file": "FC_Porto.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:FC_Porto.svg"
+  "page": "https://en.wikipedia.org/wiki/File:FC_Porto.svg",
+  "hidden": "blur",
+  "blur": "0.27,0.68,0.46,0.2"
  },
  "football-clubs-26": {
   "source": "Celtic F.C.",
@@ -1255,7 +1291,9 @@
   "file": "Celtic_FC_crest.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Celtic_FC_crest.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Celtic_FC_crest.svg",
+  "hidden": "blur",
+  "blur": "ring:0.494,0.514,0.42,0.3,175,365;0.37,0.78,0.26,0.13"
  },
  "football-clubs-27": {
   "source": "Galatasaray S.K. (football)",
@@ -1271,7 +1309,9 @@
   "file": "Fenerbahçe.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Fenerbah%C3%A7e.svg"
+  "page": "https://en.wikipedia.org/wiki/File:Fenerbah%C3%A7e.svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.51,0.43,0.32,140,400;0.36,0.77,0.28,0.12"
  },
  "football-clubs-29": {
   "source": "Boca Juniors",
@@ -1279,7 +1319,9 @@
   "file": "Boca_Juniors_logo18.svg",
   "license": "Public domain",
   "author": "Estudio Shakespear",
-  "page": "https://commons.wikimedia.org/wiki/File:Boca_Juniors_logo18.svg"
+  "page": "https://commons.wikimedia.org/wiki/File:Boca_Juniors_logo18.svg",
+  "hidden": "blur",
+  "blur": "0.19,0.32,0.62,0.2"
  },
  "football-clubs-30": {
   "source": "Feyenoord",
@@ -1287,7 +1329,9 @@
   "file": "Feyenoord_logo_since_2024.svg",
   "license": "Public domain",
   "author": "Feyenoord Rotterdam N.V.",
-  "page": "https://commons.wikimedia.org/wiki/File:Feyenoord_logo_since_2024.svg"
+  "page": "https://commons.wikimedia.org/wiki/File:Feyenoord_logo_since_2024.svg",
+  "hidden": "blur",
+  "blur": "ring:0.5,0.5,0.43,0.31"
  },
  "football-players-1": {
   "source": "Lionel Messi",

@@ -68,6 +68,9 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 31.10.26 – Club names hidden on 22 crests (user's choice): skill `--boxes` blurs rectangles/rings on saved
+  pictures (originals in archive/reveal/, shapes in credits.json `blur`), `--grid` makes a 10% grid view.
+  football-clubs has `hideName: true`; without an AI key a rerun saves the crest with its name (NEEDBOX).
 - 31.10.26 – Picture skill (decision 17): `.claude/skills/arena-images` fills a whole category from
   mobile/scripts/image-sources.json (kind photo|logo|product, query, AI prompt, English item n = item n):
   Wikipedia lead image → photo search → AI (marked review), 640px JPEG, credits, `npm run images`, contact
@@ -122,7 +125,6 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - Picture review: put a contact sheet in mobile/public/ (served by the dev server), screenshot it, then
   delete it. Wikipedia lead images are often paintings, diagrams or transparent PNGs – always look.
 - Ambulance/fire engine/police car pictures show the English word – accepted for now.
-- Most club crests show the club name (LIVERPOOL, ARSENAL…) – the answer is visible; open question.
 - Free Pollinations AI now answers 402 without a token; AI fallback needs POLLINATIONS_TOKEN or
   OPENAI_API_KEY in .claude/skills/arena-images/keys.env (git-ignored; the user copies it).
 - Bot skip in the human duel shows "דילגת" (you skipped) – wording should name the bot.

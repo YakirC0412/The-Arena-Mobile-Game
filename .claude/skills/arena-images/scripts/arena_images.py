@@ -10,7 +10,7 @@ Usage:
   arena_images.py <category>                      items that have no picture yet
   arena_images.py <category> --only 3,7 --force   redo these items
   arena_images.py <category> --only 9 --ai --desc "red liver bird crest"   AI, own description
-  arena_images.py <category> --only 4 --boxes "0.3,0.4,0.4,0.15"   blur areas (hideName categories)
+  arena_images.py <category> --boxes "4=0.3,0.4,0.4,0.15;ring:0.5,0.5,0.45,0.35"   blur areas of item 4
   arena_images.py <category> --sheet              only rebuild the contact sheet
 
 Needs Python 3 + Pillow. Keys (all optional): env vars or <skill>/keys.env –
@@ -19,7 +19,7 @@ PEXELS_API_KEY, PIXABAY_API_KEY, POLLINATIONS_TOKEN, OPENAI_API_KEY.
 import argparse, base64, concurrent.futures as cf, io, json, os, random, re, shutil, subprocess, sys, threading, time
 import urllib.error, urllib.parse, urllib.request
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont
 
 SKILL_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPO = os.path.dirname(os.path.dirname(os.path.dirname(SKILL_DIR)))
@@ -228,9 +228,7 @@ HIDE_PROMPT = ("Remove ALL text, letters, words, numbers, brand names and logos 
                "Fill those areas with the surrounding colors and texture so it looks natural. Keep everything else the same.")
 
 
-def hide_name(b, url, boxes):
-    if boxes:
-        return blur_boxes(b, [tuple(float(v) for v in box.split(",")) for box in boxes.split(";") if box.strip()]), "blur-boxes"
+def hide_name(b, url):
     errors = []
     with _ai_lock:
         if url:
@@ -256,20 +254,53 @@ def hide_name(b, url, boxes):
     return None, "; ".join(errors)
 
 
-def blur_boxes(b, boxes):
+def blur_shapes(b, spec):
+    """Blur areas of a saved picture. spec: shapes split by ';', all in fractions of the picture –
+    "x,y,w,h" = rectangle, "ring:cx,cy,r_out,r_in[,from,to]" = band between two circles (text around round
+    badges), optionally only from..to degrees (0 = right, 90 = bottom, 270 = top; clockwise)."""
     im = Image.open(io.BytesIO(b)).convert("RGB")
     W, H = im.size
-    for x, y, w, h in boxes:
-        if max(x, y, w, h) <= 1:
-            x, y, w, h = x * W, y * H, w * W, h * H
-        p = int(max(w, h) * 0.25) + 4
-        box = (max(0, int(x - p)), max(0, int(y - p)), min(W, int(x + w + p)), min(H, int(y + h + p)))
-        reg = im.crop(box)
-        reg = reg.resize((max(1, reg.width // 16), max(1, reg.height // 16))).resize(reg.size)
-        im.paste(reg.filter(ImageFilter.GaussianBlur(max(6, reg.width // 20))), box)
+    mask = Image.new("L", im.size, 0)
+    for shape in filter(None, (v.strip() for v in spec.split(";"))):
+        part = Image.new("L", im.size, 0)
+        draw = ImageDraw.Draw(part)
+        if shape.startswith("ring:"):
+            cx, cy, ro, ri, *arc = (float(v) for v in shape[5:].split(","))
+            start, end = arc if arc else (0, 360)
+            draw.pieslice(((cx - ro) * W, (cy - ro) * H, (cx + ro) * W, (cy + ro) * H), start, end, fill=255)
+            draw.ellipse(((cx - ri) * W, (cy - ri) * H, (cx + ri) * W, (cy + ri) * H), fill=0)
+        else:
+            x, y, w, h = (float(v) for v in shape.split(","))
+            draw.rectangle((x * W, y * H, (x + w) * W, (y + h) * H), fill=255)
+        mask = ImageChops.lighter(mask, part)
+    small = im.resize((max(1, W // 28), max(1, H // 28)), Image.BILINEAR)
+    blurred = small.resize(im.size, Image.BILINEAR).filter(ImageFilter.GaussianBlur(W // 60))
+    im.paste(blurred, mask=mask.filter(ImageFilter.GaussianBlur(2)))
     buf = io.BytesIO()
-    im.save(buf, "JPEG", quality=92)
+    im.save(buf, "JPEG", quality=85, optimize=True)
     return buf.getvalue()
+
+
+def reveal_path(category, item_id):
+    return os.path.join(ARCHIVE, "reveal", category, f"{item_id}.jpg")
+
+
+def blur_item(category, n, spec, credits):
+    """Blur areas of an item's saved picture. The unblurred original is kept in archive/reveal/."""
+    item_id, cur = f"{category}-{n}", existing(category, n)
+    if not cur:
+        return f"FAIL {item_id}: no picture to blur"
+    rev = reveal_path(category, item_id)
+    if not os.path.exists(rev):
+        os.makedirs(os.path.dirname(rev), exist_ok=True)
+        shutil.copy(cur, rev)
+    data = blur_shapes(open(rev, "rb").read(), spec)  # always from the original, so a rerun replaces the blur
+    os.remove(cur)
+    with open(os.path.join(ITEMS_DIR, category, f"{item_id}.jpg"), "wb") as f:
+        f.write(data)
+    credits.setdefault(item_id, {}).update(hidden="blur", blur=spec)
+    credits[item_id].pop("needbox", None)
+    return f"BLUR {item_id}"
 
 
 # ---------- finding one item's picture ----------
@@ -382,10 +413,36 @@ def contact_sheet(category, entries, credits):
             draw.rectangle((x + 2, y + 2, x + cell - 3, y + cell - 3), outline=color, width=4)
         label = f"{n}. {entry.partition('::')[0].replace('File:', '')[:20]}"
         draw.text((x + 6, y + cell + 2), label, fill=color, font=font)
-        draw.text((x + 6, y + cell + 17), "AI - review" if cr.get("review") else (cr.get("via") or ("MISSING" if not path else "")), fill=color, font=font)
+        note = ("MISSING" if not path else "AI - review" if cr.get("review") else "NAME VISIBLE" if cr.get("needbox")
+                else f'{cr.get("via", "")} {"(blurred)" if cr.get("hidden") else ""}')
+        draw.text((x + 6, y + cell + 17), note, fill=(255, 90, 90) if cr.get("needbox") else color, font=font)
     out = os.path.join(ARCHIVE, "image-review", f"{category}.jpg")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     sheet.save(out, "JPEG", quality=85)
+    return out
+
+
+def grid_view(category, numbers):
+    """Pictures side by side with a line every 10% (magenta = 50%), for placing --boxes shapes."""
+    S = 420
+    sheet = Image.new("RGB", (S * len(numbers), S + 24), "white")
+    draw = ImageDraw.Draw(sheet)
+    for k, n in enumerate(numbers):
+        path = existing(category, n)
+        if not path:
+            continue
+        im = Image.open(path).convert("RGB").resize((S, S))
+        g = ImageDraw.Draw(im)
+        for t in range(1, 10):
+            c = (255, 0, 255) if t == 5 else (0, 200, 255)
+            g.line((t * S / 10, 0, t * S / 10, S), fill=c)
+            g.line((0, t * S / 10, S, t * S / 10), fill=c)
+        sheet.paste(im, (k * S, 24))
+        draw.text((k * S + 6, 4), f"#{n}", fill="black")
+        draw.line((k * S, 0, k * S, S + 24), fill="black", width=3)
+    out = os.path.join(ARCHIVE, "image-review", f"{category}-grid.jpg")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    sheet.save(out, "JPEG", quality=88)
     return out
 
 
@@ -414,17 +471,27 @@ def main():
     p.add_argument("--force", action="store_true", help="redo items that already have a picture")
     p.add_argument("--ai", action="store_true", help="skip the search, generate with AI")
     p.add_argument("--desc", help="AI description (use with --only for one item)")
-    p.add_argument("--boxes", help='hideName categories: blur "x,y,w,h;..." (fractions) instead of AI removal')
+    p.add_argument("--boxes", action="append", help='blur areas of saved pictures: "<n>=x,y,w,h;ring:cx,cy,ro,ri" '
+                   '(fractions of the picture; repeat for more items; without "<n>=" it applies to --only)')
     p.add_argument("--min", type=int, default=400, help="min short side of searched photos (default 400)")
     p.add_argument("--sheet", action="store_true", help="only rebuild the contact sheet")
+    p.add_argument("--grid", help="only make a gridded view of these items (up to 4), e.g. 3,4,5")
     a = p.parse_args()
+    if a.grid:
+        return print("GRID " + grid_view(a.category, [int(v) for v in a.grid.split(",")]))
 
     cfg = load_config(a.category)
     entries = cfg["items"]
     credits = json.load(open(CREDITS, encoding="utf-8")) if os.path.exists(CREDITS) else {}
-    if not a.sheet:
+    if a.boxes:
+        for spec in a.boxes:
+            n, sep, shapes = spec.partition("=")
+            items = [int(n)] if sep else [int(v) for v in (a.only or "").split(",") if v]
+            for item in items:
+                print(blur_item(a.category, item, shapes if sep else spec, credits))
+    elif not a.sheet:
         only = {int(v) for v in a.only.split(",")} if a.only else None
-        redo = a.force or a.ai or a.boxes
+        redo = a.force or a.ai
         todo = [n for n in range(1, len(entries) + 1)
                 if (only is None or n in only) and (redo or not existing(a.category, n))]
         lock = threading.Lock()
@@ -433,15 +500,19 @@ def main():
             item_id = f"{a.category}-{n}"
             try:
                 b, url, cr = find_picture(entries[n - 1], cfg, a)
+                kind = cfg.get("kind", "photo")
                 if cfg.get("hideName"):
-                    reveal = os.path.join(ARCHIVE, "reveal", a.category, f"{item_id}.jpg")
-                    os.makedirs(os.path.dirname(reveal), exist_ok=True)
-                    open(reveal, "wb").write(finalize(b, "photo")[0])
-                    hidden, how = hide_name(b, url, a.boxes)
-                    if hidden is None:
-                        return f"NEEDBOX {item_id} {reveal} ({how})"
+                    rev = reveal_path(a.category, item_id)
+                    os.makedirs(os.path.dirname(rev), exist_ok=True)
+                    open(rev, "wb").write(finalize(b, kind)[0])
+                    hidden, how = hide_name(b, url)
+                    if hidden is None:  # keep the picture with its name; blur it with --boxes
+                        save(a.category, n, open(rev, "rb").read())
+                        with lock:
+                            credits[item_id] = {**cr, "needbox": True}
+                        return f"NEEDBOX {item_id} {existing(a.category, n)} ({how[:120]})"
                     b, cr = hidden, {**cr, "hidden": how}
-                data, (w, h) = finalize(b, cfg.get("kind", "photo"))
+                data, (w, h) = finalize(b, kind)
                 save(a.category, n, data)
                 with lock:
                     credits[item_id] = cr
@@ -454,6 +525,7 @@ def main():
                 print(line, flush=True)
         if not todo:
             print("Nothing to do – every item already has a picture (use --only N --force to redo).")
+    if not a.sheet or a.boxes:
         ordered = dict(sorted(credits.items(), key=lambda kv: (kv[0].rsplit("-", 1)[0], int(kv[0].rsplit("-", 1)[1]))))
         with open(CREDITS, "w", encoding="utf-8") as f:
             f.write(json.dumps(ordered, indent=1, ensure_ascii=False) + "\n")

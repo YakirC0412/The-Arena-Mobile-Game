@@ -33,7 +33,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 ├─ docs/              GAME_RULES.md (rules source of truth) · DECISIONS.md · ROADMAP.md
 │                     PRD.md · UIUX_SPEC.md · archive/ (original questionnaire)
 ├─ archive/           NOT in git: old zip, Codex tooling, files removed from the app
-├─ .claude/           launch.json for the preview server
+├─ .claude/           launch.json for the preview server · skills/arena-images (picture skill)
 └─ mobile/            Expo SDK 58 app (expo-router, reanimated, RN web)
    ├─ AGENTS.md       Expo rules – read before touching any Expo/RN API
    ├─ public/         index.html (web page template: iPhone meta, no page-level dir!) · manifest + icons
@@ -68,6 +68,10 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 31.10.26 – Picture skill (decision 17): `.claude/skills/arena-images` fills a whole category from
+  mobile/scripts/image-sources.json (kind photo|logo|product, query, AI prompt, English item n = item n):
+  Wikipedia lead image → photo search → AI (marked review), 640px JPEG, credits, `npm run images`, contact
+  sheet in archive/image-review/. Python 3.12 + Pillow installed (user). football-clubs: 30 crests → playable.
 - 31.10.26 – Pictures only (decision 16): every category needs 30 items with a picture to be playable
   (MIN_PICTURE_ITEMS, test). 480 Wikimedia pictures for 16 categories via `npm run wiki-images`
   (scripts/fetch-wiki-images.js + scripts/wiki-sources.json: entry n = item n, a Wikipedia title or
@@ -118,6 +122,9 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - Picture review: put a contact sheet in mobile/public/ (served by the dev server), screenshot it, then
   delete it. Wikipedia lead images are often paintings, diagrams or transparent PNGs – always look.
 - Ambulance/fire engine/police car pictures show the English word – accepted for now.
+- Most club crests show the club name (LIVERPOOL, ARSENAL…) – the answer is visible; open question.
+- Free Pollinations AI now answers 402 without a token; AI fallback needs POLLINATIONS_TOKEN or
+  OPENAI_API_KEY in .claude/skills/arena-images/keys.env (git-ignored; the user copies it).
 - Bot skip in the human duel shows "דילגת" (you skipped) – wording should name the bot.
 - Deep links to QA screens need a full page load (`/qa-duel`); they work since web.output = single.
 - ESLint crashes: "Cannot find native binding" (unrs-resolver from the Codex pnpm install). Fix by

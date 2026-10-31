@@ -1,0 +1,40 @@
+{
+  "_readme": "Picture sources for the arena-images skill (.claude/skills/arena-images). Per category: kind = photo | logo | product; query = photo-search text ({item} = the item); prompt = AI description when nothing is found; hideName = remove brand names (product photos); wikipedia = false skips the Wikipedia lead image. items: entry n = item <category>-<n>, in the order of src/content/categories.ts. An item is an English Wikipedia title (its lead image is tried first), 'File:<name>' to pin a Commons/Wikipedia file, and may end with '::<AI description>' for that item only. Categories missing here fall back to wiki-sources.json as kind photo.",
+  "football-clubs": {
+    "kind": "logo",
+    "query": "{item} crest logo",
+    "prompt": "The official crest of {item} football club, flat emblem, accurate colors, centered on a plain white background, no extra text",
+    "items": [
+      "FC Barcelona",
+      "Real Madrid CF",
+      "Manchester United F.C.",
+      "Liverpool F.C.",
+      "FC Bayern Munich",
+      "Juventus FC",
+      "Chelsea F.C.",
+      "Arsenal F.C.",
+      "Manchester City F.C.",
+      "Paris Saint-Germain F.C.",
+      "AC Milan",
+      "Inter Milan",
+      "Borussia Dortmund",
+      "Atlético Madrid",
+      "Tottenham Hotspur F.C.",
+      "AFC Ajax",
+      "Maccabi Tel Aviv F.C.",
+      "Maccabi Haifa F.C.",
+      "Hapoel Be'er Sheva F.C.",
+      "Beitar Jerusalem F.C.",
+      "SSC Napoli",
+      "AS Roma",
+      "Sevilla FC",
+      "S.L. Benfica",
+      "FC Porto",
+      "Celtic F.C.",
+      "Galatasaray S.K. (football)",
+      "Fenerbahçe S.K. (football)",
+      "Boca Juniors",
+      "Feyenoord"
+    ]
+  }
+}

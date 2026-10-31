@@ -12,11 +12,11 @@
 // and docs/IMAGE_CREDITS.md. Run `npm run images` afterwards to connect them.
 const fs = require('node:fs');
 const path = require('node:path');
+const { writeCreditsDoc } = require('./write-image-credits');
 
 const root = path.join(__dirname, '..');
 const itemsDir = path.join(root, 'assets', 'items');
 const creditsPath = path.join(itemsDir, 'credits.json');
-const creditsDoc = path.join(root, '..', 'docs', 'IMAGE_CREDITS.md');
 const replacedDir = path.join(root, '..', 'archive', 'replaced-images');
 const EXTENSIONS = ['.webp', '.png', '.jpg', '.jpeg', '.gif'];
 const UA = { 'User-Agent': 'TheArenaPrototype/0.1 (private trivia game; picture download)' };
@@ -136,20 +136,7 @@ async function main() {
     return ca.localeCompare(cb) || na - nb;
   }));
   fs.writeFileSync(creditsPath, `${JSON.stringify(sorted, null, 1)}\n`);
-  const lines = ['# קרדיטים לתמונות', '',
-    'תמונות מוויקישיתוף (Wikimedia Commons) ברישיונות חופשיים. רישיונות CC BY / CC BY-SA מחייבים ייחוס – לכן הרשימה הזו.',
-    'הקובץ נוצר אוטומטית (`npm run wiki-images`) מתוך mobile/assets/items/credits.json.', ''];
-  let current = '';
-  for (const [id, credit] of Object.entries(sorted)) {
-    const category = id.replace(/-\d+$/, '');
-    if (category !== current) {
-      current = category;
-      lines.push('', `## ${category}`, '', '| פריט | מקור | צלם / יוצר | רישיון | קובץ |', '|---|---|---|---|---|');
-    }
-    const cell = (value) => String(value).replace(/\|/g, '/');
-    lines.push(`| ${id} | ${cell(credit.source)} | ${cell(credit.author)} | ${cell(credit.license)} | [${cell(credit.file)}](${credit.page}) |`);
-  }
-  fs.writeFileSync(creditsDoc, `${lines.join('\n')}\n`);
+  writeCreditsDoc(sorted);
 }
 
 main().catch((error) => {

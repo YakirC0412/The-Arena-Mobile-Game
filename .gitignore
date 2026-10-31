@@ -4,3 +4,7 @@ archive/
 # OS noise
 .DS_Store
 Thumbs.db
+
+# arena-images skill: secrets and state
+.claude/skills/arena-images/keys.env
+.claude/skills/arena-images/.openai_state.json

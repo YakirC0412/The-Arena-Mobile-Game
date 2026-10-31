@@ -1,7 +1,7 @@
 # קרדיטים לתמונות
 
-תמונות מוויקישיתוף (Wikimedia Commons) ברישיונות חופשיים. רישיונות CC BY / CC BY-SA מחייבים ייחוס – לכן הרשימה הזו.
-הקובץ נוצר אוטומטית (`npm run wiki-images`) מתוך mobile/assets/items/credits.json.
+תמונות מוויקישיתוף, מוויקיפדיה ומאתרי תמונות חופשיים, ותמונות שנוצרו ב-AI. רישיונות CC BY / CC BY-SA מחייבים ייחוס – לכן הרשימה הזו.
+הקובץ נוצר אוטומטית מתוך mobile/assets/items/credits.json (`npm run wiki-images` או הסקיל arena-images).
 
 
 ## animals
@@ -178,6 +178,41 @@
 | food-28 | Doughnut | Evan-Amos | Public domain | [Glazed-Donut.jpg](https://commons.wikimedia.org/wiki/File:Glazed-Donut.jpg) |
 | food-29 | Börek | — | CC BY-SA 2.5 | [Burek_trokut_1.png](https://commons.wikimedia.org/wiki/File:Burek_trokut_1.png) |
 | food-30 | File:Marion_Crêpes_in_Harajuku_Takeshita_2.jpg | Syced | CC0 | [Marion_Crêpes_in_Harajuku_Takeshita_2.jpg](https://commons.wikimedia.org/wiki/File:Marion_Cr%C3%AApes_in_Harajuku_Takeshita_2.jpg) |
+
+## football-clubs
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| football-clubs-1 | FC Barcelona | FC Barcelona | PD | [FC_Barcelona_(crest).svg](https://en.wikipedia.org/wiki/File:FC_Barcelona_(crest).svg) |
+| football-clubs-2 | Real Madrid CF | — | Fair use | [Real_Madrid_CF.svg](https://en.wikipedia.org/wiki/File:Real_Madrid_CF.svg) |
+| football-clubs-3 | Manchester United F.C. | — | Fair use | [Manchester_United_FC_crest.svg](https://en.wikipedia.org/wiki/File:Manchester_United_FC_crest.svg) |
+| football-clubs-4 | Liverpool F.C. | — | Fair use | [Liverpool_FC.svg](https://en.wikipedia.org/wiki/File:Liverpool_FC.svg) |
+| football-clubs-5 | FC Bayern Munich | FC Bayern Munich | Public domain | [FC_Bayern_München_logo_(2024).svg](https://commons.wikimedia.org/wiki/File:FC_Bayern_M%C3%BCnchen_logo_(2024).svg) |
+| football-clubs-6 | Juventus FC | Interbrand – Global Brand Consultancy / Juventus Football Club SpA | Public domain | [Juventus_FC_-_logo_black_(Italy,_2020).svg](https://commons.wikimedia.org/wiki/File:Juventus_FC_-_logo_black_(Italy,_2020).svg) |
+| football-clubs-7 | Chelsea F.C. | — | Fair use | [Chelsea_FC.svg](https://en.wikipedia.org/wiki/File:Chelsea_FC.svg) |
+| football-clubs-8 | Arsenal F.C. | — | Fair use | [Arsenal_FC.svg](https://en.wikipedia.org/wiki/File:Arsenal_FC.svg) |
+| football-clubs-9 | Manchester City F.C. | — | Fair use | [Manchester_City_FC_badge.svg](https://en.wikipedia.org/wiki/File:Manchester_City_FC_badge.svg) |
+| football-clubs-10 | Paris Saint-Germain F.C. | Paris Saint-Germain Football Club | PD | [Paris_Saint-Germain_F.C..svg](https://en.wikipedia.org/wiki/File:Paris_Saint-Germain_F.C..svg) |
+| football-clubs-11 | AC Milan | A.C. Milan Uploaded by Vargklo at en.wikipedia | Public domain | [Logo_of_AC_Milan.svg](https://commons.wikimedia.org/wiki/File:Logo_of_AC_Milan.svg) |
+| football-clubs-12 | Inter Milan | FC Internazionale Milano S.p.A. / Bureau Borsche | Public domain | [FC_Internazionale_Milano_2021.svg](https://commons.wikimedia.org/wiki/File:FC_Internazionale_Milano_2021.svg) |
+| football-clubs-13 | Borussia Dortmund | Lispir (Lispir) | Public domain | [Borussia_Dortmund_logo.svg](https://commons.wikimedia.org/wiki/File:Borussia_Dortmund_logo.svg) |
+| football-clubs-14 | Atlético Madrid | — | Fair use | [Atletico_Madrid_Logo_2024.svg](https://en.wikipedia.org/wiki/File:Atletico_Madrid_Logo_2024.svg) |
+| football-clubs-15 | Tottenham Hotspur F.C. | — | Fair use | [Tottenham_Hotspur.svg](https://en.wikipedia.org/wiki/File:Tottenham_Hotspur.svg) |
+| football-clubs-16 | AFC Ajax | AFC Ajax | Public domain | [Logo_AFC_Ajax_(1928-1991,_2025-).png](https://commons.wikimedia.org/wiki/File:Logo_AFC_Ajax_(1928-1991,_2025-).png) |
+| football-clubs-17 | Maccabi Tel Aviv F.C. | — | Fair use | [Maccabi_Tel_Aviv_F.C._logo.svg](https://en.wikipedia.org/wiki/File:Maccabi_Tel_Aviv_F.C._logo.svg) |
+| football-clubs-18 | Maccabi Haifa F.C. | — | Fair use | [Maccabi_Haifa_F.C._logo.svg](https://en.wikipedia.org/wiki/File:Maccabi_Haifa_F.C._logo.svg) |
+| football-clubs-19 | Hapoel Be'er Sheva F.C. | — | Fair use | [Logo-hapoel-positive.svg](https://en.wikipedia.org/wiki/File:Logo-hapoel-positive.svg) |
+| football-clubs-20 | Beitar Jerusalem F.C. | — | Fair use | [Beitar_Jerusalem_F.C._logo.svg](https://en.wikipedia.org/wiki/File:Beitar_Jerusalem_F.C._logo.svg) |
+| football-clubs-21 | SSC Napoli | Logo: SSC Napoli S.p.A. Upload: The White Lion | Public domain | [SSC_Napoli_2025_(white_and_azure).svg](https://commons.wikimedia.org/wiki/File:SSC_Napoli_2025_(white_and_azure).svg) |
+| football-clubs-22 | AS Roma | — | Fair use | [AS_Roma_logo_(2017).svg](https://en.wikipedia.org/wiki/File:AS_Roma_logo_(2017).svg) |
+| football-clubs-23 | Sevilla FC | — | Fair use | [Sevilla_FC_logo.svg](https://en.wikipedia.org/wiki/File:Sevilla_FC_logo.svg) |
+| football-clubs-24 | S.L. Benfica | — | Fair use | [SL_Benfica_logo.svg](https://en.wikipedia.org/wiki/File:SL_Benfica_logo.svg) |
+| football-clubs-25 | FC Porto | — | Fair use | [FC_Porto.svg](https://en.wikipedia.org/wiki/File:FC_Porto.svg) |
+| football-clubs-26 | Celtic F.C. | — | Fair use | [Celtic_FC_crest.svg](https://en.wikipedia.org/wiki/File:Celtic_FC_crest.svg) |
+| football-clubs-27 | Galatasaray S.K. (football) | Isaozler | CC0 | [Galatasaray_S.K._Logo_2026_5-stars.svg](https://commons.wikimedia.org/wiki/File:Galatasaray_S.K._Logo_2026_5-stars.svg) |
+| football-clubs-28 | Fenerbahçe S.K. (football) | — | Fair use | [Fenerbahçe.svg](https://en.wikipedia.org/wiki/File:Fenerbah%C3%A7e.svg) |
+| football-clubs-29 | Boca Juniors | Estudio Shakespear | Public domain | [Boca_Juniors_logo18.svg](https://commons.wikimedia.org/wiki/File:Boca_Juniors_logo18.svg) |
+| football-clubs-30 | Feyenoord | Feyenoord Rotterdam N.V. | Public domain | [Feyenoord_logo_since_2024.svg](https://commons.wikimedia.org/wiki/File:Feyenoord_logo_since_2024.svg) |
 
 ## football-players
 

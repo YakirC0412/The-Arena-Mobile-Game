@@ -264,6 +264,38 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     setFeedback('דילגת: ‎−3 שניות');
     scheduleAdvance(false, 250);
   };
+  const skipRef = useRef(skip);
+  useEffect(() => {
+    skipRef.current = skip;
+  });
+
+  // iPhone Safari: a normal tap first moves focus off the answer field, the
+  // keyboard starts closing, the layout jumps and the tap is cancelled – so
+  // skip needed two taps. Acting on touch-down and cancelling the default
+  // keeps the keyboard open and skips on the first tap.
+  const skipButtonRef = useRef<ComponentRef<typeof View>>(null);
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    const button = skipButtonRef.current as unknown as HTMLElement | null;
+    if (!button?.addEventListener) return;
+    let lastTouchAt = 0;
+    const onTouchStart = (event: TouchEvent) => {
+      event.preventDefault();
+      lastTouchAt = Date.now();
+      skipRef.current();
+    };
+    const onMouseDown = (event: MouseEvent) => {
+      event.preventDefault();
+      if (Date.now() - lastTouchAt < 800) return;
+      skipRef.current();
+    };
+    button.addEventListener('touchstart', onTouchStart, { passive: false });
+    button.addEventListener('mousedown', onMouseDown);
+    return () => {
+      button.removeEventListener('touchstart', onTouchStart);
+      button.removeEventListener('mousedown', onMouseDown);
+    };
+  }, []);
 
   return (
     <KeyboardAvoidingView
@@ -367,10 +399,13 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
           />
           {/* Skip sits beside the field, so the iPhone keyboard bar never hides it. */}
           <Pressable
+            ref={skipButtonRef}
             accessibilityLabel="דילוג על התמונה, מינוס 3 שניות"
             accessibilityRole="button"
             disabled={!isHumanTurn || transitioning}
-            onPress={skip}
+            focusable={false}
+            // On web the raw touch/mouse listeners above do the skip.
+            onPress={Platform.OS === 'web' ? undefined : skip}
             style={[styles.skipButton, (!isHumanTurn || transitioning) && styles.disabledControl]}>
             <AppText style={styles.skipText} weight="black">דילוג</AppText>
             <AppText style={styles.skipPenalty} weight="bold">‎−3 שנ׳</AppText>
@@ -422,21 +457,22 @@ const styles = StyleSheet.create({
     marginBottom: spacing.sm,
   },
   turnText: { color: colors.bg, fontSize: typeScale.caption, textAlign: 'center' },
+  // The picture takes all the free height and is never cropped ("contain");
+  // a dark card keeps the letterbox bars quiet instead of a white frame.
   imageCard: {
     flex: 1,
     width: '100%',
-    minHeight: 112,
-    maxHeight: 260,
+    minHeight: 140,
     borderRadius: radii.card,
-    backgroundColor: colors.textPrimary,
+    backgroundColor: colors.surfaceMuted,
     borderWidth: 2,
     borderColor: colors.territoryMeBorder,
-    padding: spacing.md,
+    padding: spacing.xs,
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
   },
-  itemImage: { width: '100%', height: '100%', maxWidth: 310, flex: 1, minHeight: 90, borderRadius: radii.control },
+  itemImage: { width: '100%', height: '100%', borderRadius: radii.control },
   visual: { color: colors.bg, fontSize: 84, lineHeight: 100, textAlign: 'center' },
   feedback: { minHeight: 22, color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center', marginVertical: spacing.xs },
   controls: { gap: spacing.sm },

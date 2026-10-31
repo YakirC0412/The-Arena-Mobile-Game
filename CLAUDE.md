@@ -68,6 +68,8 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 31.10.26 – iPhone duel fixes: skip acts on touch-down (raw touchstart/mousedown + preventDefault) so one tap
+  skips and the keyboard stays open; the picture card is dark, nearly full height, never cropped.
 - 26.10.26 – Phase 0 done: Node installed, git history started, folder restructured, big files split.
 - 26.10.26 – Phase 1 done: streak/bonus rules, seeded RNG, bot decisions in engine, 0.7–1.0 s pause,
   28 tests, web.output = single. Bot levels postponed.
@@ -120,6 +122,8 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   in `signUpWithGoogle` but the button is disabled until OAuth exists (multiplayer phase).
 - Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound – both are
   handled in services/use-game-feedback.ts (sounds before the first tap are skipped).
+- Buttons next to the answer field on iPhone: a normal onPress needs two taps (first tap blurs the field
+  and the layout jumps). Use the raw touchstart pattern from battle-view skip.
 - iOS opens the keyboard only from a tap: `primeWebKeyboard()` must run inside the tap that leads to a
   text field; then keep that field focused (never blur on submit, refocus after button taps).
 - Windows WIC drops WebP alpha; icons were rendered from the logo in a browser canvas.

@@ -4,6 +4,41 @@
 הקובץ נוצר אוטומטית מתוך mobile/assets/items/credits.json (`npm run wiki-images` או הסקיל arena-images).
 
 
+## actors
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| actors-1 | Tom Cruise | Kevin Paul | CC BY 4.0 | [Tom_Cruise_at_53rd_Saturn_Awards_2026-01.jpg](https://commons.wikimedia.org/wiki/File:Tom_Cruise_at_53rd_Saturn_Awards_2026-01.jpg) |
+| actors-2 | Leonardo DiCaprio | Raph_PH | CC BY 4.0 | [LeoPTABFI191125-28_(cropped).jpg](https://commons.wikimedia.org/wiki/File:LeoPTABFI191125-28_(cropped).jpg) |
+| actors-3 | Brad Pitt | Harald Krichel | CC BY-SA 4.0 | [Brad_Pitt-69858.jpg](https://commons.wikimedia.org/wiki/File:Brad_Pitt-69858.jpg) |
+| actors-4 | Dwayne Johnson | Harald Krichel | CC BY-SA 4.0 | [Dwayne_Johnson-1764_(4x5_cropped_with_moderate_headroom).jpg](https://commons.wikimedia.org/wiki/File:Dwayne_Johnson-1764_(4x5_cropped_with_moderate_headroom).jpg) |
+| actors-5 | Will Smith | TechCrunch | CC BY 2.0 | [TechCrunch_Disrupt_San_Francisco_2019_-_Day_1_(48834070763)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:TechCrunch_Disrupt_San_Francisco_2019_-_Day_1_(48834070763)_(cropped).jpg) |
+| actors-6 | Gal Gadot | Gage Skidmore | CC BY-SA 3.0 | [Gal_Gadot_by_Gage_Skidmore_3.jpg](https://commons.wikimedia.org/wiki/File:Gal_Gadot_by_Gage_Skidmore_3.jpg) |
+| actors-7 | Johnny Depp | Harald Krichel | CC BY-SA 3.0 | [Johnny_Depp_2020.jpg](https://commons.wikimedia.org/wiki/File:Johnny_Depp_2020.jpg) |
+| actors-8 | Vin Diesel | Gage Skidmore | CC BY-SA 3.0 | [Vin_Diesel_by_Gage_Skidmore_2.jpg](https://commons.wikimedia.org/wiki/File:Vin_Diesel_by_Gage_Skidmore_2.jpg) |
+| actors-9 | Angelina Jolie | Harald Krichel | CC BY-SA 4.0 | [Angelina_Jolie-643531_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Angelina_Jolie-643531_(cropped).jpg) |
+| actors-10 | Jennifer Aniston | Angela George | CC BY-SA 3.0 | [JenniferAnistonHWoFFeb2012.jpg](https://commons.wikimedia.org/wiki/File:JenniferAnistonHWoFFeb2012.jpg) |
+| actors-11 | Scarlett Johansson | Harald Krichel | CC BY-SA 4.0 | [Scarlett_Johansson-8588.jpg](https://commons.wikimedia.org/wiki/File:Scarlett_Johansson-8588.jpg) |
+| actors-12 | Tom Hanks | Raph_PH | CC BY 2.0 | [TomHanksPrincEdw031223_(11_of_41)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:TomHanksPrincEdw031223_(11_of_41)_(cropped).jpg) |
+| actors-13 | Morgan Freeman | U.S. Secretary of Defense | Public domain | [Morgan_Freeman_at_The_Pentagon_on_2_August_2023_-_230802-D-PM193-3363_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Morgan_Freeman_at_The_Pentagon_on_2_August_2023_-_230802-D-PM193-3363_(cropped).jpg) |
+| actors-14 | Robert Downey Jr. | PhilipRomano | CC BY-SA 4.0 | [RobertDowneyJr-byPhilipRomano7_(cropped).jpg](https://commons.wikimedia.org/wiki/File:RobertDowneyJr-byPhilipRomano7_(cropped).jpg) |
+| actors-15 | Jason Statham | MTV International | CC BY 3.0 | [Jason_Statham_2018.jpg](https://commons.wikimedia.org/wiki/File:Jason_Statham_2018.jpg) |
+| actors-16 | Keanu Reeves | Gabriel Hutchinson | CC BY-SA 4.0 | [Keanu_Reeves_at_TIFF_2025_02_(Cropped).jpg](https://commons.wikimedia.org/wiki/File:Keanu_Reeves_at_TIFF_2025_02_(Cropped).jpg) |
+| actors-17 | Arnold Schwarzenegger | Bernhard Holub | CC BY-SA 4.0 | [Arnold_Schwarzenegger_-_Austrian_World_Summit_2026_BHO-2906.jpg](https://commons.wikimedia.org/wiki/File:Arnold_Schwarzenegger_-_Austrian_World_Summit_2026_BHO-2906.jpg) |
+| actors-18 | Sylvester Stallone | The White House | Public domain | [P20251206DT-0472_(3x4_cropped_on_Stallone_with_moderate_headroom).jpg](https://commons.wikimedia.org/wiki/File:P20251206DT-0472_(3x4_cropped_on_Stallone_with_moderate_headroom).jpg) |
+| actors-19 | Tom Holland | PhilipRomano | CC BY-SA 4.0 | [TomHolland-byPhilipRomano.jpg](https://commons.wikimedia.org/wiki/File:TomHolland-byPhilipRomano.jpg) |
+| actors-20 | Zendaya | PhilipRomano | CC BY-SA 4.0 | [Zendaya-byPhilipRomano.jpg](https://commons.wikimedia.org/wiki/File:Zendaya-byPhilipRomano.jpg) |
+| actors-21 | Margot Robbie | Ondine Goat | CC0 | [Margot_Robbie_Wuthering_Heights_premiere_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Margot_Robbie_Wuthering_Heights_premiere_(cropped).jpg) |
+| actors-22 | Daniel Radcliffe | Philip Romano | CC BY-SA 4.0 | [DanielRadcliffe.jpg](https://commons.wikimedia.org/wiki/File:DanielRadcliffe.jpg) |
+| actors-23 | Emma Watson | Georges Biard | CC BY-SA 3.0 | [Emma_Watson_2013.jpg](https://commons.wikimedia.org/wiki/File:Emma_Watson_2013.jpg) |
+| actors-24 | Ryan Reynolds | Dick Thomas Johnson from Tokyo, Japan | CC BY 2.0 | [Deadpool_2_Japan_Premiere_Red_Carpet_Ryan_Reynolds_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Deadpool_2_Japan_Premiere_Red_Carpet_Ryan_Reynolds_(cropped).jpg) |
+| actors-25 | Chris Hemsworth | Kevin Paul | CC BY 4.0 | [Chris_Hemsworth_-_Crime_101.jpg](https://commons.wikimedia.org/wiki/File:Chris_Hemsworth_-_Crime_101.jpg) |
+| actors-26 | Meryl Streep | Ministry of culture, sports and Tourism- Lee Jeong-woo | CC BY-SA 4.0 | [Meryl_Streep-_Press_conference_for_the_film_"The_Devil_Wears_Prada_2"_-_55194765350_(cropped1).jpg](https://commons.wikimedia.org/wiki/File:Meryl_Streep-_Press_conference_for_the_film_%22The_Devil_Wears_Prada_2%22_-_55194765350_(cropped1).jpg) |
+| actors-27 | Nicole Kidman | Martin Kraft | CC BY-SA 4.0 | [MKr384262_Nicole_Kidman_(Women_In_Motion,_Cannes_2025).jpg](https://commons.wikimedia.org/wiki/File:MKr384262_Nicole_Kidman_(Women_In_Motion,_Cannes_2025).jpg) |
+| actors-28 | Natalie Portman | Colleen Sturtevant | CC BY 4.0 | [NataliePortman.jpg](https://commons.wikimedia.org/wiki/File:NataliePortman.jpg) |
+| actors-29 | George Clooney | Bryan Berlin | CC BY-SA 4.0 | [George_Clooney_Jay_Kelly-19_(cropped).jpg](https://commons.wikimedia.org/wiki/File:George_Clooney_Jay_Kelly-19_(cropped).jpg) |
+| actors-30 | Ryan Gosling | Raph_PH | CC BY 2.0 | [GoslingBFI081223_(22_of_30)_(53388157347)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:GoslingBFI081223_(22_of_30)_(53388157347)_(cropped).jpg) |
+
 ## animals
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
@@ -102,6 +137,146 @@
 | birds-29 | Great spotted woodpecker | Charles J. Sharp | CC BY-SA 4.0 | [Great_spotted_woodpecker_(Dendrocopos_major)_male_Drenthe.jpg](https://commons.wikimedia.org/wiki/File:Great_spotted_woodpecker_(Dendrocopos_major)_male_Drenthe.jpg) |
 | birds-30 | Grey heron | Giacomo Cimino (foto.giacomocimino.workers.dev · @giacomociminoph) | CC BY-SA 4.0 | [Il_pescatore_solitario.jpg](https://commons.wikimedia.org/wiki/File:Il_pescatore_solitario.jpg) |
 
+## brands
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| brands-1 | Apple Inc. | Rob Janoff | Public domain | [Apple_Computer_Logo_rainbow.svg](https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg) |
+| brands-2 | McDonald's | McDonald's | Public domain | [McDonald's_1948_logo.png](https://commons.wikimedia.org/wiki/File:McDonald%27s_1948_logo.png) |
+| brands-3 | Starbucks | — | Fair use | [Starbucks_Coffee_Logo.svg](https://en.wikipedia.org/wiki/File:Starbucks_Coffee_Logo.svg) |
+| brands-4 | Pepsi | Unknown (Vector graphics image by Simtropolitan) | Public domain | [Pepsi_Cola_logo_1902.svg](https://commons.wikimedia.org/wiki/File:Pepsi_Cola_logo_1902.svg) |
+| brands-5 | Microsoft | The original uploader was Richard Abendroth at German Wikipedia. | Public domain | [Microsoft_Logo_Historical.svg](https://commons.wikimedia.org/wiki/File:Microsoft_logo_(1982).svg) |
+| brands-6 | Google | Google INC | Public domain | [Google2013logo.svg](https://commons.wikimedia.org/wiki/File:Google2013logo.svg) |
+| brands-7 | Shell plc | Hirondus | CC BY-SA 4.0 | [Logo_Shell_1973.jpg](https://commons.wikimedia.org/wiki/File:Logo_Shell_1973.jpg) |
+| brands-8 | KFC | Ktkvtsh | CC BY 4.0 | [Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg](https://commons.wikimedia.org/wiki/File:Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg) |
+| brands-9 | PlayStation | Sony Interactive Entertainment | Public domain | [PlayStation_Studios_logo_with_a_black_center_frame.svg](https://commons.wikimedia.org/wiki/File:PlayStation_Studios_logo_with_a_black_center_frame.svg) |
+| brands-10 | Xbox | Microsoft | PD | [XBOX_logo_(2026).png](https://en.wikipedia.org/wiki/File:XBOX_logo_(2026).png) |
+| brands-11 | Android (operating system) | Android | CC BY 3.0 | [Android_2023_3D_logo_and_wordmark.svg](https://commons.wikimedia.org/wiki/File:Android_2023_3D_logo_and_wordmark.svg) |
+| brands-12 | Mastercard | http://logos.wikia.com/wiki/User:DonDonP1 | Public domain | [MasterCard_1979_logo.svg](https://commons.wikimedia.org/wiki/File:MasterCard_1979_logo.svg) |
+| brands-13 | Pizza Hut | Pizza Hut | Public domain | [Pizza_Hut_international_logo,_2008–2016.svg](https://commons.wikimedia.org/wiki/File:Pizza_Hut_international_logo,_2008%E2%80%932016.svg) |
+| brands-14 | Domino's | MultiEditor03 | CC0 | [Domino’s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg](https://commons.wikimedia.org/wiki/File:Domino%E2%80%99s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg) |
+| brands-15 | Red Bull | — | Fair use | [RedBullEnergyDrink.svg](https://en.wikipedia.org/wiki/File:RedBullEnergyDrink.svg) |
+| brands-16 | Firefox | Mozilla Corporation | CC BY-SA 3.0 | [Firefox_Nightly_Logo,_2017.svg](https://commons.wikimedia.org/wiki/File:Firefox_Nightly_logo,_2017.svg) |
+| brands-17 | Vodafone | Vodafone | PD | [Vodafone_1984_logo.svg](https://en.wikipedia.org/wiki/File:Vodafone_1984_logo.svg) |
+| brands-18 | Michelin | Cyril5C | CC-BY-SA-4.0 | [Siège_de_Michelin_à_Clermont-Ferrand_II.jpg](https://en.wikipedia.org/wiki/File:Si%C3%A8ge_de_Michelin_%C3%A0_Clermont-Ferrand_II.jpg) |
+| brands-19 | Nestlé | — | Fair use | [Nestlé.svg](https://en.wikipedia.org/wiki/File:Nestl%C3%A9.svg) |
+| brands-20 | Baskin-Robbins | Baskin-Robbins | Public domain | [Baskin-Robbins_logo_2022.svg](https://commons.wikimedia.org/wiki/File:Baskin-Robbins_logo_2022.svg) |
+| brands-21 | Taco Bell | — | Fair use | [Taco_Bell_2023.svg](https://en.wikipedia.org/wiki/File:Taco_Bell_2023.svg) |
+| brands-22 | Motorola | Unknown authorUnknown author | Public domain | [Motorola-Logo.svg](https://commons.wikimedia.org/wiki/File:Motorola-Logo.svg) |
+| brands-23 | Paramount Pictures | Paramount Pictures | Fair use | [Paramount_Pictures_logo_(2010).jpg](https://en.wikipedia.org/wiki/File:Paramount_Pictures_logo_(2010).jpg) |
+| brands-24 | Warner Bros. | ™/®Warner Music Group Corp. | Public domain | [Warner_Music_Group_logo_(2021).svg](https://commons.wikimedia.org/wiki/File:Warner_Music_Group_logo_(2021).svg) |
+| brands-25 | The Walt Disney Company | Disney Enterprises, Inc. | Public domain | [The_Walt_Disney_company_logo.svg](https://commons.wikimedia.org/wiki/File:The_Walt_Disney_company_logo.svg) |
+| brands-26 | NBC | By username Ragilnih, For the logo, NBCUniversal and Comcast. | Public domain | [Comcast_NBCUniversal_logo.svg](https://commons.wikimedia.org/wiki/File:Comcast_NBCUniversal_logo.svg) |
+| brands-27 | CBS | CBS Broadcasting Inc. | Public domain | [CBS_logo_(2020).svg](https://commons.wikimedia.org/wiki/File:CBS_logo_(2020).svg) |
+| brands-28 | Monster Energy | — | Public domain | [Logo_Monster_Energy.webp](https://commons.wikimedia.org/wiki/File:Logo_Monster_Energy.webp) |
+| brands-29 | Carrefour | Carrefour S.A. | Public domain | [Carrefour-Mobile-logo.svg](https://commons.wikimedia.org/wiki/File:Carrefour-Mobile-logo.svg) |
+| brands-30 | Unilever | — | Fair use | [Unilever.svg](https://en.wikipedia.org/wiki/File:Unilever.svg) |
+
+## cars
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| cars-1 | Toyota | Tokumeigakarinoaoshima | CC0 | [Headquarter_of_Toyota_Motor_Corporation_3.JPG](https://commons.wikimedia.org/wiki/File:Headquarter_of_Toyota_Motor_Corporation_3.JPG) |
+| cars-2 | Mercedes-Benz | Mercedes-Benz | Public domain | [Mercedes-Benz_Logo_2010.svg](https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Logo_2010.svg) |
+| cars-3 | BMW | BMW | Public domain | [BMW_logo_(gray).svg](https://commons.wikimedia.org/wiki/File:BMW_logo_(gray).svg) |
+| cars-4 | Ferrari | — | Fair use | [Prancing_horse.svg](https://en.wikipedia.org/wiki/File:Prancing_horse.svg) |
+| cars-5 | Volkswagen | RoanDM | Public domain | [Volkswagen_Logo_history.svg](https://commons.wikimedia.org/wiki/File:Volkswagen_Logo_history.svg) |
+| cars-6 | Audi | Strichpunkt / KMS Team | Public domain | [Audi-Logo_2016.svg](https://commons.wikimedia.org/wiki/File:Audi-Logo_2016.svg) |
+| cars-7 | Tesla, Inc. | Tesla | Public domain | [Tesla_Motors.svg](https://commons.wikimedia.org/wiki/File:Tesla_Motors.svg) |
+| cars-8 | Honda | TTTNIS | Public domain | [Honda_logo.svg](https://commons.wikimedia.org/wiki/File:Honda_logo.svg) |
+| cars-9 | Hyundai Motor Company | Hyundai Motor Company | Public domain | [Hyundai_Motor_Company_logo.svg](https://commons.wikimedia.org/wiki/File:Hyundai_Motor_Company_logo.svg) |
+| cars-10 | Kia | Kia | CC BY-SA 4.0 | [KIA-Logo-1994-2012.png](https://commons.wikimedia.org/wiki/File:KIA-Logo-1994-2012.png) |
+| cars-11 | Mazda | Suree | Public domain | [Mazda-logo-1992.jpg](https://commons.wikimedia.org/wiki/File:Mazda-logo-1992.jpg) |
+| cars-12 | Chevrolet | — | Fair use | [Chevrolet_(logo).svg](https://en.wikipedia.org/wiki/File:Chevrolet_(logo).svg) |
+| cars-13 | Nissan | Nissan Motor Corporation | Public domain | [Nissan_2020_logo.svg](https://commons.wikimedia.org/wiki/File:Nissan_2020_logo.svg) |
+| cars-14 | Subaru | Subaru Corporation | Public domain | [Subaru_logo_(transparent).svg](https://commons.wikimedia.org/wiki/File:Subaru_logo_(transparent).svg) |
+| cars-15 | Lamborghini | Self made | Public domain | [Lamborghini_-_logo_wordmark+payoff_(Italy,_1963-).svg](https://commons.wikimedia.org/wiki/File:Lamborghini_-_logo_wordmark%2Bpayoff_(Italy,_1963-).svg) |
+| cars-16 | Porsche | Porsche – German automobile manufacturer specializing in high-performance sports cars, SUVs and sedans, owned by Volkswa | Public domain | [Logo_Porsche_718_Text.svg](https://commons.wikimedia.org/wiki/File:Logo_Porsche_718_Text.svg) |
+| cars-17 | Mitsubishi Motors | de:Benutzer:Gaspard | Public domain | [Mitsubishi_Motors_SVG_logo_2.svg](https://commons.wikimedia.org/wiki/File:Mitsubishi_Motors_SVG_logo_2.svg) |
+| cars-18 | Škoda Auto | Skoda Auto | Public domain | [Škoda_nieuw.png](https://commons.wikimedia.org/wiki/File:%C5%A0koda_nieuw.png) |
+| cars-19 | Peugeot | — | Fair use | [Peugeot-logo.svg](https://en.wikipedia.org/wiki/File:Peugeot-logo.svg) |
+| cars-20 | Renault | Renault S.A. | Public domain | [2021_Renault_Group_logo.svg](https://commons.wikimedia.org/wiki/File:2021_Renault_Group_logo.svg) |
+| cars-21 | Citroën | Unknown authorUnknown author PSA Peugeot Citroën AG | Public domain | [Citroën_Logo.svg](https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_Logo.svg) |
+| cars-22 | Volvo Cars | — | Fair use | [Volvo_Iron_Logo.png](https://en.wikipedia.org/wiki/File:Volvo_Iron_Logo.png) |
+| cars-23 | Ford Motor Company | Unknown authorUnknown author | Public domain | [Ford_1957_logo.png](https://commons.wikimedia.org/wiki/File:Ford_1957_logo.png) |
+| cars-24 | Jaguar Cars | Jaguar Cars | Public domain | [Jaguar-Logo.svg](https://commons.wikimedia.org/wiki/File:Jaguar_2024.svg) |
+| cars-25 | Fiat | FIAT | Public domain | [FIAT_logo_(2020).svg](https://commons.wikimedia.org/wiki/File:FIAT_logo_(2020).svg) |
+| cars-26 | Alfa Romeo | — | Fair use | [Alfa_Romeo_logo.png](https://en.wikipedia.org/wiki/File:Alfa_Romeo_logo.png) |
+| cars-27 | Maserati | Maserati | Public domain | [Maserati_logo_2.svg](https://commons.wikimedia.org/wiki/File:Maserati_logo_2.svg) |
+| cars-28 | Lexus | — | Fair use | [Lexus_F-division_logo.png](https://en.wikipedia.org/wiki/File:Lexus_F-division_logo.png) |
+| cars-29 | Suzuki | Suzuki Motor Corporation | Public domain | [Suzuki_logo_2025_(vertical).svg](https://commons.wikimedia.org/wiki/File:Suzuki_logo_2025_(vertical).svg) |
+| cars-30 | Bentley | F. Gordon Crosby (1885-1943) | Public domain | [Bentley_(Logo_1919).png](https://commons.wikimedia.org/wiki/File:Bentley_(Logo_1919).png) |
+
+## cartoons
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| cartoons-1 | Mickey Mouse | Walt Disney / Ub Iwerks | Public domain | [1930-01-18_Mickey_Mouse_Comic.jpg](https://commons.wikimedia.org/wiki/File:1930-01-18_Mickey_Mouse_Comic.jpg) |
+| cartoons-2 | SpongeBob SquarePants (character) | Nickelodeon (NickRewind) | CC BY 3.0 | [SpongeBob_SquarePants_character_montage.png](https://commons.wikimedia.org/wiki/File:SpongeBob_SquarePants_character_montage.png) |
+| cartoons-3 | Homer Simpson | — | Fair use | [Homer_Simpson_2006.png](https://en.wikipedia.org/wiki/File:Homer_Simpson_2006.png) |
+| cartoons-4 | Shrek (character) | — | Fair use | [Shrek_(character).png](https://en.wikipedia.org/wiki/File:Shrek_(character).png) |
+| cartoons-5 | Bugs Bunny | Orizan | CC BY-SA 4.0 | [Bugs_Bunny_-_Walk_of_Fame_Star.jpg](https://commons.wikimedia.org/wiki/File:Bugs_Bunny_-_Walk_of_Fame_Star.jpg) |
+| cartoons-6 | Winnie-the-Pooh | E. H. Shepard | Public domain | [Pooh_Shepard1928.jpg](https://commons.wikimedia.org/wiki/File:Pooh_Shepard1928.jpg) |
+| cartoons-7 | Elsa (Frozen) | Disney | Fair use | [Elsa_from_Disney's_Frozen.png](https://en.wikipedia.org/wiki/File:Elsa_from_Disney%27s_Frozen.png) |
+| cartoons-8 | Buzz Lightyear | Edo-biscuit | CC BY-SA 4.0 | [Buzz_Lightyear_sculpture_of_Toy_Story_Hotel_Shanghai_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Buzz_Lightyear_sculpture_of_Toy_Story_Hotel_Shanghai_(cropped).jpg) |
+| cartoons-9 | Woody (Toy Story) | Deror_avi | CC BY-SA 3.0 | [Woody_at_Toy_Story_Land,_Hong_Kong.jpg](https://commons.wikimedia.org/wiki/File:Woody_at_Toy_Story_Land,_Hong_Kong.jpg) |
+| cartoons-10 | Finding Nemo | — | Fair use | [Finding_Nemo.jpg](https://en.wikipedia.org/wiki/File:Finding_Nemo.jpg) |
+| cartoons-11 | Simba | Disney | Fair use | [Simba_(_Disney_character_-_adult).png](https://en.wikipedia.org/wiki/File:Simba_(_Disney_character_-_adult).png) |
+| cartoons-12 | Tom Cat | MGM | Fair use | [Tom_Tom_and_Jerry.png](https://en.wikipedia.org/wiki/File:Tom_Tom_and_Jerry.png) |
+| cartoons-13 | Jerry Mouse | MGM | Fair use | [Jerry_Mouse.png](https://en.wikipedia.org/wiki/File:Jerry_Mouse.png) |
+| cartoons-14 | Patrick Star | Nickelodeon (NickRewind) | CC BY 3.0 | [Patrick_Star_character.png](https://commons.wikimedia.org/wiki/File:Patrick_Star_character.png) |
+| cartoons-15 | Peppa Pig | pollinations flux | AI generated (לבדיקה) | — |
+| cartoons-16 | Minions (Despicable Me) | ウィ貴公子 | CC BY-SA 4.0 | [Minion_sculpture_in_Brisbane,_2024.jpg](https://commons.wikimedia.org/wiki/File:Minion_sculpture_in_Brisbane,_2024.jpg) |
+| cartoons-17 | Lightning McQueen | — | Fair use | [Lightning_McQueen.png](https://en.wikipedia.org/wiki/File:Lightning_McQueen.png) |
+| cartoons-18 | Olaf (Frozen) | Disney | Fair use | [Olaf_from_Disney's_Frozen.png](https://en.wikipedia.org/wiki/File:Olaf_from_Disney%27s_Frozen.png) |
+| cartoons-19 | Scooby-Doo (character) | CBS | Fair use | [Scooby-Doo.png](https://en.wikipedia.org/wiki/File:Scooby-Doo.png) |
+| cartoons-20 | Bart Simpson | — | Fair use | [Bart_Simpson_200px.png](https://en.wikipedia.org/wiki/File:Bart_Simpson_200px.png) |
+| cartoons-21 | Donald Duck | Disney | Fair use | [Donald_Duck_angry_transparent_background.png](https://en.wikipedia.org/wiki/File:Donald_Duck_angry_transparent_background.png) |
+| cartoons-22 | Dora the Explorer | pollinations flux | AI generated (לבדיקה) | — |
+| cartoons-23 | Mike Wazowski | — | Fair use | [Mike_Wazowski.png](https://en.wikipedia.org/wiki/File:Mike_Wazowski.png) |
+| cartoons-24 | James P. Sullivan (Monsters, Inc.) | pollinations flux | AI generated (לבדיקה) | — |
+| cartoons-25 | Ariel (The Little Mermaid) | — | Fair use | [Ariel_disney.png](https://en.wikipedia.org/wiki/File:Ariel_disney.png) |
+| cartoons-26 | Genie (Aladdin) | Disney | Fair use | [The_Genie_Aladdin.png](https://en.wikipedia.org/wiki/File:The_Genie_Aladdin.png) |
+| cartoons-27 | Moana (character) | Disney | Fair use | [Moana_(character).png](https://en.wikipedia.org/wiki/File:Moana_(character).png) |
+| cartoons-28 | Tweety | Rjcastillo | CC BY-SA 4.0 | [Cessna_T-37C_Tweety_Bird_-_A742783.jpg](https://commons.wikimedia.org/wiki/File:Cessna_T-37C_Tweety_Bird_-_A742783.jpg) |
+| cartoons-29 | Aladdin (Disney character) | Disney | Fair use | [Aladdin_Disney_pose.png](https://en.wikipedia.org/wiki/File:Aladdin_Disney_pose.png) |
+| cartoons-30 | Ratatouille (film) | — | Fair use | [RatatouillePoster.jpg](https://en.wikipedia.org/wiki/File:RatatouillePoster.jpg) |
+
+## comedians
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| comedians-1 | Jim Carrey | Ian Smith from London, England | CC BY-SA 2.0 | [Jim_Carrey_2008.jpg](https://commons.wikimedia.org/wiki/File:Jim_Carrey_2008.jpg) |
+| comedians-2 | Rowan Atkinson | Eva Rinaldi | CC BY-SA 2.0 | [Rowan_Atkinson,_2011.jpg](https://commons.wikimedia.org/wiki/File:Rowan_Atkinson,_2011.jpg) |
+| comedians-3 | Adam Sandler | Bryan Berlin | CC BY-SA 4.0 | [Jackie_Sandler_Adam_Sandler_Jay_Kelly-36_(3x4).jpg](https://commons.wikimedia.org/wiki/File:Jackie_Sandler_Adam_Sandler_Jay_Kelly-36_(3x4).jpg) |
+| comedians-4 | Charlie Chaplin | Strauss-Peyton Studio | Public domain | [Charlie_Chaplin_portrait_Getty_1739411952.jpg](https://commons.wikimedia.org/wiki/File:Charlie_Chaplin_portrait_Getty_1739411952.jpg) |
+| comedians-5 | Eddie Murphy | David Shankbone | Public domain | [Eddie_Murphy_by_David_Shankbone.jpg](https://commons.wikimedia.org/wiki/File:Eddie_Murphy_by_David_Shankbone.jpg) |
+| comedians-6 | Kevin Hart | Eva Rinaldi | CC BY-SA 2.0 | [Kevin_Hart_2014_(cropped_2).jpg](https://commons.wikimedia.org/wiki/File:Kevin_Hart_2014_(cropped_2).jpg) |
+| comedians-7 | Robin Williams | Kingkongphoto &amp; www.celebrity-photos.com from Laurel, Maryland, USA | CC BY-SA 2.0 | [Robin_Williams_1996_(cropped)_2.jpg](https://commons.wikimedia.org/wiki/File:Robin_Williams_1996_(cropped)_2.jpg) |
+| comedians-8 | Shalom Asayag | Pini Siluk | CC BY-SA 3.0 | [Shalom_Assayag.jpg](https://commons.wikimedia.org/wiki/File:Shalom_Assayag.jpg) |
+| comedians-9 | Adir Miller | גבריאלה שוורץ בשם אדיר מילר בע"מ | CC BY-SA 3.0 | [אדיר_מילר.jpg](https://commons.wikimedia.org/wiki/File:%D7%90%D7%93%D7%99%D7%A8_%D7%9E%D7%99%D7%9C%D7%A8.jpg) |
+| comedians-10 | Ben Stiller | Colleen Sturtevant | CC BY-SA 4.0 | [Ben_Stiller_2026.jpg](https://commons.wikimedia.org/wiki/File:Ben_Stiller_2026.jpg) |
+| comedians-11 | Jack Black | Raph_PH | CC BY 2.0 | [TenaciousDO2160623_(38_of_62)_Jack_Black.jpg](https://commons.wikimedia.org/wiki/File:TenaciousDO2160623_(38_of_62)_Jack_Black.jpg) |
+| comedians-12 | Will Ferrell | Adam Chitayat | CC BY-SA 4.0 | [Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_(cropped).jpg) |
+| comedians-13 | Sacha Baron Cohen | Raph_PH | CC BY 2.0 | [Sacha_Baron_Cohen_(2024)_(3x4_cropped).jpg](https://commons.wikimedia.org/wiki/File:Sacha_Baron_Cohen_(2024)_(3x4_cropped).jpg) |
+| comedians-14 | Jerry Seinfeld | Zafrir Keren - צפריר קרן | CC BY-SA 3.0 | [Jerry_Seinfeld_2023.jpg](https://commons.wikimedia.org/wiki/File:Jerry_Seinfeld_2023.jpg) |
+| comedians-15 | Assi Cohen | Amir Gilad | CC BY-SA 3.0 | [Asi_Cohen.jpg](https://commons.wikimedia.org/wiki/File:Asi_Cohen.jpg) |
+| comedians-16 | Guri Alfi | Pini Siluk | CC BY-SA 4.0 | [Guri_Alfi.jpg](https://commons.wikimedia.org/wiki/File:Guri_Alfi.jpg) |
+| comedians-17 | Shaike Ophir | ארתור רוסמן | CC BY 2.5 | [PikiWiki_Israel_56509_people_of_israel.jpg](https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_56509_people_of_israel.jpg) |
+| comedians-18 | Tal Friedman | ITamar K., איתמר ק. | CC BY 2.5 | [Tal_Friedman_23032007.jpg](https://commons.wikimedia.org/wiki/File:Tal_Friedman_23032007.jpg) |
+| comedians-19 | Mariano Idelman | Sir kiss | Public domain | [Mariano_Idelman.JPG](https://commons.wikimedia.org/wiki/File:Mariano_Idelman.JPG) |
+| comedians-20 | Lior Schleien | zaher abu elnaser | CC BY-SA 4.0 | [ליאור_שליין.JPG](https://commons.wikimedia.org/wiki/File:%D7%9C%D7%99%D7%90%D7%95%D7%A8_%D7%A9%D7%9C%D7%99%D7%99%D7%9F.JPG) |
+| comedians-21 | Orna Banai | Daniel Kaminsky | CC BY-SA 4.0 | [Orna_Banai.jpg](https://commons.wikimedia.org/wiki/File:Orna_Banai.jpg) |
+| comedians-22 | Steve Martin | Davidwbaker | CC BY-SA 4.0 | [Steve_Martin,_2017-08-11_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Steve_Martin,_2017-08-11_(cropped).jpg) |
+| comedians-23 | Mel Brooks | Angela George at https://www.flickr.com/photos/sharongraphics/ | CC BY-SA 3.0 | [MelBrooksApr10.jpg](https://commons.wikimedia.org/wiki/File:MelBrooksApr10.jpg) |
+| comedians-24 | Jimmy Fallon | Montclair Film | CC BY 2.0 | [Jimmy_Fallon-TTL_4575_(11046141004)_(5x7_cropped_and_rotated).jpg](https://commons.wikimedia.org/wiki/File:Jimmy_Fallon-TTL_4575_(11046141004)_(5x7_cropped_and_rotated).jpg) |
+| comedians-25 | Conan O'Brien | Montclair Film | CC BY 4.0 | [Conan_O'Brien_2025.jpg](https://commons.wikimedia.org/wiki/File:Conan_O%27Brien_2025.jpg) |
+| comedians-26 | Trevor Noah | Web Summit Qatar | CC BY 2.0 | [Trevor_Noah_(53554114243)_(portrait_crop).jpg](https://commons.wikimedia.org/wiki/File:Trevor_Noah_(53554114243)_(portrait_crop).jpg) |
+| comedians-27 | Amy Schumer | Mario Santor | CC BY-SA 3.0 | [Amy_Schumer_by_Mario_Santor.jpg](https://commons.wikimedia.org/wiki/File:Amy_Schumer_by_Mario_Santor.jpg) |
+| comedians-28 | Dave Chappelle | Kolby Ari | CC BY-SA 4.0 | [Dave_Chappelle_at_Preamiere_of_"Dave_Chappelle_In_Real_Life"_(2)_(cropped_2).jpg](https://commons.wikimedia.org/wiki/File:Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_(2)_(cropped_2).jpg) |
+| comedians-29 | Shahar Hasson | pollinations flux | AI generated (לבדיקה) | — |
+| comedians-30 | Steve Carell | Kevin Paul | CC BY 4.0 | [Steve_Carell_-_The_40-Year-Old-Virgin.jpg](https://commons.wikimedia.org/wiki/File:Steve_Carell_-_The_40-Year-Old-Virgin.jpg) |
+
 ## countries
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
@@ -136,6 +311,41 @@
 | countries-28 | Flag of the Netherlands | Zscout370 | Public domain | [Flag_of_the_Netherlands.svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg) |
 | countries-29 | Flag of Ireland | Éire | Public domain | [Flag_of_Ireland.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Ireland.svg) |
 | countries-30 | Flag of Jamaica | The SVG code is valid. This vector image was created with Inkscape by SKopp, and then manually edited by Zscout370, Madd | Public domain | [Flag_of_Jamaica.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Jamaica.svg) |
+
+## divas
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| divas-1 | Beyoncé | Raph_PH | CC BY 2.0 | [Beyoncé_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(10_of_118)_(52946364598)_(best_crop).jpg](https://commons.wikimedia.org/wiki/File:Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(10_of_118)_(52946364598)_(best_crop).jpg) |
+| divas-2 | Rihanna | SIGMA | CC BY 3.0 | [Rihanna_Fenty_2018.png](https://commons.wikimedia.org/wiki/File:Rihanna_Fenty_2018.png) |
+| divas-3 | Madonna | Raph_PH | CC BY 2.0 | [MadonnaO2171023_(97_of_133)_(53269593787)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:MadonnaO2171023_(97_of_133)_(53269593787)_(cropped).jpg) |
+| divas-4 | Taylor Swift | iHeartRadioCA | CC BY 3.0 | [Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_(3).png](https://commons.wikimedia.org/wiki/File:Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_(3).png) |
+| divas-5 | Lady Gaga | Carlos M. Vazquez II | CC BY 2.0 | [Lady_Gaga_at_Joe_Biden's_inauguration_(cropped_5).jpg](https://commons.wikimedia.org/wiki/File:Lady_Gaga_at_Joe_Biden%27s_inauguration_(cropped_5).jpg) |
+| divas-6 | Ariana Grande | Barbie Simons | CC BY 3.0 | [Ariana_Grande_promoting_Wicked_(2024).jpg](https://commons.wikimedia.org/wiki/File:Ariana_Grande_promoting_Wicked_(2024).jpg) |
+| divas-7 | Shakira | Junta de Andalucía | CC BY-SA 2.0 | [2023-11-16_Gala_de_los_Latin_Grammy,_03_(cropped)02.jpg](https://commons.wikimedia.org/wiki/File:2023-11-16_Gala_de_los_Latin_Grammy,_03_(cropped)02.jpg) |
+| divas-8 | Jennifer Lopez | Everwest | CC BY 4.0 | [Jennifer_Lopez_at_the_2025_Sundance_Film_Festival_(cropped_3).jpg](https://commons.wikimedia.org/wiki/File:Jennifer_Lopez_at_the_2025_Sundance_Film_Festival_(cropped_3).jpg) |
+| divas-9 | Britney Spears | Glenn Francis | CC BY-SA 4.0 | [Britney_Spears_2013_(Straighten_Crop).jpg](https://commons.wikimedia.org/wiki/File:Britney_Spears_2013_(Straighten_Crop).jpg) |
+| divas-10 | Mariah Carey | Shawn Miller | Public domain | [Mariah_Carey_Library_of_Congress_2023_1_Cropped_3.png](https://commons.wikimedia.org/wiki/File:Mariah_Carey_Library_of_Congress_2023_1_Cropped_3.png) |
+| divas-11 | Celine Dion | Georges Biard | CC BY-SA 3.0 | [Céline_Dion_2012.jpg](https://commons.wikimedia.org/wiki/File:C%C3%A9line_Dion_2012.jpg) |
+| divas-12 | Whitney Houston | PH2 Mark Kettenhofen | Public domain | [Whitney_Houston_(cropped3).JPEG](https://commons.wikimedia.org/wiki/File:Whitney_Houston_(cropped3).JPEG) |
+| divas-13 | Katy Perry | Colleen Sturtevant | CC BY-SA 4.0 | [Katy_Perry_2026_Tribeca_Film_Festival_(cropped_1).jpg](https://commons.wikimedia.org/wiki/File:Katy_Perry_2026_Tribeca_Film_Festival_(cropped_1).jpg) |
+| divas-14 | Adele | Marc E. | CC BY 2.0 | [Adele_2016.jpg](https://commons.wikimedia.org/wiki/File:Adele_2016.jpg) |
+| divas-15 | Dua Lipa | Harald Krichel | CC BY-SA 4.0 | [Dua_Lipa-69798_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Dua_Lipa-69798_(cropped).jpg) |
+| divas-16 | Billie Eilish | Raph_PH | CC BY 4.0 | [BillieEilishO2140725-39_-_54665577407_(cropped).jpg](https://commons.wikimedia.org/wiki/File:BillieEilishO2140725-39_-_54665577407_(cropped).jpg) |
+| divas-17 | Selena Gomez | Frank Sun | CC BY-SA 4.0 | [Selena_Gomez_at_the_2024_Toronto_International_Film_Festival_10_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Selena_Gomez_at_the_2024_Toronto_International_Film_Festival_10_(cropped).jpg) |
+| divas-18 | Miley Cyrus | Raphael Pour-Hashemi | CC BY 2.0 | [Miley_Cyrus_Primavera19_-226_(48986293772)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Miley_Cyrus_Primavera19_-226_(48986293772)_(cropped).jpg) |
+| divas-19 | Nicki Minaj | Gage Skidmore from Surprise, AZ, United States of America | CC BY-SA 4.0 | [Nicki_Minaj_(55022495106)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Nicki_Minaj_(55022495106)_(cropped).jpg) |
+| divas-20 | Christina Aguilera | nagi usano from Tokyo, Japan | CC BY-SA 2.0 | [Christina_Aguilera_2019_Disney_Legends_Awards_Ceremony_D23_EXPO_2019_(51440742748)_(cropped3).jpg](https://commons.wikimedia.org/wiki/File:Christina_Aguilera_2019_Disney_Legends_Awards_Ceremony_D23_EXPO_2019_(51440742748)_(cropped3).jpg) |
+| divas-21 | Tina Turner | HBO | Public domain | [Tina_Turner_Breaks_All_the_Rules.png](https://commons.wikimedia.org/wiki/File:Tina_Turner_Breaks_All_the_Rules.png) |
+| divas-22 | Cher | Raph_PH | CC BY-SA 4.0 | [Cher_in_2019_cropped.jpg](https://commons.wikimedia.org/wiki/File:Cher_in_2019_cropped.jpg) |
+| divas-23 | Kylie Minogue | PhilipRomanoPhoto | CC BY 4.0 | [KylieMinogue-byPhilipRomano.jpg](https://commons.wikimedia.org/wiki/File:KylieMinogue-byPhilipRomano.jpg) |
+| divas-24 | Alicia Keys | PhilipRomanoPhoto | CC BY 4.0 | [Alicia_Keys_(2025).jpg](https://commons.wikimedia.org/wiki/File:Alicia_Keys_(2025).jpg) |
+| divas-25 | Janet Jackson | Rich Esteban | CC BY-SA 4.0 | [JanetJacksonUnbreakableTourSanFran2015_(cropped).jpg](https://commons.wikimedia.org/wiki/File:JanetJacksonUnbreakableTourSanFran2015_(cropped).jpg) |
+| divas-26 | Diana Ross | Raph_PH | CC BY 2.0 | [DRossLongleat010722_(9_of_43)_(52189231585)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:DRossLongleat010722_(9_of_43)_(52189231585)_(cropped).jpg) |
+| divas-27 | Aretha Franklin | Atlantic Records (Life time: Published before 1978 without a copyright notice) | Public domain | [Aretha_Franklin_1968.jpg](https://commons.wikimedia.org/wiki/File:Aretha_Franklin_1968.jpg) |
+| divas-28 | Sabrina Carpenter | Raph_PH | CC BY 2.0 | [Sabrina_Carpenter_-_O2_Arena_2025_-_086_(cropped_2).jpg](https://commons.wikimedia.org/wiki/File:Sabrina_Carpenter_-_O2_Arena_2025_-_086_(cropped_2).jpg) |
+| divas-29 | Olivia Rodrigo | Raph_PH | CC BY 4.0 | [Glasto2025-546_(cropped)_2.jpg](https://commons.wikimedia.org/wiki/File:Glasto2025-546_(cropped)_2.jpg) |
+| divas-30 | Dolly Parton | David Gahr | Public domain | [Young-Dolly-Parton_(higher_quality_scan)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Young-Dolly-Parton_(higher_quality_scan)_(cropped).jpg) |
 
 ## dog-breeds
 
@@ -312,6 +522,56 @@
 | fruit-29 | File:Ficus_carica_whole_fruits_and_fruit_cut_open.jpg | Garitzko | Public domain | [Ficus_carica_whole_fruits_and_fruit_cut_open.jpg](https://commons.wikimedia.org/wiki/File:Ficus_carica_whole_fruits_and_fruit_cut_open.jpg) |
 | fruit-30 | File:Garlic_bulbs_and_cloves.jpg | Ivar Leidus | CC BY-SA 4.0 | [Garlic_bulbs_and_cloves.jpg](https://commons.wikimedia.org/wiki/File:Garlic_bulbs_and_cloves.jpg) |
 
+## game-characters
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| game-characters-1 | Mario | Shigehisa Nakaue (artist) / Nintendo (owner) | Fair use | [Mario_by_Shigehisa_Nakaue.png](https://en.wikipedia.org/wiki/File:Mario_by_Shigehisa_Nakaue.png) |
+| game-characters-2 | Pikachu | Game Freak | Fair use | [Pokémon_Pikachu_art.png](https://en.wikipedia.org/wiki/File:Pok%C3%A9mon_Pikachu_art.png) |
+| game-characters-3 | Sonic the Hedgehog (character) | — | Fair use | [Sonic_modern_and_classic_designs.png](https://en.wikipedia.org/wiki/File:Sonic_modern_and_classic_designs.png) |
+| game-characters-4 | Luigi | RyC - Behind The Lens from San Francisco, United States of America | CC BY 2.0 | [Comikaze_2014_-_Super_Maria_&_Luigi_(15717994796).jpg](https://commons.wikimedia.org/wiki/File:Comikaze_2014_-_Super_Maria_%26_Luigi_(15717994796).jpg) |
+| game-characters-5 | Pac-Man (character) | Bandai Namco Entertainment America | CC BY 3.0 | [Pac-Man_ingame_and_2D_alternative_design.png](https://commons.wikimedia.org/wiki/File:Pac-Man_ingame_and_2D_alternative_design.png) |
+| game-characters-6 | Steve (Minecraft) | Mojang Studios, Nintendo | Fair use | [Steve_(Minecraft).png](https://en.wikipedia.org/wiki/File:Steve_(Minecraft).png) |
+| game-characters-7 | Creeper (Minecraft) | Xbox México | CC BY 3.0 | [Minecraft_Creeper_(Crop).png](https://commons.wikimedia.org/wiki/File:Minecraft_Creeper_(Crop).png) |
+| game-characters-8 | Crash Bandicoot (character) | Toys For Bob | Fair use | [IAT_Crash_Bandicoot.png](https://en.wikipedia.org/wiki/File:IAT_Crash_Bandicoot.png) |
+| game-characters-9 | Donkey Kong (character) | — | Fair use | [Donkey_Kong_character.png](https://en.wikipedia.org/wiki/File:Donkey_Kong_character.png) |
+| game-characters-10 | Yoshi | — | Fair use | [Yoshi_(Nintendo_character).png](https://en.wikipedia.org/wiki/File:Yoshi_(Nintendo_character).png) |
+| game-characters-11 | Bowser (character) | Shigehisa Nakaue (artist) / Nintendo (owner) | Fair use | [Bowser_by_Shigehisa_Nakaue.png](https://en.wikipedia.org/wiki/File:Bowser_by_Shigehisa_Nakaue.png) |
+| game-characters-12 | Princess Peach | Shigehisa Nakaue | Fair use | [Princess_Peach_Stock_Art.png](https://en.wikipedia.org/wiki/File:Princess_Peach_Stock_Art.png) |
+| game-characters-13 | Kirby (character) | Nintendo | Fair use | [Kirby_Nintendo.png](https://en.wikipedia.org/wiki/File:Kirby_Nintendo.png) |
+| game-characters-14 | Link (The Legend of Zelda) | — | Fair use | [Link_(Hyrule_Historia).png](https://en.wikipedia.org/wiki/File:Link_(Hyrule_Historia).png) |
+| game-characters-15 | Lara Croft | Aspyr | Fair use | [LaraCroftInfobox.png](https://en.wikipedia.org/wiki/File:LaraCroftInfobox.png) |
+| game-characters-16 | Charmander | Ken Sugimori | Fair use | [Charmander.png](https://en.wikipedia.org/wiki/File:Charmander.png) |
+| game-characters-17 | Tails (Sonic the Hedgehog) | SEGA/Sonic Team | Fair use | [Miles_"Tails"_Prower_Sonic_and_All-Stars_Racing_Transformed.png](https://en.wikipedia.org/wiki/File:Miles_%22Tails%22_Prower_Sonic_and_All-Stars_Racing_Transformed.png) |
+| game-characters-18 | Spyro (character) | Activision | Fair use | [Spyro.png](https://en.wikipedia.org/wiki/File:Spyro.png) |
+| game-characters-19 | Kratos (God of War) | — | Fair use | [Kratos_PS4.png](https://en.wikipedia.org/wiki/File:Kratos_PS4.png) |
+| game-characters-20 | Master Chief (Halo) | — | Fair use | [Master_chief_halo_infinite.png](https://en.wikipedia.org/wiki/File:Master_chief_halo_infinite.png) |
+| game-characters-21 | Ratchet (Ratchet & Clank) | Insomniac Games | Fair use | [Ratchet_&_Clank_(2021).png](https://en.wikipedia.org/wiki/File:Ratchet_%26_Clank_(2021).png) |
+| game-characters-22 | Sub-Zero (Mortal Kombat) | John Tobias | Fair use | [Sub-Zero_John_Tobias_1996_Art.webp](https://en.wikipedia.org/wiki/File:Sub-Zero_John_Tobias_1996_Art.webp) |
+| game-characters-23 | Scorpion (Mortal Kombat) | NetherRealm Studios | Fair use | [MK1ScorpionRender.png](https://en.wikipedia.org/wiki/File:MK1ScorpionRender.png) |
+| game-characters-24 | Ryu (Street Fighter) | Namco, Capcom | Fair use | [RyuStreetFighterTwoHadoken.png](https://en.wikipedia.org/wiki/File:RyuStreetFighterTwoHadoken.png) |
+| game-characters-25 | Chun-Li | Martino Photos | CC BY-SA 2.0 | [Chun-Li,_Riminicomix_2021_(51360624777).jpg](https://commons.wikimedia.org/wiki/File:Chun-Li,_Riminicomix_2021_(51360624777).jpg) |
+| game-characters-26 | Nathan Drake | Sony | Fair use | [Nathan_Drake_Uc4_full_body_shot.png](https://en.wikipedia.org/wiki/File:Nathan_Drake_Uc4_full_body_shot.png) |
+| game-characters-27 | Ellie (The Last of Us) | — | Fair use | [Ellie_in_The_Last_of_Us_Part_II.png](https://en.wikipedia.org/wiki/File:Ellie_in_The_Last_of_Us_Part_II.png) |
+| game-characters-28 | Geralt of Rivia | Александр Степченков (Alexandr Stepchenkov) | CC BY-SA 2.0 | [Geralt.jpg](https://commons.wikimedia.org/wiki/File:Geralt.jpg) |
+| game-characters-29 | Samus Aran | — | Fair use | [Samus_Aran.png](https://en.wikipedia.org/wiki/File:Samus_Aran.png) |
+| game-characters-30 | Fox McCloud | Nintendo | Fair use | [Fox_McCloud_Artwork.png](https://en.wikipedia.org/wiki/File:Fox_McCloud_Artwork.png) |
+
+## historical-figures
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| historical-figures-21 | Ludwig van Beethoven | Joseph Karl Stieler | Public domain | [Joseph_Karl_Stieler's_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg](https://commons.wikimedia.org/wiki/File:Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg) |
+| historical-figures-22 | William Shakespeare | Attributed to John Taylor | Public domain | [William_Shakespeare_by_John_Taylor,_edited.jpg](https://commons.wikimedia.org/wiki/File:William_Shakespeare_by_John_Taylor,_edited.jpg) |
+| historical-figures-23 | Marie Curie | Henri Manuel | Public domain | [Marie_Curie_c._1920s.jpg](https://commons.wikimedia.org/wiki/File:Marie_Curie_c._1920s.jpg) |
+| historical-figures-24 | Thomas Edison | Louis Bachrach, Bachrach Studios, restored by Michel Vuijlsteke | Public domain | [Thomas_Edison2.jpg](https://commons.wikimedia.org/wiki/File:Thomas_Edison2.jpg) |
+| historical-figures-25 | Nikola Tesla | Napoleon Sarony | Public domain | [Tesla_circa_1890.jpeg](https://commons.wikimedia.org/wiki/File:Tesla_circa_1890.jpeg) |
+| historical-figures-26 | Ze'ev Jabotinsky | לשכת העיתונות הממשלתית | Public domain | [PORTRAIT_OF_VLADIMIR_JABOTINSKY_TAKEN_BY_BRITT_IN_PARIS._פורטרט,_זאב_ז'בוטינסקי.D850-062_(cropped).jpg](https://commons.wikimedia.org/wiki/File:PORTRAIT_OF_VLADIMIR_JABOTINSKY_TAKEN_BY_BRITT_IN_PARIS._%D7%A4%D7%95%D7%A8%D7%98%D7%A8%D7%98,_%D7%96%D7%90%D7%91_%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99.D850-062_(cropped).jpg) |
+| historical-figures-27 | Eliezer Ben-Yehuda | Ya'ackov Ben-Dov | Public domain | [Portrait_of_Eliezer_Ben-Yehuda_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Portrait_of_Eliezer_Ben-Yehuda_(cropped).jpg) |
+| historical-figures-28 | Christopher Columbus | Sebastiano del Piombo | Public domain | [Portrait_of_a_Man,_Said_to_be_Christopher_Columbus.jpg](https://commons.wikimedia.org/wiki/File:Portrait_of_a_Man,_Said_to_be_Christopher_Columbus.jpg) |
+| historical-figures-29 | Hannah Szenes | אין מידע | Public domain | [PikiWiki_Israel_7715_Hannah_Senesh.jpg](https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_7715_Hannah_Senesh.jpg) |
+| historical-figures-30 | Julius Caesar | Ángel M. Felicísimo from Mérida, España | Public domain | [Retrato_de_Julio_César_(26724093101)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Retrato_de_Julio_C%C3%A9sar_(26724093101)_(cropped).jpg) |
+
 ## instruments
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
@@ -346,6 +606,51 @@
 | instruments-28 | Double bass | User:AndrewKepert | CC BY-SA 3.0 | [AGK_bass1_full.jpg](https://commons.wikimedia.org/wiki/File:AGK_bass1_full.jpg) |
 | instruments-29 | Shofar | Zachi Evenor | CC BY 2.0 | [Shofar-16-Zachi-Evenor.jpg](https://commons.wikimedia.org/wiki/File:Shofar-16-Zachi-Evenor.jpg) |
 | instruments-30 | Triangle (musical instrument) | AnonymousUnknown author | CC BY-SA 4.0 | [Triangle_001.jpg](https://commons.wikimedia.org/wiki/File:Triangle_001.jpg) |
+
+## israel-history
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| israel-history-12 | File:Knesset front side - 2022.jpg | Clema12 | CC BY-SA 4.0 | [Knesset_front_side_-_2022.jpg](https://commons.wikimedia.org/wiki/File:Knesset_front_side_-_2022.jpg) |
+| israel-history-15 | File:Bet She'an roman Theater.jpg | Michael Drewes | CC BY-SA 4.0 | [Bet_She'an_roman_Theater.jpg](https://commons.wikimedia.org/wiki/File:Bet_She%27an_roman_Theater.jpg) |
+| israel-history-28 | Tel Be'er Sheva | gugganij | CC BY-SA 3.0 | [Tel_Be'er_Sheva_Overview_2007041.JPG](https://commons.wikimedia.org/wiki/File:Tel_Be%27er_Sheva_Overview_2007041.JPG) |
+| israel-history-29 | File:Maimonides Tomb IMG 5948.JPG | Deror_avi | CC BY-SA 4.0 | [Maimonides_Tomb_IMG_5948.JPG](https://commons.wikimedia.org/wiki/File:Maimonides_Tomb_IMG_5948.JPG) |
+| israel-history-30 | Tel Hai | Remi Jouan | CC BY-SA 3.0 | [Tel_Hai_-_Courtyard_(3).jpg](https://commons.wikimedia.org/wiki/File:Tel_Hai_-_Courtyard_(3).jpg) |
+
+## israeli-singers
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| israeli-singers-1 | Omer Adam | Shai Franco | CC BY-SA 3.0 | [עומר_אדם_צילום_שי_פרנקו.jpg](https://commons.wikimedia.org/wiki/File:%D7%A2%D7%95%D7%9E%D7%A8_%D7%90%D7%93%D7%9D_%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%A9%D7%99_%D7%A4%D7%A8%D7%A0%D7%A7%D7%95.jpg) |
+| israeli-singers-2 | Noa Kirel | Tal Abudi | CC BY-SA 3.0 | [1_Noa_Kirel_(cropped).jpg](https://commons.wikimedia.org/wiki/File:1_Noa_Kirel_(cropped).jpg) |
+| israeli-singers-3 | Eyal Golan | Tal Abudi | CC BY-SA 3.0 | [Eyal_Golan_1_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Eyal_Golan_1_(cropped).jpg) |
+| israeli-singers-4 | Sarit Hadad | לידור חדידה (Lidor Hadida) | CC BY-SA 3.0 | [Sarit_Hadad.jpg](https://commons.wikimedia.org/wiki/File:Sarit_Hadad.jpg) |
+| israeli-singers-5 | Idan Raichel | Shai Franco | CC BY-SA 3.0 | [Idan_Raichel_6_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Idan_Raichel_6_(cropped).jpg) |
+| israeli-singers-6 | Netta Barzilai | Daniel Kaminsky | CC BY-SA 3.0 | [Netta_Barzilai.jpg](https://commons.wikimedia.org/wiki/File:Netta_Barzilai.jpg) |
+| israeli-singers-7 | Shlomo Artzi | רנדום | CC BY-SA 3.0 | [Shlomo_Artzi_at_Caesarea.jpg](https://commons.wikimedia.org/wiki/File:Shlomo_Artzi_at_Caesarea.jpg) |
+| israeli-singers-8 | Arik Einstein | Yaakov Saar | CC BY-SA 3.0 | [Arik_Einstein_D499-097_taken_by_Israel_Government_Press_Office.jpg](https://commons.wikimedia.org/wiki/File:Arik_Einstein_D499-097_taken_by_Israel_Government_Press_Office.jpg) |
+| israeli-singers-9 | Ofra Haza | Yaakov Saar | CC BY-SA 3.0 | [Ofra_Haza_1981_(עפרה_חזה_1981).jpg](https://commons.wikimedia.org/wiki/File:Ofra_Haza_1981_(%D7%A2%D7%A4%D7%A8%D7%94_%D7%97%D7%96%D7%94_1981).jpg) |
+| israeli-singers-10 | Rita (Israeli singer) | גיא כושי ויריב פיין (פיסטוק אמנים בע"מ) | CC BY-SA 3.0 | [RITA_gy_2015.jpg](https://commons.wikimedia.org/wiki/File:RITA_gy_2015.jpg) |
+| israeli-singers-11 | Eden Ben Zaken | Daniel Elster (דניאל אלסטר) | CC BY-SA 3.0 | [Eden_Ben_Zaken_3.jpg](https://commons.wikimedia.org/wiki/File:Eden_Ben_Zaken_3.jpg) |
+| israeli-singers-12 | Moshe Peretz | Neukoln | CC BY-SA 3.0 | [Moshe_Peretz_01.JPG](https://commons.wikimedia.org/wiki/File:Moshe_Peretz_01.JPG) |
+| israeli-singers-13 | Shlomi Shabat | יניר סלע | CC BY-SA 3.0 | [Shlomi_Shabbat.jpg](https://commons.wikimedia.org/wiki/File:Shlomi_Shabbat.jpg) |
+| israeli-singers-14 | Eden Hason | Yanir Sela (יניר סלע) | CC BY-SA 3.0 | [Eden_hason.jpg](https://commons.wikimedia.org/wiki/File:Eden_hason.jpg) |
+| israeli-singers-15 | Nathan Goshen | Seli Ben Ari | CC BY-SA 3.0 | [Nathan_Goshen.jpg](https://commons.wikimedia.org/wiki/File:Nathan_Goshen.jpg) |
+| israeli-singers-16 | Anna Zak | Tal Abudi | CC BY-SA 3.0 | [Anna_Zak.jpg](https://commons.wikimedia.org/wiki/File:Anna_Zak.jpg) |
+| israeli-singers-17 | Aviv Geffen | רונן פדידה (Ronen Fadida) | CC BY-SA 3.0 | [Aviv_Geffen_1.jpg](https://commons.wikimedia.org/wiki/File:Aviv_Geffen_1.jpg) |
+| israeli-singers-18 | Idan Amedi | Seli Ben Ari | CC BY-SA 4.0 | [עידן_עמדי,_סלי_בן_אריה.jpg](https://commons.wikimedia.org/wiki/File:%D7%A2%D7%99%D7%93%D7%9F_%D7%A2%D7%9E%D7%93%D7%99,_%D7%A1%D7%9C%D7%99_%D7%91%D7%9F_%D7%90%D7%A8%D7%99%D7%94.jpg) |
+| israeli-singers-19 | Miri Mesika | איה זך (Aya Zakh) | CC BY-SA 4.0 | [Miri_Mesika.webp](https://commons.wikimedia.org/wiki/File:Miri_Mesika.webp) |
+| israeli-singers-20 | Pe'er Tasi | טלושקיה | CC BY-SA 4.0 | [0U5A7798.jpg](https://commons.wikimedia.org/wiki/File:0U5A7798.jpg) |
+| israeli-singers-21 | Shalom Hanoch | Morshem | CC BY-SA 4.0 | [Shalom_Hanoch_2.jpg](https://commons.wikimedia.org/wiki/File:Shalom_Hanoch_2.jpg) |
+| israeli-singers-22 | Yehoram Gaon | Yaakov Saar | CC BY-SA 3.0 | [Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg](https://commons.wikimedia.org/wiki/File:Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg) |
+| israeli-singers-23 | Zehava Ben | גילי אלגבי | CC BY-SA 4.0 | [Zehavaben.jpg](https://commons.wikimedia.org/wiki/File:Zehavaben.jpg) |
+| israeli-singers-24 | Keren Peles | Daniel Kaminsky | CC BY-SA 3.0 | [Keren_Peles_1.jpg](https://commons.wikimedia.org/wiki/File:Keren_Peles_1.jpg) |
+| israeli-singers-25 | Dudu Aharon | ארן חן צלמים | CC BY-SA 3.0 | [Dudu_Aharon_2015.jpg](https://commons.wikimedia.org/wiki/File:Dudu_Aharon_2015.jpg) |
+| israeli-singers-26 | Yuval Dayan | Tal Abudi | CC BY-SA 4.0 | [יובל_דיין2.jpg](https://commons.wikimedia.org/wiki/File:%D7%99%D7%95%D7%91%D7%9C_%D7%93%D7%99%D7%99%D7%9F2.jpg) |
+| israeli-singers-27 | Margi (singer) | pollinations flux | AI generated (לבדיקה) | — |
+| israeli-singers-28 | Haim Moshe | de:Benutzer:datafox | CC BY-SA 3.0 | [Haim_Moshe.JPG](https://commons.wikimedia.org/wiki/File:Haim_Moshe.JPG) |
+| israeli-singers-29 | Arkadi Duchin | עדי כהן צדק | CC BY-SA 3.0 | [Arkadi_Duchin_(1).jpg](https://commons.wikimedia.org/wiki/File:Arkadi_Duchin_(1).jpg) |
+| israeli-singers-30 | Osher Cohen | Shay Cohen Arbel (שי כהן ארבל) | CC BY-SA 4.0 | [אושר_כהן.jpg](https://commons.wikimedia.org/wiki/File:%D7%90%D7%95%D7%A9%D7%A8_%D7%9B%D7%94%D7%9F.jpg) |
 
 ## kitchen
 
@@ -557,6 +862,41 @@
 | sports-29 | Rowing (sport) | — | Public domain | [Harvard_Rowing_Crew_at_Henley_2004_-2.JPG](https://commons.wikimedia.org/wiki/File:Harvard_Rowing_Crew_at_Henley_2004_-2.JPG) |
 | sports-30 | Figure skating | Quejaytee | CC BY-SA 4.0 | [Team_Les_Supreme_Free_Skate_at_the_2026_ISU_Synchronized_Skating_World_Championships_01.jpg](https://commons.wikimedia.org/wiki/File:Team_Les_Supreme_Free_Skate_at_the_2026_ISU_Synchronized_Skating_World_Championships_01.jpg) |
 
+## superheroes
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| superheroes-1 | Spider-Man | Mike McKone and Morry Hollowell / Marvel Comics | Fair use | [Web_of_Spider-Man_Vol_1_129-1.png](https://en.wikipedia.org/wiki/File:Web_of_Spider-Man_Vol_1_129-1.png) |
+| superheroes-2 | Batman | DC Comics | Fair use | [Batman_Infobox.jpg](https://en.wikipedia.org/wiki/File:Batman_Infobox.jpg) |
+| superheroes-3 | Superman | Jason Fabok | Fair use | [Supermanflying.png](https://en.wikipedia.org/wiki/File:Supermanflying.png) |
+| superheroes-4 | Iron Man | Marvel Comics | Fair use | [Iron_Man_(circa_2018).png](https://en.wikipedia.org/wiki/File:Iron_Man_(circa_2018).png) |
+| superheroes-5 | Captain America | Carter McKendry from New York, NY, United States | CC BY 2.0 | [NYCC_2016_-_Captain_America_Dog_(29928079170).jpg](https://commons.wikimedia.org/wiki/File:NYCC_2016_-_Captain_America_Dog_(29928079170).jpg) |
+| superheroes-6 | Hulk | — | Fair use | [Hulk_(circa_2019).png](https://en.wikipedia.org/wiki/File:Hulk_(circa_2019).png) |
+| superheroes-7 | Wonder Woman | — | Fair use | [Wonder_Woman_750.jpg](https://en.wikipedia.org/wiki/File:Wonder_Woman_750.jpg) |
+| superheroes-8 | Thor (Marvel Comics) | — | Fair use | [Thor_(Marvel_Comics).png](https://en.wikipedia.org/wiki/File:Thor_(Marvel_Comics).png) |
+| superheroes-9 | Black Panther (character) | Jack Kirby | Fair use | [Black_Panther_(T'Challa).png](https://en.wikipedia.org/wiki/File:Black_Panther_(T%27Challa).png) |
+| superheroes-10 | Deadpool | Rob Liefeld / Marvel Comics | Fair use | [Deadpool.png](https://en.wikipedia.org/wiki/File:Deadpool.png) |
+| superheroes-11 | Wolverine (character) | Stanley Lau (artist) / Marvel Comics (copyright holder) | Fair use | [Wolverine_(circa_2024).jpg](https://en.wikipedia.org/wiki/File:Wolverine_(circa_2024).jpg) |
+| superheroes-12 | Flash (DC Comics character) | — | Fair use | [The_Flash_Family.jpg](https://en.wikipedia.org/wiki/File:The_Flash_Family.jpg) |
+| superheroes-13 | Aquaman | Brad Walker / DC Comics | Fair use | [Aquaman_Rebirth_1.png](https://en.wikipedia.org/wiki/File:Aquaman_Rebirth_1.png) |
+| superheroes-14 | Black Widow (Natasha Romanova) | — | Fair use | [Natasha_Romanova_incarnations.jpg](https://en.wikipedia.org/wiki/File:Natasha_Romanova_incarnations.jpg) |
+| superheroes-15 | Doctor Strange | — | Fair use | [Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg](https://en.wikipedia.org/wiki/File:Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg) |
+| superheroes-16 | Ant-Man | — | Fair use | [Irredeemable_Ant-Man_Vol_1_5_Textless.jpg](https://en.wikipedia.org/wiki/File:Irredeemable_Ant-Man_Vol_1_5_Textless.jpg) |
+| superheroes-17 | Captain Marvel (Carol Danvers) | — | Fair use | [Carol_Danvers_-_(evolution).jpg](https://en.wikipedia.org/wiki/File:Carol_Danvers_-_(evolution).jpg) |
+| superheroes-18 | Green Lantern | — | Fair use | [Green_Lantern_Rebirth_6.jpg](https://en.wikipedia.org/wiki/File:Green_Lantern_Rebirth_6.jpg) |
+| superheroes-19 | Groot | Marvel | Fair use | [Groot.png](https://en.wikipedia.org/wiki/File:Groot.png) |
+| superheroes-20 | Rocket Raccoon | — | Fair use | [Rocketraccoon.png](https://en.wikipedia.org/wiki/File:Rocketraccoon.png) |
+| superheroes-21 | Hawkeye (Clint Barton) | Publisher Marvel Comics, cover artists Stefano Caselli and Federico Blee | Fair use | [Hawkeye_(circa_2022).webp](https://en.wikipedia.org/wiki/File:Hawkeye_(circa_2022).webp) |
+| superheroes-22 | Vision (Marvel Comics) | — | Fair use | [Vision_(Marvel_Comics).png](https://en.wikipedia.org/wiki/File:Vision_(Marvel_Comics).png) |
+| superheroes-23 | Scarlet Witch | — | Fair use | [Scarlet_Witch_Various_incarnations_2021.jpg](https://en.wikipedia.org/wiki/File:Scarlet_Witch_Various_incarnations_2021.jpg) |
+| superheroes-24 | Storm (Marvel Comics) | — | Fair use | [Storm_(Ororo_Munroe).png](https://en.wikipedia.org/wiki/File:Storm_(Ororo_Munroe).png) |
+| superheroes-25 | Cyborg (DC Comics) | — | Fair use | [Cyborg_(Victor_Stone).jpg](https://en.wikipedia.org/wiki/File:Cyborg_(Victor_Stone).jpg) |
+| superheroes-26 | Shazam (DC Comics) | Dan Mora, DC Comics | Fair use | [Billy_Batson,_Shazam_Captain_Marvel_(Modern).png](https://en.wikipedia.org/wiki/File:Billy_Batson,_Shazam_Captain_Marvel_(Modern).png) |
+| superheroes-27 | Green Arrow | — | Fair use | [Green_Arrow_-_Infobox_image.png](https://en.wikipedia.org/wiki/File:Green_Arrow_-_Infobox_image.png) |
+| superheroes-28 | Robin (character) | — | Fair use | [Robins_(DC_Comics_characters).png](https://en.wikipedia.org/wiki/File:Robins_(DC_Comics_characters).png) |
+| superheroes-29 | Silver Surfer | — | Fair use | [Silver_Surfer.png](https://en.wikipedia.org/wiki/File:Silver_Surfer.png) |
+| superheroes-30 | Professor X | Marvel Comics | Fair use | [Professor_X.png](https://en.wikipedia.org/wiki/File:Professor_X.png) |
+
 ## technology
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
@@ -661,3 +1001,38 @@
 | world-cities-28 | Cape Town | Der Berzerker from Washington, DC, USA | CC BY-SA 2.0 | [Camps_bay_(53460319478)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Camps_bay_(53460319478)_(cropped).jpg) |
 | world-cities-29 | Toronto | Dillan Payne | CC BY-SA 4.0 | [Toronto_Skyline_from_Snake_Island,_September_11_2026_(01).jpg](https://commons.wikimedia.org/wiki/File:Toronto_Skyline_from_Snake_Island,_September_11_2026_(01).jpg) |
 | world-cities-30 | Seoul | Eunmi Park | CC BY-SA 4.0 | [중화전의_낮.jpg](https://commons.wikimedia.org/wiki/File:%EC%A4%91%ED%99%94%EC%A0%84%EC%9D%98_%EB%82%AE.jpg) |
+
+## world-singers
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| world-singers-1 | Michael Jackson | Matthew Rolston; Distributed by Epic Records | Public domain | [Michael_Jackson_1983_(3x4_cropped)_(contrast).jpg](https://commons.wikimedia.org/wiki/File:Michael_Jackson_1983_(3x4_cropped)_(contrast).jpg) |
+| world-singers-2 | Justin Bieber | Daniel Torok | Public domain | [P20260719DT-1213_President_Donald_J._Trump_and_First_Lady_Melania_Trump_attend_the_FIFA_World_Cup_Final_(cropped_2).jpg](https://commons.wikimedia.org/wiki/File:P20260719DT-1213_President_Donald_J._Trump_and_First_Lady_Melania_Trump_attend_the_FIFA_World_Cup_Final_(cropped_2).jpg) |
+| world-singers-3 | Ed Sheeran | Number 10 | CC BY 2.0 | [Ed_Sheeran_2022_(3x4_crop).jpg](https://commons.wikimedia.org/wiki/File:Ed_Sheeran_2022_(3x4_crop).jpg) |
+| world-singers-4 | Bruno Mars | slgckgc | CC BY 4.0 | [BrunoMars24KMagicWorldTourLive_(cropped).jpg](https://commons.wikimedia.org/wiki/File:BrunoMars24KMagicWorldTourLive_(cropped).jpg) |
+| world-singers-5 | Elvis Presley | Metro-Goldwyn-Mayer, Inc. Reproduction Number: LC-USZ6-2067 Location: NYWTS -- BIOG | Public domain | [Elvis_Presley_promoting_Jailhouse_Rock.jpg](https://commons.wikimedia.org/wiki/File:Elvis_Presley_promoting_Jailhouse_Rock.jpg) |
+| world-singers-6 | Eminem | Brendan_linden | CC0 | [Eminem_2021_Color_Corrected.jpg](https://commons.wikimedia.org/wiki/File:Eminem_2021_Color_Corrected.jpg) |
+| world-singers-7 | Drake (musician) | GabboT | CC BY-SA 2.0 | [Drake_at_The_Carter_Effect_2017_(36818935200)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Drake_at_The_Carter_Effect_2017_(36818935200)_(cropped).jpg) |
+| world-singers-8 | Freddie Mercury | Carl Lender | CC BY-SA 3.0 | [Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg](https://commons.wikimedia.org/wiki/File:Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg) |
+| world-singers-9 | Bob Marley | Not credited | Public domain | [Bob_Marley_circa_1976_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Bob_Marley_circa_1976_(cropped).jpg) |
+| world-singers-10 | Elton John | Raph_PH | CC BY 2.0 | [EltonDocBFILFF101024_(4_of_17)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:EltonDocBFILFF101024_(4_of_17)_(cropped).jpg) |
+| world-singers-11 | Harry Styles | Raph_PH | CC BY 2.0 | [HarryStylesWembley170623_(65_of_93)_(52982678051)_(cropped_2).jpg](https://commons.wikimedia.org/wiki/File:HarryStylesWembley170623_(65_of_93)_(52982678051)_(cropped_2).jpg) |
+| world-singers-12 | The Weeknd | Brian Ziff | CC BY-SA 4.0 | [The_Weeknd_Portrait_by_Brian_Ziff.jpg](https://commons.wikimedia.org/wiki/File:The_Weeknd_Portrait_by_Brian_Ziff.jpg) |
+| world-singers-13 | Justin Timberlake | Gage Skidmore | CC BY-SA 3.0 | [Justin_Timberlake_by_Gage_Skidmore.jpg](https://commons.wikimedia.org/wiki/File:Justin_Timberlake_by_Gage_Skidmore.jpg) |
+| world-singers-14 | Shawn Mendes | Cosmopolitan UK | CC BY 3.0 | [191125_Shawn_Mendes_at_the_2019_American_Music_Awards.png](https://commons.wikimedia.org/wiki/File:191125_Shawn_Mendes_at_the_2019_American_Music_Awards.png) |
+| world-singers-15 | John Lennon | Bob Gruen; Distributed by Capitol Records | Public domain | [John_Lennon_"Walls_and_Bridges"_1974_press_photo_2_(color)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:John_Lennon_%22Walls_and_Bridges%22_1974_press_photo_2_(color)_(cropped).jpg) |
+| world-singers-16 | Paul McCartney | Raph_PH | CC BY 2.0 | [MaccaLyricsRFH051121_(15_of_18)_(updated)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:MaccaLyricsRFH051121_(15_of_18)_(updated)_(cropped).jpg) |
+| world-singers-17 | Frank Sinatra | Photograph by Capitol Records, per a credit found in the 1959 edition of the International Celebrity Register at page 69 | Public domain | [Frank_Sinatra_(1957_studio_portrait_close-up).jpg](https://commons.wikimedia.org/wiki/File:Frank_Sinatra_(1957_studio_portrait_close-up).jpg) |
+| world-singers-18 | Enrique Iglesias | Eva Rinaldi | CC BY-SA 2.0 | [Enrique_Iglesias_2011,_2_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Enrique_Iglesias_2011,_2_(cropped).jpg) |
+| world-singers-19 | Ricky Martin | Harald Krichel | CC BY-SA 4.0 | [Ricky_Martin-4262.jpg](https://commons.wikimedia.org/wiki/File:Ricky_Martin-4262.jpg) |
+| world-singers-20 | Pitbull (rapper) | Zach Catanzareti Photo | CC BY 2.0 | [Pitbull_(52703405994)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Pitbull_(52703405994)_(cropped).jpg) |
+| world-singers-21 | Snoop Dogg | Diego Serrano | CC BY 2.0 | [Snoop_Dogg,_WrestleMania_XL_(cropped)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Snoop_Dogg,_WrestleMania_XL_(cropped)_(cropped).jpg) |
+| world-singers-22 | Usher (musician) | US Embassy Italy | Public domain | [Usher_Milan_2026.jpg](https://commons.wikimedia.org/wiki/File:Usher_Milan_2026.jpg) |
+| world-singers-23 | Bad Bunny | Toglenn | CC BY-SA 4.0 | [Bad_Bunny_2019_by_Glenn_Francis_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Bad_Bunny_2019_by_Glenn_Francis_(cropped).jpg) |
+| world-singers-24 | Post Malone | Chrisallmeid | CC BY-SA 4.0 | [Post_Malone_July_2021_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Post_Malone_July_2021_(cropped).jpg) |
+| world-singers-25 | Kendrick Lamar | Raph_PH | CC BY 4.0 | [KendrickSZASPurs230725-144_(cropped)_desaturated.jpg](https://commons.wikimedia.org/wiki/File:KendrickSZASPurs230725-144_(cropped)_desaturated.jpg) |
+| world-singers-26 | Sting (musician) | CamilaAlves.raf | CC BY-SA 4.0 | [Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg) |
+| world-singers-27 | Mick Jagger | Raph_PH | CC BY 2.0 | [RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg) |
+| world-singers-28 | Jon Bon Jovi | Montclair Film | CC BY 2.0 | [NEG_0062-2_(54119957209).jpg](https://commons.wikimedia.org/wiki/File:NEG_0062-2_(54119957209).jpg) |
+| world-singers-29 | Travis Scott | pollinations flux | AI generated (לבדיקה) | — |
+| world-singers-30 | Lewis Capaldi | Raph_PH | CC BY 4.0 | [Glasto2025-41_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Glasto2025-41_(cropped).jpg) |

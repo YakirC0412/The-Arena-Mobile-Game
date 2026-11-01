@@ -8,6 +8,7 @@ import type {
   WayId,
 } from '../game/types';
 import { IMAGED_ITEM_IDS } from './image-manifest';
+import { MORE_ITEMS, MORE_META, MORE_SECOND_WAY } from './more-categories';
 
 // The 36-category pool (docs/CATEGORIES.md, decisions 14–15). Each category
 // has a level, a status and up to two ways. Items are emoji or pictures with a
@@ -30,6 +31,7 @@ type Meta = { level: CategoryLevel; status: Exclude<CategoryStatus, 'soon'>; way
 export const MIN_PICTURE_ITEMS = 30;
 const IMAGED = new Set(IMAGED_ITEM_IDS);
 const META: Record<string, Meta> = {
+  ...MORE_META,
   animals: { level: 'easy', status: 'active', ways: [['תמונה ← שם החיה', true]] },
   countries: { level: 'easy', status: 'active', ways: [['דגל ← שם המדינה', true], ['דגל ← עיר הבירה', true]] },
   fruit: { level: 'easy', status: 'active', ways: [['תמונה ← שם', true]] },
@@ -56,26 +58,9 @@ const META: Record<string, Meta> = {
   plants: { level: 'medium', status: 'reserve', ways: [['תמונה ← שם', true]] },
 };
 
-// Categories that wait for pictures: listed in the picker as "coming soon".
-const COMING_SOON: [id: string, name: string, icon: string, level: CategoryLevel, ways: string[]][] = [
-  ['basketball-teams', 'קבוצות כדורסל', '🏀', 'hard', ['סמל ← שם הקבוצה']],
-  ['playstation', 'משחקי פלייסטיישן', '🎮', 'medium', ['עטיפה בלי שם ← שם המשחק']],
-  ['game-characters', 'דמויות משחקי וידאו', '👾', 'easy', ['דמות ← שם הדמות', 'דמות ← המשחק']],
-  ['cartoons', 'דמויות מצוירות', '🐭', 'easy', ['דמות ← שם הדמות', 'דמות ← הסרט או הסדרה']],
-  ['superheroes', 'גיבורי-על', '🦸', 'easy', ['גיבור ← שם הגיבור']],
-  ['movies', 'סרטים', '🎬', 'medium', ['פוסטר בלי שם ← שם הסרט']],
-  ['tv-series', 'סדרות טלוויזיה', '📺', 'medium', ['פוסטר או פריים ← שם הסדרה', 'דמות ראשית ← שם הסדרה']],
-  ['actors', 'שחקנים מפורסמים', '🎭', 'medium', ['תמונה ← שם השחקן']],
-  ['comedians', 'קומיקאים', '😂', 'medium', ['תמונה ← שם']],
-  ['divas', 'דיוות', '💃', 'easy', ['תמונה ← שם הזמרת']],
-  ['israeli-singers', 'זמרים וזמרות ישראלים', '🎤', 'medium', ['תמונה ← שם']],
-  ['israel-history', 'אתרים היסטוריים בישראל', '🏛️', 'medium', ['אתר ← שם האתר', 'אתר ← העיר']],
-  ['brands', 'מותגים ולוגואים', '🏷️', 'easy', ['סמל בלי טקסט ← שם המותג']],
-  ['cars', 'מכוניות', '🚘', 'medium', ['סמל היצרן ← שם היצרן']],
-  ['historical-figures', 'דמויות היסטוריות', '📜', 'hard', ['דיוקן ← שם']],
-  ['clothing-brands', 'מותגי ביגוד', '👟', 'easy', ['סמל המותג ← שם המותג']],
-  ['world-singers', 'זמרים מהעולם', '🎙️', 'medium', ['תמונה ← שם הזמר']],
-];
+// Categories that wait for pictures and have no item list yet: listed in the picker as "coming soon".
+// (All 36 now have lists; categories with a list but too few pictures also show as "soon".)
+const COMING_SOON: [id: string, name: string, icon: string, level: CategoryLevel, ways: string[]][] = [];
 
 // Picker order (docs/CATEGORIES.md), then the hidden reserve.
 const ORDER = [
@@ -90,6 +75,7 @@ const ORDER = [
 // Second-way answers, keyed by the item's first answer. Items missing here
 // are left out when the category is played its second way.
 const SECOND_WAY: Record<string, Record<string, RawAnswer>> = {
+  ...MORE_SECOND_WAY,
   'world-cities': {
     'פריז': ['צרפת'], 'ניו יורק': ['ארצות הברית', ['ארהב', 'ארה״ב', 'אמריקה']], 'לונדון': ['בריטניה', ['אנגליה']],
     'טוקיו': ['יפן'], 'דובאי': ['איחוד האמירויות', ['האמירויות', 'אמירויות']], 'סידני': ['אוסטרליה'], 'רומא': ['איטליה'],
@@ -154,6 +140,7 @@ function toWays(ways: [string, boolean][]): CategoryWay[] {
 }
 
 const WITH_ITEMS: RawItems[] = [
+  ...MORE_ITEMS,
   category('animals', 'חיות', '🦁', [
     ['🦁', 'אריה'], ['🐘', 'פיל'], ['🐶', 'כלב'],
     ['🐯', 'טיגריס'], ['🐊', 'תנין'], ['🐋', 'לוויתן'],

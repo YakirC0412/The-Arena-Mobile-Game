@@ -1,4 +1,244 @@
 {
+ "actors-1": {
+  "source": "Tom Cruise",
+  "via": "wikipedia",
+  "file": "Tom_Cruise_at_53rd_Saturn_Awards_2026-01.jpg",
+  "license": "CC BY 4.0",
+  "author": "Kevin Paul",
+  "page": "https://commons.wikimedia.org/wiki/File:Tom_Cruise_at_53rd_Saturn_Awards_2026-01.jpg"
+ },
+ "actors-2": {
+  "source": "Leonardo DiCaprio",
+  "via": "wikipedia",
+  "file": "LeoPTABFI191125-28_(cropped).jpg",
+  "license": "CC BY 4.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:LeoPTABFI191125-28_(cropped).jpg"
+ },
+ "actors-3": {
+  "source": "Brad Pitt",
+  "via": "wikipedia",
+  "file": "Brad_Pitt-69858.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Harald Krichel",
+  "page": "https://commons.wikimedia.org/wiki/File:Brad_Pitt-69858.jpg"
+ },
+ "actors-4": {
+  "source": "Dwayne Johnson",
+  "via": "wikipedia",
+  "file": "Dwayne_Johnson-1764_(4x5_cropped_with_moderate_headroom).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Harald Krichel",
+  "page": "https://commons.wikimedia.org/wiki/File:Dwayne_Johnson-1764_(4x5_cropped_with_moderate_headroom).jpg"
+ },
+ "actors-5": {
+  "source": "Will Smith",
+  "via": "wikipedia",
+  "file": "TechCrunch_Disrupt_San_Francisco_2019_-_Day_1_(48834070763)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "TechCrunch",
+  "page": "https://commons.wikimedia.org/wiki/File:TechCrunch_Disrupt_San_Francisco_2019_-_Day_1_(48834070763)_(cropped).jpg"
+ },
+ "actors-6": {
+  "source": "Gal Gadot",
+  "via": "wikipedia",
+  "file": "Gal_Gadot_by_Gage_Skidmore_3.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Gage Skidmore",
+  "page": "https://commons.wikimedia.org/wiki/File:Gal_Gadot_by_Gage_Skidmore_3.jpg"
+ },
+ "actors-7": {
+  "source": "Johnny Depp",
+  "via": "wikipedia",
+  "file": "Johnny_Depp_2020.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Harald Krichel",
+  "page": "https://commons.wikimedia.org/wiki/File:Johnny_Depp_2020.jpg"
+ },
+ "actors-8": {
+  "source": "Vin Diesel",
+  "via": "wikipedia",
+  "file": "Vin_Diesel_by_Gage_Skidmore_2.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Gage Skidmore",
+  "page": "https://commons.wikimedia.org/wiki/File:Vin_Diesel_by_Gage_Skidmore_2.jpg"
+ },
+ "actors-9": {
+  "source": "Angelina Jolie",
+  "via": "wikipedia",
+  "file": "Angelina_Jolie-643531_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Harald Krichel",
+  "page": "https://commons.wikimedia.org/wiki/File:Angelina_Jolie-643531_(cropped).jpg"
+ },
+ "actors-10": {
+  "source": "Jennifer Aniston",
+  "via": "wikipedia",
+  "file": "JenniferAnistonHWoFFeb2012.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Angela George",
+  "page": "https://commons.wikimedia.org/wiki/File:JenniferAnistonHWoFFeb2012.jpg"
+ },
+ "actors-11": {
+  "source": "Scarlett Johansson",
+  "via": "wikipedia",
+  "file": "Scarlett_Johansson-8588.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Harald Krichel",
+  "page": "https://commons.wikimedia.org/wiki/File:Scarlett_Johansson-8588.jpg"
+ },
+ "actors-12": {
+  "source": "Tom Hanks",
+  "via": "wikipedia",
+  "file": "TomHanksPrincEdw031223_(11_of_41)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:TomHanksPrincEdw031223_(11_of_41)_(cropped).jpg"
+ },
+ "actors-13": {
+  "source": "Morgan Freeman",
+  "via": "wikipedia",
+  "file": "Morgan_Freeman_at_The_Pentagon_on_2_August_2023_-_230802-D-PM193-3363_(cropped).jpg",
+  "license": "Public domain",
+  "author": "U.S. Secretary of Defense",
+  "page": "https://commons.wikimedia.org/wiki/File:Morgan_Freeman_at_The_Pentagon_on_2_August_2023_-_230802-D-PM193-3363_(cropped).jpg"
+ },
+ "actors-14": {
+  "source": "Robert Downey Jr.",
+  "via": "wikipedia",
+  "file": "RobertDowneyJr-byPhilipRomano7_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "PhilipRomano",
+  "page": "https://commons.wikimedia.org/wiki/File:RobertDowneyJr-byPhilipRomano7_(cropped).jpg"
+ },
+ "actors-15": {
+  "source": "Jason Statham",
+  "via": "wikipedia",
+  "file": "Jason_Statham_2018.jpg",
+  "license": "CC BY 3.0",
+  "author": "MTV International",
+  "page": "https://commons.wikimedia.org/wiki/File:Jason_Statham_2018.jpg"
+ },
+ "actors-16": {
+  "source": "Keanu Reeves",
+  "via": "wikipedia",
+  "file": "Keanu_Reeves_at_TIFF_2025_02_(Cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Gabriel Hutchinson",
+  "page": "https://commons.wikimedia.org/wiki/File:Keanu_Reeves_at_TIFF_2025_02_(Cropped).jpg"
+ },
+ "actors-17": {
+  "source": "Arnold Schwarzenegger",
+  "via": "wikipedia",
+  "file": "Arnold_Schwarzenegger_-_Austrian_World_Summit_2026_BHO-2906.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Bernhard Holub",
+  "page": "https://commons.wikimedia.org/wiki/File:Arnold_Schwarzenegger_-_Austrian_World_Summit_2026_BHO-2906.jpg"
+ },
+ "actors-18": {
+  "source": "Sylvester Stallone",
+  "via": "wikipedia",
+  "file": "P20251206DT-0472_(3x4_cropped_on_Stallone_with_moderate_headroom).jpg",
+  "license": "Public domain",
+  "author": "The White House",
+  "page": "https://commons.wikimedia.org/wiki/File:P20251206DT-0472_(3x4_cropped_on_Stallone_with_moderate_headroom).jpg"
+ },
+ "actors-19": {
+  "source": "Tom Holland",
+  "via": "wikipedia",
+  "file": "TomHolland-byPhilipRomano.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "PhilipRomano",
+  "page": "https://commons.wikimedia.org/wiki/File:TomHolland-byPhilipRomano.jpg"
+ },
+ "actors-20": {
+  "source": "Zendaya",
+  "via": "wikipedia",
+  "file": "Zendaya-byPhilipRomano.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "PhilipRomano",
+  "page": "https://commons.wikimedia.org/wiki/File:Zendaya-byPhilipRomano.jpg"
+ },
+ "actors-21": {
+  "source": "Margot Robbie",
+  "via": "wikipedia",
+  "file": "Margot_Robbie_Wuthering_Heights_premiere_(cropped).jpg",
+  "license": "CC0",
+  "author": "Ondine Goat",
+  "page": "https://commons.wikimedia.org/wiki/File:Margot_Robbie_Wuthering_Heights_premiere_(cropped).jpg"
+ },
+ "actors-22": {
+  "source": "Daniel Radcliffe",
+  "via": "wikipedia",
+  "file": "DanielRadcliffe.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Philip Romano",
+  "page": "https://commons.wikimedia.org/wiki/File:DanielRadcliffe.jpg"
+ },
+ "actors-23": {
+  "source": "Emma Watson",
+  "via": "wikipedia",
+  "file": "Emma_Watson_2013.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Georges Biard",
+  "page": "https://commons.wikimedia.org/wiki/File:Emma_Watson_2013.jpg"
+ },
+ "actors-24": {
+  "source": "Ryan Reynolds",
+  "via": "wikipedia",
+  "file": "Deadpool_2_Japan_Premiere_Red_Carpet_Ryan_Reynolds_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Dick Thomas Johnson from Tokyo, Japan",
+  "page": "https://commons.wikimedia.org/wiki/File:Deadpool_2_Japan_Premiere_Red_Carpet_Ryan_Reynolds_(cropped).jpg"
+ },
+ "actors-25": {
+  "source": "Chris Hemsworth",
+  "via": "wikipedia",
+  "file": "Chris_Hemsworth_-_Crime_101.jpg",
+  "license": "CC BY 4.0",
+  "author": "Kevin Paul",
+  "page": "https://commons.wikimedia.org/wiki/File:Chris_Hemsworth_-_Crime_101.jpg"
+ },
+ "actors-26": {
+  "source": "Meryl Streep",
+  "via": "wikipedia",
+  "file": "Meryl_Streep-_Press_conference_for_the_film_\"The_Devil_Wears_Prada_2\"_-_55194765350_(cropped1).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Ministry of culture, sports and Tourism- Lee Jeong-woo",
+  "page": "https://commons.wikimedia.org/wiki/File:Meryl_Streep-_Press_conference_for_the_film_%22The_Devil_Wears_Prada_2%22_-_55194765350_(cropped1).jpg"
+ },
+ "actors-27": {
+  "source": "Nicole Kidman",
+  "via": "wikipedia",
+  "file": "MKr384262_Nicole_Kidman_(Women_In_Motion,_Cannes_2025).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Martin Kraft",
+  "page": "https://commons.wikimedia.org/wiki/File:MKr384262_Nicole_Kidman_(Women_In_Motion,_Cannes_2025).jpg"
+ },
+ "actors-28": {
+  "source": "Natalie Portman",
+  "via": "wikipedia",
+  "file": "NataliePortman.jpg",
+  "license": "CC BY 4.0",
+  "author": "Colleen Sturtevant",
+  "page": "https://commons.wikimedia.org/wiki/File:NataliePortman.jpg"
+ },
+ "actors-29": {
+  "source": "George Clooney",
+  "via": "wikipedia",
+  "file": "George_Clooney_Jay_Kelly-19_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Bryan Berlin",
+  "page": "https://commons.wikimedia.org/wiki/File:George_Clooney_Jay_Kelly-19_(cropped).jpg"
+ },
+ "actors-30": {
+  "source": "Ryan Gosling",
+  "via": "wikipedia",
+  "file": "GoslingBFI081223_(22_of_30)_(53388157347)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:GoslingBFI081223_(22_of_30)_(53388157347)_(cropped).jpg"
+ },
  "animals-1": {
   "source": "Lion",
   "file": "020_The_lion_king_Snyggve_in_the_Serengeti_National_Park_Photo_by_Giles_Laurent.jpg",
@@ -613,6 +853,1034 @@
   "author": "Giacomo Cimino (foto.giacomocimino.workers.dev · @giacomociminoph)",
   "page": "https://commons.wikimedia.org/wiki/File:Il_pescatore_solitario.jpg"
  },
+ "brands-1": {
+  "source": "Apple Inc.",
+  "via": "wikipedia",
+  "file": "Apple_Computer_Logo_rainbow.svg",
+  "license": "Public domain",
+  "author": "Rob Janoff",
+  "page": "https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg",
+  "needbox": true
+ },
+ "brands-2": {
+  "source": "McDonald's",
+  "via": "wikipedia",
+  "file": "McDonald's_1948_logo.png",
+  "license": "Public domain",
+  "author": "McDonald's",
+  "page": "https://commons.wikimedia.org/wiki/File:McDonald%27s_1948_logo.png",
+  "needbox": true
+ },
+ "brands-3": {
+  "source": "Starbucks",
+  "via": "wikipedia",
+  "file": "Starbucks_Coffee_Logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Starbucks_Coffee_Logo.svg",
+  "needbox": true
+ },
+ "brands-4": {
+  "source": "Pepsi",
+  "via": "wikipedia",
+  "file": "Pepsi_Cola_logo_1902.svg",
+  "license": "Public domain",
+  "author": "Unknown (Vector graphics image by Simtropolitan)",
+  "page": "https://commons.wikimedia.org/wiki/File:Pepsi_Cola_logo_1902.svg",
+  "needbox": true
+ },
+ "brands-5": {
+  "source": "Microsoft",
+  "via": "wikipedia",
+  "file": "Microsoft_Logo_Historical.svg",
+  "license": "Public domain",
+  "author": "The original uploader was Richard Abendroth at German Wikipedia.",
+  "page": "https://commons.wikimedia.org/wiki/File:Microsoft_logo_(1982).svg",
+  "needbox": true
+ },
+ "brands-6": {
+  "source": "Google",
+  "via": "wikipedia",
+  "file": "Google2013logo.svg",
+  "license": "Public domain",
+  "author": "Google INC",
+  "page": "https://commons.wikimedia.org/wiki/File:Google2013logo.svg",
+  "needbox": true
+ },
+ "brands-7": {
+  "source": "Shell plc",
+  "via": "wikipedia",
+  "file": "Logo_Shell_1973.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Hirondus",
+  "page": "https://commons.wikimedia.org/wiki/File:Logo_Shell_1973.jpg",
+  "needbox": true
+ },
+ "brands-8": {
+  "source": "KFC",
+  "via": "wikipedia",
+  "file": "Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg",
+  "license": "CC BY 4.0",
+  "author": "Ktkvtsh",
+  "page": "https://commons.wikimedia.org/wiki/File:Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg",
+  "needbox": true
+ },
+ "brands-9": {
+  "source": "PlayStation",
+  "via": "wikipedia",
+  "file": "PlayStation_Studios_logo_with_a_black_center_frame.svg",
+  "license": "Public domain",
+  "author": "Sony Interactive Entertainment",
+  "page": "https://commons.wikimedia.org/wiki/File:PlayStation_Studios_logo_with_a_black_center_frame.svg",
+  "needbox": true
+ },
+ "brands-10": {
+  "source": "Xbox",
+  "via": "wikipedia",
+  "file": "XBOX_logo_(2026).png",
+  "license": "PD",
+  "author": "Microsoft",
+  "page": "https://en.wikipedia.org/wiki/File:XBOX_logo_(2026).png",
+  "needbox": true
+ },
+ "brands-11": {
+  "source": "Android (operating system)",
+  "via": "wikipedia",
+  "file": "Android_2023_3D_logo_and_wordmark.svg",
+  "license": "CC BY 3.0",
+  "author": "Android",
+  "page": "https://commons.wikimedia.org/wiki/File:Android_2023_3D_logo_and_wordmark.svg",
+  "needbox": true
+ },
+ "brands-12": {
+  "source": "Mastercard",
+  "via": "wikipedia",
+  "file": "MasterCard_1979_logo.svg",
+  "license": "Public domain",
+  "author": "http://logos.wikia.com/wiki/User:DonDonP1",
+  "page": "https://commons.wikimedia.org/wiki/File:MasterCard_1979_logo.svg",
+  "needbox": true
+ },
+ "brands-13": {
+  "source": "Pizza Hut",
+  "via": "wikipedia",
+  "file": "Pizza_Hut_international_logo,_2008–2016.svg",
+  "license": "Public domain",
+  "author": "Pizza Hut",
+  "page": "https://commons.wikimedia.org/wiki/File:Pizza_Hut_international_logo,_2008%E2%80%932016.svg",
+  "needbox": true
+ },
+ "brands-14": {
+  "source": "Domino's",
+  "via": "wikipedia",
+  "file": "Domino’s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg",
+  "license": "CC0",
+  "author": "MultiEditor03",
+  "page": "https://commons.wikimedia.org/wiki/File:Domino%E2%80%99s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg",
+  "needbox": true
+ },
+ "brands-15": {
+  "source": "Red Bull",
+  "via": "wikipedia",
+  "file": "RedBullEnergyDrink.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:RedBullEnergyDrink.svg",
+  "needbox": true
+ },
+ "brands-16": {
+  "source": "Firefox",
+  "via": "wikipedia",
+  "file": "Firefox_Nightly_Logo,_2017.svg",
+  "license": "CC BY-SA 3.0",
+  "author": "Mozilla Corporation",
+  "page": "https://commons.wikimedia.org/wiki/File:Firefox_Nightly_logo,_2017.svg",
+  "needbox": true
+ },
+ "brands-17": {
+  "source": "Vodafone",
+  "via": "wikipedia",
+  "file": "Vodafone_1984_logo.svg",
+  "license": "PD",
+  "author": "Vodafone",
+  "page": "https://en.wikipedia.org/wiki/File:Vodafone_1984_logo.svg",
+  "needbox": true
+ },
+ "brands-18": {
+  "source": "Michelin",
+  "via": "wikipedia",
+  "file": "Siège_de_Michelin_à_Clermont-Ferrand_II.jpg",
+  "license": "CC-BY-SA-4.0",
+  "author": "Cyril5C",
+  "page": "https://en.wikipedia.org/wiki/File:Si%C3%A8ge_de_Michelin_%C3%A0_Clermont-Ferrand_II.jpg",
+  "needbox": true
+ },
+ "brands-19": {
+  "source": "Nestlé",
+  "via": "wikipedia",
+  "file": "Nestlé.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Nestl%C3%A9.svg",
+  "needbox": true
+ },
+ "brands-20": {
+  "source": "Baskin-Robbins",
+  "via": "wikipedia",
+  "file": "Baskin-Robbins_logo_2022.svg",
+  "license": "Public domain",
+  "author": "Baskin-Robbins",
+  "page": "https://commons.wikimedia.org/wiki/File:Baskin-Robbins_logo_2022.svg",
+  "needbox": true
+ },
+ "brands-21": {
+  "source": "Taco Bell",
+  "via": "wikipedia",
+  "file": "Taco_Bell_2023.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Taco_Bell_2023.svg",
+  "needbox": true
+ },
+ "brands-22": {
+  "source": "Motorola",
+  "via": "wikipedia",
+  "file": "Motorola-Logo.svg",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:Motorola-Logo.svg",
+  "needbox": true
+ },
+ "brands-23": {
+  "source": "Paramount Pictures",
+  "via": "wikipedia",
+  "file": "Paramount_Pictures_logo_(2010).jpg",
+  "license": "Fair use",
+  "author": "Paramount Pictures",
+  "page": "https://en.wikipedia.org/wiki/File:Paramount_Pictures_logo_(2010).jpg",
+  "needbox": true
+ },
+ "brands-24": {
+  "source": "Warner Bros.",
+  "via": "wikipedia",
+  "file": "Warner_Music_Group_logo_(2021).svg",
+  "license": "Public domain",
+  "author": "™/®Warner Music Group Corp.",
+  "page": "https://commons.wikimedia.org/wiki/File:Warner_Music_Group_logo_(2021).svg",
+  "needbox": true
+ },
+ "brands-25": {
+  "source": "The Walt Disney Company",
+  "via": "wikipedia",
+  "file": "The_Walt_Disney_company_logo.svg",
+  "license": "Public domain",
+  "author": "Disney Enterprises, Inc.",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Walt_Disney_company_logo.svg",
+  "needbox": true
+ },
+ "brands-26": {
+  "source": "NBC",
+  "via": "wikipedia",
+  "file": "Comcast_NBCUniversal_logo.svg",
+  "license": "Public domain",
+  "author": "By username Ragilnih, For the logo, NBCUniversal and Comcast.",
+  "page": "https://commons.wikimedia.org/wiki/File:Comcast_NBCUniversal_logo.svg",
+  "needbox": true
+ },
+ "brands-27": {
+  "source": "CBS",
+  "via": "wikipedia",
+  "file": "CBS_logo_(2020).svg",
+  "license": "Public domain",
+  "author": "CBS Broadcasting Inc.",
+  "page": "https://commons.wikimedia.org/wiki/File:CBS_logo_(2020).svg",
+  "needbox": true
+ },
+ "brands-28": {
+  "source": "Monster Energy",
+  "via": "wikipedia",
+  "file": "Logo_Monster_Energy.webp",
+  "license": "Public domain",
+  "author": "—",
+  "page": "https://commons.wikimedia.org/wiki/File:Logo_Monster_Energy.webp",
+  "needbox": true
+ },
+ "brands-29": {
+  "source": "Carrefour",
+  "via": "wikipedia",
+  "file": "Carrefour-Mobile-logo.svg",
+  "license": "Public domain",
+  "author": "Carrefour S.A.",
+  "page": "https://commons.wikimedia.org/wiki/File:Carrefour-Mobile-logo.svg",
+  "needbox": true
+ },
+ "brands-30": {
+  "source": "Unilever",
+  "via": "wikipedia",
+  "file": "Unilever.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Unilever.svg",
+  "needbox": true
+ },
+ "cars-1": {
+  "source": "Toyota",
+  "via": "wikipedia",
+  "file": "Headquarter_of_Toyota_Motor_Corporation_3.JPG",
+  "license": "CC0",
+  "author": "Tokumeigakarinoaoshima",
+  "page": "https://commons.wikimedia.org/wiki/File:Headquarter_of_Toyota_Motor_Corporation_3.JPG",
+  "needbox": true
+ },
+ "cars-2": {
+  "source": "Mercedes-Benz",
+  "via": "wikipedia",
+  "file": "Mercedes-Benz_Logo_2010.svg",
+  "license": "Public domain",
+  "author": "Mercedes-Benz",
+  "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Logo_2010.svg",
+  "needbox": true
+ },
+ "cars-3": {
+  "source": "BMW",
+  "via": "wikipedia",
+  "file": "BMW_logo_(gray).svg",
+  "license": "Public domain",
+  "author": "BMW",
+  "page": "https://commons.wikimedia.org/wiki/File:BMW_logo_(gray).svg",
+  "needbox": true
+ },
+ "cars-4": {
+  "source": "Ferrari",
+  "via": "wikipedia",
+  "file": "Prancing_horse.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Prancing_horse.svg",
+  "needbox": true
+ },
+ "cars-5": {
+  "source": "Volkswagen",
+  "via": "wikipedia",
+  "file": "Volkswagen_Logo_history.svg",
+  "license": "Public domain",
+  "author": "RoanDM",
+  "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_Logo_history.svg",
+  "needbox": true
+ },
+ "cars-6": {
+  "source": "Audi",
+  "via": "wikipedia",
+  "file": "Audi-Logo_2016.svg",
+  "license": "Public domain",
+  "author": "Strichpunkt / KMS Team",
+  "page": "https://commons.wikimedia.org/wiki/File:Audi-Logo_2016.svg",
+  "needbox": true
+ },
+ "cars-7": {
+  "source": "Tesla, Inc.",
+  "via": "wikipedia",
+  "file": "Tesla_Motors.svg",
+  "license": "Public domain",
+  "author": "Tesla",
+  "page": "https://commons.wikimedia.org/wiki/File:Tesla_Motors.svg",
+  "needbox": true
+ },
+ "cars-8": {
+  "source": "Honda",
+  "via": "wikipedia",
+  "file": "Honda_logo.svg",
+  "license": "Public domain",
+  "author": "TTTNIS",
+  "page": "https://commons.wikimedia.org/wiki/File:Honda_logo.svg",
+  "needbox": true
+ },
+ "cars-9": {
+  "source": "Hyundai Motor Company",
+  "via": "wikipedia",
+  "file": "Hyundai_Motor_Company_logo.svg",
+  "license": "Public domain",
+  "author": "Hyundai Motor Company",
+  "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Motor_Company_logo.svg",
+  "needbox": true
+ },
+ "cars-10": {
+  "source": "Kia",
+  "via": "wikipedia",
+  "file": "KIA-Logo-1994-2012.png",
+  "license": "CC BY-SA 4.0",
+  "author": "Kia",
+  "page": "https://commons.wikimedia.org/wiki/File:KIA-Logo-1994-2012.png",
+  "needbox": true
+ },
+ "cars-11": {
+  "source": "Mazda",
+  "via": "wikipedia",
+  "file": "Mazda-logo-1992.jpg",
+  "license": "Public domain",
+  "author": "Suree",
+  "page": "https://commons.wikimedia.org/wiki/File:Mazda-logo-1992.jpg",
+  "needbox": true
+ },
+ "cars-12": {
+  "source": "Chevrolet",
+  "via": "wikipedia",
+  "file": "Chevrolet_(logo).svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Chevrolet_(logo).svg",
+  "needbox": true
+ },
+ "cars-13": {
+  "source": "Nissan",
+  "via": "wikipedia",
+  "file": "Nissan_2020_logo.svg",
+  "license": "Public domain",
+  "author": "Nissan Motor Corporation",
+  "page": "https://commons.wikimedia.org/wiki/File:Nissan_2020_logo.svg",
+  "needbox": true
+ },
+ "cars-14": {
+  "source": "Subaru",
+  "via": "wikipedia",
+  "file": "Subaru_logo_(transparent).svg",
+  "license": "Public domain",
+  "author": "Subaru Corporation",
+  "page": "https://commons.wikimedia.org/wiki/File:Subaru_logo_(transparent).svg",
+  "needbox": true
+ },
+ "cars-15": {
+  "source": "Lamborghini",
+  "via": "wikipedia",
+  "file": "Lamborghini_-_logo_wordmark+payoff_(Italy,_1963-).svg",
+  "license": "Public domain",
+  "author": "Self made",
+  "page": "https://commons.wikimedia.org/wiki/File:Lamborghini_-_logo_wordmark%2Bpayoff_(Italy,_1963-).svg",
+  "needbox": true
+ },
+ "cars-16": {
+  "source": "Porsche",
+  "via": "wikipedia",
+  "file": "Logo_Porsche_718_Text.svg",
+  "license": "Public domain",
+  "author": "Porsche – German automobile manufacturer specializing in high-performance sports cars, SUVs and sedans, owned by Volkswa",
+  "page": "https://commons.wikimedia.org/wiki/File:Logo_Porsche_718_Text.svg",
+  "needbox": true
+ },
+ "cars-17": {
+  "source": "Mitsubishi Motors",
+  "via": "wikipedia",
+  "file": "Mitsubishi_Motors_SVG_logo_2.svg",
+  "license": "Public domain",
+  "author": "de:Benutzer:Gaspard",
+  "page": "https://commons.wikimedia.org/wiki/File:Mitsubishi_Motors_SVG_logo_2.svg",
+  "needbox": true
+ },
+ "cars-18": {
+  "source": "Škoda Auto",
+  "via": "wikipedia",
+  "file": "Škoda_nieuw.png",
+  "license": "Public domain",
+  "author": "Skoda Auto",
+  "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_nieuw.png",
+  "needbox": true
+ },
+ "cars-19": {
+  "source": "Peugeot",
+  "via": "wikipedia",
+  "file": "Peugeot-logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Peugeot-logo.svg",
+  "needbox": true
+ },
+ "cars-20": {
+  "source": "Renault",
+  "via": "wikipedia",
+  "file": "2021_Renault_Group_logo.svg",
+  "license": "Public domain",
+  "author": "Renault S.A.",
+  "page": "https://commons.wikimedia.org/wiki/File:2021_Renault_Group_logo.svg",
+  "needbox": true
+ },
+ "cars-21": {
+  "source": "Citroën",
+  "via": "wikipedia",
+  "file": "Citroën_Logo.svg",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author PSA Peugeot Citroën AG",
+  "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_Logo.svg",
+  "needbox": true
+ },
+ "cars-22": {
+  "source": "Volvo Cars",
+  "via": "wikipedia",
+  "file": "Volvo_Iron_Logo.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Volvo_Iron_Logo.png",
+  "needbox": true
+ },
+ "cars-23": {
+  "source": "Ford Motor Company",
+  "via": "wikipedia",
+  "file": "Ford_1957_logo.png",
+  "license": "Public domain",
+  "author": "Unknown authorUnknown author",
+  "page": "https://commons.wikimedia.org/wiki/File:Ford_1957_logo.png",
+  "needbox": true
+ },
+ "cars-24": {
+  "source": "Jaguar Cars",
+  "via": "wikipedia",
+  "file": "Jaguar-Logo.svg",
+  "license": "Public domain",
+  "author": "Jaguar Cars",
+  "page": "https://commons.wikimedia.org/wiki/File:Jaguar_2024.svg",
+  "needbox": true
+ },
+ "cars-25": {
+  "source": "Fiat",
+  "via": "wikipedia",
+  "file": "FIAT_logo_(2020).svg",
+  "license": "Public domain",
+  "author": "FIAT",
+  "page": "https://commons.wikimedia.org/wiki/File:FIAT_logo_(2020).svg",
+  "needbox": true
+ },
+ "cars-26": {
+  "source": "Alfa Romeo",
+  "via": "wikipedia",
+  "file": "Alfa_Romeo_logo.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Alfa_Romeo_logo.png",
+  "needbox": true
+ },
+ "cars-27": {
+  "source": "Maserati",
+  "via": "wikipedia",
+  "file": "Maserati_logo_2.svg",
+  "license": "Public domain",
+  "author": "Maserati",
+  "page": "https://commons.wikimedia.org/wiki/File:Maserati_logo_2.svg",
+  "needbox": true
+ },
+ "cars-28": {
+  "source": "Lexus",
+  "via": "wikipedia",
+  "file": "Lexus_F-division_logo.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Lexus_F-division_logo.png",
+  "needbox": true
+ },
+ "cars-29": {
+  "source": "Suzuki",
+  "via": "wikipedia",
+  "file": "Suzuki_logo_2025_(vertical).svg",
+  "license": "Public domain",
+  "author": "Suzuki Motor Corporation",
+  "page": "https://commons.wikimedia.org/wiki/File:Suzuki_logo_2025_(vertical).svg",
+  "needbox": true
+ },
+ "cars-30": {
+  "source": "Bentley",
+  "via": "wikipedia",
+  "file": "Bentley_(Logo_1919).png",
+  "license": "Public domain",
+  "author": "F. Gordon Crosby (1885-1943)",
+  "page": "https://commons.wikimedia.org/wiki/File:Bentley_(Logo_1919).png",
+  "needbox": true
+ },
+ "cartoons-1": {
+  "source": "Mickey Mouse",
+  "via": "commons",
+  "file": "1930-01-18_Mickey_Mouse_Comic.jpg",
+  "license": "Public domain",
+  "author": "Walt Disney / Ub Iwerks",
+  "page": "https://commons.wikimedia.org/wiki/File:1930-01-18_Mickey_Mouse_Comic.jpg"
+ },
+ "cartoons-2": {
+  "source": "SpongeBob SquarePants (character)",
+  "via": "commons",
+  "file": "SpongeBob_SquarePants_character_montage.png",
+  "license": "CC BY 3.0",
+  "author": "Nickelodeon (NickRewind)",
+  "page": "https://commons.wikimedia.org/wiki/File:SpongeBob_SquarePants_character_montage.png"
+ },
+ "cartoons-3": {
+  "source": "Homer Simpson",
+  "via": "wikipedia",
+  "file": "Homer_Simpson_2006.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Homer_Simpson_2006.png"
+ },
+ "cartoons-4": {
+  "source": "Shrek (character)",
+  "via": "wikipedia",
+  "file": "Shrek_(character).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Shrek_(character).png"
+ },
+ "cartoons-5": {
+  "source": "Bugs Bunny",
+  "via": "commons",
+  "file": "Bugs_Bunny_-_Walk_of_Fame_Star.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Orizan",
+  "page": "https://commons.wikimedia.org/wiki/File:Bugs_Bunny_-_Walk_of_Fame_Star.jpg"
+ },
+ "cartoons-6": {
+  "source": "Winnie-the-Pooh",
+  "via": "wikipedia",
+  "file": "Pooh_Shepard1928.jpg",
+  "license": "Public domain",
+  "author": "E. H. Shepard",
+  "page": "https://commons.wikimedia.org/wiki/File:Pooh_Shepard1928.jpg"
+ },
+ "cartoons-7": {
+  "source": "Elsa (Frozen)",
+  "via": "wikipedia",
+  "file": "Elsa_from_Disney's_Frozen.png",
+  "license": "Fair use",
+  "author": "Disney",
+  "page": "https://en.wikipedia.org/wiki/File:Elsa_from_Disney%27s_Frozen.png"
+ },
+ "cartoons-8": {
+  "source": "Buzz Lightyear",
+  "via": "wikipedia",
+  "file": "Buzz_Lightyear_sculpture_of_Toy_Story_Hotel_Shanghai_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Edo-biscuit",
+  "page": "https://commons.wikimedia.org/wiki/File:Buzz_Lightyear_sculpture_of_Toy_Story_Hotel_Shanghai_(cropped).jpg"
+ },
+ "cartoons-9": {
+  "source": "Woody (Toy Story)",
+  "via": "wikipedia",
+  "file": "Woody_at_Toy_Story_Land,_Hong_Kong.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Deror_avi",
+  "page": "https://commons.wikimedia.org/wiki/File:Woody_at_Toy_Story_Land,_Hong_Kong.jpg"
+ },
+ "cartoons-10": {
+  "source": "Finding Nemo",
+  "via": "wikipedia",
+  "file": "Finding_Nemo.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Finding_Nemo.jpg"
+ },
+ "cartoons-11": {
+  "source": "Simba",
+  "via": "wikipedia",
+  "file": "Simba_(_Disney_character_-_adult).png",
+  "license": "Fair use",
+  "author": "Disney",
+  "page": "https://en.wikipedia.org/wiki/File:Simba_(_Disney_character_-_adult).png"
+ },
+ "cartoons-12": {
+  "source": "Tom Cat",
+  "via": "wikipedia",
+  "file": "Tom_Tom_and_Jerry.png",
+  "license": "Fair use",
+  "author": "MGM",
+  "page": "https://en.wikipedia.org/wiki/File:Tom_Tom_and_Jerry.png"
+ },
+ "cartoons-13": {
+  "source": "Jerry Mouse",
+  "via": "wikipedia",
+  "file": "Jerry_Mouse.png",
+  "license": "Fair use",
+  "author": "MGM",
+  "page": "https://en.wikipedia.org/wiki/File:Jerry_Mouse.png"
+ },
+ "cartoons-14": {
+  "source": "Patrick Star",
+  "via": "wikipedia",
+  "file": "Patrick_Star_character.png",
+  "license": "CC BY 3.0",
+  "author": "Nickelodeon (NickRewind)",
+  "page": "https://commons.wikimedia.org/wiki/File:Patrick_Star_character.png"
+ },
+ "cartoons-15": {
+  "source": "Peppa Pig",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Peppa Pig, cartoon character, full body, plain background",
+  "review": true
+ },
+ "cartoons-16": {
+  "source": "Minions (Despicable Me)",
+  "via": "wikipedia",
+  "file": "Minion_sculpture_in_Brisbane,_2024.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "ウィ貴公子",
+  "page": "https://commons.wikimedia.org/wiki/File:Minion_sculpture_in_Brisbane,_2024.jpg"
+ },
+ "cartoons-17": {
+  "source": "Lightning McQueen",
+  "via": "wikipedia",
+  "file": "Lightning_McQueen.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Lightning_McQueen.png"
+ },
+ "cartoons-18": {
+  "source": "Olaf (Frozen)",
+  "via": "wikipedia",
+  "file": "Olaf_from_Disney's_Frozen.png",
+  "license": "Fair use",
+  "author": "Disney",
+  "page": "https://en.wikipedia.org/wiki/File:Olaf_from_Disney%27s_Frozen.png"
+ },
+ "cartoons-19": {
+  "source": "Scooby-Doo (character)",
+  "via": "wikipedia",
+  "file": "Scooby-Doo.png",
+  "license": "Fair use",
+  "author": "CBS",
+  "page": "https://en.wikipedia.org/wiki/File:Scooby-Doo.png"
+ },
+ "cartoons-20": {
+  "source": "Bart Simpson",
+  "via": "wikipedia",
+  "file": "Bart_Simpson_200px.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Bart_Simpson_200px.png"
+ },
+ "cartoons-21": {
+  "source": "Donald Duck",
+  "via": "wikipedia",
+  "file": "Donald_Duck_angry_transparent_background.png",
+  "license": "Fair use",
+  "author": "Disney",
+  "page": "https://en.wikipedia.org/wiki/File:Donald_Duck_angry_transparent_background.png"
+ },
+ "cartoons-22": {
+  "source": "Dora the Explorer",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Dora the Explorer, cartoon character, full body, plain background",
+  "review": true
+ },
+ "cartoons-23": {
+  "source": "Mike Wazowski",
+  "via": "wikipedia",
+  "file": "Mike_Wazowski.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Mike_Wazowski.png"
+ },
+ "cartoons-24": {
+  "source": "James P. Sullivan (Monsters, Inc.)",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "James P. Sullivan (Monsters, Inc.), cartoon character, full body, plain background",
+  "review": true
+ },
+ "cartoons-25": {
+  "source": "Ariel (The Little Mermaid)",
+  "via": "wikipedia",
+  "file": "Ariel_disney.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Ariel_disney.png"
+ },
+ "cartoons-26": {
+  "source": "Genie (Aladdin)",
+  "via": "wikipedia",
+  "file": "The_Genie_Aladdin.png",
+  "license": "Fair use",
+  "author": "Disney",
+  "page": "https://en.wikipedia.org/wiki/File:The_Genie_Aladdin.png"
+ },
+ "cartoons-27": {
+  "source": "Moana (character)",
+  "via": "wikipedia",
+  "file": "Moana_(character).png",
+  "license": "Fair use",
+  "author": "Disney",
+  "page": "https://en.wikipedia.org/wiki/File:Moana_(character).png"
+ },
+ "cartoons-28": {
+  "source": "Tweety",
+  "via": "commons",
+  "file": "Cessna_T-37C_Tweety_Bird_-_A742783.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Rjcastillo",
+  "page": "https://commons.wikimedia.org/wiki/File:Cessna_T-37C_Tweety_Bird_-_A742783.jpg"
+ },
+ "cartoons-29": {
+  "source": "Aladdin (Disney character)",
+  "via": "wikipedia",
+  "file": "Aladdin_Disney_pose.png",
+  "license": "Fair use",
+  "author": "Disney",
+  "page": "https://en.wikipedia.org/wiki/File:Aladdin_Disney_pose.png"
+ },
+ "cartoons-30": {
+  "source": "Ratatouille (film)",
+  "via": "wikipedia",
+  "file": "RatatouillePoster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:RatatouillePoster.jpg"
+ },
+ "comedians-1": {
+  "source": "Jim Carrey",
+  "via": "wikipedia",
+  "file": "Jim_Carrey_2008.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Ian Smith from London, England",
+  "page": "https://commons.wikimedia.org/wiki/File:Jim_Carrey_2008.jpg"
+ },
+ "comedians-2": {
+  "source": "Rowan Atkinson",
+  "via": "wikipedia",
+  "file": "Rowan_Atkinson,_2011.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Eva Rinaldi",
+  "page": "https://commons.wikimedia.org/wiki/File:Rowan_Atkinson,_2011.jpg"
+ },
+ "comedians-3": {
+  "source": "Adam Sandler",
+  "via": "wikipedia",
+  "file": "Jackie_Sandler_Adam_Sandler_Jay_Kelly-36_(3x4).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Bryan Berlin",
+  "page": "https://commons.wikimedia.org/wiki/File:Jackie_Sandler_Adam_Sandler_Jay_Kelly-36_(3x4).jpg"
+ },
+ "comedians-4": {
+  "source": "Charlie Chaplin",
+  "via": "wikipedia",
+  "file": "Charlie_Chaplin_portrait_Getty_1739411952.jpg",
+  "license": "Public domain",
+  "author": "Strauss-Peyton Studio",
+  "page": "https://commons.wikimedia.org/wiki/File:Charlie_Chaplin_portrait_Getty_1739411952.jpg"
+ },
+ "comedians-5": {
+  "source": "Eddie Murphy",
+  "via": "wikipedia",
+  "file": "Eddie_Murphy_by_David_Shankbone.jpg",
+  "license": "Public domain",
+  "author": "David Shankbone",
+  "page": "https://commons.wikimedia.org/wiki/File:Eddie_Murphy_by_David_Shankbone.jpg"
+ },
+ "comedians-6": {
+  "source": "Kevin Hart",
+  "via": "wikipedia",
+  "file": "Kevin_Hart_2014_(cropped_2).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Eva Rinaldi",
+  "page": "https://commons.wikimedia.org/wiki/File:Kevin_Hart_2014_(cropped_2).jpg"
+ },
+ "comedians-7": {
+  "source": "Robin Williams",
+  "via": "wikipedia",
+  "file": "Robin_Williams_1996_(cropped)_2.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Kingkongphoto &amp; www.celebrity-photos.com from Laurel, Maryland, USA",
+  "page": "https://commons.wikimedia.org/wiki/File:Robin_Williams_1996_(cropped)_2.jpg"
+ },
+ "comedians-8": {
+  "source": "Shalom Asayag",
+  "via": "wikipedia",
+  "file": "Shalom_Assayag.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Pini Siluk",
+  "page": "https://commons.wikimedia.org/wiki/File:Shalom_Assayag.jpg"
+ },
+ "comedians-9": {
+  "source": "Adir Miller",
+  "via": "wikipedia",
+  "file": "אדיר_מילר.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "גבריאלה שוורץ בשם אדיר מילר בע\"מ",
+  "page": "https://commons.wikimedia.org/wiki/File:%D7%90%D7%93%D7%99%D7%A8_%D7%9E%D7%99%D7%9C%D7%A8.jpg"
+ },
+ "comedians-10": {
+  "source": "Ben Stiller",
+  "via": "wikipedia",
+  "file": "Ben_Stiller_2026.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Colleen Sturtevant",
+  "page": "https://commons.wikimedia.org/wiki/File:Ben_Stiller_2026.jpg"
+ },
+ "comedians-11": {
+  "source": "Jack Black",
+  "via": "wikipedia",
+  "file": "TenaciousDO2160623_(38_of_62)_Jack_Black.jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:TenaciousDO2160623_(38_of_62)_Jack_Black.jpg"
+ },
+ "comedians-12": {
+  "source": "Will Ferrell",
+  "via": "wikipedia",
+  "file": "Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Adam Chitayat",
+  "page": "https://commons.wikimedia.org/wiki/File:Will_Ferrell_at_the_2024_Toronto_International_Film_Festival_5_(cropped).jpg"
+ },
+ "comedians-13": {
+  "source": "Sacha Baron Cohen",
+  "via": "wikipedia",
+  "file": "Sacha_Baron_Cohen_(2024)_(3x4_cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:Sacha_Baron_Cohen_(2024)_(3x4_cropped).jpg"
+ },
+ "comedians-14": {
+  "source": "Jerry Seinfeld",
+  "via": "wikipedia",
+  "file": "Jerry_Seinfeld_2023.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Zafrir Keren - צפריר קרן",
+  "page": "https://commons.wikimedia.org/wiki/File:Jerry_Seinfeld_2023.jpg"
+ },
+ "comedians-15": {
+  "source": "Assi Cohen",
+  "via": "wikipedia",
+  "file": "Asi_Cohen.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Amir Gilad",
+  "page": "https://commons.wikimedia.org/wiki/File:Asi_Cohen.jpg"
+ },
+ "comedians-16": {
+  "source": "Guri Alfi",
+  "via": "wikipedia",
+  "file": "Guri_Alfi.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Pini Siluk",
+  "page": "https://commons.wikimedia.org/wiki/File:Guri_Alfi.jpg"
+ },
+ "comedians-17": {
+  "source": "Shaike Ophir",
+  "via": "wikipedia",
+  "file": "PikiWiki_Israel_56509_people_of_israel.jpg",
+  "license": "CC BY 2.5",
+  "author": "ארתור רוסמן",
+  "page": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_56509_people_of_israel.jpg"
+ },
+ "comedians-18": {
+  "source": "Tal Friedman",
+  "via": "wikipedia",
+  "file": "Tal_Friedman_23032007.jpg",
+  "license": "CC BY 2.5",
+  "author": "ITamar K., איתמר ק.",
+  "page": "https://commons.wikimedia.org/wiki/File:Tal_Friedman_23032007.jpg"
+ },
+ "comedians-19": {
+  "source": "Mariano Idelman",
+  "via": "wikipedia",
+  "file": "Mariano_Idelman.JPG",
+  "license": "Public domain",
+  "author": "Sir kiss",
+  "page": "https://commons.wikimedia.org/wiki/File:Mariano_Idelman.JPG"
+ },
+ "comedians-20": {
+  "source": "Lior Schleien",
+  "via": "wikipedia",
+  "file": "ליאור_שליין.JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "zaher abu elnaser",
+  "page": "https://commons.wikimedia.org/wiki/File:%D7%9C%D7%99%D7%90%D7%95%D7%A8_%D7%A9%D7%9C%D7%99%D7%99%D7%9F.JPG"
+ },
+ "comedians-21": {
+  "source": "Orna Banai",
+  "via": "wikipedia",
+  "file": "Orna_Banai.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Daniel Kaminsky",
+  "page": "https://commons.wikimedia.org/wiki/File:Orna_Banai.jpg"
+ },
+ "comedians-22": {
+  "source": "Steve Martin",
+  "via": "wikipedia",
+  "file": "Steve_Martin,_2017-08-11_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Davidwbaker",
+  "page": "https://commons.wikimedia.org/wiki/File:Steve_Martin,_2017-08-11_(cropped).jpg"
+ },
+ "comedians-23": {
+  "source": "Mel Brooks",
+  "via": "wikipedia",
+  "file": "MelBrooksApr10.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Angela George at https://www.flickr.com/photos/sharongraphics/",
+  "page": "https://commons.wikimedia.org/wiki/File:MelBrooksApr10.jpg"
+ },
+ "comedians-24": {
+  "source": "Jimmy Fallon",
+  "via": "wikipedia",
+  "file": "Jimmy_Fallon-TTL_4575_(11046141004)_(5x7_cropped_and_rotated).jpg",
+  "license": "CC BY 2.0",
+  "author": "Montclair Film",
+  "page": "https://commons.wikimedia.org/wiki/File:Jimmy_Fallon-TTL_4575_(11046141004)_(5x7_cropped_and_rotated).jpg"
+ },
+ "comedians-25": {
+  "source": "Conan O'Brien",
+  "via": "wikipedia",
+  "file": "Conan_O'Brien_2025.jpg",
+  "license": "CC BY 4.0",
+  "author": "Montclair Film",
+  "page": "https://commons.wikimedia.org/wiki/File:Conan_O%27Brien_2025.jpg"
+ },
+ "comedians-26": {
+  "source": "Trevor Noah",
+  "via": "wikipedia",
+  "file": "Trevor_Noah_(53554114243)_(portrait_crop).jpg",
+  "license": "CC BY 2.0",
+  "author": "Web Summit Qatar",
+  "page": "https://commons.wikimedia.org/wiki/File:Trevor_Noah_(53554114243)_(portrait_crop).jpg"
+ },
+ "comedians-27": {
+  "source": "Amy Schumer",
+  "via": "wikipedia",
+  "file": "Amy_Schumer_by_Mario_Santor.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Mario Santor",
+  "page": "https://commons.wikimedia.org/wiki/File:Amy_Schumer_by_Mario_Santor.jpg"
+ },
+ "comedians-28": {
+  "source": "Dave Chappelle",
+  "via": "wikipedia",
+  "file": "Dave_Chappelle_at_Preamiere_of_\"Dave_Chappelle_In_Real_Life\"_(2)_(cropped_2).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Kolby Ari",
+  "page": "https://commons.wikimedia.org/wiki/File:Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_(2)_(cropped_2).jpg"
+ },
+ "comedians-29": {
+  "source": "Shahar Hasson",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Portrait photo of the comedian Shahar Hasson",
+  "review": true
+ },
+ "comedians-30": {
+  "source": "Steve Carell",
+  "via": "wikipedia",
+  "file": "Steve_Carell_-_The_40-Year-Old-Virgin.jpg",
+  "license": "CC BY 4.0",
+  "author": "Kevin Paul",
+  "page": "https://commons.wikimedia.org/wiki/File:Steve_Carell_-_The_40-Year-Old-Virgin.jpg"
+ },
  "countries-1": {
   "source": "Flag of Israel",
   "file": "Flag_of_Israel.svg",
@@ -822,6 +2090,246 @@
   "license": "Public domain",
   "author": "The SVG code is valid. This vector image was created with Inkscape by SKopp, and then manually edited by Zscout370, Madd",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Jamaica.svg"
+ },
+ "divas-1": {
+  "source": "Beyoncé",
+  "via": "wikipedia",
+  "file": "Beyoncé_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(10_of_118)_(52946364598)_(best_crop).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_(10_of_118)_(52946364598)_(best_crop).jpg"
+ },
+ "divas-2": {
+  "source": "Rihanna",
+  "via": "wikipedia",
+  "file": "Rihanna_Fenty_2018.png",
+  "license": "CC BY 3.0",
+  "author": "SIGMA",
+  "page": "https://commons.wikimedia.org/wiki/File:Rihanna_Fenty_2018.png"
+ },
+ "divas-3": {
+  "source": "Madonna",
+  "via": "wikipedia",
+  "file": "MadonnaO2171023_(97_of_133)_(53269593787)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:MadonnaO2171023_(97_of_133)_(53269593787)_(cropped).jpg"
+ },
+ "divas-4": {
+  "source": "Taylor Swift",
+  "via": "wikipedia",
+  "file": "Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_(3).png",
+  "license": "CC BY 3.0",
+  "author": "iHeartRadioCA",
+  "page": "https://commons.wikimedia.org/wiki/File:Taylor_Swift_at_the_2023_MTV_Video_Music_Awards_(3).png"
+ },
+ "divas-5": {
+  "source": "Lady Gaga",
+  "via": "wikipedia",
+  "file": "Lady_Gaga_at_Joe_Biden's_inauguration_(cropped_5).jpg",
+  "license": "CC BY 2.0",
+  "author": "Carlos M. Vazquez II",
+  "page": "https://commons.wikimedia.org/wiki/File:Lady_Gaga_at_Joe_Biden%27s_inauguration_(cropped_5).jpg"
+ },
+ "divas-6": {
+  "source": "Ariana Grande",
+  "via": "wikipedia",
+  "file": "Ariana_Grande_promoting_Wicked_(2024).jpg",
+  "license": "CC BY 3.0",
+  "author": "Barbie Simons",
+  "page": "https://commons.wikimedia.org/wiki/File:Ariana_Grande_promoting_Wicked_(2024).jpg"
+ },
+ "divas-7": {
+  "source": "Shakira",
+  "via": "wikipedia",
+  "file": "2023-11-16_Gala_de_los_Latin_Grammy,_03_(cropped)02.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Junta de Andalucía",
+  "page": "https://commons.wikimedia.org/wiki/File:2023-11-16_Gala_de_los_Latin_Grammy,_03_(cropped)02.jpg"
+ },
+ "divas-8": {
+  "source": "Jennifer Lopez",
+  "via": "wikipedia",
+  "file": "Jennifer_Lopez_at_the_2025_Sundance_Film_Festival_(cropped_3).jpg",
+  "license": "CC BY 4.0",
+  "author": "Everwest",
+  "page": "https://commons.wikimedia.org/wiki/File:Jennifer_Lopez_at_the_2025_Sundance_Film_Festival_(cropped_3).jpg"
+ },
+ "divas-9": {
+  "source": "Britney Spears",
+  "via": "wikipedia",
+  "file": "Britney_Spears_2013_(Straighten_Crop).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Glenn Francis",
+  "page": "https://commons.wikimedia.org/wiki/File:Britney_Spears_2013_(Straighten_Crop).jpg"
+ },
+ "divas-10": {
+  "source": "Mariah Carey",
+  "via": "wikipedia",
+  "file": "Mariah_Carey_Library_of_Congress_2023_1_Cropped_3.png",
+  "license": "Public domain",
+  "author": "Shawn Miller",
+  "page": "https://commons.wikimedia.org/wiki/File:Mariah_Carey_Library_of_Congress_2023_1_Cropped_3.png"
+ },
+ "divas-11": {
+  "source": "Celine Dion",
+  "via": "wikipedia",
+  "file": "Céline_Dion_2012.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Georges Biard",
+  "page": "https://commons.wikimedia.org/wiki/File:C%C3%A9line_Dion_2012.jpg"
+ },
+ "divas-12": {
+  "source": "Whitney Houston",
+  "via": "wikipedia",
+  "file": "Whitney_Houston_(cropped3).JPEG",
+  "license": "Public domain",
+  "author": "PH2 Mark Kettenhofen",
+  "page": "https://commons.wikimedia.org/wiki/File:Whitney_Houston_(cropped3).JPEG"
+ },
+ "divas-13": {
+  "source": "Katy Perry",
+  "via": "wikipedia",
+  "file": "Katy_Perry_2026_Tribeca_Film_Festival_(cropped_1).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Colleen Sturtevant",
+  "page": "https://commons.wikimedia.org/wiki/File:Katy_Perry_2026_Tribeca_Film_Festival_(cropped_1).jpg"
+ },
+ "divas-14": {
+  "source": "Adele",
+  "via": "wikipedia",
+  "file": "Adele_2016.jpg",
+  "license": "CC BY 2.0",
+  "author": "Marc E.",
+  "page": "https://commons.wikimedia.org/wiki/File:Adele_2016.jpg"
+ },
+ "divas-15": {
+  "source": "Dua Lipa",
+  "via": "wikipedia",
+  "file": "Dua_Lipa-69798_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Harald Krichel",
+  "page": "https://commons.wikimedia.org/wiki/File:Dua_Lipa-69798_(cropped).jpg"
+ },
+ "divas-16": {
+  "source": "Billie Eilish",
+  "via": "wikipedia",
+  "file": "BillieEilishO2140725-39_-_54665577407_(cropped).jpg",
+  "license": "CC BY 4.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:BillieEilishO2140725-39_-_54665577407_(cropped).jpg"
+ },
+ "divas-17": {
+  "source": "Selena Gomez",
+  "via": "wikipedia",
+  "file": "Selena_Gomez_at_the_2024_Toronto_International_Film_Festival_10_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Frank Sun",
+  "page": "https://commons.wikimedia.org/wiki/File:Selena_Gomez_at_the_2024_Toronto_International_Film_Festival_10_(cropped).jpg"
+ },
+ "divas-18": {
+  "source": "Miley Cyrus",
+  "via": "wikipedia",
+  "file": "Miley_Cyrus_Primavera19_-226_(48986293772)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raphael Pour-Hashemi",
+  "page": "https://commons.wikimedia.org/wiki/File:Miley_Cyrus_Primavera19_-226_(48986293772)_(cropped).jpg"
+ },
+ "divas-19": {
+  "source": "Nicki Minaj",
+  "via": "wikipedia",
+  "file": "Nicki_Minaj_(55022495106)_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Gage Skidmore from Surprise, AZ, United States of America",
+  "page": "https://commons.wikimedia.org/wiki/File:Nicki_Minaj_(55022495106)_(cropped).jpg"
+ },
+ "divas-20": {
+  "source": "Christina Aguilera",
+  "via": "wikipedia",
+  "file": "Christina_Aguilera_2019_Disney_Legends_Awards_Ceremony_D23_EXPO_2019_(51440742748)_(cropped3).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "nagi usano from Tokyo, Japan",
+  "page": "https://commons.wikimedia.org/wiki/File:Christina_Aguilera_2019_Disney_Legends_Awards_Ceremony_D23_EXPO_2019_(51440742748)_(cropped3).jpg"
+ },
+ "divas-21": {
+  "source": "Tina Turner",
+  "via": "wikipedia",
+  "file": "Tina_Turner_Breaks_All_the_Rules.png",
+  "license": "Public domain",
+  "author": "HBO",
+  "page": "https://commons.wikimedia.org/wiki/File:Tina_Turner_Breaks_All_the_Rules.png"
+ },
+ "divas-22": {
+  "source": "Cher",
+  "via": "wikipedia",
+  "file": "Cher_in_2019_cropped.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:Cher_in_2019_cropped.jpg"
+ },
+ "divas-23": {
+  "source": "Kylie Minogue",
+  "via": "wikipedia",
+  "file": "KylieMinogue-byPhilipRomano.jpg",
+  "license": "CC BY 4.0",
+  "author": "PhilipRomanoPhoto",
+  "page": "https://commons.wikimedia.org/wiki/File:KylieMinogue-byPhilipRomano.jpg"
+ },
+ "divas-24": {
+  "source": "Alicia Keys",
+  "via": "wikipedia",
+  "file": "Alicia_Keys_(2025).jpg",
+  "license": "CC BY 4.0",
+  "author": "PhilipRomanoPhoto",
+  "page": "https://commons.wikimedia.org/wiki/File:Alicia_Keys_(2025).jpg"
+ },
+ "divas-25": {
+  "source": "Janet Jackson",
+  "via": "wikipedia",
+  "file": "JanetJacksonUnbreakableTourSanFran2015_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Rich Esteban",
+  "page": "https://commons.wikimedia.org/wiki/File:JanetJacksonUnbreakableTourSanFran2015_(cropped).jpg"
+ },
+ "divas-26": {
+  "source": "Diana Ross",
+  "via": "wikipedia",
+  "file": "DRossLongleat010722_(9_of_43)_(52189231585)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:DRossLongleat010722_(9_of_43)_(52189231585)_(cropped).jpg"
+ },
+ "divas-27": {
+  "source": "Aretha Franklin",
+  "via": "wikipedia",
+  "file": "Aretha_Franklin_1968.jpg",
+  "license": "Public domain",
+  "author": "Atlantic Records (Life time: Published before 1978 without a copyright notice)",
+  "page": "https://commons.wikimedia.org/wiki/File:Aretha_Franklin_1968.jpg"
+ },
+ "divas-28": {
+  "source": "Sabrina Carpenter",
+  "via": "wikipedia",
+  "file": "Sabrina_Carpenter_-_O2_Arena_2025_-_086_(cropped_2).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:Sabrina_Carpenter_-_O2_Arena_2025_-_086_(cropped_2).jpg"
+ },
+ "divas-29": {
+  "source": "Olivia Rodrigo",
+  "via": "wikipedia",
+  "file": "Glasto2025-546_(cropped)_2.jpg",
+  "license": "CC BY 4.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:Glasto2025-546_(cropped)_2.jpg"
+ },
+ "divas-30": {
+  "source": "Dolly Parton",
+  "via": "wikipedia",
+  "file": "Young-Dolly-Parton_(higher_quality_scan)_(cropped).jpg",
+  "license": "Public domain",
+  "author": "David Gahr",
+  "page": "https://commons.wikimedia.org/wiki/File:Young-Dolly-Parton_(higher_quality_scan)_(cropped).jpg"
  },
  "dog-breeds-1": {
   "source": "Labrador Retriever",
@@ -1947,6 +3455,326 @@
   "author": "Ivar Leidus",
   "page": "https://commons.wikimedia.org/wiki/File:Garlic_bulbs_and_cloves.jpg"
  },
+ "game-characters-1": {
+  "source": "Mario",
+  "via": "wikipedia",
+  "file": "Mario_by_Shigehisa_Nakaue.png",
+  "license": "Fair use",
+  "author": "Shigehisa Nakaue (artist) / Nintendo (owner)",
+  "page": "https://en.wikipedia.org/wiki/File:Mario_by_Shigehisa_Nakaue.png"
+ },
+ "game-characters-2": {
+  "source": "Pikachu",
+  "via": "wikipedia",
+  "file": "Pokémon_Pikachu_art.png",
+  "license": "Fair use",
+  "author": "Game Freak",
+  "page": "https://en.wikipedia.org/wiki/File:Pok%C3%A9mon_Pikachu_art.png"
+ },
+ "game-characters-3": {
+  "source": "Sonic the Hedgehog (character)",
+  "via": "wikipedia",
+  "file": "Sonic_modern_and_classic_designs.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Sonic_modern_and_classic_designs.png"
+ },
+ "game-characters-4": {
+  "source": "Luigi",
+  "via": "commons",
+  "file": "Comikaze_2014_-_Super_Maria_&_Luigi_(15717994796).jpg",
+  "license": "CC BY 2.0",
+  "author": "RyC - Behind The Lens from San Francisco, United States of America",
+  "page": "https://commons.wikimedia.org/wiki/File:Comikaze_2014_-_Super_Maria_%26_Luigi_(15717994796).jpg"
+ },
+ "game-characters-5": {
+  "source": "Pac-Man (character)",
+  "via": "wikipedia",
+  "file": "Pac-Man_ingame_and_2D_alternative_design.png",
+  "license": "CC BY 3.0",
+  "author": "Bandai Namco Entertainment America",
+  "page": "https://commons.wikimedia.org/wiki/File:Pac-Man_ingame_and_2D_alternative_design.png"
+ },
+ "game-characters-6": {
+  "source": "Steve (Minecraft)",
+  "via": "wikipedia",
+  "file": "Steve_(Minecraft).png",
+  "license": "Fair use",
+  "author": "Mojang Studios, Nintendo",
+  "page": "https://en.wikipedia.org/wiki/File:Steve_(Minecraft).png"
+ },
+ "game-characters-7": {
+  "source": "Creeper (Minecraft)",
+  "via": "wikipedia",
+  "file": "Minecraft_Creeper_(Crop).png",
+  "license": "CC BY 3.0",
+  "author": "Xbox México",
+  "page": "https://commons.wikimedia.org/wiki/File:Minecraft_Creeper_(Crop).png"
+ },
+ "game-characters-8": {
+  "source": "Crash Bandicoot (character)",
+  "via": "wikipedia",
+  "file": "IAT_Crash_Bandicoot.png",
+  "license": "Fair use",
+  "author": "Toys For Bob",
+  "page": "https://en.wikipedia.org/wiki/File:IAT_Crash_Bandicoot.png"
+ },
+ "game-characters-9": {
+  "source": "Donkey Kong (character)",
+  "via": "wikipedia",
+  "file": "Donkey_Kong_character.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Donkey_Kong_character.png"
+ },
+ "game-characters-10": {
+  "source": "Yoshi",
+  "via": "wikipedia",
+  "file": "Yoshi_(Nintendo_character).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Yoshi_(Nintendo_character).png"
+ },
+ "game-characters-11": {
+  "source": "Bowser (character)",
+  "via": "wikipedia",
+  "file": "Bowser_by_Shigehisa_Nakaue.png",
+  "license": "Fair use",
+  "author": "Shigehisa Nakaue (artist) / Nintendo (owner)",
+  "page": "https://en.wikipedia.org/wiki/File:Bowser_by_Shigehisa_Nakaue.png"
+ },
+ "game-characters-12": {
+  "source": "Princess Peach",
+  "via": "wikipedia",
+  "file": "Princess_Peach_Stock_Art.png",
+  "license": "Fair use",
+  "author": "Shigehisa Nakaue",
+  "page": "https://en.wikipedia.org/wiki/File:Princess_Peach_Stock_Art.png"
+ },
+ "game-characters-13": {
+  "source": "Kirby (character)",
+  "via": "wikipedia",
+  "file": "Kirby_Nintendo.png",
+  "license": "Fair use",
+  "author": "Nintendo",
+  "page": "https://en.wikipedia.org/wiki/File:Kirby_Nintendo.png"
+ },
+ "game-characters-14": {
+  "source": "Link (The Legend of Zelda)",
+  "via": "wikipedia",
+  "file": "Link_(Hyrule_Historia).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Link_(Hyrule_Historia).png"
+ },
+ "game-characters-15": {
+  "source": "Lara Croft",
+  "via": "wikipedia",
+  "file": "LaraCroftInfobox.png",
+  "license": "Fair use",
+  "author": "Aspyr",
+  "page": "https://en.wikipedia.org/wiki/File:LaraCroftInfobox.png"
+ },
+ "game-characters-16": {
+  "source": "Charmander",
+  "via": "wikipedia",
+  "file": "Charmander.png",
+  "license": "Fair use",
+  "author": "Ken Sugimori",
+  "page": "https://en.wikipedia.org/wiki/File:Charmander.png"
+ },
+ "game-characters-17": {
+  "source": "Tails (Sonic the Hedgehog)",
+  "via": "wikipedia",
+  "file": "Miles_\"Tails\"_Prower_Sonic_and_All-Stars_Racing_Transformed.png",
+  "license": "Fair use",
+  "author": "SEGA/Sonic Team",
+  "page": "https://en.wikipedia.org/wiki/File:Miles_%22Tails%22_Prower_Sonic_and_All-Stars_Racing_Transformed.png"
+ },
+ "game-characters-18": {
+  "source": "Spyro (character)",
+  "via": "wikipedia",
+  "file": "Spyro.png",
+  "license": "Fair use",
+  "author": "Activision",
+  "page": "https://en.wikipedia.org/wiki/File:Spyro.png"
+ },
+ "game-characters-19": {
+  "source": "Kratos (God of War)",
+  "via": "wikipedia",
+  "file": "Kratos_PS4.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Kratos_PS4.png"
+ },
+ "game-characters-20": {
+  "source": "Master Chief (Halo)",
+  "via": "wikipedia",
+  "file": "Master_chief_halo_infinite.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Master_chief_halo_infinite.png"
+ },
+ "game-characters-21": {
+  "source": "Ratchet (Ratchet & Clank)",
+  "via": "wikipedia",
+  "file": "Ratchet_&_Clank_(2021).png",
+  "license": "Fair use",
+  "author": "Insomniac Games",
+  "page": "https://en.wikipedia.org/wiki/File:Ratchet_%26_Clank_(2021).png"
+ },
+ "game-characters-22": {
+  "source": "Sub-Zero (Mortal Kombat)",
+  "via": "wikipedia",
+  "file": "Sub-Zero_John_Tobias_1996_Art.webp",
+  "license": "Fair use",
+  "author": "John Tobias",
+  "page": "https://en.wikipedia.org/wiki/File:Sub-Zero_John_Tobias_1996_Art.webp"
+ },
+ "game-characters-23": {
+  "source": "Scorpion (Mortal Kombat)",
+  "via": "wikipedia",
+  "file": "MK1ScorpionRender.png",
+  "license": "Fair use",
+  "author": "NetherRealm Studios",
+  "page": "https://en.wikipedia.org/wiki/File:MK1ScorpionRender.png"
+ },
+ "game-characters-24": {
+  "source": "Ryu (Street Fighter)",
+  "via": "wikipedia",
+  "file": "RyuStreetFighterTwoHadoken.png",
+  "license": "Fair use",
+  "author": "Namco, Capcom",
+  "page": "https://en.wikipedia.org/wiki/File:RyuStreetFighterTwoHadoken.png"
+ },
+ "game-characters-25": {
+  "source": "Chun-Li",
+  "via": "commons",
+  "file": "Chun-Li,_Riminicomix_2021_(51360624777).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Martino Photos",
+  "page": "https://commons.wikimedia.org/wiki/File:Chun-Li,_Riminicomix_2021_(51360624777).jpg"
+ },
+ "game-characters-26": {
+  "source": "Nathan Drake",
+  "via": "wikipedia",
+  "file": "Nathan_Drake_Uc4_full_body_shot.png",
+  "license": "Fair use",
+  "author": "Sony",
+  "page": "https://en.wikipedia.org/wiki/File:Nathan_Drake_Uc4_full_body_shot.png"
+ },
+ "game-characters-27": {
+  "source": "Ellie (The Last of Us)",
+  "via": "wikipedia",
+  "file": "Ellie_in_The_Last_of_Us_Part_II.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Ellie_in_The_Last_of_Us_Part_II.png"
+ },
+ "game-characters-28": {
+  "source": "Geralt of Rivia",
+  "via": "wikipedia",
+  "file": "Geralt.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Александр Степченков (Alexandr Stepchenkov)",
+  "page": "https://commons.wikimedia.org/wiki/File:Geralt.jpg"
+ },
+ "game-characters-29": {
+  "source": "Samus Aran",
+  "via": "wikipedia",
+  "file": "Samus_Aran.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Samus_Aran.png"
+ },
+ "game-characters-30": {
+  "source": "Fox McCloud",
+  "via": "wikipedia",
+  "file": "Fox_McCloud_Artwork.png",
+  "license": "Fair use",
+  "author": "Nintendo",
+  "page": "https://en.wikipedia.org/wiki/File:Fox_McCloud_Artwork.png"
+ },
+ "historical-figures-21": {
+  "source": "Ludwig van Beethoven",
+  "via": "wikipedia",
+  "file": "Joseph_Karl_Stieler's_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg",
+  "license": "Public domain",
+  "author": "Joseph Karl Stieler",
+  "page": "https://commons.wikimedia.org/wiki/File:Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg"
+ },
+ "historical-figures-22": {
+  "source": "William Shakespeare",
+  "via": "wikipedia",
+  "file": "William_Shakespeare_by_John_Taylor,_edited.jpg",
+  "license": "Public domain",
+  "author": "Attributed to John Taylor",
+  "page": "https://commons.wikimedia.org/wiki/File:William_Shakespeare_by_John_Taylor,_edited.jpg"
+ },
+ "historical-figures-23": {
+  "source": "Marie Curie",
+  "via": "wikipedia",
+  "file": "Marie_Curie_c._1920s.jpg",
+  "license": "Public domain",
+  "author": "Henri Manuel",
+  "page": "https://commons.wikimedia.org/wiki/File:Marie_Curie_c._1920s.jpg"
+ },
+ "historical-figures-24": {
+  "source": "Thomas Edison",
+  "via": "wikipedia",
+  "file": "Thomas_Edison2.jpg",
+  "license": "Public domain",
+  "author": "Louis Bachrach, Bachrach Studios, restored by Michel Vuijlsteke",
+  "page": "https://commons.wikimedia.org/wiki/File:Thomas_Edison2.jpg"
+ },
+ "historical-figures-25": {
+  "source": "Nikola Tesla",
+  "via": "wikipedia",
+  "file": "Tesla_circa_1890.jpeg",
+  "license": "Public domain",
+  "author": "Napoleon Sarony",
+  "page": "https://commons.wikimedia.org/wiki/File:Tesla_circa_1890.jpeg"
+ },
+ "historical-figures-26": {
+  "source": "Ze'ev Jabotinsky",
+  "via": "wikipedia",
+  "file": "PORTRAIT_OF_VLADIMIR_JABOTINSKY_TAKEN_BY_BRITT_IN_PARIS._פורטרט,_זאב_ז'בוטינסקי.D850-062_(cropped).jpg",
+  "license": "Public domain",
+  "author": "לשכת העיתונות הממשלתית",
+  "page": "https://commons.wikimedia.org/wiki/File:PORTRAIT_OF_VLADIMIR_JABOTINSKY_TAKEN_BY_BRITT_IN_PARIS._%D7%A4%D7%95%D7%A8%D7%98%D7%A8%D7%98,_%D7%96%D7%90%D7%91_%D7%96%27%D7%91%D7%95%D7%98%D7%99%D7%A0%D7%A1%D7%A7%D7%99.D850-062_(cropped).jpg"
+ },
+ "historical-figures-27": {
+  "source": "Eliezer Ben-Yehuda",
+  "via": "wikipedia",
+  "file": "Portrait_of_Eliezer_Ben-Yehuda_(cropped).jpg",
+  "license": "Public domain",
+  "author": "Ya'ackov Ben-Dov",
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_of_Eliezer_Ben-Yehuda_(cropped).jpg"
+ },
+ "historical-figures-28": {
+  "source": "Christopher Columbus",
+  "via": "wikipedia",
+  "file": "Portrait_of_a_Man,_Said_to_be_Christopher_Columbus.jpg",
+  "license": "Public domain",
+  "author": "Sebastiano del Piombo",
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_of_a_Man,_Said_to_be_Christopher_Columbus.jpg"
+ },
+ "historical-figures-29": {
+  "source": "Hannah Szenes",
+  "via": "wikipedia",
+  "file": "PikiWiki_Israel_7715_Hannah_Senesh.jpg",
+  "license": "Public domain",
+  "author": "אין מידע",
+  "page": "https://commons.wikimedia.org/wiki/File:PikiWiki_Israel_7715_Hannah_Senesh.jpg"
+ },
+ "historical-figures-30": {
+  "source": "Julius Caesar",
+  "via": "wikipedia",
+  "file": "Retrato_de_Julio_César_(26724093101)_(cropped).jpg",
+  "license": "Public domain",
+  "author": "Ángel M. Felicísimo from Mérida, España",
+  "page": "https://commons.wikimedia.org/wiki/File:Retrato_de_Julio_C%C3%A9sar_(26724093101)_(cropped).jpg"
+ },
  "instruments-1": {
   "source": "Classical guitar",
   "file": "Classical_Guitar_two_views2.png",
@@ -2156,6 +3984,288 @@
   "license": "CC BY-SA 4.0",
   "author": "AnonymousUnknown author",
   "page": "https://commons.wikimedia.org/wiki/File:Triangle_001.jpg"
+ },
+ "israel-history-12": {
+  "source": "File:Knesset front side - 2022.jpg",
+  "via": "wikipedia",
+  "file": "Knesset_front_side_-_2022.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Clema12",
+  "page": "https://commons.wikimedia.org/wiki/File:Knesset_front_side_-_2022.jpg"
+ },
+ "israel-history-15": {
+  "source": "File:Bet She'an roman Theater.jpg",
+  "via": "wikipedia",
+  "file": "Bet_She'an_roman_Theater.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Michael Drewes",
+  "page": "https://commons.wikimedia.org/wiki/File:Bet_She%27an_roman_Theater.jpg"
+ },
+ "israel-history-28": {
+  "source": "Tel Be'er Sheva",
+  "via": "wikipedia",
+  "file": "Tel_Be'er_Sheva_Overview_2007041.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "gugganij",
+  "page": "https://commons.wikimedia.org/wiki/File:Tel_Be%27er_Sheva_Overview_2007041.JPG"
+ },
+ "israel-history-29": {
+  "source": "File:Maimonides Tomb IMG 5948.JPG",
+  "via": "wikipedia",
+  "file": "Maimonides_Tomb_IMG_5948.JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "Deror_avi",
+  "page": "https://commons.wikimedia.org/wiki/File:Maimonides_Tomb_IMG_5948.JPG"
+ },
+ "israel-history-30": {
+  "source": "Tel Hai",
+  "via": "wikipedia",
+  "file": "Tel_Hai_-_Courtyard_(3).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Remi Jouan",
+  "page": "https://commons.wikimedia.org/wiki/File:Tel_Hai_-_Courtyard_(3).jpg"
+ },
+ "israeli-singers-1": {
+  "source": "Omer Adam",
+  "via": "wikipedia",
+  "file": "עומר_אדם_צילום_שי_פרנקו.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Shai Franco",
+  "page": "https://commons.wikimedia.org/wiki/File:%D7%A2%D7%95%D7%9E%D7%A8_%D7%90%D7%93%D7%9D_%D7%A6%D7%99%D7%9C%D7%95%D7%9D_%D7%A9%D7%99_%D7%A4%D7%A8%D7%A0%D7%A7%D7%95.jpg"
+ },
+ "israeli-singers-2": {
+  "source": "Noa Kirel",
+  "via": "wikipedia",
+  "file": "1_Noa_Kirel_(cropped).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Tal Abudi",
+  "page": "https://commons.wikimedia.org/wiki/File:1_Noa_Kirel_(cropped).jpg"
+ },
+ "israeli-singers-3": {
+  "source": "Eyal Golan",
+  "via": "wikipedia",
+  "file": "Eyal_Golan_1_(cropped).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Tal Abudi",
+  "page": "https://commons.wikimedia.org/wiki/File:Eyal_Golan_1_(cropped).jpg"
+ },
+ "israeli-singers-4": {
+  "source": "Sarit Hadad",
+  "via": "wikipedia",
+  "file": "Sarit_Hadad.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "לידור חדידה (Lidor Hadida)",
+  "page": "https://commons.wikimedia.org/wiki/File:Sarit_Hadad.jpg"
+ },
+ "israeli-singers-5": {
+  "source": "Idan Raichel",
+  "via": "wikipedia",
+  "file": "Idan_Raichel_6_(cropped).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Shai Franco",
+  "page": "https://commons.wikimedia.org/wiki/File:Idan_Raichel_6_(cropped).jpg"
+ },
+ "israeli-singers-6": {
+  "source": "Netta Barzilai",
+  "via": "wikipedia",
+  "file": "Netta_Barzilai.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Daniel Kaminsky",
+  "page": "https://commons.wikimedia.org/wiki/File:Netta_Barzilai.jpg"
+ },
+ "israeli-singers-7": {
+  "source": "Shlomo Artzi",
+  "via": "wikipedia",
+  "file": "Shlomo_Artzi_at_Caesarea.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "רנדום",
+  "page": "https://commons.wikimedia.org/wiki/File:Shlomo_Artzi_at_Caesarea.jpg"
+ },
+ "israeli-singers-8": {
+  "source": "Arik Einstein",
+  "via": "wikipedia",
+  "file": "Arik_Einstein_D499-097_taken_by_Israel_Government_Press_Office.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Yaakov Saar",
+  "page": "https://commons.wikimedia.org/wiki/File:Arik_Einstein_D499-097_taken_by_Israel_Government_Press_Office.jpg"
+ },
+ "israeli-singers-9": {
+  "source": "Ofra Haza",
+  "via": "wikipedia",
+  "file": "Ofra_Haza_1981_(עפרה_חזה_1981).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Yaakov Saar",
+  "page": "https://commons.wikimedia.org/wiki/File:Ofra_Haza_1981_(%D7%A2%D7%A4%D7%A8%D7%94_%D7%97%D7%96%D7%94_1981).jpg"
+ },
+ "israeli-singers-10": {
+  "source": "Rita (Israeli singer)",
+  "via": "wikipedia",
+  "file": "RITA_gy_2015.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "גיא כושי ויריב פיין (פיסטוק אמנים בע\"מ)",
+  "page": "https://commons.wikimedia.org/wiki/File:RITA_gy_2015.jpg"
+ },
+ "israeli-singers-11": {
+  "source": "Eden Ben Zaken",
+  "via": "wikipedia",
+  "file": "Eden_Ben_Zaken_3.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Daniel Elster (דניאל אלסטר)",
+  "page": "https://commons.wikimedia.org/wiki/File:Eden_Ben_Zaken_3.jpg"
+ },
+ "israeli-singers-12": {
+  "source": "Moshe Peretz",
+  "via": "wikipedia",
+  "file": "Moshe_Peretz_01.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Neukoln",
+  "page": "https://commons.wikimedia.org/wiki/File:Moshe_Peretz_01.JPG"
+ },
+ "israeli-singers-13": {
+  "source": "Shlomi Shabat",
+  "via": "wikipedia",
+  "file": "Shlomi_Shabbat.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "יניר סלע",
+  "page": "https://commons.wikimedia.org/wiki/File:Shlomi_Shabbat.jpg"
+ },
+ "israeli-singers-14": {
+  "source": "Eden Hason",
+  "via": "wikipedia",
+  "file": "Eden_hason.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Yanir Sela (יניר סלע)",
+  "page": "https://commons.wikimedia.org/wiki/File:Eden_hason.jpg"
+ },
+ "israeli-singers-15": {
+  "source": "Nathan Goshen",
+  "via": "wikipedia",
+  "file": "Nathan_Goshen.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Seli Ben Ari",
+  "page": "https://commons.wikimedia.org/wiki/File:Nathan_Goshen.jpg"
+ },
+ "israeli-singers-16": {
+  "source": "Anna Zak",
+  "via": "wikipedia",
+  "file": "Anna_Zak.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Tal Abudi",
+  "page": "https://commons.wikimedia.org/wiki/File:Anna_Zak.jpg"
+ },
+ "israeli-singers-17": {
+  "source": "Aviv Geffen",
+  "via": "wikipedia",
+  "file": "Aviv_Geffen_1.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "רונן פדידה (Ronen Fadida)",
+  "page": "https://commons.wikimedia.org/wiki/File:Aviv_Geffen_1.jpg"
+ },
+ "israeli-singers-18": {
+  "source": "Idan Amedi",
+  "via": "wikipedia",
+  "file": "עידן_עמדי,_סלי_בן_אריה.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Seli Ben Ari",
+  "page": "https://commons.wikimedia.org/wiki/File:%D7%A2%D7%99%D7%93%D7%9F_%D7%A2%D7%9E%D7%93%D7%99,_%D7%A1%D7%9C%D7%99_%D7%91%D7%9F_%D7%90%D7%A8%D7%99%D7%94.jpg"
+ },
+ "israeli-singers-19": {
+  "source": "Miri Mesika",
+  "via": "wikipedia",
+  "file": "Miri_Mesika.webp",
+  "license": "CC BY-SA 4.0",
+  "author": "איה זך (Aya Zakh)",
+  "page": "https://commons.wikimedia.org/wiki/File:Miri_Mesika.webp"
+ },
+ "israeli-singers-20": {
+  "source": "Pe'er Tasi",
+  "via": "wikipedia",
+  "file": "0U5A7798.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "טלושקיה",
+  "page": "https://commons.wikimedia.org/wiki/File:0U5A7798.jpg"
+ },
+ "israeli-singers-21": {
+  "source": "Shalom Hanoch",
+  "via": "wikipedia",
+  "file": "Shalom_Hanoch_2.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Morshem",
+  "page": "https://commons.wikimedia.org/wiki/File:Shalom_Hanoch_2.jpg"
+ },
+ "israeli-singers-22": {
+  "source": "Yehoram Gaon",
+  "via": "wikipedia",
+  "file": "Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Yaakov Saar",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg"
+ },
+ "israeli-singers-23": {
+  "source": "Zehava Ben",
+  "via": "wikipedia",
+  "file": "Zehavaben.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "גילי אלגבי",
+  "page": "https://commons.wikimedia.org/wiki/File:Zehavaben.jpg"
+ },
+ "israeli-singers-24": {
+  "source": "Keren Peles",
+  "via": "wikipedia",
+  "file": "Keren_Peles_1.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Daniel Kaminsky",
+  "page": "https://commons.wikimedia.org/wiki/File:Keren_Peles_1.jpg"
+ },
+ "israeli-singers-25": {
+  "source": "Dudu Aharon",
+  "via": "wikipedia",
+  "file": "Dudu_Aharon_2015.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "ארן חן צלמים",
+  "page": "https://commons.wikimedia.org/wiki/File:Dudu_Aharon_2015.jpg"
+ },
+ "israeli-singers-26": {
+  "source": "Yuval Dayan",
+  "via": "wikipedia",
+  "file": "יובל_דיין2.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Tal Abudi",
+  "page": "https://commons.wikimedia.org/wiki/File:%D7%99%D7%95%D7%91%D7%9C_%D7%93%D7%99%D7%99%D7%9F2.jpg"
+ },
+ "israeli-singers-27": {
+  "source": "Margi (singer)",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Portrait photo of the Israeli singer Margi (singer)",
+  "review": true
+ },
+ "israeli-singers-28": {
+  "source": "Haim Moshe",
+  "via": "wikipedia",
+  "file": "Haim_Moshe.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "de:Benutzer:datafox",
+  "page": "https://commons.wikimedia.org/wiki/File:Haim_Moshe.JPG"
+ },
+ "israeli-singers-29": {
+  "source": "Arkadi Duchin",
+  "via": "wikipedia",
+  "file": "Arkadi_Duchin_(1).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "עדי כהן צדק",
+  "page": "https://commons.wikimedia.org/wiki/File:Arkadi_Duchin_(1).jpg"
+ },
+ "israeli-singers-30": {
+  "source": "Osher Cohen",
+  "via": "wikipedia",
+  "file": "אושר_כהן.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Shay Cohen Arbel (שי כהן ארבל)",
+  "page": "https://commons.wikimedia.org/wiki/File:%D7%90%D7%95%D7%A9%D7%A8_%D7%9B%D7%94%D7%9F.jpg"
  },
  "kitchen-1": {
   "source": "Frying pan",
@@ -3477,6 +5587,246 @@
   "author": "Quejaytee",
   "page": "https://commons.wikimedia.org/wiki/File:Team_Les_Supreme_Free_Skate_at_the_2026_ISU_Synchronized_Skating_World_Championships_01.jpg"
  },
+ "superheroes-1": {
+  "source": "Spider-Man",
+  "via": "wikipedia",
+  "file": "Web_of_Spider-Man_Vol_1_129-1.png",
+  "license": "Fair use",
+  "author": "Mike McKone and Morry Hollowell / Marvel Comics",
+  "page": "https://en.wikipedia.org/wiki/File:Web_of_Spider-Man_Vol_1_129-1.png"
+ },
+ "superheroes-2": {
+  "source": "Batman",
+  "via": "wikipedia",
+  "file": "Batman_Infobox.jpg",
+  "license": "Fair use",
+  "author": "DC Comics",
+  "page": "https://en.wikipedia.org/wiki/File:Batman_Infobox.jpg"
+ },
+ "superheroes-3": {
+  "source": "Superman",
+  "via": "wikipedia",
+  "file": "Supermanflying.png",
+  "license": "Fair use",
+  "author": "Jason Fabok",
+  "page": "https://en.wikipedia.org/wiki/File:Supermanflying.png"
+ },
+ "superheroes-4": {
+  "source": "Iron Man",
+  "via": "wikipedia",
+  "file": "Iron_Man_(circa_2018).png",
+  "license": "Fair use",
+  "author": "Marvel Comics",
+  "page": "https://en.wikipedia.org/wiki/File:Iron_Man_(circa_2018).png"
+ },
+ "superheroes-5": {
+  "source": "Captain America",
+  "via": "commons",
+  "file": "NYCC_2016_-_Captain_America_Dog_(29928079170).jpg",
+  "license": "CC BY 2.0",
+  "author": "Carter McKendry from New York, NY, United States",
+  "page": "https://commons.wikimedia.org/wiki/File:NYCC_2016_-_Captain_America_Dog_(29928079170).jpg"
+ },
+ "superheroes-6": {
+  "source": "Hulk",
+  "via": "wikipedia",
+  "file": "Hulk_(circa_2019).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Hulk_(circa_2019).png"
+ },
+ "superheroes-7": {
+  "source": "Wonder Woman",
+  "via": "wikipedia",
+  "file": "Wonder_Woman_750.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Wonder_Woman_750.jpg"
+ },
+ "superheroes-8": {
+  "source": "Thor (Marvel Comics)",
+  "via": "wikipedia",
+  "file": "Thor_(Marvel_Comics).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Thor_(Marvel_Comics).png"
+ },
+ "superheroes-9": {
+  "source": "Black Panther (character)",
+  "via": "wikipedia",
+  "file": "Black_Panther_(T'Challa).png",
+  "license": "Fair use",
+  "author": "Jack Kirby",
+  "page": "https://en.wikipedia.org/wiki/File:Black_Panther_(T%27Challa).png"
+ },
+ "superheroes-10": {
+  "source": "Deadpool",
+  "via": "wikipedia",
+  "file": "Deadpool.png",
+  "license": "Fair use",
+  "author": "Rob Liefeld / Marvel Comics",
+  "page": "https://en.wikipedia.org/wiki/File:Deadpool.png"
+ },
+ "superheroes-11": {
+  "source": "Wolverine (character)",
+  "via": "wikipedia",
+  "file": "Wolverine_(circa_2024).jpg",
+  "license": "Fair use",
+  "author": "Stanley Lau (artist) / Marvel Comics (copyright holder)",
+  "page": "https://en.wikipedia.org/wiki/File:Wolverine_(circa_2024).jpg"
+ },
+ "superheroes-12": {
+  "source": "Flash (DC Comics character)",
+  "via": "wikipedia",
+  "file": "The_Flash_Family.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:The_Flash_Family.jpg"
+ },
+ "superheroes-13": {
+  "source": "Aquaman",
+  "via": "wikipedia",
+  "file": "Aquaman_Rebirth_1.png",
+  "license": "Fair use",
+  "author": "Brad Walker / DC Comics",
+  "page": "https://en.wikipedia.org/wiki/File:Aquaman_Rebirth_1.png"
+ },
+ "superheroes-14": {
+  "source": "Black Widow (Natasha Romanova)",
+  "via": "wikipedia",
+  "file": "Natasha_Romanova_incarnations.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Natasha_Romanova_incarnations.jpg"
+ },
+ "superheroes-15": {
+  "source": "Doctor Strange",
+  "via": "wikipedia",
+  "file": "Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Doctor_Strange_Vol_4_2_Ross_Variant_Textless.jpg"
+ },
+ "superheroes-16": {
+  "source": "Ant-Man",
+  "via": "wikipedia",
+  "file": "Irredeemable_Ant-Man_Vol_1_5_Textless.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Irredeemable_Ant-Man_Vol_1_5_Textless.jpg"
+ },
+ "superheroes-17": {
+  "source": "Captain Marvel (Carol Danvers)",
+  "via": "wikipedia",
+  "file": "Carol_Danvers_-_(evolution).jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Carol_Danvers_-_(evolution).jpg"
+ },
+ "superheroes-18": {
+  "source": "Green Lantern",
+  "via": "wikipedia",
+  "file": "Green_Lantern_Rebirth_6.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Green_Lantern_Rebirth_6.jpg"
+ },
+ "superheroes-19": {
+  "source": "Groot",
+  "via": "wikipedia",
+  "file": "Groot.png",
+  "license": "Fair use",
+  "author": "Marvel",
+  "page": "https://en.wikipedia.org/wiki/File:Groot.png"
+ },
+ "superheroes-20": {
+  "source": "Rocket Raccoon",
+  "via": "wikipedia",
+  "file": "Rocketraccoon.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Rocketraccoon.png"
+ },
+ "superheroes-21": {
+  "source": "Hawkeye (Clint Barton)",
+  "via": "wikipedia",
+  "file": "Hawkeye_(circa_2022).webp",
+  "license": "Fair use",
+  "author": "Publisher Marvel Comics, cover artists Stefano Caselli and Federico Blee",
+  "page": "https://en.wikipedia.org/wiki/File:Hawkeye_(circa_2022).webp"
+ },
+ "superheroes-22": {
+  "source": "Vision (Marvel Comics)",
+  "via": "wikipedia",
+  "file": "Vision_(Marvel_Comics).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Vision_(Marvel_Comics).png"
+ },
+ "superheroes-23": {
+  "source": "Scarlet Witch",
+  "via": "wikipedia",
+  "file": "Scarlet_Witch_Various_incarnations_2021.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Scarlet_Witch_Various_incarnations_2021.jpg"
+ },
+ "superheroes-24": {
+  "source": "Storm (Marvel Comics)",
+  "via": "wikipedia",
+  "file": "Storm_(Ororo_Munroe).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Storm_(Ororo_Munroe).png"
+ },
+ "superheroes-25": {
+  "source": "Cyborg (DC Comics)",
+  "via": "wikipedia",
+  "file": "Cyborg_(Victor_Stone).jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Cyborg_(Victor_Stone).jpg"
+ },
+ "superheroes-26": {
+  "source": "Shazam (DC Comics)",
+  "via": "wikipedia",
+  "file": "Billy_Batson,_Shazam_Captain_Marvel_(Modern).png",
+  "license": "Fair use",
+  "author": "Dan Mora, DC Comics",
+  "page": "https://en.wikipedia.org/wiki/File:Billy_Batson,_Shazam_Captain_Marvel_(Modern).png"
+ },
+ "superheroes-27": {
+  "source": "Green Arrow",
+  "via": "wikipedia",
+  "file": "Green_Arrow_-_Infobox_image.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Green_Arrow_-_Infobox_image.png"
+ },
+ "superheroes-28": {
+  "source": "Robin (character)",
+  "via": "wikipedia",
+  "file": "Robins_(DC_Comics_characters).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Robins_(DC_Comics_characters).png"
+ },
+ "superheroes-29": {
+  "source": "Silver Surfer",
+  "via": "wikipedia",
+  "file": "Silver_Surfer.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Silver_Surfer.png"
+ },
+ "superheroes-30": {
+  "source": "Professor X",
+  "via": "wikipedia",
+  "file": "Professor_X.png",
+  "license": "Fair use",
+  "author": "Marvel Comics",
+  "page": "https://en.wikipedia.org/wiki/File:Professor_X.png"
+ },
  "technology-1": {
   "source": "Smartphone",
   "file": "Wikipedia_homepage_on_a_large_Android_phone,_2015-04-16.jpg",
@@ -4106,5 +6456,247 @@
   "license": "CC BY-SA 4.0",
   "author": "Eunmi Park",
   "page": "https://commons.wikimedia.org/wiki/File:%EC%A4%91%ED%99%94%EC%A0%84%EC%9D%98_%EB%82%AE.jpg"
+ },
+ "world-singers-1": {
+  "source": "Michael Jackson",
+  "via": "wikipedia",
+  "file": "Michael_Jackson_1983_(3x4_cropped)_(contrast).jpg",
+  "license": "Public domain",
+  "author": "Matthew Rolston; Distributed by Epic Records",
+  "page": "https://commons.wikimedia.org/wiki/File:Michael_Jackson_1983_(3x4_cropped)_(contrast).jpg"
+ },
+ "world-singers-2": {
+  "source": "Justin Bieber",
+  "via": "wikipedia",
+  "file": "P20260719DT-1213_President_Donald_J._Trump_and_First_Lady_Melania_Trump_attend_the_FIFA_World_Cup_Final_(cropped_2).jpg",
+  "license": "Public domain",
+  "author": "Daniel Torok",
+  "page": "https://commons.wikimedia.org/wiki/File:P20260719DT-1213_President_Donald_J._Trump_and_First_Lady_Melania_Trump_attend_the_FIFA_World_Cup_Final_(cropped_2).jpg"
+ },
+ "world-singers-3": {
+  "source": "Ed Sheeran",
+  "via": "wikipedia",
+  "file": "Ed_Sheeran_2022_(3x4_crop).jpg",
+  "license": "CC BY 2.0",
+  "author": "Number 10",
+  "page": "https://commons.wikimedia.org/wiki/File:Ed_Sheeran_2022_(3x4_crop).jpg"
+ },
+ "world-singers-4": {
+  "source": "Bruno Mars",
+  "via": "wikipedia",
+  "file": "BrunoMars24KMagicWorldTourLive_(cropped).jpg",
+  "license": "CC BY 4.0",
+  "author": "slgckgc",
+  "page": "https://commons.wikimedia.org/wiki/File:BrunoMars24KMagicWorldTourLive_(cropped).jpg"
+ },
+ "world-singers-5": {
+  "source": "Elvis Presley",
+  "via": "wikipedia",
+  "file": "Elvis_Presley_promoting_Jailhouse_Rock.jpg",
+  "license": "Public domain",
+  "author": "Metro-Goldwyn-Mayer, Inc. Reproduction Number: LC-USZ6-2067 Location: NYWTS -- BIOG",
+  "page": "https://commons.wikimedia.org/wiki/File:Elvis_Presley_promoting_Jailhouse_Rock.jpg"
+ },
+ "world-singers-6": {
+  "source": "Eminem",
+  "via": "wikipedia",
+  "file": "Eminem_2021_Color_Corrected.jpg",
+  "license": "CC0",
+  "author": "Brendan_linden",
+  "page": "https://commons.wikimedia.org/wiki/File:Eminem_2021_Color_Corrected.jpg"
+ },
+ "world-singers-7": {
+  "source": "Drake (musician)",
+  "via": "wikipedia",
+  "file": "Drake_at_The_Carter_Effect_2017_(36818935200)_(cropped).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "GabboT",
+  "page": "https://commons.wikimedia.org/wiki/File:Drake_at_The_Carter_Effect_2017_(36818935200)_(cropped).jpg"
+ },
+ "world-singers-8": {
+  "source": "Freddie Mercury",
+  "via": "wikipedia",
+  "file": "Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Carl Lender",
+  "page": "https://commons.wikimedia.org/wiki/File:Freddie_Mercury_performing_in_New_Haven,_CT,_November_1977.jpg"
+ },
+ "world-singers-9": {
+  "source": "Bob Marley",
+  "via": "wikipedia",
+  "file": "Bob_Marley_circa_1976_(cropped).jpg",
+  "license": "Public domain",
+  "author": "Not credited",
+  "page": "https://commons.wikimedia.org/wiki/File:Bob_Marley_circa_1976_(cropped).jpg"
+ },
+ "world-singers-10": {
+  "source": "Elton John",
+  "via": "wikipedia",
+  "file": "EltonDocBFILFF101024_(4_of_17)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:EltonDocBFILFF101024_(4_of_17)_(cropped).jpg"
+ },
+ "world-singers-11": {
+  "source": "Harry Styles",
+  "via": "wikipedia",
+  "file": "HarryStylesWembley170623_(65_of_93)_(52982678051)_(cropped_2).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:HarryStylesWembley170623_(65_of_93)_(52982678051)_(cropped_2).jpg"
+ },
+ "world-singers-12": {
+  "source": "The Weeknd",
+  "via": "wikipedia",
+  "file": "The_Weeknd_Portrait_by_Brian_Ziff.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Brian Ziff",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Weeknd_Portrait_by_Brian_Ziff.jpg"
+ },
+ "world-singers-13": {
+  "source": "Justin Timberlake",
+  "via": "wikipedia",
+  "file": "Justin_Timberlake_by_Gage_Skidmore.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Gage Skidmore",
+  "page": "https://commons.wikimedia.org/wiki/File:Justin_Timberlake_by_Gage_Skidmore.jpg"
+ },
+ "world-singers-14": {
+  "source": "Shawn Mendes",
+  "via": "wikipedia",
+  "file": "191125_Shawn_Mendes_at_the_2019_American_Music_Awards.png",
+  "license": "CC BY 3.0",
+  "author": "Cosmopolitan UK",
+  "page": "https://commons.wikimedia.org/wiki/File:191125_Shawn_Mendes_at_the_2019_American_Music_Awards.png"
+ },
+ "world-singers-15": {
+  "source": "John Lennon",
+  "via": "wikipedia",
+  "file": "John_Lennon_\"Walls_and_Bridges\"_1974_press_photo_2_(color)_(cropped).jpg",
+  "license": "Public domain",
+  "author": "Bob Gruen; Distributed by Capitol Records",
+  "page": "https://commons.wikimedia.org/wiki/File:John_Lennon_%22Walls_and_Bridges%22_1974_press_photo_2_(color)_(cropped).jpg"
+ },
+ "world-singers-16": {
+  "source": "Paul McCartney",
+  "via": "wikipedia",
+  "file": "MaccaLyricsRFH051121_(15_of_18)_(updated)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:MaccaLyricsRFH051121_(15_of_18)_(updated)_(cropped).jpg"
+ },
+ "world-singers-17": {
+  "source": "Frank Sinatra",
+  "via": "wikipedia",
+  "file": "Frank_Sinatra_(1957_studio_portrait_close-up).jpg",
+  "license": "Public domain",
+  "author": "Photograph by Capitol Records, per a credit found in the 1959 edition of the International Celebrity Register at page 69",
+  "page": "https://commons.wikimedia.org/wiki/File:Frank_Sinatra_(1957_studio_portrait_close-up).jpg"
+ },
+ "world-singers-18": {
+  "source": "Enrique Iglesias",
+  "via": "wikipedia",
+  "file": "Enrique_Iglesias_2011,_2_(cropped).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Eva Rinaldi",
+  "page": "https://commons.wikimedia.org/wiki/File:Enrique_Iglesias_2011,_2_(cropped).jpg"
+ },
+ "world-singers-19": {
+  "source": "Ricky Martin",
+  "via": "wikipedia",
+  "file": "Ricky_Martin-4262.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Harald Krichel",
+  "page": "https://commons.wikimedia.org/wiki/File:Ricky_Martin-4262.jpg"
+ },
+ "world-singers-20": {
+  "source": "Pitbull (rapper)",
+  "via": "wikipedia",
+  "file": "Pitbull_(52703405994)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Zach Catanzareti Photo",
+  "page": "https://commons.wikimedia.org/wiki/File:Pitbull_(52703405994)_(cropped).jpg"
+ },
+ "world-singers-21": {
+  "source": "Snoop Dogg",
+  "via": "wikipedia",
+  "file": "Snoop_Dogg,_WrestleMania_XL_(cropped)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Diego Serrano",
+  "page": "https://commons.wikimedia.org/wiki/File:Snoop_Dogg,_WrestleMania_XL_(cropped)_(cropped).jpg"
+ },
+ "world-singers-22": {
+  "source": "Usher (musician)",
+  "via": "wikipedia",
+  "file": "Usher_Milan_2026.jpg",
+  "license": "Public domain",
+  "author": "US Embassy Italy",
+  "page": "https://commons.wikimedia.org/wiki/File:Usher_Milan_2026.jpg"
+ },
+ "world-singers-23": {
+  "source": "Bad Bunny",
+  "via": "wikipedia",
+  "file": "Bad_Bunny_2019_by_Glenn_Francis_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Toglenn",
+  "page": "https://commons.wikimedia.org/wiki/File:Bad_Bunny_2019_by_Glenn_Francis_(cropped).jpg"
+ },
+ "world-singers-24": {
+  "source": "Post Malone",
+  "via": "wikipedia",
+  "file": "Post_Malone_July_2021_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Chrisallmeid",
+  "page": "https://commons.wikimedia.org/wiki/File:Post_Malone_July_2021_(cropped).jpg"
+ },
+ "world-singers-25": {
+  "source": "Kendrick Lamar",
+  "via": "wikipedia",
+  "file": "KendrickSZASPurs230725-144_(cropped)_desaturated.jpg",
+  "license": "CC BY 4.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:KendrickSZASPurs230725-144_(cropped)_desaturated.jpg"
+ },
+ "world-singers-26": {
+  "source": "Sting (musician)",
+  "via": "wikipedia",
+  "file": "Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "CamilaAlves.raf",
+  "page": "https://commons.wikimedia.org/wiki/File:Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg"
+ },
+ "world-singers-27": {
+  "source": "Mick Jagger",
+  "via": "wikipedia",
+  "file": "RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg",
+  "license": "CC BY 2.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg"
+ },
+ "world-singers-28": {
+  "source": "Jon Bon Jovi",
+  "via": "wikipedia",
+  "file": "NEG_0062-2_(54119957209).jpg",
+  "license": "CC BY 2.0",
+  "author": "Montclair Film",
+  "page": "https://commons.wikimedia.org/wiki/File:NEG_0062-2_(54119957209).jpg"
+ },
+ "world-singers-29": {
+  "source": "Travis Scott",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Portrait photo of the singer Travis Scott",
+  "review": true
+ },
+ "world-singers-30": {
+  "source": "Lewis Capaldi",
+  "via": "wikipedia",
+  "file": "Glasto2025-41_(cropped).jpg",
+  "license": "CC BY 4.0",
+  "author": "Raph_PH",
+  "page": "https://commons.wikimedia.org/wiki/File:Glasto2025-41_(cropped).jpg"
  }
 }

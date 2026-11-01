@@ -247,6 +247,8 @@ HIDE_PROMPT = ("Remove ALL text, letters, words, numbers, brand names and logos 
 
 
 def hide_name(b, url):
+    if not (os.environ.get("POLLINATIONS_TOKEN") or openai_ready()):  # both refuse without a key: don't wait for it
+        return None, "no AI key: blur with --boxes"
     errors = []
     with _ai_lock:
         if url:
@@ -349,10 +351,10 @@ def find_picture(entry, cfg, a):
         if not lead and cfg.get("prefer"):
             lead = wiki_named_file(name, cfg["prefer"])
         if not lead and cfg.get("wikipedia", True):
-            lead = wiki_lead(name, any_license=kind == "logo")  # errors fail the item: better a rerun than an AI guess
+            lead = wiki_lead(name, any_license=kind == "logo" or cfg.get("anyLicense", False))  # errors fail the item: better a rerun than an AI guess
         if lead and not (kind != "logo" and lead.lower().endswith(".svg")):
             info = wiki_file(lead)
-            if info and (kind == "logo" or min(info["w"], info["h"]) >= 300):
+            if info and (kind == "logo" or cfg.get("anyLicense") or min(info["w"], info["h"]) >= 300):
                 b = get(info["url"])
                 if is_image(b):
                     return b, info["url"], dict(source=name, via="wikipedia", **{k: info[k] for k in ("file", "license", "author", "page")})

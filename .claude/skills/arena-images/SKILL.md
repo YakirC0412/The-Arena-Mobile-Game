@@ -37,6 +37,8 @@ If the category is not in `mobile/scripts/image-sources.json`, add it. Read the 
   white); a packaging way → `product`; anything else → `photo`.
 - `"prefer": ["icon", "logo"]` when the article's lead image is a screenshot or a building (apps,
   brands, companies): the article's first file with that word in its name is used instead.
+- `"anyLicense": true` for posters, covers and cartoon/game characters: the article's lead image is used even
+  when it is not freely licensed (private game, decisions 14 and 17).
 - `"hideName": true` when the answer must not be written on the picture (crests, packaging, app icons).
 - Write `prompt` so the AI picture answers the way: what must be visible, plain background, no text.
 - Categories missing here fall back to `wiki-sources.json` (kind photo).

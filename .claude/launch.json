@@ -4,8 +4,25 @@
     {
       "name": "arena-web",
       "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
-      "runtimeArgs": ["mobile/node_modules/expo/bin/cli", "start", "mobile", "--web", "--port", "8090"],
-      "port": 8090, "autoPort": false
+      "runtimeArgs": [
+        "mobile/node_modules/expo/bin/cli",
+        "start",
+        "mobile",
+        "--web",
+        "--port",
+        "8090"
+      ],
+      "port": 8090,
+      "autoPort": false
+    },
+    {
+      "name": "arena-admin",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": [
+        "mobile/scripts/admin/server.js"
+      ],
+      "port": 8095,
+      "autoPort": false
     }
   ]
 }

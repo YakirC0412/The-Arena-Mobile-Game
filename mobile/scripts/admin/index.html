@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>לוח בקרה – הזירה</title>
+<style>
+/* Admin panel for The Arena: a category list on the side, the picture grid of one category in the middle. */
+:root {
+  --bg: #eef2f8; --surface: #fff; --ink: #11203d; --muted: #5b6b86; --line: #d3dcec; --field: #f5f8fc;
+  --accent: #0b8fb3; --accent-ink: #fff; --ok: #17804a; --ok-bg: #dff3e7; --warn: #a3410f; --warn-bg: #fde8db;
+  --gold: #9a6b00; --gold-bg: #fff1cc; --danger: #b3261e; --shadow: 0 8px 28px rgb(15 30 60 / .18);
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg: #0b1428; --surface: #12203d; --ink: #e8eefb; --muted: #94a3c2; --line: #263a63; --field: #0e1a33;
+  --accent: #35c4ea; --accent-ink: #06142b; --ok: #5ed08f; --ok-bg: #12382a; --warn: #ffa57a; --warn-bg: #43220f;
+  --gold: #f2c14e; --gold-bg: #3a2f10; --danger: #ff8a80; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 "Segoe UI", "Assistant", "Arial Hebrew", sans-serif; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { border: 1px solid var(--line); background: var(--field); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-weight: 600; }
+button:hover { border-color: var(--accent); }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button.danger { color: var(--danger); }
+button.small { padding: 2px 8px; font-size: 13px; }
+button:disabled { opacity: .5; cursor: default; }
+input[type=text], input[type=number], select, textarea { width: 100%; background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+textarea { resize: vertical; min-height: 56px; }
+label { display: grid; gap: 3px; font-size: 13px; color: var(--muted); font-weight: 600; }
+label.check { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--ink); }
+label.check input { width: auto; }
+
+.top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; padding: 10px 18px; background: var(--surface); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+.top h1 { font-size: 19px; margin: 0; }
+.stats { color: var(--muted); font-size: 14px; margin-inline-end: auto; }
+.layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 16px; padding: 16px 18px 40px; align-items: start; }
+@media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+.side { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 8px; position: sticky; top: 64px; max-height: calc(100vh - 80px); overflow: auto; }
+@media (max-width: 820px) { .side { position: static; max-height: 320px; } }
+.cat-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px; padding: 6px 8px; border-radius: 8px; cursor: pointer; border: 1px solid transparent; }
+.cat-row:hover { background: var(--field); }
+.cat-row.on { background: var(--field); border-color: var(--accent); }
+.cat-name { font-weight: 700; display: flex; gap: 6px; align-items: center; }
+.cat-sub { font-size: 12px; color: var(--muted); }
+.arrows { display: flex; flex-direction: column; }
+.arrows button { padding: 0 6px; font-size: 11px; line-height: 1.2; border-radius: 4px; }
+.pill { font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 99px; white-space: nowrap; }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+.pill.gold { background: var(--gold-bg); color: var(--gold); }
+.pill.mute { background: var(--field); color: var(--muted); border: 1px solid var(--line); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+.panel h2 { margin: 0 0 8px; font-size: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 12px; }
+.chip { border-radius: 99px; padding: 2px 12px; font-size: 13px; }
+.chip[aria-pressed=true] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; cursor: pointer; display: grid; grid-template-rows: auto 1fr; }
+.card:hover { border-color: var(--accent); }
+.thumb { aspect-ratio: 1; background: var(--field); display: grid; place-items: center; color: var(--muted); font-size: 13px; position: relative; overflow: hidden; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+.card .meta { padding: 6px 8px 8px; display: grid; gap: 4px; }
+.card .ttl { font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; }
+.badges { display: flex; flex-wrap: wrap; gap: 4px; }
+dialog { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); padding: 0; box-shadow: var(--shadow); max-width: min(920px, 96vw); width: 100%; }
+dialog::backdrop { background: rgb(5 12 28 / .55); }
+.dlg-head { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.dlg-head h3 { margin: 0; font-size: 17px; margin-inline-end: auto; }
+.dlg-body { padding: 14px 16px 16px; display: grid; gap: 12px; max-height: 80vh; overflow: auto; }
+.item-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px; }
+@media (max-width: 700px) { .item-cols { grid-template-columns: 1fr; } }
+.pic-box { border: 2px dashed var(--line); border-radius: 12px; background: var(--field); aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; text-align: center; color: var(--muted); }
+.pic-box.over { border-color: var(--accent); }
+.pic-box { position: relative; }
+.pic-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.fields { display: grid; gap: 10px; align-content: start; }
+.hint { font-size: 12px; color: var(--muted); }
+.blur-stage { position: relative; display: inline-block; max-width: 100%; line-height: 0; background: #fff; border: 1px solid var(--line); justify-self: center; touch-action: none; }
+.blur-stage img { max-width: 100%; max-height: 62vh; display: block; user-select: none; -webkit-user-drag: none; }
+.blur-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+.shape-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.busy { position: fixed; inset: 0; background: rgb(5 12 28 / .6); display: grid; place-items: center; z-index: 50; color: #fff; font-size: 18px; text-align: center; padding: 20px; }
+.busy div { background: var(--surface); color: var(--ink); padding: 22px 30px; border-radius: 14px; box-shadow: var(--shadow); max-width: 420px; }
+.toast { position: fixed; bottom: 18px; inset-inline-start: 18px; z-index: 60; background: var(--ink); color: var(--surface); padding: 10px 16px; border-radius: 10px; max-width: min(520px, 92vw); box-shadow: var(--shadow); white-space: pre-line; }
+.toast.err { background: var(--danger); color: #fff; }
+.empty { color: var(--muted); padding: 20px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>לוח בקרה – הזירה</h1>
+  <div class="stats" id="stats">טוען…</div>
+  <button id="reload" type="button">רענון</button>
+  <button id="newCat" class="primary" type="button">+ קטגוריה חדשה</button>
+</div>
+<div class="layout">
+  <nav class="side" id="side" aria-label="קטגוריות"></nav>
+  <main id="main"></main>
+</div>
+
+<dialog id="itemDlg"></dialog>
+<dialog id="blurDlg"></dialog>
+<dialog id="catDlg"></dialog>
+<dialog id="askDlg"></dialog>
+<div id="overlay"></div>
+
+<script>
+const LEVELS = { easy: 'קל', medium: 'בינוני', hard: 'קשה' };
+const BADGES = { review: ['AI – לבדיקה', 'gold'], needbox: ['שם גלוי', 'warn'] };
+let data = null, cur = null, filter = 'all';
+
+// ---------- small helpers ----------
+const $ = (sel, el = document) => el.querySelector(sel);
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v === undefined || v === null || v === false) continue;
+    if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (k === 'class') el.className = v;
+    else if (k === 'value') el.value = v;
+    else if (k === 'checked' || k === 'disabled' || k === 'selected') el[k] = !!v;
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const kid of kids.flat()) if (kid !== null && kid !== undefined && kid !== false) el.append(kid.nodeType ? kid : document.createTextNode(kid));
+  return el;
+}
+function toast(text, err = false) {
+  const t = h('div', { class: 'toast' + (err ? ' err' : ''), role: 'status' }, text);
+  document.body.append(t);
+  setTimeout(() => t.remove(), err ? 9000 : 4000);
+}
+async function api(method, url, body, raw) {
+  const res = await fetch(url, { method, headers: { 'X-Admin': '1', ...(raw ? {} : { 'Content-Type': 'application/json' }) }, body: raw ? body : body === undefined ? undefined : JSON.stringify(body) });
+  const out = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(out.error || `שגיאה ${res.status}`);
+  return out;
+}
+async function busy(text, fn) {
+  const o = h('div', { class: 'busy' }, h('div', {}, text));
+  $('#overlay').append(o);
+  try { return await fn(); } catch (e) { toast(e.message, true); } finally { o.remove(); }
+}
+function ask(message, yes = 'אישור') {
+  return new Promise((resolve) => {
+    const d = $('#askDlg');
+    d.replaceChildren(h('div', { class: 'dlg-body' }, h('p', {}, message), h('div', { class: 'row' },
+      h('button', { class: 'primary danger', onclick: () => { d.close(); resolve(true); } }, yes),
+      h('button', { onclick: () => { d.close(); resolve(false); } }, 'ביטול'))));
+    d.style.maxWidth = '420px';
+    d.onclose = () => resolve(false);
+    d.showModal();
+  });
+}
+const cat = () => data.categories[cur];
+const itemOf = (n) => cat().items[n - 1];
+const img = (id, n, v) => `/img/${id}/${n}?v=${v}`;
+
+async function load(keep = true) {
+  data = await (await fetch('/api/data')).json();
+  if (!cur || !data.categories[cur]) cur = data.order[0];
+  render();
+}
+function skillResult(r, okText) {
+  if (r.ok) toast(okText);
+  else toast((r.lines || []).join('\n') || 'לא הצלחתי', true);
+}
+
+// ---------- sidebar and category ----------
+function status(c) {
+  if (c.status === 'reserve') return ['רזרבה', 'mute'];
+  return c.pictures >= data.min ? ['פעילה', 'ok'] : ['בקרוב', 'gold'];
+}
+function render() {
+  const total = Object.values(data.categories);
+  $('#stats').textContent = `${total.length} קטגוריות · ${total.filter((c) => c.pictures >= data.min && c.status === 'active').length} פעילות · ${total.reduce((n, c) => n + c.pictures, 0)} תמונות`;
+  $('#side').replaceChildren(...data.order.map((id) => {
+    const c = data.categories[id], [label, tone] = status(c);
+    return h('div', { class: 'cat-row' + (id === cur ? ' on' : ''), onclick: () => { cur = id; filter = 'all'; render(); } },
+      h('div', {}, h('div', { class: 'cat-name' }, c.icon, ' ', c.name, h('span', { class: 'pill ' + tone }, label)),
+        h('div', { class: 'cat-sub' }, `${c.pictures}/${c.items.length} תמונות · ${LEVELS[c.level]}`)),
+      h('div', { class: 'arrows' },
+        h('button', { title: 'הזז למעלה', onclick: (e) => { e.stopPropagation(); moveCat(id, -1); } }, '▲'),
+        h('button', { title: 'הזז למטה', onclick: (e) => { e.stopPropagation(); moveCat(id, 1); } }, '▼')));
+  }));
+  renderMain();
+}
+async function moveCat(id, dir) { await busy('מזיז…', () => api('POST', `/api/category/${id}/move`, { dir })); await load(); }
+
+function renderMain() {
+  const c = cat(), [label, tone] = status(c);
+  const main = $('#main');
+  main.replaceChildren(
+    h('div', { class: 'panel' },
+      h('h2', {}, `${c.icon} ${c.name}`, h('span', { class: 'pill ' + tone }, label),
+        h('span', { class: 'hint' }, `${c.pictures} תמונות מתוך ${c.items.length} פריטים · צריך ${data.min} כדי להיפתח · מזהה: ${cur}`)),
+      h('div', { class: 'row' },
+        h('button', { onclick: () => openCatDialog(cur) }, 'הגדרות הקטגוריה'),
+        h('button', { class: 'primary', onclick: () => addItem() }, '+ פריט חדש'),
+        h('button', { class: 'danger', onclick: deleteCat }, 'מחיקת הקטגוריה'))),
+    chips(c),
+    itemCards(c));
+}
+function chips(c) {
+  const count = { missing: c.items.filter((i) => !i.pic).length, review: c.items.filter((i) => i.credit?.review).length, needbox: c.items.filter((i) => i.credit?.needbox).length };
+  const defs = [['all', `הכל (${c.items.length})`], ['missing', `חסרה תמונה (${count.missing})`], ['review', `AI לבדיקה (${count.review})`], ['needbox', `שם גלוי (${count.needbox})`]];
+  return h('div', { class: 'chips', role: 'group', 'aria-label': 'סינון' }, defs.map(([k, text]) => h('button', { class: 'chip', 'aria-pressed': String(filter === k), onclick: () => { filter = k; renderMain(); } }, text)));
+}
+function itemCards(c) {
+  const shown = c.items.filter((i) => filter === 'all' || (filter === 'missing' && !i.pic) || (filter === 'review' && i.credit?.review) || (filter === 'needbox' && i.credit?.needbox));
+  if (!shown.length) return h('div', { class: 'empty' }, c.items.length ? 'אין פריטים בסינון הזה.' : 'אין פריטים בקטגוריה. לחצו "+ פריט חדש".');
+  return h('div', { class: 'cards' }, shown.map((i) => h('div', { class: 'card', tabindex: '0', role: 'button', onclick: () => openItem(i.n), onkeydown: (e) => { if (e.key === 'Enter') openItem(i.n); } },
+    h('div', { class: 'thumb' }, i.pic ? h('img', { src: img(cur, i.n, i.pic.v), loading: 'lazy', alt: i.answer }) : 'אין תמונה'),
+    h('div', { class: 'meta' }, h('div', { class: 'ttl' }, `${i.n}. ${i.answer}`), h('div', { class: 'badges' }, badges(i))))));
+}
+function badges(i) {
+  const out = [];
+  if (!i.pic) out.push(h('span', { class: 'pill warn' }, 'חסרה'));
+  else {
+    if (i.credit.review) out.push(h('span', { class: 'pill gold' }, 'AI – לבדיקה'));
+    if (i.credit.needbox) out.push(h('span', { class: 'pill warn' }, 'שם גלוי'));
+    if (i.credit.hidden) out.push(h('span', { class: 'pill ok' }, i.credit.hidden === 'crop' ? 'נחתך' : i.credit.hidden === 'blur' ? 'טושטש' : 'שם הוסתר'));
+    if (i.credit.via === 'user') out.push(h('span', { class: 'pill mute' }, 'שלך'));
+  }
+  return out;
+}
+
+// ---------- category dialog (create and edit) ----------
+function openCatDialog(id) {
+  const isNew = !id, c = isNew ? { name: '', icon: '📦', level: 'easy', status: 'active', ways: [['תמונה ← שם', true]], picture: { kind: 'photo' } } : cat();
+  const p = c.picture || { kind: 'photo' };
+  const d = $('#catDlg');
+  const f = {
+    id: h('input', { type: 'text', value: '', placeholder: 'board-games', dir: 'ltr' }),
+    name: h('input', { type: 'text', value: c.name }), icon: h('input', { type: 'text', value: c.icon }),
+    level: h('select', {}, Object.entries(LEVELS).map(([k, v]) => h('option', { value: k, selected: k === c.level }, v))),
+    status: h('select', {}, [['active', 'פעילה (מופיעה כשיש 30 תמונות)'], ['reserve', 'רזרבה (מוסתרת עד שיש 30 תמונות)']].map(([k, v]) => h('option', { value: k, selected: k === c.status }, v))),
+    w1: h('input', { type: 'text', value: c.ways[0]?.[0] ?? '' }), w2: h('input', { type: 'text', value: c.ways[1]?.[0] ?? '', placeholder: 'אופציונלי' }),
+    kind: h('select', {}, [['photo', 'תמונה רגילה'], ['logo', 'סמל / לוגו'], ['product', 'אריזה / פוסטר / עטיפה']].map(([k, v]) => h('option', { value: k, selected: k === p.kind }, v))),
+    hide: h('input', { type: 'checkbox', checked: !!p.hideName }), any: h('input', { type: 'checkbox', checked: !!p.anyLicense }),
+    prefer: h('input', { type: 'text', value: (p.prefer || []).join(', '), dir: 'ltr', placeholder: 'logo, icon' }),
+    query: h('input', { type: 'text', value: p.query || '', dir: 'ltr', placeholder: '{item} logo' }),
+    prompt: h('textarea', { dir: 'ltr', placeholder: 'The official logo of {item}, flat, plain white background, no text' }, p.prompt || ''),
+  };
+  const save = async () => {
+    const ways = [[f.w1.value, true], [f.w2.value, true]].filter((w) => w[0].trim());
+    if (c.ways?.[0] && ways[0]) ways[0][1] = c.ways[0][1];
+    if (c.ways?.[1] && ways[1]) ways[1][1] = c.ways[1][1];
+    const body = { name: f.name.value, icon: f.icon.value, level: f.level.value, status: f.status.value, ways,
+      picture: { kind: f.kind.value, hideName: f.hide.checked, anyLicense: f.any.checked, prefer: f.prefer.value, query: f.query.value, prompt: f.prompt.value } };
+    const ok = await busy('שומר…', async () => {
+      if (isNew) { body.id = f.id.value; const r = await api('POST', '/api/category', body); cur = r.id; } else await api('PUT', `/api/category/${id}`, body);
+      return true;
+    });
+    if (ok) { d.close(); await load(); toast('נשמר'); }
+  };
+  d.style.maxWidth = '720px';
+  d.replaceChildren(
+    h('div', { class: 'dlg-head' }, h('h3', {}, isNew ? 'קטגוריה חדשה' : `הגדרות: ${c.name}`), h('button', { onclick: () => d.close() }, 'סגירה')),
+    h('div', { class: 'dlg-body' },
+      isNew ? h('label', {}, 'מזהה (אנגלית קטנה ומקפים, לא ניתן לשינוי אחר כך)', f.id) : null,
+      h('div', { class: 'grid2' }, h('label', {}, 'שם הקטגוריה', f.name), h('label', {}, 'אייקון (אימוג׳י)', f.icon), h('label', {}, 'רמה', f.level), h('label', {}, 'מצב', f.status)),
+      h('div', { class: 'grid2' }, h('label', {}, 'דרך משחק 1', f.w1), h('label', {}, 'דרך משחק 2 (אם יש)', f.w2)),
+      h('div', { class: 'hint' }, 'כשיש דרך שנייה, בכל פריט ממלאים גם "תשובה בדרך השנייה".'),
+      h('h3', {}, 'איך הסקיל מחפש תמונות'),
+      h('div', { class: 'grid2' }, h('label', {}, 'סוג תמונה', f.kind), h('label', {}, 'מילות חיפוש ({item} = שם הפריט)', f.query), h('label', {}, 'קבצים מועדפים בכתבה', f.prefer)),
+      h('label', {}, 'תיאור ל-AI כשלא נמצאה תמונה', f.prompt),
+      h('label', { class: 'check' }, f.hide, 'להסתיר את שם הפריט מהתמונה (סמלים, אריזות, פוסטרים)'),
+      h('label', { class: 'check' }, f.any, 'מותר גם תמונה שאינה חופשית (פוסטרים, דמויות; משחק פרטי)'),
+      h('div', { class: 'row' }, h('button', { class: 'primary', onclick: save }, 'שמירה'))));
+  d.showModal();
+}
+$('#newCat').onclick = () => openCatDialog(null);
+async function deleteCat() {
+  const c = cat();
+  if (!(await ask(`למחוק את "${c.name}" עם ${c.items.length} פריטים ו-${c.pictures} תמונות? הקבצים יעברו לתיקיית archive ולא יימחקו לצמיתות.`, 'מחיקת הקטגוריה'))) return;
+  await busy('מוחק…', () => api('DELETE', `/api/category/${cur}`));
+  cur = null; await load(); toast('הקטגוריה נמחקה');
+}
+
+// ---------- items ----------
+async function addItem() {
+  const r = await busy('מוסיף…', () => api('POST', `/api/item/${cur}`, { answer: 'פריט חדש ' + (cat().items.length + 1), en: '' }));
+  if (!r) return;
+  await load(); openItem(r.n);
+}
+function openItem(n) {
+  const c = cat(), i = itemOf(n), d = $('#itemDlg'), two = c.ways.length > 1;
+  const f = {
+    answer: h('input', { type: 'text', value: i.answer }),
+    aliases: h('input', { type: 'text', value: (i.aliases || []).join(', ') }),
+    second: h('input', { type: 'text', value: i.second?.answer || '' }),
+    secondAliases: h('input', { type: 'text', value: (i.second?.aliases || []).join(', ') }),
+    en: h('input', { type: 'text', value: i.en || '', dir: 'ltr', placeholder: 'שם בוויקיפדיה, File:… או שם::תיאור ל-AI' }),
+    visual: h('input', { type: 'text', value: i.visual }),
+    desc: h('input', { type: 'text', dir: 'ltr', placeholder: 'תיאור לתמונת AI (אופציונלי)' }),
+  };
+  const body = () => ({ answer: f.answer.value, aliases: f.aliases.value, visual: f.visual.value, en: f.en.value,
+    second: two ? { answer: f.second.value, aliases: f.secondAliases.value } : undefined });
+  const saveOnly = async () => { await api('PUT', `/api/item/${cur}/${n}`, body()); };
+  const refresh = async () => { await load(); if (itemOf(n)) openItem(n); else d.close(); };
+  const act = (text, fn, okText) => async () => {
+    const r = await busy(text, async () => { await saveOnly(); return fn(); });
+    if (r === undefined) return;
+    if (r && r.lines) skillResult(r, okText); else if (okText) toast(okText);
+    await refresh();
+  };
+  const upload = async (file) => {
+    if (!file || !file.type.startsWith('image/')) return toast('צריך קובץ תמונה', true);
+    const r = await busy('מעלה ומתאים את התמונה…', async () => { await saveOnly(); return api('POST', `/api/pic/${cur}/${n}/upload?name=${encodeURIComponent(file.name)}`, file, true); });
+    if (r) { skillResult(r, 'התמונה הוחלפה'); await refresh(); }
+  };
+  const pic = h('div', { class: 'pic-box' }, i.pic ? h('img', { src: img(cur, n, i.pic.v), alt: i.answer }) : 'אין תמונה. גררו לכאן קובץ, או הדביקו (Ctrl+V).');
+  pic.ondragover = (e) => { e.preventDefault(); pic.classList.add('over'); };
+  pic.ondragleave = () => pic.classList.remove('over');
+  pic.ondrop = (e) => { e.preventDefault(); pic.classList.remove('over'); upload(e.dataTransfer.files[0]); };
+  d.onpaste = (e) => { const file = [...(e.clipboardData?.files || [])][0]; if (file) upload(file); };
+  const fileInput = h('input', { type: 'file', accept: 'image/*', hidden: true, onchange: () => upload(fileInput.files[0]) });
+  const cr = i.credit;
+  d.style.maxWidth = '920px';
+  d.replaceChildren(
+    h('div', { class: 'dlg-head' }, h('h3', {}, `${c.icon} ${c.name} · פריט ${n} מתוך ${c.items.length}`),
+      h('button', { class: 'small', title: 'הקודם', disabled: n <= 1, onclick: () => openItem(n - 1) }, '◀'),
+      h('button', { class: 'small', title: 'הבא', disabled: n >= c.items.length, onclick: () => openItem(n + 1) }, '▶'),
+      h('button', { onclick: () => d.close() }, 'סגירה')),
+    h('div', { class: 'dlg-body' }, h('div', { class: 'item-cols' },
+      h('div', { class: 'fields' }, pic,
+        h('div', { class: 'badges' }, badges(i)),
+        cr ? h('div', { class: 'hint' }, `מקור: ${cr.via || 'ויקיפדיה / ויקישיתוף'}${cr.license ? ' · ' + cr.license : ''}${cr.author && cr.author !== '—' ? ' · ' + cr.author : ''}`) : null,
+        h('div', { class: 'row' }, fileInput, h('button', { class: 'primary', onclick: () => fileInput.click() }, 'העלאת תמונה'),
+          h('button', { disabled: !i.pic, onclick: () => openBlur(n) }, 'טשטוש / חיתוך'),
+          h('button', { disabled: !i.pic || !c.picture?.hideName || !cr.needbox, title: 'מסמן שאין שם על התמונה', onclick: act('מסמן…', () => api('POST', `/api/pic/${cur}/${n}/ok`), 'סומן') }, 'אין שם על התמונה ✓'),
+          h('button', { disabled: !i.pic?.hasOriginal, onclick: act('משחזר…', () => api('POST', `/api/pic/${cur}/${n}/restore`), 'המקור שוחזר') }, 'שחזור המקור')),
+        h('div', { class: 'row' },
+          h('button', { onclick: act('מחפש תמונה (עד דקה)…', () => api('POST', `/api/pic/${cur}/${n}/search`), 'נמצאה תמונה חדשה') }, 'חיפוש תמונה בסקיל'),
+          h('button', { onclick: act('יוצר תמונה ב-AI…', () => api('POST', `/api/pic/${cur}/${n}/ai`, { desc: f.desc.value }), 'נוצרה תמונה – לבדיקה') }, 'יצירה ב-AI')),
+        f.desc,
+        h('div', { class: 'row' }, h('button', { class: 'danger', disabled: !i.pic, onclick: async () => { if (await ask('להוציא את התמונה מהמשחק? היא תעבור לארכיון.', 'הוצאת התמונה')) act('מוציא…', () => api('DELETE', `/api/pic/${cur}/${n}`), 'התמונה הוצאה')(); } }, 'מחיקת התמונה'))),
+      h('div', { class: 'fields' },
+        h('label', {}, 'תשובה (בלי גרש; כך השחקן מקליד)', f.answer),
+        h('label', {}, 'תשובות נוספות מתקבלות (פסיק בין כל אחת)', f.aliases),
+        two ? h('div', { class: 'grid2' }, h('label', {}, `תשובה בדרך 2: ${c.ways[1][0]}`, f.second), h('label', {}, 'כינויים לדרך 2', f.secondAliases)) : null,
+        h('label', {}, 'שם לחיפוש תמונה (אנגלית)', f.en),
+        h('div', { class: 'hint' }, 'שם כתבה בוויקיפדיה (למשל "FC Barcelona"), או File:שם-קובץ לתמונה מסוימת, או "שם::תיאור" לתיאור ל-AI.'),
+        h('label', {}, 'אימוג׳י (גיבוי)', f.visual),
+        h('div', { class: 'row' }, h('button', { class: 'primary', onclick: async () => { const ok = await busy('שומר…', async () => { await saveOnly(); return true; }); if (ok) { toast('נשמר'); await refresh(); } } }, 'שמירת הפריט'),
+          h('button', { disabled: n <= 1, onclick: async () => { await busy('מזיז…', () => api('POST', `/api/item/${cur}/${n}/move`, { dir: -1 })); await load(); openItem(n - 1); } }, 'הזזה למעלה (קל יותר)'),
+          h('button', { disabled: n >= c.items.length, onclick: async () => { await busy('מזיז…', () => api('POST', `/api/item/${cur}/${n}/move`, { dir: 1 })); await load(); openItem(n + 1); } }, 'הזזה למטה (קשה יותר)')),
+        h('div', { class: 'row' }, h('button', { class: 'danger', onclick: async () => { if (await ask(`למחוק את הפריט "${i.answer}"? התמונה תעבור לארכיון והפריטים שאחריו יזוזו מקום אחד.`, 'מחיקת הפריט')) { await busy('מוחק…', () => api('DELETE', `/api/item/${cur}/${n}`)); d.close(); await load(); toast('הפריט נמחק'); } } }, 'מחיקת הפריט'))))));
+  if (!d.open) d.showModal();
+}
+
+// ---------- blur / crop editor ----------
+function openBlur(n) {
+  const i = itemOf(n), d = $('#blurDlg');
+  const src = i.pic.hasOriginal ? `/reveal/${cur}/${n}?v=${i.pic.v}` : img(cur, n, i.pic.v);
+  let mode = 'rect', ring = 0.62, start = null, drag = null;
+  const shapes = [];
+  const image = h('img', { src, alt: '' });
+  const canvas = h('canvas', {});
+  const ctx = () => canvas.getContext('2d');
+  const sync = () => { canvas.width = image.clientWidth; canvas.height = image.clientHeight; paint(); };
+  const pos = (e) => { const r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]; };
+  const shapeText = (s) => s.t === 'ring' ? `ring:${s.cx.toFixed(3)},${s.cy.toFixed(3)},${s.r.toFixed(3)},${(s.r * s.inner).toFixed(3)}` : `${s.x.toFixed(3)},${s.y.toFixed(3)},${s.w.toFixed(3)},${s.h.toFixed(3)}`;
+  function paint() {
+    const c = ctx(), W = canvas.width, H = canvas.height;
+    c.clearRect(0, 0, W, H);
+    c.lineWidth = 2;
+    for (const s of [...shapes, ...(drag ? [drag] : [])]) {
+      c.strokeStyle = '#ff2d55'; c.fillStyle = 'rgba(255,45,85,.25)';
+      if (s.t === 'ring') {
+        c.beginPath(); c.arc(s.cx * W, s.cy * H, s.r * W, 0, 7); c.arc(s.cx * W, s.cy * H, s.r * s.inner * W, 0, 7, true); c.fill('evenodd');
+        c.beginPath(); c.arc(s.cx * W, s.cy * H, s.r * W, 0, 7); c.stroke(); c.beginPath(); c.arc(s.cx * W, s.cy * H, s.r * s.inner * W, 0, 7); c.stroke();
+      } else { c.fillRect(s.x * W, s.y * H, s.w * W, s.h * H); c.strokeRect(s.x * W, s.y * H, s.w * W, s.h * H); }
+    }
+  }
+  const make = (a, b) => mode === 'ring'
+    ? { t: 'ring', cx: a[0], cy: a[1], r: Math.hypot((b[0] - a[0]) * canvas.width, (b[1] - a[1]) * canvas.width) / canvas.width, inner: ring }
+    : { t: 'rect', x: Math.min(a[0], b[0]), y: Math.min(a[1], b[1]), w: Math.abs(b[0] - a[0]), h: Math.abs(b[1] - a[1]) };
+  canvas.onpointerdown = (e) => { canvas.setPointerCapture(e.pointerId); start = pos(e); drag = null; };
+  canvas.onpointermove = (e) => { if (start) { drag = make(start, pos(e)); paint(); } };
+  canvas.onpointerup = (e) => {
+    if (!start) return;
+    const s = make(start, pos(e)); start = null; drag = null;
+    if ((s.t === 'ring' && s.r > 0.02) || (s.t === 'rect' && s.w > 0.01 && s.h > 0.01)) shapes.push(s);
+    draw();
+  };
+  const list = h('div', { class: 'shape-list' });
+  const draw = () => { paint(); list.replaceChildren(...shapes.map((s, k) => h('button', { class: 'small', onclick: () => { shapes.splice(k, 1); draw(); } }, `${s.t === 'ring' ? 'טבעת' : 'מלבן'} ${k + 1} ✕`))); };
+  const send = async (kind) => {
+    if (!shapes.length) return toast('סמנו קודם אזור על התמונה', true);
+    let r;
+    if (kind === 'crop') {
+      const rect = [...shapes].reverse().find((s) => s.t === 'rect');
+      if (!rect) return toast('לחיתוך צריך מלבן', true);
+      r = await busy('חותך…', () => api('POST', `/api/pic/${cur}/${n}/crop`, { rect: shapeText(rect) }));
+    } else r = await busy('מטשטש…', () => api('POST', `/api/pic/${cur}/${n}/blur`, { shapes: shapes.map(shapeText).join(';') }));
+    if (r) { skillResult(r, kind === 'crop' ? 'נחתך' : 'טושטש'); d.close(); await load(); openItem(n); }
+  };
+  const modeBtn = (m, text) => h('button', { 'aria-pressed': String(mode === m), onclick: (e) => { mode = m; for (const b of e.target.parentElement.children) b.style.borderColor = ''; e.target.style.borderColor = 'var(--accent)'; } }, text);
+  d.style.maxWidth = '900px';
+  d.replaceChildren(
+    h('div', { class: 'dlg-head' }, h('h3', {}, `טשטוש וחיתוך · ${i.answer}`), h('button', { onclick: () => d.close() }, 'סגירה')),
+    h('div', { class: 'dlg-body' },
+      h('div', { class: 'row' }, modeBtn('rect', 'מלבן'), modeBtn('ring', 'טבעת (טקסט סביב סמל עגול)'),
+        h('label', { class: 'check' }, 'עובי הטבעת', h('input', { type: 'range', min: '20', max: '90', value: String(ring * 100), oninput: (e) => { ring = e.target.value / 100; } })),
+        h('span', { class: 'hint' }, 'גוררים על התמונה. בטבעת: מרכז ← קצה.')),
+      h('div', { class: 'blur-stage' }, image, canvas), list,
+      h('div', { class: 'row' },
+        h('button', { class: 'primary', onclick: () => send('blur') }, 'טשטוש האזורים'),
+        h('button', { onclick: () => send('crop') }, 'חיתוך למלבן האחרון (סמל בלי הטקסט)'),
+        h('button', { onclick: () => { shapes.length = 0; draw(); } }, 'ניקוי'),
+        h('span', { class: 'hint' }, 'הפעולה תמיד מתבצעת על התמונה המקורית, אז אפשר לנסות שוב.'))));
+  image.onload = sync;
+  new ResizeObserver(sync).observe(image);
+  d.showModal();
+}
+
+$('#reload').onclick = () => load();
+load().catch((e) => { $('#stats').textContent = 'שגיאה בטעינה: ' + e.message; });
+</script>
+</body>
+</html>

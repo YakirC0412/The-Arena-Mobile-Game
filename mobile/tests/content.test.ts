@@ -6,9 +6,9 @@ import { assert, assertEqual, suite, test } from './harness';
 const MIN_ITEMS_PER_WAY = 8;
 
 suite('content', () => {
-  test('36 listed categories plus a hidden reserve, with unique ids', () => {
+  test('at least 36 listed categories plus a hidden reserve, with unique ids', () => {
     const listed = CATEGORIES.filter((category) => category.status !== 'reserve');
-    assertEqual(listed.length, 36, 'Listed categories (docs/CATEGORIES.md)');
+    assert(listed.length >= 36, 'At least the 36 categories of docs/CATEGORIES.md');
     assertEqual(new Set(CATEGORIES.map((category) => category.id)).size, CATEGORIES.length, 'Category ids must be unique');
     for (const category of CATEGORIES) {
       assertEqual(new Set(category.items.map((item) => item.id)).size, category.items.length, `${category.id}: item ids must be unique`);

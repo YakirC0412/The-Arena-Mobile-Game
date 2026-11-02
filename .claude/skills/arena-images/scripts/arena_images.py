@@ -287,8 +287,8 @@ def blur_shapes(b, spec):
         if shape.startswith("ring:"):
             cx, cy, ro, ri, *arc = (float(v) for v in shape[5:].split(","))
             start, end = arc if arc else (0, 360)
-            draw.pieslice(((cx - ro) * W, (cy - ro) * H, (cx + ro) * W, (cy + ro) * H), start, end, fill=255)
-            draw.ellipse(((cx - ri) * W, (cy - ri) * H, (cx + ri) * W, (cy + ri) * H), fill=0)
+            draw.pieslice((cx * W - ro * W, cy * H - ro * W, cx * W + ro * W, cy * H + ro * W), start, end, fill=255)  # radius is a fraction of the width: a true circle
+            draw.ellipse((cx * W - ri * W, cy * H - ri * W, cx * W + ri * W, cy * H + ri * W), fill=0)
         else:
             x, y, w, h = (float(v) for v in shape.split(","))
             draw.rectangle((x * W, y * H, (x + w) * W, (y + h) * H), fill=255)

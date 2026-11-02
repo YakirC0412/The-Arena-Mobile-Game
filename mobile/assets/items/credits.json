@@ -643,6 +643,276 @@
   "hidden": "crop",
   "crop": "0.03,0.34,0.3,0.33"
  },
+ "basketball-teams-1": {
+  "source": "Los Angeles Lakers",
+  "via": "wikipedia",
+  "file": "Los_Angeles_Lakers_logo.svg",
+  "license": "Public domain",
+  "author": "The original uploader was Tkgd2007 at English Wikipedia.",
+  "page": "https://commons.wikimedia.org/wiki/File:Los_Angeles_Lakers_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-2": {
+  "source": "Chicago Bulls",
+  "via": "wikipedia",
+  "file": "Logo_of_Chicago_Bulls.svg",
+  "license": "Public domain",
+  "author": "Dean Perry Wessel (1920-2004) or Ted Drake (1927-2000)",
+  "page": "https://commons.wikimedia.org/wiki/File:Logo_of_Chicago_Bulls.svg",
+  "needbox": true
+ },
+ "basketball-teams-3": {
+  "source": "Boston Celtics",
+  "via": "wikipedia",
+  "file": "Boston_Celtics.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Boston_Celtics.svg",
+  "needbox": true
+ },
+ "basketball-teams-4": {
+  "source": "Golden State Warriors",
+  "via": "wikipedia",
+  "file": "Golden_State_Warriors_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Golden_State_Warriors_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-5": {
+  "source": "Maccabi Tel Aviv B.C.",
+  "via": "wikipedia",
+  "file": "Maccabi_Tel_Aviv_BC_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Maccabi_Tel_Aviv_BC_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-6": {
+  "source": "Miami Heat",
+  "via": "wikipedia",
+  "file": "Miami_Heat_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Miami_Heat_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-7": {
+  "source": "New York Knicks",
+  "via": "wikipedia",
+  "file": "New_York_Knicks_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:New_York_Knicks_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-8": {
+  "source": "Hapoel Tel Aviv B.C.",
+  "via": "wikipedia",
+  "file": "Hapoel_Tel_Aviv.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Hapoel_Tel_Aviv.svg",
+  "needbox": true
+ },
+ "basketball-teams-9": {
+  "source": "Hapoel Jerusalem B.C.",
+  "via": "wikipedia",
+  "file": "Hapoel_Jerusalem_B.C._logo.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Hapoel_Jerusalem_B.C._logo.png",
+  "needbox": true
+ },
+ "basketball-teams-10": {
+  "source": "San Antonio Spurs",
+  "via": "wikipedia",
+  "file": "San_Antonio_Spurs.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:San_Antonio_Spurs.svg",
+  "needbox": true
+ },
+ "basketball-teams-11": {
+  "source": "Houston Rockets",
+  "via": "wikipedia",
+  "file": "Houston_Rockets.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Houston_Rockets.svg",
+  "needbox": true
+ },
+ "basketball-teams-12": {
+  "source": "Dallas Mavericks",
+  "via": "wikipedia",
+  "file": "Dallas_Mavericks_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Dallas_Mavericks_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-13": {
+  "source": "Brooklyn Nets",
+  "via": "wikipedia",
+  "file": "Brooklyn_Nets_primary_icon_logo_2024.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Brooklyn_Nets_primary_icon_logo_2024.svg",
+  "needbox": true
+ },
+ "basketball-teams-14": {
+  "source": "Toronto Raptors",
+  "via": "wikipedia",
+  "file": "Toronto_Raptors_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Toronto_Raptors_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-15": {
+  "source": "Phoenix Suns",
+  "via": "wikipedia",
+  "file": "Phoenix_Suns_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Phoenix_Suns_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-16": {
+  "source": "Philadelphia 76ers",
+  "via": "wikipedia",
+  "file": "Philadelphia_76ers_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Philadelphia_76ers_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-17": {
+  "source": "Milwaukee Bucks",
+  "via": "wikipedia",
+  "file": "Milwaukee_Bucks_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Milwaukee_Bucks_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-18": {
+  "source": "Denver Nuggets",
+  "via": "wikipedia",
+  "file": "Denver_Nuggets.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Denver_Nuggets.svg",
+  "needbox": true
+ },
+ "basketball-teams-19": {
+  "source": "Cleveland Cavaliers",
+  "via": "wikipedia",
+  "file": "Cleveland_Cavaliers_logo.svg",
+  "license": "Public domain",
+  "author": "Cleveland Cavaliers. The original uploader was Gus Polly at English Wikipedia.. Later version(s) were uploaded by Eureka",
+  "page": "https://commons.wikimedia.org/wiki/File:Cleveland_Cavaliers_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-20": {
+  "source": "Oklahoma City Thunder",
+  "via": "wikipedia",
+  "file": "Oklahoma_City_Thunder.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Oklahoma_City_Thunder.svg",
+  "needbox": true
+ },
+ "basketball-teams-21": {
+  "source": "Orlando Magic",
+  "via": "wikipedia",
+  "file": "Orlando_Magic_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Orlando_Magic_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-22": {
+  "source": "Atlanta Hawks",
+  "via": "wikipedia",
+  "file": "Atlanta_Hawks_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Atlanta_Hawks_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-23": {
+  "source": "Memphis Grizzlies",
+  "via": "wikipedia",
+  "file": "Memphis_Grizzlies.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Memphis_Grizzlies.svg",
+  "needbox": true
+ },
+ "basketball-teams-24": {
+  "source": "Charlotte Hornets",
+  "via": "wikipedia",
+  "file": "Charlotte_Hornets_(2014).svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Charlotte_Hornets_(2014).svg",
+  "needbox": true
+ },
+ "basketball-teams-25": {
+  "source": "Portland Trail Blazers",
+  "via": "wikipedia",
+  "file": "Portland_Trail_Blazers_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Portland_Trail_Blazers_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-26": {
+  "source": "Indiana Pacers",
+  "via": "wikipedia",
+  "file": "Indiana_Pacers.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Indiana_Pacers.svg",
+  "needbox": true
+ },
+ "basketball-teams-27": {
+  "source": "Panathinaikos B.C.",
+  "via": "wikipedia",
+  "file": "Panathinaikos_BC_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Panathinaikos_BC_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-28": {
+  "source": "Olympiacos B.C.",
+  "via": "wikipedia",
+  "file": "Olympiacos_BC_logo.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Olympiacos_BC_logo.svg",
+  "needbox": true
+ },
+ "basketball-teams-29": {
+  "source": "AS Monaco Basket",
+  "via": "wikipedia",
+  "file": "AS_Monaco_Basket.svg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:AS_Monaco_Basket.svg",
+  "needbox": true
+ },
+ "basketball-teams-30": {
+  "source": "Real Madrid Baloncesto",
+  "via": "wikipedia",
+  "file": "Real_Madrid_Baloncesto.png",
+  "license": "Fair use",
+  "author": "Real Madrid Baloncesto",
+  "page": "https://en.wikipedia.org/wiki/File:Real_Madrid_Baloncesto.png",
+  "needbox": true
+ },
  "birds-1": {
   "source": "Chicken",
   "file": "Male_and_female_chicken_sitting_together.jpg",
@@ -1862,16 +2132,6 @@
   "license": "CC BY-SA 4.0",
   "author": "Kolby Ari",
   "page": "https://commons.wikimedia.org/wiki/File:Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_(2)_(cropped_2).jpg"
- },
- "comedians-29": {
-  "source": "Shahar Hasson",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
-  "page": "",
-  "prompt": "Portrait photo of the comedian Shahar Hasson",
-  "review": true
  },
  "comedians-30": {
   "source": "Steve Carell",
@@ -3695,6 +3955,166 @@
   "author": "Nintendo",
   "page": "https://en.wikipedia.org/wiki/File:Fox_McCloud_Artwork.png"
  },
+ "historical-figures-1": {
+  "source": "Albert Einstein",
+  "via": "wikipedia",
+  "file": "Albert_Einstein_Head_cleaned.jpg",
+  "license": "Public domain",
+  "author": "Oren Jack Turner",
+  "page": "https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head_cleaned.jpg"
+ },
+ "historical-figures-2": {
+  "source": "Napoleon",
+  "via": "wikipedia",
+  "file": "Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project.jpg",
+  "license": "Public domain",
+  "author": "Jacques-Louis David",
+  "page": "https://commons.wikimedia.org/wiki/File:Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project.jpg"
+ },
+ "historical-figures-3": {
+  "source": "David Ben-Gurion",
+  "via": "wikipedia",
+  "file": "David_Ben-Gurion_(D597-087).jpg",
+  "license": "Public domain",
+  "author": "Fritz Cohen",
+  "page": "https://commons.wikimedia.org/wiki/File:David_Ben-Gurion_(D597-087).jpg"
+ },
+ "historical-figures-4": {
+  "source": "Theodor Herzl",
+  "via": "wikipedia",
+  "file": "Theodor_Herzl_(3x4_cropped).jpg",
+  "license": "Public domain",
+  "author": "Carl Pietzner",
+  "page": "https://commons.wikimedia.org/wiki/File:Theodor_Herzl_(3x4_cropped).jpg"
+ },
+ "historical-figures-5": {
+  "source": "Abraham Lincoln",
+  "via": "wikipedia",
+  "file": "Abraham_Lincoln_O-77_matte_collodion_print.jpg",
+  "license": "Public domain",
+  "author": "Alexander Gardner",
+  "page": "https://commons.wikimedia.org/wiki/File:Abraham_Lincoln_O-77_matte_collodion_print.jpg"
+ },
+ "historical-figures-6": {
+  "source": "Martin Luther King Jr.",
+  "via": "wikipedia",
+  "file": "Martin_Luther_King,_Jr._and_Lyndon_Johnson_(cropped).jpg",
+  "license": "Public domain",
+  "author": "Yoichi Okamoto",
+  "page": "https://commons.wikimedia.org/wiki/File:Martin_Luther_King,_Jr._and_Lyndon_Johnson_(cropped).jpg"
+ },
+ "historical-figures-7": {
+  "source": "Nelson Mandela",
+  "via": "wikipedia",
+  "file": "Nelson_Mandela_1994.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Kingkongphoto &amp; www.celebrity-photos.com from Laurel",
+  "page": "https://commons.wikimedia.org/wiki/File:Nelson_Mandela_1994.jpg"
+ },
+ "historical-figures-8": {
+  "source": "Winston Churchill",
+  "via": "wikipedia",
+  "file": "Sir_Winston_Churchill_-_19086236948_(restored).jpg",
+  "license": "Public domain",
+  "author": "—",
+  "page": "https://commons.wikimedia.org/wiki/File:Sir_Winston_Churchill_-_19086236948_(restored).jpg"
+ },
+ "historical-figures-9": {
+  "source": "Mahatma Gandhi",
+  "via": "wikipedia",
+  "file": "Mahatma-Gandhi,_studio,_1931.jpg",
+  "license": "Public domain",
+  "author": "Elliott &amp; Fry",
+  "page": "https://commons.wikimedia.org/wiki/File:Mahatma-Gandhi,_studio,_1931.jpg"
+ },
+ "historical-figures-10": {
+  "source": "Golda Meir",
+  "via": "wikipedia",
+  "file": "Golda_Meir_(1964)_cropped.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Willem van de Poll",
+  "page": "https://commons.wikimedia.org/wiki/File:Golda_Meir_(1964)_cropped.jpg"
+ },
+ "historical-figures-11": {
+  "source": "Yitzhak Rabin",
+  "via": "wikipedia",
+  "file": "Yitzhak_Rabin_1994_Portrait_(3x4_cropped).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Yaakov Saar",
+  "page": "https://commons.wikimedia.org/wiki/File:Yitzhak_Rabin_1994_Portrait_(3x4_cropped).jpg"
+ },
+ "historical-figures-12": {
+  "source": "Menachem Begin",
+  "via": "wikipedia",
+  "file": "Menachem_Begin_and_Cyrus_R._Vance_(cropped)_(2).JPEG",
+  "license": "Public domain",
+  "author": "MSGT DENHAM",
+  "page": "https://commons.wikimedia.org/wiki/File:Menachem_Begin_and_Cyrus_R._Vance_(cropped)_(2).JPEG"
+ },
+ "historical-figures-13": {
+  "source": "Leonardo da Vinci",
+  "via": "wikipedia",
+  "file": "Francesco_Melzi_-_Portrait_of_Leonardo_(colour_correction).png",
+  "license": "Public domain",
+  "author": "Attributed to Francesco Melzi",
+  "page": "https://commons.wikimedia.org/wiki/File:Francesco_Melzi_-_Portrait_of_Leonardo_(colour_correction).png"
+ },
+ "historical-figures-14": {
+  "source": "John F. Kennedy",
+  "via": "wikipedia",
+  "file": "John_F._Kennedy,_White_House_color_photo_portrait.jpg",
+  "license": "Public domain",
+  "author": "Cecil W. Stoughton",
+  "page": "https://commons.wikimedia.org/wiki/File:John_F._Kennedy,_White_House_color_photo_portrait.jpg"
+ },
+ "historical-figures-15": {
+  "source": "Elizabeth II",
+  "via": "wikipedia",
+  "file": "Queen_Elizabeth_II_official_portrait_for_1959_tour_(retouched)_(cropped)_(3-to-4_aspect_ratio).jpg",
+  "license": "Public domain",
+  "author": "Donald McKague",
+  "page": "https://commons.wikimedia.org/wiki/File:Queen_Elizabeth_II_official_portrait_for_1959_tour_(retouched)_(cropped)_(3-to-4_aspect_ratio).jpg"
+ },
+ "historical-figures-16": {
+  "source": "George Washington",
+  "via": "wikipedia",
+  "file": "Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg",
+  "license": "Public domain",
+  "author": "Gilbert Stuart",
+  "page": "https://commons.wikimedia.org/wiki/File:Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg"
+ },
+ "historical-figures-17": {
+  "source": "Moshe Dayan",
+  "via": "wikipedia",
+  "file": "Moshe_Dayan,_Chief_of_General_Staff.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "IDF Spokesperson's Unit photographer",
+  "page": "https://commons.wikimedia.org/wiki/File:Moshe_Dayan,_Chief_of_General_Staff.jpg"
+ },
+ "historical-figures-18": {
+  "source": "Charles Darwin",
+  "via": "wikipedia",
+  "file": "Charles_Darwin_seated_crop.jpg",
+  "license": "Public domain",
+  "author": "Charles_Darwin_seated.jpg: Henry Maull (1829–1914) and John Fox (1832–1907) (Maull &amp; Fox) [3] derivative work: Beao",
+  "page": "https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg"
+ },
+ "historical-figures-19": {
+  "source": "Isaac Newton",
+  "via": "wikipedia",
+  "file": "Portrait_of_Sir_Isaac_Newton,_1689_(brightened).jpg",
+  "license": "Public domain",
+  "author": "Godfrey Kneller",
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_of_Sir_Isaac_Newton,_1689_(brightened).jpg"
+ },
+ "historical-figures-20": {
+  "source": "Wolfgang Amadeus Mozart",
+  "via": "wikipedia",
+  "file": "The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg",
+  "license": "Public domain",
+  "author": "Johann Nepomuk della Croce",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg"
+ },
  "historical-figures-21": {
   "source": "Ludwig van Beethoven",
   "via": "wikipedia",
@@ -3985,6 +4405,94 @@
   "author": "AnonymousUnknown author",
   "page": "https://commons.wikimedia.org/wiki/File:Triangle_001.jpg"
  },
+ "israel-history-1": {
+  "source": "Western Wall",
+  "via": "wikipedia",
+  "file": "Westernwall2.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Golasso",
+  "page": "https://commons.wikimedia.org/wiki/File:Westernwall2.jpg"
+ },
+ "israel-history-2": {
+  "source": "Dome of the Rock",
+  "via": "wikipedia",
+  "file": "Jerusalem_DomeoftheRock_J65_(cropped).JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "Ludvig14",
+  "page": "https://commons.wikimedia.org/wiki/File:Jerusalem_DomeoftheRock_J65_(cropped).JPG"
+ },
+ "israel-history-3": {
+  "source": "Masada",
+  "via": "wikipedia",
+  "file": "Israel-2013-Aerial_21-Masada.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Godot13",
+  "page": "https://commons.wikimedia.org/wiki/File:Israel-2013-Aerial_21-Masada.jpg"
+ },
+ "israel-history-4": {
+  "source": "Tower of David",
+  "via": "wikipedia",
+  "file": "מגדל_-דוד.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "אורי אלוני",
+  "page": "https://commons.wikimedia.org/wiki/File:%D7%9E%D7%92%D7%93%D7%9C_-%D7%93%D7%95%D7%93.jpg"
+ },
+ "israel-history-5": {
+  "source": "Yad Vashem",
+  "via": "commons",
+  "file": "Israel-2013(2)-Jerusalem-Yad_Vashem-Prism_Skylight_01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Godot13",
+  "page": "https://commons.wikimedia.org/wiki/File:Israel-2013(2)-Jerusalem-Yad_Vashem-Prism_Skylight_01.jpg"
+ },
+ "israel-history-6": {
+  "source": "Terraces of the Bahá'í Faith",
+  "via": "commons",
+  "file": "Downward_views_of_the_Bahá'í_Terraces_01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Immanuel Giel",
+  "page": "https://commons.wikimedia.org/wiki/File:Downward_views_of_the_Bah%C3%A1%27%C3%AD_Terraces_01.jpg"
+ },
+ "israel-history-7": {
+  "source": "Caesarea Maritima",
+  "via": "wikipedia",
+  "file": "Caesarea.JPG",
+  "license": "Public domain",
+  "author": "The original uploader was אסף.צ at Hebrew Wikipedia.",
+  "page": "https://commons.wikimedia.org/wiki/File:Caesarea.JPG"
+ },
+ "israel-history-8": {
+  "source": "Old City of Acre",
+  "via": "wikipedia",
+  "file": "Aerial_view_of_Acre_1.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "israeltourism from Israel",
+  "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Acre_1.jpg"
+ },
+ "israel-history-9": {
+  "source": "Church of the Holy Sepulchre",
+  "via": "wikipedia",
+  "file": "Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Gerd Eichmann",
+  "page": "https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg"
+ },
+ "israel-history-10": {
+  "source": "Jaffa Clock Tower",
+  "via": "wikipedia",
+  "file": "Jaffa_Clock_Tower,_2019_(03).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Bahnfrend",
+  "page": "https://commons.wikimedia.org/wiki/File:Jaffa_Clock_Tower,_2019_(03).jpg"
+ },
+ "israel-history-11": {
+  "source": "Jaffa Gate",
+  "via": "wikipedia",
+  "file": "Jaffa_Gate_Jerusalem.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Herwig Reidlinger",
+  "page": "https://commons.wikimedia.org/wiki/File:Jaffa_Gate_Jerusalem.jpg"
+ },
  "israel-history-12": {
   "source": "File:Knesset front side - 2022.jpg",
   "via": "wikipedia",
@@ -3993,6 +4501,22 @@
   "author": "Clema12",
   "page": "https://commons.wikimedia.org/wiki/File:Knesset_front_side_-_2022.jpg"
  },
+ "israel-history-13": {
+  "source": "Independence Hall (Israel)",
+  "via": "wikipedia",
+  "file": "Israel_ind_mus.JPG",
+  "license": "Public domain",
+  "author": "Amit A.",
+  "page": "https://commons.wikimedia.org/wiki/File:Israel_ind_mus.JPG"
+ },
+ "israel-history-14": {
+  "source": "Caesarea aqueduct",
+  "via": "commons",
+  "file": "92295_caesarea_aqueduct_PikiWiki_Israel.jpg",
+  "license": "CC BY 2.5",
+  "author": "מיכל פריימן",
+  "page": "https://commons.wikimedia.org/wiki/File:92295_caesarea_aqueduct_PikiWiki_Israel.jpg"
+ },
  "israel-history-15": {
   "source": "File:Bet She'an roman Theater.jpg",
   "via": "wikipedia",
@@ -4000,6 +4524,102 @@
   "license": "CC BY-SA 4.0",
   "author": "Michael Drewes",
   "page": "https://commons.wikimedia.org/wiki/File:Bet_She%27an_roman_Theater.jpg"
+ },
+ "israel-history-16": {
+  "source": "City of David",
+  "via": "commons",
+  "file": "Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "AVRAM GRAICER",
+  "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg"
+ },
+ "israel-history-17": {
+  "source": "Basilica of the Annunciation",
+  "via": "wikipedia",
+  "file": "Nazareth_Verkündigungbasilika_Church_of_Annunciation_(34257296024).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "FLASHPACKER TRAVELGUIDE",
+  "page": "https://commons.wikimedia.org/wiki/File:Nazareth_Verk%C3%BCndigungbasilika_Church_of_Annunciation_(34257296024).jpg"
+ },
+ "israel-history-18": {
+  "source": "Cave of the Patriarchs",
+  "via": "wikipedia",
+  "file": "Hebron_Cave_of_the_Patriarchs.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Utilisateur:Djampa - User:Djampa",
+  "page": "https://commons.wikimedia.org/wiki/File:Hebron_Cave_of_the_Patriarchs.jpg"
+ },
+ "israel-history-19": {
+  "source": "Mount of Olives",
+  "via": "wikipedia",
+  "file": "2013-Aerial-Mount_of_Olives.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Godot13",
+  "page": "https://commons.wikimedia.org/wiki/File:2013-Aerial-Mount_of_Olives.jpg"
+ },
+ "israel-history-20": {
+  "source": "Stella Maris Monastery",
+  "via": "wikipedia",
+  "file": "97599_stella_maris_monastery_PikiWiki_Israel.jpg",
+  "license": "CC BY 2.5",
+  "author": "זאב שטיין",
+  "page": "https://commons.wikimedia.org/wiki/File:97599_stella_maris_monastery_PikiWiki_Israel.jpg"
+ },
+ "israel-history-21": {
+  "source": "David's Tomb",
+  "via": "wikipedia",
+  "file": "Jerusalem_Tomb_of_David_BW_1.JPG",
+  "license": "Public domain",
+  "author": "Berthold Werner",
+  "page": "https://commons.wikimedia.org/wiki/File:Jerusalem_Tomb_of_David_BW_1.JPG"
+ },
+ "israel-history-22": {
+  "source": "Hurva Synagogue",
+  "via": "wikipedia",
+  "file": "18067-Jerusalem_(28992334565).jpg",
+  "license": "CC BY 2.0",
+  "author": "xiquinhosilva",
+  "page": "https://commons.wikimedia.org/wiki/File:18067-Jerusalem_(28992334565).jpg"
+ },
+ "israel-history-23": {
+  "source": "Ari Ashkenazi Synagogue",
+  "via": "wikipedia",
+  "file": "Arizal_Synagogue.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Berm2b3a",
+  "page": "https://commons.wikimedia.org/wiki/File:Arizal_Synagogue.jpg"
+ },
+ "israel-history-24": {
+  "source": "Capernaum",
+  "via": "wikipedia",
+  "file": "Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg",
+  "license": "CC BY-SA 3.0 igo",
+  "author": "Eddie Gerald",
+  "page": "https://commons.wikimedia.org/wiki/File:Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg"
+ },
+ "israel-history-25": {
+  "source": "Nimrod Fortress",
+  "via": "wikipedia",
+  "file": "Nimrod_Fortress_מבצר_נמרוד.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "CarmelH1",
+  "page": "https://commons.wikimedia.org/wiki/File:Nimrod_Fortress_%D7%9E%D7%91%D7%A6%D7%A8_%D7%A0%D7%9E%D7%A8%D7%95%D7%93.jpg"
+ },
+ "israel-history-26": {
+  "source": "Tel Megiddo",
+  "via": "wikipedia",
+  "file": "TEL_MEGIDO_AERIAL_C.JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "AVRAMGR",
+  "page": "https://commons.wikimedia.org/wiki/File:TEL_MEGIDO_AERIAL_C.JPG"
+ },
+ "israel-history-27": {
+  "source": "Beit Guvrin-Maresha National Park",
+  "via": "wikipedia",
+  "file": "Beit_Guvrin_1.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Chai",
+  "page": "https://commons.wikimedia.org/wiki/File:Beit_Guvrin_1.JPG"
  },
  "israel-history-28": {
   "source": "Tel Be'er Sheva",
@@ -4177,14 +4797,6 @@
   "author": "איה זך (Aya Zakh)",
   "page": "https://commons.wikimedia.org/wiki/File:Miri_Mesika.webp"
  },
- "israeli-singers-20": {
-  "source": "Pe'er Tasi",
-  "via": "wikipedia",
-  "file": "0U5A7798.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "טלושקיה",
-  "page": "https://commons.wikimedia.org/wiki/File:0U5A7798.jpg"
- },
  "israeli-singers-21": {
   "source": "Shalom Hanoch",
   "via": "wikipedia",
@@ -4232,16 +4844,6 @@
   "license": "CC BY-SA 4.0",
   "author": "Tal Abudi",
   "page": "https://commons.wikimedia.org/wiki/File:%D7%99%D7%95%D7%91%D7%9C_%D7%93%D7%99%D7%99%D7%9F2.jpg"
- },
- "israeli-singers-27": {
-  "source": "Margi (singer)",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
-  "page": "",
-  "prompt": "Portrait photo of the Israeli singer Margi (singer)",
-  "review": true
  },
  "israeli-singers-28": {
   "source": "Haim Moshe",
@@ -4686,6 +5288,520 @@
   "license": "CC BY 2.0",
   "author": "garethwiscombe",
   "page": "https://commons.wikimedia.org/wiki/File:Stonehenge2007_07_30.jpg"
+ },
+ "movies-1": {
+  "source": "Titanic (1997 film)",
+  "via": "wikipedia",
+  "file": "Titanic_(1997_film)_poster.png",
+  "license": "Fair use",
+  "author": "Titanic, a production of Paramount Pictures, 20th Century Fox and Lightstorm Entertainment.",
+  "page": "https://en.wikipedia.org/wiki/File:Titanic_(1997_film)_poster.png",
+  "needbox": true
+ },
+ "movies-2": {
+  "source": "Harry Potter and the Philosopher's Stone (film)",
+  "via": "wikipedia",
+  "file": "Harry_Potter_and_the_Philosopher's_Stone_banner.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Philosopher%27s_Stone_banner.jpg",
+  "needbox": true
+ },
+ "movies-3": {
+  "source": "Star Wars (film)",
+  "via": "wikipedia",
+  "file": "StarWarsMoviePoster1977.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:StarWarsMoviePoster1977.jpg",
+  "needbox": true
+ },
+ "movies-4": {
+  "source": "The Lion King",
+  "via": "wikipedia",
+  "file": "The_Lion_King_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:The_Lion_King_poster.jpg",
+  "needbox": true
+ },
+ "movies-5": {
+  "source": "Shrek",
+  "via": "wikipedia",
+  "file": "Shrek_(2001_animated_feature_film).jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Shrek_(2001_animated_feature_film).jpg",
+  "needbox": true
+ },
+ "movies-6": {
+  "source": "The Avengers (2012 film)",
+  "via": "wikipedia",
+  "file": "The_Avengers_(2012_film)_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:The_Avengers_(2012_film)_poster.jpg",
+  "needbox": true
+ },
+ "movies-7": {
+  "source": "Toy Story",
+  "via": "wikipedia",
+  "file": "Toy_Story.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Toy_Story.jpg",
+  "needbox": true
+ },
+ "movies-8": {
+  "source": "Jurassic Park (film)",
+  "via": "wikipedia",
+  "file": "Jurassic_Park_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Jurassic_Park_poster.jpg",
+  "needbox": true
+ },
+ "movies-9": {
+  "source": "Frozen (2013 film)",
+  "via": "wikipedia",
+  "file": "Frozen_(2013_film)_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Frozen_(2013_film)_poster.jpg",
+  "needbox": true
+ },
+ "movies-10": {
+  "source": "Avatar (2009 film)",
+  "via": "wikipedia",
+  "file": "Avatar_(2009_film)_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Avatar_(2009_film)_poster.jpg",
+  "needbox": true
+ },
+ "movies-11": {
+  "source": "The Lord of the Rings: The Fellowship of the Ring",
+  "via": "wikipedia",
+  "file": "Lord_Rings_Fellowship_Ring.jpg",
+  "license": "Fair use",
+  "author": "New Line Cinema",
+  "page": "https://en.wikipedia.org/wiki/File:Lord_Rings_Fellowship_Ring.jpg",
+  "needbox": true
+ },
+ "movies-12": {
+  "source": "Pirates of the Caribbean: The Curse of the Black Pearl",
+  "via": "wikipedia",
+  "file": "Pirates_of_the_Caribbean_-_The_Curse_of_the_Black_Pearl.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Pirates_of_the_Caribbean_-_The_Curse_of_the_Black_Pearl.png",
+  "needbox": true
+ },
+ "movies-13": {
+  "source": "The Fast and the Furious (2001 film)",
+  "via": "wikipedia",
+  "file": "Fast_and_the_furious_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Fast_and_the_furious_poster.jpg",
+  "needbox": true
+ },
+ "movies-14": {
+  "source": "Barbie (film)",
+  "via": "wikipedia",
+  "file": "Barbie_2023_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Barbie_2023_poster.jpg",
+  "needbox": true
+ },
+ "movies-15": {
+  "source": "The Matrix",
+  "via": "wikipedia",
+  "file": "The_Matrix.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:The_Matrix.png",
+  "needbox": true
+ },
+ "movies-16": {
+  "source": "Back to the Future",
+  "via": "wikipedia",
+  "file": "Back_to_the_Future.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Back_to_the_Future.jpg",
+  "needbox": true
+ },
+ "movies-17": {
+  "source": "Joker (2019 film)",
+  "via": "wikipedia",
+  "file": "Joker_(2019_film)_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Joker_(2019_film)_poster.jpg",
+  "needbox": true
+ },
+ "movies-18": {
+  "source": "Raiders of the Lost Ark",
+  "via": "wikipedia",
+  "file": "Raiders_of_the_Lost_Ark.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Raiders_of_the_Lost_Ark.jpg",
+  "needbox": true
+ },
+ "movies-19": {
+  "source": "The Terminator",
+  "via": "wikipedia",
+  "file": "The_Terminator.png",
+  "license": "Fair use",
+  "author": "https://filmartgallery.com/collections/terminator-movie-posters/products/the-terminator-1",
+  "page": "https://en.wikipedia.org/wiki/File:The_Terminator.png",
+  "needbox": true
+ },
+ "movies-20": {
+  "source": "Rocky",
+  "via": "wikipedia",
+  "file": "Rocky_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Rocky_poster.jpg",
+  "needbox": true
+ },
+ "movies-21": {
+  "source": "Forrest Gump",
+  "via": "wikipedia",
+  "file": "Forrest_Gump_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Forrest_Gump_poster.jpg",
+  "needbox": true
+ },
+ "movies-22": {
+  "source": "The Godfather",
+  "via": "wikipedia",
+  "file": "Godfather_ver1.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Godfather_ver1.jpg",
+  "needbox": true
+ },
+ "movies-23": {
+  "source": "Jaws (film)",
+  "via": "wikipedia",
+  "file": "Jaws_movie_poster.jpg",
+  "license": "Public domain",
+  "author": "Roger Kastel",
+  "page": "https://commons.wikimedia.org/wiki/File:Jaws_movie_poster.jpg",
+  "needbox": true
+ },
+ "movies-24": {
+  "source": "Gladiator (2000 film)",
+  "via": "wikipedia",
+  "file": "Gladiator_(2000_film_poster).png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Gladiator_(2000_film_poster).png",
+  "needbox": true
+ },
+ "movies-25": {
+  "source": "The Dark Knight",
+  "via": "wikipedia",
+  "file": "The_Dark_Knight_(2008_film).jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:The_Dark_Knight_(2008_film).jpg",
+  "needbox": true
+ },
+ "movies-26": {
+  "source": "Oppenheimer (film)",
+  "via": "wikipedia",
+  "file": "Oppenheimer_(film).jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Oppenheimer_(film).jpg",
+  "needbox": true
+ },
+ "movies-27": {
+  "source": "Inception",
+  "via": "wikipedia",
+  "file": "Inception_(2010)_theatrical_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Inception_(2010)_theatrical_poster.jpg",
+  "needbox": true
+ },
+ "movies-28": {
+  "source": "Interstellar (film)",
+  "via": "wikipedia",
+  "file": "Interstellar_film_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Interstellar_film_poster.jpg",
+  "needbox": true
+ },
+ "movies-29": {
+  "source": "Halahaka",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Movie poster for Halahaka, no title text",
+  "review": true,
+  "needbox": true
+ },
+ "movies-30": {
+  "source": "Lemon Popsicle",
+  "via": "wikipedia",
+  "file": "Lemon_Popsicle_(film_poster).jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Lemon_Popsicle_(film_poster).jpg",
+  "needbox": true
+ },
+ "playstation-1": {
+  "source": "FIFA (video game series)",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Video game cover art for FIFA (video game series), no title text",
+  "review": true,
+  "needbox": true
+ },
+ "playstation-2": {
+  "source": "Call of Duty",
+  "via": "commons",
+  "file": "When_duty_calls_(NYPL_Hades-1935985-2001240).jpg",
+  "license": "Public domain",
+  "author": "Scan by NYPL",
+  "page": "https://commons.wikimedia.org/wiki/File:When_duty_calls_(NYPL_Hades-1935985-2001240).jpg",
+  "needbox": true
+ },
+ "playstation-4": {
+  "source": "Marvel's Spider-Man",
+  "via": "wikipedia",
+  "file": "Spider-Man_video_game_series_logo.png",
+  "license": "Public domain",
+  "author": "Insomniac Games and Sony Interactive Entertainment",
+  "page": "https://commons.wikimedia.org/wiki/File:Spider-Man_video_game_series_logo.png",
+  "needbox": true
+ },
+ "playstation-6": {
+  "source": "Crash Bandicoot",
+  "via": "wikipedia",
+  "file": "Crash_bandicoot_logo.png",
+  "license": "Public domain",
+  "author": "—",
+  "page": "https://commons.wikimedia.org/wiki/File:Crash_bandicoot_logo.png",
+  "needbox": true
+ },
+ "playstation-7": {
+  "source": "God of War (2018 video game)",
+  "via": "wikipedia",
+  "file": "God_of_War_4_cover.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:God_of_War_4_cover.jpg",
+  "needbox": true
+ },
+ "playstation-8": {
+  "source": "The Last of Us",
+  "via": "commons",
+  "file": "The_lie_of_the_last_minstrel_Puck_magazine_cover_1917_May_19_cph.3b49313.jpg",
+  "license": "Public domain",
+  "author": "Ralph Barton",
+  "page": "https://commons.wikimedia.org/wiki/File:The_lie_of_the_last_minstrel_Puck_magazine_cover_1917_May_19_cph.3b49313.jpg",
+  "needbox": true
+ },
+ "playstation-9": {
+  "source": "NBA 2K",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Video game cover art for NBA 2K, no title text",
+  "review": true,
+  "needbox": true
+ },
+ "playstation-10": {
+  "source": "Uncharted",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Video game cover art for Uncharted, no title text",
+  "review": true,
+  "needbox": true
+ },
+ "playstation-11": {
+  "source": "Gran Turismo 7",
+  "via": "wikipedia",
+  "file": "Gran_Turismo_7_cover_art.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Gran_Turismo_7_cover_art.jpg",
+  "needbox": true
+ },
+ "playstation-12": {
+  "source": "Mortal Kombat 1",
+  "via": "wikipedia",
+  "file": "Mortal_Kombat_1_key_art.jpeg",
+  "license": "Fair use",
+  "author": "Warner Bros. Games",
+  "page": "https://en.wikipedia.org/wiki/File:Mortal_Kombat_1_key_art.jpeg",
+  "needbox": true
+ },
+ "playstation-13": {
+  "source": "Rocket League",
+  "via": "wikipedia",
+  "file": "Rocket_League_coverart.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "jjdhd Beirnrj Psyonix Studios",
+  "page": "https://commons.wikimedia.org/wiki/File:Rocket_League_coverart.jpg",
+  "needbox": true
+ },
+ "playstation-15": {
+  "source": "Red Dead Redemption 2",
+  "via": "wikipedia",
+  "file": "Red_Dead_Redemption_II.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Red_Dead_Redemption_II.jpg",
+  "needbox": true
+ },
+ "playstation-16": {
+  "source": "Ratchet & Clank: Rift Apart",
+  "via": "wikipedia",
+  "file": "Ratchet_&_Clank_-_Rift_Apart.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Ratchet_%26_Clank_-_Rift_Apart.png",
+  "needbox": true
+ },
+ "playstation-17": {
+  "source": "Apex Legends",
+  "via": "wikipedia",
+  "file": "Apex_legends_cover.jpg",
+  "license": "Fair use",
+  "author": "EA/Respawn Entertainment",
+  "page": "https://en.wikipedia.org/wiki/File:Apex_legends_cover.jpg",
+  "needbox": true
+ },
+ "playstation-18": {
+  "source": "Tekken 8",
+  "via": "wikipedia",
+  "file": "Tekken_8_cover_art.jpg",
+  "license": "Fair use",
+  "author": "Bandai Namco",
+  "page": "https://en.wikipedia.org/wiki/File:Tekken_8_cover_art.jpg",
+  "needbox": true
+ },
+ "playstation-19": {
+  "source": "Spyro Reignited Trilogy",
+  "via": "wikipedia",
+  "file": "Spyro_Reignited_Trilogy.png",
+  "license": "Fair use",
+  "author": "Activision",
+  "page": "https://en.wikipedia.org/wiki/File:Spyro_Reignited_Trilogy.png",
+  "needbox": true
+ },
+ "playstation-20": {
+  "source": "Horizon Zero Dawn",
+  "via": "wikipedia",
+  "file": "Horizon_Zero_Dawn_cover_art.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Horizon_Zero_Dawn_cover_art.jpg",
+  "needbox": true
+ },
+ "playstation-21": {
+  "source": "Ghost of Tsushima",
+  "via": "wikipedia",
+  "file": "Ghost_of_Tsushima.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Ghost_of_Tsushima.jpg",
+  "needbox": true
+ },
+ "playstation-22": {
+  "source": "Resident Evil 4 (2023 video game)",
+  "via": "wikipedia",
+  "file": "Resident_Evil_4_remake_cover_art.jpg",
+  "license": "Fair use",
+  "author": "Capcom",
+  "page": "https://en.wikipedia.org/wiki/File:Resident_Evil_4_remake_cover_art.jpg",
+  "needbox": true
+ },
+ "playstation-23": {
+  "source": "Astro Bot",
+  "via": "wikipedia",
+  "file": "Astro_Bot_cover_art.jpg",
+  "license": "Fair use",
+  "author": "Japan Studio / Sony",
+  "page": "https://en.wikipedia.org/wiki/File:Astro_Bot_cover_art.jpg",
+  "needbox": true
+ },
+ "playstation-24": {
+  "source": "LittleBigPlanet",
+  "via": "wikipedia",
+  "file": "LBP_Stacked_Logo_500x373.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:LBP_Stacked_Logo_500x373.png",
+  "needbox": true
+ },
+ "playstation-25": {
+  "source": "Final Fantasy VII Remake",
+  "via": "wikipedia",
+  "file": "FFVIIRemake.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:FFVIIRemake.png",
+  "needbox": true
+ },
+ "playstation-26": {
+  "source": "Elden Ring",
+  "via": "wikipedia",
+  "file": "Elden_Ring_Box_art.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Elden_Ring_Box_art.jpg",
+  "needbox": true
+ },
+ "playstation-27": {
+  "source": "Metal Gear Solid",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Video game cover art for Metal Gear Solid, no title text",
+  "review": true,
+  "needbox": true
+ },
+ "playstation-28": {
+  "source": "Bloodborne",
+  "via": "wikipedia",
+  "file": "Bloodborne_Cover_Wallpaper.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Bloodborne_Cover_Wallpaper.jpg",
+  "needbox": true
+ },
+ "playstation-30": {
+  "source": "Grand Theft Auto V",
+  "via": "wikipedia",
+  "file": "Grand_Theft_Auto_V.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Grand_Theft_Auto_V.png",
+  "needbox": true
  },
  "professions-1": {
   "source": "Stethoscope",
@@ -6037,6 +7153,198 @@
   "author": "Amitbalani",
   "page": "https://commons.wikimedia.org/wiki/File:HMV_Record_Player.jpg"
  },
+ "tv-series-1": {
+  "source": "Friends",
+  "via": "commons",
+  "file": "Friends_-_Wattpad_Original_Series_Poster.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "RightfulAliceRyhei",
+  "page": "https://commons.wikimedia.org/wiki/File:Friends_-_Wattpad_Original_Series_Poster.jpg",
+  "needbox": true
+ },
+ "tv-series-2": {
+  "source": "The Simpsons",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "TV series poster for The Simpsons, no title text",
+  "review": true,
+  "needbox": true
+ },
+ "tv-series-4": {
+  "source": "Stranger Things",
+  "via": "wikipedia",
+  "file": "Stranger_Things_logo.png",
+  "license": "Public domain",
+  "author": "Netflix",
+  "page": "https://commons.wikimedia.org/wiki/File:Stranger_Things_logo.png",
+  "needbox": true
+ },
+ "tv-series-5": {
+  "source": "Money Heist",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "TV series poster for Money Heist, no title text",
+  "review": true,
+  "needbox": true
+ },
+ "tv-series-8": {
+  "source": "Fauda",
+  "via": "wikipedia",
+  "file": "Fauda.jpg",
+  "license": "Fair use",
+  "author": "Netflix",
+  "page": "https://en.wikipedia.org/wiki/File:Fauda.jpg",
+  "needbox": true
+ },
+ "tv-series-9": {
+  "source": "The Office (American TV series)",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "TV series poster for The Office (American TV series), no title text",
+  "review": true,
+  "needbox": true
+ },
+ "tv-series-11": {
+  "source": "The Crown (TV series)",
+  "via": "wikipedia",
+  "file": "The_Crown_Title_Card.jpg",
+  "license": "Fair use",
+  "author": "Netflix Inc.",
+  "page": "https://en.wikipedia.org/wiki/File:The_Crown_Title_Card.jpg",
+  "needbox": true
+ },
+ "tv-series-12": {
+  "source": "Shtisel",
+  "via": "wikipedia",
+  "file": "Shtisel.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Shtisel.jpg",
+  "needbox": true
+ },
+ "tv-series-13": {
+  "source": "Kupa Rashit",
+  "via": "wikipedia",
+  "file": "Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "TaBaZzz",
+  "page": "https://commons.wikimedia.org/wiki/File:Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg",
+  "needbox": true
+ },
+ "tv-series-14": {
+  "source": "Ha-Borer",
+  "via": "wikipedia",
+  "file": "The_Arbitrator_-_Ha-Borer.png",
+  "license": "Fair use",
+  "author": "JCS (production company)",
+  "page": "https://en.wikipedia.org/wiki/File:The_Arbitrator_-_Ha-Borer.png",
+  "needbox": true
+ },
+ "tv-series-15": {
+  "source": "House (TV series)",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "TV series poster for House (TV series), no title text",
+  "review": true,
+  "needbox": true
+ },
+ "tv-series-20": {
+  "source": "Lost (TV series)",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "TV series poster for Lost (TV series), no title text",
+  "review": true,
+  "needbox": true
+ },
+ "tv-series-23": {
+  "source": "Arab Labor",
+  "via": "wikipedia",
+  "file": "Norman_Issa_1.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Heinrich-Böll-Stiftung",
+  "page": "https://commons.wikimedia.org/wiki/File:Norman_Issa_1.jpg",
+  "needbox": true
+ },
+ "tv-series-24": {
+  "source": "Tehran (TV series)",
+  "via": "wikipedia",
+  "file": "Tehran_TV_poster.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Tehran_TV_poster.jpg",
+  "needbox": true
+ },
+ "tv-series-25": {
+  "source": "The Good Cop (Israeli TV series)",
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "TV series poster for The Good Cop (Israeli TV series), no title text",
+  "review": true,
+  "needbox": true
+ },
+ "tv-series-26": {
+  "source": "House of Cards (American TV series)",
+  "via": "wikipedia",
+  "file": "House_of_Cards_title_card.png",
+  "license": "Fair use",
+  "author": "Self taken",
+  "page": "https://en.wikipedia.org/wiki/File:House_of_Cards_title_card.png",
+  "needbox": true
+ },
+ "tv-series-27": {
+  "source": "Sherlock (TV series)",
+  "via": "wikipedia",
+  "file": "Sherlock_titlecard.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Sherlock_titlecard.jpg",
+  "needbox": true
+ },
+ "tv-series-28": {
+  "source": "The Witcher (TV series)",
+  "via": "wikipedia",
+  "file": "The_Witcher_Logo.png",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:The_Witcher_Logo.png",
+  "needbox": true
+ },
+ "tv-series-29": {
+  "source": "Hatufim",
+  "via": "wikipedia",
+  "file": "Hatufim_title.jpg",
+  "license": "Fair use",
+  "author": "—",
+  "page": "https://en.wikipedia.org/wiki/File:Hatufim_title.jpg",
+  "needbox": true
+ },
+ "tv-series-30": {
+  "source": "Eretz Nehederet",
+  "via": "wikipedia",
+  "file": "Eretz_Nehederet.JPG",
+  "license": "Public domain",
+  "author": "Sir kiss",
+  "page": "https://commons.wikimedia.org/wiki/File:Eretz_Nehederet.JPG",
+  "needbox": true
+ },
  "vehicles-1": {
   "source": "File:Retail_car-park,_Sedan_Avenue,_Omagh_-_geograph.org.uk_-_418329.jpg",
   "file": "Retail_car-park,_Sedan_Avenue,_Omagh_-_geograph.org.uk_-_418329.jpg",
@@ -6680,16 +7988,6 @@
   "license": "CC BY 2.0",
   "author": "Montclair Film",
   "page": "https://commons.wikimedia.org/wiki/File:NEG_0062-2_(54119957209).jpg"
- },
- "world-singers-29": {
-  "source": "Travis Scott",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
-  "page": "",
-  "prompt": "Portrait photo of the singer Travis Scott",
-  "review": true
  },
  "world-singers-30": {
   "source": "Lewis Capaldi",

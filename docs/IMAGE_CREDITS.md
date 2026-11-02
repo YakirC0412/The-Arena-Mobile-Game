@@ -102,6 +102,41 @@
 | apps-26 | ChatGPT | OpenAI | Public domain | [OpenAI_logo_2025_(symbol).svg](https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025_(symbol).svg) |
 | apps-29 | Airbnb | DesignStudio | Public domain | [Airbnb_Logo_Bélo.svg](https://commons.wikimedia.org/wiki/File:Airbnb_Logo_B%C3%A9lo.svg) |
 
+## basketball-teams
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| basketball-teams-1 | Los Angeles Lakers | The original uploader was Tkgd2007 at English Wikipedia. | Public domain | [Los_Angeles_Lakers_logo.svg](https://commons.wikimedia.org/wiki/File:Los_Angeles_Lakers_logo.svg) |
+| basketball-teams-2 | Chicago Bulls | Dean Perry Wessel (1920-2004) or Ted Drake (1927-2000) | Public domain | [Logo_of_Chicago_Bulls.svg](https://commons.wikimedia.org/wiki/File:Logo_of_Chicago_Bulls.svg) |
+| basketball-teams-3 | Boston Celtics | — | Fair use | [Boston_Celtics.svg](https://en.wikipedia.org/wiki/File:Boston_Celtics.svg) |
+| basketball-teams-4 | Golden State Warriors | — | Fair use | [Golden_State_Warriors_logo.svg](https://en.wikipedia.org/wiki/File:Golden_State_Warriors_logo.svg) |
+| basketball-teams-5 | Maccabi Tel Aviv B.C. | — | Fair use | [Maccabi_Tel_Aviv_BC_logo.svg](https://en.wikipedia.org/wiki/File:Maccabi_Tel_Aviv_BC_logo.svg) |
+| basketball-teams-6 | Miami Heat | — | Fair use | [Miami_Heat_logo.svg](https://en.wikipedia.org/wiki/File:Miami_Heat_logo.svg) |
+| basketball-teams-7 | New York Knicks | — | Fair use | [New_York_Knicks_logo.svg](https://en.wikipedia.org/wiki/File:New_York_Knicks_logo.svg) |
+| basketball-teams-8 | Hapoel Tel Aviv B.C. | — | Fair use | [Hapoel_Tel_Aviv.svg](https://en.wikipedia.org/wiki/File:Hapoel_Tel_Aviv.svg) |
+| basketball-teams-9 | Hapoel Jerusalem B.C. | — | Fair use | [Hapoel_Jerusalem_B.C._logo.png](https://en.wikipedia.org/wiki/File:Hapoel_Jerusalem_B.C._logo.png) |
+| basketball-teams-10 | San Antonio Spurs | — | Fair use | [San_Antonio_Spurs.svg](https://en.wikipedia.org/wiki/File:San_Antonio_Spurs.svg) |
+| basketball-teams-11 | Houston Rockets | — | Fair use | [Houston_Rockets.svg](https://en.wikipedia.org/wiki/File:Houston_Rockets.svg) |
+| basketball-teams-12 | Dallas Mavericks | — | Fair use | [Dallas_Mavericks_logo.svg](https://en.wikipedia.org/wiki/File:Dallas_Mavericks_logo.svg) |
+| basketball-teams-13 | Brooklyn Nets | — | Fair use | [Brooklyn_Nets_primary_icon_logo_2024.svg](https://en.wikipedia.org/wiki/File:Brooklyn_Nets_primary_icon_logo_2024.svg) |
+| basketball-teams-14 | Toronto Raptors | — | Fair use | [Toronto_Raptors_logo.svg](https://en.wikipedia.org/wiki/File:Toronto_Raptors_logo.svg) |
+| basketball-teams-15 | Phoenix Suns | — | Fair use | [Phoenix_Suns_logo.svg](https://en.wikipedia.org/wiki/File:Phoenix_Suns_logo.svg) |
+| basketball-teams-16 | Philadelphia 76ers | — | Fair use | [Philadelphia_76ers_logo.svg](https://en.wikipedia.org/wiki/File:Philadelphia_76ers_logo.svg) |
+| basketball-teams-17 | Milwaukee Bucks | — | Fair use | [Milwaukee_Bucks_logo.svg](https://en.wikipedia.org/wiki/File:Milwaukee_Bucks_logo.svg) |
+| basketball-teams-18 | Denver Nuggets | — | Fair use | [Denver_Nuggets.svg](https://en.wikipedia.org/wiki/File:Denver_Nuggets.svg) |
+| basketball-teams-19 | Cleveland Cavaliers | Cleveland Cavaliers. The original uploader was Gus Polly at English Wikipedia.. Later version(s) were uploaded by Eureka | Public domain | [Cleveland_Cavaliers_logo.svg](https://commons.wikimedia.org/wiki/File:Cleveland_Cavaliers_logo.svg) |
+| basketball-teams-20 | Oklahoma City Thunder | — | Fair use | [Oklahoma_City_Thunder.svg](https://en.wikipedia.org/wiki/File:Oklahoma_City_Thunder.svg) |
+| basketball-teams-21 | Orlando Magic | — | Fair use | [Orlando_Magic_logo.svg](https://en.wikipedia.org/wiki/File:Orlando_Magic_logo.svg) |
+| basketball-teams-22 | Atlanta Hawks | — | Fair use | [Atlanta_Hawks_logo.svg](https://en.wikipedia.org/wiki/File:Atlanta_Hawks_logo.svg) |
+| basketball-teams-23 | Memphis Grizzlies | — | Fair use | [Memphis_Grizzlies.svg](https://en.wikipedia.org/wiki/File:Memphis_Grizzlies.svg) |
+| basketball-teams-24 | Charlotte Hornets | — | Fair use | [Charlotte_Hornets_(2014).svg](https://en.wikipedia.org/wiki/File:Charlotte_Hornets_(2014).svg) |
+| basketball-teams-25 | Portland Trail Blazers | — | Fair use | [Portland_Trail_Blazers_logo.svg](https://en.wikipedia.org/wiki/File:Portland_Trail_Blazers_logo.svg) |
+| basketball-teams-26 | Indiana Pacers | — | Fair use | [Indiana_Pacers.svg](https://en.wikipedia.org/wiki/File:Indiana_Pacers.svg) |
+| basketball-teams-27 | Panathinaikos B.C. | — | Fair use | [Panathinaikos_BC_logo.svg](https://en.wikipedia.org/wiki/File:Panathinaikos_BC_logo.svg) |
+| basketball-teams-28 | Olympiacos B.C. | — | Fair use | [Olympiacos_BC_logo.svg](https://en.wikipedia.org/wiki/File:Olympiacos_BC_logo.svg) |
+| basketball-teams-29 | AS Monaco Basket | — | Fair use | [AS_Monaco_Basket.svg](https://en.wikipedia.org/wiki/File:AS_Monaco_Basket.svg) |
+| basketball-teams-30 | Real Madrid Baloncesto | Real Madrid Baloncesto | Fair use | [Real_Madrid_Baloncesto.png](https://en.wikipedia.org/wiki/File:Real_Madrid_Baloncesto.png) |
+
 ## birds
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
@@ -274,7 +309,6 @@
 | comedians-26 | Trevor Noah | Web Summit Qatar | CC BY 2.0 | [Trevor_Noah_(53554114243)_(portrait_crop).jpg](https://commons.wikimedia.org/wiki/File:Trevor_Noah_(53554114243)_(portrait_crop).jpg) |
 | comedians-27 | Amy Schumer | Mario Santor | CC BY-SA 3.0 | [Amy_Schumer_by_Mario_Santor.jpg](https://commons.wikimedia.org/wiki/File:Amy_Schumer_by_Mario_Santor.jpg) |
 | comedians-28 | Dave Chappelle | Kolby Ari | CC BY-SA 4.0 | [Dave_Chappelle_at_Preamiere_of_"Dave_Chappelle_In_Real_Life"_(2)_(cropped_2).jpg](https://commons.wikimedia.org/wiki/File:Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_(2)_(cropped_2).jpg) |
-| comedians-29 | Shahar Hasson | pollinations flux | AI generated (לבדיקה) | — |
 | comedians-30 | Steve Carell | Kevin Paul | CC BY 4.0 | [Steve_Carell_-_The_40-Year-Old-Virgin.jpg](https://commons.wikimedia.org/wiki/File:Steve_Carell_-_The_40-Year-Old-Virgin.jpg) |
 
 ## countries
@@ -561,6 +595,26 @@
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
 |---|---|---|---|---|
+| historical-figures-1 | Albert Einstein | Oren Jack Turner | Public domain | [Albert_Einstein_Head_cleaned.jpg](https://commons.wikimedia.org/wiki/File:Albert_Einstein_Head_cleaned.jpg) |
+| historical-figures-2 | Napoleon | Jacques-Louis David | Public domain | [Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project.jpg](https://commons.wikimedia.org/wiki/File:Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project.jpg) |
+| historical-figures-3 | David Ben-Gurion | Fritz Cohen | Public domain | [David_Ben-Gurion_(D597-087).jpg](https://commons.wikimedia.org/wiki/File:David_Ben-Gurion_(D597-087).jpg) |
+| historical-figures-4 | Theodor Herzl | Carl Pietzner | Public domain | [Theodor_Herzl_(3x4_cropped).jpg](https://commons.wikimedia.org/wiki/File:Theodor_Herzl_(3x4_cropped).jpg) |
+| historical-figures-5 | Abraham Lincoln | Alexander Gardner | Public domain | [Abraham_Lincoln_O-77_matte_collodion_print.jpg](https://commons.wikimedia.org/wiki/File:Abraham_Lincoln_O-77_matte_collodion_print.jpg) |
+| historical-figures-6 | Martin Luther King Jr. | Yoichi Okamoto | Public domain | [Martin_Luther_King,_Jr._and_Lyndon_Johnson_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Martin_Luther_King,_Jr._and_Lyndon_Johnson_(cropped).jpg) |
+| historical-figures-7 | Nelson Mandela | Kingkongphoto &amp; www.celebrity-photos.com from Laurel | CC BY-SA 2.0 | [Nelson_Mandela_1994.jpg](https://commons.wikimedia.org/wiki/File:Nelson_Mandela_1994.jpg) |
+| historical-figures-8 | Winston Churchill | — | Public domain | [Sir_Winston_Churchill_-_19086236948_(restored).jpg](https://commons.wikimedia.org/wiki/File:Sir_Winston_Churchill_-_19086236948_(restored).jpg) |
+| historical-figures-9 | Mahatma Gandhi | Elliott &amp; Fry | Public domain | [Mahatma-Gandhi,_studio,_1931.jpg](https://commons.wikimedia.org/wiki/File:Mahatma-Gandhi,_studio,_1931.jpg) |
+| historical-figures-10 | Golda Meir | Willem van de Poll | CC BY-SA 4.0 | [Golda_Meir_(1964)_cropped.jpg](https://commons.wikimedia.org/wiki/File:Golda_Meir_(1964)_cropped.jpg) |
+| historical-figures-11 | Yitzhak Rabin | Yaakov Saar | CC BY-SA 3.0 | [Yitzhak_Rabin_1994_Portrait_(3x4_cropped).jpg](https://commons.wikimedia.org/wiki/File:Yitzhak_Rabin_1994_Portrait_(3x4_cropped).jpg) |
+| historical-figures-12 | Menachem Begin | MSGT DENHAM | Public domain | [Menachem_Begin_and_Cyrus_R._Vance_(cropped)_(2).JPEG](https://commons.wikimedia.org/wiki/File:Menachem_Begin_and_Cyrus_R._Vance_(cropped)_(2).JPEG) |
+| historical-figures-13 | Leonardo da Vinci | Attributed to Francesco Melzi | Public domain | [Francesco_Melzi_-_Portrait_of_Leonardo_(colour_correction).png](https://commons.wikimedia.org/wiki/File:Francesco_Melzi_-_Portrait_of_Leonardo_(colour_correction).png) |
+| historical-figures-14 | John F. Kennedy | Cecil W. Stoughton | Public domain | [John_F._Kennedy,_White_House_color_photo_portrait.jpg](https://commons.wikimedia.org/wiki/File:John_F._Kennedy,_White_House_color_photo_portrait.jpg) |
+| historical-figures-15 | Elizabeth II | Donald McKague | Public domain | [Queen_Elizabeth_II_official_portrait_for_1959_tour_(retouched)_(cropped)_(3-to-4_aspect_ratio).jpg](https://commons.wikimedia.org/wiki/File:Queen_Elizabeth_II_official_portrait_for_1959_tour_(retouched)_(cropped)_(3-to-4_aspect_ratio).jpg) |
+| historical-figures-16 | George Washington | Gilbert Stuart | Public domain | [Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg](https://commons.wikimedia.org/wiki/File:Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg) |
+| historical-figures-17 | Moshe Dayan | IDF Spokesperson's Unit photographer | CC BY-SA 3.0 | [Moshe_Dayan,_Chief_of_General_Staff.jpg](https://commons.wikimedia.org/wiki/File:Moshe_Dayan,_Chief_of_General_Staff.jpg) |
+| historical-figures-18 | Charles Darwin | Charles_Darwin_seated.jpg: Henry Maull (1829–1914) and John Fox (1832–1907) (Maull &amp; Fox) [3] derivative work: Beao | Public domain | [Charles_Darwin_seated_crop.jpg](https://commons.wikimedia.org/wiki/File:Charles_Darwin_seated_crop.jpg) |
+| historical-figures-19 | Isaac Newton | Godfrey Kneller | Public domain | [Portrait_of_Sir_Isaac_Newton,_1689_(brightened).jpg](https://commons.wikimedia.org/wiki/File:Portrait_of_Sir_Isaac_Newton,_1689_(brightened).jpg) |
+| historical-figures-20 | Wolfgang Amadeus Mozart | Johann Nepomuk della Croce | Public domain | [The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg](https://commons.wikimedia.org/wiki/File:The_Mozart_Family_-_Wolfgang_Amadeus_Mozart_headshot.jpg) |
 | historical-figures-21 | Ludwig van Beethoven | Joseph Karl Stieler | Public domain | [Joseph_Karl_Stieler's_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg](https://commons.wikimedia.org/wiki/File:Joseph_Karl_Stieler%27s_Beethoven_mit_dem_Manuskript_der_Missa_solemnis.jpg) |
 | historical-figures-22 | William Shakespeare | Attributed to John Taylor | Public domain | [William_Shakespeare_by_John_Taylor,_edited.jpg](https://commons.wikimedia.org/wiki/File:William_Shakespeare_by_John_Taylor,_edited.jpg) |
 | historical-figures-23 | Marie Curie | Henri Manuel | Public domain | [Marie_Curie_c._1920s.jpg](https://commons.wikimedia.org/wiki/File:Marie_Curie_c._1920s.jpg) |
@@ -611,8 +665,33 @@
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
 |---|---|---|---|---|
+| israel-history-1 | Western Wall | Golasso | CC BY-SA 4.0 | [Westernwall2.jpg](https://commons.wikimedia.org/wiki/File:Westernwall2.jpg) |
+| israel-history-2 | Dome of the Rock | Ludvig14 | CC BY-SA 4.0 | [Jerusalem_DomeoftheRock_J65_(cropped).JPG](https://commons.wikimedia.org/wiki/File:Jerusalem_DomeoftheRock_J65_(cropped).JPG) |
+| israel-history-3 | Masada | Godot13 | CC BY-SA 4.0 | [Israel-2013-Aerial_21-Masada.jpg](https://commons.wikimedia.org/wiki/File:Israel-2013-Aerial_21-Masada.jpg) |
+| israel-history-4 | Tower of David | אורי אלוני | CC BY-SA 4.0 | [מגדל_-דוד.jpg](https://commons.wikimedia.org/wiki/File:%D7%9E%D7%92%D7%93%D7%9C_-%D7%93%D7%95%D7%93.jpg) |
+| israel-history-5 | Yad Vashem | Godot13 | CC BY-SA 4.0 | [Israel-2013(2)-Jerusalem-Yad_Vashem-Prism_Skylight_01.jpg](https://commons.wikimedia.org/wiki/File:Israel-2013(2)-Jerusalem-Yad_Vashem-Prism_Skylight_01.jpg) |
+| israel-history-6 | Terraces of the Bahá'í Faith | Immanuel Giel | CC BY-SA 4.0 | [Downward_views_of_the_Bahá'í_Terraces_01.jpg](https://commons.wikimedia.org/wiki/File:Downward_views_of_the_Bah%C3%A1%27%C3%AD_Terraces_01.jpg) |
+| israel-history-7 | Caesarea Maritima | The original uploader was אסף.צ at Hebrew Wikipedia. | Public domain | [Caesarea.JPG](https://commons.wikimedia.org/wiki/File:Caesarea.JPG) |
+| israel-history-8 | Old City of Acre | israeltourism from Israel | CC BY-SA 2.0 | [Aerial_view_of_Acre_1.jpg](https://commons.wikimedia.org/wiki/File:Aerial_view_of_Acre_1.jpg) |
+| israel-history-9 | Church of the Holy Sepulchre | Gerd Eichmann | CC BY-SA 4.0 | [Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg) |
+| israel-history-10 | Jaffa Clock Tower | Bahnfrend | CC BY-SA 4.0 | [Jaffa_Clock_Tower,_2019_(03).jpg](https://commons.wikimedia.org/wiki/File:Jaffa_Clock_Tower,_2019_(03).jpg) |
+| israel-history-11 | Jaffa Gate | Herwig Reidlinger | CC BY-SA 3.0 | [Jaffa_Gate_Jerusalem.jpg](https://commons.wikimedia.org/wiki/File:Jaffa_Gate_Jerusalem.jpg) |
 | israel-history-12 | File:Knesset front side - 2022.jpg | Clema12 | CC BY-SA 4.0 | [Knesset_front_side_-_2022.jpg](https://commons.wikimedia.org/wiki/File:Knesset_front_side_-_2022.jpg) |
+| israel-history-13 | Independence Hall (Israel) | Amit A. | Public domain | [Israel_ind_mus.JPG](https://commons.wikimedia.org/wiki/File:Israel_ind_mus.JPG) |
+| israel-history-14 | Caesarea aqueduct | מיכל פריימן | CC BY 2.5 | [92295_caesarea_aqueduct_PikiWiki_Israel.jpg](https://commons.wikimedia.org/wiki/File:92295_caesarea_aqueduct_PikiWiki_Israel.jpg) |
 | israel-history-15 | File:Bet She'an roman Theater.jpg | Michael Drewes | CC BY-SA 4.0 | [Bet_She'an_roman_Theater.jpg](https://commons.wikimedia.org/wiki/File:Bet_She%27an_roman_Theater.jpg) |
+| israel-history-16 | City of David | AVRAM GRAICER | CC BY-SA 3.0 | [Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg](https://commons.wikimedia.org/wiki/File:Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg) |
+| israel-history-17 | Basilica of the Annunciation | FLASHPACKER TRAVELGUIDE | CC BY-SA 2.0 | [Nazareth_Verkündigungbasilika_Church_of_Annunciation_(34257296024).jpg](https://commons.wikimedia.org/wiki/File:Nazareth_Verk%C3%BCndigungbasilika_Church_of_Annunciation_(34257296024).jpg) |
+| israel-history-18 | Cave of the Patriarchs | Utilisateur:Djampa - User:Djampa | CC BY-SA 4.0 | [Hebron_Cave_of_the_Patriarchs.jpg](https://commons.wikimedia.org/wiki/File:Hebron_Cave_of_the_Patriarchs.jpg) |
+| israel-history-19 | Mount of Olives | Godot13 | CC BY-SA 4.0 | [2013-Aerial-Mount_of_Olives.jpg](https://commons.wikimedia.org/wiki/File:2013-Aerial-Mount_of_Olives.jpg) |
+| israel-history-20 | Stella Maris Monastery | זאב שטיין | CC BY 2.5 | [97599_stella_maris_monastery_PikiWiki_Israel.jpg](https://commons.wikimedia.org/wiki/File:97599_stella_maris_monastery_PikiWiki_Israel.jpg) |
+| israel-history-21 | David's Tomb | Berthold Werner | Public domain | [Jerusalem_Tomb_of_David_BW_1.JPG](https://commons.wikimedia.org/wiki/File:Jerusalem_Tomb_of_David_BW_1.JPG) |
+| israel-history-22 | Hurva Synagogue | xiquinhosilva | CC BY 2.0 | [18067-Jerusalem_(28992334565).jpg](https://commons.wikimedia.org/wiki/File:18067-Jerusalem_(28992334565).jpg) |
+| israel-history-23 | Ari Ashkenazi Synagogue | Berm2b3a | CC BY-SA 4.0 | [Arizal_Synagogue.jpg](https://commons.wikimedia.org/wiki/File:Arizal_Synagogue.jpg) |
+| israel-history-24 | Capernaum | Eddie Gerald | CC BY-SA 3.0 igo | [Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg](https://commons.wikimedia.org/wiki/File:Sites_of_Christianity_in_the_Galillee_-_Ruins_of_the_ancient_Great_Synagogue_at_Capernaum_(or_Kfar_Nahum)_on_the_shore_of_the_Lake_of_Galilee,_Northern_Israel.jpg) |
+| israel-history-25 | Nimrod Fortress | CarmelH1 | CC BY-SA 4.0 | [Nimrod_Fortress_מבצר_נמרוד.jpg](https://commons.wikimedia.org/wiki/File:Nimrod_Fortress_%D7%9E%D7%91%D7%A6%D7%A8_%D7%A0%D7%9E%D7%A8%D7%95%D7%93.jpg) |
+| israel-history-26 | Tel Megiddo | AVRAMGR | CC BY-SA 4.0 | [TEL_MEGIDO_AERIAL_C.JPG](https://commons.wikimedia.org/wiki/File:TEL_MEGIDO_AERIAL_C.JPG) |
+| israel-history-27 | Beit Guvrin-Maresha National Park | Chai | CC BY-SA 3.0 | [Beit_Guvrin_1.JPG](https://commons.wikimedia.org/wiki/File:Beit_Guvrin_1.JPG) |
 | israel-history-28 | Tel Be'er Sheva | gugganij | CC BY-SA 3.0 | [Tel_Be'er_Sheva_Overview_2007041.JPG](https://commons.wikimedia.org/wiki/File:Tel_Be%27er_Sheva_Overview_2007041.JPG) |
 | israel-history-29 | File:Maimonides Tomb IMG 5948.JPG | Deror_avi | CC BY-SA 4.0 | [Maimonides_Tomb_IMG_5948.JPG](https://commons.wikimedia.org/wiki/File:Maimonides_Tomb_IMG_5948.JPG) |
 | israel-history-30 | Tel Hai | Remi Jouan | CC BY-SA 3.0 | [Tel_Hai_-_Courtyard_(3).jpg](https://commons.wikimedia.org/wiki/File:Tel_Hai_-_Courtyard_(3).jpg) |
@@ -640,14 +719,12 @@
 | israeli-singers-17 | Aviv Geffen | רונן פדידה (Ronen Fadida) | CC BY-SA 3.0 | [Aviv_Geffen_1.jpg](https://commons.wikimedia.org/wiki/File:Aviv_Geffen_1.jpg) |
 | israeli-singers-18 | Idan Amedi | Seli Ben Ari | CC BY-SA 4.0 | [עידן_עמדי,_סלי_בן_אריה.jpg](https://commons.wikimedia.org/wiki/File:%D7%A2%D7%99%D7%93%D7%9F_%D7%A2%D7%9E%D7%93%D7%99,_%D7%A1%D7%9C%D7%99_%D7%91%D7%9F_%D7%90%D7%A8%D7%99%D7%94.jpg) |
 | israeli-singers-19 | Miri Mesika | איה זך (Aya Zakh) | CC BY-SA 4.0 | [Miri_Mesika.webp](https://commons.wikimedia.org/wiki/File:Miri_Mesika.webp) |
-| israeli-singers-20 | Pe'er Tasi | טלושקיה | CC BY-SA 4.0 | [0U5A7798.jpg](https://commons.wikimedia.org/wiki/File:0U5A7798.jpg) |
 | israeli-singers-21 | Shalom Hanoch | Morshem | CC BY-SA 4.0 | [Shalom_Hanoch_2.jpg](https://commons.wikimedia.org/wiki/File:Shalom_Hanoch_2.jpg) |
 | israeli-singers-22 | Yehoram Gaon | Yaakov Saar | CC BY-SA 3.0 | [Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg](https://commons.wikimedia.org/wiki/File:Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg) |
 | israeli-singers-23 | Zehava Ben | גילי אלגבי | CC BY-SA 4.0 | [Zehavaben.jpg](https://commons.wikimedia.org/wiki/File:Zehavaben.jpg) |
 | israeli-singers-24 | Keren Peles | Daniel Kaminsky | CC BY-SA 3.0 | [Keren_Peles_1.jpg](https://commons.wikimedia.org/wiki/File:Keren_Peles_1.jpg) |
 | israeli-singers-25 | Dudu Aharon | ארן חן צלמים | CC BY-SA 3.0 | [Dudu_Aharon_2015.jpg](https://commons.wikimedia.org/wiki/File:Dudu_Aharon_2015.jpg) |
 | israeli-singers-26 | Yuval Dayan | Tal Abudi | CC BY-SA 4.0 | [יובל_דיין2.jpg](https://commons.wikimedia.org/wiki/File:%D7%99%D7%95%D7%91%D7%9C_%D7%93%D7%99%D7%99%D7%9F2.jpg) |
-| israeli-singers-27 | Margi (singer) | pollinations flux | AI generated (לבדיקה) | — |
 | israeli-singers-28 | Haim Moshe | de:Benutzer:datafox | CC BY-SA 3.0 | [Haim_Moshe.JPG](https://commons.wikimedia.org/wiki/File:Haim_Moshe.JPG) |
 | israeli-singers-29 | Arkadi Duchin | עדי כהן צדק | CC BY-SA 3.0 | [Arkadi_Duchin_(1).jpg](https://commons.wikimedia.org/wiki/File:Arkadi_Duchin_(1).jpg) |
 | israeli-singers-30 | Osher Cohen | Shay Cohen Arbel (שי כהן ארבל) | CC BY-SA 4.0 | [אושר_כהן.jpg](https://commons.wikimedia.org/wiki/File:%D7%90%D7%95%D7%A9%D7%A8_%D7%9B%D7%94%D7%9F.jpg) |
@@ -721,6 +798,72 @@
 | landmarks-28 | File:Burj_Khalifa_from_Safa_Park.jpg | Gfilip | CC BY-SA 4.0 | [Burj_Khalifa_from_Safa_Park.jpg](https://commons.wikimedia.org/wiki/File:Burj_Khalifa_from_Safa_Park.jpg) |
 | landmarks-29 | Sydney Opera House | BAVhah | CC BY-SA 4.0 | [Sydney_Opera_House_2026.jpg](https://commons.wikimedia.org/wiki/File:Sydney_Opera_House_2026.jpg) |
 | landmarks-30 | Stonehenge | garethwiscombe | CC BY 2.0 | [Stonehenge2007_07_30.jpg](https://commons.wikimedia.org/wiki/File:Stonehenge2007_07_30.jpg) |
+
+## movies
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| movies-1 | Titanic (1997 film) | Titanic, a production of Paramount Pictures, 20th Century Fox and Lightstorm Entertainment. | Fair use | [Titanic_(1997_film)_poster.png](https://en.wikipedia.org/wiki/File:Titanic_(1997_film)_poster.png) |
+| movies-2 | Harry Potter and the Philosopher's Stone (film) | — | Fair use | [Harry_Potter_and_the_Philosopher's_Stone_banner.jpg](https://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Philosopher%27s_Stone_banner.jpg) |
+| movies-3 | Star Wars (film) | — | Fair use | [StarWarsMoviePoster1977.jpg](https://en.wikipedia.org/wiki/File:StarWarsMoviePoster1977.jpg) |
+| movies-4 | The Lion King | — | Fair use | [The_Lion_King_poster.jpg](https://en.wikipedia.org/wiki/File:The_Lion_King_poster.jpg) |
+| movies-5 | Shrek | — | Fair use | [Shrek_(2001_animated_feature_film).jpg](https://en.wikipedia.org/wiki/File:Shrek_(2001_animated_feature_film).jpg) |
+| movies-6 | The Avengers (2012 film) | — | Fair use | [The_Avengers_(2012_film)_poster.jpg](https://en.wikipedia.org/wiki/File:The_Avengers_(2012_film)_poster.jpg) |
+| movies-7 | Toy Story | — | Fair use | [Toy_Story.jpg](https://en.wikipedia.org/wiki/File:Toy_Story.jpg) |
+| movies-8 | Jurassic Park (film) | — | Fair use | [Jurassic_Park_poster.jpg](https://en.wikipedia.org/wiki/File:Jurassic_Park_poster.jpg) |
+| movies-9 | Frozen (2013 film) | — | Fair use | [Frozen_(2013_film)_poster.jpg](https://en.wikipedia.org/wiki/File:Frozen_(2013_film)_poster.jpg) |
+| movies-10 | Avatar (2009 film) | — | Fair use | [Avatar_(2009_film)_poster.jpg](https://en.wikipedia.org/wiki/File:Avatar_(2009_film)_poster.jpg) |
+| movies-11 | The Lord of the Rings: The Fellowship of the Ring | New Line Cinema | Fair use | [Lord_Rings_Fellowship_Ring.jpg](https://en.wikipedia.org/wiki/File:Lord_Rings_Fellowship_Ring.jpg) |
+| movies-12 | Pirates of the Caribbean: The Curse of the Black Pearl | — | Fair use | [Pirates_of_the_Caribbean_-_The_Curse_of_the_Black_Pearl.png](https://en.wikipedia.org/wiki/File:Pirates_of_the_Caribbean_-_The_Curse_of_the_Black_Pearl.png) |
+| movies-13 | The Fast and the Furious (2001 film) | — | Fair use | [Fast_and_the_furious_poster.jpg](https://en.wikipedia.org/wiki/File:Fast_and_the_furious_poster.jpg) |
+| movies-14 | Barbie (film) | — | Fair use | [Barbie_2023_poster.jpg](https://en.wikipedia.org/wiki/File:Barbie_2023_poster.jpg) |
+| movies-15 | The Matrix | — | Fair use | [The_Matrix.png](https://en.wikipedia.org/wiki/File:The_Matrix.png) |
+| movies-16 | Back to the Future | — | Fair use | [Back_to_the_Future.jpg](https://en.wikipedia.org/wiki/File:Back_to_the_Future.jpg) |
+| movies-17 | Joker (2019 film) | — | Fair use | [Joker_(2019_film)_poster.jpg](https://en.wikipedia.org/wiki/File:Joker_(2019_film)_poster.jpg) |
+| movies-18 | Raiders of the Lost Ark | — | Fair use | [Raiders_of_the_Lost_Ark.jpg](https://en.wikipedia.org/wiki/File:Raiders_of_the_Lost_Ark.jpg) |
+| movies-19 | The Terminator | https://filmartgallery.com/collections/terminator-movie-posters/products/the-terminator-1 | Fair use | [The_Terminator.png](https://en.wikipedia.org/wiki/File:The_Terminator.png) |
+| movies-20 | Rocky | — | Fair use | [Rocky_poster.jpg](https://en.wikipedia.org/wiki/File:Rocky_poster.jpg) |
+| movies-21 | Forrest Gump | — | Fair use | [Forrest_Gump_poster.jpg](https://en.wikipedia.org/wiki/File:Forrest_Gump_poster.jpg) |
+| movies-22 | The Godfather | — | Fair use | [Godfather_ver1.jpg](https://en.wikipedia.org/wiki/File:Godfather_ver1.jpg) |
+| movies-23 | Jaws (film) | Roger Kastel | Public domain | [Jaws_movie_poster.jpg](https://commons.wikimedia.org/wiki/File:Jaws_movie_poster.jpg) |
+| movies-24 | Gladiator (2000 film) | — | Fair use | [Gladiator_(2000_film_poster).png](https://en.wikipedia.org/wiki/File:Gladiator_(2000_film_poster).png) |
+| movies-25 | The Dark Knight | — | Fair use | [The_Dark_Knight_(2008_film).jpg](https://en.wikipedia.org/wiki/File:The_Dark_Knight_(2008_film).jpg) |
+| movies-26 | Oppenheimer (film) | — | Fair use | [Oppenheimer_(film).jpg](https://en.wikipedia.org/wiki/File:Oppenheimer_(film).jpg) |
+| movies-27 | Inception | — | Fair use | [Inception_(2010)_theatrical_poster.jpg](https://en.wikipedia.org/wiki/File:Inception_(2010)_theatrical_poster.jpg) |
+| movies-28 | Interstellar (film) | — | Fair use | [Interstellar_film_poster.jpg](https://en.wikipedia.org/wiki/File:Interstellar_film_poster.jpg) |
+| movies-29 | Halahaka | pollinations flux | AI generated (לבדיקה) | — |
+| movies-30 | Lemon Popsicle | — | Fair use | [Lemon_Popsicle_(film_poster).jpg](https://en.wikipedia.org/wiki/File:Lemon_Popsicle_(film_poster).jpg) |
+
+## playstation
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| playstation-1 | FIFA (video game series) | pollinations flux | AI generated (לבדיקה) | — |
+| playstation-2 | Call of Duty | Scan by NYPL | Public domain | [When_duty_calls_(NYPL_Hades-1935985-2001240).jpg](https://commons.wikimedia.org/wiki/File:When_duty_calls_(NYPL_Hades-1935985-2001240).jpg) |
+| playstation-4 | Marvel's Spider-Man | Insomniac Games and Sony Interactive Entertainment | Public domain | [Spider-Man_video_game_series_logo.png](https://commons.wikimedia.org/wiki/File:Spider-Man_video_game_series_logo.png) |
+| playstation-6 | Crash Bandicoot | — | Public domain | [Crash_bandicoot_logo.png](https://commons.wikimedia.org/wiki/File:Crash_bandicoot_logo.png) |
+| playstation-7 | God of War (2018 video game) | — | Fair use | [God_of_War_4_cover.jpg](https://en.wikipedia.org/wiki/File:God_of_War_4_cover.jpg) |
+| playstation-8 | The Last of Us | Ralph Barton | Public domain | [The_lie_of_the_last_minstrel_Puck_magazine_cover_1917_May_19_cph.3b49313.jpg](https://commons.wikimedia.org/wiki/File:The_lie_of_the_last_minstrel_Puck_magazine_cover_1917_May_19_cph.3b49313.jpg) |
+| playstation-9 | NBA 2K | pollinations flux | AI generated (לבדיקה) | — |
+| playstation-10 | Uncharted | pollinations flux | AI generated (לבדיקה) | — |
+| playstation-11 | Gran Turismo 7 | — | Fair use | [Gran_Turismo_7_cover_art.jpg](https://en.wikipedia.org/wiki/File:Gran_Turismo_7_cover_art.jpg) |
+| playstation-12 | Mortal Kombat 1 | Warner Bros. Games | Fair use | [Mortal_Kombat_1_key_art.jpeg](https://en.wikipedia.org/wiki/File:Mortal_Kombat_1_key_art.jpeg) |
+| playstation-13 | Rocket League | jjdhd Beirnrj Psyonix Studios | CC BY-SA 4.0 | [Rocket_League_coverart.jpg](https://commons.wikimedia.org/wiki/File:Rocket_League_coverart.jpg) |
+| playstation-15 | Red Dead Redemption 2 | — | Fair use | [Red_Dead_Redemption_II.jpg](https://en.wikipedia.org/wiki/File:Red_Dead_Redemption_II.jpg) |
+| playstation-16 | Ratchet & Clank: Rift Apart | — | Fair use | [Ratchet_&_Clank_-_Rift_Apart.png](https://en.wikipedia.org/wiki/File:Ratchet_%26_Clank_-_Rift_Apart.png) |
+| playstation-17 | Apex Legends | EA/Respawn Entertainment | Fair use | [Apex_legends_cover.jpg](https://en.wikipedia.org/wiki/File:Apex_legends_cover.jpg) |
+| playstation-18 | Tekken 8 | Bandai Namco | Fair use | [Tekken_8_cover_art.jpg](https://en.wikipedia.org/wiki/File:Tekken_8_cover_art.jpg) |
+| playstation-19 | Spyro Reignited Trilogy | Activision | Fair use | [Spyro_Reignited_Trilogy.png](https://en.wikipedia.org/wiki/File:Spyro_Reignited_Trilogy.png) |
+| playstation-20 | Horizon Zero Dawn | — | Fair use | [Horizon_Zero_Dawn_cover_art.jpg](https://en.wikipedia.org/wiki/File:Horizon_Zero_Dawn_cover_art.jpg) |
+| playstation-21 | Ghost of Tsushima | — | Fair use | [Ghost_of_Tsushima.jpg](https://en.wikipedia.org/wiki/File:Ghost_of_Tsushima.jpg) |
+| playstation-22 | Resident Evil 4 (2023 video game) | Capcom | Fair use | [Resident_Evil_4_remake_cover_art.jpg](https://en.wikipedia.org/wiki/File:Resident_Evil_4_remake_cover_art.jpg) |
+| playstation-23 | Astro Bot | Japan Studio / Sony | Fair use | [Astro_Bot_cover_art.jpg](https://en.wikipedia.org/wiki/File:Astro_Bot_cover_art.jpg) |
+| playstation-24 | LittleBigPlanet | — | Fair use | [LBP_Stacked_Logo_500x373.png](https://en.wikipedia.org/wiki/File:LBP_Stacked_Logo_500x373.png) |
+| playstation-25 | Final Fantasy VII Remake | — | Fair use | [FFVIIRemake.png](https://en.wikipedia.org/wiki/File:FFVIIRemake.png) |
+| playstation-26 | Elden Ring | — | Fair use | [Elden_Ring_Box_art.jpg](https://en.wikipedia.org/wiki/File:Elden_Ring_Box_art.jpg) |
+| playstation-27 | Metal Gear Solid | pollinations flux | AI generated (לבדיקה) | — |
+| playstation-28 | Bloodborne | — | Fair use | [Bloodborne_Cover_Wallpaper.jpg](https://en.wikipedia.org/wiki/File:Bloodborne_Cover_Wallpaper.jpg) |
+| playstation-30 | Grand Theft Auto V | — | Fair use | [Grand_Theft_Auto_V.png](https://en.wikipedia.org/wiki/File:Grand_Theft_Auto_V.png) |
 
 ## professions
 
@@ -932,6 +1075,31 @@
 | technology-29 | Virtual reality headset | Collision Conf | CC BY 2.0 | [Collision_2024_-_VR5_3671_(53804364983).jpg](https://commons.wikimedia.org/wiki/File:Collision_2024_-_VR5_3671_(53804364983).jpg) |
 | technology-30 | File:HMV_Record_Player.jpg | Amitbalani | CC0 | [HMV_Record_Player.jpg](https://commons.wikimedia.org/wiki/File:HMV_Record_Player.jpg) |
 
+## tv-series
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| tv-series-1 | Friends | RightfulAliceRyhei | CC BY-SA 4.0 | [Friends_-_Wattpad_Original_Series_Poster.jpg](https://commons.wikimedia.org/wiki/File:Friends_-_Wattpad_Original_Series_Poster.jpg) |
+| tv-series-2 | The Simpsons | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-4 | Stranger Things | Netflix | Public domain | [Stranger_Things_logo.png](https://commons.wikimedia.org/wiki/File:Stranger_Things_logo.png) |
+| tv-series-5 | Money Heist | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-8 | Fauda | Netflix | Fair use | [Fauda.jpg](https://en.wikipedia.org/wiki/File:Fauda.jpg) |
+| tv-series-9 | The Office (American TV series) | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-11 | The Crown (TV series) | Netflix Inc. | Fair use | [The_Crown_Title_Card.jpg](https://en.wikipedia.org/wiki/File:The_Crown_Title_Card.jpg) |
+| tv-series-12 | Shtisel | — | Fair use | [Shtisel.jpg](https://en.wikipedia.org/wiki/File:Shtisel.jpg) |
+| tv-series-13 | Kupa Rashit | TaBaZzz | CC BY-SA 4.0 | [Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg](https://commons.wikimedia.org/wiki/File:Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg) |
+| tv-series-14 | Ha-Borer | JCS (production company) | Fair use | [The_Arbitrator_-_Ha-Borer.png](https://en.wikipedia.org/wiki/File:The_Arbitrator_-_Ha-Borer.png) |
+| tv-series-15 | House (TV series) | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-20 | Lost (TV series) | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-23 | Arab Labor | Heinrich-Böll-Stiftung | CC BY-SA 2.0 | [Norman_Issa_1.jpg](https://commons.wikimedia.org/wiki/File:Norman_Issa_1.jpg) |
+| tv-series-24 | Tehran (TV series) | — | Fair use | [Tehran_TV_poster.jpg](https://en.wikipedia.org/wiki/File:Tehran_TV_poster.jpg) |
+| tv-series-25 | The Good Cop (Israeli TV series) | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-26 | House of Cards (American TV series) | Self taken | Fair use | [House_of_Cards_title_card.png](https://en.wikipedia.org/wiki/File:House_of_Cards_title_card.png) |
+| tv-series-27 | Sherlock (TV series) | — | Fair use | [Sherlock_titlecard.jpg](https://en.wikipedia.org/wiki/File:Sherlock_titlecard.jpg) |
+| tv-series-28 | The Witcher (TV series) | — | Fair use | [The_Witcher_Logo.png](https://en.wikipedia.org/wiki/File:The_Witcher_Logo.png) |
+| tv-series-29 | Hatufim | — | Fair use | [Hatufim_title.jpg](https://en.wikipedia.org/wiki/File:Hatufim_title.jpg) |
+| tv-series-30 | Eretz Nehederet | Sir kiss | Public domain | [Eretz_Nehederet.JPG](https://commons.wikimedia.org/wiki/File:Eretz_Nehederet.JPG) |
+
 ## vehicles
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
@@ -1034,5 +1202,4 @@
 | world-singers-26 | Sting (musician) | CamilaAlves.raf | CC BY-SA 4.0 | [Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg) |
 | world-singers-27 | Mick Jagger | Raph_PH | CC BY 2.0 | [RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg) |
 | world-singers-28 | Jon Bon Jovi | Montclair Film | CC BY 2.0 | [NEG_0062-2_(54119957209).jpg](https://commons.wikimedia.org/wiki/File:NEG_0062-2_(54119957209).jpg) |
-| world-singers-29 | Travis Scott | pollinations flux | AI generated (לבדיקה) | — |
 | world-singers-30 | Lewis Capaldi | Raph_PH | CC BY 4.0 | [Glasto2025-41_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Glasto2025-41_(cropped).jpg) |

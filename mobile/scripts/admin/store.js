@@ -310,14 +310,31 @@ function restoreOriginal(cat, n) {
 }
 
 // ---- the Python skill (search, AI, upload, blur): one run at a time ----
-function pythonPath() {
-  if (process.env.ARENA_PYTHON) return process.env.ARENA_PYTHON;
-  const local = path.join(process.env.LOCALAPPDATA || '', 'Programs', 'Python', 'Python312', 'python.exe');
-  return fs.existsSync(local) ? local : 'python';
+// The skill needs Python 3.11+ with Pillow. Try the usual places and keep the first one that has both.
+let python;
+function findPython() {
+  if (python !== undefined) return python;
+  const local = path.join(process.env.LOCALAPPDATA || '', 'Programs', 'Python');
+  const installed = fs.existsSync(local)
+    ? fs.readdirSync(local).filter((d) => /^Python3/i.test(d)).sort().reverse().map((d) => path.join(local, d, 'python.exe')) : [];
+  const tried = [];
+  for (const exe of [process.env.ARENA_PYTHON, ...installed, 'python', 'python3'].filter(Boolean)) {
+    const probe = cp.spawnSync(exe, ['-P', '-c', 'import PIL; print(1)'], { encoding: 'utf8' });
+    if (probe.status === 0 && probe.stdout.trim() === '1') { python = { exe, tried }; return python; }
+    tried.push(`${exe}${probe.error ? ' (לא נמצא)' : ''}`);
+  }
+  python = { exe: null, tried };
+  return python;
 }
+const pythonHelp = () => {
+  const { tried } = findPython();
+  return `לא נמצא Python עם Pillow (נבדקו: ${tried.join(', ') || 'כלום'}). פתחו טרמינל והריצו: python -m pip install --user pillow ואז הפעילו מחדש את הלוח.`;
+};
 function runSkill(args) {
   return new Promise((resolve) => {
-    const child = cp.spawn(pythonPath(), ['-P', P.skill, ...args], { cwd: REPO, env: { ...process.env, PYTHONIOENCODING: 'utf-8' } });
+    const py = findPython();
+    if (!py.exe) return resolve({ ok: false, lines: [pythonHelp()] });
+    const child = cp.spawn(py.exe, ['-P', P.skill, ...args], { cwd: REPO, env: { ...process.env, PYTHONIOENCODING: 'utf-8' } });
     let out = '';
     child.stdout.on('data', (d) => { out += d; });
     child.stderr.on('data', (d) => { out += d; });
@@ -334,5 +351,5 @@ function runSkill(args) {
 module.exports = {
   Bad, P, MIN_PICTURES, snapshot, rebuild, imageFile, revealFile,
   createCategory, updateCategory, deleteCategory, moveCategory,
-  addItem, updateItem, deleteItem, moveItem, restoreOriginal, runSkill,
+  addItem, updateItem, deleteItem, moveItem, restoreOriginal, runSkill, findPython, pythonHelp,
 };

@@ -103,4 +103,8 @@ const server = http.createServer((req, res) => {
     send(res, 500, { error: 'שגיאה בשרת: ' + e.message });
   });
 });
-server.listen(PORT, '127.0.0.1', () => console.log(`The Arena admin: http://localhost:${PORT}`));
+server.listen(PORT, '127.0.0.1', () => {
+  console.log(`The Arena admin: http://localhost:${PORT}`);
+  const py = store.findPython();
+  console.log(py.exe ? `Python for pictures: ${py.exe}` : `WARNING: ${store.pythonHelp()}`);
+});

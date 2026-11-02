@@ -650,7 +650,8 @@
   "license": "Public domain",
   "author": "The original uploader was Tkgd2007 at English Wikipedia.",
   "page": "https://commons.wikimedia.org/wiki/File:Los_Angeles_Lakers_logo.svg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.123,0.342,0.794,0.297"
  },
  "basketball-teams-2": {
   "source": "Chicago Bulls",
@@ -713,7 +714,8 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Hapoel_Tel_Aviv.svg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.218,0.579,0.531,0.245"
  },
  "basketball-teams-9": {
   "source": "Hapoel Jerusalem B.C.",
@@ -757,8 +759,7 @@
   "file": "Brooklyn_Nets_primary_icon_logo_2024.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Brooklyn_Nets_primary_icon_logo_2024.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Brooklyn_Nets_primary_icon_logo_2024.svg"
  },
  "basketball-teams-14": {
   "source": "Toronto Raptors",
@@ -2887,10 +2888,11 @@
  },
  "food-13": {
   "source": "Salad",
-  "file": "Salad_platter.jpg",
-  "license": "GFDL 1.2",
-  "author": "fir0002 flagstaffotos [at] gmail.com Canon 20D + Canon 17-40mm f/4 L",
-  "page": "https://commons.wikimedia.org/wiki/File:Salad_platter.jpg"
+  "via": "user",
+  "file": "arena-upload-1793617030500-13",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "food-14": {
   "source": "Pasta",
@@ -5563,41 +5565,61 @@
  },
  "playstation-1": {
   "source": "FIFA (video game series)",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793617295882-1",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "Video game cover art for FIFA (video game series), no title text",
-  "review": true,
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.122,0.650,0.724,0.108"
  },
  "playstation-2": {
   "source": "Call of Duty",
-  "via": "commons",
-  "file": "When_duty_calls_(NYPL_Hades-1935985-2001240).jpg",
-  "license": "Public domain",
-  "author": "Scan by NYPL",
-  "page": "https://commons.wikimedia.org/wiki/File:When_duty_calls_(NYPL_Hades-1935985-2001240).jpg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793617338757-2",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.149,0.395,0.726,0.105"
+ },
+ "playstation-3": {
+  "source": "Fortnite",
+  "via": "user",
+  "file": "arena-upload-1793617393657-3",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.091,0.472,0.827,0.199"
  },
  "playstation-4": {
   "source": "Marvel's Spider-Man",
-  "via": "wikipedia",
-  "file": "Spider-Man_video_game_series_logo.png",
-  "license": "Public domain",
-  "author": "Insomniac Games and Sony Interactive Entertainment",
-  "page": "https://commons.wikimedia.org/wiki/File:Spider-Man_video_game_series_logo.png",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793617441494-4",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.047,0.086,0.907,0.169"
+ },
+ "playstation-5": {
+  "source": "Minecraft",
+  "via": "user",
+  "file": "arena-upload-1793617480785-5",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.132,0.169,0.734,0.111"
  },
  "playstation-6": {
   "source": "Crash Bandicoot",
-  "via": "wikipedia",
-  "file": "Crash_bandicoot_logo.png",
-  "license": "Public domain",
+  "via": "user",
+  "file": "arena-upload-1793617541961-6",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://commons.wikimedia.org/wiki/File:Crash_bandicoot_logo.png",
-  "needbox": true
+  "page": ""
  },
  "playstation-7": {
   "source": "God of War (2018 video game)",
@@ -5606,27 +5628,28 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:God_of_War_4_cover.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.082,0.102,0.850,0.138"
  },
  "playstation-8": {
   "source": "The Last of Us",
-  "via": "commons",
-  "file": "The_lie_of_the_last_minstrel_Puck_magazine_cover_1917_May_19_cph.3b49313.jpg",
-  "license": "Public domain",
-  "author": "Ralph Barton",
-  "page": "https://commons.wikimedia.org/wiki/File:The_lie_of_the_last_minstrel_Puck_magazine_cover_1917_May_19_cph.3b49313.jpg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793617588459-8",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.030,0.084,0.299,0.451"
  },
  "playstation-9": {
   "source": "NBA 2K",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793617629908-9",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "Video game cover art for NBA 2K, no title text",
-  "review": true,
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.042,0.086,0.909,0.113"
  },
  "playstation-10": {
   "source": "Uncharted",
@@ -5636,17 +5659,17 @@
   "author": "pollinations flux",
   "page": "",
   "prompt": "Video game cover art for Uncharted, no title text",
-  "review": true,
-  "needbox": true
+  "review": true
  },
  "playstation-11": {
   "source": "Gran Turismo 7",
-  "via": "wikipedia",
-  "file": "Gran_Turismo_7_cover_art.jpg",
-  "license": "Fair use",
+  "via": "user",
+  "file": "arena-upload-1793617769871-11",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Gran_Turismo_7_cover_art.jpg",
-  "needbox": true
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.171,0.404,0.666,0.361"
  },
  "playstation-12": {
   "source": "Mortal Kombat 1",
@@ -5655,7 +5678,8 @@
   "license": "Fair use",
   "author": "Warner Bros. Games",
   "page": "https://en.wikipedia.org/wiki/File:Mortal_Kombat_1_key_art.jpeg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.071,0.546,0.875,0.081"
  },
  "playstation-13": {
   "source": "Rocket League",
@@ -5664,7 +5688,18 @@
   "license": "CC BY-SA 4.0",
   "author": "jjdhd Beirnrj Psyonix Studios",
   "page": "https://commons.wikimedia.org/wiki/File:Rocket_League_coverart.jpg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "-0.001,0.320,1.045,0.715"
+ },
+ "playstation-14": {
+  "source": "Assassin's Creed",
+  "via": "user",
+  "file": "arena-upload-1793618052615-14",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.208,0.160,0.528,0.100"
  },
  "playstation-15": {
   "source": "Red Dead Redemption 2",
@@ -5673,7 +5708,8 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Red_Dead_Redemption_II.jpg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "0.003,0.004,1.070,0.754"
  },
  "playstation-16": {
   "source": "Ratchet & Clank: Rift Apart",
@@ -5682,99 +5718,100 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Ratchet_%26_Clank_-_Rift_Apart.png",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.080,0.093,0.817,0.192"
  },
  "playstation-17": {
-  "source": "Apex Legends",
-  "via": "wikipedia",
-  "file": "Apex_legends_cover.jpg",
-  "license": "Fair use",
-  "author": "EA/Respawn Entertainment",
-  "page": "https://en.wikipedia.org/wiki/File:Apex_legends_cover.jpg",
-  "needbox": true
- },
- "playstation-18": {
   "source": "Tekken 8",
   "via": "wikipedia",
   "file": "Tekken_8_cover_art.jpg",
   "license": "Fair use",
   "author": "Bandai Namco",
   "page": "https://en.wikipedia.org/wiki/File:Tekken_8_cover_art.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.000,0.463,1.357,0.107"
  },
- "playstation-19": {
+ "playstation-18": {
   "source": "Spyro Reignited Trilogy",
   "via": "wikipedia",
   "file": "Spyro_Reignited_Trilogy.png",
   "license": "Fair use",
   "author": "Activision",
   "page": "https://en.wikipedia.org/wiki/File:Spyro_Reignited_Trilogy.png",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.280,0.062,0.453,0.219"
  },
- "playstation-20": {
+ "playstation-19": {
   "source": "Horizon Zero Dawn",
   "via": "wikipedia",
   "file": "Horizon_Zero_Dawn_cover_art.jpg",
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Horizon_Zero_Dawn_cover_art.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.097,0.035,0.841,0.191"
  },
- "playstation-21": {
+ "playstation-20": {
   "source": "Ghost of Tsushima",
   "via": "wikipedia",
   "file": "Ghost_of_Tsushima.jpg",
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Ghost_of_Tsushima.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.115,0.456,0.788,0.173"
  },
- "playstation-22": {
+ "playstation-21": {
   "source": "Resident Evil 4 (2023 video game)",
   "via": "wikipedia",
   "file": "Resident_Evil_4_remake_cover_art.jpg",
   "license": "Fair use",
   "author": "Capcom",
   "page": "https://en.wikipedia.org/wiki/File:Resident_Evil_4_remake_cover_art.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.177,0.457,0.649,0.085"
  },
- "playstation-23": {
+ "playstation-22": {
   "source": "Astro Bot",
   "via": "wikipedia",
   "file": "Astro_Bot_cover_art.jpg",
   "license": "Fair use",
   "author": "Japan Studio / Sony",
   "page": "https://en.wikipedia.org/wiki/File:Astro_Bot_cover_art.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.235,0.412,0.519,0.283"
+ },
+ "playstation-23": {
+  "source": "LittleBigPlanet",
+  "via": "user",
+  "file": "arena-upload-1793618266230-23",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.414,0.253,0.420,0.191"
  },
  "playstation-24": {
-  "source": "LittleBigPlanet",
-  "via": "wikipedia",
-  "file": "LBP_Stacked_Logo_500x373.png",
-  "license": "Fair use",
-  "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:LBP_Stacked_Logo_500x373.png",
-  "needbox": true
- },
- "playstation-25": {
   "source": "Final Fantasy VII Remake",
   "via": "wikipedia",
   "file": "FFVIIRemake.png",
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:FFVIIRemake.png",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.438,0.196,0.548,0.083"
  },
- "playstation-26": {
+ "playstation-25": {
   "source": "Elden Ring",
   "via": "wikipedia",
   "file": "Elden_Ring_Box_art.jpg",
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Elden_Ring_Box_art.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.077,0.161,0.859,0.110"
  },
- "playstation-27": {
+ "playstation-26": {
   "source": "Metal Gear Solid",
   "via": "ai",
   "file": "",
@@ -5782,26 +5819,47 @@
   "author": "pollinations flux",
   "page": "",
   "prompt": "Video game cover art for Metal Gear Solid, no title text",
-  "review": true,
-  "needbox": true
+  "review": true
+ },
+ "playstation-27": {
+  "source": "Bloodborne",
+  "via": "user",
+  "file": "arena-upload-1793618384537-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.141,0.538,0.763,0.105"
  },
  "playstation-28": {
-  "source": "Bloodborne",
-  "via": "wikipedia",
-  "file": "Bloodborne_Cover_Wallpaper.jpg",
-  "license": "Fair use",
+  "source": "Battlefield (video game series)",
+  "via": "user",
+  "file": "arena-upload-1793618444511-28",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Bloodborne_Cover_Wallpaper.jpg",
-  "needbox": true
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.140,0.299,0.718,0.091"
  },
- "playstation-30": {
+ "playstation-29": {
   "source": "Grand Theft Auto V",
   "via": "wikipedia",
   "file": "Grand_Theft_Auto_V.png",
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Grand_Theft_Auto_V.png",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.172,0.233,0.586,0.360"
+ },
+ "playstation-30": {
+  "source": "פריט חדש 30",
+  "via": "user",
+  "file": "arena-upload-1793618514650-30",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.128,0.111,0.764,0.145"
  },
  "professions-1": {
   "source": "Stethoscope",
@@ -6558,10 +6616,11 @@
  },
  "sports-10": {
   "source": "File:Skiing_in_Ischgl.jpg",
-  "file": "Skiing_in_Ischgl.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Bugsybanana",
-  "page": "https://commons.wikimedia.org/wiki/File:Skiing_in_Ischgl.jpg"
+  "via": "user",
+  "file": "arena-upload-1793616822515-10",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "sports-11": {
   "source": "Surfing",
@@ -6571,25 +6630,26 @@
   "page": "https://commons.wikimedia.org/wiki/File:Mavericks_Surf_Contest_2010b.jpg"
  },
  "sports-12": {
-  "source": "Badminton",
-  "file": "Olympics_2012_Mixed_Doubles_Final.jpg",
-  "license": "CC BY-SA 2.0",
-  "author": "Peter",
-  "page": "https://commons.wikimedia.org/wiki/File:Olympics_2012_Mixed_Doubles_Final.jpg"
- },
- "sports-13": {
   "source": "Volleyball",
   "file": "Brasil_vence_a_França_no_vôlei_masculino_1037987-15.08.2016_ffz-6369.jpg",
   "license": "CC BY 3.0 br",
   "author": "Fernando Frazão/Agência Brasil",
   "page": "https://commons.wikimedia.org/wiki/File:Brasil_vence_a_Fran%C3%A7a_no_v%C3%B4lei_masculino_1037987-15.08.2016_ffz-6369.jpg"
  },
- "sports-14": {
+ "sports-13": {
   "source": "American football",
-  "file": "Larry_Fitzgerald_catches_TD_at_2009_Pro_Bowl.jpg",
-  "license": "Public domain",
-  "author": "Mass Communication Specialist 2nd Class Michael A. Lantron, USN",
-  "page": "https://commons.wikimedia.org/wiki/File:Larry_Fitzgerald_catches_TD_at_2009_Pro_Bowl.jpg"
+  "via": "user",
+  "file": "arena-upload-1793616902384-13",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "sports-14": {
+  "source": "Badminton",
+  "file": "Olympics_2012_Mixed_Doubles_Final.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Peter",
+  "page": "https://commons.wikimedia.org/wiki/File:Olympics_2012_Mixed_Doubles_Final.jpg"
  },
  "sports-15": {
   "source": "Baseball",
@@ -6606,39 +6666,40 @@
   "page": "https://commons.wikimedia.org/wiki/File:Mondial_Ping_-_Men%27s_Singles_-_Round_4_-_Kenta_Matsudaira-Vladimir_Samsonov_-_57.jpg"
  },
  "sports-17": {
+  "source": "Padel",
+  "via": "user",
+  "file": "arena-upload-1793616714223-21",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "sports-18": {
   "source": "Ice hockey",
   "file": "Pittsburgh_Penguins,_Washington_Capitals,_Bryan_Rust_(33744033514).jpg",
   "license": "CC BY-SA 2.0",
   "author": "Keith Allison from Hanover, MD, USA",
   "page": "https://commons.wikimedia.org/wiki/File:Pittsburgh_Penguins,_Washington_Capitals,_Bryan_Rust_(33744033514).jpg"
  },
- "sports-18": {
+ "sports-19": {
   "source": "Swimming (sport)",
   "file": "Depart4x100.jpg",
   "license": "CC BY-SA 3.0",
   "author": "Jmex60",
   "page": "https://commons.wikimedia.org/wiki/File:Depart4x100.jpg"
  },
- "sports-19": {
+ "sports-20": {
   "source": "Road bicycle racing",
   "file": "Épreuve_Cyclisme_Route_Course_Ligne_Masculine_Jeux_Olympiques_2024_Rue_Saint_Éleuthère_-_Paris_XVIII_(FR75)_-_2024-08-03_-_51.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Chabe01",
   "page": "https://commons.wikimedia.org/wiki/File:%C3%89preuve_Cyclisme_Route_Course_Ligne_Masculine_Jeux_Olympiques_2024_Rue_Saint_%C3%89leuth%C3%A8re_-_Paris_XVIII_(FR75)_-_2024-08-03_-_51.jpg"
  },
- "sports-20": {
+ "sports-21": {
   "source": "Olympic weightlifting",
   "file": "Kuo_Hsing-chun_at_her_final_round_in_2024_Summer_Olympics_2024-08-09.jpg",
   "license": "Attribution",
   "author": "Unknown authorUnknown author",
   "page": "https://commons.wikimedia.org/wiki/File:Kuo_Hsing-chun_at_her_final_round_in_2024_Summer_Olympics_2024-08-09.jpg"
- },
- "sports-21": {
-  "source": "Wrestling",
-  "file": "Wrestling_at_the_2016_Summer_Olympics,_Gazyumov_vs_Andriitsev_6.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Ilgar Jafarov",
-  "page": "https://commons.wikimedia.org/wiki/File:Wrestling_at_the_2016_Summer_Olympics,_Gazyumov_vs_Andriitsev_6.jpg"
  },
  "sports-22": {
   "source": "File:Skateboarding_kickflip.jpg",
@@ -6677,10 +6738,11 @@
  },
  "sports-27": {
   "source": "Handball",
-  "file": "SAP_Arena_Handball_ausverkauft.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "D.roller.saparena",
-  "page": "https://commons.wikimedia.org/wiki/File:SAP_Arena_Handball_ausverkauft.jpg"
+  "via": "user",
+  "file": "arena-upload-1793616765726-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "sports-28": {
   "source": "File:Cherry_Point_hosts_successful_Christmas_toy_drive_(5)_350607.jpg",

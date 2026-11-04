@@ -457,6 +457,14 @@
   "author": "WhatsApp",
   "page": "https://commons.wikimedia.org/wiki/File:WhatsApp_Logo_green.svg"
  },
+ "apps-2": {
+  "source": "File:Instagram-icon.png",
+  "via": "user",
+  "file": "arena-upload-1793626650813-2",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
  "apps-3": {
   "source": "Facebook",
   "via": "wikipedia",
@@ -583,6 +591,14 @@
   "author": "Uber Technologies Inc.",
   "page": "https://commons.wikimedia.org/wiki/File:Uber_App_Icon.svg"
  },
+ "apps-18": {
+  "source": "Zoom (software)",
+  "via": "user",
+  "file": "arena-upload-1793626720361-18",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
  "apps-19": {
   "source": "Google Chrome",
   "via": "wikipedia",
@@ -599,6 +615,14 @@
   "author": "Shazam",
   "page": "https://commons.wikimedia.org/wiki/File:Shazam_icon.svg"
  },
+ "apps-21": {
+  "source": "Discord",
+  "via": "user",
+  "file": "arena-upload-1793626755590-21",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
  "apps-22": {
   "source": "Moovit",
   "via": "wikipedia",
@@ -606,6 +630,14 @@
   "license": "CC0",
   "author": "Moovit Inc",
   "page": "https://commons.wikimedia.org/wiki/File:Moovit-app-logo.png"
+ },
+ "apps-23": {
+  "source": "Bit (app)",
+  "via": "user",
+  "file": "arena-upload-1793626818827-23",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "apps-24": {
   "source": "PayBox",
@@ -633,6 +665,22 @@
   "author": "OpenAI",
   "page": "https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025_(symbol).svg"
  },
+ "apps-27": {
+  "source": "Duolingo",
+  "via": "user",
+  "file": "arena-upload-1793626889503-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "apps-28": {
+  "source": "Booking.com",
+  "via": "user",
+  "file": "arena-upload-1793626951097-28",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
  "apps-29": {
   "source": "Airbnb",
   "via": "wikipedia",
@@ -643,15 +691,21 @@
   "hidden": "crop",
   "crop": "0.03,0.34,0.3,0.33"
  },
+ "apps-30": {
+  "source": "Canva",
+  "via": "user",
+  "file": "arena-upload-1793626925328-30",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
  "basketball-teams-1": {
   "source": "Los Angeles Lakers",
   "via": "wikipedia",
   "file": "Los_Angeles_Lakers_logo.svg",
   "license": "Public domain",
   "author": "The original uploader was Tkgd2007 at English Wikipedia.",
-  "page": "https://commons.wikimedia.org/wiki/File:Los_Angeles_Lakers_logo.svg",
-  "hidden": "blur",
-  "blur": "0.123,0.342,0.794,0.297"
+  "page": "https://commons.wikimedia.org/wiki/File:Los_Angeles_Lakers_logo.svg"
  },
  "basketball-teams-2": {
   "source": "Chicago Bulls",
@@ -659,8 +713,7 @@
   "file": "Logo_of_Chicago_Bulls.svg",
   "license": "Public domain",
   "author": "Dean Perry Wessel (1920-2004) or Ted Drake (1927-2000)",
-  "page": "https://commons.wikimedia.org/wiki/File:Logo_of_Chicago_Bulls.svg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Logo_of_Chicago_Bulls.svg"
  },
  "basketball-teams-3": {
   "source": "Boston Celtics",
@@ -668,8 +721,7 @@
   "file": "Boston_Celtics.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Boston_Celtics.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Boston_Celtics.svg"
  },
  "basketball-teams-4": {
   "source": "Golden State Warriors",
@@ -677,8 +729,7 @@
   "file": "Golden_State_Warriors_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Golden_State_Warriors_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Golden_State_Warriors_logo.svg"
  },
  "basketball-teams-5": {
   "source": "Maccabi Tel Aviv B.C.",
@@ -687,7 +738,8 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Maccabi_Tel_Aviv_BC_logo.svg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "ring:0.489,0.507,0.427,0.265"
  },
  "basketball-teams-6": {
   "source": "Miami Heat",
@@ -696,7 +748,8 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Miami_Heat_logo.svg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "0.003,-0.002,1.138,0.731"
  },
  "basketball-teams-7": {
   "source": "New York Knicks",
@@ -704,8 +757,7 @@
   "file": "New_York_Knicks_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:New_York_Knicks_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:New_York_Knicks_logo.svg"
  },
  "basketball-teams-8": {
   "source": "Hapoel Tel Aviv B.C.",
@@ -713,9 +765,7 @@
   "file": "Hapoel_Tel_Aviv.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Hapoel_Tel_Aviv.svg",
-  "hidden": "blur",
-  "blur": "0.218,0.579,0.531,0.245"
+  "page": "https://en.wikipedia.org/wiki/File:Hapoel_Tel_Aviv.svg"
  },
  "basketball-teams-9": {
   "source": "Hapoel Jerusalem B.C.",
@@ -723,8 +773,7 @@
   "file": "Hapoel_Jerusalem_B.C._logo.png",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Hapoel_Jerusalem_B.C._logo.png",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Hapoel_Jerusalem_B.C._logo.png"
  },
  "basketball-teams-10": {
   "source": "San Antonio Spurs",
@@ -732,8 +781,7 @@
   "file": "San_Antonio_Spurs.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:San_Antonio_Spurs.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:San_Antonio_Spurs.svg"
  },
  "basketball-teams-11": {
   "source": "Houston Rockets",
@@ -741,8 +789,7 @@
   "file": "Houston_Rockets.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Houston_Rockets.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Houston_Rockets.svg"
  },
  "basketball-teams-12": {
   "source": "Dallas Mavericks",
@@ -750,8 +797,7 @@
   "file": "Dallas_Mavericks_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Dallas_Mavericks_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Dallas_Mavericks_logo.svg"
  },
  "basketball-teams-13": {
   "source": "Brooklyn Nets",
@@ -767,8 +813,7 @@
   "file": "Toronto_Raptors_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Toronto_Raptors_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Toronto_Raptors_logo.svg"
  },
  "basketball-teams-15": {
   "source": "Phoenix Suns",
@@ -776,8 +821,7 @@
   "file": "Phoenix_Suns_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Phoenix_Suns_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Phoenix_Suns_logo.svg"
  },
  "basketball-teams-16": {
   "source": "Philadelphia 76ers",
@@ -785,8 +829,7 @@
   "file": "Philadelphia_76ers_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Philadelphia_76ers_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Philadelphia_76ers_logo.svg"
  },
  "basketball-teams-17": {
   "source": "Milwaukee Bucks",
@@ -794,8 +837,7 @@
   "file": "Milwaukee_Bucks_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Milwaukee_Bucks_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Milwaukee_Bucks_logo.svg"
  },
  "basketball-teams-18": {
   "source": "Denver Nuggets",
@@ -803,8 +845,7 @@
   "file": "Denver_Nuggets.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Denver_Nuggets.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Denver_Nuggets.svg"
  },
  "basketball-teams-19": {
   "source": "Cleveland Cavaliers",
@@ -812,8 +853,7 @@
   "file": "Cleveland_Cavaliers_logo.svg",
   "license": "Public domain",
   "author": "Cleveland Cavaliers. The original uploader was Gus Polly at English Wikipedia.. Later version(s) were uploaded by Eureka",
-  "page": "https://commons.wikimedia.org/wiki/File:Cleveland_Cavaliers_logo.svg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Cleveland_Cavaliers_logo.svg"
  },
  "basketball-teams-20": {
   "source": "Oklahoma City Thunder",
@@ -821,8 +861,7 @@
   "file": "Oklahoma_City_Thunder.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Oklahoma_City_Thunder.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Oklahoma_City_Thunder.svg"
  },
  "basketball-teams-21": {
   "source": "Orlando Magic",
@@ -830,8 +869,7 @@
   "file": "Orlando_Magic_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Orlando_Magic_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Orlando_Magic_logo.svg"
  },
  "basketball-teams-22": {
   "source": "Atlanta Hawks",
@@ -839,8 +877,7 @@
   "file": "Atlanta_Hawks_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Atlanta_Hawks_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Atlanta_Hawks_logo.svg"
  },
  "basketball-teams-23": {
   "source": "Memphis Grizzlies",
@@ -848,8 +885,7 @@
   "file": "Memphis_Grizzlies.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Memphis_Grizzlies.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Memphis_Grizzlies.svg"
  },
  "basketball-teams-24": {
   "source": "Charlotte Hornets",
@@ -857,8 +893,7 @@
   "file": "Charlotte_Hornets_(2014).svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Charlotte_Hornets_(2014).svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Charlotte_Hornets_(2014).svg"
  },
  "basketball-teams-25": {
   "source": "Portland Trail Blazers",
@@ -866,8 +901,7 @@
   "file": "Portland_Trail_Blazers_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Portland_Trail_Blazers_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Portland_Trail_Blazers_logo.svg"
  },
  "basketball-teams-26": {
   "source": "Indiana Pacers",
@@ -875,8 +909,7 @@
   "file": "Indiana_Pacers.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Indiana_Pacers.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Indiana_Pacers.svg"
  },
  "basketball-teams-27": {
   "source": "Panathinaikos B.C.",
@@ -884,8 +917,7 @@
   "file": "Panathinaikos_BC_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Panathinaikos_BC_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Panathinaikos_BC_logo.svg"
  },
  "basketball-teams-28": {
   "source": "Olympiacos B.C.",
@@ -893,8 +925,7 @@
   "file": "Olympiacos_BC_logo.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Olympiacos_BC_logo.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Olympiacos_BC_logo.svg"
  },
  "basketball-teams-29": {
   "source": "AS Monaco Basket",
@@ -902,8 +933,7 @@
   "file": "AS_Monaco_Basket.svg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:AS_Monaco_Basket.svg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:AS_Monaco_Basket.svg"
  },
  "basketball-teams-30": {
   "source": "Real Madrid Baloncesto",
@@ -911,8 +941,7 @@
   "file": "Real_Madrid_Baloncesto.png",
   "license": "Fair use",
   "author": "Real Madrid Baloncesto",
-  "page": "https://en.wikipedia.org/wiki/File:Real_Madrid_Baloncesto.png",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Real_Madrid_Baloncesto.png"
  },
  "birds-1": {
   "source": "Chicken",
@@ -1130,71 +1159,65 @@
   "file": "Apple_Computer_Logo_rainbow.svg",
   "license": "Public domain",
   "author": "Rob Janoff",
-  "page": "https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg"
  },
  "brands-2": {
   "source": "McDonald's",
-  "via": "wikipedia",
-  "file": "McDonald's_1948_logo.png",
-  "license": "Public domain",
-  "author": "McDonald's",
-  "page": "https://commons.wikimedia.org/wiki/File:McDonald%27s_1948_logo.png",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793619868493-2",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-3": {
   "source": "Starbucks",
-  "via": "wikipedia",
-  "file": "Starbucks_Coffee_Logo.svg",
-  "license": "Fair use",
+  "via": "user",
+  "file": "arena-upload-1793619949033-3",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Starbucks_Coffee_Logo.svg",
-  "needbox": true
+  "page": ""
  },
  "brands-4": {
   "source": "Pepsi",
-  "via": "wikipedia",
-  "file": "Pepsi_Cola_logo_1902.svg",
-  "license": "Public domain",
-  "author": "Unknown (Vector graphics image by Simtropolitan)",
-  "page": "https://commons.wikimedia.org/wiki/File:Pepsi_Cola_logo_1902.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793619982038-4",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-5": {
   "source": "Microsoft",
-  "via": "wikipedia",
-  "file": "Microsoft_Logo_Historical.svg",
-  "license": "Public domain",
-  "author": "The original uploader was Richard Abendroth at German Wikipedia.",
-  "page": "https://commons.wikimedia.org/wiki/File:Microsoft_logo_(1982).svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793620019631-5",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-6": {
   "source": "Google",
-  "via": "wikipedia",
-  "file": "Google2013logo.svg",
-  "license": "Public domain",
-  "author": "Google INC",
-  "page": "https://commons.wikimedia.org/wiki/File:Google2013logo.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793620067660-6",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-7": {
   "source": "Shell plc",
-  "via": "wikipedia",
-  "file": "Logo_Shell_1973.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Hirondus",
-  "page": "https://commons.wikimedia.org/wiki/File:Logo_Shell_1973.jpg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793620092114-7",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-8": {
   "source": "KFC",
-  "via": "wikipedia",
-  "file": "Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg",
-  "license": "CC BY 4.0",
-  "author": "Ktkvtsh",
-  "page": "https://commons.wikimedia.org/wiki/File:Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793625935610-8",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "hidden": "blur",
+  "blur": "0.600,0.462,0.316,0.106"
  },
  "brands-9": {
   "source": "PlayStation",
@@ -1202,8 +1225,7 @@
   "file": "PlayStation_Studios_logo_with_a_black_center_frame.svg",
   "license": "Public domain",
   "author": "Sony Interactive Entertainment",
-  "page": "https://commons.wikimedia.org/wiki/File:PlayStation_Studios_logo_with_a_black_center_frame.svg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:PlayStation_Studios_logo_with_a_black_center_frame.svg"
  },
  "brands-10": {
   "source": "Xbox",
@@ -1212,25 +1234,24 @@
   "license": "PD",
   "author": "Microsoft",
   "page": "https://en.wikipedia.org/wiki/File:XBOX_logo_(2026).png",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.377,0.422,0.559,0.167"
  },
  "brands-11": {
   "source": "Android (operating system)",
-  "via": "wikipedia",
-  "file": "Android_2023_3D_logo_and_wordmark.svg",
-  "license": "CC BY 3.0",
-  "author": "Android",
-  "page": "https://commons.wikimedia.org/wiki/File:Android_2023_3D_logo_and_wordmark.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793625799239-11",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-12": {
   "source": "Mastercard",
-  "via": "wikipedia",
-  "file": "MasterCard_1979_logo.svg",
-  "license": "Public domain",
-  "author": "http://logos.wikia.com/wiki/User:DonDonP1",
-  "page": "https://commons.wikimedia.org/wiki/File:MasterCard_1979_logo.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793625826596-12",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-13": {
   "source": "Pizza Hut",
@@ -1239,15 +1260,17 @@
   "license": "Public domain",
   "author": "Pizza Hut",
   "page": "https://commons.wikimedia.org/wiki/File:Pizza_Hut_international_logo,_2008%E2%80%932016.svg",
-  "needbox": true
+  "hidden": "crop",
+  "blur": "0.001,-0.002,1.093,0.657",
+  "crop": "0.001,0.002,1.101,0.692"
  },
  "brands-14": {
   "source": "Domino's",
-  "via": "wikipedia",
-  "file": "Domino’s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg",
-  "license": "CC0",
-  "author": "MultiEditor03",
-  "page": "https://commons.wikimedia.org/wiki/File:Domino%E2%80%99s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg",
+  "via": "user",
+  "file": "arena-upload-1793625904334-14",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
   "needbox": true
  },
  "brands-15": {
@@ -1257,7 +1280,8 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:RedBullEnergyDrink.svg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "0.004,0.451,1.182,0.637"
  },
  "brands-16": {
   "source": "Firefox",
@@ -1265,26 +1289,23 @@
   "file": "Firefox_Nightly_Logo,_2017.svg",
   "license": "CC BY-SA 3.0",
   "author": "Mozilla Corporation",
-  "page": "https://commons.wikimedia.org/wiki/File:Firefox_Nightly_logo,_2017.svg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Firefox_Nightly_logo,_2017.svg"
  },
  "brands-17": {
   "source": "Vodafone",
-  "via": "wikipedia",
-  "file": "Vodafone_1984_logo.svg",
-  "license": "PD",
-  "author": "Vodafone",
-  "page": "https://en.wikipedia.org/wiki/File:Vodafone_1984_logo.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793625991572-17",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-18": {
   "source": "Michelin",
-  "via": "wikipedia",
-  "file": "Siège_de_Michelin_à_Clermont-Ferrand_II.jpg",
-  "license": "CC-BY-SA-4.0",
-  "author": "Cyril5C",
-  "page": "https://en.wikipedia.org/wiki/File:Si%C3%A8ge_de_Michelin_%C3%A0_Clermont-Ferrand_II.jpg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626015408-18",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-19": {
   "source": "Nestlé",
@@ -1293,16 +1314,16 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Nestl%C3%A9.svg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "-0.001,0.002,1.082,0.696"
  },
  "brands-20": {
   "source": "Baskin-Robbins",
-  "via": "wikipedia",
-  "file": "Baskin-Robbins_logo_2022.svg",
-  "license": "Public domain",
-  "author": "Baskin-Robbins",
-  "page": "https://commons.wikimedia.org/wiki/File:Baskin-Robbins_logo_2022.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626062042-20",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-21": {
   "source": "Taco Bell",
@@ -1311,79 +1332,72 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Taco_Bell_2023.svg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "-0.001,0.011,1.078,0.811"
  },
  "brands-22": {
   "source": "Motorola",
-  "via": "wikipedia",
-  "file": "Motorola-Logo.svg",
-  "license": "Public domain",
-  "author": "Unknown authorUnknown author",
-  "page": "https://commons.wikimedia.org/wiki/File:Motorola-Logo.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626133297-22",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-23": {
   "source": "Paramount Pictures",
-  "via": "wikipedia",
-  "file": "Paramount_Pictures_logo_(2010).jpg",
-  "license": "Fair use",
-  "author": "Paramount Pictures",
-  "page": "https://en.wikipedia.org/wiki/File:Paramount_Pictures_logo_(2010).jpg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626207733-23",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-24": {
   "source": "Warner Bros.",
-  "via": "wikipedia",
-  "file": "Warner_Music_Group_logo_(2021).svg",
-  "license": "Public domain",
-  "author": "™/®Warner Music Group Corp.",
-  "page": "https://commons.wikimedia.org/wiki/File:Warner_Music_Group_logo_(2021).svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626233218-24",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-25": {
   "source": "The Walt Disney Company",
-  "via": "wikipedia",
-  "file": "The_Walt_Disney_company_logo.svg",
-  "license": "Public domain",
-  "author": "Disney Enterprises, Inc.",
-  "page": "https://commons.wikimedia.org/wiki/File:The_Walt_Disney_company_logo.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626267288-25",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-26": {
   "source": "NBC",
-  "via": "wikipedia",
-  "file": "Comcast_NBCUniversal_logo.svg",
-  "license": "Public domain",
-  "author": "By username Ragilnih, For the logo, NBCUniversal and Comcast.",
-  "page": "https://commons.wikimedia.org/wiki/File:Comcast_NBCUniversal_logo.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626290076-26",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-27": {
   "source": "CBS",
-  "via": "wikipedia",
-  "file": "CBS_logo_(2020).svg",
-  "license": "Public domain",
-  "author": "CBS Broadcasting Inc.",
-  "page": "https://commons.wikimedia.org/wiki/File:CBS_logo_(2020).svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626406239-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-28": {
   "source": "Monster Energy",
-  "via": "wikipedia",
-  "file": "Logo_Monster_Energy.webp",
-  "license": "Public domain",
+  "via": "user",
+  "file": "arena-upload-1793626362212-28",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://commons.wikimedia.org/wiki/File:Logo_Monster_Energy.webp",
-  "needbox": true
+  "page": ""
  },
  "brands-29": {
   "source": "Carrefour",
-  "via": "wikipedia",
-  "file": "Carrefour-Mobile-logo.svg",
-  "license": "Public domain",
-  "author": "Carrefour S.A.",
-  "page": "https://commons.wikimedia.org/wiki/File:Carrefour-Mobile-logo.svg",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793626444748-29",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "brands-30": {
   "source": "Unilever",
@@ -1392,7 +1406,8 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Unilever.svg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "0.004,0.000,1.138,0.767"
  },
  "cars-1": {
   "source": "Toyota",
@@ -2133,6 +2148,14 @@
   "license": "CC BY-SA 4.0",
   "author": "Kolby Ari",
   "page": "https://commons.wikimedia.org/wiki/File:Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_(2)_(cropped_2).jpg"
+ },
+ "comedians-29": {
+  "source": "Shahar Hasson",
+  "via": "user",
+  "file": "arena-upload-1793627658613-29",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "comedians-30": {
   "source": "Steve Carell",
@@ -4457,19 +4480,19 @@
  },
  "israel-history-7": {
   "source": "Caesarea Maritima",
-  "via": "wikipedia",
-  "file": "Caesarea.JPG",
-  "license": "Public domain",
-  "author": "The original uploader was אסף.צ at Hebrew Wikipedia.",
-  "page": "https://commons.wikimedia.org/wiki/File:Caesarea.JPG"
+  "via": "user",
+  "file": "arena-upload-1793807246258-7",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "israel-history-8": {
   "source": "Old City of Acre",
-  "via": "wikipedia",
-  "file": "Aerial_view_of_Acre_1.jpg",
-  "license": "CC BY-SA 2.0",
-  "author": "israeltourism from Israel",
-  "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Acre_1.jpg"
+  "via": "user",
+  "file": "arena-upload-1793807268315-8",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "israel-history-9": {
   "source": "Church of the Holy Sepulchre",
@@ -4513,27 +4536,27 @@
  },
  "israel-history-14": {
   "source": "Caesarea aqueduct",
-  "via": "commons",
-  "file": "92295_caesarea_aqueduct_PikiWiki_Israel.jpg",
-  "license": "CC BY 2.5",
-  "author": "מיכל פריימן",
-  "page": "https://commons.wikimedia.org/wiki/File:92295_caesarea_aqueduct_PikiWiki_Israel.jpg"
+  "via": "user",
+  "file": "arena-upload-1793807381029-14",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "israel-history-15": {
   "source": "File:Bet She'an roman Theater.jpg",
-  "via": "wikipedia",
-  "file": "Bet_She'an_roman_Theater.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Michael Drewes",
-  "page": "https://commons.wikimedia.org/wiki/File:Bet_She%27an_roman_Theater.jpg"
+  "via": "user",
+  "file": "arena-upload-1793807450981-15",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "israel-history-16": {
   "source": "City of David",
-  "via": "commons",
-  "file": "Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "AVRAM GRAICER",
-  "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg"
+  "via": "user",
+  "file": "arena-upload-1793807542142-16",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "israel-history-17": {
   "source": "Basilica of the Annunciation",
@@ -4799,6 +4822,14 @@
   "author": "איה זך (Aya Zakh)",
   "page": "https://commons.wikimedia.org/wiki/File:Miri_Mesika.webp"
  },
+ "israeli-singers-20": {
+  "source": "Pe'er Tasi",
+  "via": "user",
+  "file": "arena-upload-1793807192578-20",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
  "israeli-singers-21": {
   "source": "Shalom Hanoch",
   "via": "wikipedia",
@@ -4846,6 +4877,14 @@
   "license": "CC BY-SA 4.0",
   "author": "Tal Abudi",
   "page": "https://commons.wikimedia.org/wiki/File:%D7%99%D7%95%D7%91%D7%9C_%D7%93%D7%99%D7%99%D7%9F2.jpg"
+ },
+ "israeli-singers-27": {
+  "source": "Margi (singer)",
+  "via": "user",
+  "file": "arena-upload-1793807219877-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "israeli-singers-28": {
   "source": "Haim Moshe",
@@ -5097,10 +5136,11 @@
  },
  "landmarks-3": {
   "source": "Neuschwanstein Castle",
-  "file": "Schloss_Neuschwanstein_2013.jpg",
-  "license": "CC BY-SA 3.0 de",
-  "author": "Thomas Wolf, www.foto-tw.de",
-  "page": "https://commons.wikimedia.org/wiki/File:Schloss_Neuschwanstein_2013.jpg"
+  "via": "user",
+  "file": "arena-upload-1793804312370-3",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "landmarks-4": {
   "source": "White House",
@@ -5132,10 +5172,11 @@
  },
  "landmarks-8": {
   "source": "Angkor Wat",
-  "file": "Angkor_Wat.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Bjørn Christian Tørrissen",
-  "page": "https://commons.wikimedia.org/wiki/File:Angkor_Wat.jpg"
+  "via": "user",
+  "file": "arena-upload-1793804456504-8",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "landmarks-9": {
   "source": "Machu Picchu",
@@ -5933,24 +5974,29 @@
  },
  "professions-11": {
   "source": "Microscope",
-  "file": "Ukrainian_microscope_(cropped).jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Ann 2000",
-  "page": "https://commons.wikimedia.org/wiki/File:Ukrainian_microscope_(cropped).jpg"
+  "via": "user",
+  "file": "arena-upload-1793628107669-11",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "professions-12": {
-  "source": "File:Lodz_-_Great_synagogue_-_Architect_drawing_of_ground_floor.jpg",
-  "file": "Lodz_-_Great_synagogue_-_Architect_drawing_of_ground_floor.jpg",
-  "license": "Public domain",
-  "author": "Adolf Wolff",
-  "page": "https://commons.wikimedia.org/wiki/File:Lodz_-_Great_synagogue_-_Architect_drawing_of_ground_floor.jpg"
+  "source": "Architect",
+  "via": "user",
+  "file": "arena-upload-1793628078171-12",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "professions-13": {
   "source": "File:Programmer_at_work_(Unsplash).jpg",
-  "file": "Programmer_at_work_(Unsplash).jpg",
-  "license": "CC0",
-  "author": "Crew crew",
-  "page": "https://commons.wikimedia.org/wiki/File:Programmer_at_work_(Unsplash).jpg"
+  "via": "ai",
+  "file": "",
+  "license": "AI generated",
+  "author": "pollinations flux",
+  "page": "",
+  "prompt": "Programmer at work",
+  "review": true
  },
  "professions-14": {
   "source": "Palette (painting)",
@@ -5996,10 +6042,11 @@
  },
  "professions-20": {
   "source": "Magnifying glass",
-  "file": "Mag_glass_request.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "WolfenSilva",
-  "page": "https://commons.wikimedia.org/wiki/File:Mag_glass_request.jpg"
+  "via": "user",
+  "file": "arena-upload-1793628175637-20",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "professions-21": {
   "source": "Microphone",
@@ -6010,17 +6057,19 @@
  },
  "professions-22": {
   "source": "File:Fisherman_in_a_boat_rowing_with_net.jpg",
-  "file": "Fisherman_in_a_boat_rowing_with_net.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "Peter van der Sluijs",
-  "page": "https://commons.wikimedia.org/wiki/File:Fisherman_in_a_boat_rowing_with_net.jpg"
+  "via": "user",
+  "file": "arena-upload-1793628207241-22",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "professions-23": {
   "source": "Watering can",
-  "file": "MetalwateringcansDec08.jpg",
-  "license": "CC BY-SA 2.0",
-  "author": "Bas Leenders at https://www.flickr.com/photos/basl/",
-  "page": "https://commons.wikimedia.org/wiki/File:MetalwateringcansDec08.jpg"
+  "via": "user",
+  "file": "arena-upload-1793804002664-23",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "professions-24": {
   "source": "Pastry chef",
@@ -6045,10 +6094,11 @@
  },
  "professions-27": {
   "source": "Hand plane",
-  "file": "JackPlane3.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "Jameslwoodward",
-  "page": "https://commons.wikimedia.org/wiki/File:JackPlane3.jpg"
+  "via": "user",
+  "file": "arena-upload-1793804053688-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "professions-28": {
   "source": "Lifeguard",
@@ -6156,130 +6206,131 @@
   "page": "https://commons.wikimedia.org/wiki/File:Anguilla_anguilla.jpg"
  },
  "sea-13": {
+  "source": "Narwhal",
+  "via": "user",
+  "file": "arena-upload-1793804635341-30",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "sea-14": {
   "source": "Orca",
   "file": "Killerwhales_jumping.jpg",
   "license": "Public domain",
   "author": "Robert Pittman",
   "page": "https://commons.wikimedia.org/wiki/File:Killerwhales_jumping.jpg"
  },
- "sea-14": {
+ "sea-15": {
   "source": "File:Conque_Magdalenienne_de_Marsoulas.jpg",
   "file": "Conque_Magdalenienne_de_Marsoulas.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Didier Descouens",
   "page": "https://commons.wikimedia.org/wiki/File:Conque_Magdalenienne_de_Marsoulas.jpg"
  },
- "sea-15": {
+ "sea-16": {
   "source": "Seahorse",
   "file": "Hippocampus_hippocampus_(on_Ascophyllum_nodosum).jpg",
   "license": "CC BY-SA 4.0",
   "author": "Hans Hillewaert",
   "page": "https://commons.wikimedia.org/wiki/File:Hippocampus_hippocampus_(on_Ascophyllum_nodosum).jpg"
  },
- "sea-16": {
+ "sea-17": {
   "source": "Green sea turtle",
   "file": "Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Charles J. Sharp",
   "page": "https://commons.wikimedia.org/wiki/File:Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg"
  },
- "sea-17": {
+ "sea-18": {
   "source": "Amphiprioninae",
   "file": "Amphiprion_ocellaris_(Clown_anemonefish)_by_Nick_Hobgood.jpg",
   "license": "CC BY-SA 3.0",
   "author": "Nick Hobgood",
   "page": "https://commons.wikimedia.org/wiki/File:Amphiprion_ocellaris_(Clown_anemonefish)_by_Nick_Hobgood.jpg"
  },
- "sea-18": {
+ "sea-19": {
   "source": "Oyster",
   "file": "Crassostrea_gigas_p1040848.jpg",
   "license": "CC BY-SA 3.0",
   "author": "David Monniaux",
   "page": "https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg"
  },
- "sea-19": {
+ "sea-20": {
   "source": "Hermit crab",
   "file": "Calliactis_and_Dardanus_001.JPG",
   "license": "CC BY-SA 3.0",
   "author": "H. Zell",
   "page": "https://commons.wikimedia.org/wiki/File:Calliactis_and_Dardanus_001.JPG"
  },
- "sea-20": {
+ "sea-21": {
   "source": "Hammerhead shark",
   "file": "Scalloped_Hammerhead_Shark_Sphyrna_Lewini_(226845659).jpeg",
   "license": "CC BY 3.0",
   "author": "Kris Mikael Krister",
   "page": "https://commons.wikimedia.org/wiki/File:Scalloped_Hammerhead_Shark_Sphyrna_Lewini_(226845659).jpeg"
  },
- "sea-21": {
+ "sea-22": {
   "source": "Swordfish",
   "file": "Xiphias_gladius_Linnaeus,_1758_2599925021.jpg",
   "license": "CC0",
   "author": "Naturalis Biodiversity Center",
   "page": "https://commons.wikimedia.org/wiki/File:Xiphias_gladius_Linnaeus,_1758_2599925021.jpg"
  },
- "sea-22": {
-  "source": "Starfish",
-  "file": "Starfish_montage.png",
-  "license": "CC BY-SA 4.0",
-  "author": "Top left: Klaus Rassinger (Museum Wiesbaden) Top right: Katie Ahlfeld Bottom right: Jon Zander (Digon3) Bottom left: Esp",
-  "page": "https://commons.wikimedia.org/wiki/File:Starfish_montage.png"
- },
  "sea-23": {
-  "source": "Sea urchin",
-  "file": "Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "Nhobgood (talk) Nick Hobgood",
-  "page": "https://commons.wikimedia.org/wiki/File:Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg"
- },
- "sea-24": {
-  "source": "Manta ray",
-  "file": "Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG",
-  "license": "CC BY-SA 3.0",
-  "author": "Shiyam ElkCloner",
-  "page": "https://commons.wikimedia.org/wiki/File:Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG"
- },
- "sea-25": {
-  "source": "Sea otter",
-  "file": "Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg",
-  "license": "CC BY-SA 2.0",
-  "author": "Marshal Hedin from San Diego",
-  "page": "https://commons.wikimedia.org/wiki/File:Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg"
- },
- "sea-26": {
-  "source": "Walrus",
-  "file": "Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Nixette",
-  "page": "https://commons.wikimedia.org/wiki/File:Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg"
- },
- "sea-27": {
-  "source": "File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg",
-  "file": "Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg",
-  "license": "Public domain",
-  "author": "U.S. Fish and Wildlife Service Headquarters",
-  "page": "https://commons.wikimedia.org/wiki/File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg"
- },
- "sea-28": {
   "source": "Whale shark",
   "file": "Similan_Dive_Center_-_great_whale_shark.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Abe Khao Lak",
   "page": "https://commons.wikimedia.org/wiki/File:Similan_Dive_Center_-_great_whale_shark.jpg"
  },
+ "sea-24": {
+  "source": "Starfish",
+  "file": "Starfish_montage.png",
+  "license": "CC BY-SA 4.0",
+  "author": "Top left: Klaus Rassinger (Museum Wiesbaden) Top right: Katie Ahlfeld Bottom right: Jon Zander (Digon3) Bottom left: Esp",
+  "page": "https://commons.wikimedia.org/wiki/File:Starfish_montage.png"
+ },
+ "sea-25": {
+  "source": "Sea urchin",
+  "file": "Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Nhobgood (talk) Nick Hobgood",
+  "page": "https://commons.wikimedia.org/wiki/File:Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg"
+ },
+ "sea-26": {
+  "source": "Manta ray",
+  "file": "Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Shiyam ElkCloner",
+  "page": "https://commons.wikimedia.org/wiki/File:Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG"
+ },
+ "sea-27": {
+  "source": "Sea otter",
+  "file": "Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Marshal Hedin from San Diego",
+  "page": "https://commons.wikimedia.org/wiki/File:Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg"
+ },
+ "sea-28": {
+  "source": "Walrus",
+  "file": "Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Nixette",
+  "page": "https://commons.wikimedia.org/wiki/File:Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg"
+ },
  "sea-29": {
+  "source": "File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg",
+  "file": "Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg",
+  "license": "Public domain",
+  "author": "U.S. Fish and Wildlife Service Headquarters",
+  "page": "https://commons.wikimedia.org/wiki/File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg"
+ },
+ "sea-30": {
   "source": "Ocean sunfish",
   "file": "Mola_mola.jpg",
   "license": "Public domain",
   "author": "U.S. National Oceanic and Atmospheric Administration",
   "page": "https://commons.wikimedia.org/wiki/File:Mola_mola.jpg"
- },
- "sea-30": {
-  "source": "Narwhal",
-  "file": "Нарвал_в_российской_Арктике.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "пресс-служба ПАО \"Газпром нефть\"",
-  "page": "https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B0%D1%80%D0%B2%D0%B0%D0%BB_%D0%B2_%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.jpg"
  },
  "snacks-1": {
   "source": "Bamba (snack)",
@@ -7076,11 +7127,12 @@
   "page": "https://commons.wikimedia.org/wiki/File:S%C5%82uchawki_referencyjne_K-701_firmy_AKG.jpg"
  },
  "technology-11": {
-  "source": "File:AGENT_smartwatch_prototype_by_Secret_Labs_-_WP_20130627_031_(15837480416).jpg",
-  "file": "AGENT_smartwatch_prototype_by_Secret_Labs_-_WP_20130627_031_(15837480416).jpg",
-  "license": "CC BY 2.0",
-  "author": "Pete Brown from Gambrills, MD, USA",
-  "page": "https://commons.wikimedia.org/wiki/File:AGENT_smartwatch_prototype_by_Secret_Labs_-_WP_20130627_031_(15837480416).jpg"
+  "source": "smartwatch",
+  "via": "user",
+  "file": "arena-upload-1793627726102-11",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "technology-12": {
   "source": "Quadcopter",
@@ -7119,10 +7171,11 @@
  },
  "technology-17": {
   "source": "Typewriter",
-  "file": "MEK_II-371.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "GodeNehler",
-  "page": "https://commons.wikimedia.org/wiki/File:MEK_II-371.jpg"
+  "via": "user",
+  "file": "arena-upload-1793627806553-17",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "technology-18": {
   "source": "File:1990s_Television_Set.jpg",
@@ -7161,10 +7214,11 @@
  },
  "technology-23": {
   "source": "Calculator",
-  "file": "Casio_calculator_JS-20WK_in_201901_002.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "Mc681",
-  "page": "https://commons.wikimedia.org/wiki/File:Casio_calculator_JS-20WK_in_201901_002.jpg"
+  "via": "user",
+  "file": "arena-upload-1793804203015-23",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "technology-24": {
   "source": "Robot",
@@ -7182,17 +7236,19 @@
  },
  "technology-26": {
   "source": "Rotary dial",
-  "file": "Rotarydial.JPG",
-  "license": "CC BY-SA 3.0",
-  "author": "R Sull / Dhscommtech at English Wikipedia",
-  "page": "https://commons.wikimedia.org/wiki/File:Rotarydial.JPG"
+  "via": "user",
+  "file": "arena-upload-1793627940400-26",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "technology-27": {
   "source": "Cassette tape",
-  "file": "Compactcassette.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "Thegreenj",
-  "page": "https://commons.wikimedia.org/wiki/File:Compactcassette.jpg"
+  "via": "user",
+  "file": "arena-upload-1793627881433-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "technology-28": {
   "source": "File:ELECOM_WRC-300FEBK_WPS_WiFi_router_2.jpg",
@@ -7210,18 +7266,19 @@
  },
  "technology-30": {
   "source": "File:HMV_Record_Player.jpg",
-  "file": "HMV_Record_Player.jpg",
-  "license": "CC0",
-  "author": "Amitbalani",
-  "page": "https://commons.wikimedia.org/wiki/File:HMV_Record_Player.jpg"
+  "via": "user",
+  "file": "arena-upload-1793628006602-30",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "tv-series-1": {
   "source": "Friends",
-  "via": "commons",
-  "file": "Friends_-_Wattpad_Original_Series_Poster.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "RightfulAliceRyhei",
-  "page": "https://commons.wikimedia.org/wiki/File:Friends_-_Wattpad_Original_Series_Poster.jpg",
+  "via": "user",
+  "file": "arena-upload-1793627015519-1",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
   "needbox": true
  },
  "tv-series-2": {
@@ -7235,24 +7292,48 @@
   "review": true,
   "needbox": true
  },
+ "tv-series-3": {
+  "source": "Game of Thrones",
+  "via": "user",
+  "file": "arena-upload-1793627079535-3",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "needbox": true
+ },
  "tv-series-4": {
   "source": "Stranger Things",
-  "via": "wikipedia",
-  "file": "Stranger_Things_logo.png",
-  "license": "Public domain",
-  "author": "Netflix",
-  "page": "https://commons.wikimedia.org/wiki/File:Stranger_Things_logo.png",
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793627099273-4",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "tv-series-5": {
   "source": "Money Heist",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793627131063-5",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "TV series poster for Money Heist, no title text",
-  "review": true,
+  "needbox": true
+ },
+ "tv-series-6": {
+  "source": "Squid Game",
+  "via": "user",
+  "file": "arena-upload-1793627152840-6",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "needbox": true
+ },
+ "tv-series-7": {
+  "source": "Breaking Bad",
+  "via": "user",
+  "file": "arena-upload-1793627169951-7",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
   "needbox": true
  },
  "tv-series-8": {
@@ -7262,26 +7343,34 @@
   "license": "Fair use",
   "author": "Netflix",
   "page": "https://en.wikipedia.org/wiki/File:Fauda.jpg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "0.001,0.316,1.558,0.871"
  },
  "tv-series-9": {
   "source": "The Office (American TV series)",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793627202863-9",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "TV series poster for The Office (American TV series), no title text",
-  "review": true,
+  "needbox": true
+ },
+ "tv-series-10": {
+  "source": "Wednesday (TV series)",
+  "via": "user",
+  "file": "arena-upload-1793627243781-10",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
   "needbox": true
  },
  "tv-series-11": {
   "source": "The Crown (TV series)",
-  "via": "wikipedia",
-  "file": "The_Crown_Title_Card.jpg",
-  "license": "Fair use",
-  "author": "Netflix Inc.",
-  "page": "https://en.wikipedia.org/wiki/File:The_Crown_Title_Card.jpg",
+  "via": "user",
+  "file": "arena-upload-1793627264628-11",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
   "needbox": true
  },
  "tv-series-12": {
@@ -7291,7 +7380,8 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Shtisel.jpg",
-  "needbox": true
+  "hidden": "crop",
+  "crop": "-0.001,0.002,1.349,0.788"
  },
  "tv-series-13": {
   "source": "Kupa Rashit",
@@ -7309,28 +7399,79 @@
   "license": "Fair use",
   "author": "JCS (production company)",
   "page": "https://en.wikipedia.org/wiki/File:The_Arbitrator_-_Ha-Borer.png",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.571,0.638,0.237,0.094"
  },
  "tv-series-15": {
   "source": "House (TV series)",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793627318811-15",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "TV series poster for House (TV series), no title text",
-  "review": true,
+  "needbox": true
+ },
+ "tv-series-16": {
+  "source": "How I Met Your Mother",
+  "via": "user",
+  "file": "arena-upload-1793627345777-16",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "needbox": true
+ },
+ "tv-series-17": {
+  "source": "The Big Bang Theory",
+  "via": "user",
+  "file": "arena-upload-1793627363369-17",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "needbox": true
+ },
+ "tv-series-18": {
+  "source": "Prison Break",
+  "via": "user",
+  "file": "arena-upload-1793627381315-18",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "needbox": true
+ },
+ "tv-series-19": {
+  "source": "The Sopranos",
+  "via": "user",
+  "file": "arena-upload-1793627397985-19",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
   "needbox": true
  },
  "tv-series-20": {
   "source": "Lost (TV series)",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793627422672-20",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "TV series poster for Lost (TV series), no title text",
-  "review": true,
+  "needbox": true
+ },
+ "tv-series-21": {
+  "source": "The Walking Dead (TV series)",
+  "via": "user",
+  "file": "arena-upload-1793627449906-21",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
+  "needbox": true
+ },
+ "tv-series-22": {
+  "source": "Seinfeld",
+  "via": "user",
+  "file": "arena-upload-1793627471252-22",
+  "license": "provided by the user",
+  "author": "—",
+  "page": "",
   "needbox": true
  },
  "tv-series-23": {
@@ -7349,17 +7490,16 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:Tehran_TV_poster.jpg",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.069,0.702,0.893,0.147"
  },
  "tv-series-25": {
   "source": "The Good Cop (Israeli TV series)",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793627502258-25",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "TV series poster for The Good Cop (Israeli TV series), no title text",
-  "review": true,
   "needbox": true
  },
  "tv-series-26": {
@@ -7369,34 +7509,34 @@
   "license": "Fair use",
   "author": "Self taken",
   "page": "https://en.wikipedia.org/wiki/File:House_of_Cards_title_card.png",
-  "needbox": true
+  "hidden": "blur",
+  "blur": "0.270,0.611,0.456,0.118"
  },
  "tv-series-27": {
   "source": "Sherlock (TV series)",
-  "via": "wikipedia",
-  "file": "Sherlock_titlecard.jpg",
-  "license": "Fair use",
+  "via": "user",
+  "file": "arena-upload-1793627530298-27",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Sherlock_titlecard.jpg",
+  "page": "",
   "needbox": true
  },
  "tv-series-28": {
   "source": "The Witcher (TV series)",
-  "via": "wikipedia",
-  "file": "The_Witcher_Logo.png",
-  "license": "Fair use",
+  "via": "user",
+  "file": "arena-upload-1793627546374-28",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:The_Witcher_Logo.png",
+  "page": "",
   "needbox": true
  },
  "tv-series-29": {
   "source": "Hatufim",
-  "via": "wikipedia",
-  "file": "Hatufim_title.jpg",
-  "license": "Fair use",
+  "via": "user",
+  "file": "arena-upload-1793627575051-29",
+  "license": "provided by the user",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Hatufim_title.jpg",
-  "needbox": true
+  "page": ""
  },
  "tv-series-30": {
   "source": "Eretz Nehederet",
@@ -7404,8 +7544,7 @@
   "file": "Eretz_Nehederet.JPG",
   "license": "Public domain",
   "author": "Sir kiss",
-  "page": "https://commons.wikimedia.org/wiki/File:Eretz_Nehederet.JPG",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Eretz_Nehederet.JPG"
  },
  "vehicles-1": {
   "source": "File:Retail_car-park,_Sedan_Avenue,_Omagh_-_geograph.org.uk_-_418329.jpg",
@@ -7549,10 +7688,11 @@
  },
  "vehicles-21": {
   "source": "Rapid transit",
-  "file": "Seoul-metro-2009-20180916-103548.jpg",
-  "license": "CC BY-SA 4.0",
-  "author": "LERK",
-  "page": "https://commons.wikimedia.org/wiki/File:Seoul-metro-2009-20180916-103548.jpg"
+  "via": "user",
+  "file": "arena-upload-1793804127163-21",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "vehicles-22": {
   "source": "File:Bakersfield,_(CA)_Truck_Peterbilt_at_Flying_J_Travel_Plaza_(en2016)_(4).JPG",
@@ -8050,6 +8190,14 @@
   "license": "CC BY 2.0",
   "author": "Montclair Film",
   "page": "https://commons.wikimedia.org/wiki/File:NEG_0062-2_(54119957209).jpg"
+ },
+ "world-singers-29": {
+  "source": "Travis Scott",
+  "via": "user",
+  "file": "arena-upload-1793626554832-29",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "world-singers-30": {
   "source": "Lewis Capaldi",

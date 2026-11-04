@@ -72,13 +72,11 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
-- 2.11.26 – Admin panel built (decision 19, `npm run admin`): all categories now live in
-  src/content/categories-data.json (game + panel read it; more-categories.ts retired to archive/). 17 new
-  categories (approved lists, answers without geresh). Pictures 30/30: israel-history, historical-figures, actors,
-  divas, cartoons (15,22,24 AI – review), superheroes, game-characters, cars, brands, basketball-teams, movies.
-  Short: comedians 29, israeli-singers 28, world-singers 29 (no free photo, AI faces rejected), playstation 26,
-  tv-series 20, clothing-brands 0 (not downloaded). Names still visible (hideName, blur pending): cars, brands,
-  basketball-teams, movies, playstation, tv-series, clothing-brands. tv-series has one way only.
+- 4.11.26 – Admin panel built (decision 19, `npm run admin`): all categories live in src/content/categories-data.json
+  (game + panel read it). The user then filled and edited pictures/items in the panel: 35 of 40 categories playable.
+  Left: clothing-brands 0/30 (not downloaded); AI pictures to replace: cartoons 3, playstation 2, professions 1,
+  movies 1, tv-series 1; names still visible (blur/crop/"no name" in the panel): cars 30, movies 30, tv-series 22,
+  brands 1. tv-series has one way only. Next: iPhone retest, WebP conversion, then publishing (see ROADMAP).
 - 31.10.26 – Snacks playable: the user sent 12 package photos (skill `--file n=path`), names blurred. Snacks 24/29
   are now עד חצות / טעמי (user's change, was ופלים / אגוזי). Apps still 23/30 – the user will send 7 icons
   (apps 2,18,21,23,27,28,30).

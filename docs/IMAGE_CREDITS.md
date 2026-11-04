@@ -79,6 +79,7 @@
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
 |---|---|---|---|---|
 | apps-1 | WhatsApp | WhatsApp | Public domain | [WhatsApp_Logo_green.svg](https://commons.wikimedia.org/wiki/File:WhatsApp_Logo_green.svg) |
+| apps-2 | File:Instagram-icon.png | — | provided by the user | arena-upload-1793626650813-2 |
 | apps-3 | Facebook | Facebook | Public domain | [2023_Facebook_icon.svg](https://commons.wikimedia.org/wiki/File:2023_Facebook_icon.svg) |
 | apps-4 | TikTok | ByteDance Ltd | PD | [TikTok_logo.svg](https://en.wikipedia.org/wiki/File:TikTok_logo.svg) |
 | apps-5 | File:YouTube full-color icon (2017).svg | Original: YouTube Vector: Jarould | Public domain | [YouTube_full-color_icon_(2017).svg](https://commons.wikimedia.org/wiki/File:YouTube_full-color_icon_(2017).svg) |
@@ -94,13 +95,19 @@
 | apps-15 | File:Pinterest.svg | Alexo88 | CC BY-SA 4.0 | [Pinterest.svg](https://commons.wikimedia.org/wiki/File:Pinterest.svg) |
 | apps-16 | File:Amazon icon.svg | Amazon.com, Inc. | Public domain | [Amazon_icon.svg](https://commons.wikimedia.org/wiki/File:Amazon_icon.svg) |
 | apps-17 | Uber | Uber Technologies Inc. | Public domain | [Uber_App_Icon.svg](https://commons.wikimedia.org/wiki/File:Uber_App_Icon.svg) |
+| apps-18 | Zoom (software) | — | provided by the user | arena-upload-1793626720361-18 |
 | apps-19 | Google Chrome | Google | Public domain | [Google_Chrome_icon_(February_2022).svg](https://commons.wikimedia.org/wiki/File:Google_Chrome_icon_(February_2022).svg) |
 | apps-20 | File:Shazam icon.svg | Shazam | Public domain | [Shazam_icon.svg](https://commons.wikimedia.org/wiki/File:Shazam_icon.svg) |
+| apps-21 | Discord | — | provided by the user | arena-upload-1793626755590-21 |
 | apps-22 | Moovit | Moovit Inc | CC0 | [Moovit-app-logo.png](https://commons.wikimedia.org/wiki/File:Moovit-app-logo.png) |
+| apps-23 | Bit (app) | — | provided by the user | arena-upload-1793626818827-23 |
 | apps-24 | PayBox | PayBox | Public domain | [PayBox_logo.webp](https://commons.wikimedia.org/wiki/File:PayBox_logo.webp) |
 | apps-25 | Google Drive | Google | Public domain | [Google_Drive_icon_(2026).svg](https://commons.wikimedia.org/wiki/File:Google_Drive_icon_(2026).svg) |
 | apps-26 | ChatGPT | OpenAI | Public domain | [OpenAI_logo_2025_(symbol).svg](https://commons.wikimedia.org/wiki/File:OpenAI_logo_2025_(symbol).svg) |
+| apps-27 | Duolingo | — | provided by the user | arena-upload-1793626889503-27 |
+| apps-28 | Booking.com | — | provided by the user | arena-upload-1793626951097-28 |
 | apps-29 | Airbnb | DesignStudio | Public domain | [Airbnb_Logo_Bélo.svg](https://commons.wikimedia.org/wiki/File:Airbnb_Logo_B%C3%A9lo.svg) |
+| apps-30 | Canva | — | provided by the user | arena-upload-1793626925328-30 |
 
 ## basketball-teams
 
@@ -177,34 +184,34 @@
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
 |---|---|---|---|---|
 | brands-1 | Apple Inc. | Rob Janoff | Public domain | [Apple_Computer_Logo_rainbow.svg](https://commons.wikimedia.org/wiki/File:Apple_Computer_Logo_rainbow.svg) |
-| brands-2 | McDonald's | McDonald's | Public domain | [McDonald's_1948_logo.png](https://commons.wikimedia.org/wiki/File:McDonald%27s_1948_logo.png) |
-| brands-3 | Starbucks | — | Fair use | [Starbucks_Coffee_Logo.svg](https://en.wikipedia.org/wiki/File:Starbucks_Coffee_Logo.svg) |
-| brands-4 | Pepsi | Unknown (Vector graphics image by Simtropolitan) | Public domain | [Pepsi_Cola_logo_1902.svg](https://commons.wikimedia.org/wiki/File:Pepsi_Cola_logo_1902.svg) |
-| brands-5 | Microsoft | The original uploader was Richard Abendroth at German Wikipedia. | Public domain | [Microsoft_Logo_Historical.svg](https://commons.wikimedia.org/wiki/File:Microsoft_logo_(1982).svg) |
-| brands-6 | Google | Google INC | Public domain | [Google2013logo.svg](https://commons.wikimedia.org/wiki/File:Google2013logo.svg) |
-| brands-7 | Shell plc | Hirondus | CC BY-SA 4.0 | [Logo_Shell_1973.jpg](https://commons.wikimedia.org/wiki/File:Logo_Shell_1973.jpg) |
-| brands-8 | KFC | Ktkvtsh | CC BY 4.0 | [Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg](https://commons.wikimedia.org/wiki/File:Kentucky_Fried_Chicken_(Tallulah,_Louisiana)_01.jpg) |
+| brands-2 | McDonald's | — | provided by the user | arena-upload-1793619868493-2 |
+| brands-3 | Starbucks | — | provided by the user | arena-upload-1793619949033-3 |
+| brands-4 | Pepsi | — | provided by the user | arena-upload-1793619982038-4 |
+| brands-5 | Microsoft | — | provided by the user | arena-upload-1793620019631-5 |
+| brands-6 | Google | — | provided by the user | arena-upload-1793620067660-6 |
+| brands-7 | Shell plc | — | provided by the user | arena-upload-1793620092114-7 |
+| brands-8 | KFC | — | provided by the user | arena-upload-1793625935610-8 |
 | brands-9 | PlayStation | Sony Interactive Entertainment | Public domain | [PlayStation_Studios_logo_with_a_black_center_frame.svg](https://commons.wikimedia.org/wiki/File:PlayStation_Studios_logo_with_a_black_center_frame.svg) |
 | brands-10 | Xbox | Microsoft | PD | [XBOX_logo_(2026).png](https://en.wikipedia.org/wiki/File:XBOX_logo_(2026).png) |
-| brands-11 | Android (operating system) | Android | CC BY 3.0 | [Android_2023_3D_logo_and_wordmark.svg](https://commons.wikimedia.org/wiki/File:Android_2023_3D_logo_and_wordmark.svg) |
-| brands-12 | Mastercard | http://logos.wikia.com/wiki/User:DonDonP1 | Public domain | [MasterCard_1979_logo.svg](https://commons.wikimedia.org/wiki/File:MasterCard_1979_logo.svg) |
+| brands-11 | Android (operating system) | — | provided by the user | arena-upload-1793625799239-11 |
+| brands-12 | Mastercard | — | provided by the user | arena-upload-1793625826596-12 |
 | brands-13 | Pizza Hut | Pizza Hut | Public domain | [Pizza_Hut_international_logo,_2008–2016.svg](https://commons.wikimedia.org/wiki/File:Pizza_Hut_international_logo,_2008%E2%80%932016.svg) |
-| brands-14 | Domino's | MultiEditor03 | CC0 | [Domino’s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg](https://commons.wikimedia.org/wiki/File:Domino%E2%80%99s_Pizza_World_Resource_Center_in_Ann_Arbor,_Michigan_2026.jpg) |
+| brands-14 | Domino's | — | provided by the user | arena-upload-1793625904334-14 |
 | brands-15 | Red Bull | — | Fair use | [RedBullEnergyDrink.svg](https://en.wikipedia.org/wiki/File:RedBullEnergyDrink.svg) |
 | brands-16 | Firefox | Mozilla Corporation | CC BY-SA 3.0 | [Firefox_Nightly_Logo,_2017.svg](https://commons.wikimedia.org/wiki/File:Firefox_Nightly_logo,_2017.svg) |
-| brands-17 | Vodafone | Vodafone | PD | [Vodafone_1984_logo.svg](https://en.wikipedia.org/wiki/File:Vodafone_1984_logo.svg) |
-| brands-18 | Michelin | Cyril5C | CC-BY-SA-4.0 | [Siège_de_Michelin_à_Clermont-Ferrand_II.jpg](https://en.wikipedia.org/wiki/File:Si%C3%A8ge_de_Michelin_%C3%A0_Clermont-Ferrand_II.jpg) |
+| brands-17 | Vodafone | — | provided by the user | arena-upload-1793625991572-17 |
+| brands-18 | Michelin | — | provided by the user | arena-upload-1793626015408-18 |
 | brands-19 | Nestlé | — | Fair use | [Nestlé.svg](https://en.wikipedia.org/wiki/File:Nestl%C3%A9.svg) |
-| brands-20 | Baskin-Robbins | Baskin-Robbins | Public domain | [Baskin-Robbins_logo_2022.svg](https://commons.wikimedia.org/wiki/File:Baskin-Robbins_logo_2022.svg) |
+| brands-20 | Baskin-Robbins | — | provided by the user | arena-upload-1793626062042-20 |
 | brands-21 | Taco Bell | — | Fair use | [Taco_Bell_2023.svg](https://en.wikipedia.org/wiki/File:Taco_Bell_2023.svg) |
-| brands-22 | Motorola | Unknown authorUnknown author | Public domain | [Motorola-Logo.svg](https://commons.wikimedia.org/wiki/File:Motorola-Logo.svg) |
-| brands-23 | Paramount Pictures | Paramount Pictures | Fair use | [Paramount_Pictures_logo_(2010).jpg](https://en.wikipedia.org/wiki/File:Paramount_Pictures_logo_(2010).jpg) |
-| brands-24 | Warner Bros. | ™/®Warner Music Group Corp. | Public domain | [Warner_Music_Group_logo_(2021).svg](https://commons.wikimedia.org/wiki/File:Warner_Music_Group_logo_(2021).svg) |
-| brands-25 | The Walt Disney Company | Disney Enterprises, Inc. | Public domain | [The_Walt_Disney_company_logo.svg](https://commons.wikimedia.org/wiki/File:The_Walt_Disney_company_logo.svg) |
-| brands-26 | NBC | By username Ragilnih, For the logo, NBCUniversal and Comcast. | Public domain | [Comcast_NBCUniversal_logo.svg](https://commons.wikimedia.org/wiki/File:Comcast_NBCUniversal_logo.svg) |
-| brands-27 | CBS | CBS Broadcasting Inc. | Public domain | [CBS_logo_(2020).svg](https://commons.wikimedia.org/wiki/File:CBS_logo_(2020).svg) |
-| brands-28 | Monster Energy | — | Public domain | [Logo_Monster_Energy.webp](https://commons.wikimedia.org/wiki/File:Logo_Monster_Energy.webp) |
-| brands-29 | Carrefour | Carrefour S.A. | Public domain | [Carrefour-Mobile-logo.svg](https://commons.wikimedia.org/wiki/File:Carrefour-Mobile-logo.svg) |
+| brands-22 | Motorola | — | provided by the user | arena-upload-1793626133297-22 |
+| brands-23 | Paramount Pictures | — | provided by the user | arena-upload-1793626207733-23 |
+| brands-24 | Warner Bros. | — | provided by the user | arena-upload-1793626233218-24 |
+| brands-25 | The Walt Disney Company | — | provided by the user | arena-upload-1793626267288-25 |
+| brands-26 | NBC | — | provided by the user | arena-upload-1793626290076-26 |
+| brands-27 | CBS | — | provided by the user | arena-upload-1793626406239-27 |
+| brands-28 | Monster Energy | — | provided by the user | arena-upload-1793626362212-28 |
+| brands-29 | Carrefour | — | provided by the user | arena-upload-1793626444748-29 |
 | brands-30 | Unilever | — | Fair use | [Unilever.svg](https://en.wikipedia.org/wiki/File:Unilever.svg) |
 
 ## cars
@@ -309,6 +316,7 @@
 | comedians-26 | Trevor Noah | Web Summit Qatar | CC BY 2.0 | [Trevor_Noah_(53554114243)_(portrait_crop).jpg](https://commons.wikimedia.org/wiki/File:Trevor_Noah_(53554114243)_(portrait_crop).jpg) |
 | comedians-27 | Amy Schumer | Mario Santor | CC BY-SA 3.0 | [Amy_Schumer_by_Mario_Santor.jpg](https://commons.wikimedia.org/wiki/File:Amy_Schumer_by_Mario_Santor.jpg) |
 | comedians-28 | Dave Chappelle | Kolby Ari | CC BY-SA 4.0 | [Dave_Chappelle_at_Preamiere_of_"Dave_Chappelle_In_Real_Life"_(2)_(cropped_2).jpg](https://commons.wikimedia.org/wiki/File:Dave_Chappelle_at_Preamiere_of_%22Dave_Chappelle_In_Real_Life%22_(2)_(cropped_2).jpg) |
+| comedians-29 | Shahar Hasson | — | provided by the user | arena-upload-1793627658613-29 |
 | comedians-30 | Steve Carell | Kevin Paul | CC BY 4.0 | [Steve_Carell_-_The_40-Year-Old-Virgin.jpg](https://commons.wikimedia.org/wiki/File:Steve_Carell_-_The_40-Year-Old-Virgin.jpg) |
 
 ## countries
@@ -671,16 +679,16 @@
 | israel-history-4 | Tower of David | אורי אלוני | CC BY-SA 4.0 | [מגדל_-דוד.jpg](https://commons.wikimedia.org/wiki/File:%D7%9E%D7%92%D7%93%D7%9C_-%D7%93%D7%95%D7%93.jpg) |
 | israel-history-5 | Yad Vashem | Godot13 | CC BY-SA 4.0 | [Israel-2013(2)-Jerusalem-Yad_Vashem-Prism_Skylight_01.jpg](https://commons.wikimedia.org/wiki/File:Israel-2013(2)-Jerusalem-Yad_Vashem-Prism_Skylight_01.jpg) |
 | israel-history-6 | Terraces of the Bahá'í Faith | Immanuel Giel | CC BY-SA 4.0 | [Downward_views_of_the_Bahá'í_Terraces_01.jpg](https://commons.wikimedia.org/wiki/File:Downward_views_of_the_Bah%C3%A1%27%C3%AD_Terraces_01.jpg) |
-| israel-history-7 | Caesarea Maritima | The original uploader was אסף.צ at Hebrew Wikipedia. | Public domain | [Caesarea.JPG](https://commons.wikimedia.org/wiki/File:Caesarea.JPG) |
-| israel-history-8 | Old City of Acre | israeltourism from Israel | CC BY-SA 2.0 | [Aerial_view_of_Acre_1.jpg](https://commons.wikimedia.org/wiki/File:Aerial_view_of_Acre_1.jpg) |
+| israel-history-7 | Caesarea Maritima | — | provided by the user | arena-upload-1793807246258-7 |
+| israel-history-8 | Old City of Acre | — | provided by the user | arena-upload-1793807268315-8 |
 | israel-history-9 | Church of the Holy Sepulchre | Gerd Eichmann | CC BY-SA 4.0 | [Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Sepulchre_by_Gerd_Eichmann_(cropped).jpg) |
 | israel-history-10 | Jaffa Clock Tower | Bahnfrend | CC BY-SA 4.0 | [Jaffa_Clock_Tower,_2019_(03).jpg](https://commons.wikimedia.org/wiki/File:Jaffa_Clock_Tower,_2019_(03).jpg) |
 | israel-history-11 | Jaffa Gate | Herwig Reidlinger | CC BY-SA 3.0 | [Jaffa_Gate_Jerusalem.jpg](https://commons.wikimedia.org/wiki/File:Jaffa_Gate_Jerusalem.jpg) |
 | israel-history-12 | File:Knesset front side - 2022.jpg | Clema12 | CC BY-SA 4.0 | [Knesset_front_side_-_2022.jpg](https://commons.wikimedia.org/wiki/File:Knesset_front_side_-_2022.jpg) |
 | israel-history-13 | Independence Hall (Israel) | Amit A. | Public domain | [Israel_ind_mus.JPG](https://commons.wikimedia.org/wiki/File:Israel_ind_mus.JPG) |
-| israel-history-14 | Caesarea aqueduct | מיכל פריימן | CC BY 2.5 | [92295_caesarea_aqueduct_PikiWiki_Israel.jpg](https://commons.wikimedia.org/wiki/File:92295_caesarea_aqueduct_PikiWiki_Israel.jpg) |
-| israel-history-15 | File:Bet She'an roman Theater.jpg | Michael Drewes | CC BY-SA 4.0 | [Bet_She'an_roman_Theater.jpg](https://commons.wikimedia.org/wiki/File:Bet_She%27an_roman_Theater.jpg) |
-| israel-history-16 | City of David | AVRAM GRAICER | CC BY-SA 3.0 | [Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg](https://commons.wikimedia.org/wiki/File:Aerial_view_South_Wall_Temple_Mount_City_of_David_Kidron_Valley_Archeological_Sites.jpg) |
+| israel-history-14 | Caesarea aqueduct | — | provided by the user | arena-upload-1793807381029-14 |
+| israel-history-15 | File:Bet She'an roman Theater.jpg | — | provided by the user | arena-upload-1793807450981-15 |
+| israel-history-16 | City of David | — | provided by the user | arena-upload-1793807542142-16 |
 | israel-history-17 | Basilica of the Annunciation | FLASHPACKER TRAVELGUIDE | CC BY-SA 2.0 | [Nazareth_Verkündigungbasilika_Church_of_Annunciation_(34257296024).jpg](https://commons.wikimedia.org/wiki/File:Nazareth_Verk%C3%BCndigungbasilika_Church_of_Annunciation_(34257296024).jpg) |
 | israel-history-18 | Cave of the Patriarchs | Utilisateur:Djampa - User:Djampa | CC BY-SA 4.0 | [Hebron_Cave_of_the_Patriarchs.jpg](https://commons.wikimedia.org/wiki/File:Hebron_Cave_of_the_Patriarchs.jpg) |
 | israel-history-19 | Mount of Olives | Godot13 | CC BY-SA 4.0 | [2013-Aerial-Mount_of_Olives.jpg](https://commons.wikimedia.org/wiki/File:2013-Aerial-Mount_of_Olives.jpg) |
@@ -719,12 +727,14 @@
 | israeli-singers-17 | Aviv Geffen | רונן פדידה (Ronen Fadida) | CC BY-SA 3.0 | [Aviv_Geffen_1.jpg](https://commons.wikimedia.org/wiki/File:Aviv_Geffen_1.jpg) |
 | israeli-singers-18 | Idan Amedi | Seli Ben Ari | CC BY-SA 4.0 | [עידן_עמדי,_סלי_בן_אריה.jpg](https://commons.wikimedia.org/wiki/File:%D7%A2%D7%99%D7%93%D7%9F_%D7%A2%D7%9E%D7%93%D7%99,_%D7%A1%D7%9C%D7%99_%D7%91%D7%9F_%D7%90%D7%A8%D7%99%D7%94.jpg) |
 | israeli-singers-19 | Miri Mesika | איה זך (Aya Zakh) | CC BY-SA 4.0 | [Miri_Mesika.webp](https://commons.wikimedia.org/wiki/File:Miri_Mesika.webp) |
+| israeli-singers-20 | Pe'er Tasi | — | provided by the user | arena-upload-1793807192578-20 |
 | israeli-singers-21 | Shalom Hanoch | Morshem | CC BY-SA 4.0 | [Shalom_Hanoch_2.jpg](https://commons.wikimedia.org/wiki/File:Shalom_Hanoch_2.jpg) |
 | israeli-singers-22 | Yehoram Gaon | Yaakov Saar | CC BY-SA 3.0 | [Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg](https://commons.wikimedia.org/wiki/File:Flickr_-_Government_Press_Office_(GPO)_-_Actor-Singer_Yehoram_Gaon.jpg) |
 | israeli-singers-23 | Zehava Ben | גילי אלגבי | CC BY-SA 4.0 | [Zehavaben.jpg](https://commons.wikimedia.org/wiki/File:Zehavaben.jpg) |
 | israeli-singers-24 | Keren Peles | Daniel Kaminsky | CC BY-SA 3.0 | [Keren_Peles_1.jpg](https://commons.wikimedia.org/wiki/File:Keren_Peles_1.jpg) |
 | israeli-singers-25 | Dudu Aharon | ארן חן צלמים | CC BY-SA 3.0 | [Dudu_Aharon_2015.jpg](https://commons.wikimedia.org/wiki/File:Dudu_Aharon_2015.jpg) |
 | israeli-singers-26 | Yuval Dayan | Tal Abudi | CC BY-SA 4.0 | [יובל_דיין2.jpg](https://commons.wikimedia.org/wiki/File:%D7%99%D7%95%D7%91%D7%9C_%D7%93%D7%99%D7%99%D7%9F2.jpg) |
+| israeli-singers-27 | Margi (singer) | — | provided by the user | arena-upload-1793807219877-27 |
 | israeli-singers-28 | Haim Moshe | de:Benutzer:datafox | CC BY-SA 3.0 | [Haim_Moshe.JPG](https://commons.wikimedia.org/wiki/File:Haim_Moshe.JPG) |
 | israeli-singers-29 | Arkadi Duchin | עדי כהן צדק | CC BY-SA 3.0 | [Arkadi_Duchin_(1).jpg](https://commons.wikimedia.org/wiki/File:Arkadi_Duchin_(1).jpg) |
 | israeli-singers-30 | Osher Cohen | Shay Cohen Arbel (שי כהן ארבל) | CC BY-SA 4.0 | [אושר_כהן.jpg](https://commons.wikimedia.org/wiki/File:%D7%90%D7%95%D7%A9%D7%A8_%D7%9B%D7%94%D7%9F.jpg) |
@@ -770,12 +780,12 @@
 |---|---|---|---|---|
 | landmarks-1 | Eiffel Tower | Benh LIEU SONG | Public domain | [Tour_Eiffel_Wikimedia_Commons_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Tour_Eiffel_Wikimedia_Commons_(cropped).jpg) |
 | landmarks-2 | Statue of Liberty | AskALotl | CC0 | [Front_view_of_Statue_of_Liberty_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Front_view_of_Statue_of_Liberty_(cropped).jpg) |
-| landmarks-3 | Neuschwanstein Castle | Thomas Wolf, www.foto-tw.de | CC BY-SA 3.0 de | [Schloss_Neuschwanstein_2013.jpg](https://commons.wikimedia.org/wiki/File:Schloss_Neuschwanstein_2013.jpg) |
+| landmarks-3 | Neuschwanstein Castle | — | provided by the user | arena-upload-1793804312370-3 |
 | landmarks-4 | White House | (top)Cezary p(bottom)MattWade | CC BY-SA 4.0 | [White_House_north_and_south_sides.jpg](https://commons.wikimedia.org/wiki/File:White_House_north_and_south_sides.jpg) |
 | landmarks-5 | Dome of the Rock | Ludvig14 | CC BY-SA 4.0 | [Jerusalem_DomeoftheRock_J65_(cropped).JPG](https://commons.wikimedia.org/wiki/File:Jerusalem_DomeoftheRock_J65_(cropped).JPG) |
 | landmarks-6 | Itsukushima Shrine | redlegsfan21 | CC BY-SA 2.0 | [Itsukushima_Shrine_Torii_Gate_(13890465459).jpg](https://commons.wikimedia.org/wiki/File:Itsukushima_Shrine_Torii_Gate_(13890465459).jpg) |
 | landmarks-7 | Western Wall | Golasso | CC BY-SA 4.0 | [Westernwall2.jpg](https://commons.wikimedia.org/wiki/File:Westernwall2.jpg) |
-| landmarks-8 | Angkor Wat | Bjørn Christian Tørrissen | CC BY-SA 4.0 | [Angkor_Wat.jpg](https://commons.wikimedia.org/wiki/File:Angkor_Wat.jpg) |
+| landmarks-8 | Angkor Wat | — | provided by the user | arena-upload-1793804456504-8 |
 | landmarks-9 | Machu Picchu | Draceane | CC BY-SA 4.0 | [Machu_Picchu,_2023_(012).jpg](https://commons.wikimedia.org/wiki/File:Machu_Picchu,_2023_(012).jpg) |
 | landmarks-10 | Giza pyramid complex | KennyOMG | CC BY-SA 4.0 | [Pyramids_of_the_Giza_Necropolis.jpg](https://commons.wikimedia.org/wiki/File:Pyramids_of_the_Giza_Necropolis.jpg) |
 | landmarks-11 | Colosseum | FeaturedPics | CC BY-SA 4.0 | [Colosseo_2020.jpg](https://commons.wikimedia.org/wiki/File:Colosseo_2020.jpg) |
@@ -883,23 +893,23 @@
 | professions-8 | Gavel | Jonathunder | CC BY-SA 4.0 | [CourtGavel.JPG](https://commons.wikimedia.org/wiki/File:CourtGavel.JPG) |
 | professions-9 | Mechanic | Amuzujoe | CC BY-SA 4.0 | [Mechanic_shop_04_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Mechanic_shop_04_(cropped).jpg) |
 | professions-10 | Aircraft pilot | Alfred T. Palmer | Public domain | [Lt_Mike_Hunter_1.jpg](https://commons.wikimedia.org/wiki/File:Lt_Mike_Hunter_1.jpg) |
-| professions-11 | Microscope | Ann 2000 | CC BY-SA 4.0 | [Ukrainian_microscope_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Ukrainian_microscope_(cropped).jpg) |
-| professions-12 | File:Lodz_-_Great_synagogue_-_Architect_drawing_of_ground_floor.jpg | Adolf Wolff | Public domain | [Lodz_-_Great_synagogue_-_Architect_drawing_of_ground_floor.jpg](https://commons.wikimedia.org/wiki/File:Lodz_-_Great_synagogue_-_Architect_drawing_of_ground_floor.jpg) |
-| professions-13 | File:Programmer_at_work_(Unsplash).jpg | Crew crew | CC0 | [Programmer_at_work_(Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Programmer_at_work_(Unsplash).jpg) |
+| professions-11 | Microscope | — | provided by the user | arena-upload-1793628107669-11 |
+| professions-12 | Architect | — | provided by the user | arena-upload-1793628078171-12 |
+| professions-13 | File:Programmer_at_work_(Unsplash).jpg | pollinations flux | AI generated (לבדיקה) | — |
 | professions-14 | Palette (painting) | Mlaoxve | Public domain | [Oil_painting_palette.jpg](https://commons.wikimedia.org/wiki/File:Oil_painting_palette.jpg) |
 | professions-15 | Welding helmet | Josep Vinyes Gilabert | CC BY-SA 4.0 | [Equip_per_soldar.jpg](https://commons.wikimedia.org/wiki/File:Equip_per_soldar.jpg) |
 | professions-16 | File:UofR_Symphony_Orchestra_112818-0108.jpg | Alexander Kordzaia | CC BY-SA 4.0 | [UofR_Symphony_Orchestra_112818-0108.jpg](https://commons.wikimedia.org/wiki/File:UofR_Symphony_Orchestra_112818-0108.jpg) |
 | professions-17 | Electrician | U.S. Navy photo by Photographer’s Mate 2nd Class Jason Jacobowitz | Public domain | [US_Navy_040902-N-7683J-003_Electrician's_Mate_3rd_Class_Tayo_Gbadebo_from_Lagos,_Nigeria,_rewires_the_motor_from_an_Aqueous_Film_Forming_Foam_(AFFF)_Sprinkler_System's_pump.jpg](https://commons.wikimedia.org/wiki/File:US_Navy_040902-N-7683J-003_Electrician%27s_Mate_3rd_Class_Tayo_Gbadebo_from_Lagos,_Nigeria,_rewires_the_motor_from_an_Aqueous_Film_Forming_Foam_(AFFF)_Sprinkler_System%27s_pump.jpg) |
 | professions-18 | Hard hat | CEphoto, Uwe Aranas | CC BY-SA 3.0 | [Cologne_Germany_Industrial-work-with-Personal-Protective-Equipment-04.jpg](https://commons.wikimedia.org/wiki/File:Cologne_Germany_Industrial-work-with-Personal-Protective-Equipment-04.jpg) |
 | professions-19 | Barber | Qming | CC BY-SA 4.0 | [Iranian_barber.jpg](https://commons.wikimedia.org/wiki/File:Iranian_barber.jpg) |
-| professions-20 | Magnifying glass | WolfenSilva | CC BY-SA 3.0 | [Mag_glass_request.jpg](https://commons.wikimedia.org/wiki/File:Mag_glass_request.jpg) |
+| professions-20 | Magnifying glass | — | provided by the user | arena-upload-1793628175637-20 |
 | professions-21 | Microphone | Holger.Ellgaard | CC BY-SA 3.0 | [Shure_mikrofon_55S.jpg](https://commons.wikimedia.org/wiki/File:Shure_mikrofon_55S.jpg) |
-| professions-22 | File:Fisherman_in_a_boat_rowing_with_net.jpg | Peter van der Sluijs | CC BY-SA 3.0 | [Fisherman_in_a_boat_rowing_with_net.jpg](https://commons.wikimedia.org/wiki/File:Fisherman_in_a_boat_rowing_with_net.jpg) |
-| professions-23 | Watering can | Bas Leenders at https://www.flickr.com/photos/basl/ | CC BY-SA 2.0 | [MetalwateringcansDec08.jpg](https://commons.wikimedia.org/wiki/File:MetalwateringcansDec08.jpg) |
+| professions-22 | File:Fisherman_in_a_boat_rowing_with_net.jpg | — | provided by the user | arena-upload-1793628207241-22 |
+| professions-23 | Watering can | — | provided by the user | arena-upload-1793804002664-23 |
 | professions-24 | Pastry chef | BMK | CC BY-SA 3.0 | [Konditor_bei_der_Arbeit_BMK.jpg](https://commons.wikimedia.org/wiki/File:Konditor_bei_der_Arbeit_BMK.jpg) |
 | professions-25 | File:Postman_George_Searle_delivering_mail,_Greymouth,_1986._CC310.jpg | John Charlton | CC BY-SA 4.0 | [Postman_George_Searle_delivering_mail,_Greymouth,_1986._CC310.jpg](https://commons.wikimedia.org/wiki/File:Postman_George_Searle_delivering_mail,_Greymouth,_1986._CC310.jpg) |
 | professions-26 | Photographer | Mhazandaren | CC BY 4.0 | [Photograph_of_a_Photographer.jpg](https://commons.wikimedia.org/wiki/File:Photograph_of_a_Photographer.jpg) |
-| professions-27 | Hand plane | Jameslwoodward | CC BY-SA 3.0 | [JackPlane3.jpg](https://commons.wikimedia.org/wiki/File:JackPlane3.jpg) |
+| professions-27 | Hand plane | — | provided by the user | arena-upload-1793804053688-27 |
 | professions-28 | Lifeguard | flickr user dbking | CC BY 2.0 | [Lifeguard_jumping_into_action,_Ocean_City,_June_27_,2007.jpg](https://commons.wikimedia.org/wiki/File:Lifeguard_jumping_into_action,_Ocean_City,_June_27_,2007.jpg) |
 | professions-29 | Dentist | U.S. Navy photo by Chief Photographer’s Mate Eric A. Clement. | Public domain | [US_Navy_030124-N-1328C-510_Navy_dentist_treats_patients_aboard_ship.jpg](https://commons.wikimedia.org/wiki/File:US_Navy_030124-N-1328C-510_Navy_dentist_treats_patients_aboard_ship.jpg) |
 | professions-30 | Waiting staff | Lars Jacob | Public domain | [Annie_O'Black_1973.jpg](https://commons.wikimedia.org/wiki/File:Annie_O%27Black_1973.jpg) |
@@ -920,24 +930,24 @@
 | sea-10 | File:A_heap_of_shrimp_shells_on_a_plate_in_Tuntorp_1.jpg | W.carter | CC BY-SA 4.0 | [A_heap_of_shrimp_shells_on_a_plate_in_Tuntorp_1.jpg](https://commons.wikimedia.org/wiki/File:A_heap_of_shrimp_shells_on_a_plate_in_Tuntorp_1.jpg) |
 | sea-11 | Coral | Toby Hudson | CC BY-SA 3.0 | [Coral_Outcrop_Flynn_Reef.jpg](https://commons.wikimedia.org/wiki/File:Coral_Outcrop_Flynn_Reef.jpg) |
 | sea-12 | European eel | GerardM | CC BY-SA 3.0 | [Anguilla_anguilla.jpg](https://commons.wikimedia.org/wiki/File:Anguilla_anguilla.jpg) |
-| sea-13 | Orca | Robert Pittman | Public domain | [Killerwhales_jumping.jpg](https://commons.wikimedia.org/wiki/File:Killerwhales_jumping.jpg) |
-| sea-14 | File:Conque_Magdalenienne_de_Marsoulas.jpg | Didier Descouens | CC BY-SA 4.0 | [Conque_Magdalenienne_de_Marsoulas.jpg](https://commons.wikimedia.org/wiki/File:Conque_Magdalenienne_de_Marsoulas.jpg) |
-| sea-15 | Seahorse | Hans Hillewaert | CC BY-SA 4.0 | [Hippocampus_hippocampus_(on_Ascophyllum_nodosum).jpg](https://commons.wikimedia.org/wiki/File:Hippocampus_hippocampus_(on_Ascophyllum_nodosum).jpg) |
-| sea-16 | Green sea turtle | Charles J. Sharp | CC BY-SA 4.0 | [Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg](https://commons.wikimedia.org/wiki/File:Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg) |
-| sea-17 | Amphiprioninae | Nick Hobgood | CC BY-SA 3.0 | [Amphiprion_ocellaris_(Clown_anemonefish)_by_Nick_Hobgood.jpg](https://commons.wikimedia.org/wiki/File:Amphiprion_ocellaris_(Clown_anemonefish)_by_Nick_Hobgood.jpg) |
-| sea-18 | Oyster | David Monniaux | CC BY-SA 3.0 | [Crassostrea_gigas_p1040848.jpg](https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg) |
-| sea-19 | Hermit crab | H. Zell | CC BY-SA 3.0 | [Calliactis_and_Dardanus_001.JPG](https://commons.wikimedia.org/wiki/File:Calliactis_and_Dardanus_001.JPG) |
-| sea-20 | Hammerhead shark | Kris Mikael Krister | CC BY 3.0 | [Scalloped_Hammerhead_Shark_Sphyrna_Lewini_(226845659).jpeg](https://commons.wikimedia.org/wiki/File:Scalloped_Hammerhead_Shark_Sphyrna_Lewini_(226845659).jpeg) |
-| sea-21 | Swordfish | Naturalis Biodiversity Center | CC0 | [Xiphias_gladius_Linnaeus,_1758_2599925021.jpg](https://commons.wikimedia.org/wiki/File:Xiphias_gladius_Linnaeus,_1758_2599925021.jpg) |
-| sea-22 | Starfish | Top left: Klaus Rassinger (Museum Wiesbaden) Top right: Katie Ahlfeld Bottom right: Jon Zander (Digon3) Bottom left: Esp | CC BY-SA 4.0 | [Starfish_montage.png](https://commons.wikimedia.org/wiki/File:Starfish_montage.png) |
-| sea-23 | Sea urchin | Nhobgood (talk) Nick Hobgood | CC BY-SA 3.0 | [Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg](https://commons.wikimedia.org/wiki/File:Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg) |
-| sea-24 | Manta ray | Shiyam ElkCloner | CC BY-SA 3.0 | [Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG](https://commons.wikimedia.org/wiki/File:Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG) |
-| sea-25 | Sea otter | Marshal Hedin from San Diego | CC BY-SA 2.0 | [Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg](https://commons.wikimedia.org/wiki/File:Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg) |
-| sea-26 | Walrus | Nixette | CC BY-SA 4.0 | [Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg](https://commons.wikimedia.org/wiki/File:Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg) |
-| sea-27 | File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg | U.S. Fish and Wildlife Service Headquarters | Public domain | [Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg](https://commons.wikimedia.org/wiki/File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg) |
-| sea-28 | Whale shark | Abe Khao Lak | CC BY-SA 4.0 | [Similan_Dive_Center_-_great_whale_shark.jpg](https://commons.wikimedia.org/wiki/File:Similan_Dive_Center_-_great_whale_shark.jpg) |
-| sea-29 | Ocean sunfish | U.S. National Oceanic and Atmospheric Administration | Public domain | [Mola_mola.jpg](https://commons.wikimedia.org/wiki/File:Mola_mola.jpg) |
-| sea-30 | Narwhal | пресс-служба ПАО "Газпром нефть" | CC BY-SA 4.0 | [Нарвал_в_российской_Арктике.jpg](https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B0%D1%80%D0%B2%D0%B0%D0%BB_%D0%B2_%D1%80%D0%BE%D1%81%D1%81%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B9_%D0%90%D1%80%D0%BA%D1%82%D0%B8%D0%BA%D0%B5.jpg) |
+| sea-13 | Narwhal | — | provided by the user | arena-upload-1793804635341-30 |
+| sea-14 | Orca | Robert Pittman | Public domain | [Killerwhales_jumping.jpg](https://commons.wikimedia.org/wiki/File:Killerwhales_jumping.jpg) |
+| sea-15 | File:Conque_Magdalenienne_de_Marsoulas.jpg | Didier Descouens | CC BY-SA 4.0 | [Conque_Magdalenienne_de_Marsoulas.jpg](https://commons.wikimedia.org/wiki/File:Conque_Magdalenienne_de_Marsoulas.jpg) |
+| sea-16 | Seahorse | Hans Hillewaert | CC BY-SA 4.0 | [Hippocampus_hippocampus_(on_Ascophyllum_nodosum).jpg](https://commons.wikimedia.org/wiki/File:Hippocampus_hippocampus_(on_Ascophyllum_nodosum).jpg) |
+| sea-17 | Green sea turtle | Charles J. Sharp | CC BY-SA 4.0 | [Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg](https://commons.wikimedia.org/wiki/File:Green_sea_turtle_(Chelonia_mydas)_Moorea.jpg) |
+| sea-18 | Amphiprioninae | Nick Hobgood | CC BY-SA 3.0 | [Amphiprion_ocellaris_(Clown_anemonefish)_by_Nick_Hobgood.jpg](https://commons.wikimedia.org/wiki/File:Amphiprion_ocellaris_(Clown_anemonefish)_by_Nick_Hobgood.jpg) |
+| sea-19 | Oyster | David Monniaux | CC BY-SA 3.0 | [Crassostrea_gigas_p1040848.jpg](https://commons.wikimedia.org/wiki/File:Crassostrea_gigas_p1040848.jpg) |
+| sea-20 | Hermit crab | H. Zell | CC BY-SA 3.0 | [Calliactis_and_Dardanus_001.JPG](https://commons.wikimedia.org/wiki/File:Calliactis_and_Dardanus_001.JPG) |
+| sea-21 | Hammerhead shark | Kris Mikael Krister | CC BY 3.0 | [Scalloped_Hammerhead_Shark_Sphyrna_Lewini_(226845659).jpeg](https://commons.wikimedia.org/wiki/File:Scalloped_Hammerhead_Shark_Sphyrna_Lewini_(226845659).jpeg) |
+| sea-22 | Swordfish | Naturalis Biodiversity Center | CC0 | [Xiphias_gladius_Linnaeus,_1758_2599925021.jpg](https://commons.wikimedia.org/wiki/File:Xiphias_gladius_Linnaeus,_1758_2599925021.jpg) |
+| sea-23 | Whale shark | Abe Khao Lak | CC BY-SA 4.0 | [Similan_Dive_Center_-_great_whale_shark.jpg](https://commons.wikimedia.org/wiki/File:Similan_Dive_Center_-_great_whale_shark.jpg) |
+| sea-24 | Starfish | Top left: Klaus Rassinger (Museum Wiesbaden) Top right: Katie Ahlfeld Bottom right: Jon Zander (Digon3) Bottom left: Esp | CC BY-SA 4.0 | [Starfish_montage.png](https://commons.wikimedia.org/wiki/File:Starfish_montage.png) |
+| sea-25 | Sea urchin | Nhobgood (talk) Nick Hobgood | CC BY-SA 3.0 | [Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg](https://commons.wikimedia.org/wiki/File:Tripneustes_ventricosus_(West_Indian_Sea_Egg-top)_and_Echinometra_viridis_(Reef_Urchin_-_bottom).jpg) |
+| sea-26 | Manta ray | Shiyam ElkCloner | CC BY-SA 3.0 | [Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG](https://commons.wikimedia.org/wiki/File:Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG) |
+| sea-27 | Sea otter | Marshal Hedin from San Diego | CC BY-SA 2.0 | [Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg](https://commons.wikimedia.org/wiki/File:Sea_Otter_(Enhydra_lutris)_(25169790524)_crop.jpg) |
+| sea-28 | Walrus | Nixette | CC BY-SA 4.0 | [Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg](https://commons.wikimedia.org/wiki/File:Walrus_in_the_Russian_Arctic_National_Park,_Novaya_Zemlya_2015-2.jpg) |
+| sea-29 | File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg | U.S. Fish and Wildlife Service Headquarters | Public domain | [Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg](https://commons.wikimedia.org/wiki/File:Sea_anemone_at_Kingman_Reef_NWR_(5123998300).jpg) |
+| sea-30 | Ocean sunfish | U.S. National Oceanic and Atmospheric Administration | Public domain | [Mola_mola.jpg](https://commons.wikimedia.org/wiki/File:Mola_mola.jpg) |
 
 ## snacks
 
@@ -1058,50 +1068,60 @@
 | technology-8 | Pager | Galizant | CC BY-SA 4.0 | [GSL_28R.png](https://commons.wikimedia.org/wiki/File:GSL_28R.png) |
 | technology-9 | Radio receiver | Mspecht | CC BY-SA 3.0 | [Icom_IC-R7000_radio_receiver.jpg](https://commons.wikimedia.org/wiki/File:Icom_IC-R7000_radio_receiver.jpg) |
 | technology-10 | Headphones | http://muzyczny.pl | CC BY-SA 4.0 | [Słuchawki_referencyjne_K-701_firmy_AKG.jpg](https://commons.wikimedia.org/wiki/File:S%C5%82uchawki_referencyjne_K-701_firmy_AKG.jpg) |
-| technology-11 | File:AGENT_smartwatch_prototype_by_Secret_Labs_-_WP_20130627_031_(15837480416).jpg | Pete Brown from Gambrills, MD, USA | CC BY 2.0 | [AGENT_smartwatch_prototype_by_Secret_Labs_-_WP_20130627_031_(15837480416).jpg](https://commons.wikimedia.org/wiki/File:AGENT_smartwatch_prototype_by_Secret_Labs_-_WP_20130627_031_(15837480416).jpg) |
+| technology-11 | smartwatch | — | provided by the user | arena-upload-1793627726102-11 |
 | technology-12 | Quadcopter | Josh Sorenson | CC0 | [Quadcopter_camera_drone_in_flight.jpg](https://commons.wikimedia.org/wiki/File:Quadcopter_camera_drone_in_flight.jpg) |
 | technology-13 | Computer mouse | Darkone | CC BY-SA 2.5 | [3-Tasten-Maus_Microsoft.jpg](https://commons.wikimedia.org/wiki/File:3-Tasten-Maus_Microsoft.jpg) |
 | technology-14 | Computer keyboard | NotFromUtrecht | CC BY-SA 3.0 | [Typing_example.ogv](https://commons.wikimedia.org/wiki/File:Typing_example.ogv) |
 | technology-15 | Computer monitor | Михајло Анђелковић (original picture), modification: Mielon | CC BY-SA 3.0 | [MonitorLCDlcd.svg](https://commons.wikimedia.org/wiki/File:MonitorLCDlcd.svg) |
 | technology-16 | USB flash drive | Evan-Amos | Public domain | [SanDisk-Cruzer-USB-4GB-ThumbDrive.jpg](https://commons.wikimedia.org/wiki/File:SanDisk-Cruzer-USB-4GB-ThumbDrive.jpg) |
-| technology-17 | Typewriter | GodeNehler | CC BY-SA 4.0 | [MEK_II-371.jpg](https://commons.wikimedia.org/wiki/File:MEK_II-371.jpg) |
+| technology-17 | Typewriter | — | provided by the user | arena-upload-1793627806553-17 |
 | technology-18 | File:1990s_Television_Set.jpg | ProtoKiwi | CC BY 4.0 | [1990s_Television_Set.jpg](https://commons.wikimedia.org/wiki/File:1990s_Television_Set.jpg) |
 | technology-19 | Video projector | http://muzyczny.pl | CC BY-SA 4.0 | [Projektor_PGD2870W_firmy_Sharp.jpg](https://commons.wikimedia.org/wiki/File:Projektor_PGD2870W_firmy_Sharp.jpg) |
 | technology-20 | Electric battery | en:User:Brianiac | Public domain | [Batteries.jpg](https://commons.wikimedia.org/wiki/File:Batteries.jpg) |
 | technology-21 | Loudspeaker | Svjo | CC BY-SA 3.0 | [Electrodynamic-loudspeaker.png](https://commons.wikimedia.org/wiki/File:Electrodynamic-loudspeaker.png) |
 | technology-22 | File:Tablet_computer.jpg | KK IN HK | CC BY-SA 4.0 | [Tablet_computer.jpg](https://commons.wikimedia.org/wiki/File:Tablet_computer.jpg) |
-| technology-23 | Calculator | Mc681 | CC BY-SA 4.0 | [Casio_calculator_JS-20WK_in_201901_002.jpg](https://commons.wikimedia.org/wiki/File:Casio_calculator_JS-20WK_in_201901_002.jpg) |
+| technology-23 | Calculator | — | provided by the user | arena-upload-1793804203015-23 |
 | technology-24 | Robot | Gnsin | CC BY-SA 3.0 | [HONDA_ASIMO.jpg](https://commons.wikimedia.org/wiki/File:HONDA_ASIMO.jpg) |
 | technology-25 | File:JVC_HR-A592U_VCR.jpg | Dillan Payne | CC BY-SA 4.0 | [JVC_HR-A592U_VCR.jpg](https://commons.wikimedia.org/wiki/File:JVC_HR-A592U_VCR.jpg) |
-| technology-26 | Rotary dial | R Sull / Dhscommtech at English Wikipedia | CC BY-SA 3.0 | [Rotarydial.JPG](https://commons.wikimedia.org/wiki/File:Rotarydial.JPG) |
-| technology-27 | Cassette tape | Thegreenj | CC BY-SA 3.0 | [Compactcassette.jpg](https://commons.wikimedia.org/wiki/File:Compactcassette.jpg) |
+| technology-26 | Rotary dial | — | provided by the user | arena-upload-1793627940400-26 |
+| technology-27 | Cassette tape | — | provided by the user | arena-upload-1793627881433-27 |
 | technology-28 | File:ELECOM_WRC-300FEBK_WPS_WiFi_router_2.jpg | Syced | CC0 | [ELECOM_WRC-300FEBK_WPS_WiFi_router_2.jpg](https://commons.wikimedia.org/wiki/File:ELECOM_WRC-300FEBK_WPS_WiFi_router_2.jpg) |
 | technology-29 | Virtual reality headset | Collision Conf | CC BY 2.0 | [Collision_2024_-_VR5_3671_(53804364983).jpg](https://commons.wikimedia.org/wiki/File:Collision_2024_-_VR5_3671_(53804364983).jpg) |
-| technology-30 | File:HMV_Record_Player.jpg | Amitbalani | CC0 | [HMV_Record_Player.jpg](https://commons.wikimedia.org/wiki/File:HMV_Record_Player.jpg) |
+| technology-30 | File:HMV_Record_Player.jpg | — | provided by the user | arena-upload-1793628006602-30 |
 
 ## tv-series
 
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
 |---|---|---|---|---|
-| tv-series-1 | Friends | RightfulAliceRyhei | CC BY-SA 4.0 | [Friends_-_Wattpad_Original_Series_Poster.jpg](https://commons.wikimedia.org/wiki/File:Friends_-_Wattpad_Original_Series_Poster.jpg) |
+| tv-series-1 | Friends | — | provided by the user | arena-upload-1793627015519-1 |
 | tv-series-2 | The Simpsons | pollinations flux | AI generated (לבדיקה) | — |
-| tv-series-4 | Stranger Things | Netflix | Public domain | [Stranger_Things_logo.png](https://commons.wikimedia.org/wiki/File:Stranger_Things_logo.png) |
-| tv-series-5 | Money Heist | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-3 | Game of Thrones | — | provided by the user | arena-upload-1793627079535-3 |
+| tv-series-4 | Stranger Things | — | provided by the user | arena-upload-1793627099273-4 |
+| tv-series-5 | Money Heist | — | provided by the user | arena-upload-1793627131063-5 |
+| tv-series-6 | Squid Game | — | provided by the user | arena-upload-1793627152840-6 |
+| tv-series-7 | Breaking Bad | — | provided by the user | arena-upload-1793627169951-7 |
 | tv-series-8 | Fauda | Netflix | Fair use | [Fauda.jpg](https://en.wikipedia.org/wiki/File:Fauda.jpg) |
-| tv-series-9 | The Office (American TV series) | pollinations flux | AI generated (לבדיקה) | — |
-| tv-series-11 | The Crown (TV series) | Netflix Inc. | Fair use | [The_Crown_Title_Card.jpg](https://en.wikipedia.org/wiki/File:The_Crown_Title_Card.jpg) |
+| tv-series-9 | The Office (American TV series) | — | provided by the user | arena-upload-1793627202863-9 |
+| tv-series-10 | Wednesday (TV series) | — | provided by the user | arena-upload-1793627243781-10 |
+| tv-series-11 | The Crown (TV series) | — | provided by the user | arena-upload-1793627264628-11 |
 | tv-series-12 | Shtisel | — | Fair use | [Shtisel.jpg](https://en.wikipedia.org/wiki/File:Shtisel.jpg) |
 | tv-series-13 | Kupa Rashit | TaBaZzz | CC BY-SA 4.0 | [Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg](https://commons.wikimedia.org/wiki/File:Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg) |
 | tv-series-14 | Ha-Borer | JCS (production company) | Fair use | [The_Arbitrator_-_Ha-Borer.png](https://en.wikipedia.org/wiki/File:The_Arbitrator_-_Ha-Borer.png) |
-| tv-series-15 | House (TV series) | pollinations flux | AI generated (לבדיקה) | — |
-| tv-series-20 | Lost (TV series) | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-15 | House (TV series) | — | provided by the user | arena-upload-1793627318811-15 |
+| tv-series-16 | How I Met Your Mother | — | provided by the user | arena-upload-1793627345777-16 |
+| tv-series-17 | The Big Bang Theory | — | provided by the user | arena-upload-1793627363369-17 |
+| tv-series-18 | Prison Break | — | provided by the user | arena-upload-1793627381315-18 |
+| tv-series-19 | The Sopranos | — | provided by the user | arena-upload-1793627397985-19 |
+| tv-series-20 | Lost (TV series) | — | provided by the user | arena-upload-1793627422672-20 |
+| tv-series-21 | The Walking Dead (TV series) | — | provided by the user | arena-upload-1793627449906-21 |
+| tv-series-22 | Seinfeld | — | provided by the user | arena-upload-1793627471252-22 |
 | tv-series-23 | Arab Labor | Heinrich-Böll-Stiftung | CC BY-SA 2.0 | [Norman_Issa_1.jpg](https://commons.wikimedia.org/wiki/File:Norman_Issa_1.jpg) |
 | tv-series-24 | Tehran (TV series) | — | Fair use | [Tehran_TV_poster.jpg](https://en.wikipedia.org/wiki/File:Tehran_TV_poster.jpg) |
-| tv-series-25 | The Good Cop (Israeli TV series) | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-25 | The Good Cop (Israeli TV series) | — | provided by the user | arena-upload-1793627502258-25 |
 | tv-series-26 | House of Cards (American TV series) | Self taken | Fair use | [House_of_Cards_title_card.png](https://en.wikipedia.org/wiki/File:House_of_Cards_title_card.png) |
-| tv-series-27 | Sherlock (TV series) | — | Fair use | [Sherlock_titlecard.jpg](https://en.wikipedia.org/wiki/File:Sherlock_titlecard.jpg) |
-| tv-series-28 | The Witcher (TV series) | — | Fair use | [The_Witcher_Logo.png](https://en.wikipedia.org/wiki/File:The_Witcher_Logo.png) |
-| tv-series-29 | Hatufim | — | Fair use | [Hatufim_title.jpg](https://en.wikipedia.org/wiki/File:Hatufim_title.jpg) |
+| tv-series-27 | Sherlock (TV series) | — | provided by the user | arena-upload-1793627530298-27 |
+| tv-series-28 | The Witcher (TV series) | — | provided by the user | arena-upload-1793627546374-28 |
+| tv-series-29 | Hatufim | — | provided by the user | arena-upload-1793627575051-29 |
 | tv-series-30 | Eretz Nehederet | Sir kiss | Public domain | [Eretz_Nehederet.JPG](https://commons.wikimedia.org/wiki/File:Eretz_Nehederet.JPG) |
 
 ## vehicles
@@ -1128,7 +1148,7 @@
 | vehicles-18 | File:Pink_child's_scooter.jpg | Peterdownunder | CC BY-SA 4.0 | [Pink_child's_scooter.jpg](https://commons.wikimedia.org/wiki/File:Pink_child%27s_scooter.jpg) |
 | vehicles-19 | Scooter (motorcycle) | Thomas Wiersma | CC BY-SA 4.0 | [Yamaha_Aerox_2011_.jpg](https://commons.wikimedia.org/wiki/File:Yamaha_Aerox_2011_.jpg) |
 | vehicles-20 | File:Sonic_23_sailboat_Gyp_Sea_8558.jpg | Ahunt | CC0 | [Sonic_23_sailboat_Gyp_Sea_8558.jpg](https://commons.wikimedia.org/wiki/File:Sonic_23_sailboat_Gyp_Sea_8558.jpg) |
-| vehicles-21 | Rapid transit | LERK | CC BY-SA 4.0 | [Seoul-metro-2009-20180916-103548.jpg](https://commons.wikimedia.org/wiki/File:Seoul-metro-2009-20180916-103548.jpg) |
+| vehicles-21 | Rapid transit | — | provided by the user | arena-upload-1793804127163-21 |
 | vehicles-22 | File:Bakersfield,_(CA)_Truck_Peterbilt_at_Flying_J_Travel_Plaza_(en2016)_(4).JPG | Pierre André Leclercq | CC BY-SA 4.0 | [Bakersfield,_(CA)_Truck_Peterbilt_at_Flying_J_Travel_Plaza_(en2016)_(4).JPG](https://commons.wikimedia.org/wiki/File:Bakersfield,_(CA)_Truck_Peterbilt_at_Flying_J_Travel_Plaza_(en2016)_(4).JPG) |
 | vehicles-23 | Pickup truck | Mr.choppers | CC BY-SA 3.0 | [1994_Toyota_T100_Deluxe,_rear_left.jpg](https://commons.wikimedia.org/wiki/File:1994_Toyota_T100_Deluxe,_rear_left.jpg) |
 | vehicles-24 | Minibus | Pehaha | CC BY-SA 3.0 | [Jumper_Distribus_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Jumper_Distribus_(cropped).jpg) |
@@ -1206,4 +1226,5 @@
 | world-singers-26 | Sting (musician) | CamilaAlves.raf | CC BY-SA 4.0 | [Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Sting_at_2026_Montreux_Jazz_Festival-12-CA_(cropped).jpg) |
 | world-singers-27 | Mick Jagger | Raph_PH | CC BY 2.0 | [RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg](https://commons.wikimedia.org/wiki/File:RStonesHydePark030722_(49_of_125)_(52193656268)_(cropped).jpg) |
 | world-singers-28 | Jon Bon Jovi | Montclair Film | CC BY 2.0 | [NEG_0062-2_(54119957209).jpg](https://commons.wikimedia.org/wiki/File:NEG_0062-2_(54119957209).jpg) |
+| world-singers-29 | Travis Scott | — | provided by the user | arena-upload-1793626554832-29 |
 | world-singers-30 | Lewis Capaldi | Raph_PH | CC BY 4.0 | [Glasto2025-41_(cropped).jpg](https://commons.wikimedia.org/wiki/File:Glasto2025-41_(cropped).jpg) |

@@ -22,7 +22,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Admin panel (decision 19): `npm run admin` from `mobile/` (preview config `arena-admin`) → http://localhost:8095. Edits
   categories, items and pictures in the real files. Check it with `node scripts/admin/smoke-test.js` (server running).
   Never run `arena_images.py` in the background while the panel does something: both rewrite credits.json.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (56 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (61 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -72,6 +72,14 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 5.11.26 – iPhone layout + guide. (1) While the keyboard is up, the duel sits in a `position: fixed` box that equals
+  `visualViewport` (top = offsetTop, height) – `design/use-web-viewport-box.ts` replaced the old inset hook – so Safari's
+  pan can no longer push the header out of sight (pic: Dortmund) and the mini-map is smaller in compact mode (pic: NBA).
+  Simulated in Chrome (offsetTop 125, height 330): everything inside the box. Not yet seen on the real iPhone.
+  (2) The bars above the iOS keyboard (✓ ∨ ∧ and the suggestion chip) are iOS's, not ours: a web page cannot remove
+  them; the only way is our own Hebrew keyboard (`inputmode="none"` + in-game keys) – awaiting the user's decision.
+  (3) New guide: 8 pages (`onboarding/guide-pages.ts`, text from GAME_RULES) with animated pictures
+  (`guide-visuals.tsx`), back/next, dots, top buttons home + skip-all; `/qa-guide` shows it.
 - 5.11.26 – iPhone bugs: (1) the build animation board used `row-reverse`, so the arena was mirrored compared with the
   main arena and the draw screen (column 0 is on the LEFT everywhere: absolute `left: column*25%`) – now `row`;
   `/qa-build` shows build → main board for comparison. (2) The draw cursor stopped jumping when the phone's iOS
@@ -138,7 +146,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   listeners accept answers while the Hebrew keyboard composes, "start duel" tap primes the keyboard
   (design/keyboard-primer.ts), "skip to my turn" (engine fastForwardToHuman + SKIP_TO_MY_TURN). 43 tests.
 - 29.10.26 – Phase 3 (code part): iPhone page setup + Add to Home Screen, duel fits above the iOS
-  keyboard (`useWebKeyboardInset`), shared sound players unlocked on first tap, web haptics guarded.
+  keyboard (now `useWebViewportBox`), shared sound players unlocked on first tap, web haptics guarded.
   Waiting for the user's real iPhone test over Wi-Fi (http://<PC IPv4>:8090; PC was 10.0.0.44).
 - 28.10.26 – Brand palette everywhere (decision 12): root gradient in _layout + transparent screens
   (`colors.screen`); arena uses 4 colors with one meaning each (see tokens.ts comment).

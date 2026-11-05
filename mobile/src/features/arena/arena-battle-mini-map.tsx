@@ -7,16 +7,18 @@ type ArenaBattleMiniMapProps = {
   attackerId: string;
   defenderId: string;
   state: GameState;
+  // A smaller map for the compact duel header (it must not reach under the clock cards).
+  compact?: boolean;
 };
 
-export function ArenaBattleMiniMap({ attackerId, defenderId, state }: ArenaBattleMiniMapProps) {
+export function ArenaBattleMiniMap({ attackerId, defenderId, state, compact = false }: ArenaBattleMiniMapProps) {
   const attacker = state.players[attackerId];
   const defender = state.players[defenderId];
 
   return (
     <View
       accessibilityLabel={`מפת הזירה: הקרב בין ${attacker.name} לבין ${defender.name}`}
-      style={styles.frame}>
+      style={[styles.frame, compact && styles.frameCompact]}>
       {state.cells.map((cell) => {
         const isAttacker = cell.ownerId === attackerId;
         const isDefender = cell.ownerId === defenderId;
@@ -25,6 +27,7 @@ export function ArenaBattleMiniMap({ attackerId, defenderId, state }: ArenaBattl
             key={cell.id}
             style={[
               styles.cell,
+              compact && styles.cellCompact,
               // Arena colors: the attacker is the active light blue, the defender the
               // chosen (gold) target, everything else floor.
               { backgroundColor: isAttacker
@@ -50,6 +53,8 @@ const styles = StyleSheet.create({
     gap: 3,
     padding: 3,
   },
+  frameCompact: { width: 46, height: 46, gap: 2, padding: 2 },
+  cellCompact: { width: 9, height: 9 },
   cell: {
     width: 13,
     height: 13,

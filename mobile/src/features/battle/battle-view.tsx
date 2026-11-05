@@ -22,7 +22,7 @@ import {
 import { ArenaBattleMiniMap } from '@/features/arena/arena-battle-mini-map';
 import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
-import { useWebKeyboardInset } from '@/design/use-web-keyboard-inset';
+import { useWebViewportBox } from '@/design/use-web-viewport-box';
 import { useGameFeedback } from '@/services/use-game-feedback';
 import { CATEGORY_BY_ID, getWay, getWayItems } from '@/content/categories';
 import {
@@ -53,13 +53,25 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     timeUp: playTimeUpFeedback,
     toggleMuted,
   } = useGameFeedback();
-  // iPhone Safari: keep the whole duel above the keyboard (the image shrinks).
-  const keyboardInset = useWebKeyboardInset();
+  // iPhone Safari: while the keyboard is up the duel sits in a fixed box that is exactly the visible area, so
+  // nothing is cut at the top or hidden under the keyboard (the picture panel shrinks instead).
+  const viewportBox = useWebViewportBox();
   // On a short visible area (the keyboard is up) the surrounding panels get flatter, so the picture panel and the
   // answer row always fit. The picture panel takes whatever height is left and is the same in every category:
   // the picture inside never changes its size (it is absolutely positioned).
   const { height: windowHeight } = useWindowDimensions();
-  const compact = windowHeight - keyboardInset < 600;
+  const compact = (viewportBox ? viewportBox.height : windowHeight) < 600;
+  const fixedBox = viewportBox
+    ? ({
+      position: 'fixed',
+      top: viewportBox.top,
+      left: 0,
+      right: 0,
+      height: viewportBox.height,
+      marginHorizontal: 'auto',
+      paddingTop: 'calc(env(safe-area-inset-top, 0px) + 4px)',
+    } as never)
+    : null;
   const attacker = state.players[setup.attackerId];
   const defender = state.players[setup.defenderId];
   const category = CATEGORY_BY_ID[setup.categoryId];
@@ -329,10 +341,11 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   return (
     <KeyboardAvoidingView
       behavior={Platform.select({ android: 'height', ios: 'padding' })}
-      style={[styles.screen, compact && styles.screenCompact, keyboardInset > 0 && { paddingBottom: keyboardInset + spacing.sm }]}>
+      style={[styles.screen, compact && styles.screenCompact, fixedBox]}>
       <View style={[styles.header, compact && styles.headerCompact]}>
         <View style={styles.miniMapPosition}>
           <ArenaBattleMiniMap
+            compact={compact}
             attackerId={setup.attackerId}
             defenderId={setup.defenderId}
             state={state}
@@ -466,7 +479,7 @@ const styles = StyleSheet.create({
   },
   screenCompact: { paddingTop: spacing.xs, paddingBottom: spacing.sm },
   header: { minHeight: 70, alignItems: 'center', justifyContent: 'center', marginBottom: spacing.sm },
-  headerCompact: { minHeight: 44, marginBottom: spacing.xs },
+  headerCompact: { minHeight: 46, marginBottom: spacing.xs },
   miniMapPosition: { position: 'absolute', left: 0, top: 0 },
   muteButton: {
     position: 'absolute',

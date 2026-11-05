@@ -9,6 +9,7 @@ import './skip.test';
 import './ways.test';
 import './tap-gate.test';
 import './draw.test';
+import './guide.test';
 import { runAll } from './harness';
 
 runAll();

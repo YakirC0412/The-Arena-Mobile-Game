@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { CATEGORY_BY_ID } from '@/content/categories';
-import { createRandomDrawSequence } from '@/game/engine';
+import { createRandomDrawSequence, drawStepDelaysMs } from '@/game/engine';
 import type { GameState } from '@/game/types';
 import { useGameFeedback } from '@/services/use-game-feedback';
 import { useReducedMotion } from '@/design/use-reduced-motion';
@@ -57,13 +57,14 @@ export function DrawAnimationScreen({
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
     let elapsed = 0;
-    const steps = reducedMotion ? 1 : 34;
-    const sequence = createRandomDrawSequence(candidatePlayerIds, steps, random);
+    // Reduce Motion slows the draw down but never removes it: the cursor jumping between squares is the point.
+    const delays = drawStepDelaysMs(reducedMotion);
+    const sequence = createRandomDrawSequence(candidatePlayerIds, delays.length, random);
 
     for (let step = 0; step < sequence.length; step += 1) {
       const playerId = sequence[step];
       timers.push(setTimeout(() => setHighlightedPlayerId(playerId), elapsed));
-      elapsed += step < 20 ? 80 : step < 28 ? 140 : step < 32 ? 260 : 420;
+      elapsed += delays[step];
     }
 
     timers.push(setTimeout(() => {
@@ -72,7 +73,7 @@ export function DrawAnimationScreen({
       playDrawFeedback();
       if (selectedPlayer) AccessibilityInfo.announceForAccessibility(`${selectedPlayer.name} נבחר או נבחרה לשחק`);
     }, elapsed));
-    timers.push(setTimeout(onComplete, elapsed + (reducedMotion ? 350 : selectedHasBonus ? 1700 : 800)));
+    timers.push(setTimeout(onComplete, elapsed + (selectedHasBonus ? 1700 : 800)));
 
     return () => timers.forEach(clearTimeout);
   }, [candidatePlayerIds, onComplete, playDrawFeedback, random, reducedMotion, selectedHasBonus, selectedPlayer, selectedPlayerId]);

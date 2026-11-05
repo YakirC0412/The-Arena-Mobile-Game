@@ -169,7 +169,8 @@ const styles = StyleSheet.create({
   boardFrame: { width: '100%', maxWidth: 380, aspectRatio: 1, alignSelf: 'center', borderRadius: 20, backgroundColor: colors.boardFrame, borderWidth: 2, borderColor: colors.boardFrameBorder, padding: 8, justifyContent: 'center', alignItems: 'center', shadowColor: colors.boardFrameBorder, shadowOpacity: 0.4, shadowRadius: 14, elevation: 8 },
   boardGlow: { position: 'absolute', top: 8, right: 8, bottom: 8, left: 8, backgroundColor: colors.surface, opacity: 0.35 },
   finalWave: { position: 'absolute', top: 8, right: 8, bottom: 8, left: 8, borderRadius: 12, borderWidth: 8, borderColor: colors.territoryMeBorder, backgroundColor: colors.successSoft, zIndex: 3 },
-  board: { width: '100%', aspectRatio: 1, flexDirection: 'row-reverse', flexWrap: 'wrap', zIndex: 2 },
+  // Column 0 on the left, like the main arena and the draw screen (row-reverse mirrored the whole arena).
+  board: { width: '100%', aspectRatio: 1, flexDirection: 'row', flexWrap: 'wrap', zIndex: 2 },
   cell: { width: '25%', height: '25%', borderRadius: 0, borderWidth: 1, borderColor: colors.textPrimary, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 4, overflow: 'hidden' },
   ownerRow: { maxWidth: '100%', flexDirection: 'row-reverse', alignItems: 'center', gap: 4, marginTop: 2 },
   playerName: { flexShrink: 1, fontSize: 12, lineHeight: 15, fontWeight: '800', textAlign: 'center', writingDirection: 'rtl' },

@@ -199,6 +199,14 @@ export function createRandomDrawSequence(
   return sequence;
 }
 
+// How long the draw cursor stays on each contestant before it jumps. Normal: fast, then slowing down
+// (34 jumps, about 6 seconds). With the phone's "Reduce Motion" on, the cursor still jumps (that is the draw),
+// but slowly and without flicker: one jump every 0.4 s, under 3 changes a second.
+export function drawStepDelaysMs(reducedMotion: boolean): number[] {
+  if (reducedMotion) return Array.from({ length: 8 }, () => 400);
+  return Array.from({ length: 34 }, (_, step) => (step < 20 ? 80 : step < 28 ? 140 : step < 32 ? 260 : 420));
+}
+
 export function getNeighborPlayerIds(state: GameState, playerId: string): string[] {
   const player = state.players[playerId];
   if (!player?.isActive) return [];

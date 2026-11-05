@@ -76,8 +76,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   main arena and the draw screen (column 0 is on the LEFT everywhere: absolute `left: column*25%`) – now `row`;
   `/qa-build` shows build → main board for comparison. (2) The draw cursor stopped jumping when the phone's iOS
   "Reduce Motion" was on (1 step, 350 ms): now `drawStepDelaysMs(reduced)` – slow, flicker-free jumps (8 x 0.4 s)
-  instead of none (decision 20, 3 tests). Not verified on the iPhone; if it still does not jump, check iOS
-  Settings > Accessibility > Motion and ask what the screen shows.
+  instead of none (decision 20, 3 tests). The user confirmed on the iPhone that the draw jumps again.
 - 5.11.26 – (1) Duel layout: the picture panel takes the height that is left and the picture inside is absolutely
   positioned, so no category (e.g. team crests) can push the answer field / skip button under the iPhone keyboard;
   on a short visible area (< 600px) the header, clocks and turn pill go compact. Checked at 390x330, 375x290 and

@@ -88,7 +88,7 @@ async function handle(req, res) {
     if (m === 'POST' && action === 'blur') { const body = await json(req); return send(res, 200, await exclusive(() => skill(cat, ['--boxes', `${n}=${body.shapes}`]))); }
     if (m === 'POST' && action === 'crop') { const body = await json(req); return send(res, 200, await exclusive(() => skill(cat, ['--crop', `${n}=${body.rect}`]))); }
     if (m === 'POST' && action === 'ok') return send(res, 200, await exclusive(() => skill(cat, ['--ok', n])));
-    if (m === 'POST' && action === 'restore') { await exclusive(() => store.restoreOriginal(cat, n)); return send(res, 200, { ok: true }); }
+    if (m === 'POST' && action === 'restore') return send(res, 200, await exclusive(() => skill(cat, ['--restore', n])));
     if (m === 'DELETE') return send(res, 200, await exclusive(() => skill(cat, ['--reject', n])));
   }
   return send(res, 404, { error: 'not found' });

@@ -19,6 +19,8 @@ type BattleClockCardsProps = {
   attackerColor: string;
   attackerLabel: string;
   attackerMilliseconds: number;
+  // Short screens (iPhone with the keyboard up): a flatter card so the picture keeps its room.
+  compact?: boolean;
   defenderBonus: boolean;
   defenderColor: string;
   defenderLabel: string;
@@ -43,6 +45,7 @@ export const BattleClockCards = forwardRef<BattleClockHandle, BattleClockCardsPr
   defenderColor,
   defenderLabel,
   defenderMilliseconds,
+  compact = false,
   onClockExpired,
   onDangerTick,
   onTimeUp,
@@ -124,6 +127,7 @@ export const BattleClockCards = forwardRef<BattleClockHandle, BattleClockCardsPr
       <ClockCard
         active={activeRole === 'attacker'}
         bonus={attackerBonus}
+        compact={compact}
         color={attackerColor}
         label={attackerLabel}
         milliseconds={values.attacker}
@@ -131,6 +135,7 @@ export const BattleClockCards = forwardRef<BattleClockHandle, BattleClockCardsPr
       <ClockCard
         active={activeRole === 'defender'}
         bonus={defenderBonus}
+        compact={compact}
         color={defenderColor}
         label={defenderLabel}
         milliseconds={values.defender}
@@ -142,12 +147,14 @@ export const BattleClockCards = forwardRef<BattleClockHandle, BattleClockCardsPr
 function ClockCard({
   active,
   bonus,
+  compact,
   color,
   label,
   milliseconds,
 }: {
   active: boolean;
   bonus: boolean;
+  compact: boolean;
   color: string;
   label: string;
   milliseconds: number;
@@ -190,6 +197,7 @@ function ClockCard({
   return (
     <Animated.View accessible accessibilityLabel={`${label}, ${formatClock(milliseconds)} שניות`} style={[
       styles.card,
+      compact && styles.compactCard,
       active ? styles.activeCard : styles.inactiveCard,
       active && { borderColor: color, shadowColor: color },
       urgency === 'warning' && styles.warningCard,
@@ -200,6 +208,7 @@ function ClockCard({
       <AppText style={[
         styles.value,
         !active && styles.inactiveValue,
+        compact && (active ? styles.compactValue : styles.compactInactiveValue),
         urgency === 'warning' && styles.warningValue,
         urgency === 'danger' && styles.dangerValue,
       ]} weight="black">
@@ -227,6 +236,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
   },
+  compactCard: { minHeight: 58, padding: spacing.xs },
+  compactValue: { fontSize: 34, lineHeight: 38 },
+  compactInactiveValue: { fontSize: 28, lineHeight: 38 },
   activeCard: { borderWidth: 3, shadowOpacity: 0.55, shadowRadius: 12 },
   inactiveCard: { borderColor: colors.border },
   warningCard: { borderColor: colors.warning, shadowColor: colors.warning },

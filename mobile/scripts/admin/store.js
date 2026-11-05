@@ -77,7 +77,11 @@ function imageFile(cat, n) {
   }
   return null;
 }
-const revealFile = (cat, n) => path.join(P.archive, 'reveal', cat, `${cat}-${n}.jpg`);
+// The untouched original of an edited picture: older ones are .jpg, new ones .webp.
+const revealFile = (cat, n) => {
+  const base = path.join(P.archive, 'reveal', cat, `${cat}-${n}`);
+  return ['.webp', '.jpg'].map((ext) => base + ext).find((file) => fs.existsSync(file)) ?? `${base}.webp`;
+};
 function toArchive(file, sub) {
   if (!file || !fs.existsSync(file)) return;
   const folder = path.join(P.archive, sub);
@@ -290,25 +294,6 @@ function moveItem(cat, n, delta) {
   rebuild();
 }
 
-// ---- picture operations that need no Python ----
-function restoreOriginal(cat, n) {
-  const data = readData();
-  const category = getCategory(data, cat);
-  getItem(category, n);
-  const rev = revealFile(cat, n);
-  if (!fs.existsSync(rev)) bad('אין עותק מקורי לשחזור');
-  const cur = imageFile(cat, n);
-  if (cur) fs.rmSync(cur);
-  fs.copyFileSync(rev, path.join(dir(cat), `${cat}-${n}.jpg`));
-  const credits = readCredits();
-  const cr = credits[`${cat}-${n}`] || {};
-  delete cr.hidden; delete cr.blur; delete cr.crop;
-  if (category.picture?.hideName) cr.needbox = true;
-  credits[`${cat}-${n}`] = cr;
-  writeCredits(credits);
-  rebuild();
-}
-
 // ---- the Python skill (search, AI, upload, blur): one run at a time ----
 // The skill needs Python 3.11+ with Pillow. Try the usual places and keep the first one that has both.
 let python;
@@ -351,5 +336,5 @@ function runSkill(args) {
 module.exports = {
   Bad, P, MIN_PICTURES, snapshot, rebuild, imageFile, revealFile,
   createCategory, updateCategory, deleteCategory, moveCategory,
-  addItem, updateItem, deleteItem, moveItem, restoreOriginal, runSkill, findPython, pythonHelp,
+  addItem, updateItem, deleteItem, moveItem, runSkill, findPython, pythonHelp,
 };

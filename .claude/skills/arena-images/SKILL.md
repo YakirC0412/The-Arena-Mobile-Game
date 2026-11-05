@@ -52,6 +52,10 @@ If the category is not in `mobile/scripts/image-sources.json`, add it. Read the 
   saved WITH the name and shown as "NAME VISIBLE" on the sheet – blur it (section 4).
 - last line `SHEET <path>` – contact sheet of the whole category (red frame = AI, needs review)
 
+Every picture is saved as `<category>-<n>.webp` (640px max, quality 85; transparency kept). The untouched original of
+an edited picture stays in `archive/reveal/` (`--restore 4,9` puts it back). `--to-webp` converts any leftover
+jpg/png/gif picture of every category (originals move to `archive/original-images/`).
+
 The script also updates `assets/items/credits.json`, `docs/IMAGE_CREDITS.md` and the game's picture
 map (`npm run images`). A category with 30 pictures becomes playable.
 

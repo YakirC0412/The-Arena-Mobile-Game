@@ -3,7 +3,7 @@
 
 Reads mobile/scripts/image-sources.json (falls back to wiki-sources.json), finds a
 picture for every item (Wikipedia lead image -> photo search -> AI), resizes it,
-saves it as mobile/assets/items/<category>/<category>-<n>.jpg, records credits,
+saves it as mobile/assets/items/<category>/<category>-<n>.webp, records credits,
 connects the pictures to the game and writes a contact sheet for review.
 
 Usage:
@@ -274,6 +274,30 @@ def hide_name(b, url):
     return None, "; ".join(errors)
 
 
+WEBP_QUALITY = 85
+
+
+def has_alpha(im):
+    return im.mode in ("RGBA", "LA") or (im.mode == "P" and "transparency" in im.info)
+
+
+def encode_webp(im):
+    buf = io.BytesIO()
+    im.save(buf, "WEBP", quality=WEBP_QUALITY, method=6)
+    return buf.getvalue()
+
+
+def to_webp(b):
+    """Any image bytes -> WebP bytes (kept at most MAX_SIDE px, transparency kept). WebP passes through unchanged."""
+    if b[:4] == b"RIFF" and b[8:12] == b"WEBP":
+        return b
+    im = Image.open(io.BytesIO(b))
+    im.load()
+    im = im.convert("RGBA" if has_alpha(im) else "RGB")
+    im.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
+    return encode_webp(im)
+
+
 def blur_shapes(b, spec):
     """Blur areas of a saved picture. spec: shapes split by ';', all in fractions of the picture –
     "x,y,w,h" = rectangle, "ring:cx,cy,r_out,r_in[,from,to]" = band between two circles (text around round
@@ -296,13 +320,16 @@ def blur_shapes(b, spec):
     small = im.resize((max(1, W // 28), max(1, H // 28)), Image.BILINEAR)
     blurred = small.resize(im.size, Image.BILINEAR).filter(ImageFilter.GaussianBlur(W // 60))
     im.paste(blurred, mask=mask.filter(ImageFilter.GaussianBlur(2)))
-    buf = io.BytesIO()
-    im.save(buf, "JPEG", quality=85, optimize=True)
-    return buf.getvalue()
+    return encode_webp(im)
 
 
 def reveal_path(category, item_id):
-    return os.path.join(ARCHIVE, "reveal", category, f"{item_id}.jpg")
+    """The untouched original of an edited picture (older ones are .jpg, new ones .webp)."""
+    base = os.path.join(ARCHIVE, "reveal", category, item_id)
+    for ext in (".webp", ".jpg"):
+        if os.path.exists(base + ext):
+            return base + ext
+    return base + ".webp"
 
 
 def crop_square(b, spec):
@@ -311,13 +338,13 @@ def crop_square(b, spec):
     W, H = im.size
     x, y, w, h = (float(v) for v in spec.split(","))
     im = im.crop((int(x * W), int(y * H), int((x + w) * W), int((y + h) * H)))
-    data, _ = finalize(_jpeg(im), "logo")
+    data, _ = finalize(_png(im), "logo")
     return data
 
 
-def _jpeg(im):
+def _png(im):
     buf = io.BytesIO()
-    im.save(buf, "JPEG", quality=92)
+    im.save(buf, "PNG")
     return buf.getvalue()
 
 
@@ -333,7 +360,7 @@ def edit_item(category, n, spec, credits, how):
     original = open(rev, "rb").read()  # always from the original, so a rerun replaces the edit
     data = blur_shapes(original, spec) if how == "blur" else crop_square(original, spec)
     os.remove(cur)
-    with open(os.path.join(ITEMS_DIR, category, f"{item_id}.jpg"), "wb") as f:
+    with open(os.path.join(ITEMS_DIR, category, f"{item_id}.webp"), "wb") as f:
         f.write(data)
     credits.setdefault(item_id, {}).update(hidden=how, **{how: spec})
     credits[item_id].pop("needbox", None)
@@ -386,7 +413,7 @@ def find_picture(entry, cfg, a):
 
 
 def finalize(b, kind):
-    """Flatten transparency on white, square-pad logos, fit in MAX_SIDE, return JPEG bytes."""
+    """Flatten transparency on white, square-pad logos, fit in MAX_SIDE, return WebP bytes."""
     im = Image.open(io.BytesIO(b))
     im.load()
     if im.mode in ("RGBA", "LA", "P"):
@@ -401,9 +428,7 @@ def finalize(b, kind):
         sq.paste(im, ((side - im.width) // 2, (side - im.height) // 2))
         im = sq
     im.thumbnail((MAX_SIDE, MAX_SIDE), Image.LANCZOS)
-    buf = io.BytesIO()
-    im.save(buf, "JPEG", quality=85, optimize=True)
-    return buf.getvalue(), im.size
+    return encode_webp(im), im.size
 
 
 # ---------- files ----------
@@ -424,9 +449,9 @@ def save(category, n, data):
         os.makedirs(os.path.join(ARCHIVE, "replaced-images"), exist_ok=True)
         shutil.move(old, os.path.join(ARCHIVE, "replaced-images", f"{int(time.time())}-{os.path.basename(old)}"))
     os.makedirs(os.path.join(ITEMS_DIR, category), exist_ok=True)
-    path = os.path.join(ITEMS_DIR, category, f"{category}-{n}.jpg")
+    path = os.path.join(ITEMS_DIR, category, f"{category}-{n}.webp")  # every picture in the game is WebP
     with open(path, "wb") as f:
-        f.write(data)
+        f.write(to_webp(data))
     return path
 
 
@@ -485,6 +510,30 @@ def grid_view(category, numbers):
     return out
 
 
+def convert_all():
+    """One-off migration: every jpg/png/gif picture becomes WebP; the originals move to archive/original-images."""
+    done, before, after = 0, 0, 0
+    for cat in sorted(os.listdir(ITEMS_DIR)):
+        folder = os.path.join(ITEMS_DIR, cat)
+        if not os.path.isdir(folder):
+            continue
+        for f in sorted(os.listdir(folder)):
+            base, ext = os.path.splitext(f)
+            if ext.lower() not in (".jpg", ".jpeg", ".png", ".gif"):
+                continue
+            src = os.path.join(folder, f)
+            data = to_webp(open(src, "rb").read())
+            with open(os.path.join(folder, base + ".webp"), "wb") as out:
+                out.write(data)
+            before, after, done = before + os.path.getsize(src), after + len(data), done + 1
+            keep = os.path.join(ARCHIVE, "original-images", cat)
+            os.makedirs(keep, exist_ok=True)
+            shutil.move(src, os.path.join(keep, f))
+    print(f"CONVERTED {done} pictures: {before // 1024} KB -> {after // 1024} KB")
+    for line in run_node("build-item-images.js"):
+        print(line)
+
+
 def run_node(script):
     node = shutil.which("node") or r"C:\Program Files\nodejs\node.exe"
     r = subprocess.run([node, os.path.join(MOBILE, "scripts", script)], cwd=MOBILE, capture_output=True, text=True)
@@ -505,7 +554,7 @@ def load_config(category):
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     p = argparse.ArgumentParser(description="Fill an Arena category with pictures.")
-    p.add_argument("category")
+    p.add_argument("category", nargs="?")
     p.add_argument("--only", help="item numbers, e.g. 3,7,12")
     p.add_argument("--force", action="store_true", help="redo items that already have a picture")
     p.add_argument("--ai", action="store_true", help="skip the search, generate with AI")
@@ -515,12 +564,18 @@ def main():
     p.add_argument("--crop", action="append", help='keep only "<n>=x,y,w,h" (fractions) of saved pictures, '
                    'padded to a square – a symbol without the name written next to it')
     p.add_argument("--ok", help="hideName: mark these items as checked – no name on the picture, e.g. 1,3,5")
+    p.add_argument("--restore", help="put the untouched original back (undo blur/crop), e.g. 4,9")
+    p.add_argument("--to-webp", action="store_true", help="convert every picture of every category to WebP (originals go to archive/original-images)")
     p.add_argument("--reject", help="take these pictures out of the game (to archive/replaced-images), e.g. 2,8")
     p.add_argument("--file", action="append", help='use a picture the user gave: "<n>=<path>" (repeat for more)')
     p.add_argument("--min", type=int, default=400, help="min short side of searched photos (default 400)")
     p.add_argument("--sheet", action="store_true", help="only rebuild the contact sheet")
     p.add_argument("--grid", help="only make a gridded view of these items (up to 4), e.g. 3,4,5")
     a = p.parse_args()
+    if a.to_webp:
+        return convert_all()
+    if not a.category:
+        p.error("a category is needed (or --to-webp)")
     if a.grid:
         return print("GRID " + grid_view(a.category, [int(v) for v in a.grid.split(",")]))
 
@@ -540,6 +595,22 @@ def main():
                                 license="provided by the user", author="—", page="",
                                 **({"needbox": True} if cfg.get("hideName") else {}))
         print(f"FILE {item_id}" + (" (check the name)" if cfg.get("hideName") else ""))
+        edits.append(("", "ok"))
+    for n in (a.restore or "").split(","):
+        if not n.strip():
+            continue
+        item_id = f"{a.category}-{n.strip()}"
+        rev = reveal_path(a.category, item_id)
+        if not os.path.exists(rev):
+            print(f"FAIL {item_id}: no original to restore")
+            continue
+        save(a.category, int(n), open(rev, "rb").read())  # the edited picture goes to archive/replaced-images
+        cr = credits.setdefault(item_id, {})
+        for k in ("hidden", "blur", "crop"):
+            cr.pop(k, None)
+        if cfg.get("hideName"):
+            cr["needbox"] = True
+        print(f"RESTORED {item_id}")
         edits.append(("", "ok"))
     for n in (a.reject or "").split(","):
         if n.strip() and existing(a.category, n.strip()):

@@ -10,6 +10,7 @@ import {
   Pressable,
   StyleSheet,
   TextInput,
+  useWindowDimensions,
   View,
 } from 'react-native';
 
@@ -54,6 +55,11 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   } = useGameFeedback();
   // iPhone Safari: keep the whole duel above the keyboard (the image shrinks).
   const keyboardInset = useWebKeyboardInset();
+  // On a short visible area (the keyboard is up) the surrounding panels get flatter, so the picture panel and the
+  // answer row always fit. The picture panel takes whatever height is left and is the same in every category:
+  // the picture inside never changes its size (it is absolutely positioned).
+  const { height: windowHeight } = useWindowDimensions();
+  const compact = windowHeight - keyboardInset < 600;
   const attacker = state.players[setup.attackerId];
   const defender = state.players[setup.defenderId];
   const category = CATEGORY_BY_ID[setup.categoryId];
@@ -323,8 +329,8 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   return (
     <KeyboardAvoidingView
       behavior={Platform.select({ android: 'height', ios: 'padding' })}
-      style={[styles.screen, keyboardInset > 0 && { paddingBottom: keyboardInset + spacing.sm }]}>
-      <View style={styles.header}>
+      style={[styles.screen, compact && styles.screenCompact, keyboardInset > 0 && { paddingBottom: keyboardInset + spacing.sm }]}>
+      <View style={[styles.header, compact && styles.headerCompact]}>
         <View style={styles.miniMapPosition}>
           <ArenaBattleMiniMap
             attackerId={setup.attackerId}
@@ -341,8 +347,8 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
             {muted ? 'שקט' : 'קול'}
           </AppText>
         </Pressable>
-        <AppText style={styles.eyebrow} weight="bold">דו־קרב · קטגוריית המגן</AppText>
-        <AppText style={styles.title} weight="black">{category.name}</AppText>
+        {compact ? null : <AppText style={styles.eyebrow} weight="bold">דו־קרב · קטגוריית המגן</AppText>}
+        <AppText numberOfLines={1} style={[styles.title, compact && styles.titleCompact]} weight="black">{category.name}</AppText>
         <AppText style={styles.wayLine} weight="bold">{way.label}</AppText>
       </View>
 
@@ -353,6 +359,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         attackerColor={attacker.color}
         attackerLabel={`${attacker.isHuman ? 'אתה' : attacker.name} · תוקף`}
         attackerMilliseconds={setup.attackerSeconds * 1000}
+        compact={compact}
         defenderBonus={setup.defenderUsesBonus}
         defenderColor={defender.color}
         defenderLabel={`${defender.isHuman ? 'אתה' : defender.name} · מגן`}
@@ -363,14 +370,17 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         paused={transitioning}
       />
 
-      <View style={styles.turnPill}>
-        <AppText style={styles.turnText} weight="black">
-          {isHumanTurn ? 'התור שלך · הקלידו את התשובה' : `התור של ${activePlayer.name}`}
-        </AppText>
-      </View>
+      {compact ? null : (
+        <View style={styles.turnPill}>
+          <AppText style={styles.turnText} weight="black">
+            {isHumanTurn ? 'התור שלך · הקלידו את התשובה' : `התור של ${activePlayer.name}`}
+          </AppText>
+        </View>
+      )}
 
       <Animated.View style={[
         styles.imageCard,
+        compact && styles.imageCardCompact,
         {
           borderColor: correctGlow.interpolate({
             inputRange: [0, 1],
@@ -381,19 +391,23 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         },
       ]}>
         {itemImage ? (
-          <Image
-            accessibilityLabel="פריט לזיהוי"
-            resizeMode="contain"
-            source={itemImage}
-            style={styles.itemImage}
-          />
+          <View pointerEvents="none" style={styles.imageFill}>
+            <Image
+              accessibilityLabel="פריט לזיהוי"
+              resizeMode="contain"
+              source={itemImage}
+              style={styles.itemImage}
+            />
+          </View>
         ) : (
           <AppText accessibilityLabel="פריט לזיהוי" style={styles.visual}>{item.visual}</AppText>
         )}
       </Animated.View>
 
       <AppText accessibilityLiveRegion="polite" style={styles.feedback} weight="bold">
-        {feedback || (isHumanTurn ? 'זהו את מה שמופיע בתמונה' : `${activePlayer.name} חושב/ת…`)}
+        {feedback || (compact
+          ? (isHumanTurn ? 'התור שלך · הקלידו את התשובה' : `התור של ${activePlayer.name}`)
+          : (isHumanTurn ? 'זהו את מה שמופיע בתמונה' : `${activePlayer.name} חושב/ת…`))}
       </AppText>
 
       <View style={styles.controls}>
@@ -450,7 +464,9 @@ const styles = StyleSheet.create({
     paddingTop: spacing.sm,
     paddingBottom: spacing.md,
   },
+  screenCompact: { paddingTop: spacing.xs, paddingBottom: spacing.sm },
   header: { minHeight: 70, alignItems: 'center', justifyContent: 'center', marginBottom: spacing.sm },
+  headerCompact: { minHeight: 44, marginBottom: spacing.xs },
   miniMapPosition: { position: 'absolute', left: 0, top: 0 },
   muteButton: {
     position: 'absolute',
@@ -469,6 +485,7 @@ const styles = StyleSheet.create({
   eyebrow: { color: colors.accentGold, fontSize: typeScale.caption, textAlign: 'center' },
   wayLine: { color: colors.success, fontSize: typeScale.caption, textAlign: 'center' },
   title: { color: colors.textPrimary, fontSize: 24, lineHeight: 30, textAlign: 'center', marginTop: spacing.xs },
+  titleCompact: { fontSize: 18, lineHeight: 22, marginTop: 0, maxWidth: '62%' },
   turnPill: {
     alignSelf: 'center',
     minHeight: 34,
@@ -495,6 +512,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     overflow: 'hidden',
   },
+  imageCardCompact: { minHeight: 64 },
+  // Absolutely positioned: the picture can never push the panel (or the answer row) around, whatever its size.
+  imageFill: { position: 'absolute', top: spacing.xs, bottom: spacing.xs, left: spacing.xs, right: spacing.xs },
   itemImage: { width: '100%', height: '100%', borderRadius: radii.control },
   visual: { color: colors.bg, fontSize: 84, lineHeight: 100, textAlign: 'center' },
   feedback: { minHeight: 22, color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center', marginVertical: spacing.xs },

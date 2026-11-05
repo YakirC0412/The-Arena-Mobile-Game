@@ -23,7 +23,7 @@ function check(name, ok, extra = '') {
 const files = () => (fs.existsSync(path.join(MOBILE, 'assets/items', ID)) ? fs.readdirSync(path.join(MOBILE, 'assets/items', ID)).sort() : []);
 
 (async () => {
-  const sample = path.join(MOBILE, 'assets/items/animals/animals-1.jpg');
+  const sample = path.join(MOBILE, 'assets/items/animals/animals-1.webp');
   let r = await call('POST', '/api/category', { id: ID, name: 'בדיקה', icon: '🧪', level: 'easy', status: 'reserve', ways: [['תמונה ← שם', true], ['דרך שנייה', true]], picture: { kind: 'photo' } });
   check('create category', r.status === 200, JSON.stringify(r.body));
   r = await call('POST', '/api/category', { id: ID, name: 'x', ways: [['a', true]] });
@@ -40,17 +40,17 @@ const files = () => (fs.existsSync(path.join(MOBILE, 'assets/items', ID)) ? fs.r
   r = await call('PUT', `/api/item/${ID}/3`, { answer: '' });
   check('empty answer is refused', r.status === 400);
 
-  r = await call('POST', `/api/pic/${ID}/1/upload?name=a.jpg`, undefined, fs.readFileSync(sample));
+  r = await call('POST', `/api/pic/${ID}/1/upload?name=a.webp`, undefined, fs.readFileSync(sample));
   check('upload picture 1', r.body.ok === true, JSON.stringify(r.body));
-  r = await call('POST', `/api/pic/${ID}/3/upload?name=b.jpg`, undefined, fs.readFileSync(path.join(MOBILE, 'assets/items/animals/animals-4.jpg')));
+  r = await call('POST', `/api/pic/${ID}/3/upload?name=b.webp`, undefined, fs.readFileSync(path.join(MOBILE, 'assets/items/animals/animals-4.webp')));
   check('upload picture 3', r.body.ok === true, JSON.stringify(r.body));
-  check('files named by item number', files().join() === `${ID}-1.jpg,${ID}-3.jpg`, files().join());
-  const before3 = fs.readFileSync(path.join(MOBILE, 'assets/items', ID, `${ID}-3.jpg`));
+  check('files named by item number', files().join() === `${ID}-1.webp,${ID}-3.webp`, files().join());
+  const before3 = fs.readFileSync(path.join(MOBILE, 'assets/items', ID, `${ID}-3.webp`));
 
   await call('POST', `/api/item/${ID}/2/move`, { dir: 1 });
   c = await state();
-  check('move item 2 down swaps data and pictures', c.items[1].answer === 'נמר' && c.items[2].answer === 'אריה' && files().join() === `${ID}-1.jpg,${ID}-2.jpg`
-    && fs.readFileSync(path.join(MOBILE, 'assets/items', ID, `${ID}-2.jpg`)).equals(before3), files().join());
+  check('move item 2 down swaps data and pictures', c.items[1].answer === 'נמר' && c.items[2].answer === 'אריה' && files().join() === `${ID}-1.webp,${ID}-2.webp`
+    && fs.readFileSync(path.join(MOBILE, 'assets/items', ID, `${ID}-2.webp`)).equals(before3), files().join());
 
   r = await call('POST', `/api/pic/${ID}/2/blur`, { shapes: '0.1,0.1,0.3,0.3;ring:0.5,0.5,0.4,0.25' });
   check('blur', r.body.ok === true, JSON.stringify(r.body));
@@ -63,7 +63,7 @@ const files = () => (fs.existsSync(path.join(MOBILE, 'assets/items', ID)) ? fs.r
 
   await call('DELETE', `/api/item/${ID}/1`);
   c = await state();
-  check('delete item 1 shifts items and pictures', c.items.length === 2 && c.items[0].answer === 'נמר' && files().join() === `${ID}-1.jpg`, files().join());
+  check('delete item 1 shifts items and pictures', c.items.length === 2 && c.items[0].answer === 'נמר' && files().join() === `${ID}-1.webp`, files().join());
   r = await call('DELETE', `/api/pic/${ID}/1`);
   check('delete picture', r.body.ok === true && files().length === 0, JSON.stringify(r.body));
 

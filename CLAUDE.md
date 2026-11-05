@@ -72,6 +72,11 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 5.11.26 – (1) Duel layout: the picture panel takes the height that is left and the picture inside is absolutely
+  positioned, so no category (e.g. team crests) can push the answer field / skip button under the iPhone keyboard;
+  on a short visible area (< 600px) the header, clocks and turn pill go compact. Checked at 390x330, 375x290 and
+  390x664 in football-clubs, movies, israel-history. (2) All 1051 pictures are now WebP (640px max, q85; originals in
+  archive/original-images, 52.6 → 35.7 MB); the skill, panel upload, blur/crop and restore all write WebP.
 - 5.11.26 – Skip button hardened for iPhone (user: picture still did not advance): it now listens to touchstart,
   pointerdown, mousedown and click through `features/battle/tap-gate.ts` (one tap = one skip, 4 tests), attaches via a
   callback ref, and tapping it on a bot's turn shows "אפשר לדלג רק בתור שלך". Not reproducible in Chrome (skip worked
@@ -148,6 +153,8 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   OPENAI_API_KEY in .claude/skills/arena-images/keys.env (git-ignored; the user copies it).
 - Bot skip in the human duel shows "דילגת" (you skipped) – wording should name the bot.
 - Deep links to QA screens need a full page load (`/qa-duel`); they work since web.output = single.
+- Metro (the game server) crashes with ENOENT when hundreds of picture files change under it (e.g. the WebP
+  conversion): restart it with `npx.cmd expo start --web --port 8090 --clear`.
 - ESLint crashes: "Cannot find native binding" (unrs-resolver from the Codex pnpm install). Fix by
   reinstalling deps with pnpm once pnpm is available.
 - The sandbox blocks renaming/moving `.git` folders and `mobile/assets/expo.icon`; ask the user to do it.

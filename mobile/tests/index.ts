@@ -7,6 +7,7 @@ import './flow.test';
 import './accounts.test';
 import './skip.test';
 import './ways.test';
+import './tap-gate.test';
 import { runAll } from './harness';
 
 runAll();

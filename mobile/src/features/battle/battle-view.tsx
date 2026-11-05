@@ -34,6 +34,7 @@ import {
 } from '@/game/engine';
 import type { BattleSetup, GameState } from '@/game/types';
 import { ITEM_IMAGES } from '@/content/item-images';
+import { createTapGate } from '@/features/battle/tap-gate';
 
 type BattleViewProps = {
   state: GameState;
@@ -253,8 +254,23 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   };
 
 
+  // A short message that clears itself, e.g. when skip is tapped on the bot's turn.
+  const hintTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showHint = (text: string) => {
+    setFeedback(text);
+    if (hintTimerRef.current) clearTimeout(hintTimerRef.current);
+    hintTimerRef.current = setTimeout(() => setFeedback((current) => (current === text ? '' : current)), 1600);
+  };
+  useEffect(() => () => {
+    if (hintTimerRef.current) clearTimeout(hintTimerRef.current);
+  }, []);
+
   const skip = () => {
-    if (!isHumanTurn || transitioning) return;
+    if (transitioning) return;
+    if (!isHumanTurn) {
+      showHint('אפשר לדלג רק בתור שלך');
+      return;
+    }
     setTransitioning(true);
     // Tapping the button would otherwise take focus and close the keyboard.
     inputRef.current?.focus();
@@ -273,29 +289,36 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   // keyboard starts closing, the layout jumps and the tap is cancelled – so
   // skip needed two taps. Acting on touch-down and cancelling the default
   // keeps the keyboard open and skips on the first tap.
-  const skipButtonRef = useRef<ComponentRef<typeof View>>(null);
-  useEffect(() => {
+  // Safari does not always deliver the same events, so the button listens to touchstart, pointerdown,
+  // mousedown and (as a last resort) click; the tap gate makes one tap skip once. A callback ref attaches
+  // the listeners whenever the button element appears, not just on the first render.
+  const [skipGate] = useState(() => createTapGate());
+  const skipListenersRef = useRef<(() => void) | null>(null);
+  const setSkipButton = useCallback((node: ComponentRef<typeof View> | null) => {
+    skipListenersRef.current?.();
+    skipListenersRef.current = null;
     if (Platform.OS !== 'web') return;
-    const button = skipButtonRef.current as unknown as HTMLElement | null;
+    const button = node as unknown as HTMLElement | null;
     if (!button?.addEventListener) return;
-    let lastTouchAt = 0;
-    const onTouchStart = (event: TouchEvent) => {
+    const onDown = (event: Event) => {
       event.preventDefault();
-      lastTouchAt = Date.now();
-      skipRef.current();
+      if (skipGate.down(Date.now())) skipRef.current();
     };
-    const onMouseDown = (event: MouseEvent) => {
+    const onClick = (event: Event) => {
       event.preventDefault();
-      if (Date.now() - lastTouchAt < 800) return;
-      skipRef.current();
+      if (skipGate.click(Date.now())) skipRef.current();
     };
-    button.addEventListener('touchstart', onTouchStart, { passive: false });
-    button.addEventListener('mousedown', onMouseDown);
-    return () => {
-      button.removeEventListener('touchstart', onTouchStart);
-      button.removeEventListener('mousedown', onMouseDown);
+    button.addEventListener('touchstart', onDown, { passive: false });
+    button.addEventListener('pointerdown', onDown);
+    button.addEventListener('mousedown', onDown);
+    button.addEventListener('click', onClick);
+    skipListenersRef.current = () => {
+      button.removeEventListener('touchstart', onDown);
+      button.removeEventListener('pointerdown', onDown);
+      button.removeEventListener('mousedown', onDown);
+      button.removeEventListener('click', onClick);
     };
-  }, []);
+  }, [skipGate]);
 
   return (
     <KeyboardAvoidingView
@@ -399,10 +422,10 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
           />
           {/* Skip sits beside the field, so the iPhone keyboard bar never hides it. */}
           <Pressable
-            ref={skipButtonRef}
+            ref={setSkipButton}
             accessibilityLabel="דילוג על התמונה, מינוס 3 שניות"
             accessibilityRole="button"
-            disabled={!isHumanTurn || transitioning}
+            disabled={transitioning}
             focusable={false}
             // On web the raw touch/mouse listeners above do the skip.
             onPress={Platform.OS === 'web' ? undefined : skip}

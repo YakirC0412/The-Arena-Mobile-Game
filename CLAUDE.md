@@ -22,7 +22,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Admin panel (decision 19): `npm run admin` from `mobile/` (preview config `arena-admin`) → http://localhost:8095. Edits
   categories, items and pictures in the real files. Check it with `node scripts/admin/smoke-test.js` (server running).
   Never run `arena_images.py` in the background while the panel does something: both rewrite credits.json.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (51 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (56 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -72,6 +72,10 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 5.11.26 – Skip button hardened for iPhone (user: picture still did not advance): it now listens to touchstart,
+  pointerdown, mousedown and click through `features/battle/tap-gate.ts` (one tap = one skip, 4 tests), attaches via a
+  callback ref, and tapping it on a bot's turn shows "אפשר לדלג רק בתור שלך". Not reproducible in Chrome (skip worked
+  before too); awaiting the user's iPhone retest. If it still fails: ask which turn it is and what the screen shows.
 - 5.11.26 – Content complete (user): 35 playable categories + 4 hidden reserve; names hidden; AI pictures approved by
   the user (credits `reviewedByUser`). The user deleted "cars" (pool test now needs >= 16, not 36). Admin panel
   (decision 19, `npm run admin`) edits src/content/categories-data.json. Four oversized pictures shrunk to 640px JPEG.

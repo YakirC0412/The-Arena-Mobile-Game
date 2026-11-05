@@ -41,18 +41,16 @@
       "Flag of Israel",
       "Flag of the United States",
       "Flag of France",
+      "Flag of the United Kingdom",
       "Flag of Japan",
       "Flag of Brazil",
       "Flag of Canada",
-      "Flag of Nepal",
       "Flag of Uruguay",
-      "Flag of Bhutan",
       "Flag of Germany",
       "Flag of South Africa",
       "Flag of Iceland",
       "Flag of Italy",
       "Flag of Spain",
-      "Flag of the United Kingdom",
       "Flag of Greece",
       "Flag of India",
       "Flag of China",
@@ -67,7 +65,9 @@
       "Flag of Turkey",
       "Flag of the Netherlands",
       "Flag of Ireland",
-      "Flag of Jamaica"
+      "Flag of Jamaica",
+      "Flag of Nepal",
+      "Flag of Bhutan"
     ]
   },
   "fruit": {
@@ -600,12 +600,12 @@
       "Sub-Zero (Mortal Kombat)",
       "Scorpion (Mortal Kombat)",
       "Ryu (Street Fighter)",
-      "Chun-Li",
+      "Captain Price",
       "Nathan Drake",
       "Ellie (The Last of Us)",
-      "Geralt of Rivia",
-      "Samus Aran",
-      "Fox McCloud"
+      "Guko",
+      "Vegita",
+      "Miles Morales"
     ]
   },
   "cartoons": {
@@ -994,7 +994,7 @@
     "query": "{item} logo",
     "prompt": "The official logo of {item}, flat, plain white background, no text",
     "items": [
-      "Apple Inc.",
+      "Nike",
       "McDonald's",
       "Starbucks",
       "Pepsi",
@@ -1007,7 +1007,7 @@
       "Android (operating system)",
       "Mastercard",
       "Pizza Hut",
-      "Domino's",
+      "File:Domino's pizza logo.svg",
       "Red Bull",
       "Firefox",
       "Vodafone",
@@ -1024,47 +1024,6 @@
       "Monster Energy",
       "Carrefour",
       "Unilever"
-    ]
-  },
-  "cars": {
-    "kind": "logo",
-    "hideName": true,
-    "prefer": [
-      "logo"
-    ],
-    "query": "{item} car logo",
-    "prompt": "The official car emblem of {item}, flat, plain white background, no text",
-    "items": [
-      "Toyota",
-      "Mercedes-Benz",
-      "BMW",
-      "Ferrari",
-      "Volkswagen",
-      "Audi",
-      "Tesla, Inc.",
-      "Honda",
-      "Hyundai Motor Company",
-      "Kia",
-      "Mazda",
-      "Chevrolet",
-      "Nissan",
-      "Subaru",
-      "Lamborghini",
-      "Porsche",
-      "Mitsubishi Motors",
-      "Škoda Auto",
-      "Peugeot",
-      "Renault",
-      "Citroën",
-      "Volvo Cars",
-      "Ford Motor Company",
-      "Jaguar Cars",
-      "Fiat",
-      "Alfa Romeo",
-      "Maserati",
-      "Lexus",
-      "Suzuki",
-      "Bentley"
     ]
   },
   "apps": {
@@ -1283,11 +1242,11 @@
       "Armani",
       "Dolce & Gabbana",
       "Fendi",
-      "Burberry",
+      "Uniqlo",
       "Hermès",
       "Hollister Co.",
       "Abercrombie & Fitch",
-      "Kangol",
+      "Levi's",
       "Umbro",
       "The North Face"
     ]

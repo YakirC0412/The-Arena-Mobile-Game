@@ -196,7 +196,7 @@
 | brands-11 | Android (operating system) | — | provided by the user | arena-upload-1793625799239-11 |
 | brands-12 | Mastercard | — | provided by the user | arena-upload-1793625826596-12 |
 | brands-13 | Pizza Hut | Pizza Hut | Public domain | [Pizza_Hut_international_logo,_2008–2016.svg](https://commons.wikimedia.org/wiki/File:Pizza_Hut_international_logo,_2008%E2%80%932016.svg) |
-| brands-14 | Domino's | — | provided by the user | arena-upload-1793625904334-14 |
+| brands-14 | File:Domino's pizza logo.svg | Domino's Pizza | Public domain | [Domino's_pizza_logo.svg](https://commons.wikimedia.org/wiki/File:Domino%27s_pizza_logo.svg) |
 | brands-15 | Red Bull | — | Fair use | [RedBullEnergyDrink.svg](https://en.wikipedia.org/wiki/File:RedBullEnergyDrink.svg) |
 | brands-16 | Firefox | Mozilla Corporation | CC BY-SA 3.0 | [Firefox_Nightly_Logo,_2017.svg](https://commons.wikimedia.org/wiki/File:Firefox_Nightly_logo,_2017.svg) |
 | brands-17 | Vodafone | — | provided by the user | arena-upload-1793625991572-17 |
@@ -213,41 +213,6 @@
 | brands-28 | Monster Energy | — | provided by the user | arena-upload-1793626362212-28 |
 | brands-29 | Carrefour | — | provided by the user | arena-upload-1793626444748-29 |
 | brands-30 | Unilever | — | Fair use | [Unilever.svg](https://en.wikipedia.org/wiki/File:Unilever.svg) |
-
-## cars
-
-| פריט | מקור | צלם / יוצר | רישיון | קובץ |
-|---|---|---|---|---|
-| cars-1 | Toyota | Tokumeigakarinoaoshima | CC0 | [Headquarter_of_Toyota_Motor_Corporation_3.JPG](https://commons.wikimedia.org/wiki/File:Headquarter_of_Toyota_Motor_Corporation_3.JPG) |
-| cars-2 | Mercedes-Benz | Mercedes-Benz | Public domain | [Mercedes-Benz_Logo_2010.svg](https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Logo_2010.svg) |
-| cars-3 | BMW | BMW | Public domain | [BMW_logo_(gray).svg](https://commons.wikimedia.org/wiki/File:BMW_logo_(gray).svg) |
-| cars-4 | Ferrari | — | Fair use | [Prancing_horse.svg](https://en.wikipedia.org/wiki/File:Prancing_horse.svg) |
-| cars-5 | Volkswagen | RoanDM | Public domain | [Volkswagen_Logo_history.svg](https://commons.wikimedia.org/wiki/File:Volkswagen_Logo_history.svg) |
-| cars-6 | Audi | Strichpunkt / KMS Team | Public domain | [Audi-Logo_2016.svg](https://commons.wikimedia.org/wiki/File:Audi-Logo_2016.svg) |
-| cars-7 | Tesla, Inc. | Tesla | Public domain | [Tesla_Motors.svg](https://commons.wikimedia.org/wiki/File:Tesla_Motors.svg) |
-| cars-8 | Honda | TTTNIS | Public domain | [Honda_logo.svg](https://commons.wikimedia.org/wiki/File:Honda_logo.svg) |
-| cars-9 | Hyundai Motor Company | Hyundai Motor Company | Public domain | [Hyundai_Motor_Company_logo.svg](https://commons.wikimedia.org/wiki/File:Hyundai_Motor_Company_logo.svg) |
-| cars-10 | Kia | Kia | CC BY-SA 4.0 | [KIA-Logo-1994-2012.png](https://commons.wikimedia.org/wiki/File:KIA-Logo-1994-2012.png) |
-| cars-11 | Mazda | Suree | Public domain | [Mazda-logo-1992.jpg](https://commons.wikimedia.org/wiki/File:Mazda-logo-1992.jpg) |
-| cars-12 | Chevrolet | — | Fair use | [Chevrolet_(logo).svg](https://en.wikipedia.org/wiki/File:Chevrolet_(logo).svg) |
-| cars-13 | Nissan | Nissan Motor Corporation | Public domain | [Nissan_2020_logo.svg](https://commons.wikimedia.org/wiki/File:Nissan_2020_logo.svg) |
-| cars-14 | Subaru | Subaru Corporation | Public domain | [Subaru_logo_(transparent).svg](https://commons.wikimedia.org/wiki/File:Subaru_logo_(transparent).svg) |
-| cars-15 | Lamborghini | Self made | Public domain | [Lamborghini_-_logo_wordmark+payoff_(Italy,_1963-).svg](https://commons.wikimedia.org/wiki/File:Lamborghini_-_logo_wordmark%2Bpayoff_(Italy,_1963-).svg) |
-| cars-16 | Porsche | Porsche – German automobile manufacturer specializing in high-performance sports cars, SUVs and sedans, owned by Volkswa | Public domain | [Logo_Porsche_718_Text.svg](https://commons.wikimedia.org/wiki/File:Logo_Porsche_718_Text.svg) |
-| cars-17 | Mitsubishi Motors | de:Benutzer:Gaspard | Public domain | [Mitsubishi_Motors_SVG_logo_2.svg](https://commons.wikimedia.org/wiki/File:Mitsubishi_Motors_SVG_logo_2.svg) |
-| cars-18 | Škoda Auto | Skoda Auto | Public domain | [Škoda_nieuw.png](https://commons.wikimedia.org/wiki/File:%C5%A0koda_nieuw.png) |
-| cars-19 | Peugeot | — | Fair use | [Peugeot-logo.svg](https://en.wikipedia.org/wiki/File:Peugeot-logo.svg) |
-| cars-20 | Renault | Renault S.A. | Public domain | [2021_Renault_Group_logo.svg](https://commons.wikimedia.org/wiki/File:2021_Renault_Group_logo.svg) |
-| cars-21 | Citroën | Unknown authorUnknown author PSA Peugeot Citroën AG | Public domain | [Citroën_Logo.svg](https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_Logo.svg) |
-| cars-22 | Volvo Cars | — | Fair use | [Volvo_Iron_Logo.png](https://en.wikipedia.org/wiki/File:Volvo_Iron_Logo.png) |
-| cars-23 | Ford Motor Company | Unknown authorUnknown author | Public domain | [Ford_1957_logo.png](https://commons.wikimedia.org/wiki/File:Ford_1957_logo.png) |
-| cars-24 | Jaguar Cars | Jaguar Cars | Public domain | [Jaguar-Logo.svg](https://commons.wikimedia.org/wiki/File:Jaguar_2024.svg) |
-| cars-25 | Fiat | FIAT | Public domain | [FIAT_logo_(2020).svg](https://commons.wikimedia.org/wiki/File:FIAT_logo_(2020).svg) |
-| cars-26 | Alfa Romeo | — | Fair use | [Alfa_Romeo_logo.png](https://en.wikipedia.org/wiki/File:Alfa_Romeo_logo.png) |
-| cars-27 | Maserati | Maserati | Public domain | [Maserati_logo_2.svg](https://commons.wikimedia.org/wiki/File:Maserati_logo_2.svg) |
-| cars-28 | Lexus | — | Fair use | [Lexus_F-division_logo.png](https://en.wikipedia.org/wiki/File:Lexus_F-division_logo.png) |
-| cars-29 | Suzuki | Suzuki Motor Corporation | Public domain | [Suzuki_logo_2025_(vertical).svg](https://commons.wikimedia.org/wiki/File:Suzuki_logo_2025_(vertical).svg) |
-| cars-30 | Bentley | F. Gordon Crosby (1885-1943) | Public domain | [Bentley_(Logo_1919).png](https://commons.wikimedia.org/wiki/File:Bentley_(Logo_1919).png) |
 
 ## cartoons
 
@@ -267,22 +232,57 @@
 | cartoons-12 | Tom Cat | MGM | Fair use | [Tom_Tom_and_Jerry.png](https://en.wikipedia.org/wiki/File:Tom_Tom_and_Jerry.png) |
 | cartoons-13 | Jerry Mouse | MGM | Fair use | [Jerry_Mouse.png](https://en.wikipedia.org/wiki/File:Jerry_Mouse.png) |
 | cartoons-14 | Patrick Star | Nickelodeon (NickRewind) | CC BY 3.0 | [Patrick_Star_character.png](https://commons.wikimedia.org/wiki/File:Patrick_Star_character.png) |
-| cartoons-15 | Peppa Pig | pollinations flux | AI generated (לבדיקה) | — |
+| cartoons-15 | Peppa Pig | pollinations flux | AI generated | — |
 | cartoons-16 | Minions (Despicable Me) | ウィ貴公子 | CC BY-SA 4.0 | [Minion_sculpture_in_Brisbane,_2024.jpg](https://commons.wikimedia.org/wiki/File:Minion_sculpture_in_Brisbane,_2024.jpg) |
 | cartoons-17 | Lightning McQueen | — | Fair use | [Lightning_McQueen.png](https://en.wikipedia.org/wiki/File:Lightning_McQueen.png) |
 | cartoons-18 | Olaf (Frozen) | Disney | Fair use | [Olaf_from_Disney's_Frozen.png](https://en.wikipedia.org/wiki/File:Olaf_from_Disney%27s_Frozen.png) |
 | cartoons-19 | Scooby-Doo (character) | CBS | Fair use | [Scooby-Doo.png](https://en.wikipedia.org/wiki/File:Scooby-Doo.png) |
 | cartoons-20 | Bart Simpson | — | Fair use | [Bart_Simpson_200px.png](https://en.wikipedia.org/wiki/File:Bart_Simpson_200px.png) |
 | cartoons-21 | Donald Duck | Disney | Fair use | [Donald_Duck_angry_transparent_background.png](https://en.wikipedia.org/wiki/File:Donald_Duck_angry_transparent_background.png) |
-| cartoons-22 | Dora the Explorer | pollinations flux | AI generated (לבדיקה) | — |
+| cartoons-22 | Dora the Explorer | pollinations flux | AI generated | — |
 | cartoons-23 | Mike Wazowski | — | Fair use | [Mike_Wazowski.png](https://en.wikipedia.org/wiki/File:Mike_Wazowski.png) |
-| cartoons-24 | James P. Sullivan (Monsters, Inc.) | pollinations flux | AI generated (לבדיקה) | — |
+| cartoons-24 | James P. Sullivan (Monsters, Inc.) | pollinations flux | AI generated | — |
 | cartoons-25 | Ariel (The Little Mermaid) | — | Fair use | [Ariel_disney.png](https://en.wikipedia.org/wiki/File:Ariel_disney.png) |
 | cartoons-26 | Genie (Aladdin) | Disney | Fair use | [The_Genie_Aladdin.png](https://en.wikipedia.org/wiki/File:The_Genie_Aladdin.png) |
 | cartoons-27 | Moana (character) | Disney | Fair use | [Moana_(character).png](https://en.wikipedia.org/wiki/File:Moana_(character).png) |
 | cartoons-28 | Tweety | Rjcastillo | CC BY-SA 4.0 | [Cessna_T-37C_Tweety_Bird_-_A742783.jpg](https://commons.wikimedia.org/wiki/File:Cessna_T-37C_Tweety_Bird_-_A742783.jpg) |
 | cartoons-29 | Aladdin (Disney character) | Disney | Fair use | [Aladdin_Disney_pose.png](https://en.wikipedia.org/wiki/File:Aladdin_Disney_pose.png) |
 | cartoons-30 | Ratatouille (film) | — | Fair use | [RatatouillePoster.jpg](https://en.wikipedia.org/wiki/File:RatatouillePoster.jpg) |
+
+## clothing-brands
+
+| פריט | מקור | צלם / יוצר | רישיון | קובץ |
+|---|---|---|---|---|
+| clothing-brands-1 | Nike, Inc. | — | provided by the user | arena-upload-1793816814765-1 |
+| clothing-brands-2 | Adidas | — | provided by the user | arena-upload-1793816877527-2 |
+| clothing-brands-3 | Puma (brand) | — | provided by the user | arena-upload-1793816894466-3 |
+| clothing-brands-4 | Air Jordan | — | provided by the user | arena-upload-1793816916956-4 |
+| clothing-brands-5 | Lacoste | — | provided by the user | arena-upload-1793816935564-5 |
+| clothing-brands-6 | Ralph Lauren Corporation | — | provided by the user | arena-upload-1793816961026-6 |
+| clothing-brands-7 | Tommy Hilfiger (company) | — | provided by the user | arena-upload-1793816985873-7 |
+| clothing-brands-8 | Converse (shoe company) | — | provided by the user | arena-upload-1793817088674-8 |
+| clothing-brands-9 | New Balance | — | provided by the user | arena-upload-1793817110565-9 |
+| clothing-brands-10 | Under Armour | — | provided by the user | arena-upload-1793817132842-10 |
+| clothing-brands-11 | Reebok | — | provided by the user | arena-upload-1793817219698-11 |
+| clothing-brands-12 | Chanel | — | provided by the user | arena-upload-1793817246245-12 |
+| clothing-brands-13 | Louis Vuitton | — | provided by the user | arena-upload-1793873118407-13 |
+| clothing-brands-14 | Gucci | — | provided by the user | arena-upload-1793873177641-14 |
+| clothing-brands-15 | Calvin Klein | — | provided by the user | arena-upload-1793873365903-15 |
+| clothing-brands-16 | Timberland (company) | — | provided by the user | arena-upload-1793873374404-16 |
+| clothing-brands-17 | Crocs | — | provided by the user | arena-upload-1793873382909-17 |
+| clothing-brands-18 | Fila (company) | — | provided by the user | arena-upload-1793873390399-18 |
+| clothing-brands-19 | ASICS | — | provided by the user | arena-upload-1793873397272-19 |
+| clothing-brands-20 | Versace | — | provided by the user | arena-upload-1793873580163-20 |
+| clothing-brands-21 | Armani | — | provided by the user | arena-upload-1793873586708-21 |
+| clothing-brands-22 | Dolce & Gabbana | — | provided by the user | arena-upload-1793873593876-22 |
+| clothing-brands-23 | Fendi | — | provided by the user | arena-upload-1793873932150-23 |
+| clothing-brands-24 | Burberry | — | provided by the user | arena-upload-1793874110186-24 |
+| clothing-brands-25 | Hermès | — | provided by the user | arena-upload-1793873655945-25 |
+| clothing-brands-26 | Hollister Co. | — | provided by the user | arena-upload-1793873713878-26 |
+| clothing-brands-27 | Abercrombie & Fitch | — | provided by the user | arena-upload-1793873707510-27 |
+| clothing-brands-28 | Kangol | — | provided by the user | arena-upload-1793873898023-28 |
+| clothing-brands-29 | Umbro | — | provided by the user | arena-upload-1793873779027-29 |
+| clothing-brands-30 | The North Face | — | provided by the user | arena-upload-1793873756748-30 |
 
 ## comedians
 
@@ -326,33 +326,33 @@
 | countries-1 | Flag of Israel | Israel Belkind and Fanny Abramovitch (original) “The Provisional Council of State Proclamation of the Flag of the State  | Public domain | [Flag_of_Israel.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Israel.svg) |
 | countries-2 | Flag of the United States | Vector file created by Dbenbenn, Zscout370, Jacobolus, Indolences, and Technion. | Public domain | [Flag_of_the_United_States_(DDD-F-416E_specifications).svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_United_States_(DDD-F-416E_specifications).svg) |
 | countries-3 | Flag of France | Original: Unknown Vector: SKopp | Public domain | [Flag_of_France.svg](https://commons.wikimedia.org/wiki/File:Flag_of_France.svg) |
-| countries-4 | Flag of Japan | Various | Public domain | [Flag_of_Japan.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Japan.svg) |
-| countries-5 | Flag of Brazil | Raimundo Teixeira Mendes | Public domain | [Flag_of_Brazil.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Brazil.svg) |
-| countries-6 | Flag of Canada | Original: George F. G. Stanley Modified by: The original uploader was Illegitimate Barrister at Wikimedia Commons. The c | Public domain | [Flag_of_Canada_(Pantone).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Canada_(Pantone).svg) |
-| countries-7 | Flag of Nepal | Drawn by Pumbaa80, Achim1999 | Public domain | [Flag_of_Nepal.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Nepal.svg) |
+| countries-4 | Flag of the United Kingdom | Original: Acts of Union 1800 Vector: Zscout370 | Public domain | [Flag_of_the_United_Kingdom_(1-2).svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Kingdom_(1-2).svg) |
+| countries-5 | Flag of Japan | Various | Public domain | [Flag_of_Japan.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Japan.svg) |
+| countries-6 | Flag of Brazil | Raimundo Teixeira Mendes | Public domain | [Flag_of_Brazil.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Brazil.svg) |
+| countries-7 | Flag of Canada | Original: George F. G. Stanley Modified by: The original uploader was Illegitimate Barrister at Wikimedia Commons. The c | Public domain | [Flag_of_Canada_(Pantone).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Canada_(Pantone).svg) |
 | countries-8 | Flag of Uruguay | See File history below for details. | Public domain | [Flag_of_Uruguay.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Uruguay.svg) |
-| countries-9 | Flag of Bhutan | See File history below for details. | Public domain | [Flag_of_Bhutan.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Bhutan.svg) |
-| countries-10 | Flag of Germany | User:SKopp, User:Madden, and other users | Public domain | [Flag_of_Germany.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg) |
-| countries-11 | Flag of South Africa | Flag design by Frederick Brownell, image by Wikimedia Commons users | Public domain | [Flag_of_South_Africa.svg](https://commons.wikimedia.org/wiki/File:Flag_of_South_Africa.svg) |
-| countries-12 | Flag of Iceland | Original: Matthías Þórðarson Vector: Árni Dagur and Magasjukur2 | Public domain | [Flag_of_Iceland.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Iceland.svg) |
-| countries-13 | Flag of Italy | See below. | Public domain | [Flag_of_Italy.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Italy.svg) |
-| countries-14 | Flag of Spain | Antonio Valdés y Fernández Bazán | Public domain | [Flag_of_the_Kingdom_of_Spain.svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_Kingdom_of_Spain.svg) |
-| countries-15 | Flag of the United Kingdom | Original: Acts of Union 1800 Vector: Zscout370 | Public domain | [Flag_of_the_United_Kingdom_(1-2).svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Kingdom_(1-2).svg) |
-| countries-16 | Flag of Greece | Unknown authorUnknown author | Public domain | [Flag_of_Greece.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Greece.svg) |
-| countries-17 | Flag of India | Government of India | Public domain | [Flag_of_India.svg](https://commons.wikimedia.org/wiki/File:Flag_of_India.svg) |
-| countries-18 | Flag of China | Zeng Liansong | Public domain | [Flag_of_the_People's_Republic_of_China.svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_People%27s_Republic_of_China.svg) |
-| countries-19 | Flag of Australia | Unknown (Vector graphics image by Ian Fieggen) (only minor code changes by uploader.) | Public domain | [Flag_of_Australia_(converted).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Australia_(converted).svg) |
-| countries-20 | Flag of Mexico | Omar Alejandro Covarrubias Neri, 9 April 2006. Based on the 1968 arms by Francisco Eppens Helguera and Juan Manuel Gabin | Public domain | [Flag_of_Mexico.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Mexico.svg) |
-| countries-21 | Flag of Portugal | Original: Columbano Bordalo Pinheiro Vector: Vítor Luís Rodrigues, António Martins-Tuválkin | Public domain | [Flag_of_Portugal_(official).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Portugal_(official).svg) |
-| countries-22 | Flag of Argentina | Manuel Belgrano | Public domain | [Flag_of_Argentina.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Argentina.svg) |
-| countries-23 | Flag of South Korea | Original: Government of the Republic of Korea Vector: Great Brightstar and others | Public domain | [Flag_of_South_Korea.svg](https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg) |
-| countries-24 | Flag of Norway | Original: Fredrik Meltzer Vector: Gutten på Hemsen | Public domain | [Flag_of_Norway.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Norway.svg) |
-| countries-25 | Flag of Sweden | Jon Harald Søby and others. | Public domain | [Flag_of_Sweden.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Sweden.svg) |
-| countries-26 | Flag of Switzerland | Unknown Vector graphics: Flag_of_Switzerland.svg: User:Marc Mongenet Credits: User:-xfi- User:Zscout370 derivative work: | Public domain | [Flag_of_Switzerland_(Pantone).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Switzerland_(Pantone).svg) |
-| countries-27 | Flag of Turkey | David Benbennick (original author) | Public domain | [Flag_of_Turkey.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Turkey.svg) |
-| countries-28 | Flag of the Netherlands | Zscout370 | Public domain | [Flag_of_the_Netherlands.svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg) |
-| countries-29 | Flag of Ireland | Éire | Public domain | [Flag_of_Ireland.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Ireland.svg) |
-| countries-30 | Flag of Jamaica | The SVG code is valid. This vector image was created with Inkscape by SKopp, and then manually edited by Zscout370, Madd | Public domain | [Flag_of_Jamaica.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Jamaica.svg) |
+| countries-9 | Flag of Germany | User:SKopp, User:Madden, and other users | Public domain | [Flag_of_Germany.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg) |
+| countries-10 | Flag of South Africa | Flag design by Frederick Brownell, image by Wikimedia Commons users | Public domain | [Flag_of_South_Africa.svg](https://commons.wikimedia.org/wiki/File:Flag_of_South_Africa.svg) |
+| countries-11 | Flag of Iceland | Original: Matthías Þórðarson Vector: Árni Dagur and Magasjukur2 | Public domain | [Flag_of_Iceland.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Iceland.svg) |
+| countries-12 | Flag of Italy | See below. | Public domain | [Flag_of_Italy.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Italy.svg) |
+| countries-13 | Flag of Spain | Antonio Valdés y Fernández Bazán | Public domain | [Flag_of_the_Kingdom_of_Spain.svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_Kingdom_of_Spain.svg) |
+| countries-14 | Flag of Greece | Unknown authorUnknown author | Public domain | [Flag_of_Greece.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Greece.svg) |
+| countries-15 | Flag of India | Government of India | Public domain | [Flag_of_India.svg](https://commons.wikimedia.org/wiki/File:Flag_of_India.svg) |
+| countries-16 | Flag of China | Zeng Liansong | Public domain | [Flag_of_the_People's_Republic_of_China.svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_People%27s_Republic_of_China.svg) |
+| countries-17 | Flag of Australia | Unknown (Vector graphics image by Ian Fieggen) (only minor code changes by uploader.) | Public domain | [Flag_of_Australia_(converted).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Australia_(converted).svg) |
+| countries-18 | Flag of Mexico | Omar Alejandro Covarrubias Neri, 9 April 2006. Based on the 1968 arms by Francisco Eppens Helguera and Juan Manuel Gabin | Public domain | [Flag_of_Mexico.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Mexico.svg) |
+| countries-19 | Flag of Portugal | Original: Columbano Bordalo Pinheiro Vector: Vítor Luís Rodrigues, António Martins-Tuválkin | Public domain | [Flag_of_Portugal_(official).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Portugal_(official).svg) |
+| countries-20 | Flag of Argentina | Manuel Belgrano | Public domain | [Flag_of_Argentina.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Argentina.svg) |
+| countries-21 | Flag of South Korea | Original: Government of the Republic of Korea Vector: Great Brightstar and others | Public domain | [Flag_of_South_Korea.svg](https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg) |
+| countries-22 | Flag of Norway | Original: Fredrik Meltzer Vector: Gutten på Hemsen | Public domain | [Flag_of_Norway.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Norway.svg) |
+| countries-23 | Flag of Sweden | Jon Harald Søby and others. | Public domain | [Flag_of_Sweden.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Sweden.svg) |
+| countries-24 | Flag of Switzerland | Unknown Vector graphics: Flag_of_Switzerland.svg: User:Marc Mongenet Credits: User:-xfi- User:Zscout370 derivative work: | Public domain | [Flag_of_Switzerland_(Pantone).svg](https://commons.wikimedia.org/wiki/File:Flag_of_Switzerland_(Pantone).svg) |
+| countries-25 | Flag of Turkey | David Benbennick (original author) | Public domain | [Flag_of_Turkey.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Turkey.svg) |
+| countries-26 | Flag of the Netherlands | Zscout370 | Public domain | [Flag_of_the_Netherlands.svg](https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg) |
+| countries-27 | Flag of Ireland | Éire | Public domain | [Flag_of_Ireland.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Ireland.svg) |
+| countries-28 | Flag of Jamaica | The SVG code is valid. This vector image was created with Inkscape by SKopp, and then manually edited by Zscout370, Madd | Public domain | [Flag_of_Jamaica.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Jamaica.svg) |
+| countries-29 | Flag of Nepal | Drawn by Pumbaa80, Achim1999 | Public domain | [Flag_of_Nepal.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Nepal.svg) |
+| countries-30 | Flag of Bhutan | See File history below for details. | Public domain | [Flag_of_Bhutan.svg](https://commons.wikimedia.org/wiki/File:Flag_of_Bhutan.svg) |
 
 ## divas
 
@@ -841,7 +841,7 @@
 | movies-26 | Oppenheimer (film) | — | Fair use | [Oppenheimer_(film).jpg](https://en.wikipedia.org/wiki/File:Oppenheimer_(film).jpg) |
 | movies-27 | Inception | — | Fair use | [Inception_(2010)_theatrical_poster.jpg](https://en.wikipedia.org/wiki/File:Inception_(2010)_theatrical_poster.jpg) |
 | movies-28 | Interstellar (film) | — | Fair use | [Interstellar_film_poster.jpg](https://en.wikipedia.org/wiki/File:Interstellar_film_poster.jpg) |
-| movies-29 | Halahaka | pollinations flux | AI generated (לבדיקה) | — |
+| movies-29 | Halahaka | — | provided by the user | arena-upload-1793816282838-29 |
 | movies-30 | Lemon Popsicle | — | Fair use | [Lemon_Popsicle_(film_poster).jpg](https://en.wikipedia.org/wiki/File:Lemon_Popsicle_(film_poster).jpg) |
 
 ## playstation
@@ -857,7 +857,7 @@
 | playstation-7 | God of War (2018 video game) | — | Fair use | [God_of_War_4_cover.jpg](https://en.wikipedia.org/wiki/File:God_of_War_4_cover.jpg) |
 | playstation-8 | The Last of Us | — | provided by the user | arena-upload-1793617588459-8 |
 | playstation-9 | NBA 2K | — | provided by the user | arena-upload-1793617629908-9 |
-| playstation-10 | Uncharted | pollinations flux | AI generated (לבדיקה) | — |
+| playstation-10 | Uncharted | — | provided by the user | arena-upload-1793815079091-10 |
 | playstation-11 | Gran Turismo 7 | — | provided by the user | arena-upload-1793617769871-11 |
 | playstation-12 | Mortal Kombat 1 | Warner Bros. Games | Fair use | [Mortal_Kombat_1_key_art.jpeg](https://en.wikipedia.org/wiki/File:Mortal_Kombat_1_key_art.jpeg) |
 | playstation-13 | Rocket League | jjdhd Beirnrj Psyonix Studios | CC BY-SA 4.0 | [Rocket_League_coverart.jpg](https://commons.wikimedia.org/wiki/File:Rocket_League_coverart.jpg) |
@@ -873,7 +873,7 @@
 | playstation-23 | LittleBigPlanet | — | provided by the user | arena-upload-1793618266230-23 |
 | playstation-24 | Final Fantasy VII Remake | — | Fair use | [FFVIIRemake.png](https://en.wikipedia.org/wiki/File:FFVIIRemake.png) |
 | playstation-25 | Elden Ring | — | Fair use | [Elden_Ring_Box_art.jpg](https://en.wikipedia.org/wiki/File:Elden_Ring_Box_art.jpg) |
-| playstation-26 | Metal Gear Solid | pollinations flux | AI generated (לבדיקה) | — |
+| playstation-26 | Metal Gear Solid | — | provided by the user | arena-upload-1793815097622-26 |
 | playstation-27 | Bloodborne | — | provided by the user | arena-upload-1793618384537-27 |
 | playstation-28 | Battlefield (video game series) | — | provided by the user | arena-upload-1793618444511-28 |
 | playstation-29 | Grand Theft Auto V | — | Fair use | [Grand_Theft_Auto_V.png](https://en.wikipedia.org/wiki/File:Grand_Theft_Auto_V.png) |
@@ -895,7 +895,7 @@
 | professions-10 | Aircraft pilot | Alfred T. Palmer | Public domain | [Lt_Mike_Hunter_1.jpg](https://commons.wikimedia.org/wiki/File:Lt_Mike_Hunter_1.jpg) |
 | professions-11 | Microscope | — | provided by the user | arena-upload-1793628107669-11 |
 | professions-12 | Architect | — | provided by the user | arena-upload-1793628078171-12 |
-| professions-13 | File:Programmer_at_work_(Unsplash).jpg | pollinations flux | AI generated (לבדיקה) | — |
+| professions-13 | File:Programmer_at_work_(Unsplash).jpg | pollinations flux | AI generated | — |
 | professions-14 | Palette (painting) | Mlaoxve | Public domain | [Oil_painting_palette.jpg](https://commons.wikimedia.org/wiki/File:Oil_painting_palette.jpg) |
 | professions-15 | Welding helmet | Josep Vinyes Gilabert | CC BY-SA 4.0 | [Equip_per_soldar.jpg](https://commons.wikimedia.org/wiki/File:Equip_per_soldar.jpg) |
 | professions-16 | File:UofR_Symphony_Orchestra_112818-0108.jpg | Alexander Kordzaia | CC BY-SA 4.0 | [UofR_Symphony_Orchestra_112818-0108.jpg](https://commons.wikimedia.org/wiki/File:UofR_Symphony_Orchestra_112818-0108.jpg) |
@@ -1094,7 +1094,7 @@
 | פריט | מקור | צלם / יוצר | רישיון | קובץ |
 |---|---|---|---|---|
 | tv-series-1 | Friends | — | provided by the user | arena-upload-1793627015519-1 |
-| tv-series-2 | The Simpsons | pollinations flux | AI generated (לבדיקה) | — |
+| tv-series-2 | The Simpsons | — | provided by the user | arena-upload-1793816344967-2 |
 | tv-series-3 | Game of Thrones | — | provided by the user | arena-upload-1793627079535-3 |
 | tv-series-4 | Stranger Things | — | provided by the user | arena-upload-1793627099273-4 |
 | tv-series-5 | Money Heist | — | provided by the user | arena-upload-1793627131063-5 |

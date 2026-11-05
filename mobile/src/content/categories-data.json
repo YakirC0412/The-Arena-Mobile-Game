@@ -1,5 +1,5 @@
 {
- "order": ["animals","countries","fruit","technology","birds","vehicles","sports","food","instruments","professions","landmarks","sea","football-clubs","football-players","basketball-teams","playstation","game-characters","cartoons","superheroes","movies","tv-series","actors","comedians","divas","israeli-singers","israel-history","snacks","brands","cars","apps","dog-breeds","kitchen","historical-figures","world-cities","clothing-brands","world-singers","weather","clothing","home","plants"],
+ "order": ["animals","countries","fruit","technology","birds","vehicles","sports","food","instruments","professions","landmarks","sea","football-clubs","football-players","basketball-teams","playstation","game-characters","cartoons","superheroes","movies","tv-series","actors","comedians","divas","israeli-singers","israel-history","snacks","brands","apps","dog-breeds","kitchen","historical-figures","world-cities","clothing-brands","world-singers","weather","clothing","home","plants"],
  "categories": {
   "animals": {
    "name": "חיות",
@@ -50,18 +50,16 @@
     {"answer":"ישראל","visual":"🇮🇱","en":"Flag of Israel","second":{"answer":"ירושלים"}},
     {"answer":"ארצות הברית","aliases":["ארהב","ארה״ב"],"visual":"🇺🇸","en":"Flag of the United States","second":{"answer":"וושינגטון","aliases":["וושינגטון די סי","וושינגטון דיסי"]}},
     {"answer":"צרפת","visual":"🇫🇷","en":"Flag of France","second":{"answer":"פריז","aliases":["פאריס"]}},
+    {"answer":"בריטניה","aliases":["אנגליה"],"visual":"🇬🇧","en":"Flag of the United Kingdom","second":{"answer":"לונדון"}},
     {"answer":"יפן","visual":"🇯🇵","en":"Flag of Japan","second":{"answer":"טוקיו"}},
     {"answer":"ברזיל","visual":"🇧🇷","en":"Flag of Brazil","second":{"answer":"ברזיליה"}},
     {"answer":"קנדה","visual":"🇨🇦","en":"Flag of Canada","second":{"answer":"אוטווה"}},
-    {"answer":"נפאל","visual":"🇳🇵","en":"Flag of Nepal","second":{"answer":"קטמנדו"}},
     {"answer":"אורוגוואי","visual":"🇺🇾","en":"Flag of Uruguay","second":{"answer":"מונטווידאו","aliases":["מונטבידאו"]}},
-    {"answer":"בהוטן","visual":"🇧🇹","en":"Flag of Bhutan","second":{"answer":"תימפו","aliases":["טימפו"]}},
     {"answer":"גרמניה","visual":"🇩🇪","en":"Flag of Germany","second":{"answer":"ברלין"}},
     {"answer":"דרום אפריקה","visual":"🇿🇦","en":"Flag of South Africa","second":{"answer":"פרטוריה","aliases":["קייפטאון","קייפ טאון"]}},
     {"answer":"איסלנד","visual":"🇮🇸","en":"Flag of Iceland","second":{"answer":"רייקיאוויק","aliases":["רייקיאויק","רייקיוויק"]}},
     {"answer":"איטליה","visual":"🇮🇹","en":"Flag of Italy","second":{"answer":"רומא"}},
     {"answer":"ספרד","visual":"🇪🇸","en":"Flag of Spain","second":{"answer":"מדריד"}},
-    {"answer":"בריטניה","aliases":["אנגליה"],"visual":"🇬🇧","en":"Flag of the United Kingdom","second":{"answer":"לונדון"}},
     {"answer":"יוון","visual":"🇬🇷","en":"Flag of Greece","second":{"answer":"אתונה"}},
     {"answer":"הודו","visual":"🇮🇳","en":"Flag of India","second":{"answer":"ניו דלהי","aliases":["דלהי"]}},
     {"answer":"סין","visual":"🇨🇳","en":"Flag of China","second":{"answer":"בייג׳ינג","aliases":["בייג׳ין","בייגינג","בייגין"]}},
@@ -76,7 +74,9 @@
     {"answer":"טורקיה","visual":"🇹🇷","en":"Flag of Turkey","second":{"answer":"אנקרה"}},
     {"answer":"הולנד","visual":"🇳🇱","en":"Flag of the Netherlands","second":{"answer":"אמסטרדם"}},
     {"answer":"אירלנד","visual":"🇮🇪","en":"Flag of Ireland","second":{"answer":"דבלין"}},
-    {"answer":"ג׳מייקה","aliases":["גמייקה","ג׳מאיקה"],"visual":"🇯🇲","en":"Flag of Jamaica","second":{"answer":"קינגסטון"}}
+    {"answer":"ג׳מייקה","aliases":["גמייקה","ג׳מאיקה"],"visual":"🇯🇲","en":"Flag of Jamaica","second":{"answer":"קינגסטון"}},
+    {"answer":"נפאל","visual":"🇳🇵","en":"Flag of Nepal","second":{"answer":"קטמנדו"}},
+    {"answer":"בהוטן","visual":"🇧🇹","en":"Flag of Bhutan","second":{"answer":"תימפו","aliases":["טימפו"]}}
    ]
   },
   "fruit": {
@@ -660,12 +660,12 @@
     {"answer":"סאב-זירו","aliases":["סאב זירו"],"visual":"👾","en":"Sub-Zero (Mortal Kombat)","second":{"answer":"מורטל קומבט"}},
     {"answer":"סקורפיון","visual":"👾","en":"Scorpion (Mortal Kombat)","second":{"answer":"מורטל קומבט"}},
     {"answer":"ריו","visual":"👾","en":"Ryu (Street Fighter)","second":{"answer":"סטריט פייטר"}},
-    {"answer":"צון-לי","aliases":["צון לי"],"visual":"👾","en":"Chun-Li","second":{"answer":"סטריט פייטר"}},
+    {"answer":"קפטן פרייס","visual":"👾","en":"Captain Price","second":{"answer":"קול אוף דיוטי"}},
     {"answer":"נייתן דרייק","aliases":["דרייק"],"visual":"👾","en":"Nathan Drake","second":{"answer":"אנצרטד"}},
     {"answer":"אלי","visual":"👾","en":"Ellie (The Last of Us)","second":{"answer":"תה לאסט אוף אס"}},
-    {"answer":"גרלט","visual":"👾","en":"Geralt of Rivia","second":{"answer":"הוויצר"}},
-    {"answer":"סמוס","visual":"👾","en":"Samus Aran","second":{"answer":"מטרויד"}},
-    {"answer":"פוקס מקלאוד","aliases":["פוקס"],"visual":"👾","en":"Fox McCloud","second":{"answer":"סטאר פוקס"}}
+    {"answer":"גוקו","visual":"👾","en":"Guko","second":{"answer":"דרגון בול זי"}},
+    {"answer":"וגיטה","visual":"👾","en":"Vegita","second":{"answer":"דרגון בול זי"}},
+    {"answer":"מיילס מורלס","aliases":["מילס מורלס"],"visual":"👾","en":"Miles Morales","second":{"answer":"ספיידר מן"}}
    ]
   },
   "cartoons": {
@@ -1076,7 +1076,7 @@
    "ways": [["סמל בלי טקסט ← שם המותג",true]],
    "picture": {"kind":"logo","hideName":true,"prefer":["logo"],"query":"{item} logo","prompt":"The official logo of {item}, flat, plain white background, no text"},
    "items": [
-    {"answer":"אפל","aliases":["apple"],"visual":"🏷️","en":"Apple Inc."},
+    {"answer":"נייק","aliases":["נייקי"],"visual":"🏷️","en":"Nike"},
     {"answer":"מקדונלדס","aliases":["מקדונלד"],"visual":"🏷️","en":"McDonald's"},
     {"answer":"סטארבקס","aliases":["starbucks"],"visual":"🏷️","en":"Starbucks"},
     {"answer":"פפסי","aliases":["pepsi"],"visual":"🏷️","en":"Pepsi"},
@@ -1089,7 +1089,7 @@
     {"answer":"אנדרואיד","aliases":["android"],"visual":"🏷️","en":"Android (operating system)"},
     {"answer":"מסטרקארד","aliases":["מאסטר קארד","mastercard"],"visual":"🏷️","en":"Mastercard"},
     {"answer":"פיצה האט","aliases":["pizza hut"],"visual":"🏷️","en":"Pizza Hut"},
-    {"answer":"דומינוס","aliases":["dominos"],"visual":"🏷️","en":"Domino's"},
+    {"answer":"דומינוס","aliases":["dominos"],"visual":"🏷️","en":"File:Domino's pizza logo.svg"},
     {"answer":"רד בול","aliases":["רדבול","red bull"],"visual":"🏷️","en":"Red Bull"},
     {"answer":"פיירפוקס","aliases":["firefox","מוזילה"],"visual":"🏷️","en":"Firefox"},
     {"answer":"וודאפון","aliases":["vodafone"],"visual":"🏷️","en":"Vodafone"},
@@ -1106,46 +1106,6 @@
     {"answer":"מונסטר","aliases":["מונסטר אנרגי","monster"],"visual":"🏷️","en":"Monster Energy"},
     {"answer":"קרפור","aliases":["carrefour"],"visual":"🏷️","en":"Carrefour"},
     {"answer":"יוניליוור","aliases":["unilever"],"visual":"🏷️","en":"Unilever"}
-   ]
-  },
-  "cars": {
-   "name": "מכוניות",
-   "icon": "🚘",
-   "level": "medium",
-   "status": "active",
-   "ways": [["סמל היצרן ← שם היצרן",true]],
-   "picture": {"kind":"logo","hideName":true,"prefer":["logo"],"query":"{item} car logo","prompt":"The official car emblem of {item}, flat, plain white background, no text"},
-   "items": [
-    {"answer":"טויוטה","aliases":["toyota"],"visual":"🚘","en":"Toyota"},
-    {"answer":"מרצדס","aliases":["מרצדס בנץ","mercedes"],"visual":"🚘","en":"Mercedes-Benz"},
-    {"answer":"ב.מ.וו","aliases":["במוו","BMW","ב מ וו"],"visual":"🚘","en":"BMW"},
-    {"answer":"פרארי","aliases":["ferrari"],"visual":"🚘","en":"Ferrari"},
-    {"answer":"פולקסווגן","aliases":["פולקסוואגן","volkswagen"],"visual":"🚘","en":"Volkswagen"},
-    {"answer":"אאודי","aliases":["אודי","audi"],"visual":"🚘","en":"Audi"},
-    {"answer":"טסלה","aliases":["tesla"],"visual":"🚘","en":"Tesla, Inc."},
-    {"answer":"הונדה","aliases":["honda"],"visual":"🚘","en":"Honda"},
-    {"answer":"יונדאי","aliases":["יונדאיי","hyundai"],"visual":"🚘","en":"Hyundai Motor Company"},
-    {"answer":"קיה","aliases":["kia"],"visual":"🚘","en":"Kia"},
-    {"answer":"מאזדה","aliases":["mazda"],"visual":"🚘","en":"Mazda"},
-    {"answer":"שברולט","aliases":["chevrolet"],"visual":"🚘","en":"Chevrolet"},
-    {"answer":"ניסאן","aliases":["nissan"],"visual":"🚘","en":"Nissan"},
-    {"answer":"סובארו","aliases":["subaru"],"visual":"🚘","en":"Subaru"},
-    {"answer":"למבורגיני","aliases":["lamborghini"],"visual":"🚘","en":"Lamborghini"},
-    {"answer":"פורשה","aliases":["porsche"],"visual":"🚘","en":"Porsche"},
-    {"answer":"מיצובישי","aliases":["mitsubishi"],"visual":"🚘","en":"Mitsubishi Motors"},
-    {"answer":"סקודה","aliases":["skoda"],"visual":"🚘","en":"Škoda Auto"},
-    {"answer":"פיגו","aliases":["peugeot"],"visual":"🚘","en":"Peugeot"},
-    {"answer":"רנו","aliases":["renault"],"visual":"🚘","en":"Renault"},
-    {"answer":"סיטרואן","aliases":["citroen"],"visual":"🚘","en":"Citroën"},
-    {"answer":"וולוו","aliases":["volvo"],"visual":"🚘","en":"Volvo Cars"},
-    {"answer":"פורד","aliases":["ford"],"visual":"🚘","en":"Ford Motor Company"},
-    {"answer":"יגואר","aliases":["jaguar"],"visual":"🚘","en":"Jaguar Cars"},
-    {"answer":"פיאט","aliases":["fiat"],"visual":"🚘","en":"Fiat"},
-    {"answer":"אלפא רומיאו","aliases":["אלפא","alfa romeo"],"visual":"🚘","en":"Alfa Romeo"},
-    {"answer":"מזראטי","aliases":["maserati"],"visual":"🚘","en":"Maserati"},
-    {"answer":"לקסוס","aliases":["lexus"],"visual":"🚘","en":"Lexus"},
-    {"answer":"סוזוקי","aliases":["suzuki"],"visual":"🚘","en":"Suzuki"},
-    {"answer":"בנטלי","aliases":["bentley"],"visual":"🚘","en":"Bentley"}
    ]
   },
   "apps": {
@@ -1376,11 +1336,11 @@
     {"answer":"ארמני","aliases":["אמפוריו ארמני","armani"],"visual":"👟","en":"Armani"},
     {"answer":"דולצה וגבאנה","aliases":["D&G","דולצה"],"visual":"👟","en":"Dolce & Gabbana"},
     {"answer":"פנדי","aliases":["fendi"],"visual":"👟","en":"Fendi"},
-    {"answer":"ברברי","aliases":["בורברי","burberry"],"visual":"👟","en":"Burberry"},
+    {"answer":"יוניקלו","visual":"👟","en":"Uniqlo"},
     {"answer":"הרמס","aliases":["hermes"],"visual":"👟","en":"Hermès"},
     {"answer":"הוליסטר","aliases":["hollister"],"visual":"👟","en":"Hollister Co."},
     {"answer":"אברקרומבי","aliases":["abercrombie"],"visual":"👟","en":"Abercrombie & Fitch"},
-    {"answer":"קנגול","aliases":["kangol"],"visual":"👟","en":"Kangol"},
+    {"answer":"ליבייס","aliases":["ליביס"],"visual":"👟","en":"Levi's"},
     {"answer":"אומברו","aliases":["umbro"],"visual":"👟","en":"Umbro"},
     {"answer":"דה נורת פייס","aliases":["נורת פייס","north face"],"visual":"👟","en":"The North Face"}
    ]

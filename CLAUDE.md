@@ -72,11 +72,10 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
-- 4.11.26 – Admin panel built (decision 19, `npm run admin`): all categories live in src/content/categories-data.json
-  (game + panel read it). The user then filled and edited pictures/items in the panel: 35 of 40 categories playable.
-  Left: clothing-brands 0/30 (not downloaded); AI pictures to replace: cartoons 3, playstation 2, professions 1,
-  movies 1, tv-series 1; names still visible (blur/crop/"no name" in the panel): cars 30, movies 30, tv-series 22,
-  brands 1. tv-series has one way only. Next: iPhone retest, WebP conversion, then publishing (see ROADMAP).
+- 5.11.26 – Content complete (user): 35 playable categories + 4 hidden reserve; names hidden; AI pictures approved by
+  the user (credits `reviewedByUser`). The user deleted "cars" (pool test now needs >= 16, not 36). Admin panel
+  (decision 19, `npm run admin`) edits src/content/categories-data.json. Four oversized pictures shrunk to 640px JPEG.
+  tv-series has one way only. Next: iPhone retest, WebP conversion, content-check script, then publishing (ROADMAP).
 - 31.10.26 – Snacks playable: the user sent 12 package photos (skill `--file n=path`), names blurred. Snacks 24/29
   are now עד חצות / טעמי (user's change, was ופלים / אגוזי). Apps still 23/30 – the user will send 7 icons
   (apps 2,18,21,23,27,28,30).

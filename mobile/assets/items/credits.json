@@ -1265,13 +1265,12 @@
   "crop": "0.001,0.002,1.101,0.692"
  },
  "brands-14": {
-  "source": "Domino's",
-  "via": "user",
-  "file": "arena-upload-1793625904334-14",
-  "license": "provided by the user",
-  "author": "—",
-  "page": "",
-  "needbox": true
+  "source": "File:Domino's pizza logo.svg",
+  "via": "wikipedia",
+  "file": "Domino's_pizza_logo.svg",
+  "license": "Public domain",
+  "author": "Domino's Pizza",
+  "page": "https://commons.wikimedia.org/wiki/File:Domino%27s_pizza_logo.svg"
  },
  "brands-15": {
   "source": "Red Bull",
@@ -1409,276 +1408,6 @@
   "hidden": "crop",
   "crop": "0.004,0.000,1.138,0.767"
  },
- "cars-1": {
-  "source": "Toyota",
-  "via": "wikipedia",
-  "file": "Headquarter_of_Toyota_Motor_Corporation_3.JPG",
-  "license": "CC0",
-  "author": "Tokumeigakarinoaoshima",
-  "page": "https://commons.wikimedia.org/wiki/File:Headquarter_of_Toyota_Motor_Corporation_3.JPG",
-  "needbox": true
- },
- "cars-2": {
-  "source": "Mercedes-Benz",
-  "via": "wikipedia",
-  "file": "Mercedes-Benz_Logo_2010.svg",
-  "license": "Public domain",
-  "author": "Mercedes-Benz",
-  "page": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_Logo_2010.svg",
-  "needbox": true
- },
- "cars-3": {
-  "source": "BMW",
-  "via": "wikipedia",
-  "file": "BMW_logo_(gray).svg",
-  "license": "Public domain",
-  "author": "BMW",
-  "page": "https://commons.wikimedia.org/wiki/File:BMW_logo_(gray).svg",
-  "needbox": true
- },
- "cars-4": {
-  "source": "Ferrari",
-  "via": "wikipedia",
-  "file": "Prancing_horse.svg",
-  "license": "Fair use",
-  "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Prancing_horse.svg",
-  "needbox": true
- },
- "cars-5": {
-  "source": "Volkswagen",
-  "via": "wikipedia",
-  "file": "Volkswagen_Logo_history.svg",
-  "license": "Public domain",
-  "author": "RoanDM",
-  "page": "https://commons.wikimedia.org/wiki/File:Volkswagen_Logo_history.svg",
-  "needbox": true
- },
- "cars-6": {
-  "source": "Audi",
-  "via": "wikipedia",
-  "file": "Audi-Logo_2016.svg",
-  "license": "Public domain",
-  "author": "Strichpunkt / KMS Team",
-  "page": "https://commons.wikimedia.org/wiki/File:Audi-Logo_2016.svg",
-  "needbox": true
- },
- "cars-7": {
-  "source": "Tesla, Inc.",
-  "via": "wikipedia",
-  "file": "Tesla_Motors.svg",
-  "license": "Public domain",
-  "author": "Tesla",
-  "page": "https://commons.wikimedia.org/wiki/File:Tesla_Motors.svg",
-  "needbox": true
- },
- "cars-8": {
-  "source": "Honda",
-  "via": "wikipedia",
-  "file": "Honda_logo.svg",
-  "license": "Public domain",
-  "author": "TTTNIS",
-  "page": "https://commons.wikimedia.org/wiki/File:Honda_logo.svg",
-  "needbox": true
- },
- "cars-9": {
-  "source": "Hyundai Motor Company",
-  "via": "wikipedia",
-  "file": "Hyundai_Motor_Company_logo.svg",
-  "license": "Public domain",
-  "author": "Hyundai Motor Company",
-  "page": "https://commons.wikimedia.org/wiki/File:Hyundai_Motor_Company_logo.svg",
-  "needbox": true
- },
- "cars-10": {
-  "source": "Kia",
-  "via": "wikipedia",
-  "file": "KIA-Logo-1994-2012.png",
-  "license": "CC BY-SA 4.0",
-  "author": "Kia",
-  "page": "https://commons.wikimedia.org/wiki/File:KIA-Logo-1994-2012.png",
-  "needbox": true
- },
- "cars-11": {
-  "source": "Mazda",
-  "via": "wikipedia",
-  "file": "Mazda-logo-1992.jpg",
-  "license": "Public domain",
-  "author": "Suree",
-  "page": "https://commons.wikimedia.org/wiki/File:Mazda-logo-1992.jpg",
-  "needbox": true
- },
- "cars-12": {
-  "source": "Chevrolet",
-  "via": "wikipedia",
-  "file": "Chevrolet_(logo).svg",
-  "license": "Fair use",
-  "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Chevrolet_(logo).svg",
-  "needbox": true
- },
- "cars-13": {
-  "source": "Nissan",
-  "via": "wikipedia",
-  "file": "Nissan_2020_logo.svg",
-  "license": "Public domain",
-  "author": "Nissan Motor Corporation",
-  "page": "https://commons.wikimedia.org/wiki/File:Nissan_2020_logo.svg",
-  "needbox": true
- },
- "cars-14": {
-  "source": "Subaru",
-  "via": "wikipedia",
-  "file": "Subaru_logo_(transparent).svg",
-  "license": "Public domain",
-  "author": "Subaru Corporation",
-  "page": "https://commons.wikimedia.org/wiki/File:Subaru_logo_(transparent).svg",
-  "needbox": true
- },
- "cars-15": {
-  "source": "Lamborghini",
-  "via": "wikipedia",
-  "file": "Lamborghini_-_logo_wordmark+payoff_(Italy,_1963-).svg",
-  "license": "Public domain",
-  "author": "Self made",
-  "page": "https://commons.wikimedia.org/wiki/File:Lamborghini_-_logo_wordmark%2Bpayoff_(Italy,_1963-).svg",
-  "needbox": true
- },
- "cars-16": {
-  "source": "Porsche",
-  "via": "wikipedia",
-  "file": "Logo_Porsche_718_Text.svg",
-  "license": "Public domain",
-  "author": "Porsche – German automobile manufacturer specializing in high-performance sports cars, SUVs and sedans, owned by Volkswa",
-  "page": "https://commons.wikimedia.org/wiki/File:Logo_Porsche_718_Text.svg",
-  "needbox": true
- },
- "cars-17": {
-  "source": "Mitsubishi Motors",
-  "via": "wikipedia",
-  "file": "Mitsubishi_Motors_SVG_logo_2.svg",
-  "license": "Public domain",
-  "author": "de:Benutzer:Gaspard",
-  "page": "https://commons.wikimedia.org/wiki/File:Mitsubishi_Motors_SVG_logo_2.svg",
-  "needbox": true
- },
- "cars-18": {
-  "source": "Škoda Auto",
-  "via": "wikipedia",
-  "file": "Škoda_nieuw.png",
-  "license": "Public domain",
-  "author": "Skoda Auto",
-  "page": "https://commons.wikimedia.org/wiki/File:%C5%A0koda_nieuw.png",
-  "needbox": true
- },
- "cars-19": {
-  "source": "Peugeot",
-  "via": "wikipedia",
-  "file": "Peugeot-logo.svg",
-  "license": "Fair use",
-  "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Peugeot-logo.svg",
-  "needbox": true
- },
- "cars-20": {
-  "source": "Renault",
-  "via": "wikipedia",
-  "file": "2021_Renault_Group_logo.svg",
-  "license": "Public domain",
-  "author": "Renault S.A.",
-  "page": "https://commons.wikimedia.org/wiki/File:2021_Renault_Group_logo.svg",
-  "needbox": true
- },
- "cars-21": {
-  "source": "Citroën",
-  "via": "wikipedia",
-  "file": "Citroën_Logo.svg",
-  "license": "Public domain",
-  "author": "Unknown authorUnknown author PSA Peugeot Citroën AG",
-  "page": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_Logo.svg",
-  "needbox": true
- },
- "cars-22": {
-  "source": "Volvo Cars",
-  "via": "wikipedia",
-  "file": "Volvo_Iron_Logo.png",
-  "license": "Fair use",
-  "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Volvo_Iron_Logo.png",
-  "needbox": true
- },
- "cars-23": {
-  "source": "Ford Motor Company",
-  "via": "wikipedia",
-  "file": "Ford_1957_logo.png",
-  "license": "Public domain",
-  "author": "Unknown authorUnknown author",
-  "page": "https://commons.wikimedia.org/wiki/File:Ford_1957_logo.png",
-  "needbox": true
- },
- "cars-24": {
-  "source": "Jaguar Cars",
-  "via": "wikipedia",
-  "file": "Jaguar-Logo.svg",
-  "license": "Public domain",
-  "author": "Jaguar Cars",
-  "page": "https://commons.wikimedia.org/wiki/File:Jaguar_2024.svg",
-  "needbox": true
- },
- "cars-25": {
-  "source": "Fiat",
-  "via": "wikipedia",
-  "file": "FIAT_logo_(2020).svg",
-  "license": "Public domain",
-  "author": "FIAT",
-  "page": "https://commons.wikimedia.org/wiki/File:FIAT_logo_(2020).svg",
-  "needbox": true
- },
- "cars-26": {
-  "source": "Alfa Romeo",
-  "via": "wikipedia",
-  "file": "Alfa_Romeo_logo.png",
-  "license": "Fair use",
-  "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Alfa_Romeo_logo.png",
-  "needbox": true
- },
- "cars-27": {
-  "source": "Maserati",
-  "via": "wikipedia",
-  "file": "Maserati_logo_2.svg",
-  "license": "Public domain",
-  "author": "Maserati",
-  "page": "https://commons.wikimedia.org/wiki/File:Maserati_logo_2.svg",
-  "needbox": true
- },
- "cars-28": {
-  "source": "Lexus",
-  "via": "wikipedia",
-  "file": "Lexus_F-division_logo.png",
-  "license": "Fair use",
-  "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Lexus_F-division_logo.png",
-  "needbox": true
- },
- "cars-29": {
-  "source": "Suzuki",
-  "via": "wikipedia",
-  "file": "Suzuki_logo_2025_(vertical).svg",
-  "license": "Public domain",
-  "author": "Suzuki Motor Corporation",
-  "page": "https://commons.wikimedia.org/wiki/File:Suzuki_logo_2025_(vertical).svg",
-  "needbox": true
- },
- "cars-30": {
-  "source": "Bentley",
-  "via": "wikipedia",
-  "file": "Bentley_(Logo_1919).png",
-  "license": "Public domain",
-  "author": "F. Gordon Crosby (1885-1943)",
-  "page": "https://commons.wikimedia.org/wiki/File:Bentley_(Logo_1919).png",
-  "needbox": true
- },
  "cartoons-1": {
   "source": "Mickey Mouse",
   "via": "commons",
@@ -1799,7 +1528,7 @@
   "author": "pollinations flux",
   "page": "",
   "prompt": "Peppa Pig, cartoon character, full body, plain background",
-  "review": true
+  "reviewedByUser": true
  },
  "cartoons-16": {
   "source": "Minions (Despicable Me)",
@@ -1857,7 +1586,7 @@
   "author": "pollinations flux",
   "page": "",
   "prompt": "Dora the Explorer, cartoon character, full body, plain background",
-  "review": true
+  "reviewedByUser": true
  },
  "cartoons-23": {
   "source": "Mike Wazowski",
@@ -1875,7 +1604,7 @@
   "author": "pollinations flux",
   "page": "",
   "prompt": "James P. Sullivan (Monsters, Inc.), cartoon character, full body, plain background",
-  "review": true
+  "reviewedByUser": true
  },
  "cartoons-25": {
   "source": "Ariel (The Little Mermaid)",
@@ -1924,6 +1653,246 @@
   "license": "Fair use",
   "author": "—",
   "page": "https://en.wikipedia.org/wiki/File:RatatouillePoster.jpg"
+ },
+ "clothing-brands-1": {
+  "source": "Nike, Inc.",
+  "via": "user",
+  "file": "arena-upload-1793816814765-1",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-2": {
+  "source": "Adidas",
+  "via": "user",
+  "file": "arena-upload-1793816877527-2",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-3": {
+  "source": "Puma (brand)",
+  "via": "user",
+  "file": "arena-upload-1793816894466-3",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-4": {
+  "source": "Air Jordan",
+  "via": "user",
+  "file": "arena-upload-1793816916956-4",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-5": {
+  "source": "Lacoste",
+  "via": "user",
+  "file": "arena-upload-1793816935564-5",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-6": {
+  "source": "Ralph Lauren Corporation",
+  "via": "user",
+  "file": "arena-upload-1793816961026-6",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-7": {
+  "source": "Tommy Hilfiger (company)",
+  "via": "user",
+  "file": "arena-upload-1793816985873-7",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-8": {
+  "source": "Converse (shoe company)",
+  "via": "user",
+  "file": "arena-upload-1793817088674-8",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-9": {
+  "source": "New Balance",
+  "via": "user",
+  "file": "arena-upload-1793817110565-9",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-10": {
+  "source": "Under Armour",
+  "via": "user",
+  "file": "arena-upload-1793817132842-10",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-11": {
+  "source": "Reebok",
+  "via": "user",
+  "file": "arena-upload-1793817219698-11",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-12": {
+  "source": "Chanel",
+  "via": "user",
+  "file": "arena-upload-1793817246245-12",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-13": {
+  "source": "Louis Vuitton",
+  "via": "user",
+  "file": "arena-upload-1793873118407-13",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-14": {
+  "source": "Gucci",
+  "via": "user",
+  "file": "arena-upload-1793873177641-14",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-15": {
+  "source": "Calvin Klein",
+  "via": "user",
+  "file": "arena-upload-1793873365903-15",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-16": {
+  "source": "Timberland (company)",
+  "via": "user",
+  "file": "arena-upload-1793873374404-16",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-17": {
+  "source": "Crocs",
+  "via": "user",
+  "file": "arena-upload-1793873382909-17",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-18": {
+  "source": "Fila (company)",
+  "via": "user",
+  "file": "arena-upload-1793873390399-18",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-19": {
+  "source": "ASICS",
+  "via": "user",
+  "file": "arena-upload-1793873397272-19",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-20": {
+  "source": "Versace",
+  "via": "user",
+  "file": "arena-upload-1793873580163-20",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-21": {
+  "source": "Armani",
+  "via": "user",
+  "file": "arena-upload-1793873586708-21",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-22": {
+  "source": "Dolce & Gabbana",
+  "via": "user",
+  "file": "arena-upload-1793873593876-22",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-23": {
+  "source": "Fendi",
+  "via": "user",
+  "file": "arena-upload-1793873932150-23",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-24": {
+  "source": "Burberry",
+  "via": "user",
+  "file": "arena-upload-1793874110186-24",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-25": {
+  "source": "Hermès",
+  "via": "user",
+  "file": "arena-upload-1793873655945-25",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-26": {
+  "source": "Hollister Co.",
+  "via": "user",
+  "file": "arena-upload-1793873713878-26",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-27": {
+  "source": "Abercrombie & Fitch",
+  "via": "user",
+  "file": "arena-upload-1793873707510-27",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-28": {
+  "source": "Kangol",
+  "via": "user",
+  "file": "arena-upload-1793873898023-28",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-29": {
+  "source": "Umbro",
+  "via": "user",
+  "file": "arena-upload-1793873779027-29",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
+ },
+ "clothing-brands-30": {
+  "source": "The North Face",
+  "via": "user",
+  "file": "arena-upload-1793873756748-30",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "comedians-1": {
   "source": "Jim Carrey",
@@ -2187,32 +2156,32 @@
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_France.svg"
  },
  "countries-4": {
+  "source": "Flag of the United Kingdom",
+  "file": "Flag_of_the_United_Kingdom_(1-2).svg",
+  "license": "Public domain",
+  "author": "Original: Acts of Union 1800 Vector: Zscout370",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Kingdom_(1-2).svg"
+ },
+ "countries-5": {
   "source": "Flag of Japan",
   "file": "Flag_of_Japan.svg",
   "license": "Public domain",
   "author": "Various",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Japan.svg"
  },
- "countries-5": {
+ "countries-6": {
   "source": "Flag of Brazil",
   "file": "Flag_of_Brazil.svg",
   "license": "Public domain",
   "author": "Raimundo Teixeira Mendes",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Brazil.svg"
  },
- "countries-6": {
+ "countries-7": {
   "source": "Flag of Canada",
   "file": "Flag_of_Canada_(Pantone).svg",
   "license": "Public domain",
   "author": "Original: George F. G. Stanley Modified by: The original uploader was Illegitimate Barrister at Wikimedia Commons. The c",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Canada_(Pantone).svg"
- },
- "countries-7": {
-  "source": "Flag of Nepal",
-  "file": "Flag_of_Nepal.svg",
-  "license": "Public domain",
-  "author": "Drawn by Pumbaa80, Achim1999",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Nepal.svg"
  },
  "countries-8": {
   "source": "Flag of Uruguay",
@@ -2222,158 +2191,158 @@
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Uruguay.svg"
  },
  "countries-9": {
-  "source": "Flag of Bhutan",
-  "file": "Flag_of_Bhutan.svg",
-  "license": "Public domain",
-  "author": "See File history below for details.",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Bhutan.svg"
- },
- "countries-10": {
   "source": "Flag of Germany",
   "file": "Flag_of_Germany.svg",
   "license": "Public domain",
   "author": "User:SKopp, User:Madden, and other users",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Germany.svg"
  },
- "countries-11": {
+ "countries-10": {
   "source": "Flag of South Africa",
   "file": "Flag_of_South_Africa.svg",
   "license": "Public domain",
   "author": "Flag design by Frederick Brownell, image by Wikimedia Commons users",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_South_Africa.svg"
  },
- "countries-12": {
+ "countries-11": {
   "source": "Flag of Iceland",
   "file": "Flag_of_Iceland.svg",
   "license": "Public domain",
   "author": "Original: Matthías Þórðarson Vector: Árni Dagur and Magasjukur2",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Iceland.svg"
  },
- "countries-13": {
+ "countries-12": {
   "source": "Flag of Italy",
   "file": "Flag_of_Italy.svg",
   "license": "Public domain",
   "author": "See below.",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Italy.svg"
  },
- "countries-14": {
+ "countries-13": {
   "source": "Flag of Spain",
   "file": "Flag_of_the_Kingdom_of_Spain.svg",
   "license": "Public domain",
   "author": "Antonio Valdés y Fernández Bazán",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Kingdom_of_Spain.svg"
  },
- "countries-15": {
-  "source": "Flag of the United Kingdom",
-  "file": "Flag_of_the_United_Kingdom_(1-2).svg",
-  "license": "Public domain",
-  "author": "Original: Acts of Union 1800 Vector: Zscout370",
-  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_United_Kingdom_(1-2).svg"
- },
- "countries-16": {
+ "countries-14": {
   "source": "Flag of Greece",
   "file": "Flag_of_Greece.svg",
   "license": "Public domain",
   "author": "Unknown authorUnknown author",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Greece.svg"
  },
- "countries-17": {
+ "countries-15": {
   "source": "Flag of India",
   "file": "Flag_of_India.svg",
   "license": "Public domain",
   "author": "Government of India",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_India.svg"
  },
- "countries-18": {
+ "countries-16": {
   "source": "Flag of China",
   "file": "Flag_of_the_People's_Republic_of_China.svg",
   "license": "Public domain",
   "author": "Zeng Liansong",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_People%27s_Republic_of_China.svg"
  },
- "countries-19": {
+ "countries-17": {
   "source": "Flag of Australia",
   "file": "Flag_of_Australia_(converted).svg",
   "license": "Public domain",
   "author": "Unknown (Vector graphics image by Ian Fieggen) (only minor code changes by uploader.)",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Australia_(converted).svg"
  },
- "countries-20": {
+ "countries-18": {
   "source": "Flag of Mexico",
   "file": "Flag_of_Mexico.svg",
   "license": "Public domain",
   "author": "Omar Alejandro Covarrubias Neri, 9 April 2006. Based on the 1968 arms by Francisco Eppens Helguera and Juan Manuel Gabin",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Mexico.svg"
  },
- "countries-21": {
+ "countries-19": {
   "source": "Flag of Portugal",
   "file": "Flag_of_Portugal_(official).svg",
   "license": "Public domain",
   "author": "Original: Columbano Bordalo Pinheiro Vector: Vítor Luís Rodrigues, António Martins-Tuválkin",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Portugal_(official).svg"
  },
- "countries-22": {
+ "countries-20": {
   "source": "Flag of Argentina",
   "file": "Flag_of_Argentina.svg",
   "license": "Public domain",
   "author": "Manuel Belgrano",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Argentina.svg"
  },
- "countries-23": {
+ "countries-21": {
   "source": "Flag of South Korea",
   "file": "Flag_of_South_Korea.svg",
   "license": "Public domain",
   "author": "Original: Government of the Republic of Korea Vector: Great Brightstar and others",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg"
  },
- "countries-24": {
+ "countries-22": {
   "source": "Flag of Norway",
   "file": "Flag_of_Norway.svg",
   "license": "Public domain",
   "author": "Original: Fredrik Meltzer Vector: Gutten på Hemsen",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Norway.svg"
  },
- "countries-25": {
+ "countries-23": {
   "source": "Flag of Sweden",
   "file": "Flag_of_Sweden.svg",
   "license": "Public domain",
   "author": "Jon Harald Søby and others.",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Sweden.svg"
  },
- "countries-26": {
+ "countries-24": {
   "source": "Flag of Switzerland",
   "file": "Flag_of_Switzerland_(Pantone).svg",
   "license": "Public domain",
   "author": "Unknown Vector graphics: Flag_of_Switzerland.svg: User:Marc Mongenet Credits: User:-xfi- User:Zscout370 derivative work:",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Switzerland_(Pantone).svg"
  },
- "countries-27": {
+ "countries-25": {
   "source": "Flag of Turkey",
   "file": "Flag_of_Turkey.svg",
   "license": "Public domain",
   "author": "David Benbennick (original author)",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Turkey.svg"
  },
- "countries-28": {
+ "countries-26": {
   "source": "Flag of the Netherlands",
   "file": "Flag_of_the_Netherlands.svg",
   "license": "Public domain",
   "author": "Zscout370",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg"
  },
- "countries-29": {
+ "countries-27": {
   "source": "Flag of Ireland",
   "file": "Flag_of_Ireland.svg",
   "license": "Public domain",
   "author": "Éire",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Ireland.svg"
  },
- "countries-30": {
+ "countries-28": {
   "source": "Flag of Jamaica",
   "file": "Flag_of_Jamaica.svg",
   "license": "Public domain",
   "author": "The SVG code is valid. This vector image was created with Inkscape by SKopp, and then manually edited by Zscout370, Madd",
   "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Jamaica.svg"
+ },
+ "countries-29": {
+  "source": "Flag of Nepal",
+  "file": "Flag_of_Nepal.svg",
+  "license": "Public domain",
+  "author": "Drawn by Pumbaa80, Achim1999",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Nepal.svg"
+ },
+ "countries-30": {
+  "source": "Flag of Bhutan",
+  "file": "Flag_of_Bhutan.svg",
+  "license": "Public domain",
+  "author": "See File history below for details.",
+  "page": "https://commons.wikimedia.org/wiki/File:Flag_of_Bhutan.svg"
  },
  "divas-1": {
   "source": "Beyoncé",
@@ -5338,8 +5307,7 @@
   "file": "Titanic_(1997_film)_poster.png",
   "license": "Fair use",
   "author": "Titanic, a production of Paramount Pictures, 20th Century Fox and Lightstorm Entertainment.",
-  "page": "https://en.wikipedia.org/wiki/File:Titanic_(1997_film)_poster.png",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Titanic_(1997_film)_poster.png"
  },
  "movies-2": {
   "source": "Harry Potter and the Philosopher's Stone (film)",
@@ -5347,8 +5315,7 @@
   "file": "Harry_Potter_and_the_Philosopher's_Stone_banner.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Philosopher%27s_Stone_banner.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Philosopher%27s_Stone_banner.jpg"
  },
  "movies-3": {
   "source": "Star Wars (film)",
@@ -5356,8 +5323,7 @@
   "file": "StarWarsMoviePoster1977.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:StarWarsMoviePoster1977.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:StarWarsMoviePoster1977.jpg"
  },
  "movies-4": {
   "source": "The Lion King",
@@ -5365,8 +5331,7 @@
   "file": "The_Lion_King_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:The_Lion_King_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:The_Lion_King_poster.jpg"
  },
  "movies-5": {
   "source": "Shrek",
@@ -5374,8 +5339,7 @@
   "file": "Shrek_(2001_animated_feature_film).jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Shrek_(2001_animated_feature_film).jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Shrek_(2001_animated_feature_film).jpg"
  },
  "movies-6": {
   "source": "The Avengers (2012 film)",
@@ -5383,8 +5347,7 @@
   "file": "The_Avengers_(2012_film)_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:The_Avengers_(2012_film)_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:The_Avengers_(2012_film)_poster.jpg"
  },
  "movies-7": {
   "source": "Toy Story",
@@ -5392,8 +5355,7 @@
   "file": "Toy_Story.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Toy_Story.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Toy_Story.jpg"
  },
  "movies-8": {
   "source": "Jurassic Park (film)",
@@ -5401,8 +5363,7 @@
   "file": "Jurassic_Park_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Jurassic_Park_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Jurassic_Park_poster.jpg"
  },
  "movies-9": {
   "source": "Frozen (2013 film)",
@@ -5410,8 +5371,7 @@
   "file": "Frozen_(2013_film)_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Frozen_(2013_film)_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Frozen_(2013_film)_poster.jpg"
  },
  "movies-10": {
   "source": "Avatar (2009 film)",
@@ -5419,8 +5379,7 @@
   "file": "Avatar_(2009_film)_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Avatar_(2009_film)_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Avatar_(2009_film)_poster.jpg"
  },
  "movies-11": {
   "source": "The Lord of the Rings: The Fellowship of the Ring",
@@ -5428,8 +5387,7 @@
   "file": "Lord_Rings_Fellowship_Ring.jpg",
   "license": "Fair use",
   "author": "New Line Cinema",
-  "page": "https://en.wikipedia.org/wiki/File:Lord_Rings_Fellowship_Ring.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Lord_Rings_Fellowship_Ring.jpg"
  },
  "movies-12": {
   "source": "Pirates of the Caribbean: The Curse of the Black Pearl",
@@ -5437,8 +5395,7 @@
   "file": "Pirates_of_the_Caribbean_-_The_Curse_of_the_Black_Pearl.png",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Pirates_of_the_Caribbean_-_The_Curse_of_the_Black_Pearl.png",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Pirates_of_the_Caribbean_-_The_Curse_of_the_Black_Pearl.png"
  },
  "movies-13": {
   "source": "The Fast and the Furious (2001 film)",
@@ -5446,8 +5403,7 @@
   "file": "Fast_and_the_furious_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Fast_and_the_furious_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Fast_and_the_furious_poster.jpg"
  },
  "movies-14": {
   "source": "Barbie (film)",
@@ -5455,8 +5411,7 @@
   "file": "Barbie_2023_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Barbie_2023_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Barbie_2023_poster.jpg"
  },
  "movies-15": {
   "source": "The Matrix",
@@ -5464,8 +5419,7 @@
   "file": "The_Matrix.png",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:The_Matrix.png",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:The_Matrix.png"
  },
  "movies-16": {
   "source": "Back to the Future",
@@ -5473,8 +5427,7 @@
   "file": "Back_to_the_Future.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Back_to_the_Future.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Back_to_the_Future.jpg"
  },
  "movies-17": {
   "source": "Joker (2019 film)",
@@ -5482,8 +5435,7 @@
   "file": "Joker_(2019_film)_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Joker_(2019_film)_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Joker_(2019_film)_poster.jpg"
  },
  "movies-18": {
   "source": "Raiders of the Lost Ark",
@@ -5491,8 +5443,7 @@
   "file": "Raiders_of_the_Lost_Ark.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Raiders_of_the_Lost_Ark.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Raiders_of_the_Lost_Ark.jpg"
  },
  "movies-19": {
   "source": "The Terminator",
@@ -5500,8 +5451,7 @@
   "file": "The_Terminator.png",
   "license": "Fair use",
   "author": "https://filmartgallery.com/collections/terminator-movie-posters/products/the-terminator-1",
-  "page": "https://en.wikipedia.org/wiki/File:The_Terminator.png",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:The_Terminator.png"
  },
  "movies-20": {
   "source": "Rocky",
@@ -5509,8 +5459,7 @@
   "file": "Rocky_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Rocky_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Rocky_poster.jpg"
  },
  "movies-21": {
   "source": "Forrest Gump",
@@ -5518,8 +5467,7 @@
   "file": "Forrest_Gump_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Forrest_Gump_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Forrest_Gump_poster.jpg"
  },
  "movies-22": {
   "source": "The Godfather",
@@ -5527,8 +5475,7 @@
   "file": "Godfather_ver1.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Godfather_ver1.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Godfather_ver1.jpg"
  },
  "movies-23": {
   "source": "Jaws (film)",
@@ -5536,8 +5483,7 @@
   "file": "Jaws_movie_poster.jpg",
   "license": "Public domain",
   "author": "Roger Kastel",
-  "page": "https://commons.wikimedia.org/wiki/File:Jaws_movie_poster.jpg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Jaws_movie_poster.jpg"
  },
  "movies-24": {
   "source": "Gladiator (2000 film)",
@@ -5545,8 +5491,7 @@
   "file": "Gladiator_(2000_film_poster).png",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Gladiator_(2000_film_poster).png",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Gladiator_(2000_film_poster).png"
  },
  "movies-25": {
   "source": "The Dark Knight",
@@ -5554,8 +5499,7 @@
   "file": "The_Dark_Knight_(2008_film).jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:The_Dark_Knight_(2008_film).jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:The_Dark_Knight_(2008_film).jpg"
  },
  "movies-26": {
   "source": "Oppenheimer (film)",
@@ -5563,8 +5507,7 @@
   "file": "Oppenheimer_(film).jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Oppenheimer_(film).jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Oppenheimer_(film).jpg"
  },
  "movies-27": {
   "source": "Inception",
@@ -5572,8 +5515,7 @@
   "file": "Inception_(2010)_theatrical_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Inception_(2010)_theatrical_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Inception_(2010)_theatrical_poster.jpg"
  },
  "movies-28": {
   "source": "Interstellar (film)",
@@ -5581,19 +5523,15 @@
   "file": "Interstellar_film_poster.jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Interstellar_film_poster.jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Interstellar_film_poster.jpg"
  },
  "movies-29": {
   "source": "Halahaka",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
-  "page": "",
-  "prompt": "Movie poster for Halahaka, no title text",
-  "review": true,
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793816282838-29",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "movies-30": {
   "source": "Lemon Popsicle",
@@ -5601,8 +5539,7 @@
   "file": "Lemon_Popsicle_(film_poster).jpg",
   "license": "Fair use",
   "author": "—",
-  "page": "https://en.wikipedia.org/wiki/File:Lemon_Popsicle_(film_poster).jpg",
-  "needbox": true
+  "page": "https://en.wikipedia.org/wiki/File:Lemon_Popsicle_(film_poster).jpg"
  },
  "playstation-1": {
   "source": "FIFA (video game series)",
@@ -5694,13 +5631,13 @@
  },
  "playstation-10": {
   "source": "Uncharted",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793815079091-10",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "Video game cover art for Uncharted, no title text",
-  "review": true
+  "hidden": "blur",
+  "blur": "0.066,0.331,0.871,0.126"
  },
  "playstation-11": {
   "source": "Gran Turismo 7",
@@ -5854,13 +5791,13 @@
  },
  "playstation-26": {
   "source": "Metal Gear Solid",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
+  "via": "user",
+  "file": "arena-upload-1793815097622-26",
+  "license": "provided by the user",
+  "author": "—",
   "page": "",
-  "prompt": "Video game cover art for Metal Gear Solid, no title text",
-  "review": true
+  "hidden": "crop",
+  "crop": "0.008,0.169,1.305,1.101"
  },
  "playstation-27": {
   "source": "Bloodborne",
@@ -5996,7 +5933,7 @@
   "author": "pollinations flux",
   "page": "",
   "prompt": "Programmer at work",
-  "review": true
+  "reviewedByUser": true
  },
  "professions-14": {
   "source": "Palette (painting)",
@@ -7278,19 +7215,15 @@
   "file": "arena-upload-1793627015519-1",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-2": {
   "source": "The Simpsons",
-  "via": "ai",
-  "file": "",
-  "license": "AI generated",
-  "author": "pollinations flux",
-  "page": "",
-  "prompt": "TV series poster for The Simpsons, no title text",
-  "review": true,
-  "needbox": true
+  "via": "user",
+  "file": "arena-upload-1793816344967-2",
+  "license": "provided by the user",
+  "author": "—",
+  "page": ""
  },
  "tv-series-3": {
   "source": "Game of Thrones",
@@ -7298,8 +7231,7 @@
   "file": "arena-upload-1793627079535-3",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-4": {
   "source": "Stranger Things",
@@ -7315,8 +7247,7 @@
   "file": "arena-upload-1793627131063-5",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-6": {
   "source": "Squid Game",
@@ -7324,8 +7255,7 @@
   "file": "arena-upload-1793627152840-6",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-7": {
   "source": "Breaking Bad",
@@ -7333,8 +7263,7 @@
   "file": "arena-upload-1793627169951-7",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-8": {
   "source": "Fauda",
@@ -7352,8 +7281,7 @@
   "file": "arena-upload-1793627202863-9",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-10": {
   "source": "Wednesday (TV series)",
@@ -7361,8 +7289,7 @@
   "file": "arena-upload-1793627243781-10",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-11": {
   "source": "The Crown (TV series)",
@@ -7370,8 +7297,7 @@
   "file": "arena-upload-1793627264628-11",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-12": {
   "source": "Shtisel",
@@ -7389,8 +7315,7 @@
   "file": "Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg",
   "license": "CC BY-SA 4.0",
   "author": "TaBaZzz",
-  "page": "https://commons.wikimedia.org/wiki/File:Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Kupa_Rashit_-_Shefa_Isaschar_-_Filming_location_in_Petach_Tikva_-_20210808_184420_Crop1.jpg"
  },
  "tv-series-14": {
   "source": "Ha-Borer",
@@ -7408,8 +7333,7 @@
   "file": "arena-upload-1793627318811-15",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-16": {
   "source": "How I Met Your Mother",
@@ -7417,8 +7341,7 @@
   "file": "arena-upload-1793627345777-16",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-17": {
   "source": "The Big Bang Theory",
@@ -7426,8 +7349,7 @@
   "file": "arena-upload-1793627363369-17",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-18": {
   "source": "Prison Break",
@@ -7435,8 +7357,7 @@
   "file": "arena-upload-1793627381315-18",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-19": {
   "source": "The Sopranos",
@@ -7444,8 +7365,7 @@
   "file": "arena-upload-1793627397985-19",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-20": {
   "source": "Lost (TV series)",
@@ -7453,8 +7373,7 @@
   "file": "arena-upload-1793627422672-20",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-21": {
   "source": "The Walking Dead (TV series)",
@@ -7462,8 +7381,7 @@
   "file": "arena-upload-1793627449906-21",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-22": {
   "source": "Seinfeld",
@@ -7471,8 +7389,7 @@
   "file": "arena-upload-1793627471252-22",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-23": {
   "source": "Arab Labor",
@@ -7480,8 +7397,7 @@
   "file": "Norman_Issa_1.jpg",
   "license": "CC BY-SA 2.0",
   "author": "Heinrich-Böll-Stiftung",
-  "page": "https://commons.wikimedia.org/wiki/File:Norman_Issa_1.jpg",
-  "needbox": true
+  "page": "https://commons.wikimedia.org/wiki/File:Norman_Issa_1.jpg"
  },
  "tv-series-24": {
   "source": "Tehran (TV series)",
@@ -7499,8 +7415,7 @@
   "file": "arena-upload-1793627502258-25",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-26": {
   "source": "House of Cards (American TV series)",
@@ -7518,8 +7433,7 @@
   "file": "arena-upload-1793627530298-27",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-28": {
   "source": "The Witcher (TV series)",
@@ -7527,8 +7441,7 @@
   "file": "arena-upload-1793627546374-28",
   "license": "provided by the user",
   "author": "—",
-  "page": "",
-  "needbox": true
+  "page": ""
  },
  "tv-series-29": {
   "source": "Hatufim",

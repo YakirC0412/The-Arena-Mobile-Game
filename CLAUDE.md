@@ -74,6 +74,12 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 6.11.26 – MULTIPLAYER, phase 2 done (server side only): `server/src/db.ts` (node:sqlite file `server/data/arena.sqlite`, env
+  ARENA_DB; tables users/sessions/games/game_players; `recordGame` counts only games with 2+ accounts; `getLeaders`),
+  `auth.ts` (scrypt, random login token stored hashed, same error for wrong password/unknown email, 8 failures/10 min lock),
+  `api.ts` (POST /api/register /login /logout, GET /api/me /leaders, Bearer token, open CORS) mounted in `index.ts`. 10 server
+  tests; checked live with curl. NOT done yet: the phone's welcome screen still uses local accounts (client part comes with
+  the lobby, phase 4); no password reset (needs email); Google disabled.
 - 6.11.26 – MULTIPLAYER, phase 1 done: `server/` (own package.json, Colyseus 0.18, CJS build via `tsc`, imports the game code
   from `../mobile/src/game`). `server/src/gameLoop.ts` = pure step machine (draw → target → duel → continue/return → final →
   champion; same random order as `autoPlayGame`); `ArenaRoom.ts` plays it every 1.5 s (ARENA_STEP_MS) and broadcasts

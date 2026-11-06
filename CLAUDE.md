@@ -74,6 +74,12 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 6.11.26 – MULTIPLAYER, phase 3 done (server + test page; the real in-app duel screen is not built yet): `server/src/liveDuel.ts`
+  (pure: 2 seats + spectators, uses `game/duel.ts`, injected clock, answers checked on the server, leaving = forfeit),
+  `DuelRoom.ts` (Colyseus room `duel`, join with {token} from /api/login; messages `answer`/`skip`; sends `view` 4x/s, `role`,
+  `correct`), `context.ts` (shared db), `duelPage.ts` (http://<PC>:2567/duel = test page: picture, clocks, answer, skip; also
+  serves /sdk.js and /items/<key>.webp). 17 server tests; live checks: `node tests/live-duel-check.mjs` and 2 browser tabs.
+- 6.11.26 – Server watch page: `server/src/watch.ts`, open http://<PC address>:2567/watch (live 4x4 board of a bot game, log, new-game button; own loop, polls /api/watch).
 - 6.11.26 – MULTIPLAYER, phase 2 done (server side only): `server/src/db.ts` (node:sqlite file `server/data/arena.sqlite`, env
   ARENA_DB; tables users/sessions/games/game_players; `recordGame` counts only games with 2+ accounts; `getLeaders`),
   `auth.ts` (scrypt, random login token stored hashed, same error for wrong password/unknown email, 8 failures/10 min lock),

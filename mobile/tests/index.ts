@@ -10,6 +10,8 @@ import './ways.test';
 import './tap-gate.test';
 import './draw.test';
 import './guide.test';
+import './multiplayer.test';
+import './duel.test';
 import { runAll } from './harness';
 
 runAll();

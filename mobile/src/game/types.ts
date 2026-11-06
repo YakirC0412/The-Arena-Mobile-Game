@@ -51,7 +51,11 @@ export type ArenaPlayer = {
   name: string;
   avatar: string;
   color: string;
+  // True while a human decides for this seat. In an online game a bot takes over a disconnected human's seat
+  // by turning this off (the seat keeps its userId).
   isHuman: boolean;
+  // The account behind a human seat (online games).
+  userId?: string;
   isActive: boolean;
   categoryId: string;
   // How this player's category is played when they defend (decision 15).

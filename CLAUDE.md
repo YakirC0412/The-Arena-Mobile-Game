@@ -9,7 +9,7 @@ attacks an orthogonal neighbor; the duel is on the defender's category; each sid
 (45 with bonus) that runs only on their turn; correct answer passes the turn, skip = −3 s. Loser is
 eliminated and their territory goes to the winner. Always 15 duels → one champion.
 Target: **web app opened in a phone browser (iPhone Safari first)** – no App Store / Play.
-Now: local mode only (1 human vs 15 bots). Multiplayer comes after local is polished.
+Now: local mode (1 human vs 15 bots) is polished; online multiplayer is being built in phases (docs/PRD_MULTIPLAYER.md).
 
 ## The user
 Hebrew-speaking beginner at vibe coding. Explain in Hebrew, step by step, show results in the
@@ -22,7 +22,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Admin panel (decision 19): `npm run admin` from `mobile/` (preview config `arena-admin`) → http://localhost:8095. Edits
   categories, items and pictures in the real files. Check it with `node scripts/admin/smoke-test.js` (server running).
   Never run `arena_images.py` in the background while the panel does something: both rewrite credits.json.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (61 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (80 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -46,7 +46,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
    ├─ tests/          engine, rules, random-games, content tests
    └─ src/
       ├─ app/         routes only: _layout.tsx · index.tsx (renders GameFlow) · (dev)/qa-*.tsx
-      ├─ game/        engine.ts (rules, bot decisions, autoPlayGame) · flow.ts (screen reducer) · rng.ts · types.ts
+      ├─ game/        engine.ts (rules, bot decisions, createGame) · duel.ts (pure duel state machine) · flow.ts · rng.ts · types.ts
       │               pure TS, no React, relative imports only; never call Math.random – take a RandomSource
       ├─ content/     categories.ts (builds the pool from categories-data.json = ALL categories, items, answers, ways; edited by the admin panel) · avatars.ts · item/avatar-images.ts
       ├─ features/
@@ -72,6 +72,14 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 6.11.26 – MULTIPLAYER, phase 0 done (plan: `docs/PRD_MULTIPLAYER.md`, approved by the user; rooms of up to 6
+  humans + bots, server on the home PC first, Colyseus, server accounts, leaderboard). `engine.createGame(humans, random)`
+  builds a game for 1-16 humans (HumanSeat: id, name, avatar, categoryId, wayId, userId); `createInitialGame` wraps it and
+  makes byte-identical games for the same seed (checked on 40 seeds). `drawArenaCategories` takes several taken categories
+  and a smaller count. `ArenaPlayer.userId?`; `isHuman` = a human decides now (a bot takeover flips it).
+  New pure `game/duel.ts` (startDuel/tick/applyAnswer/applySkip/duelView with an explicit `now`; server-ready, answers
+  never in the view). The local duel UI does NOT use duel.ts yet (kept as is, to avoid regressions). 80 tests.
+  Next: phase 1 = `server/` (Node + Colyseus), a bot-only game loop, 100 seeded games.
 - 5.11.26 – iPhone layout + guide. (1) While the keyboard is up, the duel sits in a `position: fixed` box that equals
   `visualViewport` (top = offsetTop, height) – `design/use-web-viewport-box.ts` replaced the old inset hook – so Safari's
   pan can no longer push the header out of sight (pic: Dortmund) and the mini-map is smaller in compact mode (pic: NBA).
@@ -98,61 +106,10 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
   the user (credits `reviewedByUser`). The user deleted "cars" (pool test now needs >= 16, not 36). Admin panel
   (decision 19, `npm run admin`) edits src/content/categories-data.json. Four oversized pictures shrunk to 640px JPEG.
   tv-series has one way only. Next: iPhone retest, WebP conversion, content-check script, then publishing (ROADMAP).
-- 31.10.26 – Snacks playable: the user sent 12 package photos (skill `--file n=path`), names blurred. Snacks 24/29
-  are now עד חצות / טעמי (user's change, was ופלים / אגוזי). Apps still 23/30 – the user will send 7 icons
-  (apps 2,18,21,23,27,28,30).
-- 31.10.26 – Snacks 18/30, apps 23/30 good pictures (both then still "soon"). Skill gained `prefer` (icon/logo
-  file of the article), `--crop` (symbol without the wordmark), `--ok`, `--reject`. Missing: snacks 2,7,8,9,11,13,
-  14,18,19,24,27,29 (Israeli snacks have no free photos) and apps 2,18,21,23,27,28,30 – need an AI key or the
-  user's pictures. 17 "coming soon" categories wait for the user's item lists.
-- 31.10.26 – Club names hidden on 22 crests (user's choice): skill `--boxes` blurs rectangles/rings on saved
-  pictures (originals in archive/reveal/, shapes in credits.json `blur`), `--grid` makes a 10% grid view.
-  football-clubs has `hideName: true`; without an AI key a rerun saves the crest with its name (NEEDBOX).
-- 31.10.26 – Picture skill (decision 17): `.claude/skills/arena-images` fills a whole category from
-  mobile/scripts/image-sources.json (kind photo|logo|product, query, AI prompt, English item n = item n):
-  Wikipedia lead image → photo search → AI (marked review), 640px JPEG, credits, `npm run images`, contact
-  sheet in archive/image-review/. Python 3.12 + Pillow installed (user). football-clubs: 30 crests → playable.
-- 31.10.26 – Pictures only (decision 16): every category needs 30 items with a picture to be playable
-  (MIN_PICTURE_ITEMS, test). 480 Wikimedia pictures for 16 categories via `npm run wiki-images`
-  (scripts/fetch-wiki-images.js + scripts/wiki-sources.json: entry n = item n, a Wikipedia title or
-  "File:<commons name>"; `-- --force <ids>` re-downloads). Credits: assets/items/credits.json → docs/IMAGE_CREDITS.md.
-  Old animal/fruit illustrations moved to archive/. Clubs, snacks, apps still wait for the user (30 each).
-- 31.10.26 – iPhone duel fixes: skip acts on touch-down (raw touchstart/mousedown + preventDefault) so one tap
-  skips and the keyboard stays open; the picture card is dark, nearly full height, never cropped.
-- 26.10.26 – Phase 0 done: Node installed, git history started, folder restructured, big files split.
-- 26.10.26 – Phase 1 done: streak/bonus rules, seeded RNG, bot decisions in engine, 0.7–1.0 s pause,
-  28 tests, web.output = single. Bot levels postponed.
-- 28.10.26 – Phase 2 done: all screen transitions in `game/flow.ts` (pure reducer, seeded via
-  `randomState`); decision 5 built (loss → auto-play → champion → main menu); 33 tests.
-- 28.10.26 – Welcome/auth + home screens: logo, brand palette, sign-up/sign-in toggle, Google shown
-  disabled, local accounts (decision 11), home = nickname + avatar + instructions / new game.
-- 30.10.26 – Pilot pictures in: 78 Wikimedia images (480px, free licenses) for dog-breeds, world-cities,
-  football-players → those 3 are playable. Credits in docs/IMAGE_CREDITS.md (keep it updated when adding
-  CC BY images). `/qa-duel?category=<id>` opens a duel on any category. Still "soon": football-clubs,
-  snacks, apps – the user collects those pictures (same file naming).
-- 30.10.26 – Picture pipeline + pilot: `npm run images` scans assets/items/<cat>/<cat>-<n>.<ext> and writes
-  item-images.generated.ts + image-manifest.ts; "pictures" categories unlock at 12 pictures. Pilot lists
-  (dog-breeds, world-cities, football-clubs, football-players, snacks, apps) await the user's review at
-  https://claude.ai/artifact/Btnu28dfQoutGYZBjZT6Ag (db collection `items`). Then: Wikimedia downloads
-  (ask first) for dogs/cities/players; the user collects clubs/snacks/apps.
-- 30.10.26 – Categories + ways built: content/categories.ts = 36-category pool (META/COMING_SOON/
-  SECOND_WAY, statuses active|soon|reserve), engine drawArenaCategories + ArenaPlayer.wayId +
-  BattleSetup.wayId (defender's way), picker with 2 pages + way choice, way shown on target pick and
-  duel intro. Intro now leaves on a timer (rAF-based Animated callbacks stall in background tabs). 51 tests.
-- 30.10.26 – Decisions 14–15 (36-category pool, two "battle ways" per category). Proposal + user's
-  keep/remove/replace choices live in the artifact https://claude.ai/artifact/Uz7SJPxqEAVmaEXjS8iqed
-  (db collection `decisions`). The user finished: the final list is docs/CATEGORIES.md (source of truth).
-- 29.10.26 – iPhone feedback fixed: Enter no longer blurs the answer, raw DOM input/composition
-  listeners accept answers while the Hebrew keyboard composes, "start duel" tap primes the keyboard
-  (design/keyboard-primer.ts), "skip to my turn" (engine fastForwardToHuman + SKIP_TO_MY_TURN). 43 tests.
-- 29.10.26 – Phase 3 (code part): iPhone page setup + Add to Home Screen, duel fits above the iOS
-  keyboard (now `useWebViewportBox`), shared sound players unlocked on first tap, web haptics guarded.
-  Waiting for the user's real iPhone test over Wi-Fi (http://<PC IPv4>:8090; PC was 10.0.0.44).
-- 28.10.26 – Brand palette everywhere (decision 12): root gradient in _layout + transparent screens
-  (`colors.screen`); arena uses 4 colors with one meaning each (see tokens.ts comment).
-- 28.10.26 – Intro animation (~3 s, not skippable, "BE THE ① TO CONQUER THE ARENA") on every visit
-  and after sign-in, before home.
-- Next: finish Phase 3 with the user's iPhone feedback, then Phase 4 (content).
+- Earlier (details in docs/ROADMAP.md, docs/DECISIONS.md, .claude/skills/arena-images/SKILL.md): 26-30.10 repo
+  restructure, rules/streak/bonus, seeded RNG, flow reducer, welcome/home/intro screens, brand palette, iPhone
+  Safari setup and keyboard fixes, 36-category pool with two "ways" (decisions 14-15); 31.10 pictures only (decision 16),
+  picture skill (decision 17), club names blurred, snacks and apps (user photos via `--file`), 17 new categories.
 
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders

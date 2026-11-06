@@ -52,15 +52,17 @@ export function createBattleDeck(
 // Decision 14: the 15 bot categories are drawn with a wide spread of levels.
 const ARENA_LEVEL_QUOTA: Record<CategoryLevel, number> = { hard: 3, medium: 6, easy: 6 };
 
-// Draws the other 15 arena categories: the level quotas first, then any active
-// category to fill a short level, and the hidden reserve only while too few
-// categories are active (most still wait for pictures).
+// Draws the bots' arena categories (15 when one human plays; 16 minus the humans in a room): the level quotas
+// first (scaled down when fewer categories are needed), then any active category to fill a short level, and the
+// hidden reserve only while too few categories are active (most still wait for pictures). `taken` is the
+// category (or categories) the humans chose.
 export function drawArenaCategories(
-  humanCategoryId: string,
+  taken: string | readonly string[],
   random: RandomSource = Math.random,
   count = 15,
 ): string[] {
-  const pool = CATEGORIES.filter((item) => item.status === 'active' && item.id !== humanCategoryId);
+  const takenIds = new Set(typeof taken === 'string' ? [taken] : taken);
+  const pool = CATEGORIES.filter((item) => item.status === 'active' && !takenIds.has(item.id));
   const byLevel: Record<CategoryLevel, Category[]> = {
     easy: shuffle(pool.filter((item) => item.level === 'easy'), random),
     medium: shuffle(pool.filter((item) => item.level === 'medium'), random),
@@ -68,12 +70,13 @@ export function drawArenaCategories(
   };
   const picked: Category[] = [];
   for (const level of ['hard', 'medium', 'easy'] as const) {
-    picked.push(...byLevel[level].splice(0, ARENA_LEVEL_QUOTA[level]));
+    picked.push(...byLevel[level].splice(0, Math.round((ARENA_LEVEL_QUOTA[level] * count) / 15)));
   }
+  if (picked.length > count) picked.length = count; // rounding the scaled quotas can overshoot by one
   const rest = shuffle([...byLevel.easy, ...byLevel.medium, ...byLevel.hard], random);
   while (picked.length < count && rest.length > 0) picked.push(rest.shift()!);
   const reserve = shuffle(
-    CATEGORIES.filter((item) => item.status === 'reserve' && item.id !== humanCategoryId),
+    CATEGORIES.filter((item) => item.status === 'reserve' && !takenIds.has(item.id)),
     random,
   );
   while (picked.length < count && reserve.length > 0) picked.push(reserve.shift()!);
@@ -87,6 +90,114 @@ export function pickRandomWay(categoryId: string, random: RandomSource = Math.ra
   return ways.length > 0 ? ways[Math.floor(random() * ways.length)].id : 'w1';
 }
 
+// A human who sits in the arena: one seat per human (one for the local game, 2 to 6 in an online room).
+export type HumanSeat = {
+  id: string;
+  name: string;
+  avatar?: string;
+  categoryId: string;
+  wayId?: WayId;
+  // The account behind the seat (online games).
+  userId?: string;
+};
+
+// Builds a game for any number of humans (1 to 16); every other seat is a bot. The humans bring their own
+// category and way, the bots get the rest (drawArenaCategories). With one human this makes exactly the same
+// game as before for the same random source, so seeded local games do not change.
+export function createGame(humans: readonly HumanSeat[], random: RandomSource = Math.random): GameState {
+  if (humans.length < 1 || humans.length > 16) throw new Error('A game needs 1 to 16 human seats');
+  if (new Set(humans.map((seat) => seat.id)).size !== humans.length) throw new Error('Human seat ids must be unique');
+  if (new Set(humans.map((seat) => seat.categoryId)).size !== humans.length) {
+    throw new Error('Two humans cannot have the same category');
+  }
+  const humanWays = humans.map((seat) => {
+    const category = CATEGORY_BY_ID[seat.categoryId];
+    if (!category) throw new Error(`Unknown category: ${seat.categoryId}`);
+    const wanted = seat.wayId ?? 'w1';
+    return getAvailableWays(category).some((way) => way.id === wanted) ? wanted : 'w1';
+  });
+
+  const remainingCategories = drawArenaCategories(
+    humans.map((seat) => seat.categoryId),
+    random,
+    16 - humans.length,
+  ).map((id) => CATEGORY_BY_ID[id]);
+  const humanAvatars = humans.map(
+    (seat) => AVATARS.find((avatar) => avatar.id === (seat.avatar ?? DEFAULT_AVATAR_ID)) ?? AVATARS[0],
+  );
+  const humanAvatarIds = new Set(humanAvatars.map((avatar) => avatar.id));
+  const remainingAvatars = shuffle(AVATARS.filter((avatar) => !humanAvatarIds.has(avatar.id)), random);
+  const namesByGender = {
+    female: shuffle(FEMALE_NAMES, random),
+    male: shuffle(MALE_NAMES, random),
+  };
+  const nameIndexes = { female: 0, male: 0 };
+  // Each human gets a random free cell (for one human this is the same single draw as before).
+  const freeCells = Array.from({ length: 16 }, (_, cellId) => cellId);
+  const humanCellIds = humans.map(() => freeCells.splice(Math.floor(random() * freeCells.length), 1)[0]);
+  const players: Record<string, ArenaPlayer> = {};
+  let botIndex = 0;
+  const cells = Array.from({ length: 16 }, (_, cellId) => {
+    const humanIndex = humanCellIds.indexOf(cellId);
+    let player: ArenaPlayer;
+    if (humanIndex >= 0) {
+      const seat = humans[humanIndex];
+      player = {
+        id: seat.id,
+        name: seat.name,
+        avatar: humanAvatars[humanIndex].id,
+        color: PLAYER_COLORS[cellId],
+        isHuman: true,
+        isActive: true,
+        categoryId: seat.categoryId,
+        wayId: humanWays[humanIndex],
+        cellIds: [cellId],
+        hasPlayedThisRound: false,
+        winStreak: 0,
+        bonusReady: false,
+      };
+      if (seat.userId !== undefined) player.userId = seat.userId;
+    } else {
+      const categoryId = remainingCategories[botIndex].id;
+      const wayId = pickRandomWay(categoryId, random);
+      const avatar = remainingAvatars[botIndex];
+      player = {
+        id: `ai-${botIndex + 1}`,
+        name: namesByGender[avatar.gender][nameIndexes[avatar.gender]++],
+        avatar: avatar.id,
+        color: PLAYER_COLORS[cellId],
+        isHuman: false,
+        isActive: true,
+        categoryId,
+        wayId,
+        cellIds: [cellId],
+        hasPlayedThisRound: false,
+        winStreak: 0,
+        bonusReady: false,
+      };
+      botIndex += 1;
+    }
+    players[player.id] = player;
+    return {
+      id: cellId,
+      row: Math.floor(cellId / 4),
+      column: cellId % 4,
+      ownerId: player.id,
+    };
+  });
+
+  return {
+    cells,
+    players,
+    humanPlayerId: humans[0].id,
+    round: 1,
+    selectedPlayerId: null,
+    events: [{ id: 'event-0', text: 'הזירה מוכנה. הגרילו את המתמודד הראשון.' }],
+    eventCount: 1,
+  };
+}
+
+// The local game: one human (id 'human') against 15 bots.
 export function createInitialGame(
   humanCategoryId: string,
   random: RandomSource = Math.random,
@@ -94,69 +205,15 @@ export function createInitialGame(
   humanAvatar = DEFAULT_AVATAR_ID,
   humanWayId: WayId = 'w1',
 ): GameState {
-  const humanCategory = CATEGORY_BY_ID[humanCategoryId];
-  if (!humanCategory) {
-    throw new Error(`Unknown category: ${humanCategoryId}`);
-  }
-  const humanWay = getAvailableWays(humanCategory).some((way) => way.id === humanWayId) ? humanWayId : 'w1';
-
-  const remainingCategories = drawArenaCategories(humanCategoryId, random).map((id) => CATEGORY_BY_ID[id]);
-  const selectedAvatar = AVATARS.find((avatar) => avatar.id === humanAvatar) ?? AVATARS[0];
-  const remainingAvatars = shuffle(
-    AVATARS.filter((avatar) => avatar.id !== selectedAvatar.id),
+  return createGame(
+    [{ id: 'human', name: humanName, avatar: humanAvatar, categoryId: humanCategoryId, wayId: humanWayId }],
     random,
   );
-  const namesByGender = {
-    female: shuffle(FEMALE_NAMES, random),
-    male: shuffle(MALE_NAMES, random),
-  };
-  const nameIndexes = { female: 0, male: 0 };
-  const humanCellId = Math.floor(random() * 16);
-  const players: Record<string, ArenaPlayer> = {};
-  const cells = Array.from({ length: 16 }, (_, cellId) => {
-    const isHuman = cellId === humanCellId;
-    const playerIndex = isHuman ? 0 : cellId < humanCellId ? cellId + 1 : cellId;
-    const playerId = isHuman ? 'human' : `ai-${playerIndex}`;
-    const aiCategoryIndex = cellId < humanCellId ? cellId : cellId - 1;
-    const categoryId = isHuman ? humanCategoryId : remainingCategories[aiCategoryIndex].id;
-    const wayId = isHuman ? humanWay : pickRandomWay(categoryId, random);
-    const aiAvatar = remainingAvatars[aiCategoryIndex];
-    const aiName = isHuman
-      ? humanName
-      : namesByGender[aiAvatar.gender][nameIndexes[aiAvatar.gender]++];
+}
 
-    players[playerId] = {
-      id: playerId,
-      name: aiName,
-      avatar: isHuman ? selectedAvatar.id : aiAvatar.id,
-      color: PLAYER_COLORS[cellId],
-      isHuman,
-      isActive: true,
-      categoryId,
-      wayId,
-      cellIds: [cellId],
-      hasPlayedThisRound: false,
-      winStreak: 0,
-      bonusReady: false,
-    };
-
-    return {
-      id: cellId,
-      row: Math.floor(cellId / 4),
-      column: cellId % 4,
-      ownerId: playerId,
-    };
-  });
-
-  return {
-    cells,
-    players,
-    humanPlayerId: 'human',
-    round: 1,
-    selectedPlayerId: null,
-    events: [{ id: 'event-0', text: 'הזירה מוכנה. הגרילו את המתמודד הראשון.' }],
-    eventCount: 1,
-  };
+// Everyone a human decides for right now (a bot takes over a disconnected human's seat by turning isHuman off).
+export function getHumanPlayerIds(state: GameState): string[] {
+  return Object.values(state.players).filter((player) => player.isHuman).map((player) => player.id);
 }
 
 export function getActivePlayers(state: GameState): ArenaPlayer[] {

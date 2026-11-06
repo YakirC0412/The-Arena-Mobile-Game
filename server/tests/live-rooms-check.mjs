@@ -1,0 +1,56 @@
+// Manual check against the running server: rooms, codes, taken-category race, full room, host leaving, start.
+import { Client } from '@colyseus/sdk';
+const base = process.env.ARENA_HTTP ?? 'http://localhost:2567';
+const j = async (p, o) => (await fetch(base + p, o)).json();
+const tag = Date.now();
+const user = async (n) => (await j('/api/register', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: `${n}${tag}@example.com`, password: 'secret1', name: n }) })).token;
+const client = new Client(base.replace('http', 'ws'));
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const cats = (await j('/api/categories')).categories;
+const mk = async (n, make) => {
+  const token = await user(n);
+  const s = { n, token, lobby: null, errors: [], started: null };
+  s.room = await make(token);
+  s.room.onMessage('lobby', (v) => { s.lobby = v; });
+  s.room.onMessage('error', (m) => s.errors.push(m.error));
+  s.room.onMessage('started', (m) => { s.started = m; });
+  return s;
+};
+const code = (await j('/api/rooms/new-code', { headers: { Authorization: 'Bearer ' + (await user('x')) } })).code;
+const host = await mk('host', (token) => client.create('game', { token, name: 'חדר בדיקה', visibility: 'public', code }));
+await wait(300);
+console.log('public list:', (await j('/api/rooms')).rooms.map((r) => `${r.name} ${r.humans}/${r.maxHumans} ${r.phase}`));
+await mk('p', (token) => client.create('game', { token, name: 'סודי', visibility: 'private', code: 'ZZZZ' }));
+await wait(300);
+console.log('private room listed:', (await j('/api/rooms')).rooms.some((r) => r.name === 'סודי'), '| found by code:', (await j('/api/rooms/code/zzzz')).name, '| bad code:', (await j('/api/rooms/code/NOPE')).error);
+const roomId = (await j('/api/rooms/code/' + code)).roomId;
+const guest = await mk('guest', (token) => client.joinById(roomId, { token }));
+await wait(300);
+host.room.send('pickCategory', { categoryId: cats[0].id, wayId: 'w1' });
+guest.room.send('pickCategory', { categoryId: cats[0].id, wayId: 'w1' });
+await wait(300);
+console.log('race for', cats[0].name, '-> guest errors:', guest.errors, '| taken:', host.lobby.takenCategoryIds.length);
+guest.room.send('pickCategory', { categoryId: cats[1].id, wayId: 'w1' });
+guest.room.send('start');
+await wait(300);
+console.log('guest start refused:', guest.errors.at(-1), '| host canStart:', host.lobby.canStart);
+const extras = [];
+for (let i = 0; i < 4; i += 1) extras.push(await mk('e' + i, (token) => client.joinById(roomId, { token })));
+let full = 'joined';
+try { await mk('late', (token) => client.joinById(roomId, { token })); } catch (e) { full = e.message; }
+console.log('7th player:', full, '| humans:', host.lobby.members.length);
+host.room.leave(); await wait(400);
+console.log('host left -> new host is first remaining:', guest.lobby.members[0].name, guest.lobby.hostClientId === guest.room.sessionId);
+guest.room.send('pickCategory', { categoryId: cats[2].id, wayId: 'w1' });
+for (const [i, e] of extras.entries()) e.room.send('pickCategory', { categoryId: cats[3 + i].id, wayId: 'w1' });
+await wait(300);
+guest.room.send('start'); await wait(600);
+console.log('started:', !!guest.started, '| seats:', guest.started?.players.length, '| humans:', guest.started?.players.filter((p) => p.isHuman).length);
+let lateJoin = 'joined';
+try { await mk('late2', (token) => client.joinById(roomId, { token })); } catch (e) { lateJoin = e.message; }
+console.log('player joins a started game:', lateJoin);
+const watcher = await mk('watcher', (token) => client.joinById(roomId, { token, watch: true }));
+await wait(300);
+console.log('watcher sees:', watcher.lobby?.phase, '| board:', watcher.started?.players.length);
+console.log('list now:', (await j('/api/rooms')).rooms.map((r) => `${r.name} ${r.phase} watchers ${r.watchers}`));
+process.exit(0);

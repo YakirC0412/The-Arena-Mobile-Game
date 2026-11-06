@@ -74,6 +74,13 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 6.11.26 – MULTIPLAYER, phase 4 done (server + test page; the in-app rooms/lobby screens are NOT built yet): `server/src/lobby.ts`
+  (pure rules: max 6 humans, host = first joined and passes on, one owner per category, switching frees the old one, start =
+  host + 2 humans + everyone has a category, hands `HumanSeat`s to `createGame`), `GameRoom.ts` (Colyseus room `game`: join with
+  {token} or {token, watch:true}; messages pickCategory/start; sends lobby/role/error/started; start builds the 16-seat board
+  only, the game is played in phase 5), `roomsApi.ts` (GET /api/categories, /api/rooms (public only, listed while in game),
+  /api/rooms/code/:code, /api/rooms/new-code), `roomsPage.ts` (http://<PC>:2567/rooms: list, code, create, lobby, leaders). 24
+  server tests; `node tests/live-rooms-check.mjs` plays the scenarios (race, full room, host leaves, start, watch).
 - 6.11.26 – MULTIPLAYER, phase 3 done (server + test page; the real in-app duel screen is not built yet): `server/src/liveDuel.ts`
   (pure: 2 seats + spectators, uses `game/duel.ts`, injected clock, answers checked on the server, leaving = forfeit),
   `DuelRoom.ts` (Colyseus room `duel`, join with {token} from /api/login; messages `answer`/`skip`; sends `view` 4x/s, `role`,

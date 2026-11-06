@@ -3,6 +3,7 @@
 // Also serves the pictures (/items/<key>.webp) and the Colyseus browser SDK (/sdk.js) from this machine.
 import { existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
+import { ROOMS_PAGE } from './roomsPage';
 
 const ITEMS_DIR = resolve(__dirname, '../../../../mobile/assets/items');
 const SDK_FILE = resolve(__dirname, '../../../node_modules/@colyseus/sdk/dist/colyseus.js');
@@ -64,6 +65,7 @@ $('skip').addEventListener('click',()=>{if(room){room.send('skip');$('ans').valu
 </script></body></html>`;
 
 export function mountDuelPage(app: any): void {
+  app.get('/rooms', (_req: any, res: any) => res.type('html').send(ROOMS_PAGE));
   app.get('/duel', (_req: any, res: any) => res.type('html').send(PAGE));
   app.get('/sdk.js', (_req: any, res: any) => res.sendFile(SDK_FILE));
   app.get('/items/:key.webp', (req: any, res: any) => {

@@ -22,6 +22,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 - Admin panel (decision 19): `npm run admin` from `mobile/` (preview config `arena-admin`) → http://localhost:8095. Edits
   categories, items and pictures in the real files. Check it with `node scripts/admin/smoke-test.js` (server running).
   Never run `arena_images.py` in the background while the panel does something: both rewrite credits.json.
+- Server (multiplayer): `server/` has its own `npm.cmd test` / `npm.cmd run start` (port 2567). Dev server dir is git-ignored for node_modules/dist/data.
 - Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (80 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
@@ -36,6 +37,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 ├─ docs/              GAME_RULES.md (rules source of truth) · DECISIONS.md · ROADMAP.md
 │                     PRD.md · UIUX_SPEC.md · archive/ (original questionnaire)
 ├─ archive/           NOT in git: old zip, Codex tooling, files removed from the app
+├─ server/            multiplayer server (Node + Colyseus): src/gameLoop.ts · ArenaRoom.ts · index.ts · tests/
 ├─ .claude/           launch.json for the preview server · skills/arena-images (picture skill)
 └─ mobile/            Expo SDK 58 app (expo-router, reanimated, RN web)
    ├─ AGENTS.md       Expo rules – read before touching any Expo/RN API
@@ -72,6 +74,12 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 6.11.26 – MULTIPLAYER, phase 1 done: `server/` (own package.json, Colyseus 0.18, CJS build via `tsc`, imports the game code
+  from `../mobile/src/game`). `server/src/gameLoop.ts` = pure step machine (draw → target → duel → continue/return → final →
+  champion; same random order as `autoPlayGame`); `ArenaRoom.ts` plays it every 1.5 s (ARENA_STEP_MS) and broadcasts
+  `welcome`/`step`; `index.ts` listens on 2567; `bots-cli.ts` prints a game. From `server/`: `npm.cmd test` (4 tests: 100
+  seeded games = 15 duels + 1 champion, identical to the local engine), `npm.cmd run start`, `node tests/live-check.mjs`
+  (client against the running server). Checked live: 15 duels, champion, room closes. Next: phase 2 (accounts + wins).
 - 6.11.26 – MULTIPLAYER, phase 0 done (plan: `docs/PRD_MULTIPLAYER.md`, approved by the user; rooms of up to 6
   humans + bots, server on the home PC first, Colyseus, server accounts, leaderboard). `engine.createGame(humans, random)`
   builds a game for 1-16 humans (HumanSeat: id, name, avatar, categoryId, wayId, userId); `createInitialGame` wraps it and

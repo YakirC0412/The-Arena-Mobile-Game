@@ -27,6 +27,8 @@ import type { BattleResolution, BattleSetup, GameState, WayId } from './types';
 export type FlowScreen =
   // animated opening, sign-up / sign-in, then the signed-in home
   | 'intro' | 'welcome' | 'home' | 'guide' | 'setup'
+  // online: the waiting room of a multiplayer game (opened from the Multi tab of home)
+  | 'lobby'
   // arena
   | 'building' | 'arena' | 'draw' | 'aiTarget'
   // duel
@@ -43,8 +45,24 @@ export type FlowUser = {
   avatar: string;
 };
 
+// The two ways to play, as the toggle at the bottom of home.
+export type HomeTab = 'single' | 'multi';
+
+// The room the player opened from the Multi tab (the lobby screen shows it).
+export type LobbyEntry = {
+  roomId: string;
+  code: string;
+  name: string;
+  // Watching a started or full room: no category, no start button.
+  watching: boolean;
+  // True when this player created the room.
+  isHost: boolean;
+};
+
 export type FlowState = {
   screen: FlowScreen;
+  homeTab: HomeTab;
+  lobby: LobbyEntry | null;
   user: FlowUser | null;
   selectedCategoryId: string;
   // How the player's category is played (decision 15).
@@ -76,6 +94,9 @@ export type FlowAction =
   | { type: 'SIGN_OUT' }
   | { type: 'HOME_GUIDE' }
   | { type: 'HOME_NEW_GAME' }
+  | { type: 'HOME_TAB'; tab: HomeTab }
+  | { type: 'LOBBY_OPEN'; entry: LobbyEntry }
+  | { type: 'LOBBY_BACK' }
   | { type: 'GUIDE_BACK' }
   | { type: 'GUIDE_COMPLETE' }
   | { type: 'SETUP_BACK' }
@@ -102,9 +123,11 @@ export type FlowAction =
   | { type: 'VICTORY_COMPLETE' };
 
 // Every visit opens with the intro; a remembered user then lands on home.
-export function createFlowState(seed: number, user: FlowUser | null = null): FlowState {
+export function createFlowState(seed: number, user: FlowUser | null = null, homeTab: HomeTab = 'single'): FlowState {
   return {
     screen: 'intro',
+    homeTab,
+    lobby: null,
     user,
     selectedCategoryId: 'animals',
     selectedWayId: 'w1',
@@ -155,9 +178,12 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
     case 'INTRO_COMPLETE': return at(state.user ? 'home' : 'welcome');
     // The intro plays again before the home screen, as a welcome.
     case 'SIGNED_IN': return { ...state, user: action.user, screen: 'intro' };
-    case 'SIGN_OUT': return { ...state, ...CLEARED_BATTLE, user: null, game: null, screen: 'welcome' };
+    case 'SIGN_OUT': return { ...state, ...CLEARED_BATTLE, user: null, game: null, lobby: null, homeTab: 'single', screen: 'welcome' };
     case 'HOME_GUIDE': return at('guide');
     case 'HOME_NEW_GAME': return at('setup');
+    case 'HOME_TAB': return state.homeTab === action.tab ? state : { ...state, homeTab: action.tab };
+    case 'LOBBY_OPEN': return { ...state, lobby: action.entry, screen: 'lobby' };
+    case 'LOBBY_BACK': return { ...state, lobby: null, homeTab: 'multi', screen: 'home' };
     case 'GUIDE_BACK': return at('home');
     case 'GUIDE_COMPLETE': return at('setup');
     case 'SETUP_BACK': return at('home');

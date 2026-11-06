@@ -16,11 +16,13 @@ import { FinalCategoryScreen } from '@/features/final/final-category-screen';
 import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
 import { GameOverScreen } from '@/features/final/game-over-screen';
 import { GuideScreen } from '@/features/onboarding/guide-screen';
-import { HomeScreen } from '@/features/onboarding/home-screen';
+import { HomeScreen } from '@/features/home/home-screen';
+import { LobbyScreen } from '@/features/lobby/lobby-screen';
 import { IntroScreen } from '@/features/onboarding/intro-screen';
 import { WelcomeScreen } from '@/features/onboarding/welcome-screen';
 import { getFinalCategoryChooser, getNeighborPlayerIds } from '@/game/engine';
-import { createFlowState, flowReducer, type FlowUser } from '@/game/flow';
+import { createFlowState, flowReducer, type FlowUser, type HomeTab, type LobbyEntry } from '@/game/flow';
+import { createMockRoomsSource } from '@/online/mock-rooms-source';
 import { createSeed, createSeededRandom } from '@/game/rng';
 import type { WayId } from '@/game/types';
 import { loadAccountStore, saveAccountStore } from '@/services/accounts/account-storage';
@@ -31,12 +33,31 @@ import { styles } from './flow-styles';
 import { ResultScreen } from './result-screen';
 import { SetupScreen } from './setup-screen';
 
+// The last home tab is remembered in this browser (a convenience only: it may be unavailable).
+const TAB_KEY = 'arena.homeTab';
+function loadHomeTab(): HomeTab {
+  try {
+    return globalThis.localStorage?.getItem(TAB_KEY) === 'multi' ? 'multi' : 'single';
+  } catch {
+    return 'single';
+  }
+}
+function saveHomeTab(tab: HomeTab) {
+  try {
+    globalThis.localStorage?.setItem(TAB_KEY, tab);
+  } catch {
+    // not available (private window): the tab is simply not remembered
+  }
+}
+
 // Renders the screen for the current flow state. Every transition lives in
 // game/flow.ts (flowReducer); this component only maps screens to components
 // and buttons to actions.
 export function GameFlow() {
   // A user who signed in on an earlier visit lands straight on the home screen.
-  const [flow, dispatch] = useReducer(flowReducer, undefined, () => createFlowState(createSeed(), getCurrentUser(loadAccountStore())));
+  const [flow, dispatch] = useReducer(flowReducer, undefined, () => createFlowState(createSeed(), getCurrentUser(loadAccountStore()), loadHomeTab()));
+  // Rooms and the hall of fame: sample data until the server is connected (online/rooms-source.ts).
+  const roomsSource = useMemo(() => createMockRoomsSource(), []);
   // Stable callbacks, so screens' timers are not restarted on every render.
   const on = useMemo(() => ({
     introComplete: () => dispatch({ type: 'INTRO_COMPLETE' }),
@@ -47,6 +68,12 @@ export function GameFlow() {
     },
     homeGuide: () => dispatch({ type: 'HOME_GUIDE' }),
     homeNewGame: () => dispatch({ type: 'HOME_NEW_GAME' }),
+    homeTab: (tab: HomeTab) => {
+      saveHomeTab(tab);
+      dispatch({ type: 'HOME_TAB', tab });
+    },
+    openLobby: (entry: LobbyEntry) => dispatch({ type: 'LOBBY_OPEN', entry }),
+    lobbyBack: () => dispatch({ type: 'LOBBY_BACK' }),
     guideBack: () => dispatch({ type: 'GUIDE_BACK' }),
     guideComplete: () => dispatch({ type: 'GUIDE_COMPLETE' }),
     setupBack: () => dispatch({ type: 'SETUP_BACK' }),
@@ -95,9 +122,16 @@ export function GameFlow() {
           nickname={flow.user.nickname}
           onGuide={on.homeGuide}
           onNewGame={on.homeNewGame}
+          onOpenLobby={on.openLobby}
           onSignOut={on.signOut}
+          onTab={on.homeTab}
+          source={roomsSource}
+          tab={flow.homeTab}
         />
       );
+    case 'lobby':
+      if (!flow.user || !flow.lobby) return null;
+      return <LobbyScreen avatar={flow.user.avatar} entry={flow.lobby} nickname={flow.user.nickname} onBack={on.lobbyBack} />;
     case 'guide':
       return <GuideScreen onBack={on.guideBack} onComplete={on.guideComplete} />;
     case 'setup':

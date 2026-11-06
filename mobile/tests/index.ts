@@ -12,6 +12,7 @@ import './draw.test';
 import './guide.test';
 import './multiplayer.test';
 import './duel.test';
+import './online.test';
 import { runAll } from './harness';
 
 runAll();

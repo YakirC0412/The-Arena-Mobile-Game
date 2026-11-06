@@ -23,7 +23,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
   categories, items and pictures in the real files. Check it with `node scripts/admin/smoke-test.js` (server running).
   Never run `arena_images.py` in the background while the panel does something: both rewrite credits.json.
 - Server (multiplayer): `server/` has its own `npm.cmd test` / `npm.cmd run start` (port 2567). Dev server dir is git-ignored for node_modules/dist/data.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (80 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (89 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -74,6 +74,16 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 6.11.26 – NEW HOME (UI upgrade before phase 5): `features/home/` replaces the old home. Bottom toggle (tabs) **Single** (hero,
+  facts chips 16/40"/15, start + guide buttons, "how it works") and **Multi** (trophy podium top 3 from leaders, "open room" +
+  "I have a code" bottom sheets, live list of rooms: seats x/6, public/code badge, waiting/in-game, running-game timer, join/
+  enter code/watch; loading/empty/error states, polls every 3 s). Data comes from `online/` (`RoomsSource` interface + mock
+  source = sample data; the real server source is the next step; `format.ts` = timer/code/card/podium helpers). Flow: `homeTab`,
+  `lobby`, actions HOME_TAB/LOBBY_OPEN/LOBBY_BACK, screen `lobby` (`features/lobby/lobby-screen.tsx`, mock people, same rules as
+  the server because `Lobby` now lives in `game/lobby.ts` and `server/src/lobby.ts` re-exports it). Test harness supports async
+  tests. QA: `/qa-home?tab=multi&state=empty|error|slow`, `/qa-home?lobby=host|guest|watch`. 89 mobile tests. Server `/api/rooms`
+  still hides private rooms: the Multi list shows them with a lock, so change that when wiring (list them, join by code only);
+  also add `startedAt` to room metadata for the timer. Not yet checked on the iPhone.
 - 6.11.26 – MULTIPLAYER, phase 4 done (server + test page; the in-app rooms/lobby screens are NOT built yet): `server/src/lobby.ts`
   (pure rules: max 6 humans, host = first joined and passes on, one owner per category, switching frees the old one, start =
   host + 2 humans + everyone has a category, hands `HumanSeat`s to `createGame`), `GameRoom.ts` (Colyseus room `game`: join with

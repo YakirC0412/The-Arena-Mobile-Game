@@ -17,6 +17,7 @@ function nextAction(state: FlowState, policy: HumanPolicy, random: RandomSource,
     case 'welcome': return { type: 'SIGNED_IN', user: TEST_USER };
     case 'home': return { type: 'HOME_GUIDE' };
     case 'guide': return { type: 'GUIDE_COMPLETE' };
+    case 'lobby': return { type: 'LOBBY_BACK' };
     case 'setup': return { type: 'START_GAME', seed };
     case 'building': return { type: 'BUILD_COMPLETE' };
     case 'arena': {
@@ -100,6 +101,23 @@ suite('screen flow', () => {
     assertEqual(signedOut.screen, 'welcome', 'Sign-out returns to welcome');
     assertEqual(signedOut.user, null, 'User cleared');
     assertEqual(signedOut.game, null, 'Game cleared');
+  });
+
+  test('home has a Single / Multi toggle; a room opens the lobby and back returns to the Multi tab', () => {
+    let state = flowReducer(flowReducer(createFlowState(1, TEST_USER), { type: 'INTRO_COMPLETE' }), { type: 'HOME_TAB', tab: 'multi' });
+    assertEqual(state.homeTab, 'multi', 'Multi tab');
+    assertEqual(state.screen, 'home', 'Still home');
+    assertEqual(flowReducer(state, { type: 'HOME_TAB', tab: 'multi' }), state, 'Same tab changes nothing');
+    const entry = { roomId: 'r1', code: 'AB23', name: 'חדר', watching: false, isHost: true };
+    state = flowReducer(state, { type: 'LOBBY_OPEN', entry });
+    assertEqual(state.screen, 'lobby', 'Lobby');
+    assertEqual(state.lobby?.code, 'AB23', 'Lobby remembers the room');
+    state = flowReducer(state, { type: 'LOBBY_BACK' });
+    assertEqual(state.screen, 'home', 'Back home');
+    assertEqual(state.homeTab, 'multi', 'Back on the Multi tab');
+    assertEqual(state.lobby, null, 'Room cleared');
+    assertEqual(createFlowState(1, TEST_USER, 'multi').homeTab, 'multi', 'A remembered tab can start the flow');
+    assertEqual(flowReducer(state, { type: 'SIGN_OUT' }).homeTab, 'single', 'Sign-out resets the tab');
   });
 
   test('300 games with random human results all reach a champion after 15 duels', () => {

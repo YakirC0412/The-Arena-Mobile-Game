@@ -3,6 +3,7 @@ import './gameLoop.test';
 import './auth.test';
 import './liveDuel.test';
 import './lobby.test';
+import './onlineGame.test';
 import { runAll } from '../../mobile/tests/harness';
 
 runAll();

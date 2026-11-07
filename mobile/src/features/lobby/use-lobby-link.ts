@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { CATEGORIES } from '@/content/categories';
 import type { LobbyEntry } from '@/game/flow';
 import { isPickable, Lobby, MIN_HUMANS_TO_START } from '@/game/lobby';
+import type { OnlineView } from '@/game/online-view';
 import type { LobbyError, LobbyView } from '@/game/lobby';
 import { serverWsUrl } from '@/online/server-config';
 import { ensureServerSession } from '@/online/server-session';
@@ -18,8 +19,13 @@ export type LobbyLink = {
   watching: boolean;
   // A short message about the last action (for example "category taken").
   notice: string | null;
-  // Set when the host started the game: how many seats there are and how many of them are people.
-  started: { players: number; humans: number } | null;
+  // The running game (set once the host started it) and the seat this phone controls (null = spectator).
+  game: OnlineView | null;
+  myPlayerId: string | null;
+  // Counts up every time the server confirms a right answer (for the sound).
+  correctCount: number;
+  // Sends a game choice: pickTarget, pickFinalCategory, answer, skip, continue, return.
+  send: (type: string, payload?: object) => void;
   pick: (categoryId: string) => void;
   start: () => void;
   leave: () => void;
@@ -52,7 +58,9 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
   const [myId, setMyId] = useState<string | null>(null);
   const [role, setRole] = useState<'player' | 'spectator' | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
-  const [started, setStarted] = useState<LobbyLink['started']>(null);
+  const [game, setGame] = useState<OnlineView | null>(null);
+  const [myPlayerId, setMyPlayerId] = useState<string | null>(null);
+  const [correctCount, setCorrectCount] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -73,8 +81,9 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
         room.onMessage('lobby', (next: LobbyView) => setView(next));
         room.onMessage('role', (message: { role: 'player' | 'spectator' }) => setRole(message.role));
         room.onMessage('error', (message: { error: LobbyError }) => setNotice(lobbyMessage(message.error)));
-        room.onMessage('started', (message: { players: { isHuman: boolean }[] }) =>
-          setStarted({ players: message.players.length, humans: message.players.filter((player) => player.isHuman).length }));
+        room.onMessage('game', (next: OnlineView) => setGame(next));
+        room.onMessage('me', (message: { playerId: string | null }) => setMyPlayerId(message.playerId));
+        room.onMessage('correct', () => setCorrectCount((count) => count + 1));
         room.onLeave(() => !cancelled && setStatus((current) => (current === 'error' ? current : 'closed')));
         room.onError(() => !cancelled && setNotice('החיבור לשרת נקטע'));
         // Now that every handler exists, ask for the current state (nothing is lost while connecting).
@@ -102,13 +111,16 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
     setNotice(null);
     roomRef.current?.send('start');
   }, []);
+  const send = useCallback((type: string, payload?: object) => {
+    roomRef.current?.send(type, payload);
+  }, []);
   const leave = useCallback(() => {
     const room = roomRef.current;
     roomRef.current = null;
     if (room) void room.leave();
   }, []);
 
-  return { status, fatal, view, myId, watching: entry.watching || role === 'spectator', notice, started, pick, start, leave };
+  return { status, fatal, view, myId, watching: entry.watching || role === 'spectator', notice, game, myPlayerId, correctCount, send, pick, start, leave };
 }
 
 // ---- Sample data (QA screens only): the same rules as the server, with pretend people -----------------------------------
@@ -125,7 +137,6 @@ export function useMockLobby(entry: LobbyEntry, nickname: string, avatar: string
   const lobby = useMemo(() => new Lobby(entry.name, entry.code, 'public'), [entry.name, entry.code]);
   const [, setVersion] = useState(0);
   const [notice, setNotice] = useState<string | null>(null);
-  const [started, setStarted] = useState<LobbyLink['started']>(null);
   const redraw = () => setVersion((value) => value + 1);
 
   // A room you opened starts with you alone and a friend arrives a moment later; a room you joined already has people.
@@ -156,7 +167,10 @@ export function useMockLobby(entry: LobbyEntry, nickname: string, avatar: string
     myId: ME,
     watching: entry.watching,
     notice,
-    started,
+    game: null,
+    myPlayerId: null,
+    correctCount: 0,
+    send: () => undefined,
     pick: (categoryId) => {
       const result = lobby.pickCategory(ME, categoryId);
       setNotice(result.ok ? null : lobbyMessage(result.error));
@@ -164,8 +178,7 @@ export function useMockLobby(entry: LobbyEntry, nickname: string, avatar: string
     },
     start: () => {
       const result = lobby.start(ME);
-      if (result.ok) setStarted({ players: 16, humans: lobby.humanCount });
-      else setNotice(lobbyMessage(result.error));
+      if (!result.ok) setNotice(lobbyMessage(result.error));
       redraw();
     },
     leave: () => undefined,

@@ -23,7 +23,7 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
   categories, items and pictures in the real files. Check it with `node scripts/admin/smoke-test.js` (server running).
   Never run `arena_images.py` in the background while the panel does something: both rewrite credits.json.
 - Server (multiplayer): `server/` has its own `npm.cmd test` / `npm.cmd run start` (port 2567). Dev server dir is git-ignored for node_modules/dist/data.
-- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (89 tests incl. 1000 seeded games) · lint is broken.
+- Checks (from `mobile/`): `npx tsc --noEmit` · `npm test` (91 tests incl. 1000 seeded games) · lint is broken.
 - Tests: `mobile/tests/*.test.ts` with a tiny runner (`tests/harness.ts`, no deps), entry `tests/index.ts`.
   New rule → new test in `tests/rules.test.ts`, named after the GAME_RULES section.
 - Before calling a step done: typecheck + engine test + click through the flow in the browser pane.
@@ -74,6 +74,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 8.11.26 – MULTIPLAYER, phase 5 done: THE FULL ONLINE GAME. `server/src/onlineGame.ts` = pure `OnlineGame` (injected clock + random): draw -> target -> announce -> duel -> result -> continue/return -> final (category choice by the one with more territory) -> champion; humans choose within 20 s or get the bot's choice; duels with a human are live (`game/duel.ts`, bots answer through aiThinkDelayMs/decideAiDuelOutcome), bot-vs-bot duels are simulated; a human away 30 s is replaced by a bot and takes the seat back between duels (same account joining again, also through the Watch button); champion goes to `recordGame` (2+ accounts). `GameRoom` now runs it after `start` (messages pickTarget/pickFinalCategory/answer/skip/continue/return; room sends `game` (OnlineView, 4x/s, no answers), `me`, `correct`; closes 60 s after the champion). Phone: `game/online-view.ts` (shared types), `online/view-to-state.ts`, `features/online/online-game-screen.tsx` + `online-duel.tsx` (shown by the lobby screen when `link.game` exists; board is the old ArenaBoard). Checked: 28 server tests (full 3-human game with a fake clock, bot takeover, return, wrong-turn actions), 91 mobile tests, `node tests/live-game-check.mjs` (two scripted phones + bots play to the champion in ~3 min; WEAK=1 makes them skip), and a real browser run (spectator duel, my own duel typing an answer, champion screen). Not yet: iPhone check, sounds beyond correct/skip, a Hebrew-only 15 s sheet for the final, reconnect after the room closes, no spectator list, no rematch.
 - 7.11.26 – MULTI TAB CONNECTED TO THE REAL SERVER. The app talks to the Arena server at `http://<page host>:2567`
   (`online/server-config.ts`, override EXPO_PUBLIC_ARENA_SERVER). `online/server-session.ts`: silent server account per
   nickname (random email+password kept in localStorage, nickname + avatar sent). `online/server-rooms-source.ts` = HTTP

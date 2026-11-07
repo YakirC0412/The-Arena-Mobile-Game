@@ -8,6 +8,7 @@ import { CATEGORIES, CATEGORY_BY_ID } from '@/content/categories';
 import { isPickable, MAX_HUMANS } from '@/game/lobby';
 import type { LobbyEntry } from '@/game/flow';
 import { styles } from '@/features/home/home-styles';
+import { OnlineGameScreen } from '@/features/online/online-game-screen';
 import { useMockLobby, useServerLobby, type LobbyLink } from './use-lobby-link';
 
 const PICKABLE = CATEGORIES.filter((category) => isPickable(category.id));
@@ -44,6 +45,7 @@ function LobbyScreen({ entry, link, onBack }: { entry: LobbyEntry; link: LobbyLi
   }
 
   const { view } = link;
+  if (link.game) return <OnlineGameScreen link={link} onLeave={leave} />;
   const me = view.members.find((member) => member.clientId === link.myId);
   const hostIsMe = view.hostClientId === link.myId;
   const watching = link.watching || !me;
@@ -64,15 +66,6 @@ function LobbyScreen({ entry, link, onBack }: { entry: LobbyEntry; link: LobbyLi
               {watching ? '👁 אתם צופים בחדר' : `משתתפים ${view.members.length}/${MAX_HUMANS} · שאר המקומות יתמלאו בבוטים`}
             </Text>
           </View>
-
-          {link.started ? (
-            <View style={styles.card}>
-              <Text style={styles.cardTitle} weight="black">🎬 המשחק התחיל!</Text>
-              <Text style={styles.cardText}>
-                {link.started.players} מתמודדים בזירה, {link.started.humans} מהם בני אדם. את המשחק עצמו נחבר בשלב הבא – כרגע הלוח נבנה בשרת.
-              </Text>
-            </View>
-          ) : null}
 
           <View style={styles.card}>
             <Text style={styles.cardTitle} weight="black">מי בחדר</Text>

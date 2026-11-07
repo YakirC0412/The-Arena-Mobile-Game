@@ -1,5 +1,7 @@
 import { describeRoom, formatGameTimer, isCompleteRoomCode, normalizeRoomCode, podiumSlots } from '../src/online/format';
 import { createMockRoomsSource } from '../src/online/mock-rooms-source';
+import type { OnlineView } from '../src/game/online-view';
+import { clockLeftMs, viewToGameState } from '../src/online/view-to-state';
 import type { LeaderRow, RoomSummary } from '../src/online/types';
 import { assert, assertEqual, suite, test } from './harness';
 
@@ -79,5 +81,29 @@ suite('online home: mock rooms source', () => {
     let failed = false;
     try { await createMockRoomsSource({ fail: true, latencyMs: 0 }).listRooms(); } catch { failed = true; }
     assert(failed, 'Offline throws');
+  });
+});
+
+suite('online game: what the phone builds from the server view', () => {
+  const player = (id: string, cells: number) => ({ id, name: id, avatar: 'avatar-01', isHuman: id === 'a', isActive: cells > 0, categoryId: 'countries', cells, winStreak: 0, bonusReady: false, away: false });
+  const view = {
+    stage: 'target', round: 2, duels: 3, players: [player('a', 3), player('b', 1)], cells: ['a', 'a', 'b', 'a', ...Array(12).fill('a')],
+    attackerId: 'a', setup: null, targets: ['b'], finalOptions: [], duel: null, result: null, choiceLeftMs: 5000, championId: null, events: ['x'], serverNow: 1,
+  } as unknown as OnlineView;
+
+  test('the board state has 16 cells with row and column and the cells of each owner', () => {
+    const state = viewToGameState(view, 'a');
+    assertEqual(state.cells.length, 16, 'Sixteen cells');
+    assertEqual(state.cells[5].row, 1, 'Row of cell 5');
+    assertEqual(state.cells[5].column, 1, 'Column of cell 5');
+    assertEqual(state.players.b.cellIds.join(), '2', 'Owner cells');
+    assertEqual(state.selectedPlayerId, 'a', 'The attacker is selected');
+    assertEqual(state.humanPlayerId, 'a', 'Me');
+  });
+
+  test('a clock runs down only while it is running, and never below zero', () => {
+    assertEqual(clockLeftMs(10_000, 1000, 3500, true), 7500, 'Running');
+    assertEqual(clockLeftMs(10_000, 1000, 3500, false), 10_000, 'Stopped');
+    assertEqual(clockLeftMs(1000, 0, 9000, true), 0, 'Not negative');
   });
 });

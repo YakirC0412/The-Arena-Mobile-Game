@@ -39,9 +39,21 @@ export function mountRoomsApi(app: any): void {
   // Public rooms only (private ones are never listed). "In game" rooms stay listed so people can watch.
   app.get('/api/rooms', async (_req: any, res: any) => {
     open(res);
-    const rooms = (await liveRooms()).filter((room) => !room.private);
+    // Private rooms are listed too (with a lock) but their code is never sent: people join them by typing the code.
+    // `playingMs` = how long the game has been running, so a phone with a different clock still shows the right timer.
+    const now = Date.now();
     res.json({
-      rooms: rooms.map((room) => ({ roomId: room.roomId, ...room.metadata, watchers: Math.max(0, room.clients - (room.metadata?.humans ?? 0)) })),
+      rooms: (await liveRooms()).map((room) => {
+        const meta = room.metadata ?? {};
+        const { startedAt, ...rest } = meta;
+        return {
+          roomId: room.roomId,
+          ...rest,
+          code: meta.visibility === 'private' ? null : meta.code,
+          playingMs: typeof startedAt === 'number' ? Math.max(0, now - startedAt) : null,
+          watchers: Math.max(0, room.clients - (meta.humans ?? 0)),
+        };
+      }),
     });
   });
 

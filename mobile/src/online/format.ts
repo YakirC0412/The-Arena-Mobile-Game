@@ -34,7 +34,8 @@ export type RoomCardInfo = {
 export function describeRoom(room: RoomSummary, now: number): RoomCardInfo {
   const full = room.humans >= room.maxHumans;
   const inGame = room.phase === 'inGame';
-  const action: RoomCardInfo['action'] = inGame || full ? 'watch' : room.visibility === 'private' ? 'enterCode' : 'join';
+  // A private room is always entered with its code (even to watch); a public one by tapping.
+  const action: RoomCardInfo['action'] = room.visibility === 'private' ? 'enterCode' : inGame || full ? 'watch' : 'join';
   return {
     action,
     statusLabel: inGame ? 'במשחק' : full ? 'מלא' : 'ממתין לשחקנים',

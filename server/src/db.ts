@@ -36,6 +36,11 @@ export function openDb(file: string): Db {
       PRIMARY KEY (game_id, user_id)
     );
   `);
+  // Older database files have no avatar column yet.
+  const columns = db.prepare('PRAGMA table_info(users)').all() as { name: string }[];
+  if (!columns.some((column) => column.name === 'avatar')) {
+    db.exec("ALTER TABLE users ADD COLUMN avatar TEXT NOT NULL DEFAULT 'avatar-01'");
+  }
   return db;
 }
 
@@ -52,12 +57,12 @@ export function recordGame(db: Db, userIds: number[], championUserId: number | n
   return true;
 }
 
-export type LeaderRow = { userId: number; name: string; wins: number; games: number };
+export type LeaderRow = { userId: number; name: string; avatar: string; wins: number; games: number };
 
 export function getLeaders(db: Db, limit = 20): LeaderRow[] {
   const rows = db
     .prepare(
-      `SELECT u.id AS userId, u.name AS name,
+      `SELECT u.id AS userId, u.name AS name, u.avatar AS avatar,
               (SELECT COUNT(*) FROM games g WHERE g.champion_user_id = u.id) AS wins,
               (SELECT COUNT(*) FROM game_players p WHERE p.user_id = u.id) AS games
        FROM users u

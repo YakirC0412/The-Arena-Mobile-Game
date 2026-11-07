@@ -55,8 +55,10 @@ export type LobbyEntry = {
   name: string;
   // Watching a started or full room: no category, no start button.
   watching: boolean;
-  // True when this player created the room.
+  // True when this player created the room (roomId is then empty until the server creates it).
   isHost: boolean;
+  // Only for a room being created.
+  visibility?: 'public' | 'private';
 };
 
 export type FlowState = {

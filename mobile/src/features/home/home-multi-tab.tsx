@@ -17,8 +17,10 @@ const entryFor = (room: RoomSummary, now: number, isHost = false): LobbyEntry =>
   roomId: room.id,
   code: room.code,
   name: room.name,
-  watching: describeRoom(room, now).action === 'watch',
+  // A full room or a running game can only be watched.
+  watching: room.phase === 'inGame' || room.humans >= room.maxHumans,
   isHost,
+  visibility: room.visibility,
 });
 
 // Multi play: the hall of fame, open / join-by-code actions and the live list of rooms.

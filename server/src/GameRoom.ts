@@ -19,6 +19,8 @@ export class GameRoom extends Room {
   private lobby!: Lobby;
   private users = new Map<string, PublicUser>();
   private game: GameState | null = null;
+  // When the host pressed start (server time); the rooms list turns it into a running-game timer.
+  private startedAt: number | null = null;
 
   onAuth(_client: unknown, options: { token?: string }) {
     const user = userFromToken(getDb(), options?.token);
@@ -39,10 +41,17 @@ export class GameRoom extends Room {
       const result = this.lobby.pickCategory(client.sessionId, String(message?.categoryId), message?.wayId === 'w2' ? 'w2' : 'w1');
       this.afterAction(client, result);
     });
+    // A phone says hello once its handlers are ready, and gets everything it may have missed while connecting.
+    this.onMessage('hello', (client) => {
+      client.send('role', { role: this.lobby.has(client.sessionId) ? 'player' : 'spectator' });
+      client.send('lobby', this.lobby.view());
+      if (this.game) client.send('started', { players: Object.values(this.game.players), cells: this.game.cells });
+    });
     this.onMessage('start', (client) => {
       const result = this.lobby.start(client.sessionId);
       if (!result.ok) return this.afterAction(client, result);
       this.game = createGame(result.seats, Math.random);
+      this.startedAt = Date.now();
       this.broadcast('started', { players: Object.values(this.game.players), cells: this.game.cells });
       this.broadcastLobby();
       this.publish();
@@ -57,7 +66,7 @@ export class GameRoom extends Room {
       return;
     }
     if ([...this.users.values()].some((other) => other.id === user.id)) throw new Error('already_in_room');
-    const joined = this.lobby.join({ clientId: client.sessionId, userId: user.id, name: user.name });
+    const joined = this.lobby.join({ clientId: client.sessionId, userId: user.id, name: user.name, avatar: user.avatar });
     if (!joined.ok) throw new Error(joined.error);
     this.users.set(client.sessionId, user);
     client.send('role', { role: 'player' });
@@ -96,6 +105,7 @@ export class GameRoom extends Room {
       visibility: view.visibility,
       phase: view.phase,
       humans: view.members.length,
+      startedAt: this.startedAt,
       maxHumans: view.maxHumans,
       host: host?.name ?? '',
     });

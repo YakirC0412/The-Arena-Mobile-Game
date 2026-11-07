@@ -74,6 +74,18 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 7.11.26 – MULTI TAB CONNECTED TO THE REAL SERVER. The app talks to the Arena server at `http://<page host>:2567`
+  (`online/server-config.ts`, override EXPO_PUBLIC_ARENA_SERVER). `online/server-session.ts`: silent server account per
+  nickname (random email+password kept in localStorage, nickname + avatar sent). `online/server-rooms-source.ts` = HTTP
+  source (rooms, leaders, new-code, code lookup; timer from `playingMs`). `features/lobby/use-lobby-link.ts`: `useServerLobby`
+  (Colyseus room `game`: create when entry.roomId is '', else join/watch; sends `hello` after handlers exist) and
+  `useMockLobby` (QA). Colyseus SDK is VENDORED at `src/vendor/colyseus-sdk.js` (+ .d.ts) because npm cannot extend the
+  app's pnpm-layout node_modules; swap for the package when pnpm exists. Server changes: users.avatar column (migrated),
+  members/leaders carry avatars, `/api/rooms` lists private rooms too (code hidden) with `playingMs`, room metadata
+  `startedAt`, room message `hello`. Private rooms are always entered by code (even to watch). Verified in the browser with
+  a real room: create, second player joins live, categories sync, start = 16 seats, list shows the running timer.
+  Not yet: iPhone check (firewall rule for port 2567 + the PC address), game play online (phase 5). QA:
+  `/qa-home?server=1&tab=multi&name=<nickname>` (one account per nickname, so two tabs = two players).
 - 6.11.26 – NEW HOME (UI upgrade before phase 5): `features/home/` replaces the old home. Bottom toggle (tabs) **Single** (hero,
   facts chips 16/40"/15, start + guide buttons, "how it works") and **Multi** (trophy podium top 3 from leaders, "open room" +
   "I have a code" bottom sheets, live list of rooms: seats x/6, public/code badge, waiting/in-game, running-game timer, join/

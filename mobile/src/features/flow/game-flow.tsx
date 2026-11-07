@@ -17,12 +17,12 @@ import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
 import { GameOverScreen } from '@/features/final/game-over-screen';
 import { GuideScreen } from '@/features/onboarding/guide-screen';
 import { HomeScreen } from '@/features/home/home-screen';
-import { LobbyScreen } from '@/features/lobby/lobby-screen';
+import { ServerLobbyScreen } from '@/features/lobby/lobby-screen';
 import { IntroScreen } from '@/features/onboarding/intro-screen';
 import { WelcomeScreen } from '@/features/onboarding/welcome-screen';
 import { getFinalCategoryChooser, getNeighborPlayerIds } from '@/game/engine';
 import { createFlowState, flowReducer, type FlowUser, type HomeTab, type LobbyEntry } from '@/game/flow';
-import { createMockRoomsSource } from '@/online/mock-rooms-source';
+import { createServerRoomsSource } from '@/online/server-rooms-source';
 import { createSeed, createSeededRandom } from '@/game/rng';
 import type { WayId } from '@/game/types';
 import { loadAccountStore, saveAccountStore } from '@/services/accounts/account-storage';
@@ -56,8 +56,10 @@ function saveHomeTab(tab: HomeTab) {
 export function GameFlow() {
   // A user who signed in on an earlier visit lands straight on the home screen.
   const [flow, dispatch] = useReducer(flowReducer, undefined, () => createFlowState(createSeed(), getCurrentUser(loadAccountStore()), loadHomeTab()));
-  // Rooms and the hall of fame: sample data until the server is connected (online/rooms-source.ts).
-  const roomsSource = useMemo(() => createMockRoomsSource(), []);
+  // Rooms and the hall of fame come from the Arena server (online/server-rooms-source.ts).
+  const nickname = flow.user?.nickname ?? '';
+  const userAvatar = flow.user?.avatar ?? 'avatar-01';
+  const roomsSource = useMemo(() => createServerRoomsSource({ avatar: userAvatar, nickname }), [userAvatar, nickname]);
   // Stable callbacks, so screens' timers are not restarted on every render.
   const on = useMemo(() => ({
     introComplete: () => dispatch({ type: 'INTRO_COMPLETE' }),
@@ -131,7 +133,7 @@ export function GameFlow() {
       );
     case 'lobby':
       if (!flow.user || !flow.lobby) return null;
-      return <LobbyScreen avatar={flow.user.avatar} entry={flow.lobby} nickname={flow.user.nickname} onBack={on.lobbyBack} />;
+      return <ServerLobbyScreen avatar={flow.user.avatar} entry={flow.lobby} nickname={flow.user.nickname} onBack={on.lobbyBack} />;
     case 'guide':
       return <GuideScreen onBack={on.guideBack} onComplete={on.guideComplete} />;
     case 'setup':

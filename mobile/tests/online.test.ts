@@ -29,6 +29,7 @@ suite('online home: formatting and room cards', () => {
     assertEqual(describeRoom(room({ visibility: 'private' }), 0).action, 'enterCode', 'Private and waiting');
     assertEqual(describeRoom(room({ humans: 6 }), 0).action, 'watch', 'Full');
     assertEqual(describeRoom(room({ phase: 'inGame', startedAt: 1000 }), 1000).action, 'watch', 'In game');
+    assertEqual(describeRoom(room({ visibility: 'private', phase: 'inGame', startedAt: 1 }), 0).action, 'enterCode', 'Private rooms are always entered with the code');
     assertEqual(describeRoom(room({ visibility: 'private' }), 0).accessLabel, 'בקוד', 'Private label');
   });
 

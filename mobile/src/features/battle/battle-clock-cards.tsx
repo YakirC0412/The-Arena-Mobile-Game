@@ -1,126 +1,78 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AccessibilityInfo, Animated, Platform, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, radii, spacing, typeScale } from '@/design/tokens';
+import { remainingMs } from '@/game/duel';
+import type { DuelSide, DuelState } from '@/game/duel';
 
-export type BattleRole = 'attacker' | 'defender';
-
-type ClockValues = Record<BattleRole, number>;
-
-export type BattleClockHandle = {
-  getRemaining: (role: BattleRole) => number;
-  penalize: (role: BattleRole, milliseconds: number) => void;
-};
+export type BattleRole = DuelSide;
 
 type BattleClockCardsProps = {
-  activeRole: BattleRole;
+  // The duel state machine (game/duel.ts) is the single source of truth; these cards only show it.
+  duel: DuelState;
   attackerBonus: boolean;
   attackerColor: string;
   attackerLabel: string;
-  attackerMilliseconds: number;
   // Short screens (iPhone with the keyboard up): a flatter card so the picture keeps its room.
   compact?: boolean;
   defenderBonus: boolean;
   defenderColor: string;
   defenderLabel: string;
-  defenderMilliseconds: number;
-  onClockExpired?: (role: BattleRole) => void;
   onDangerTick?: () => void;
-  onTimeUp: (role: BattleRole) => void;
-  paused: boolean;
 };
 
 function formatClock(milliseconds: number): string {
   return (Math.max(0, milliseconds) / 1000).toFixed(1);
 }
 
-export const BattleClockCards = forwardRef<BattleClockHandle, BattleClockCardsProps>(function BattleClockCards({
-  activeRole,
+// Shows both clocks from the duel state, redrawn ten times a second. It owns no clock logic: pauses, turns, skips
+// and the end of the duel all live in the duel state.
+export function BattleClockCards({
+  duel,
   attackerBonus,
   attackerColor,
   attackerLabel,
-  attackerMilliseconds,
   defenderBonus,
   defenderColor,
   defenderLabel,
-  defenderMilliseconds,
   compact = false,
-  onClockExpired,
   onDangerTick,
-  onTimeUp,
-  paused,
-}, ref) {
-  const [values, setValues] = useState<ClockValues>({
-    attacker: attackerMilliseconds,
-    defender: defenderMilliseconds,
-  });
-  const valuesRef = useRef(values);
-  const onTimeUpRef = useRef(onTimeUp);
-  const onClockExpiredRef = useRef(onClockExpired);
+}: BattleClockCardsProps) {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const interval = setInterval(() => setNow(Date.now()), 100);
+    return () => clearInterval(interval);
+  }, []);
+
+  const attackerMs = remainingMs(duel, 'attacker', now);
+  const defenderMs = remainingMs(duel, 'defender', now);
+  const activeRole = duel.active;
+  const activeMs = activeRole === 'attacker' ? attackerMs : defenderMs;
+  // The clock of the active side is running (not in a pause, not finished).
+  const running = duel.turnStartedAt !== null && duel.winner === null;
+
   const onDangerTickRef = useRef(onDangerTick);
-  const timeUpReportedRef = useRef(false);
   const lastDangerSecondRef = useRef('');
   const lastMilestoneRef = useRef('');
-
   useEffect(() => {
-    onTimeUpRef.current = onTimeUp;
-    onClockExpiredRef.current = onClockExpired;
     onDangerTickRef.current = onDangerTick;
-  }, [onClockExpired, onDangerTick, onTimeUp]);
+  }, [onDangerTick]);
 
-  const updateValues = (updater: (current: ClockValues) => ClockValues) => {
-    setValues((current) => {
-      const next = updater(current);
-      valuesRef.current = next;
-      return next;
-    });
-  };
-
-  const reportTimeUp = (role: BattleRole) => {
-    if (timeUpReportedRef.current) return;
-    timeUpReportedRef.current = true;
-    onClockExpiredRef.current?.(role);
-    setTimeout(() => onTimeUpRef.current(role), 420);
-  };
-
-  useImperativeHandle(ref, () => ({
-    getRemaining: (role) => valuesRef.current[role],
-    penalize: (role, milliseconds) => {
-      updateValues((current) => {
-        const remaining = Math.max(0, current[role] - milliseconds);
-        if (remaining === 0) reportTimeUp(role);
-        return { ...current, [role]: remaining };
-      });
-    },
-  }), []);
-
+  // A tick sound in the last five seconds, and a spoken announcement every ten seconds.
   useEffect(() => {
-    if (paused || timeUpReportedRef.current) return;
-    let lastTick = Date.now();
-    const interval = setInterval(() => {
-      const now = Date.now();
-      const elapsed = now - lastTick;
-      lastTick = now;
-      updateValues((current) => {
-        const remaining = Math.max(0, current[activeRole] - elapsed);
-        const wholeSeconds = Math.ceil(remaining / 1000);
-        const dangerKey = `${activeRole}:${wholeSeconds}`;
-        if (remaining > 0 && remaining <= 5000 && lastDangerSecondRef.current !== dangerKey) {
-          lastDangerSecondRef.current = dangerKey;
-          onDangerTickRef.current?.();
-        }
-        const milestoneKey = `${activeRole}:${wholeSeconds}`;
-        if (wholeSeconds > 0 && wholeSeconds < 40 && wholeSeconds % 10 === 0 && lastMilestoneRef.current !== milestoneKey) {
-          lastMilestoneRef.current = milestoneKey;
-          AccessibilityInfo.announceForAccessibility(`נותרו ${wholeSeconds} שניות`);
-        }
-        if (remaining === 0) reportTimeUp(activeRole);
-        return { ...current, [activeRole]: remaining };
-      });
-    }, 100);
-    return () => clearInterval(interval);
-  }, [activeRole, paused]);
+    if (!running) return;
+    const wholeSeconds = Math.ceil(activeMs / 1000);
+    const key = `${activeRole}:${wholeSeconds}`;
+    if (activeMs > 0 && activeMs <= 5000 && lastDangerSecondRef.current !== key) {
+      lastDangerSecondRef.current = key;
+      onDangerTickRef.current?.();
+    }
+    if (wholeSeconds > 0 && wholeSeconds < 40 && wholeSeconds % 10 === 0 && lastMilestoneRef.current !== key) {
+      lastMilestoneRef.current = key;
+      AccessibilityInfo.announceForAccessibility(`נותרו ${wholeSeconds} שניות`);
+    }
+  }, [activeMs, activeRole, running]);
 
   return (
     <View style={styles.row}>
@@ -130,7 +82,7 @@ export const BattleClockCards = forwardRef<BattleClockHandle, BattleClockCardsPr
         compact={compact}
         color={attackerColor}
         label={attackerLabel}
-        milliseconds={values.attacker}
+        milliseconds={attackerMs}
       />
       <ClockCard
         active={activeRole === 'defender'}
@@ -138,11 +90,11 @@ export const BattleClockCards = forwardRef<BattleClockHandle, BattleClockCardsPr
         compact={compact}
         color={defenderColor}
         label={defenderLabel}
-        milliseconds={values.defender}
+        milliseconds={defenderMs}
       />
     </View>
   );
-});
+}
 
 function ClockCard({
   active,

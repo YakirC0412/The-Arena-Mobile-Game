@@ -1,5 +1,4 @@
-import { by } from '@/game/gender';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
 import { useFocusEffect } from 'expo-router';
 import {
@@ -15,25 +14,22 @@ import {
   View,
 } from 'react-native';
 
-import {
-  BattleClockCards,
-  type BattleClockHandle,
-  type BattleRole,
-} from '@/features/battle/battle-clock-cards';
+import { BattleClockCards, type BattleRole } from '@/features/battle/battle-clock-cards';
 import { ArenaBattleMiniMap } from '@/features/arena/arena-battle-mini-map';
 import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
 import { useWebViewportBox } from '@/design/use-web-viewport-box';
 import { useGameFeedback } from '@/services/use-game-feedback';
 import { CATEGORY_BY_ID, getWay, getWayItems } from '@/content/categories';
+import { applyAnswer, applySkip, currentItem, remainingMs, startDuel, tick } from '@/game/duel';
+import type { DuelState } from '@/game/duel';
 import {
   aiThinkDelayMs,
   correctAnswerPauseMs,
   createBattleDeck,
   decideAiDuelOutcome,
-  isCorrectAnswer,
-  SKIP_PENALTY_MS,
 } from '@/game/engine';
+import { by } from '@/game/gender';
 import type { BattleSetup, GameState } from '@/game/types';
 import { ITEM_IMAGES } from '@/content/item-images';
 import { createTapGate } from '@/features/battle/tap-gate';
@@ -45,6 +41,10 @@ type BattleViewProps = {
   random?: () => number;
 };
 
+// The local human duel. All the rules (whose clock runs, the pause after a right answer, the skip penalty, who
+// wins when a clock hits zero) live in the duel state machine (game/duel.ts), the same one the server uses.
+// This screen only keeps one `DuelState`, feeds it what happens (typed answers, skips, a bot's choices, time passing)
+// and shows the result with sounds and animations.
 export function BattleView({ state, setup, onComplete, random = Math.random }: BattleViewProps) {
   const {
     correct: playCorrectFeedback,
@@ -79,28 +79,48 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   // The duel plays the defender's way: e.g. flag → capital instead of flag → country.
   const way = getWay(category, setup.wayId);
   const [wayItems] = useState(() => getWayItems(category, setup.wayId));
-  const [deck, setDeck] = useState(() => createBattleDeck(wayItems, random));
-  const [activeId, setActiveId] = useState(setup.attackerId);
-  const [position, setPosition] = useState(0);
+  const env = useMemo(() => ({ refill: () => createBattleDeck(wayItems, random) }), [wayItems, random]);
+
+  // The one source of truth. `duelRef` always holds the latest state, so event handlers never act on a stale one.
+  const [duel, setDuel] = useState<DuelState>(() => startDuel(
+    createBattleDeck(wayItems, random),
+    setup.attackerSeconds * 1000,
+    setup.defenderSeconds * 1000,
+    Date.now(),
+  ));
+  const duelRef = useRef(duel);
+  const commit = useCallback((next: DuelState) => {
+    duelRef.current = next;
+    setDuel(next);
+  }, []);
+
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
   const [aiAttempt, setAiAttempt] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const finishedRef = useRef(false);
-  const acceptedRef = useRef(false);
-  const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inputRef = useRef<ComponentRef<typeof TextInput>>(null);
-  const clockRef = useRef<BattleClockHandle>(null);
   const [imageOpacity] = useState(() => new Animated.Value(1));
   const [imageScale] = useState(() => new Animated.Value(1));
   const [correctGlow] = useState(() => new Animated.Value(0));
-  const item = deck[position];
+  const item = currentItem(duel);
   const itemImage = item.imageKey ? ITEM_IMAGES[item.imageKey] : undefined;
 
-  const activeRole: BattleRole = activeId === setup.attackerId ? 'attacker' : 'defender';
+  const activeRole: BattleRole = duel.active;
+  const activeId = activeRole === 'attacker' ? setup.attackerId : setup.defenderId;
   const activePlayer = state.players[activeId];
   const isHumanTurn = activePlayer.isHuman;
+  // Both clocks are stopped (after a right answer or a skip) or the duel is over: nothing can be typed or skipped.
+  const locked = duel.pausedUntil !== null || duel.winner !== null;
+
+  // Time passing: ends a pause (next picture, maybe the other side's turn) and ends the duel when a clock hits zero.
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const next = tick(duelRef.current, Date.now(), env);
+      if (next !== duelRef.current) commit(next);
+    }, 100);
+    return () => clearInterval(interval);
+  }, [commit, env]);
 
   useEffect(() => {
     AccessibilityInfo.announceForAccessibility(
@@ -114,7 +134,13 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     return () => subscription.remove();
   }, []);
 
+  // A new picture appears: fade it in, clear the answer, and say when the turn passed.
+  const previousActiveRef = useRef(duel.active);
   useEffect(() => {
+    setAnswer('');
+    setAiAttempt(0);
+    setFeedback(previousActiveRef.current !== duel.active ? 'התור עבר' : '');
+    previousActiveRef.current = duel.active;
     imageOpacity.stopAnimation();
     imageScale.stopAnimation();
     if (reduceMotion) {
@@ -128,7 +154,9 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       Animated.timing(imageOpacity, { toValue: 1, duration: 180, useNativeDriver: Platform.OS !== 'web' }),
       Animated.timing(imageScale, { toValue: 1, duration: 180, useNativeDriver: Platform.OS !== 'web' }),
     ]).start();
-  }, [imageOpacity, imageScale, item.id, reduceMotion]);
+    // Runs when the picture changes (position, or a fresh deck).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [duel.position, item.id, duel.deck]);
 
   const animateCorrect = useCallback(() => {
     correctGlow.stopAnimation();
@@ -150,102 +178,77 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   }, []);
 
   useFocusEffect(useCallback(() => {
-    if (!isHumanTurn || transitioning) return undefined;
+    if (!isHumanTurn || locked) return undefined;
     return focusInput();
-  }, [focusInput, isHumanTurn, transitioning]));
+  }, [focusInput, isHumanTurn, locked]));
 
   useEffect(() => {
-    if (!isHumanTurn || transitioning) return;
+    if (!isHumanTurn || locked) return;
     return focusInput();
-  }, [focusInput, isHumanTurn, transitioning]);
+  }, [focusInput, isHumanTurn, locked]);
 
   // Take focus as soon as the duel opens, even on the bot's turn: on iPhone the
   // keyboard opened by the "start duel" tap then simply stays up all duel.
   useEffect(() => focusInput(), [focusInput]);
 
-  const advanceImage = useCallback((switchTurn: boolean) => {
-    let nextPosition = position + 1;
-    if (nextPosition >= deck.length) {
-      const nextDeck = createBattleDeck(wayItems, random);
-      if (nextDeck[0]?.id === item.id && nextDeck.length > 1) {
-        nextDeck.push(nextDeck.shift()!);
-      }
-      setDeck(nextDeck);
-      nextPosition = 0;
-    }
-    setPosition(nextPosition);
-    acceptedRef.current = false;
-    setAnswer('');
-    setFeedback(switchTurn ? 'התור עבר' : '');
-    setAiAttempt(0);
-    setTransitioning(false);
-    if (switchTurn) {
-      setActiveId((current) => (
-        current === setup.attackerId ? setup.defenderId : setup.attackerId
-      ));
-    }
-  }, [wayItems, deck.length, item.id, position, random, setup.attackerId, setup.defenderId]);
-
-  const scheduleAdvance = useCallback((switchTurn: boolean, delay: number) => {
-    if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
-    transitionTimerRef.current = setTimeout(() => advanceImage(switchTurn), delay);
-  }, [advanceImage]);
-
-  useEffect(() => () => {
-    if (transitionTimerRef.current) clearTimeout(transitionTimerRef.current);
-  }, []);
-
-  const finishFromClock = useCallback((expiredRole: BattleRole) => {
-    if (finishedRef.current) return;
-    finishedRef.current = true;
-    onComplete(expiredRole === 'attacker' ? setup.defenderId : setup.attackerId);
-  }, [onComplete, setup.attackerId, setup.defenderId]);
-
-  const handleClockExpired = useCallback(() => {
-    playTimeUpFeedback();
-  }, [playTimeUpFeedback]);
-
+  // The duel is over: a short beat for the "time is up" sound, then the winner goes on.
   useEffect(() => {
-    if (isHumanTurn || transitioning || finishedRef.current) return;
+    if (duel.winner === null || finishedRef.current) return;
+    finishedRef.current = true;
+    playTimeUpFeedback();
+    const winnerId = duel.winner === 'attacker' ? setup.attackerId : setup.defenderId;
+    const timer = setTimeout(() => onComplete(winnerId), 420);
+    return () => clearTimeout(timer);
+    // The sound and the completion happen once, for the first winner.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [duel.winner]);
+
+  // The bot's turn: it "thinks" for a while, then answers, skips or tries again.
+  useEffect(() => {
+    if (isHumanTurn || locked) return;
     const timeout = setTimeout(() => {
-      if (finishedRef.current) return;
-      const role: BattleRole = activeId === setup.attackerId ? 'attacker' : 'defender';
-      const outcome = decideAiDuelOutcome(item.difficulty, clockRef.current?.getRemaining(role) ?? 0, random);
+      const now = Date.now();
+      const current = tick(duelRef.current, now, env);
+      if (current !== duelRef.current) commit(current);
+      if (current.winner !== null || current.pausedUntil !== null) return;
+      const side = current.active;
+      const botId = side === 'attacker' ? setup.attackerId : setup.defenderId;
+      if (state.players[botId].isHuman) return;
+      const botItem = currentItem(current);
+      const outcome = decideAiDuelOutcome(botItem.difficulty, remainingMs(current, side, now), random);
       if (outcome === 'correct') {
+        commit(applyAnswer(current, botItem.answer, now, correctAnswerPauseMs(random), env).state);
         animateCorrect();
         playCorrectFeedback();
-        setTransitioning(true);
         setFeedback('נכון!');
-        scheduleAdvance(true, correctAnswerPauseMs(random));
-        return;
-      }
-
-      if (outcome === 'skip') {
+      } else if (outcome === 'skip') {
+        commit(applySkip(current, now, env));
         animateSkip();
         playSkipFeedback();
-        clockRef.current?.penalize(role, SKIP_PENALTY_MS);
-        setTransitioning(true);
-        setFeedback(`${activePlayer.name} ${by(activePlayer, 'דילג', 'דילגה')}: ‎−3 שניות`);
-        scheduleAdvance(false, 350);
+        setFeedback(`${state.players[botId].name} ${by(state.players[botId], 'דילג', 'דילגה')}: ‎−3 שניות`);
       } else {
         setAiAttempt((value) => value + 1);
       }
     }, aiThinkDelayMs(item.difficulty, random));
     return () => clearTimeout(timeout);
-  }, [activeId, activePlayer.name, aiAttempt, animateCorrect, animateSkip, isHumanTurn, item.difficulty, playCorrectFeedback, playSkipFeedback, random, scheduleAdvance, setup.attackerId, transitioning]);
+    // A new think-delay starts whenever the picture, the turn or the attempt changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [duel.position, duel.active, duel.deck, aiAttempt, isHumanTurn, locked]);
 
   // Accepts the answer the moment it matches. Called from onChangeText and,
   // on the web, from raw DOM input/composition events (see below).
   const checkAnswer = (text: string) => {
-    if (!isHumanTurn || transitioning || acceptedRef.current) return false;
-    if (!isCorrectAnswer(text, item.answer, item.aliases)) return false;
-    // Both listeners may see the same keystroke; accept each answer once.
-    acceptedRef.current = true;
+    const current = duelRef.current;
+    const side = current.active;
+    if (!state.players[side === 'attacker' ? setup.attackerId : setup.defenderId].isHuman) return false;
+    // A second listener may see the same keystroke: the duel is already paused after the first one, so it is a no-op.
+    if (current.pausedUntil !== null || current.winner !== null) return false;
+    const result = applyAnswer(current, text, Date.now(), correctAnswerPauseMs(random), env);
+    if (!result.correct) return false;
+    commit(result.state);
     animateCorrect();
     playCorrectFeedback();
-    setTransitioning(true);
     setFeedback('נכון!');
-    scheduleAdvance(true, correctAnswerPauseMs(random));
     return true;
   };
   const checkAnswerRef = useRef(checkAnswer);
@@ -267,11 +270,10 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   }, []);
 
   const handleAnswerChange = (nextAnswer: string) => {
-    if (!isHumanTurn || transitioning) return;
+    if (!isHumanTurn || locked) return;
     setAnswer(nextAnswer);
     checkAnswer(nextAnswer);
   };
-
 
   // A short message that clears itself, e.g. when skip is tapped on the bot's turn.
   const hintTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -285,19 +287,18 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   }, []);
 
   const skip = () => {
-    if (transitioning) return;
+    const current = duelRef.current;
+    if (current.pausedUntil !== null || current.winner !== null) return;
     if (!isHumanTurn) {
       showHint('אפשר לדלג רק בתור שלך');
       return;
     }
-    setTransitioning(true);
     // Tapping the button would otherwise take focus and close the keyboard.
     inputRef.current?.focus();
+    commit(applySkip(current, Date.now(), env));
     animateSkip();
     playSkipFeedback();
-    clockRef.current?.penalize(activeRole, SKIP_PENALTY_MS);
     setFeedback('דילגת: ‎−3 שניות');
-    scheduleAdvance(false, 250);
   };
   const skipRef = useRef(skip);
   useEffect(() => {
@@ -367,21 +368,15 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       </View>
 
       <BattleClockCards
-        ref={clockRef}
-        activeRole={activeRole}
         attackerBonus={setup.attackerUsesBonus}
         attackerColor={attacker.color}
         attackerLabel={`${attacker.isHuman ? by(attacker, 'אתה', 'את') : attacker.name} · ${by(attacker, 'תוקף', 'תוקפת')}`}
-        attackerMilliseconds={setup.attackerSeconds * 1000}
         compact={compact}
         defenderBonus={setup.defenderUsesBonus}
         defenderColor={defender.color}
         defenderLabel={`${defender.isHuman ? by(defender, 'אתה', 'את') : defender.name} · ${by(defender, 'מגן', 'מגנה')}`}
-        defenderMilliseconds={setup.defenderSeconds * 1000}
-        onClockExpired={handleClockExpired}
+        duel={duel}
         onDangerTick={playDangerTick}
-        onTimeUp={finishFromClock}
-        paused={transitioning}
       />
 
       {compact ? null : (
@@ -453,11 +448,11 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
             ref={setSkipButton}
             accessibilityLabel="דילוג על התמונה, מינוס 3 שניות"
             accessibilityRole="button"
-            disabled={transitioning}
+            disabled={locked}
             focusable={false}
             // On web the raw touch/mouse listeners above do the skip.
             onPress={Platform.OS === 'web' ? undefined : skip}
-            style={[styles.skipButton, (!isHumanTurn || transitioning) && styles.disabledControl]}>
+            style={[styles.skipButton, (!isHumanTurn || locked) && styles.disabledControl]}>
             <AppText style={styles.skipText} weight="black">דילוג</AppText>
             <AppText style={styles.skipPenalty} weight="bold">‎−3 שנ׳</AppText>
           </Pressable>

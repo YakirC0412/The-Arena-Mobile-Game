@@ -15,7 +15,8 @@ export function ConquestAnimationScreen({
   resolution,
 }: {
   beforeState: GameState;
-  onComplete: () => void;
+  // Missing online: the server decides when the animation ends, so there is no "continue" button either.
+  onComplete?: () => void;
   resolution: BattleResolution;
 }) {
   const winner = resolution.state.players[resolution.winnerId];
@@ -48,7 +49,7 @@ export function ConquestAnimationScreen({
       takeover.setValue(1);
       merge.setValue(1);
       wave.setValue(0);
-      const reducedTimer = setTimeout(onComplete, 500);
+      const reducedTimer = setTimeout(() => onComplete?.(), 500);
       return () => clearTimeout(reducedTimer);
     }
     const conquest = Animated.sequence([
@@ -73,7 +74,7 @@ export function ConquestAnimationScreen({
     ]);
     let timer: ReturnType<typeof setTimeout> | null = null;
     conquest.start(({ finished }) => {
-      if (finished) timer = setTimeout(onComplete, 500);
+      if (finished) timer = setTimeout(() => onComplete?.(), 500);
     });
     return () => {
       conquest.stop();
@@ -187,9 +188,11 @@ export function ConquestAnimationScreen({
               : `הקטגוריה נשמרה: ${winningCategory.name}`}
           </Text>
         </View>
-        <Pressable accessibilityLabel="דילוג על אנימציית ההשתלטות" accessibilityRole="button" onPress={onComplete} style={styles.transitionSkipButton}>
-          <Text style={styles.transitionSkipText}>המשך</Text>
-        </Pressable>
+        {onComplete ? (
+          <Pressable accessibilityLabel="דילוג על אנימציית ההשתלטות" accessibilityRole="button" onPress={onComplete} style={styles.transitionSkipButton}>
+            <Text style={styles.transitionSkipText}>המשך</Text>
+          </Pressable>
+        ) : null}
       </View>
     </SafeAreaView>
   );

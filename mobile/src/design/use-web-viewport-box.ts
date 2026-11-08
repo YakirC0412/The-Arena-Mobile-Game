@@ -8,7 +8,9 @@ import { Platform } from 'react-native';
 // Returns null when no keyboard covers the page (and on native), so screens keep their normal layout.
 export type ViewportBox = { top: number; height: number };
 
-export function useWebViewportBox(): ViewportBox | null {
+// `always`: return the visible area even without a keyboard. iPhone Safari's layout height is not the visible height while
+// its toolbars are showing, so a screen that must fit exactly (the online duel) sizes itself from `visualViewport`.
+export function useWebViewportBox(always = false): ViewportBox | null {
   const [box, setBox] = useState<ViewportBox | null>(null);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export function useWebViewportBox(): ViewportBox | null {
       // Everything below the visible area is keyboard (with Safari's suggestion and ✓ bars). Small
       // differences such as Safari's collapsing toolbar are ignored.
       const covered = window.innerHeight - viewport.height;
-      const next = covered > 80 ? { top: Math.round(viewport.offsetTop), height: Math.round(viewport.height) } : null;
+      const next = always || covered > 80 ? { top: Math.round(viewport.offsetTop), height: Math.round(viewport.height) } : null;
       setBox((current) => (
         current?.top === next?.top && current?.height === next?.height ? current : next
       ));
@@ -30,7 +32,7 @@ export function useWebViewportBox(): ViewportBox | null {
       viewport.removeEventListener('resize', update);
       viewport.removeEventListener('scroll', update);
     };
-  }, []);
+  }, [always]);
 
   return box;
 }

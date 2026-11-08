@@ -21,6 +21,8 @@ export type LobbyLink = {
   notice: string | null;
   // The running game (set once the host started it) and the seat this phone controls (null = spectator).
   game: OnlineView | null;
+  // When (this phone's clock) the latest `game` arrived: clocks count down from that moment, not from when a screen redraws.
+  gameAt: number;
   myPlayerId: string | null;
   // Counts up every time the server confirms a right answer (for the sound).
   correctCount: number;
@@ -58,7 +60,7 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
   const [myId, setMyId] = useState<string | null>(null);
   const [role, setRole] = useState<'player' | 'spectator' | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
-  const [game, setGame] = useState<OnlineView | null>(null);
+  const [gameState, setGameState] = useState<{ view: OnlineView; at: number } | null>(null);
   const [myPlayerId, setMyPlayerId] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
 
@@ -81,7 +83,7 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
         room.onMessage('lobby', (next: LobbyView) => setView(next));
         room.onMessage('role', (message: { role: 'player' | 'spectator' }) => setRole(message.role));
         room.onMessage('error', (message: { error: LobbyError }) => setNotice(lobbyMessage(message.error)));
-        room.onMessage('game', (next: OnlineView) => setGame(next));
+        room.onMessage('game', (next: OnlineView) => setGameState({ view: next, at: Date.now() }));
         room.onMessage('me', (message: { playerId: string | null }) => setMyPlayerId(message.playerId));
         room.onMessage('correct', () => setCorrectCount((count) => count + 1));
         room.onLeave(() => !cancelled && setStatus((current) => (current === 'error' ? current : 'closed')));
@@ -120,7 +122,7 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
     if (room) void room.leave();
   }, []);
 
-  return { status, fatal, view, myId, watching: entry.watching || role === 'spectator', notice, game, myPlayerId, correctCount, send, pick, start, leave };
+  return { status, fatal, view, myId, watching: entry.watching || role === 'spectator', notice, game: gameState?.view ?? null, gameAt: gameState?.at ?? 0, myPlayerId, correctCount, send, pick, start, leave };
 }
 
 // ---- Sample data (QA screens only): the same rules as the server, with pretend people -----------------------------------
@@ -168,6 +170,7 @@ export function useMockLobby(entry: LobbyEntry, nickname: string, avatar: string
     watching: entry.watching,
     notice,
     game: null,
+    gameAt: 0,
     myPlayerId: null,
     correctCount: 0,
     send: () => undefined,

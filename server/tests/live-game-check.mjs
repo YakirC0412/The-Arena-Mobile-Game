@@ -67,9 +67,9 @@ if (hostRoom) drivers.push(drive('host', hostRoom, log));
 drivers.push(drive('guest', guestRoom, log));
 for (const room of [hostRoom, guestRoom].filter(Boolean)) room.send('hello');
 await wait(400);
-guestRoom.send('pickCategory', { categoryId: categories[categories.length - 1].id, wayId: 'w1' });
+guestRoom.send('pickCategory', { categoryId: process.env.GUEST_CAT ?? categories[categories.length - 1].id, wayId: 'w1' });
 if (hostRoom) {
-  hostRoom.send('pickCategory', { categoryId: categories[0].id, wayId: 'w1' });
+  hostRoom.send('pickCategory', { categoryId: process.env.HOST_CAT ?? categories[0].id, wayId: 'w1' });
   await wait(500);
   hostRoom.send('start');
   log('start sent');

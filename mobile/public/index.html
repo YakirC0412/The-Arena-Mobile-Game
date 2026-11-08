@@ -29,6 +29,8 @@
       html,
       body {
         height: 100%;
+        /* iPhone Safari: the visible height changes as its toolbars show and hide; dvh follows it. */
+        height: 100dvh;
       }
       body {
         overflow: hidden;

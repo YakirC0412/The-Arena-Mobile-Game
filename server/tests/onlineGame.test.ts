@@ -121,3 +121,66 @@ suite('online game (whole game with a fake clock)', () => {
     assert(sawDuel, 'A live duel with a human happened');
   });
 });
+
+suite('online game: duel clocks', () => {
+  test('the clocks the phones see only go down, and never show 0 while the duel is still on', () => {
+    const { game, clock, seats } = build(21, 2);
+    game.connect('a', Number(seats[0].userId));
+    game.connect('b', Number(seats[1].userId));
+    let samples = 0;
+    let last: { attacker: number; defender: number } | null = null;
+    let lastDuel = -1;
+    for (let step = 0; step < 300_000 && samples < 400; step += 1) {
+      clock.now += 50;
+      play(game, 'a');
+      play(game, 'b');
+      game.update();
+      const view = game.view();
+      if (view.stage !== 'duel' || !view.duel) { last = null; continue; }
+      if (view.duels !== lastDuel) { last = null; lastDuel = view.duels; }
+      const now = view.duel.remainingMs;
+      assert(view.duel.winner !== null || (now.attacker > 0 && now.defender > 0), `A clock showed 0 mid-duel: ${JSON.stringify(now)}`);
+      if (last) {
+        assert(now.attacker <= last.attacker && now.defender <= last.defender, `A clock went up: ${JSON.stringify(last)} -> ${JSON.stringify(now)}`);
+      }
+      last = { ...now };
+      samples += 1;
+    }
+    assert(samples >= 100, 'Enough live duel samples');
+  });
+});
+
+suite('online game: pacing and milestones', () => {
+  test('a bot-only game shows each quarter-final and semi-final banner once, one final reveal, and finishes fast', () => {
+    const { game, clock } = build(9, 2);
+    const stages: string[] = [];
+    const milestones: string[] = [];
+    let compact = 0;
+    // Let the (disconnected) people turn into bots first, so no duel is played live.
+    clock.now += 31_000;
+    game.update();
+    const started = clock.now;
+    for (let step = 0; step < 400_000 && !game.isFinished(); step += 1) {
+      clock.now += 100;
+      game.update();
+      const view = game.view();
+      if (stages.at(-1) !== view.stage) stages.push(view.stage);
+      if (view.stage === 'milestone' && milestones.at(-1) !== view.milestone) milestones.push(String(view.milestone));
+      if (view.stage === 'result' && view.result?.compact && stages.at(-2) !== 'result') compact += 1;
+    }
+    assert(game.isFinished(), 'Finished');
+    assertEqual(milestones.join(), 'quarter,semi', 'Banners once each');
+    assertEqual(stages.filter((stage) => stage === 'finalReveal').length, 1, 'One final reveal');
+    assertEqual(stages.filter((stage) => stage === 'duel').length, 0, 'Bot fights are never played live');
+    assert(compact >= 10, `Bot duels use the compact result (${compact})`);
+    // 15 short duels: well under 4 minutes of game time.
+    assert(clock.now - started < 240_000, `Game time ${(clock.now - started) / 1000}s`);
+  });
+
+  test('the drawn contestant is known during the draw stage (so every phone animates to the same result)', () => {
+    const { game } = build(4, 2);
+    const view = game.view();
+    assertEqual(view.stage, 'draw', 'Starts with a draw');
+    assert(!!view.attackerId && view.players.find((player) => player.id === view.attackerId)!.played, 'Attacker is set and marked as played');
+  });
+});

@@ -1,7 +1,7 @@
 // What a phone sees of an online game (the server builds it in server/src/onlineGame.ts; pure types, no logic).
 import type { DuelView } from './duel';
 
-export type OnlineStage = 'draw' | 'target' | 'final' | 'announce' | 'duel' | 'result' | 'after' | 'done';
+export type OnlineStage = 'draw' | 'milestone' | 'finalReveal' | 'target' | 'final' | 'announce' | 'duel' | 'result' | 'after' | 'done';
 
 export type ViewPlayer = {
   id: string;
@@ -14,6 +14,8 @@ export type ViewPlayer = {
   cells: number;
   winStreak: number;
   bonusReady: boolean;
+  // Already drawn to attack in this round (the draw animation only jumps over those who have not).
+  played: boolean;
   // A human seat whose phone is not connected.
   away: boolean;
 };
@@ -43,7 +45,16 @@ export type OnlineView = {
   targets: string[];
   finalOptions: string[];
   duel: DuelView | null;
-  result: { winnerId: string; loserId: string; summary: string; inheritedCategory: boolean; earnedBonus: boolean } | null;
+  result: { winnerId: string; loserId: string; summary: string; inheritedCategory: boolean; earnedBonus: boolean;
+    // Two bots fought: the phones show a short banner instead of the conquest animation.
+    compact: boolean;
+    // This duel left one contestant: the champion celebration follows.
+    decisive: boolean;
+  } | null;
+  // The drawn contestant is a bot: a short draw animation.
+  drawQuick: boolean;
+  // A quarter-final / semi-final banner is on.
+  milestone: 'quarter' | 'semi' | null;
   // Time left (ms) for a human to choose, or null.
   choiceLeftMs: number | null;
   championId: string | null;

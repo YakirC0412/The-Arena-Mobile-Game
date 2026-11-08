@@ -17,7 +17,7 @@ export function viewToGameState(view: OnlineView, meId: string | null): GameStat
       categoryId: player.categoryId,
       wayId: 'w1',
       cellIds: cells.filter((cell) => cell.ownerId === player.id).map((cell) => cell.id),
-      hasPlayedThisRound: false,
+      hasPlayedThisRound: player.played,
       winStreak: player.winStreak,
       bonusReady: player.bonusReady,
     };

@@ -11,7 +11,7 @@ import { getActivePlayers } from '@/game/engine';
 import { getTerritoryLabelRegion } from '@/features/arena/territory-layout';
 import type { GameState } from '@/game/types';
 
-export function FinalRevealScreen({ onComplete, state }: { onComplete: () => void; state: GameState }) {
+export function FinalRevealScreen({ onComplete, state }: { onComplete?: () => void; state: GameState }) {
   const finalists = getActivePlayers(state);
   const [entrance] = useState(() => new Animated.Value(0));
   const [divider] = useState(() => new Animated.Value(0));
@@ -95,9 +95,11 @@ export function FinalRevealScreen({ onComplete, state }: { onComplete: () => voi
           <Animated.View pointerEvents="none" style={[styles.glow, { opacity: divider }]} />
         </Animated.View>
 
-        <Pressable accessibilityLabel="מעבר לבחירת דו קרב הגמר" accessibilityRole="button" onPress={onComplete} style={styles.button}>
-          <Text style={styles.buttonText}>מעבר לבחירת דו־קרב הגמר</Text>
-        </Pressable>
+        {onComplete ? (
+          <Pressable accessibilityLabel="מעבר לבחירת דו קרב הגמר" accessibilityRole="button" onPress={onComplete} style={styles.button}>
+            <Text style={styles.buttonText}>מעבר לבחירת דו־קרב הגמר</Text>
+          </Pressable>
+        ) : null}
       </View>
     </SafeAreaView>
   );

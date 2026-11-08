@@ -11,6 +11,11 @@ async function liveRooms() {
   return matchMaker.query({ name: 'game' });
 }
 
+// Rooms whose game is over are hidden from the list and cannot be entered by code any more.
+async function openRooms() {
+  return (await liveRooms()).filter((room) => !room.metadata?.endedAt);
+}
+
 async function newCode(): Promise<string> {
   const used = new Set((await liveRooms()).map((room) => String(room.metadata?.code ?? '')));
   for (;;) {
@@ -43,7 +48,7 @@ export function mountRoomsApi(app: any): void {
     // `playingMs` = how long the game has been running, so a phone with a different clock still shows the right timer.
     const now = Date.now();
     res.json({
-      rooms: (await liveRooms()).map((room) => {
+      rooms: (await openRooms()).map((room) => {
         const meta = room.metadata ?? {};
         const { startedAt, ...rest } = meta;
         return {
@@ -60,7 +65,7 @@ export function mountRoomsApi(app: any): void {
   app.get('/api/rooms/code/:code', async (req: any, res: any) => {
     open(res);
     const code = String(req.params.code).toUpperCase();
-    const room = (await liveRooms()).find((candidate) => candidate.metadata?.code === code);
+    const room = (await openRooms()).find((candidate) => candidate.metadata?.code === code);
     if (!room) return res.status(404).json({ error: 'no_such_room' });
     res.json({ roomId: room.roomId, name: room.metadata?.name, phase: room.metadata?.phase, humans: room.metadata?.humans });
   });

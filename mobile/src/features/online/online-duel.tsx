@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
 import { Image, KeyboardAvoidingView, Platform, Pressable, StyleSheet, TextInput, useWindowDimensions, View } from 'react-native';
 
@@ -15,6 +15,8 @@ import { clockLeftMs } from '@/online/view-to-state';
 // sends what the player types and "skip". Spectators (and a seat whose bot is playing) see the same without the input.
 type Props = {
   view: OnlineView;
+  // When this phone received `view` (Date.now()).
+  receivedAt: number;
   // Which side this phone plays (null = watching).
   mySide: 'attacker' | 'defender' | null;
   send: (type: string, payload?: object) => void;
@@ -24,17 +26,17 @@ type Props = {
 
 const formatClock = (ms: number) => (Math.max(0, ms) / 1000).toFixed(1);
 
-export function OnlineDuel({ view, mySide, send, onSkipFeedback }: Props) {
+export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: Props) {
   const duel = view.duel!;
   const setup = view.setup!;
-  const receivedAt = useMemo(() => Date.now(), [view]);
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     const timer = setInterval(() => setNow(Date.now()), 100);
     return () => clearInterval(timer);
   }, []);
 
-  const viewportBox = useWebViewportBox();
+  // Always sized to the visible area: on iPhone the page height is not the visible height while Safari's toolbars show.
+  const viewportBox = useWebViewportBox(true);
   const { height: windowHeight } = useWindowDimensions();
   const compact = (viewportBox ? viewportBox.height : windowHeight) < 600;
   const fixedBox = viewportBox

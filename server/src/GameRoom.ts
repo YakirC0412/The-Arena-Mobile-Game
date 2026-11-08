@@ -19,7 +19,8 @@ import { OnlineGame } from './onlineGame';
 // A person who joins again with the same account during the game gets their seat back.
 export const MAX_WATCHERS = 30;
 const TICK_MS = 250;
-const CLOSE_AFTER_CHAMPION_MS = 60_000;
+// After the champion the room is locked and leaves the rooms list at once; phones that stay get a little time to look.
+const CLOSE_AFTER_CHAMPION_MS = 45_000;
 
 type Sender = { sessionId: string; send: (type: string, message?: unknown) => void };
 
@@ -31,6 +32,8 @@ export class GameRoom extends Room {
   // When the host pressed start (server time); the rooms list turns it into a running-game timer.
   private startedAt: number | null = null;
   private closing = false;
+  // When the game ended (a champion exists); the rooms list hides finished rooms and the timer stops.
+  private endedAt: number | null = null;
   private senders = new Map<string, Sender>();
 
   onAuth(_client: unknown, options: { token?: string }) {
@@ -105,6 +108,9 @@ export class GameRoom extends Room {
         } catch {
           // a database problem must not break the champion screen
         }
+        this.endedAt = Date.now();
+        void this.lock();
+        this.publish();
       },
     });
     for (const [sessionId, user] of this.users) {
@@ -188,6 +194,7 @@ export class GameRoom extends Room {
       phase: view.phase,
       humans: view.members.length,
       startedAt: this.startedAt,
+      endedAt: this.endedAt,
       maxHumans: view.maxHumans,
       host: host?.name ?? '',
     });

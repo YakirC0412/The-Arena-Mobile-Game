@@ -14,10 +14,13 @@ import { useReducedMotion } from '@/design/use-reduced-motion';
 
 export function DrawAnimationScreen({
   onComplete,
+  quick = false,
   random = Math.random,
   state,
 }: {
-  onComplete: () => void;
+  onComplete?: () => void;
+  // A short draw (about 1.5 s) for a bot: online, bots are drawn all the time and nobody should wait for them.
+  quick?: boolean;
   random?: () => number;
   state: GameState;
 }) {
@@ -58,7 +61,7 @@ export function DrawAnimationScreen({
     const timers: ReturnType<typeof setTimeout>[] = [];
     let elapsed = 0;
     // Reduce Motion slows the draw down but never removes it: the cursor jumping between squares is the point.
-    const delays = drawStepDelaysMs(reducedMotion);
+    const delays = quick ? Array.from({ length: 9 }, () => 110) : drawStepDelaysMs(reducedMotion);
     const sequence = createRandomDrawSequence(candidatePlayerIds, delays.length, random);
 
     for (let step = 0; step < sequence.length; step += 1) {
@@ -73,10 +76,10 @@ export function DrawAnimationScreen({
       playDrawFeedback();
       if (selectedPlayer) AccessibilityInfo.announceForAccessibility(`${selectedPlayer.name} נבחר או נבחרה לשחק`);
     }, elapsed));
-    timers.push(setTimeout(onComplete, elapsed + (selectedHasBonus ? 1700 : 800)));
+    if (onComplete) timers.push(setTimeout(onComplete, elapsed + (selectedHasBonus ? 1700 : 800)));
 
     return () => timers.forEach(clearTimeout);
-  }, [candidatePlayerIds, onComplete, playDrawFeedback, random, reducedMotion, selectedHasBonus, selectedPlayer, selectedPlayerId]);
+  }, [candidatePlayerIds, onComplete, playDrawFeedback, quick, random, reducedMotion, selectedHasBonus, selectedPlayer, selectedPlayerId]);
 
   return (
     <SafeAreaView style={styles.safe}>

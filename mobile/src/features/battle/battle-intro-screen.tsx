@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { colors } from '@/design/tokens';
 import { useEffect, useState } from 'react';
 import { Animated, Easing, Pressable, ScrollView, View } from 'react-native';
@@ -74,7 +75,7 @@ export function BattleIntroScreen({
             <Text style={styles.bonusNoticeText}>
               {setup.attackerUsesBonus && setup.defenderUsesBonus
                 ? `ל${attacker.name} ול${defender.name} יש בונוס — כל אחד מתחיל עם 45 שניות.`
-                : `${setup.attackerUsesBonus ? attacker.name : defender.name} מקבל/ת 45 שניות במקום 40.`}
+                : `${setup.attackerUsesBonus ? attacker.name : defender.name} ${by(setup.attackerUsesBonus ? attacker : defender, 'מקבל', 'מקבלת')} 45 שניות במקום 40.`}
             </Text>
           </View>
         )}

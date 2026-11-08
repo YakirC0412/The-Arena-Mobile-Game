@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { colors } from '@/design/tokens';
 import { AccessibilityInfo, Pressable, StyleSheet, View } from 'react-native';
 import { useEffect } from 'react';
@@ -42,8 +43,8 @@ export function GameOverScreen({
         {won
           ? 'כל 16 המשבצות נמצאות בשליטתך. הזירה כולה היא שטח אחד.'
           : champion
-            ? `${champion.name} ניצח/ה אותך בגמר וכבש/ה את כל הזירה.`
-            : `${eliminatedBy ? `${eliminatedBy.name} ניצח/ה אותך בדו־קרב. ` : ''}${activePlayers} מתמודדים עדיין נשארו בזירה.`}
+            ? `${champion.name} ${by(champion, 'ניצח', 'ניצחה')} אותך בגמר ו${by(champion, 'כבש', 'כבשה')} את כל הזירה.`
+            : `${eliminatedBy ? `${eliminatedBy.name} ${by(eliminatedBy, 'ניצח', 'ניצחה')} אותך בדו־קרב. ` : ''}${activePlayers} מתמודדים עדיין נשארו בזירה.`}
       </Text>
 
       {leadingPlayer && (
@@ -51,7 +52,7 @@ export function GameOverScreen({
           <AvatarPortrait avatarId={leadingPlayer.avatar} borderColor={leadingPlayer.color} size={62} />
           <View style={[styles.colorMark, { backgroundColor: leadingPlayer.color }]} />
           <View style={styles.championCopy}>
-            <Text style={styles.championLabel}>{champion ? 'אלוף/ת הזירה' : 'מוביל/ת כרגע'}</Text>
+            <Text style={styles.championLabel}>{champion ? by(leadingPlayer, 'אלוף הזירה', 'אלופת הזירה') : by(leadingPlayer, 'מוביל כרגע', 'מובילה כרגע')}</Text>
             <Text style={styles.championName}>{leadingPlayer.name}</Text>
             <Text style={styles.championMeta}>
               {leadingPlayer.cellIds.length} משבצות • {CATEGORY_BY_ID[leadingPlayer.categoryId].name}

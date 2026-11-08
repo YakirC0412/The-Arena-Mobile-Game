@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
@@ -48,7 +49,7 @@ export function AiTargetSelectionScreen({
       <View style={styles.aiTargetScreen}>
         <Text style={styles.eyebrow}>בחירת היריב הבא</Text>
         <Text style={styles.aiTargetTitle}>
-          {revealedTargetId ? `${winner.name} בחר/ה יעד` : `${winner.name} בוחר/ת יעד${'.'.repeat(thinkingStep)}`}
+          {revealedTargetId ? `${winner.name} ${by(winner, 'בחר', 'בחרה')} יעד` : `${winner.name} ${by(winner, 'בוחר', 'בוחרת')} יעד${'.'.repeat(thinkingStep)}`}
         </Text>
         <View style={styles.aiTargetBoard}>
           <ArenaBoard

@@ -1,3 +1,4 @@
+import { genderOfAvatar } from '@/game/gender';
 import { useMemo, useReducer, type ReactNode } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -59,7 +60,8 @@ export function GameFlow() {
   // Rooms and the hall of fame come from the Arena server (online/server-rooms-source.ts).
   const nickname = flow.user?.nickname ?? '';
   const userAvatar = flow.user?.avatar ?? 'avatar-01';
-  const roomsSource = useMemo(() => createServerRoomsSource({ avatar: userAvatar, nickname }), [userAvatar, nickname]);
+  const userGender = flow.user?.gender ?? genderOfAvatar(userAvatar);
+  const roomsSource = useMemo(() => createServerRoomsSource({ avatar: userAvatar, nickname, gender: userGender }), [userAvatar, nickname, userGender]);
   // Stable callbacks, so screens' timers are not restarted on every render.
   const on = useMemo(() => ({
     introComplete: () => dispatch({ type: 'INTRO_COMPLETE' }),
@@ -133,7 +135,7 @@ export function GameFlow() {
       );
     case 'lobby':
       if (!flow.user || !flow.lobby) return null;
-      return <ServerLobbyScreen avatar={flow.user.avatar} entry={flow.lobby} nickname={flow.user.nickname} onBack={on.lobbyBack} />;
+      return <ServerLobbyScreen avatar={flow.user.avatar} entry={flow.lobby} gender={flow.user.gender ?? genderOfAvatar(flow.user.avatar)} nickname={flow.user.nickname} onBack={on.lobbyBack} />;
     case 'guide':
       return <GuideScreen onBack={on.guideBack} onComplete={on.guideComplete} />;
     case 'setup':

@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { colors } from '@/design/tokens';
 import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
@@ -44,7 +45,7 @@ export function FinalCategoryScreen({
         <Text style={styles.eyebrow}>נשארו שניים</Text>
         <Text style={styles.title}>בחירת קטגוריית הגמר</Text>
         <Text style={styles.body}>
-          {chooser.name} מחזיק/ה בשטח הגדול ביותר ולכן בוחר/ת את נושא דו־קרב הגמר.
+          {chooser.name} {by(chooser, 'מחזיק', 'מחזיקה')} בשטח הגדול ביותר ולכן {by(chooser, 'בוחר', 'בוחרת')} את נושא דו־קרב הגמר.
         </Text>
 
         <View style={styles.finalists}>

@@ -17,6 +17,7 @@ const dana: SignUpInput = {
   nickname: 'אלופת הטריוויה',
   password: 'secret1',
   avatar: 'avatar-03',
+  gender: 'female',
 };
 
 function registered(): AccountStore {
@@ -48,7 +49,7 @@ suite('accounts', () => {
   });
 
   test('sign-up validates every required field', () => {
-    const result = signUp(createEmptyStore(), { fullName: 'א', email: 'not-an-email', nickname: 'א', password: '123', avatar: '' }, 'x', 's');
+    const result = signUp(createEmptyStore(), { fullName: 'א', email: 'not-an-email', nickname: 'א', password: '123', avatar: '', gender: 'male' }, 'x', 's');
     assert(!result.ok, 'Invalid input must fail');
     for (const field of ['fullName', 'email', 'nickname', 'password', 'avatar'] as const) {
       assert(result.errors[field], `Missing error for ${field}`);
@@ -78,7 +79,7 @@ suite('accounts', () => {
   test('Google sign-up needs no password, and such an account cannot sign in with one', () => {
     const result = signUpWithGoogle(
       createEmptyStore(),
-      { fullName: 'יוסי לוי', email: 'yossi@gmail.com', nickname: 'יוסי', avatar: 'avatar-02' },
+      { fullName: 'יוסי לוי', email: 'yossi@gmail.com', nickname: 'יוסי', avatar: 'avatar-02', gender: 'male' },
       'g-1',
     );
     assert(result.ok, 'Google sign-up must succeed');

@@ -41,6 +41,10 @@ export function openDb(file: string): Db {
   if (!columns.some((column) => column.name === 'avatar')) {
     db.exec("ALTER TABLE users ADD COLUMN avatar TEXT NOT NULL DEFAULT 'avatar-01'");
   }
+  // Hebrew texts need to know if a player is a man or a woman.
+  if (!columns.some((column) => column.name === 'gender')) {
+    db.exec("ALTER TABLE users ADD COLUMN gender TEXT NOT NULL DEFAULT 'male'");
+  }
   return db;
 }
 

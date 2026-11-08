@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { colors } from '@/design/tokens';
 import { useEffect, useMemo, useState } from 'react';
 import { AccessibilityInfo, Pressable, StyleSheet, View } from 'react-native';
@@ -74,7 +75,7 @@ export function DrawAnimationScreen({
       setHighlightedPlayerId(selectedPlayerId);
       setLanded(true);
       playDrawFeedback();
-      if (selectedPlayer) AccessibilityInfo.announceForAccessibility(`${selectedPlayer.name} נבחר או נבחרה לשחק`);
+      if (selectedPlayer) AccessibilityInfo.announceForAccessibility(`${selectedPlayer.name} ${by(selectedPlayer, 'נבחר', 'נבחרה')} לשחק`);
     }, elapsed));
     if (onComplete) timers.push(setTimeout(onComplete, elapsed + (selectedHasBonus ? 1700 : 800)));
 
@@ -89,7 +90,7 @@ export function DrawAnimationScreen({
           <Text style={styles.title}>{landed ? 'המתמודד נבחר' : 'מי יוצא לדו־קרב?'}</Text>
           <Text style={styles.body}>
             {landed && selectedPlayer
-              ? `${selectedPlayer.name} נבחר/ה לשחק`
+              ? `${selectedPlayer.name} ${by(selectedPlayer, 'נבחר', 'נבחרה')} לשחק`
               : `הסמן קופץ באקראי בין ${candidatePlayerIds.length} המתמודדים שטרם הוגרלו...`}
           </Text>
           {landed && selectedHasBonus && (

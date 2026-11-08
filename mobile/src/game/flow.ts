@@ -2,6 +2,8 @@
 // here, in one place, and can be tested without React. Screens only render a
 // FlowState and dispatch FlowActions. Randomness comes from `randomState`, so
 // the reducer stays pure (and safe to call twice, as React may in dev).
+import { genderOfAvatar } from './gender';
+import type { Gender } from './gender';
 import {
   autoPlayGame,
   chooseAiFinalCategory,
@@ -39,6 +41,8 @@ export type FlowScreen =
 // The signed-in player as the flow sees it (see services/accounts).
 export type FlowUser = {
   id: string;
+  // Man or woman; missing for very old saved users (guessed from the avatar).
+  gender?: Gender;
   fullName: string;
   email: string;
   nickname: string;
@@ -210,6 +214,7 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
         state.user?.nickname || 'אני',
         state.user?.avatar ?? DEFAULT_AVATAR_ID,
         state.selectedWayId,
+        state.user?.gender ?? genderOfAvatar(state.user?.avatar),
       );
       return {
         ...state,

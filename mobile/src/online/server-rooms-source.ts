@@ -14,7 +14,7 @@ async function getJson(path: string, token?: string): Promise<{ status: number; 
 }
 
 // The real data: the Arena server's HTTP API (server/src/roomsApi.ts and api.ts).
-export function createServerRoomsSource({ avatar, nickname }: { avatar: string; nickname: string }): RoomsSource {
+export function createServerRoomsSource({ avatar, nickname, gender = 'male' }: { avatar: string; nickname: string; gender?: 'male' | 'female' }): RoomsSource {
   return {
     async listRooms() {
       const { status, json } = await getJson('/api/rooms');
@@ -49,7 +49,7 @@ export function createServerRoomsSource({ avatar, nickname }: { avatar: string; 
 
     // Asks the server for a free code. The room itself is created when the lobby connects (use-server-lobby.ts).
     async createRoom(input: CreateRoomInput) {
-      const session = await ensureServerSession(nickname, avatar);
+      const session = await ensureServerSession(nickname, avatar, gender);
       const { status, json } = await getJson('/api/rooms/new-code', session.token);
       if (status !== 200) throw new Error('server_error');
       return {

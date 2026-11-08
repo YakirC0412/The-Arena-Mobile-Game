@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing, Platform, Pressable, StyleSheet, View } from 'react-native';
@@ -111,7 +112,7 @@ export function ChampionCelebrationScreen({
       <View style={styles.screen}>
         <Text style={styles.eyebrow} weight="bold">הקרב האחרון הוכרע</Text>
         <Text style={styles.title} weight="black">
-          {winner.isHuman ? 'כבשת את הזירה!' : `${winner.name} כובש/ת את הזירה`}
+          {winner.isHuman ? 'כבשת את הזירה!' : `${winner.name} ${by(winner, 'כובש', 'כובשת')} את הזירה`}
         </Text>
 
         <View style={styles.boardFrame}>
@@ -217,7 +218,7 @@ export function ChampionCelebrationScreen({
 
         <Animated.View style={[styles.footer, { opacity: champion }]}>
           <Text style={styles.footerTitle} weight="black">
-            {winner.isHuman ? 'את/ה אלוף/ת הזירה 🏆' : `${winner.name} הוא/היא אלוף/ת הזירה 🏆`}
+            {winner.isHuman ? by(winner, 'אתה אלוף הזירה 🏆', 'את אלופת הזירה 🏆') : `${winner.name} ${by(winner, 'הוא אלוף', 'היא אלופת')} הזירה 🏆`}
           </Text>
           <Pressable accessibilityLabel="התחלת משחק חדש" accessibilityRole="button" onPress={onComplete} style={styles.button}>
             <Text style={styles.buttonText} weight="black">התחלת משחק חדש</Text>

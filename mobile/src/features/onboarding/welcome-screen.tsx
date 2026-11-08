@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from 'react';
+import type { Gender } from '@/game/gender';
 import { Pressable, ScrollView, TextInput, useWindowDimensions, View } from 'react-native';
 
 import { AVATARS, DEFAULT_AVATAR_ID } from '@/content/avatars';
@@ -31,6 +32,8 @@ export function WelcomeScreen({ onSignedIn }: { onSignedIn: (user: AccountUser) 
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [avatar, setAvatar] = useState(DEFAULT_AVATAR_ID);
+  // Chosen at sign-up: every text in the game then uses the right Hebrew form (ניצח / ניצחה).
+  const [gender, setGender] = useState<Gender | null>(null);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [message, setMessage] = useState('');
 
@@ -49,7 +52,7 @@ export function WelcomeScreen({ onSignedIn }: { onSignedIn: (user: AccountUser) 
   const submit = () => {
     const store = loadAccountStore();
     const result = mode === 'signup'
-      ? signUp(store, { fullName, email, nickname, password, avatar }, createLocalId('user'), createLocalId('salt'))
+      ? signUp(store, { fullName, email, nickname, password, avatar, gender: gender as Gender }, createLocalId('user'), createLocalId('salt'))
       : signIn(store, email, password);
     if (!result.ok) {
       setErrors(result.errors);
@@ -166,6 +169,23 @@ export function WelcomeScreen({ onSignedIn }: { onSignedIn: (user: AccountUser) 
                   textAlign="right"
                   value={nickname}
                 />
+              </Field>
+            )}
+
+            {isSignUp && (
+              <Field error={errors.gender} hint="כדי שהמשחק ידבר אליך נכון: ניצח / ניצחה, כובש / כובשת" label="אני">
+                <View accessibilityLabel="אני" style={styles.toggle}>
+                  {([['male', 'גבר'], ['female', 'אישה']] as const).map(([value, label]) => (
+                    <Pressable
+                      accessibilityRole="radio"
+                      accessibilityState={{ selected: gender === value }}
+                      key={value}
+                      onPress={() => { setGender(value); if (errors.gender) setErrors((current) => ({ ...current, gender: undefined })); }}
+                      style={[styles.toggleOption, gender === value && styles.toggleOptionActive]}>
+                      <Text style={[styles.toggleText, gender === value && styles.toggleTextActive]} weight="bold">{label}</Text>
+                    </Pressable>
+                  ))}
+                </View>
               </Field>
             )}
 

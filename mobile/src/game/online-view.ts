@@ -7,6 +7,7 @@ export type ViewPlayer = {
   id: string;
   name: string;
   avatar: string;
+  gender: 'male' | 'female';
   // A person decides for this seat right now.
   isHuman: boolean;
   isActive: boolean;
@@ -48,11 +49,17 @@ export type OnlineView = {
   result: { winnerId: string; loserId: string; summary: string; inheritedCategory: boolean; earnedBonus: boolean;
     // Two bots fought: the phones show a short banner instead of the conquest animation.
     compact: boolean;
+    // Still showing who won; the conquest animation follows (duels with a person only).
+    banner: boolean;
     // This duel left one contestant: the champion celebration follows.
     decisive: boolean;
   } | null;
   // The drawn contestant is a bot: a short draw animation.
   drawQuick: boolean;
+  // The attacker goes on after a win (not freshly drawn).
+  continuing: boolean;
+  // A bot's chosen target, shown once the bot has "decided" (null before, and for people).
+  chosenTargetId: string | null;
   // A quarter-final / semi-final banner is on.
   milestone: 'quarter' | 'semi' | null;
   // Time left (ms) for a human to choose, or null.

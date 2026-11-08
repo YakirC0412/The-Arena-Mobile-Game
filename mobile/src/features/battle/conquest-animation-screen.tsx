@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { colors } from '@/design/tokens';
 import { useEffect, useState } from 'react';
 import { AccessibilityInfo, Animated, Easing, Pressable, View } from 'react-native';
@@ -44,7 +45,7 @@ export function ConquestAnimationScreen({
 
   useEffect(() => {
     playConquestFeedback();
-    AccessibilityInfo.announceForAccessibility(`${winner.name} משתלט או משתלטת על השטח של ${loserBefore.name}`);
+    AccessibilityInfo.announceForAccessibility(`${winner.name} ${by(winner, 'משתלט', 'משתלטת')} על השטח של ${loserBefore.name}`);
     if (reducedMotion) {
       takeover.setValue(1);
       merge.setValue(1);
@@ -86,7 +87,7 @@ export function ConquestAnimationScreen({
     <SafeAreaView style={styles.safe}>
       <View style={styles.conquestScreen}>
         <Text style={styles.eyebrow}>השטח משתנה</Text>
-        <Text style={styles.conquestTitle}>{winner.name} צובע/ת את השטח</Text>
+        <Text style={styles.conquestTitle}>{winner.name} {by(winner, 'צובע', 'צובעת')} את השטח</Text>
         <Text style={styles.conquestBody}>משבצות {loserBefore.name} נצבעות ומתחברות לשטח אחד.</Text>
 
         <View style={styles.conquestBoardFrame}>

@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { useEffect } from 'react';
 import { AccessibilityInfo, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
@@ -28,8 +29,8 @@ export function BattleOutcomeScreen({
       <View style={styles.outcomeScreen}>
         <Text style={styles.outcomeMedal}>🏅</Text>
         <Text style={styles.eyebrow}>הדו־קרב הסתיים</Text>
-        <Text style={styles.outcomeTitle}>{winner.name} ניצח/ה!</Text>
-        <Text style={styles.outcomeLoser}>{loser.name} הודח/ה מהזירה</Text>
+        <Text style={styles.outcomeTitle}>{winner.name} {by(winner, 'ניצח', 'ניצחה')}!</Text>
+        <Text style={styles.outcomeLoser}>{loser.name} {by(loser, 'הודח', 'הודחה')} מהזירה</Text>
         <View style={[styles.outcomeCategory, { borderColor: winner.color }]}>
           <Text style={styles.outcomeCategoryIcon}>{category.icon}</Text>
           <View style={styles.outcomeCategoryCopy}>

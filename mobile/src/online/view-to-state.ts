@@ -11,6 +11,7 @@ export function viewToGameState(view: OnlineView, meId: string | null): GameStat
       id: player.id,
       name: player.name,
       avatar: player.avatar,
+      gender: player.gender,
       color: '#000000',
       isHuman: player.isHuman,
       isActive: player.isActive,

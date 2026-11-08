@@ -140,7 +140,7 @@ export class GameRoom extends Room {
       return;
     }
     if ([...this.users.values()].some((other) => other.id === user.id)) throw new Error('already_in_room');
-    const joined = this.lobby.join({ clientId: client.sessionId, userId: user.id, name: user.name, avatar: user.avatar });
+    const joined = this.lobby.join({ clientId: client.sessionId, userId: user.id, name: user.name, avatar: user.avatar, gender: user.gender });
     if (!joined.ok) throw new Error(joined.error);
     this.users.set(client.sessionId, user);
     client.send('role', { role: 'player' });

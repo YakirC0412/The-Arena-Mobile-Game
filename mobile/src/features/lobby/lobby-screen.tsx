@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { Pressable, ScrollView, View } from 'react-native';
 
 import { AppText as Text } from '@/design/app-text';
@@ -14,8 +15,8 @@ import { useMockLobby, useServerLobby, type LobbyLink } from './use-lobby-link';
 const PICKABLE = CATEGORIES.filter((category) => isPickable(category.id));
 
 // The waiting room on the Arena server.
-export function ServerLobbyScreen({ avatar, entry, nickname, onBack }: { avatar: string; entry: LobbyEntry; nickname: string; onBack: () => void }) {
-  const link = useServerLobby(entry, nickname, avatar);
+export function ServerLobbyScreen({ avatar, entry, gender, nickname, onBack }: { avatar: string; entry: LobbyEntry; gender: 'male' | 'female'; nickname: string; onBack: () => void }) {
+  const link = useServerLobby(entry, nickname, avatar, gender);
   return <LobbyScreen entry={entry} link={link} onBack={onBack} />;
 }
 
@@ -75,7 +76,7 @@ function LobbyScreen({ entry, link, onBack }: { entry: LobbyEntry; link: LobbyLi
                 <View style={styles.memberText}>
                   <Text style={styles.memberName} weight="bold">{member.isHost ? '👑 ' : ''}{member.name}{member.clientId === link.myId ? ' (אני)' : ''}</Text>
                   <Text style={styles.memberCategory}>
-                    {member.categoryId ? `${CATEGORY_BY_ID[member.categoryId].icon} ${CATEGORY_BY_ID[member.categoryId].name}` : 'עוד לא בחר/ה קטגוריה…'}
+                    {member.categoryId ? `${CATEGORY_BY_ID[member.categoryId].icon} ${CATEGORY_BY_ID[member.categoryId].name}` : `עוד לא ${by(member, 'בחר', 'בחרה')} קטגוריה…`}
                   </Text>
                 </View>
               </View>

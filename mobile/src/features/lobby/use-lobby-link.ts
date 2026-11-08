@@ -52,7 +52,7 @@ export const lobbyMessage = (code: string | undefined): string => (code && MESSA
 
 // The real lobby: connects to the Arena server's `game` room (server/src/GameRoom.ts).
 // A room you opened (roomId '') is created on connect; any other is joined by its id, or watched.
-export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: string): LobbyLink {
+export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: string, gender: 'male' | 'female' = 'male'): LobbyLink {
   const roomRef = useRef<Room | null>(null);
   const [status, setStatus] = useState<LobbyLink['status']>('connecting');
   const [fatal, setFatal] = useState<string | null>(null);
@@ -68,7 +68,7 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
     let cancelled = false;
     (async () => {
       try {
-        const session = await ensureServerSession(nickname, avatar);
+        const session = await ensureServerSession(nickname, avatar, gender);
         const client = new Client(serverWsUrl());
         const create = entry.isHost && entry.roomId === '';
         const room = create
@@ -103,7 +103,7 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
       roomRef.current = null;
       if (room) void room.leave();
     };
-  }, [entry.roomId, entry.code, entry.name, entry.isHost, entry.watching, entry.visibility, nickname, avatar]);
+  }, [entry.roomId, entry.code, entry.name, entry.isHost, entry.watching, entry.visibility, nickname, avatar, gender]);
 
   const pick = useCallback((categoryId: string) => {
     setNotice(null);

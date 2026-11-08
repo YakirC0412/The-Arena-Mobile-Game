@@ -46,6 +46,10 @@ export type Timing = {
   announceMs: number;
   // After a duel: with the conquest animation (a person was in it), short for bots only, shortest for the deciding duel.
   resultMs: number;
+  // After a duel with a person in it: who won is shown first, then the conquest animation.
+  resultBannerMs: number;
+  // A bot's choice of a target: first "X goes on", then the chosen target is shown.
+  botRevealMs: number;
   resultCompactMs: number;
   resultFinalMs: number;
   // Quarter-final / semi-final banner and the final reveal.
@@ -59,7 +63,7 @@ export type Timing = {
 
 export const DEFAULT_TIMING: Timing = {
   drawFullMs: 5600, drawBonusExtraMs: 900, drawQuickMs: 1700, botChoiceMs: 1200, announceMs: 2200,
-  resultMs: 5200, resultCompactMs: 2400, resultFinalMs: 1800, milestoneMs: 2800, finalRevealMs: 4800,
+  resultMs: 5200, resultBannerMs: 1800, botRevealMs: 1300, resultCompactMs: 2400, resultFinalMs: 1800, milestoneMs: 2800, finalRevealMs: 4800,
   humanChoiceMs: 20_000, awayMs: 30_000,
 };
 
@@ -67,11 +71,17 @@ type Stage =
   | { kind: 'draw'; attackerId: string; wakeAt: number; quick: boolean }
   | { kind: 'milestone'; label: 'quarter' | 'semi'; winnerId: string; wakeAt: number }
   | { kind: 'finalReveal'; wakeAt: number }
-  | { kind: 'target'; attackerId: string; wakeAt: number; deadline: number | null }
+  | {
+    kind: 'target'; attackerId: string; wakeAt: number; deadline: number | null;
+    // The winner goes on attacking (not freshly drawn).
+    continuing: boolean;
+    // A bot chooses at once but the phones see the choice only from `revealAt` (null for a person).
+    botTargetId: string | null; revealAt: number | null;
+  }
   | { kind: 'final'; chooserId: string; wakeAt: number; deadline: number | null }
   | { kind: 'announce'; setup: BattleSetup; wakeAt: number }
   | { kind: 'duel'; setup: BattleSetup; duel: DuelState; botAt: number | null; botKey: string }
-  | { kind: 'result'; setup: BattleSetup; resolution: BattleResolution; wakeAt: number; compact: boolean }
+  | { kind: 'result'; setup: BattleSetup; resolution: BattleResolution; wakeAt: number; compact: boolean; bannerUntil: number }
   | { kind: 'after'; winnerId: string; wakeAt: number; deadline: number | null }
   | { kind: 'done'; championId: string };
 
@@ -182,7 +192,7 @@ export class OnlineGame {
     const stage = this.stage;
     switch (stage.kind) {
       case 'draw':
-        if (now >= stage.wakeAt) this.toTarget(stage.attackerId, now);
+        if (now >= stage.wakeAt) this.toTarget(stage.attackerId, now, false);
         return;
       case 'milestone':
         if (now >= stage.wakeAt) this.proceedAfterResult(stage.winnerId, now);
@@ -235,19 +245,23 @@ export class OnlineGame {
     this.stage = { kind: 'draw', attackerId, wakeAt: now + duration, quick: !person };
   }
 
-  private toTarget(attackerId: string, now: number) {
-    const person = this.isHuman(attackerId);
-    this.stage = {
-      kind: 'target', attackerId, wakeAt: person ? now : now + this.timing.botChoiceMs,
-      deadline: person ? this.humanDeadline(now) : null,
-    };
+  private toTarget(attackerId: string, now: number, continuing: boolean) {
+    if (this.isHuman(attackerId)) {
+      this.stage = { kind: 'target', attackerId, wakeAt: now, deadline: this.humanDeadline(now), continuing, botTargetId: null, revealAt: null };
+      return;
+    }
+    // A bot: "X goes on / was drawn" for a moment, then the phones see whom it attacks, then the duel is announced.
+    const botTargetId = chooseAiTarget(this.state, attackerId, this.options.random);
+    if (!botTargetId) throw new Error(`${attackerId} has no neighbor to attack`);
+    const revealAt = now + this.timing.botChoiceMs;
+    this.stage = { kind: 'target', attackerId, wakeAt: revealAt + this.timing.botRevealMs, deadline: null, continuing, botTargetId, revealAt };
   }
 
   private updateTarget(stage: Extract<Stage, { kind: 'target' }>, now: number) {
     if (now < stage.wakeAt) return;
     if (this.isHuman(stage.attackerId) && stage.deadline !== null && now < stage.deadline) return;
     // A bot (or a human who ran out of time, or left) chooses.
-    const targetId = chooseAiTarget(this.state, stage.attackerId, this.options.random);
+    const targetId = stage.botTargetId ?? chooseAiTarget(this.state, stage.attackerId, this.options.random);
     if (!targetId) throw new Error(`${stage.attackerId} has no neighbor to attack`);
     this.announce(createBattleSetup(this.state, stage.attackerId, targetId), now);
   }
@@ -329,8 +343,9 @@ export class OnlineGame {
     this.state = resolution.state;
     this.duels += 1;
     const decisive = !!getChampion(this.state);
-    const ms = decisive ? this.timing.resultFinalMs : compact ? this.timing.resultCompactMs : this.timing.resultMs;
-    this.stage = { kind: 'result', setup, resolution, wakeAt: now + ms, compact };
+    // A duel with a person: first who won (banner), then the conquest animation.
+    const ms = decisive ? this.timing.resultFinalMs : compact ? this.timing.resultCompactMs : this.timing.resultBannerMs + this.timing.resultMs;
+    this.stage = { kind: 'result', setup, resolution, wakeAt: now + ms, compact, bannerUntil: now + this.timing.resultBannerMs };
   }
 
   private afterResult(stage: Extract<Stage, { kind: 'result' }>, now: number) {
@@ -367,10 +382,7 @@ export class OnlineGame {
 
   private continueOrReturn(winnerId: string, keepGoing: boolean, now: number) {
     if (keepGoing) {
-      this.stage = {
-        kind: 'target', attackerId: winnerId, wakeAt: now + this.timing.botChoiceMs,
-        deadline: this.isHuman(winnerId) ? this.humanDeadline(now) : null,
-      };
+      this.toTarget(winnerId, now, true);
     } else {
       this.state = returnWinnerToArena(this.state, winnerId);
       this.enterDraw(now);
@@ -454,11 +466,16 @@ export class OnlineGame {
       finalOptions = getActivePlayers(state).map((player) => player.categoryId);
       choiceDeadline = stage.deadline;
     }
-    if (stage.kind === 'after' && this.isHuman(stage.winnerId)) choiceDeadline = stage.deadline;
+    if (stage.kind === 'after' && this.isHuman(stage.winnerId)) {
+      choiceDeadline = stage.deadline;
+      // The arena shows whom the winner could attack while deciding.
+      targets = getNeighborPlayerIds(state, stage.winnerId);
+    }
 
     const resolution = stage.kind === 'result' ? stage.resolution : null;
     const attackerId = stage.kind === 'target' || stage.kind === 'draw' ? stage.attackerId
       : stage.kind === 'after' ? stage.winnerId
+      : stage.kind === 'final' ? stage.chooserId
       : setup ? setup.attackerId
       : null;
 
@@ -470,6 +487,7 @@ export class OnlineGame {
         id: player.id,
         name: player.name,
         avatar: player.avatar,
+        gender: player.gender,
         isHuman: player.isHuman,
         isActive: player.isActive,
         categoryId: player.categoryId,
@@ -503,9 +521,12 @@ export class OnlineGame {
         inheritedCategory: resolution.inheritedCategory,
         earnedBonus: resolution.winnerEarnedBonus,
         compact: stage.kind === 'result' ? stage.compact : false,
+        banner: stage.kind === 'result' && !stage.compact && now < stage.bannerUntil,
         decisive: !!getChampion(state),
       } : null,
       drawQuick: stage.kind === 'draw' ? stage.quick : false,
+      continuing: stage.kind === 'target' ? stage.continuing : false,
+      chosenTargetId: stage.kind === 'target' && stage.revealAt !== null && now >= stage.revealAt ? stage.botTargetId : null,
       milestone: stage.kind === 'milestone' ? stage.label : null,
       choiceLeftMs: choiceDeadline === null ? null : Math.max(0, choiceDeadline - now),
       championId: stage.kind === 'done' ? stage.championId : null,

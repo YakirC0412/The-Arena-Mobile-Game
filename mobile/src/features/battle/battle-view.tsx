@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
 import { useFocusEffect } from 'expo-router';
@@ -224,7 +225,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         playSkipFeedback();
         clockRef.current?.penalize(role, SKIP_PENALTY_MS);
         setTransitioning(true);
-        setFeedback(`${activePlayer.name} דילג/ה: ‎−3 שניות`);
+        setFeedback(`${activePlayer.name} ${by(activePlayer, 'דילג', 'דילגה')}: ‎−3 שניות`);
         scheduleAdvance(false, 350);
       } else {
         setAiAttempt((value) => value + 1);
@@ -370,12 +371,12 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         activeRole={activeRole}
         attackerBonus={setup.attackerUsesBonus}
         attackerColor={attacker.color}
-        attackerLabel={`${attacker.isHuman ? 'אתה' : attacker.name} · תוקף`}
+        attackerLabel={`${attacker.isHuman ? by(attacker, 'אתה', 'את') : attacker.name} · ${by(attacker, 'תוקף', 'תוקפת')}`}
         attackerMilliseconds={setup.attackerSeconds * 1000}
         compact={compact}
         defenderBonus={setup.defenderUsesBonus}
         defenderColor={defender.color}
-        defenderLabel={`${defender.isHuman ? 'אתה' : defender.name} · מגן`}
+        defenderLabel={`${defender.isHuman ? by(defender, 'אתה', 'את') : defender.name} · ${by(defender, 'מגן', 'מגנה')}`}
         defenderMilliseconds={setup.defenderSeconds * 1000}
         onClockExpired={handleClockExpired}
         onDangerTick={playDangerTick}
@@ -420,7 +421,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       <AppText accessibilityLiveRegion="polite" style={styles.feedback} weight="bold">
         {feedback || (compact
           ? (isHumanTurn ? 'התור שלך · הקלידו את התשובה' : `התור של ${activePlayer.name}`)
-          : (isHumanTurn ? 'זהו את מה שמופיע בתמונה' : `${activePlayer.name} חושב/ת…`))}
+          : (isHumanTurn ? 'זהו את מה שמופיע בתמונה' : `${activePlayer.name} ${by(activePlayer, 'חושב', 'חושבת')}…`))}
       </AppText>
 
       <View style={styles.controls}>

@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
@@ -31,7 +32,7 @@ export function ResultScreen({
     <SafeAreaView style={styles.resultScreen}>
       <Text style={styles.resultIcon}>🏅</Text>
       <Text style={styles.resultEyebrow}>ניצחון בדו־קרב</Text>
-      <Text style={styles.resultTitle}>{winner.name} ניצח/ה</Text>
+      <Text style={styles.resultTitle}>{winner.name} {by(winner, 'ניצח', 'ניצחה')}</Text>
       <Text style={styles.resultSummary}>{resolution.summary}</Text>
 
       <View style={styles.resultStats}>
@@ -86,6 +87,7 @@ export function ResultScreen({
       {showBonusPopup && (
         <BonusEarnedPopup
           onClose={() => setShowBonusPopup(false)}
+          gender={winner.gender}
           playerName={winner.name}
         />
       )}

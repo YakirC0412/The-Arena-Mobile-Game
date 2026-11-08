@@ -12,6 +12,7 @@ import { ConquestAnimationScreen } from '@/features/battle/conquest-animation-sc
 import { ChampionCelebrationScreen } from '@/features/final/champion-celebration-screen';
 import { FinalRevealScreen } from '@/features/final/final-reveal-screen';
 import type { LobbyLink } from '@/features/lobby/use-lobby-link';
+import { by } from '@/game/gender';
 import type { OnlineView, ViewPlayer } from '@/game/online-view';
 import type { BattleResolution, GameState } from '@/game/types';
 import { viewToGameState } from '@/online/view-to-state';
@@ -81,7 +82,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
   if (view.stage === 'finalReveal') {
     return <FinalRevealScreen state={revealState} />;
   }
-  if (view.stage === 'result' && view.result && !view.result.compact && !view.result.decisive && beforeFrozen && resultFrozen) {
+  if (view.stage === 'result' && view.result && !view.result.compact && !view.result.decisive && !view.result.banner && beforeFrozen && resultFrozen) {
     return <ConquestAnimationScreen beforeState={beforeFrozen} resolution={resultFrozen.resolution} />;
   }
   if (view.stage === 'done' && beforeFrozen && resultFrozen) {
@@ -114,10 +115,20 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
     );
   } else if (view.stage === 'target') {
     const mineToChoose = view.targets.length > 0 && view.attackerId === me;
-    headline = mineToChoose ? `בחרו יריב להתקפה${left}` : `${attackerName} הוגרל/ה לתקוף`;
-    if (!mineToChoose) body = choosing(view.targets.length === 0 && view.attackerId === me ? 'רגע…' : `${attackerName} בוחר/ת יריב…`);
+    const attacker = byId(view.attackerId);
+    const chosen = byId(view.chosenTargetId);
+    if (mineToChoose) {
+      headline = `${by(mine, 'בחר', 'בחרי')} יריב להתקפה${left}`;
+    } else if (chosen) {
+      // A bot has decided: show whom it attacks.
+      headline = `${attackerName} ${by(attacker, 'בחר', 'בחרה')} לתקוף את ${chosen.name}`;
+      body = choosing(`הקטגוריה: ${CATEGORY_BY_ID[chosen.categoryId].icon} ${CATEGORY_BY_ID[chosen.categoryId].name}`);
+    } else {
+      headline = view.continuing ? `${attackerName} ${by(attacker, 'ממשיך', 'ממשיכה')} לדו־קרב נוסף` : `${attackerName} ${by(attacker, 'הוגרל', 'הוגרלה')} לתקוף`;
+      body = choosing(view.targets.length === 0 && view.attackerId === me ? 'רגע…' : `${attackerName} ${by(attacker, 'בוחר', 'בוחרת')} יריב…`);
+    }
   } else if (view.stage === 'final') {
-    headline = view.finalOptions.length ? `הגמר! בחרו קטגוריה${left}` : 'הגמר! הבכיר בשטח בוחר קטגוריה';
+    headline = view.finalOptions.length ? `הגמר! ${by(mine, 'בחר', 'בחרי')} קטגוריה${left}` : 'הגמר!';
     if (view.finalOptions.length) {
       body = (
         <View style={styles.choiceRow}>
@@ -131,7 +142,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
           ))}
         </View>
       );
-    } else body = choosing('הבכיר בשטח בוחר את קטגוריית הגמר…');
+    } else body = choosing(`${attackerName} ${by(byId(view.attackerId), 'מחזיק', 'מחזיקה')} בשטח הגדול ביותר ולכן ${by(byId(view.attackerId), 'בוחר', 'בוחרת')} את הקטגוריה…`);
   } else if (view.stage === 'announce' && setup) {
     const attacker = byId(setup.attackerId)!;
     const defender = byId(setup.defenderId)!;
@@ -141,20 +152,20 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
         <View style={styles.vsSide}>
           <AvatarPortrait avatarId={attacker.avatar} borderColor={colors.accentGold} size={72} />
           <AppText style={styles.vsName} weight="black">{attacker.name}{attacker.id === me ? ' (אני)' : ''}</AppText>
-          <AppText style={styles.vsRole}>תוקף/ת · {setup.attackerSeconds} שנ׳</AppText>
+          <AppText style={styles.vsRole}>{by(attacker, 'תוקף', 'תוקפת')} · {setup.attackerSeconds} שנ׳</AppText>
         </View>
         <AppText style={styles.vsMark} weight="black">VS</AppText>
         <View style={styles.vsSide}>
           <AvatarPortrait avatarId={defender.avatar} borderColor={colors.brandSky} size={72} />
           <AppText style={styles.vsName} weight="black">{defender.name}{defender.id === me ? ' (אני)' : ''}</AppText>
-          <AppText style={styles.vsRole}>מגן/ה · {setup.defenderSeconds} שנ׳</AppText>
+          <AppText style={styles.vsRole}>{by(defender, 'מגן', 'מגנה')} · {setup.defenderSeconds} שנ׳</AppText>
         </View>
         <AppText style={styles.vsCategory} weight="bold">{CATEGORY_BY_ID[setup.categoryId].icon} {setup.categoryName} · {setup.wayLabel}</AppText>
       </View>
     );
   } else if (view.stage === 'result' && view.result) {
     const winner = byId(view.result.winnerId)!;
-    headline = winner.id === me ? '🎉 ניצחת!' : `${winner.name} ניצח/ה`;
+    headline = winner.id === me ? '🎉 ניצחת!' : view.result.loserId === me ? `הפסדת 😔 ${winner.name} ${by(winner, 'ניצח', 'ניצחה')}` : `${winner.name} ${by(winner, 'ניצח', 'ניצחה')}`;
     body = (
       <View style={styles.resultCard}>
         <AvatarPortrait avatarId={winner.avatar} borderColor={colors.correct} size={view.result.compact ? 56 : 84} />
@@ -164,7 +175,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
     );
   } else if (view.stage === 'after') {
     const mineToChoose = view.attackerId === me && view.choiceLeftMs !== null;
-    headline = mineToChoose ? `להמשיך לתקוף?${left}` : `${attackerName} מחליט/ה אם להמשיך…`;
+    headline = mineToChoose ? `להמשיך לתקוף?${left}` : `${attackerName} ${by(byId(view.attackerId), 'מחליט', 'מחליטה')} אם להמשיך…`;
     if (mineToChoose) {
       body = (
         <View style={styles.choiceRow}>
@@ -180,15 +191,21 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
     body = (
       <View style={styles.resultCard}>
         {champion ? <AvatarPortrait avatarId={champion.avatar} borderColor={colors.accentGold} size={96} /> : null}
-        <AppText style={styles.resultText} weight="black">{champion ? `${champion.name} כבש/ה את כל הזירה` : ''}</AppText>
+        <AppText style={styles.resultText} weight="black">{champion ? `${champion.name} ${by(champion, 'כבש', 'כבשה')} את כל הזירה` : ''}</AppText>
         {champion?.isHuman ? <AppText style={styles.vsRole}>הניצחון נרשם בטבלת המובילים</AppText> : null}
         <BrandPrimaryButton label="חזרה לתפריט" onPress={onLeave} />
       </View>
     );
   }
 
-  const boardMode = view.stage === 'target' && view.targets.length > 0 && view.attackerId === me ? 'select-target' : 'overview';
-  const highlighted = view.stage === 'announce' && setup ? setup.defenderId : view.attackerId;
+  // Who can be attacked is always visible: pickable on my turn, shown (not pickable) while the winner decides, and a bot's
+  // choice is highlighted once it has decided.
+  const botReveal = view.stage === 'target' && !!view.chosenTargetId;
+  const pickable = view.stage === 'target' && view.targets.length > 0 && view.attackerId === me;
+  const showOptions = view.stage === 'after' && view.targets.length > 0;
+  const boardMode = pickable ? 'select-target' : showOptions || botReveal ? 'simulation' : 'overview';
+  const highlighted = botReveal ? view.chosenTargetId : view.stage === 'announce' && setup ? setup.defenderId : showOptions ? null : view.attackerId;
+  const optionIds = pickable || showOptions ? view.targets : botReveal && view.chosenTargetId ? [view.chosenTargetId] : [];
 
   return (
     <BrandBackground>
@@ -211,12 +228,12 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
 
         <View style={styles.boardWrap}>
           <ArenaBoard
-            meId={me}
+            meId={botReveal ? view.attackerId : me}
             mode={boardMode}
             onSelectTarget={(targetId) => link.send('pickTarget', { targetId })}
             selectedId={highlighted}
             state={state}
-            targetIds={boardMode === 'select-target' ? view.targets : []}
+            targetIds={optionIds}
           />
         </View>
 

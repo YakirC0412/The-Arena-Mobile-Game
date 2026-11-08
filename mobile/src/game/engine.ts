@@ -13,6 +13,8 @@ import type {
 import type { RandomSource } from './rng';
 
 export type { RandomSource } from './rng';
+import { by, genderOfAvatar } from './gender';
+import type { Gender } from './gender';
 
 const PLAYER_COLORS = [
   '#21C7A8', '#FF5D73', '#FFBE3D', '#3287FF',
@@ -99,6 +101,8 @@ export type HumanSeat = {
   wayId?: WayId;
   // The account behind the seat (online games).
   userId?: string;
+  // Man or woman (texts use the matching form). Missing: guessed from the picture.
+  gender?: Gender;
 };
 
 // Builds a game for any number of humans (1 to 16); every other seat is a bot. The humans bring their own
@@ -146,6 +150,7 @@ export function createGame(humans: readonly HumanSeat[], random: RandomSource = 
         id: seat.id,
         name: seat.name,
         avatar: humanAvatars[humanIndex].id,
+        gender: seat.gender ?? genderOfAvatar(humanAvatars[humanIndex].id),
         color: PLAYER_COLORS[cellId],
         isHuman: true,
         isActive: true,
@@ -165,6 +170,7 @@ export function createGame(humans: readonly HumanSeat[], random: RandomSource = 
         id: `ai-${botIndex + 1}`,
         name: namesByGender[avatar.gender][nameIndexes[avatar.gender]++],
         avatar: avatar.id,
+        gender: avatar.gender,
         color: PLAYER_COLORS[cellId],
         isHuman: false,
         isActive: true,
@@ -204,9 +210,10 @@ export function createInitialGame(
   humanName = 'אני',
   humanAvatar = DEFAULT_AVATAR_ID,
   humanWayId: WayId = 'w1',
+  humanGender?: Gender,
 ): GameState {
   return createGame(
-    [{ id: 'human', name: humanName, avatar: humanAvatar, categoryId: humanCategoryId, wayId: humanWayId }],
+    [{ id: 'human', name: humanName, avatar: humanAvatar, categoryId: humanCategoryId, wayId: humanWayId, gender: humanGender }],
     random,
   );
 }
@@ -320,7 +327,7 @@ export function drawPlayer(
     players,
     selectedPlayerId: selected.id,
     events: [
-      { id: `event-${state.eventCount}`, text: `${selected.name} הוגרל/ה לשחק.` },
+      { id: `event-${state.eventCount}`, text: `${selected.name} ${by(selected, 'הוגרל', 'הוגרלה')} לשחק.` },
       ...state.events,
     ].slice(0, 6),
     eventCount: state.eventCount + 1,
@@ -446,8 +453,8 @@ export function resolveBattle(
   const inheritedCategory = winnerWasDefender;
   const categoryName = CATEGORY_BY_ID[categoryId].name;
   const summary = inheritedCategory
-    ? `${winner.name} ניצח/ה בהגנה, כבש/ה את כל השטח של ${loser.name} וירש/ה את הקטגוריה ${categoryName}.`
-    : `${winner.name} ניצח/ה בהתקפה, כבש/ה את כל השטח של ${loser.name} ונשאר/ה עם הקטגוריה ${categoryName}.`;
+    ? `${winner.name} ${by(winner, 'ניצח', 'ניצחה')} בהגנה, ${by(winner, 'כבש', 'כבשה')} את כל השטח של ${loser.name} ו${by(winner, 'ירש', 'ירשה')} את הקטגוריה ${categoryName}.`
+    : `${winner.name} ${by(winner, 'ניצח', 'ניצחה')} בהתקפה, ${by(winner, 'כבש', 'כבשה')} את כל השטח של ${loser.name} ו${by(winner, 'נשאר', 'נשארה')} עם הקטגוריה ${categoryName}.`;
 
   return {
     state: {

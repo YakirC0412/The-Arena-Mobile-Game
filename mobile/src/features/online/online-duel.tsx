@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
 import { Image, KeyboardAvoidingView, Platform, Pressable, StyleSheet, TextInput, useWindowDimensions, View } from 'react-native';
@@ -119,7 +120,7 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
           </AppText>
         </View>
         <AppText style={[styles.clockValue, ms < 8000 && active && { color: colors.danger }]} weight="black">{formatClock(ms)}</AppText>
-        <AppText style={styles.clockRole}>{side === 'attacker' ? 'תוקף' : 'מגן'}{bonus ? ' · בונוס +5' : ''}</AppText>
+        <AppText style={styles.clockRole}>{side === 'attacker' ? by(player, 'תוקף', 'תוקפת') : by(player, 'מגן', 'מגנה')}{bonus ? ' · בונוס +5' : ''}</AppText>
       </View>
     );
   };
@@ -188,7 +189,7 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
           </Pressable>
         </View>
       ) : (
-        <AppText style={styles.watchNote}>{activeId ? `${activeName} משחק/ת עכשיו` : ''}</AppText>
+        <AppText style={styles.watchNote}>{activeId ? `${activeName} ${by(duel.active === 'attacker' ? attacker : defender, 'משחק', 'משחקת')} עכשיו` : ''}</AppText>
       )}
     </KeyboardAvoidingView>
   );

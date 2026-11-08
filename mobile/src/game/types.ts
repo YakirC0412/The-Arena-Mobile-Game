@@ -50,6 +50,8 @@ export type ArenaPlayer = {
   id: string;
   name: string;
   avatar: string;
+  // Hebrew texts use the masculine or feminine form (see game/gender.ts).
+  gender: 'male' | 'female';
   color: string;
   // True while a human decides for this seat. In an online game a bot takes over a disconnected human's seat
   // by turning this off (the seat keeps its userId).

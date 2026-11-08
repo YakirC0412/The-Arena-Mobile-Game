@@ -2,11 +2,13 @@
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import type { Db } from './db';
 
-export type PublicUser = { id: number; email: string; name: string; avatar: string };
+export type PublicUser = { id: number; email: string; name: string; avatar: string; gender: 'male' | 'female' };
 export type AuthResult<T> = { ok: true; value: T } | { ok: false; error: string };
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const normalizeEmail = (email: string) => email.trim().toLowerCase();
+
+const asGender = (value: unknown): 'male' | 'female' => (value === 'female' ? 'female' : 'male');
 
 const hashPassword = (password: string, salt: string) => scryptSync(password, salt, 64).toString('hex');
 const hashToken = (token: string) => createHash('sha256').update(token).digest('hex');
@@ -17,21 +19,22 @@ function newSession(db: Db, userId: number): string {
   return token;
 }
 
-export function register(db: Db, input: { email: string; password: string; name: string; avatar?: string }): AuthResult<{ user: PublicUser; token: string }> {
+export function register(db: Db, input: { email: string; password: string; name: string; avatar?: string; gender?: string }): AuthResult<{ user: PublicUser; token: string }> {
   const email = normalizeEmail(String(input.email ?? ''));
   const name = String(input.name ?? '').trim();
   const password = String(input.password ?? '');
   const avatar = /^avatar-\d{2}$/.test(String(input.avatar ?? '')) ? String(input.avatar) : 'avatar-01';
+  const gender = asGender(input.gender);
   if (!EMAIL.test(email) || email.length > 120) return { ok: false, error: 'bad_email' };
   if (name.length < 1 || name.length > 20) return { ok: false, error: 'bad_name' };
   if (password.length < 6 || password.length > 200) return { ok: false, error: 'bad_password' };
   if (db.prepare('SELECT 1 FROM users WHERE email = ?').get(email)) return { ok: false, error: 'email_taken' };
   const salt = randomBytes(16).toString('hex');
   const created = db
-    .prepare('INSERT INTO users (email, name, avatar, salt, password_hash, created_at) VALUES (?, ?, ?, ?, ?, ?)')
-    .run(email, name, avatar, salt, hashPassword(password, salt), Date.now());
+    .prepare('INSERT INTO users (email, name, avatar, gender, salt, password_hash, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)')
+    .run(email, name, avatar, gender, salt, hashPassword(password, salt), Date.now());
   const id = Number(created.lastInsertRowid);
-  return { ok: true, value: { user: { id, email, name, avatar }, token: newSession(db, id) } };
+  return { ok: true, value: { user: { id, email, name, avatar, gender }, token: newSession(db, id) } };
 }
 
 // Too many wrong passwords for one email slow an attacker down (kept in memory, resets on restart).
@@ -39,13 +42,14 @@ const failures = new Map<string, { count: number; since: number }>();
 const MAX_FAILURES = 8;
 const WINDOW_MS = 10 * 60 * 1000;
 
-export function login(db: Db, input: { email: string; password: string }, now = Date.now()): AuthResult<{ user: PublicUser; token: string }> {
+// `gender` (optional) updates the account's gender: the phone is the source of truth for it.
+export function login(db: Db, input: { email: string; password: string; gender?: string }, now = Date.now()): AuthResult<{ user: PublicUser; token: string }> {
   const email = normalizeEmail(String(input.email ?? ''));
   const password = String(input.password ?? '');
   const seen = failures.get(email);
   if (seen && now - seen.since < WINDOW_MS && seen.count >= MAX_FAILURES) return { ok: false, error: 'too_many_attempts' };
-  const row = db.prepare('SELECT id, email, name, avatar, salt, password_hash FROM users WHERE email = ?').get(email) as
-    | { id: number; email: string; name: string; avatar: string; salt: string; password_hash: string }
+  const row = db.prepare('SELECT id, email, name, avatar, gender, salt, password_hash FROM users WHERE email = ?').get(email) as
+    | { id: number; email: string; name: string; avatar: string; gender: string; salt: string; password_hash: string }
     | undefined;
   // Hash even for an unknown email so the answer takes the same time and says nothing about which emails exist.
   const salt = row?.salt ?? '00000000000000000000000000000000';
@@ -57,15 +61,20 @@ export function login(db: Db, input: { email: string; password: string }, now = 
     return { ok: false, error: 'wrong_login' };
   }
   failures.delete(email);
-  return { ok: true, value: { user: { id: row.id, email: row.email, name: row.name, avatar: row.avatar }, token: newSession(db, row.id) } };
+  let gender = asGender(row.gender);
+  if (input.gender === 'male' || input.gender === 'female') {
+    gender = input.gender;
+    db.prepare('UPDATE users SET gender = ? WHERE id = ?').run(gender, row.id);
+  }
+  return { ok: true, value: { user: { id: row.id, email: row.email, name: row.name, avatar: row.avatar, gender }, token: newSession(db, row.id) } };
 }
 
 export function userFromToken(db: Db, token: string | null | undefined): PublicUser | null {
   if (!token) return null;
   const row = db
-    .prepare('SELECT u.id AS id, u.email AS email, u.name AS name, u.avatar AS avatar FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.token_hash = ?')
+    .prepare('SELECT u.id AS id, u.email AS email, u.name AS name, u.avatar AS avatar, u.gender AS gender FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.token_hash = ?')
     .get(hashToken(token)) as PublicUser | undefined;
-  return row ? { id: row.id, email: row.email, name: row.name, avatar: row.avatar } : null;
+  return row ? { id: row.id, email: row.email, name: row.name, avatar: row.avatar, gender: asGender(row.gender) } : null;
 }
 
 export function logout(db: Db, token: string | null | undefined): void {

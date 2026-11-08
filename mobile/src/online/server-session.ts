@@ -46,19 +46,19 @@ async function post(path: string, body: object): Promise<{ status: number; json:
 let cached: (ServerSession & { nickname: string }) | null = null;
 let pending: Promise<ServerSession> | null = null;
 
-export function ensureServerSession(nickname: string, avatar: string): Promise<ServerSession> {
+export function ensureServerSession(nickname: string, avatar: string, gender: 'male' | 'female' = 'male'): Promise<ServerSession> {
   if (cached && cached.nickname === nickname) return Promise.resolve(cached);
   pending ??= (async () => {
     try {
       const saved = loadCredentials(nickname);
       if (saved) {
-        const login = await post('/api/login', saved);
+        const login = await post('/api/login', { ...saved, gender });
         if (login.status === 200) return (cached = { ...toSession(login.json), nickname });
       }
       // First visit (or the server's database was reset): make a new account.
       for (let attempt = 0; attempt < 3; attempt += 1) {
         const credentials = { email: `p${randomHex(8)}@arena.local`, password: randomHex(12) };
-        const register = await post('/api/register', { ...credentials, name: nickname.trim().slice(0, 20) || 'שחקן', avatar });
+        const register = await post('/api/register', { ...credentials, name: nickname.trim().slice(0, 20) || 'שחקן', avatar, gender });
         if (register.status === 201) {
           saveCredentials(nickname, credentials);
           return (cached = { ...toSession(register.json), nickname });

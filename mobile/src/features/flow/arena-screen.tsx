@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -116,7 +117,7 @@ export function ArenaScreen({
           <>
             <View style={styles.instructionCard}>
               <Text style={styles.instructionTitle}>
-                {selected ? `${selected.name} נבחר/ה לשחק` : 'הזירה ממתינה להגרלה'}
+                {selected ? `${selected.name} ${by(selected, 'נבחר', 'נבחרה')} לשחק` : 'הזירה ממתינה להגרלה'}
               </Text>
               <Text style={styles.instructionText}>{game.events[0]?.text}</Text>
             </View>

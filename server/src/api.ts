@@ -10,11 +10,11 @@ const bearer = (header: string | undefined) => (header?.startsWith('Bearer ') ? 
 export function handleApi(db: Db, method: string, path: string, body: Record<string, unknown>, authorization?: string): ApiReply {
   const token = bearer(authorization);
   if (method === 'POST' && path === '/api/register') {
-    const result = register(db, body as { email: string; password: string; name: string });
+    const result = register(db, body as { email: string; password: string; name: string; avatar?: string; gender?: string });
     return result.ok ? { status: 201, body: result.value } : { status: 400, body: { error: result.error } };
   }
   if (method === 'POST' && path === '/api/login') {
-    const result = login(db, body as { email: string; password: string });
+    const result = login(db, body as { email: string; password: string; gender?: string });
     if (result.ok) return { status: 200, body: result.value };
     return { status: result.error === 'too_many_attempts' ? 429 : 401, body: { error: result.error } };
   }

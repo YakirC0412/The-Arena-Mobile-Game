@@ -2,6 +2,8 @@
 // AccountStore, no React and no storage. account-storage.ts persists the
 // store. Real server-side auth replaces this in the multiplayer phase; the
 // AccountUser shape is what the rest of the app relies on.
+import { genderOfAvatar, isGender } from '../../game/gender';
+import type { Gender } from '../../game/gender';
 import { sha256Hex } from './sha256';
 
 export type AuthProvider = 'password' | 'google';
@@ -12,6 +14,8 @@ export type AccountUser = {
   email: string;
   nickname: string;
   avatar: string;
+  // Man or woman: every text in the game uses the matching Hebrew form.
+  gender: Gender;
   provider: AuthProvider;
 };
 
@@ -34,6 +38,7 @@ export type SignUpInput = {
   nickname: string;
   password: string;
   avatar: string;
+  gender: Gender;
 };
 
 // Google returns name and email; the player still picks nickname and avatar.
@@ -42,6 +47,7 @@ export type GoogleSignUpInput = {
   email: string;
   nickname: string;
   avatar: string;
+  gender: Gender;
 };
 
 export type FieldErrors = Partial<Record<keyof SignUpInput, string>>;
@@ -76,7 +82,8 @@ export function hashPassword(password: string, salt: string): string {
 
 export function toUser(account: StoredAccount): AccountUser {
   const { id, fullName, email, nickname, avatar, provider } = account;
-  return { id, fullName, email, nickname, avatar, provider };
+  // Accounts made before gender existed get the gender of their picture.
+  return { id, fullName, email, nickname, avatar, gender: account.gender ?? genderOfAvatar(avatar), provider };
 }
 
 export function getCurrentUser(store: AccountStore): AccountUser | null {
@@ -91,7 +98,7 @@ function findByEmail(store: AccountStore, email: string) {
 
 function profileErrors(
   store: AccountStore,
-  input: { fullName: string; email: string; nickname: string; avatar: string },
+  input: { fullName: string; email: string; nickname: string; avatar: string; gender: Gender },
 ): FieldErrors {
   const errors: FieldErrors = {};
   if (input.fullName.trim().length < 2) errors.fullName = 'יש להזין שם מלא';
@@ -104,6 +111,7 @@ function profileErrors(
     errors.nickname = 'הכינוי הזה כבר תפוס';
   }
   if (!input.avatar) errors.avatar = 'יש לבחור דמות';
+  if (!isGender(input.gender)) errors.gender = 'יש לבחור: גבר או אישה';
   return errors;
 }
 
@@ -133,6 +141,7 @@ export function signUp(store: AccountStore, input: SignUpInput, id: string, salt
     email: normalizeEmail(input.email),
     nickname: input.nickname.trim().replace(/\s+/g, ' '),
     avatar: input.avatar,
+    gender: input.gender,
     provider: 'password',
     passwordSalt: salt,
     passwordHash: hashPassword(input.password, salt),
@@ -148,6 +157,7 @@ export function signUpWithGoogle(store: AccountStore, input: GoogleSignUpInput, 
     email: normalizeEmail(input.email),
     nickname: input.nickname.trim().replace(/\s+/g, ' '),
     avatar: input.avatar,
+    gender: input.gender,
     provider: 'google',
   });
 }

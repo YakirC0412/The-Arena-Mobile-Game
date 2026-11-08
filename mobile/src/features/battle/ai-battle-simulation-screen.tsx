@@ -1,3 +1,4 @@
+import { by } from '@/game/gender';
 import { useEffect, useMemo, useState } from 'react';
 import { Image, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
@@ -126,7 +127,7 @@ export function AiBattleSimulationScreen({
               : <Text style={styles.simulationVisual}>{item.visual}</Text>}
           </View>
           <Text style={styles.thinkingText}>
-            {frame.decided ? `${winner.name} ניצח/ה בדו־קרב` : `${state.players[frame.activeId].name}: ${frame.status}`}
+            {frame.decided ? `${winner.name} ${by(winner, 'ניצח', 'ניצחה')} בדו־קרב` : `${state.players[frame.activeId].name}: ${frame.status}`}
           </Text>
         </View>
 

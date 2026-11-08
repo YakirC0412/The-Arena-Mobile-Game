@@ -184,3 +184,36 @@ suite('online game: pacing and milestones', () => {
     assert(!!view.attackerId && view.players.find((player) => player.id === view.attackerId)!.played, 'Attacker is set and marked as played');
   });
 });
+
+suite('online game: choices are shown', () => {
+  test('a bot first "goes on / is drawn", then its chosen target is shown; the winner sees whom they could attack', () => {
+    const { game, clock, seats } = build(3, 2);
+    game.connect('a', Number(seats[0].userId));
+    game.connect('b', Number(seats[1].userId));
+    let botBeats = 0;
+    let revealedAfterPlain = false;
+    let plainSeen = false;
+    let afterShowsTargets = 0;
+    let bannerThenConquest = false;
+    let sawBanner = false;
+    for (let step = 0; step < 300_000 && !game.isFinished(); step += 1) {
+      clock.now += 100;
+      play(game, 'a');
+      play(game, 'b');
+      game.update();
+      const view = game.view();
+      if (view.stage === 'target' && !view.targets.length) {
+        if (!view.chosenTargetId) plainSeen = true;
+        else if (plainSeen) { revealedAfterPlain = true; botBeats += 1; plainSeen = false; }
+      }
+      if (view.stage === 'after' && view.choiceLeftMs !== null && view.targets.length) afterShowsTargets += 1;
+      if (view.stage === 'result' && view.result && !view.result.compact && !view.result.decisive) {
+        if (view.result.banner) sawBanner = true;
+        else if (sawBanner) bannerThenConquest = true;
+      }
+    }
+    assert(revealedAfterPlain && botBeats >= 3, `Bots show the plain beat and then the choice (${botBeats})`);
+    assert(afterShowsTargets > 0, 'The winner who decides sees the neighbors');
+    assert(bannerThenConquest, 'After a duel with a person the winner banner comes first, then the conquest');
+  });
+});

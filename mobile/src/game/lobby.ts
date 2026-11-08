@@ -11,7 +11,7 @@ export type LobbyError =
   | 'room_full' | 'in_game' | 'unknown_category' | 'category_taken' | 'bad_way'
   | 'not_a_player' | 'not_host' | 'need_more_players' | 'need_categories' | 'already_started';
 
-export type Member = { clientId: string; userId: number; name: string; avatar: string; categoryId: string | null; wayId: WayId };
+export type Member = { clientId: string; userId: number; name: string; avatar: string; gender: 'male' | 'female'; categoryId: string | null; wayId: WayId };
 export type Result = { ok: true } | { ok: false; error: LobbyError };
 const fail = (error: LobbyError): Result => ({ ok: false, error });
 
@@ -25,7 +25,7 @@ export type LobbyView = {
   phase: 'lobby' | 'inGame';
   maxHumans: number;
   hostClientId: string | null;
-  members: { clientId: string; name: string; avatar: string; categoryId: string | null; wayId: WayId; isHost: boolean }[];
+  members: { clientId: string; name: string; avatar: string; gender: 'male' | 'female'; categoryId: string | null; wayId: WayId; isHost: boolean }[];
   takenCategoryIds: string[];
   canStart: boolean;
 };
@@ -61,11 +61,11 @@ export class Lobby {
     return this.members.find((member) => member.categoryId === categoryId);
   }
 
-  join(member: { clientId: string; userId: number; name: string; avatar?: string }): Result {
+  join(member: { clientId: string; userId: number; name: string; avatar?: string; gender?: 'male' | 'female' }): Result {
     if (this.started) return fail('in_game');
     if (this.has(member.clientId)) return { ok: true };
     if (this.members.length >= MAX_HUMANS) return fail('room_full');
-    this.members.push({ ...member, avatar: member.avatar ?? 'avatar-01', categoryId: null, wayId: 'w1' });
+    this.members.push({ ...member, avatar: member.avatar ?? 'avatar-01', gender: member.gender ?? 'male', categoryId: null, wayId: 'w1' });
     return { ok: true };
   }
 
@@ -110,6 +110,7 @@ export class Lobby {
         name: member.name,
         categoryId: member.categoryId!,
         wayId: member.wayId,
+        gender: member.gender,
         userId: String(member.userId),
       })),
     };
@@ -127,6 +128,7 @@ export class Lobby {
         clientId: member.clientId,
         name: member.name,
         avatar: member.avatar,
+        gender: member.gender,
         categoryId: member.categoryId,
         wayId: member.wayId,
         isHost: member.clientId === this.hostId,

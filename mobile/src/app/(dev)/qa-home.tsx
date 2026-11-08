@@ -23,13 +23,13 @@ export default function QaHomeScreen() {
       : null,
   );
   const source = useMemo(
-    () => params.server ? createServerRoomsSource({ avatar: 'avatar-01', nickname }) : createMockRoomsSource({ empty: params.state === 'empty', fail: params.state === 'error', latencyMs: params.state === 'slow' ? 60_000 : 350 }),
+    () => params.server ? createServerRoomsSource({ avatar: 'avatar-01', nickname, gender: 'male' }) : createMockRoomsSource({ empty: params.state === 'empty', fail: params.state === 'error', latencyMs: params.state === 'slow' ? 60_000 : 350 }),
     [params.state, params.server],
   );
 
   if (entry) {
     const Lobby = params.server ? ServerLobbyScreen : MockLobbyScreen;
-    return <Lobby avatar="avatar-01" entry={entry} nickname={nickname} onBack={() => setEntry(null)} />;
+    return <Lobby avatar="avatar-01" entry={entry} gender="male" nickname={nickname} onBack={() => setEntry(null)} />;
   }
   return (
     <HomeScreen

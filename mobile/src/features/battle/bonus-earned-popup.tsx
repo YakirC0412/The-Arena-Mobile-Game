@@ -1,25 +1,29 @@
+import { by } from '@/game/gender';
 import { colors } from '@/design/tokens';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { AppText as Text } from '@/design/app-text';
 
 export function BonusEarnedPopup({
+  gender,
   onClose,
   playerName,
 }: {
+  gender?: 'male' | 'female';
   onClose: () => void;
   playerName: string;
 }) {
+  const who = { gender };
   return (
     <View accessibilityViewIsModal style={styles.backdrop}>
-      <View accessibilityLiveRegion="assertive" accessible accessibilityLabel={`${playerName} זכה או זכתה בבונוס של חמש שניות`} style={styles.card}>
+      <View accessibilityLiveRegion="assertive" accessible accessibilityLabel={`${playerName} ${by(who, 'זכה', 'זכתה')} בבונוס של חמש שניות`} style={styles.card}>
         <View style={styles.badge}>
           <Text style={styles.badgeText}>+5</Text>
         </View>
         <Text style={styles.eyebrow}>שלושה ניצחונות ברציפות!</Text>
-        <Text style={styles.title}>{playerName} זכה/תה בבונוס</Text>
+        <Text style={styles.title}>{playerName} {by(who, 'זכה', 'זכתה')} בבונוס</Text>
         <Text style={styles.body}>
-          בקרב הבא יעמדו לרשותו/ה 45 שניות במקום 40 — בין אם יתקוף/תתקוף ובין אם יגן/תגן.
+          {by(who, 'בקרב הבא יעמדו לרשותו 45 שניות במקום 40 — בין אם יתקוף ובין אם יגן.', 'בקרב הבא יעמדו לרשותה 45 שניות במקום 40 — בין אם תתקוף ובין אם תגן.')}
         </Text>
         <Pressable accessibilityRole="button" onPress={onClose} style={styles.button}>
           <Text style={styles.buttonText}>מעולה, ממשיכים</Text>

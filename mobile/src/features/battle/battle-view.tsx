@@ -31,6 +31,7 @@ import {
 } from '@/game/engine';
 import { by } from '@/game/gender';
 import type { BattleSetup, GameState } from '@/game/types';
+import { FittedPicture } from './fitted-picture';
 import { ITEM_IMAGES } from '@/content/item-images';
 import { createTapGate } from '@/features/battle/tap-gate';
 
@@ -387,31 +388,20 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         </View>
       )}
 
-      <Animated.View style={[
-        styles.imageCard,
-        compact && styles.imageCardCompact,
-        {
+      <FittedPicture
+        Card={Animated.View as never}
+        cardStyle={{
           borderColor: correctGlow.interpolate({
             inputRange: [0, 1],
             outputRange: [colors.territoryMeBorder, colors.correct],
           }),
           opacity: imageOpacity,
           transform: [{ scale: imageScale }],
-        },
-      ]}>
-        {itemImage ? (
-          <View pointerEvents="none" style={styles.imageFill}>
-            <Image
-              accessibilityLabel="פריט לזיהוי"
-              resizeMode="contain"
-              source={itemImage}
-              style={styles.itemImage}
-            />
-          </View>
-        ) : (
-          <AppText accessibilityLabel="פריט לזיהוי" style={styles.visual}>{item.visual}</AppText>
-        )}
-      </Animated.View>
+        } as never}
+        fallback={<AppText accessibilityLabel="פריט לזיהוי" style={styles.visual}>{item.visual}</AppText>}
+        minHeight={compact ? 64 : 140}
+        source={itemImage}
+      />
 
       <AppText accessibilityLiveRegion="polite" style={styles.feedback} weight="bold">
         {feedback || (compact

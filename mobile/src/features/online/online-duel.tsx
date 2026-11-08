@@ -8,6 +8,7 @@ import { AppText } from '@/design/app-text';
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
 import { useWebViewportBox } from '@/design/use-web-viewport-box';
+import { FittedPicture } from '@/features/battle/fitted-picture';
 import { createTapGate } from '@/features/battle/tap-gate';
 import type { OnlineView } from '@/game/online-view';
 import { clockLeftMs } from '@/online/view-to-state';
@@ -112,22 +113,24 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
     const bonus = side === 'attacker' ? setup.attackerUsesBonus : setup.defenderUsesBonus;
     const ms = left(side);
     return (
-      <View style={[styles.clock, active && styles.clockActive, duel.winner === side && styles.clockWinner]}>
+      <View style={[styles.clock, compact && styles.clockCompact, active && styles.clockActive, duel.winner === side && styles.clockWinner]}>
         <View style={styles.clockWho}>
           <AvatarPortrait avatarId={player.avatar} borderColor={active ? colors.accentGold : colors.brandSky} size={compact ? 26 : 34} />
           <AppText numberOfLines={1} style={styles.clockName} weight="bold">
             {player.name}{mySide === side ? ' (אני)' : ''}
           </AppText>
         </View>
-        <AppText style={[styles.clockValue, ms < 8000 && active && { color: colors.danger }]} weight="black">{formatClock(ms)}</AppText>
-        <AppText style={styles.clockRole}>{side === 'attacker' ? by(player, 'תוקף', 'תוקפת') : by(player, 'מגן', 'מגנה')}{bonus ? ' · בונוס +5' : ''}</AppText>
+        <View style={compact ? styles.clockValueRow : undefined}>
+          <AppText style={[styles.clockValue, compact && styles.clockValueCompact, ms < 8000 && active && { color: colors.danger }]} weight="black">{formatClock(ms)}</AppText>
+          <AppText style={styles.clockRole}>{side === 'attacker' ? by(player, 'תוקף', 'תוקפת') : by(player, 'מגן', 'מגנה')}{bonus ? ' · +5' : ''}</AppText>
+        </View>
       </View>
     );
   };
 
   return (
     <KeyboardAvoidingView behavior={Platform.select({ android: 'height', ios: 'padding' })} style={[styles.screen, compact && styles.screenCompact, fixedBox]}>
-      <View style={styles.header}>
+      <View style={[styles.header, compact && styles.headerCompact]}>
         {compact ? null : <AppText style={styles.eyebrow} weight="bold">{setup.isFinal ? '🏆 הגמר' : `דו־קרב ${view.duels + 1} מתוך 15`}</AppText>}
         <AppText numberOfLines={1} style={[styles.title, compact && styles.titleCompact]} weight="black">{setup.categoryName}</AppText>
         <AppText style={styles.wayLine} weight="bold">{setup.wayLabel}</AppText>
@@ -138,21 +141,18 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
         {clockCard('defender')}
       </View>
 
-      <View style={styles.turnPill}>
+      {compact && mySide ? null : <View style={styles.turnPill}>
         <AppText style={styles.turnText} weight="black">
           {duel.winner ? 'הדו־קרב נגמר' : myTurn ? 'התור שלך · הקלידו את התשובה' : mySide ? `התור של ${activeName}` : `👁 צופים · התור של ${activeName}`}
         </AppText>
-      </View>
+      </View>}
 
-      <View style={[styles.imageCard, compact && styles.imageCardCompact, duel.paused && { borderColor: colors.correct }]}>
-        {image ? (
-          <View pointerEvents="none" style={styles.imageFill}>
-            <Image accessibilityLabel="פריט לזיהוי" resizeMode="contain" source={image} style={styles.itemImage} />
-          </View>
-        ) : (
-          <AppText style={styles.visual}>❔</AppText>
-        )}
-      </View>
+      <FittedPicture
+        cardStyle={duel.paused ? { borderColor: colors.correct } : undefined}
+        fallback={<AppText style={styles.visual}>❔</AppText>}
+        minHeight={compact ? 64 : 140}
+        source={image}
+      />
 
       {mySide ? (
         <View style={styles.inputRow}>
@@ -199,12 +199,17 @@ const styles = StyleSheet.create({
   screen: { flex: 1, width: '100%', maxWidth: layout.maxContentWidth, alignSelf: 'center', backgroundColor: colors.screen, paddingHorizontal: spacing.lg, paddingTop: spacing.sm, paddingBottom: spacing.md },
   screenCompact: { paddingTop: spacing.xs, paddingBottom: spacing.sm },
   header: { alignItems: 'center', marginBottom: spacing.sm },
+  // Short visible area (keyboard up): title and way share one line so the picture keeps the room.
+  headerCompact: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'baseline', columnGap: spacing.sm, marginBottom: spacing.xs },
   eyebrow: { color: colors.accentGold, fontSize: typeScale.caption, textAlign: 'center' },
   title: { color: colors.textPrimary, fontSize: 24, lineHeight: 30, textAlign: 'center' },
   titleCompact: { fontSize: 18, lineHeight: 22 },
   wayLine: { color: colors.success, fontSize: typeScale.caption, textAlign: 'center' },
   clocks: { flexDirection: 'row', gap: spacing.sm },
   clock: { flex: 1, borderRadius: radii.control, borderWidth: 2, borderColor: colors.border, backgroundColor: colors.surface, padding: spacing.sm, alignItems: 'center', gap: 2 },
+  clockCompact: { paddingVertical: spacing.xs, gap: 0 },
+  clockValueRow: { flexDirection: 'row-reverse', alignItems: 'baseline', gap: spacing.sm },
+  clockValueCompact: { fontSize: 26, lineHeight: 30 },
   clockActive: { borderColor: colors.accentGold, backgroundColor: colors.surfaceMuted },
   clockWinner: { borderColor: colors.correct },
   clockWho: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.xs, maxWidth: '100%' },

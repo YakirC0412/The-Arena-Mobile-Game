@@ -3,6 +3,10 @@
 **THE ARENA – הזירה** · A Hebrew visual-trivia game for the phone browser: 16 contestants, one 4×4 arena, timed picture duels until one champion remains.
 
 
+**▶ Play: https://yakirc0412.github.io/The-Arena-Mobile-Game/** (single player vs 15 bots; the online mode needs the Arena server)
+
+**▶ לשחק: https://yakirc0412.github.io/The-Arena-Mobile-Game/** (משחק יחיד מול 15 בוטים; המשחק המקוון דורש את שרת הזירה)
+
 משחק טריוויה חזותי בעברית: 16 מתמודדים, לוח 4×4, דו-קרבות זיהוי תמונות נגד השעון.
 המשחק נבנה כאפליקציית ווב שנפתחת בדפדפן של הטלפון.
 

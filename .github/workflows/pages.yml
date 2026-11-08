@@ -1,0 +1,58 @@
+# Publishes the web build of the game (single-player; the online mode needs the Arena server) to GitHub Pages.
+# One-time setup in GitHub: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+name: Deploy game to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: mobile/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      # The site lives under /<repo name>/, so tell Expo about that base path (the local dev server is unchanged).
+      - name: Set the base path
+        run: |
+          node -e "
+          const fs=require('fs');const j=JSON.parse(fs.readFileSync('app.json','utf8'));
+          j.expo.experiments={...(j.expo.experiments||{}),baseUrl:'/'+process.env.GITHUB_REPOSITORY.split('/')[1]};
+          fs.writeFileSync('app.json',JSON.stringify(j,null,2));"
+      - run: pnpm exec expo export -p web --output-dir dist-pages
+      # Single-page app: unknown paths open the game instead of GitHub's 404 page.
+      - run: cp dist-pages/index.html dist-pages/404.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: mobile/dist-pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

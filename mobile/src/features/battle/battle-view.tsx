@@ -267,7 +267,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       } else {
         setAiAttempt((value) => value + 1);
       }
-    }, aiThinkDelayMs(item.difficulty, random));
+    }, aiThinkDelayMs(item, random));
     return () => clearTimeout(timeout);
     // A new think-delay starts whenever the picture, the turn or the attempt changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps

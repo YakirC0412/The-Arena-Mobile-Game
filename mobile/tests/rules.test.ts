@@ -1,6 +1,9 @@
 // One test per scenario in docs/GAME_RULES.md. When a rule changes, change it
 // there first, then here.
 import {
+  AI_WORD_SWITCH_MS,
+  aiThinkDelayMs,
+  aiTypingLoad,
   chooseAiFinalCategory,
   correctAnswerPauseMs,
   CORRECT_PAUSE_MAX_MS,
@@ -188,5 +191,50 @@ suite('§7 bots', () => {
     const options = new Set([finalists.players.human.categoryId, finalists.players[opponentId].categoryId]);
     assert(options.has(chooseAiFinalCategory(finalists, 'human', () => 0)), 'Low roll picks a finalist category');
     assert(options.has(chooseAiFinalCategory(finalists, 'human', () => 0.99)), 'High roll picks a finalist category');
+  });
+});
+
+// A bot "types" like a person: a longer answer takes longer (decision 27).
+suite('§7 bot response time follows the answer', () => {
+  const item = (answer: string, difficulty: 1 | 2 | 3 = 1, aliases: string[] = []) => ({ answer, aliases, difficulty });
+  // A roll of 0.5 is the middle of the +-15% variation, so the delay is exactly base + typing.
+  const delay = (value: ReturnType<typeof item>) => aiThinkDelayMs(value, () => 0.5);
+
+  test('letters are counted after the same normalisation as the answer check, without spaces', () => {
+    assertEqual(aiTypingLoad(item('ג׳ירפה')).letters, 5, 'The geresh is not a letter');
+    assertEqual(aiTypingLoad(item('ארצות הברית')).letters, 10, 'Spaces are not letters');
+    assertEqual(aiTypingLoad(item('ארצות הברית', 1, ['ארהב'])).letters, 7, 'Halfway between 10 and 4 letters');
+    assertEqual(aiTypingLoad(item('ארצות הברית')).words, 2, 'Two words');
+    assertEqual(aiTypingLoad(item('')).letters, 1, 'An empty answer cannot divide by zero or give a free answer');
+  });
+
+  test('a longer answer takes longer, and a second word costs a pause', () => {
+    assert(delay(item('אריה')) < delay(item('התנשמית')), 'Four letters are faster than seven');
+    assert(delay(item('התנשמית')) < delay(item('התיאטרון הרומי בקיסריה')), 'Seven letters are faster than twenty');
+    assertEqual(delay(item('אבג דה')) - delay(item('אבגדה')), AI_WORD_SWITCH_MS, 'Same letters, one more word: one pause more');
+  });
+
+  test('a short accepted form counts halfway: faster than the full answer, slower than the short form alone', () => {
+    const full = delay(item('ארצות הברית'));
+    const both = delay(item('ארצות הברית', 1, ['ארהב']));
+    const short = delay(item('ארהב'));
+    assert(short < both && both < full, `short ${short} < both ${both} < full ${full}`);
+    assertEqual(delay(item('פיל', 1, ['פיל אפריקני'])), delay(item('פיל')), 'A longer alias changes nothing');
+  });
+
+  test('harder pictures take longer, and the variation stays within 15%', () => {
+    assertEqual(delay(item('אריה', 2)) - delay(item('אריה', 1)), 350, 'One difficulty step');
+    const middle = delay(item('התנשמית', 2));
+    const fastest = aiThinkDelayMs(item('התנשמית', 2), () => 0);
+    const slowest = aiThinkDelayMs(item('התנשמית', 2), () => 1);
+    assert(fastest >= Math.round(middle * 0.85) - 1 && slowest <= Math.round(middle * 1.15) + 1, 'Within +-15%');
+    assert(aiThinkDelayMs(item('אב'), () => 0) >= 1000, 'Never faster than one second');
+  });
+
+  test('over the real content a bot is not instant on long answers and quick on short ones', () => {
+    const quick = aiThinkDelayMs(item('כלב', 1), () => 0.5);
+    const slow = aiThinkDelayMs(item('פורטלנד טרייל בלייזרס', 3), () => 0.5);
+    assert(quick < 2000, `A three-letter easy picture takes under 2 s (${quick} ms)`);
+    assert(slow > 5000, `A 19-letter hard picture takes over 5 s (${slow} ms)`);
   });
 });

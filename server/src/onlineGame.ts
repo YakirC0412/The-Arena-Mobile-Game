@@ -316,7 +316,7 @@ export class OnlineGame {
         const key = `${duel.position}:${item.id}:${duel.active}`;
         if (botKey !== key || botAt === null) {
           botKey = key;
-          botAt = now + aiThinkDelayMs(item.difficulty, this.options.random);
+          botAt = now + aiThinkDelayMs(item, this.options.random);
         } else if (now >= botAt) {
           const outcome = decideAiDuelOutcome(item.difficulty, remainingMs(duel, duel.active, now), this.options.random);
           if (outcome === 'correct') {
@@ -324,7 +324,7 @@ export class OnlineGame {
           } else if (outcome === 'skip') {
             duel = applySkip(duel, now, this.duelEnv(setup));
           } else {
-            botAt = now + aiThinkDelayMs(item.difficulty, this.options.random);
+            botAt = now + aiThinkDelayMs(item, this.options.random);
           }
         }
       }

@@ -589,11 +589,47 @@ export type AiDuelOutcome = 'correct' | 'skip' | 'retry';
 // A bot attempt in a live duel against the human happens in two steps: it
 // "thinks" for aiThinkDelayMs, then decideAiDuelOutcome picks what it does
 // with the time it has left. Harder items are slower and answered less often.
+
+// How long a bot takes to "type": a person needs more time for a long answer, so the bot does too (decision 27).
+// Tune these three numbers to make the bots faster or slower overall.
+export const AI_TYPING_MS_PER_LETTER = 230;
+export const AI_WORD_SWITCH_MS = 300;
+export const AI_BASE_MS = 600;
+const AI_DIFFICULTY_STEP_MS = 350;
+const AI_MIN_THINK_MS = 1000;
+
+// What the bot "types". Letters are counted after the same normalisation the answer check uses, without spaces.
+// Some answers have a shorter accepted form ("ארהב" for "ארצות הברית"): people sometimes type it and sometimes do not, so
+// the bot counts halfway between the full answer and its shortest accepted form.
+function formLoad(form: string): { letters: number; words: number } | null {
+  const text = normalizeAnswer(form);
+  const letters = [...text.replace(/ /g, '')].length;
+  return letters === 0 ? null : { letters, words: text.split(' ').length };
+}
+
+export function aiTypingLoad(item: Pick<CategoryItem, 'answer' | 'aliases'>): { letters: number; words: number } {
+  const full = formLoad(item.answer);
+  let short = full;
+  for (const alias of item.aliases) {
+    const load = formLoad(alias);
+    if (load && (!short || load.letters < short.letters || (load.letters === short.letters && load.words < short.words))) short = load;
+  }
+  if (!full && !short) return { letters: 1, words: 1 };
+  const a = full ?? short!;
+  const b = short ?? a;
+  return { letters: (a.letters + b.letters) / 2, words: (a.words + b.words) / 2 };
+}
+
+// Think time before a bot attempt: a base reaction, a little more for harder pictures, plus the time to type the answer
+// (per letter, and a pause between words), with +-15% variation.
 export function aiThinkDelayMs(
-  difficulty: CategoryItem['difficulty'],
+  item: Pick<CategoryItem, 'answer' | 'aliases' | 'difficulty'>,
   random: RandomSource = Math.random,
 ): number {
-  return 850 + difficulty * 450 + Math.floor(random() * 500);
+  const { letters, words } = aiTypingLoad(item);
+  const base = AI_BASE_MS + (item.difficulty - 1) * AI_DIFFICULTY_STEP_MS;
+  const typing = letters * AI_TYPING_MS_PER_LETTER + (words - 1) * AI_WORD_SWITCH_MS;
+  return Math.max(AI_MIN_THINK_MS, Math.round((base + typing) * (0.85 + random() * 0.3)));
 }
 
 export function decideAiDuelOutcome(

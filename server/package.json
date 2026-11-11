@@ -7,8 +7,7 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "tsc -p tsconfig.json && node dist/server/tests/index.js",
-    "start": "tsc -p tsconfig.json && node dist/server/src/index.js",
-    "bots": "tsc -p tsconfig.json && node dist/server/src/bots-cli.js"
+    "start": "tsc -p tsconfig.json && node dist/server/src/index.js"
   },
   "dependencies": {
     "@colyseus/schema": "^5.0.45",

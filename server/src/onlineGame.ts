@@ -3,7 +3,7 @@
 // tests drive it with fakes. The server decides everything: who is drawn, the duel clocks, the answers, the
 // winner. A phone only sends choices and sees `view()` (never an answer).
 //
-// Order (same as the local game and `gameLoop.ts`): draw -> target -> duel -> result -> (continue | return) -> ...
+// Order (same as the local game): draw -> target -> duel -> result -> (continue | return) -> ...
 // -> the final when two are left (the one with more territory chooses the category) -> champion.
 // A human who does not choose in time gets the bot's choice; a human who is away for `awayMs` is replaced by a
 // bot, and takes the seat back (between duels) when they return.

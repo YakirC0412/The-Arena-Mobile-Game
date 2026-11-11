@@ -1,8 +1,8 @@
 # THE ARENA – Multiplayer PRD
 
-Version 1.0 · 5 Nov 2026 · Status: **draft for your review – nothing has been built yet**
+Version 1.0 · 5 Nov 2026 · Status: **phases 0-5 are built (full online game); phase 6 (public hosting) is open** - see `docs/STATUS_LOG.md` for what was built when
 
-This document describes the online multiplayer mode: what it is, how it behaves, what we build in which order, and what is still open. It extends `docs/PRD.md` section 7 and `docs/GAME_RULES.md`. The game rules themselves do not change; this document only adds rooms and online play.
+This document describes the online multiplayer mode: what it is, how it behaves, what we build in which order, and what is still open. It extends `docs/archive/PRD.md` section 7 and `docs/GAME_RULES.md`. The game rules themselves do not change; this document only adds rooms and online play.
 
 ---
 

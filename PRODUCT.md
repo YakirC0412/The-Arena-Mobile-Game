@@ -45,7 +45,7 @@ PC (home Wi-Fi) and a static single-player build is published through GitHub Pag
 ## Evidence on Hand
 Real content and assets live in `mobile/assets` (items, avatars, sounds, logo) and `mobile/src/content`. There are no
 testimonials, press, customer numbers or published metrics; do not invent any. Rules and decisions are recorded
-in `docs/GAME_RULES.md`, `docs/DECISIONS.md` and `docs/PRD.md`.
+in `docs/GAME_RULES.md`, `docs/DECISIONS.md` and `docs/archive/PRD.md`.
 
 ## Product Principles
 - The picture is the challenge: it stays large, clear and never cropped, even with the keyboard open.

@@ -30,16 +30,18 @@ browser pane, ask before big or irreversible changes. Code, comments, commits: E
 
 ## Repo map
 ```
-THE_Arena/            git root (run git commands here) · remote origin = private GitHub repo
-                      github.com/YakirC0412/The-Arena-Mobile-Game (branch main)
-├─ CLAUDE.md          this file
-├─ README.md          short Hebrew intro for the user
-├─ docs/              GAME_RULES.md (rules source of truth) · DECISIONS.md · ROADMAP.md
-│                     PRD.md · UIUX_SPEC.md · archive/ (original questionnaire)
-├─ archive/           NOT in git: old zip, Codex tooling, files removed from the app
-├─ server/            multiplayer server (Node + Colyseus): src/gameLoop.ts · ArenaRoom.ts · index.ts · tests/
-├─ admin/             admin panel for categories, items and pictures (server.js, store.js, index.html, image-sources.json, README.md)
-├─ .claude/           launch.json for the preview server · skills/arena-images (picture skill)
+THE_Arena/            git root (run git commands here) · remote origin = github.com/YakirC0412/The-Arena-Mobile-Game (branch main, public)
+├─ CLAUDE.md          this file          README.md  short Hebrew intro + folder map for the user
+├─ PRODUCT.md · DESIGN.md   product brief and design system (Impeccable context)
+├─ firebase.json · .firebaserc   Firebase Hosting (live site https://the-arena-game-v1.web.app, public dir mobile/dist-web)
+├─ docs/              GAME_RULES.md (rules source of truth) · DECISIONS.md · ROADMAP.md · CATEGORIES.md · PRD_MULTIPLAYER.md
+│                     GOOGLE_LOGIN_SETUP.md · IMAGE_CREDITS.md (generated) · STATUS_LOG.md (full history) · archive/ (old PRD, UI spec, questionnaire)
+├─ admin/             admin panel for categories, items and pictures (see admin/README.md): server.js · store.js · index.html · image-sources.json
+├─ server/            multiplayer server (Node + Colyseus): src/GameRoom.ts · onlineGame.ts · lobby.ts · roomsApi.ts · api.ts · auth.ts · firebaseAuth.ts
+│                     · db.ts · devPages.ts (/rooms test page) · index.ts · tests/
+├─ .claude/           launch.json (arena-web, arena-admin, arena-server) · skills/arena-images (picture skill) + 4 installed design skills
+├─ .github/           workflows/pages.yml (GitHub Pages build)      .impeccable/  design-tool state
+├─ archive/           NOT in git (local only, not backed up): old zip, original images, removed files, early server prototypes
 └─ mobile/            Expo SDK 58 app (expo-router, reanimated, RN web)
    ├─ AGENTS.md       Expo rules – read before touching any Expo/RN API
    ├─ public/         index.html (web page template: iPhone meta, no page-level dir!) · manifest + icons
@@ -51,17 +53,20 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
       ├─ game/        engine.ts (rules, bot decisions, createGame) · duel.ts (pure duel state machine) · flow.ts · rng.ts · types.ts
       │               pure TS, no React, relative imports only; never call Math.random – take a RandomSource
       ├─ content/     categories.ts (builds the pool from categories-data.json = ALL categories, items, answers, ways; edited by the admin panel) · avatars.ts · item/avatar-images.ts
-      ├─ features/
-      │  ├─ flow/        game-flow.tsx renders FlowState → screens · arena-screen · setup · result
-      │  ├─ onboarding/  intro-screen (animated opening) · welcome-screen (sign-up/sign-in) · home-screen · guide
-      │  ├─ arena/       arena-board · build · draw animation · mini-map · territory-layout
-      │  ├─ battle/      battle-view (human duel) · clock cards · intro · AI target/decision/simulation
-      │  │               · outcome · conquest animation · bonus popup
+      ├─ features/    one folder per part of the game
+      │  ├─ flow/        game-flow.tsx renders FlowState → screens · setup · result
+      │  ├─ onboarding/  intro · welcome (sign-up/sign-in, Google) · guide
+      │  ├─ home/        home screen (Single/Multi tabs) · room cards · podium · edit-profile sheet
+      │  ├─ lobby/       multiplayer lobby · category picker
+      │  ├─ arena/       arena-screen · arena-board · build · draw animation · mini-map · territory-layout
+      │  ├─ battle/      battle-view (human duel) · clock cards · intro · AI target/decision/simulation · outcome · conquest animation · bonus popup
+      │  ├─ online-game/ the online game screens (online-game-screen, online-duel)
       │  └─ final/       final reveal · final category · champion celebration · game over
-      ├─ design/      tokens.ts (all colors/sizes, brand* = logo palette) · brand.tsx (gradient bg, logo,
-      │               brand buttons) · app-text · buttons · avatar-portrait · colors
-      └─ services/    use-game-feedback.ts (sound + haptics) · accounts/ (local accounts: pure accounts.ts +
-                      sha256.ts, account-storage.ts = browser localStorage)
+      ├─ design/      tokens.ts (all colors/sizes, brand* = logo palette) · brand.tsx · app-text · avatar-portrait · bottom-sheet · fitted-picture · sound-icon
+      ├─ hooks/       use-game-feedback (sound + haptics) · use-reduced-motion · use-web-viewport-box · keyboard-primer
+      ├─ online/      network layer: rooms sources, server session, Firebase/Google sign-in, view-to-state
+      ├─ services/    accounts/ (local accounts: pure accounts.ts + sha256.ts, account-storage.ts = browser localStorage)
+      └─ vendor/      colyseus-sdk.js (vendored: npm cannot extend the pnpm layout)
 ```
 
 ## Rules for changes
@@ -77,102 +82,13 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - QA screens live in `src/app/(dev)/` and are redirected away in production builds.
 
 ## Status (update every step)
+- 11.11.26 – PROJECT TIDY-UP: admin panel moved to the top-level `admin/` folder (own README; `npm run admin` from `mobile/` still works); early server prototypes (ArenaRoom, gameLoop, DuelRoom, liveDuel, watch/duel pages) moved to the local `archive/server-prototypes/` (dev helpers now in `server/src/devPages.ts`); unused app files, the legacy Wikipedia collector and the slides/banner-design/ui-styling skills removed; `mobile/src` regrouped (`design/` has the generic UI, `hooks/` the hooks, `features/online-game/` the online screens, `arena-screen` in `features/arena/`); old PRD/UI specs moved to `docs/archive/`; this status section trimmed, the full history is in `docs/STATUS_LOG.md`.
 - 11.11.26 – SOUNDS ROUND 3: conquest is back to the ORIGINAL plain tone (260 Hz, byte-identical to git HEAD; played at once again, no delay). Champion = drum roll (snare roll 10→30 hits/s, swelling, timpani beats) for 3 s, then timpani + cymbal crash and a trumpet fanfare (G G G C, E, held G with a soft C-E chord, vibrato) - synthesised in `scripts/generate-feedback-sounds.js`, checked on a spectrogram only (not heard). Draw sounds unchanged (draw-roll / draw). Deployed to web.app.
 - 11.11.26 – SOUNDS REDONE (user disliked the drone+impact conquest): conquest.wav = a "wave" (band-passed noise swelling and rising 250→2400 Hz to a peak at 2.5 s, then falling and closing by 3.5 s, soft G3/D4 pad, no impact); draw = `draw-roll.wav` (the cursor's 34 jumps as decelerating "tocks", same timings as `drawStepDelaysMs`, then a bell chime at the landing; played when the draw starts, only for the full draw) and `draw.wav` (chime alone, used for a bot's quick draw and Reduce Motion). Champion sound unchanged. The user's reference videos are TV mixes (voices, crowd, music), so the effects could not be isolated: the sounds follow the user's words, not the clips. Not heard on a device. Not redeployed.
 - 10.11.26 – FIXES + SOUNDS: (1) draw animation: the highlighted cell (zIndex 3) hid its own label; the label layers now have zIndex 5. (2) Arena HUD pill reads "N מתמודדים נותרו | דו־קרב X מתוך 15 | N משבצות בשליטה שלך" (singular: "משבצת 1 בשליטה שלך", "מתמודד אחד נותר"). (3) Champion scene: one title "<name> כובש/ת את הזירה ו(מנצח/ת) את המשחק"; eyebrow and footer title removed. (4) New sounds from `scripts/generate-feedback-sounds.js` (re-run it to regenerate): conquest = drone + accelerating heartbeat + hiss rising, impact at 3.0 s (a multi-cell takeover starts it 1.3 s late so the hit lands as the cells join); champion = same build-up, impact at 3.0 s, then a brass-like C-major fanfare and sparkles (6.4 s). Synthesised, not listened to on a device: tune by ear. Not redeployed to web.app yet. NOTE: Metro sometimes stalls on gzip responses (page stays blank): restart it with `--clear`.
 - 10.11.26 – WEB HOSTING: the game (single mode + Google sign-in) is live at https://the-arena-game-v1.web.app (Firebase Hosting; `firebase.json`/`.firebaserc` at the repo root, public dir `mobile/dist-web`). Update: from `mobile/` `npx expo export -p web --output-dir dist-web`, then from the root `npx.cmd firebase-tools deploy --only hosting`. Multi does NOT work there yet (no cloud server; next: Railway/Tunnel). Not tested on the iPhone.
 - 10.11.26 – EDIT PROFILE: tapping the avatar in the home top bar (pencil badge) opens `features/home/edit-profile-sheet.tsx` (nickname + picture grid). `updateProfile` in accounts.ts (nickname unique among OTHER accounts), flow action `PROFILE_UPDATED`, `syncServerProfile` (server-session.ts) moves the silent server account to the new nickname and posts `/api/profile` (also keeps a Google account's profile from reverting at the next sign-in). A one-time hint bubble ("לחיצה על הדמות פותחת עריכה…") shows on first home visit per account (localStorage `arena.profileHintSeen:<id>`, 9 s, tap opens the editor). QA: `/qa-home?hint=1`. 98 mobile tests. Checked in the browser pane (bubble, validation, save); NOT checked on the iPhone; gender is not editable.
-- 10.11.26 – GOOGLE SIGN-IN (Firebase Auth), code ready, needs ONE console step (enable the Google provider, see docs/GOOGLE_LOGIN_SETUP.md). Server: `firebaseAuth.ts` verifies the Firebase ID token (RS256, Google certs, no firebase-admin), `POST /api/firebase-login` + `POST /api/profile` (`handleApiAsync` in api.ts), users.firebase_uid/profile_done, password-less accounts. Client: `online/firebase-auth.ts` loads the Firebase compat SDK from the CDN (npm cannot extend the pnpm layout), `online/google-account.ts`, welcome screen button + first-time profile step (nickname/avatar/gender), `signInWithGoogleAccount` in accounts.ts, `server-session.ts` uses the Google account for multiplayer, sign-out clears it. Config in `mobile/.env` (EXPO_PUBLIC_FIREBASE_*) and `server/.env` (FIREBASE_PROJECT_ID), both git-ignored; restart Metro with `--clear` after changing. Works on localhost only (Google refuses http://IP); iPhone after https hosting. 38 server tests, 97 mobile tests. The real Google popup was NOT exercised (needs the user's own sign-in).
-- 10.11.26 – ONLINE DUEL = LOCAL DUEL (visuals): `OnlineDuel` now uses the shared `ClockCard` (avatars, gold active border, time bar, -3 / correct / wrong feedback), the big "נכון!" over the picture, field shake on a wrong Enter, sound icon and mini-map. Other side's skip / right answer is detected when the next picture arrives (same turn = skip, turn passed = right answer). FIXES: bot-vs-bot results now show the conquest animation (`resultCompactMs` 4200); the final reveal froze the FIRST board it ever saw (`useFrozen` key was constant) - key now changes until the stage starts, so only the two finalists show; no more "round" anywhere (arena HUD and online top bar show duel X of 15). Lobby: required category gate, paged picker with search, way step for two-way categories, host start/delete (`closeRoom` message), private-room copy button. NOT checked on the iPhone.
-- 8.11.26 – LOCAL DUEL NOW RUNS ON `game/duel.ts` (the first of the "implicit state machines" cleanups). `battle-view.tsx` keeps ONE `DuelState` (+ `duelRef`) and only feeds it events: typed answers (`applyAnswer`), skips (`applySkip`), a bot's choices (same `decideAiDuelOutcome`/think-delay as before) and time (`tick` every 100 ms); the old flags `transitioning`, `acceptedRef`, the transition timers and the imperative clock handle are gone (`locked` = `pausedUntil !== null || winner !== null`). `BattleClockCards` is now purely presentational (`duel` prop, redraws every 100 ms, tick sound + spoken seconds). Same state machine as the online server, so rules cannot drift. Checked in the browser (`/qa-duel`): skip = -3 s with the 0.25 s pause, a right answer freezes both clocks then passes the turn with the next picture, the bot answers, the duel ends at 0.0 and completes. 95 mobile tests (no UI test for the duel; the rules are covered by `duel.test.ts`). Not re-checked on the iPhone: keyboard stays up, skip on first tap. Remaining implicit machines (see the earlier list): `FlowState` side fields, `GameRoom` phase, animation timer chains.
-- 8.11.26 – ONLINE ROUND 2 (iPhone feedback): (1) after a win the arena shows whom the winner could attack while they decide continue/return (`view.targets` in the `after` stage, board in `simulation` mode, not pickable). (2) GENDER: sign-up has "אני: גבר / אישה" (required); `Gender` + `by(player, male, female)` in `game/gender.ts`; `ArenaPlayer.gender` (bots: from their avatar picture; old local accounts without gender: guessed from the avatar); server `users.gender` column (migrated), sent at register and refreshed on login, carried by lobby members, seats and `ViewPlayer`. All player-facing texts use `by()` (no more "ניצח/ה"); only dev QA pages and the server test pages (`/watch`, `/duel`, `/rooms`) still have slash forms. (3) A bot attacker now shows "X ממשיך/ה לדו־קרב נוסף" (or "X הוגרל/ה לתקוף"), then "X בוחר/ת יריב…", then after `botRevealMs` the chosen target is highlighted ("X בחר/ה לתקוף את Y"); `stage.target` has `continuing`, `botTargetId`, `revealAt`. (4) After a duel with a person: winner banner for 1.8 s (`view.result.banner`), then the conquest animation. 32 server tests, 95 mobile tests. Hebrew proofreading (item 5 of the user's list) is still to do, text by text.
-- 8.11.26 – ONLINE GAME, FIRST iPHONE ROUND (user found 4 problems; fixed): (1) CLOCK: the phone counted time from when a screen redrew, not from when the server message arrived, so clocks ran 2-3x too fast and snapped back (server values were always right - checked with a probe: monotonic, 1 s/s). Now `link.gameAt` = arrival time (set in the message handler) and `OnlineDuel` counts from it. (2) ANIMATIONS: the server draws at the START of the draw stage (view.attackerId), so phones run the local `DrawAnimationScreen` (full 5.6 s for a person, `quick` ~1.7 s for a bot), new stages `milestone` (quarter-final at 8 left, semi-final at 4) and `finalReveal` (the local FinalRevealScreen), conquest animation after live duels, `ChampionCelebrationScreen` at the end. Frozen state per stage (`useFrozen`) so animations do not restart on every 4 Hz view. (3) BOT FIGHTS: two bots are decided at once with a short banner (compact result), no VS card, no live duel; the whole game with 2 people now takes ~2 min. (4) END: when the champion is known the room is locked, `endedAt` stops the timer and the room leaves the list at once (`openRooms()` in roomsApi); it closes after 45 s. (5) iPHONE LAYOUT (giant pictures until scroll - could not be reproduced in Chrome, probable cause: Safari toolbars make the layout height differ from the visible height): the online duel is always a fixed box sized from `visualViewport` (`useWebViewportBox(true)`), html/body use `100dvh`, the online board screen scrolls. NEEDS an iPhone retest. Hebrew proofreading pass is next (user will go through texts one by one). 31 server tests, 91 mobile tests.
-- 8.11.26 – MULTIPLAYER, phase 5 done: THE FULL ONLINE GAME. `server/src/onlineGame.ts` = pure `OnlineGame` (injected clock + random): draw -> target -> announce -> duel -> result -> continue/return -> final (category choice by the one with more territory) -> champion; humans choose within 20 s or get the bot's choice; duels with a human are live (`game/duel.ts`, bots answer through aiThinkDelayMs/decideAiDuelOutcome), bot-vs-bot duels are simulated; a human away 30 s is replaced by a bot and takes the seat back between duels (same account joining again, also through the Watch button); champion goes to `recordGame` (2+ accounts). `GameRoom` now runs it after `start` (messages pickTarget/pickFinalCategory/answer/skip/continue/return; room sends `game` (OnlineView, 4x/s, no answers), `me`, `correct`; closes 60 s after the champion). Phone: `game/online-view.ts` (shared types), `online/view-to-state.ts`, `features/online/online-game-screen.tsx` + `online-duel.tsx` (shown by the lobby screen when `link.game` exists; board is the old ArenaBoard). Checked: 28 server tests (full 3-human game with a fake clock, bot takeover, return, wrong-turn actions), 91 mobile tests, `node tests/live-game-check.mjs` (two scripted phones + bots play to the champion in ~3 min; WEAK=1 makes them skip), and a real browser run (spectator duel, my own duel typing an answer, champion screen). Not yet: iPhone check, sounds beyond correct/skip, a Hebrew-only 15 s sheet for the final, reconnect after the room closes, no spectator list, no rematch.
-- 7.11.26 – MULTI TAB CONNECTED TO THE REAL SERVER. The app talks to the Arena server at `http://<page host>:2567`
-  (`online/server-config.ts`, override EXPO_PUBLIC_ARENA_SERVER). `online/server-session.ts`: silent server account per
-  nickname (random email+password kept in localStorage, nickname + avatar sent). `online/server-rooms-source.ts` = HTTP
-  source (rooms, leaders, new-code, code lookup; timer from `playingMs`). `features/lobby/use-lobby-link.ts`: `useServerLobby`
-  (Colyseus room `game`: create when entry.roomId is '', else join/watch; sends `hello` after handlers exist) and
-  `useMockLobby` (QA). Colyseus SDK is VENDORED at `src/vendor/colyseus-sdk.js` (+ .d.ts) because npm cannot extend the
-  app's pnpm-layout node_modules; swap for the package when pnpm exists. Server changes: users.avatar column (migrated),
-  members/leaders carry avatars, `/api/rooms` lists private rooms too (code hidden) with `playingMs`, room metadata
-  `startedAt`, room message `hello`. Private rooms are always entered by code (even to watch). Verified in the browser with
-  a real room: create, second player joins live, categories sync, start = 16 seats, list shows the running timer.
-  Not yet: iPhone check (firewall rule for port 2567 + the PC address), game play online (phase 5). QA:
-  `/qa-home?server=1&tab=multi&name=<nickname>` (one account per nickname, so two tabs = two players).
-- 6.11.26 – NEW HOME (UI upgrade before phase 5): `features/home/` replaces the old home. Bottom toggle (tabs) **Single** (hero,
-  facts chips 16/40"/15, start + guide buttons, "how it works") and **Multi** (trophy podium top 3 from leaders, "open room" +
-  "I have a code" bottom sheets, live list of rooms: seats x/6, public/code badge, waiting/in-game, running-game timer, join/
-  enter code/watch; loading/empty/error states, polls every 3 s). Data comes from `online/` (`RoomsSource` interface + mock
-  source = sample data; the real server source is the next step; `format.ts` = timer/code/card/podium helpers). Flow: `homeTab`,
-  `lobby`, actions HOME_TAB/LOBBY_OPEN/LOBBY_BACK, screen `lobby` (`features/lobby/lobby-screen.tsx`, mock people, same rules as
-  the server because `Lobby` now lives in `game/lobby.ts` and `server/src/lobby.ts` re-exports it). Test harness supports async
-  tests. QA: `/qa-home?tab=multi&state=empty|error|slow`, `/qa-home?lobby=host|guest|watch`. 89 mobile tests. Server `/api/rooms`
-  still hides private rooms: the Multi list shows them with a lock, so change that when wiring (list them, join by code only);
-  also add `startedAt` to room metadata for the timer. Not yet checked on the iPhone.
-- 6.11.26 – MULTIPLAYER, phase 4 done (server + test page; the in-app rooms/lobby screens are NOT built yet): `server/src/lobby.ts`
-  (pure rules: max 6 humans, host = first joined and passes on, one owner per category, switching frees the old one, start =
-  host + 2 humans + everyone has a category, hands `HumanSeat`s to `createGame`), `GameRoom.ts` (Colyseus room `game`: join with
-  {token} or {token, watch:true}; messages pickCategory/start; sends lobby/role/error/started; start builds the 16-seat board
-  only, the game is played in phase 5), `roomsApi.ts` (GET /api/categories, /api/rooms (public only, listed while in game),
-  /api/rooms/code/:code, /api/rooms/new-code), `roomsPage.ts` (http://<PC>:2567/rooms: list, code, create, lobby, leaders). 24
-  server tests; `node tests/live-rooms-check.mjs` plays the scenarios (race, full room, host leaves, start, watch).
-- 6.11.26 – MULTIPLAYER, phase 3 done (server + test page; the real in-app duel screen is not built yet): `server/src/liveDuel.ts`
-  (pure: 2 seats + spectators, uses `game/duel.ts`, injected clock, answers checked on the server, leaving = forfeit),
-  `DuelRoom.ts` (Colyseus room `duel`, join with {token} from /api/login; messages `answer`/`skip`; sends `view` 4x/s, `role`,
-  `correct`), `context.ts` (shared db), `duelPage.ts` (http://<PC>:2567/duel = test page: picture, clocks, answer, skip; also
-  serves /sdk.js and /items/<key>.webp). 17 server tests; live checks: `node tests/live-duel-check.mjs` and 2 browser tabs.
-- 6.11.26 – Server watch page: `server/src/watch.ts`, open http://<PC address>:2567/watch (live 4x4 board of a bot game, log, new-game button; own loop, polls /api/watch).
-- 6.11.26 – MULTIPLAYER, phase 2 done (server side only): `server/src/db.ts` (node:sqlite file `server/data/arena.sqlite`, env
-  ARENA_DB; tables users/sessions/games/game_players; `recordGame` counts only games with 2+ accounts; `getLeaders`),
-  `auth.ts` (scrypt, random login token stored hashed, same error for wrong password/unknown email, 8 failures/10 min lock),
-  `api.ts` (POST /api/register /login /logout, GET /api/me /leaders, Bearer token, open CORS) mounted in `index.ts`. 10 server
-  tests; checked live with curl. NOT done yet: the phone's welcome screen still uses local accounts (client part comes with
-  the lobby, phase 4); no password reset (needs email); Google disabled.
-- 6.11.26 – MULTIPLAYER, phase 1 done: `server/` (own package.json, Colyseus 0.18, CJS build via `tsc`, imports the game code
-  from `../mobile/src/game`). `server/src/gameLoop.ts` = pure step machine (draw → target → duel → continue/return → final →
-  champion; same random order as `autoPlayGame`); `ArenaRoom.ts` plays it every 1.5 s (ARENA_STEP_MS) and broadcasts
-  `welcome`/`step`; `index.ts` listens on 2567; `bots-cli.ts` prints a game. From `server/`: `npm.cmd test` (4 tests: 100
-  seeded games = 15 duels + 1 champion, identical to the local engine), `npm.cmd run start`, `node tests/live-check.mjs`
-  (client against the running server). Checked live: 15 duels, champion, room closes. Next: phase 2 (accounts + wins).
-- 6.11.26 – MULTIPLAYER, phase 0 done (plan: `docs/PRD_MULTIPLAYER.md`, approved by the user; rooms of up to 6
-  humans + bots, server on the home PC first, Colyseus, server accounts, leaderboard). `engine.createGame(humans, random)`
-  builds a game for 1-16 humans (HumanSeat: id, name, avatar, categoryId, wayId, userId); `createInitialGame` wraps it and
-  makes byte-identical games for the same seed (checked on 40 seeds). `drawArenaCategories` takes several taken categories
-  and a smaller count. `ArenaPlayer.userId?`; `isHuman` = a human decides now (a bot takeover flips it).
-  New pure `game/duel.ts` (startDuel/tick/applyAnswer/applySkip/duelView with an explicit `now`; server-ready, answers
-  never in the view). The local duel UI now uses duel.ts too (8.11.26). 80 tests.
-  Next: phase 1 = `server/` (Node + Colyseus), a bot-only game loop, 100 seeded games.
-- 5.11.26 – iPhone layout + guide. (1) While the keyboard is up, the duel sits in a `position: fixed` box that equals
-  `visualViewport` (top = offsetTop, height) – `design/use-web-viewport-box.ts` replaced the old inset hook – so Safari's
-  pan can no longer push the header out of sight (pic: Dortmund) and the mini-map is smaller in compact mode (pic: NBA).
-  Simulated in Chrome (offsetTop 125, height 330): everything inside the box. Not yet seen on the real iPhone.
-  (2) The bars above the iOS keyboard (✓ ∨ ∧ and the suggestion chip) are iOS's, not ours: a web page cannot remove
-  them; the only way is our own Hebrew keyboard (`inputmode="none"` + in-game keys) – awaiting the user's decision.
-  (3) New guide: 8 pages (`onboarding/guide-pages.ts`, text from GAME_RULES) with animated pictures
-  (`guide-visuals.tsx`), back/next, dots, top buttons home + skip-all; `/qa-guide` shows it.
-- 5.11.26 – iPhone bugs: (1) the build animation board used `row-reverse`, so the arena was mirrored compared with the
-  main arena and the draw screen (column 0 is on the LEFT everywhere: absolute `left: column*25%`) – now `row`;
-  `/qa-build` shows build → main board for comparison. (2) The draw cursor stopped jumping when the phone's iOS
-  "Reduce Motion" was on (1 step, 350 ms): now `drawStepDelaysMs(reduced)` – slow, flicker-free jumps (8 x 0.4 s)
-  instead of none (decision 20, 3 tests). The user confirmed on the iPhone that the draw jumps again.
-- 5.11.26 – (1) Duel layout: the picture panel takes the height that is left and the picture inside is absolutely
-  positioned, so no category (e.g. team crests) can push the answer field / skip button under the iPhone keyboard;
-  on a short visible area (< 600px) the header, clocks and turn pill go compact. Checked at 390x330, 375x290 and
-  390x664 in football-clubs, movies, israel-history. (2) All 1051 pictures are now WebP (640px max, q85; originals in
-  archive/original-images, 52.6 → 35.7 MB); the skill, panel upload, blur/crop and restore all write WebP.
-- 5.11.26 – Skip button hardened for iPhone (user: picture still did not advance): it now listens to touchstart,
-  pointerdown, mousedown and click through `features/battle/tap-gate.ts` (one tap = one skip, 4 tests), attaches via a
-  callback ref, and tapping it on a bot's turn shows "אפשר לדלג רק בתור שלך". Not reproducible in Chrome (skip worked
-  before too); awaiting the user's iPhone retest. If it still fails: ask which turn it is and what the screen shows.
-- 5.11.26 – Content complete (user): 35 playable categories + 4 hidden reserve; names hidden; AI pictures approved by
-  the user (credits `reviewedByUser`). The user deleted "cars" (pool test now needs >= 16, not 36). Admin panel
-  (decision 19, `npm run admin`) edits src/content/categories-data.json. Four oversized pictures shrunk to 640px JPEG.
-  tv-series has one way only. Next: iPhone retest, WebP conversion, content-check script, then publishing (ROADMAP).
-- Earlier (details in docs/ROADMAP.md, docs/DECISIONS.md, .claude/skills/arena-images/SKILL.md): 26-30.10 repo
-  restructure, rules/streak/bonus, seeded RNG, flow reducer, welcome/home/intro screens, brand palette, iPhone
-  Safari setup and keyboard fixes, 36-category pool with two "ways" (decisions 14-15); 31.10 pictures only (decision 16),
-  picture skill (decision 17), club names blurred, snacks and apps (user photos via `--file`), 17 new categories.
+- Older entries: see `docs/STATUS_LOG.md` (and docs/ROADMAP.md, docs/DECISIONS.md).
 
 ## Known issues / gotchas
 - Round rule (decision 1, revised 26.10.26): only the drawn attacker gets `hasPlayedThisRound`; defenders
@@ -194,8 +110,8 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
 - Old Codex Expo servers may still hold ports 8081–8083 (a reboot clears them); we use 8090.
 - The user's PowerShell blocks .ps1 scripts: in their Terminal panel run `npx.cmd expo start --web --port 8090`
   from `mobile/` (a long-lived server there outlives our turns; the preview server stops at turn end).
-- Accounts are local only (localStorage, salted SHA-256): not real security. Google sign-up is modelled
-  in `signUpWithGoogle` but the button is disabled until OAuth exists (multiplayer phase).
+- Accounts on the phone are local (localStorage, salted SHA-256): not real security. Google sign-in works (Firebase; falls back to a local-only sign-in when the server is unreachable); it was modelled
+  first in `signUpWithGoogle`.
 - Haptics do nothing in iPhone Safari; iOS audio needs a user tap before the first sound – both are
   handled in services/use-game-feedback.ts (sounds before the first tap are skipped).
 - Buttons next to the answer field on iPhone: a normal onPress needs two taps (first tap blurs the field

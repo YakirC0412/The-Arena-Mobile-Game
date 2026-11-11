@@ -1,7 +1,7 @@
 # קרדיטים לתמונות
 
 תמונות מוויקישיתוף, מוויקיפדיה ומאתרי תמונות חופשיים, ותמונות שנוצרו ב-AI. רישיונות CC BY / CC BY-SA מחייבים ייחוס – לכן הרשימה הזו.
-הקובץ נוצר אוטומטית מתוך mobile/assets/items/credits.json (`npm run wiki-images` או הסקיל arena-images).
+הקובץ נוצר אוטומטית מתוך mobile/assets/items/credits.json (לוח הניהול או הסקיל arena-images).
 
 
 ## actors

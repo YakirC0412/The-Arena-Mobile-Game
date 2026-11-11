@@ -1,5 +1,5 @@
 // Writes docs/IMAGE_CREDITS.md from assets/items/credits.json.
-// Used by fetch-wiki-images.js and the arena-images skill; also runs on its own:
+// Used by the admin panel and the arena-images skill; also runs on its own:
 // `node scripts/write-image-credits.js`.
 const fs = require('node:fs');
 const path = require('node:path');
@@ -11,7 +11,7 @@ const creditsDoc = path.join(root, '..', 'docs', 'IMAGE_CREDITS.md');
 function writeCreditsDoc(credits) {
   const lines = ['# קרדיטים לתמונות', '',
     'תמונות מוויקישיתוף, מוויקיפדיה ומאתרי תמונות חופשיים, ותמונות שנוצרו ב-AI. רישיונות CC BY / CC BY-SA מחייבים ייחוס – לכן הרשימה הזו.',
-    'הקובץ נוצר אוטומטית מתוך mobile/assets/items/credits.json (`npm run wiki-images` או הסקיל arena-images).', ''];
+    'הקובץ נוצר אוטומטית מתוך mobile/assets/items/credits.json (לוח הניהול או הסקיל arena-images).', ''];
   let current = '';
   for (const [id, credit] of Object.entries(credits)) {
     const category = id.replace(/-\d+$/, '');

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fill a whole Arena category with pictures, item by item.
 
-Reads admin/image-sources.json (falls back to wiki-sources.json), finds a
+Reads admin/image-sources.json, finds a
 picture for every item (Wikipedia lead image -> photo search -> AI), resizes it,
 saves it as mobile/assets/items/<category>/<category>-<n>.webp, records credits,
 connects the pictures to the game and writes a contact sheet for review.
@@ -27,7 +27,6 @@ MOBILE = os.path.join(REPO, "mobile")
 ITEMS_DIR = os.path.join(MOBILE, "assets", "items")
 CREDITS = os.path.join(ITEMS_DIR, "credits.json")
 SOURCES = os.path.join(REPO, "admin", "image-sources.json")
-WIKI_SOURCES = os.path.join(MOBILE, "scripts", "wiki-sources.json")
 ARCHIVE = os.path.join(REPO, "archive")
 UA = "TheArenaPrototype/0.1 (private trivia game; picture download)"
 WIKI_API = "https://en.wikipedia.org/w/api.php"
@@ -541,7 +540,7 @@ def run_node(script):
 
 
 def load_config(category):
-    for path in (SOURCES, WIKI_SOURCES):
+    for path in (SOURCES,):
         try:
             cfg = json.load(open(path, encoding="utf-8")).get(category)
         except OSError:

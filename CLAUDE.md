@@ -44,8 +44,7 @@ THE_Arena/            git root (run git commands here) · remote origin = privat
    ├─ AGENTS.md       Expo rules – read before touching any Expo/RN API
    ├─ public/         index.html (web page template: iPhone meta, no page-level dir!) · manifest + icons
    ├─ assets/         app/ (icons, splash, arena-logo.webp) · avatars/ · items/<category>/ · sounds/ · expo.icon
-   ├─ scripts/        build-item-images.js · write-image-credits.js · generate-feedback-sounds.js (app build helpers)
-   │                  · fetch-wiki-images.js + wiki-sources.json (legacy picture collector)
+   ├─ scripts/        build-item-images.js · write-image-credits.js · generate-feedback-sounds.js (app build helpers only)
    ├─ tests/          engine, rules, random-games, content tests
    └─ src/
       ├─ app/         routes only: _layout.tsx · index.tsx (renders GameFlow) · (dev)/qa-*.tsx

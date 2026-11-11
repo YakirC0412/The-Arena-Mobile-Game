@@ -41,7 +41,6 @@ If the category is not in `admin/image-sources.json`, add it. Read the category'
   when it is not freely licensed (private game, decisions 14 and 17).
 - `"hideName": true` when the answer must not be written on the picture (crests, packaging, app icons).
 - Write `prompt` so the AI picture answers the way: what must be visible, plain background, no text.
-- Categories missing here fall back to `wiki-sources.json` (kind photo).
 
 ## 2. Run and read the output (one line per item)
 

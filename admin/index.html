@@ -65,6 +65,21 @@ label.check input { width: auto; }
 .card .meta { padding: 6px 8px 8px; display: grid; gap: 4px; }
 .card .ttl { font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; }
 .badges { display: flex; flex-wrap: wrap; gap: 4px; }
+/* difficulty tiers (decision 28): easy = green, medium = gold, hard = orange */
+.card.t1 { border-inline-start: 5px solid var(--ok); }
+.card.t2 { border-inline-start: 5px solid var(--gold); }
+.card.t3 { border-inline-start: 5px solid var(--warn); }
+.tier-head { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 18px 0 8px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); }
+.tier-head:first-child { margin-top: 0; }
+.tier-head.t1 { border-inline-start: 5px solid var(--ok); }
+.tier-head.t2 { border-inline-start: 5px solid var(--gold); }
+.tier-head.t3 { border-inline-start: 5px solid var(--warn); }
+.tier-head h3 { margin: 0; font-size: 16px; }
+.tier-head .hint { margin-inline-start: auto; }
+.tiers { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 2px 0 10px; }
+details.legend { background: var(--field); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; margin: 0 0 12px; font-size: 14px; }
+details.legend summary { cursor: pointer; font-weight: 700; }
+details.legend p { margin: 8px 0 0; }
 dialog { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); padding: 0; box-shadow: var(--shadow); max-width: min(920px, 96vw); width: 100%; }
 dialog::backdrop { background: rgb(5 12 28 / .55); }
 .dlg-head { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
@@ -109,6 +124,12 @@ dialog::backdrop { background: rgb(5 12 28 / .55); }
 
 <script>
 const LEVELS = { easy: 'קל', medium: 'בינוני', hard: 'קשה' };
+// Difficulty comes from the position in the list (decision 28; the split itself is computed by the server, see admin/tiers.js).
+const TIERS = {
+  1: { name: 'קל', tone: 'ok', hint: 'מופיעות מההתחלה: התמונה הראשונה בכל דו־קרב תמיד קלה' },
+  2: { name: 'בינוני', tone: 'gold', hint: 'מופיעות לאורך הדו־קרב, בעיקר באמצעו' },
+  3: { name: 'קשה', tone: 'warn', hint: 'לא לפני התמונה הרביעית, ויותר ויותר ככל שהדו־קרב מתקדם' },
+};
 const BADGES = { review: ['AI – לבדיקה', 'gold'], needbox: ['שם גלוי', 'warn'] };
 let data = null, cur = null, filter = 'all';
 
@@ -180,7 +201,7 @@ function render() {
     const c = data.categories[id], [label, tone] = status(c);
     return h('div', { class: 'cat-row' + (id === cur ? ' on' : ''), onclick: () => { cur = id; filter = 'all'; render(); } },
       h('div', {}, h('div', { class: 'cat-name' }, c.icon, ' ', c.name, h('span', { class: 'pill ' + tone }, label)),
-        h('div', { class: 'cat-sub' }, `${c.pictures}/${c.items.length} תמונות · ${LEVELS[c.level]}`)),
+        h('div', { class: 'cat-sub' }, `${c.pictures}/${c.items.length} תמונות · ${LEVELS[c.level]} · קושי ${c.tiers.join('/')}`)),
       h('div', { class: 'arrows' },
         h('button', { title: 'הזז למעלה', onclick: (e) => { e.stopPropagation(); moveCat(id, -1); } }, '▲'),
         h('button', { title: 'הזז למטה', onclick: (e) => { e.stopPropagation(); moveCat(id, 1); } }, '▼')));
@@ -200,20 +221,46 @@ function renderMain() {
         h('button', { onclick: () => openCatDialog(cur) }, 'הגדרות הקטגוריה'),
         h('button', { class: 'primary', onclick: () => addItem() }, '+ פריט חדש'),
         h('button', { class: 'danger', onclick: deleteCat }, 'מחיקת הקטגוריה'))),
+    tierSummary(c),
     chips(c),
     itemCards(c));
 }
+// "12 easy · 10 medium · 8 hard", a warning when the list is not the standard 30, and a short explanation.
+function tierSummary(c) {
+  const ranges = tierRanges(c);
+  return h('div', {},
+    h('div', { class: 'tiers' },
+      ...[1, 2, 3].map((t) => h('span', { class: 'pill ' + TIERS[t].tone }, `${TIERS[t].name} ${c.tiers[t - 1]}${c.tiers[t - 1] ? ` (פריטים ${ranges[t - 1][0]}–${ranges[t - 1][1]})` : ''}`)),
+      c.items.length !== data.min ? h('span', { class: 'pill warn', title: 'הרשימה הסטנדרטית היא 30 פריטים: 12 קלים, 10 בינוניים, 8 קשים' }, `יש ${c.items.length} פריטים, לא ${data.min}: החלוקה היא 40% / 33% / 27%`) : null),
+    h('details', { class: 'legend' },
+      h('summary', {}, 'איך הקושי עובד?'),
+      h('p', {}, 'הקושי של פריט נקבע לפי המקום שלו ברשימה: 40% הראשונים קלים, 33% הבאים בינוניים ו־27% האחרונים קשים (ב־30 פריטים: 12 / 10 / 8). בדו־קרב התמונות מופיעות באקראי אבל בקושי עולה: הראשונה תמיד קלה, וקשה לא מופיעה לפני הרביעית. הבוט מצליח פחות ומתעכב יותר בתמונות קשות (בערך 77% / 62% / 47%). כדי לשנות קושי של פריט, מזיזים אותו ברשימה או בוחרים "העברה לדרגה" בכרטיס הפריט.')));
+}
+// First and last item number of each tier, e.g. [[1, 12], [13, 22], [23, 30]].
+function tierRanges(c) {
+  const [e, m] = c.tiers, total = c.items.length;
+  return [[1, e], [e + 1, e + m], [e + m + 1, total]];
+}
 function chips(c) {
   const count = { missing: c.items.filter((i) => !i.pic).length, review: c.items.filter((i) => i.credit?.review).length, needbox: c.items.filter((i) => i.credit?.needbox).length };
-  const defs = [['all', `הכל (${c.items.length})`], ['missing', `חסרה תמונה (${count.missing})`], ['review', `AI לבדיקה (${count.review})`], ['needbox', `שם גלוי (${count.needbox})`]];
+  const defs = [['all', `הכל (${c.items.length})`], ['tier1', `קל (${c.tiers[0]})`], ['tier2', `בינוני (${c.tiers[1]})`], ['tier3', `קשה (${c.tiers[2]})`], ['missing', `חסרה תמונה (${count.missing})`], ['review', `AI לבדיקה (${count.review})`], ['needbox', `שם גלוי (${count.needbox})`]];
   return h('div', { class: 'chips', role: 'group', 'aria-label': 'סינון' }, defs.map(([k, text]) => h('button', { class: 'chip', 'aria-pressed': String(filter === k), onclick: () => { filter = k; renderMain(); } }, text)));
 }
 function itemCards(c) {
-  const shown = c.items.filter((i) => filter === 'all' || (filter === 'missing' && !i.pic) || (filter === 'review' && i.credit?.review) || (filter === 'needbox' && i.credit?.needbox));
+  const shown = c.items.filter((i) => filter === 'all' || (filter === 'missing' && !i.pic) || (filter === 'review' && i.credit?.review) || (filter === 'needbox' && i.credit?.needbox) || filter === 'tier' + i.tier);
   if (!shown.length) return h('div', { class: 'empty' }, c.items.length ? 'אין פריטים בסינון הזה.' : 'אין פריטים בקטגוריה. לחצו "+ פריט חדש".');
-  return h('div', { class: 'cards' }, shown.map((i) => h('div', { class: 'card', tabindex: '0', role: 'button', onclick: () => openItem(i.n), onkeydown: (e) => { if (e.key === 'Enter') openItem(i.n); } },
+  const card = (i) => h('div', { class: 'card t' + i.tier, tabindex: '0', role: 'button', onclick: () => openItem(i.n), onkeydown: (e) => { if (e.key === 'Enter') openItem(i.n); } },
     h('div', { class: 'thumb' }, i.pic ? h('img', { src: img(cur, i.n, i.pic.v), loading: 'lazy', alt: i.answer }) : 'אין תמונה'),
-    h('div', { class: 'meta' }, h('div', { class: 'ttl' }, `${i.n}. ${i.answer}`), h('div', { class: 'badges' }, badges(i))))));
+    h('div', { class: 'meta' }, h('div', { class: 'ttl' }, `${i.n}. ${i.answer}`), h('div', { class: 'badges' }, h('span', { class: 'pill ' + TIERS[i.tier].tone }, TIERS[i.tier].name), badges(i))));
+  // Everything shown: one section per tier, so the boundaries are visible. A filter shows a flat list (each card has its tier badge).
+  if (filter !== 'all') return h('div', { class: 'cards' }, shown.map(card));
+  const ranges = tierRanges(c);
+  return h('div', {}, [1, 2, 3].filter((t) => c.tiers[t - 1] > 0).map((t) => h('section', {},
+    h('div', { class: 'tier-head t' + t },
+      h('h3', {}, `${TIERS[t].name} · פריטים ${ranges[t - 1][0]}–${ranges[t - 1][1]}`),
+      h('span', { class: 'pill ' + TIERS[t].tone }, `${c.tiers[t - 1]} פריטים`),
+      h('span', { class: 'hint' }, TIERS[t].hint)),
+    h('div', { class: 'cards' }, shown.filter((i) => i.tier === t).map(card)))));
 }
 function badges(i) {
   const out = [];
@@ -286,6 +333,18 @@ async function addItem() {
   if (!r) return;
   await load(); openItem(r.n);
 }
+// Moves item n into another tier: it lands on the nearest slot of that tier (the first one when it comes from an easier
+// tier, the last one when it comes from a harder tier); the items in between shift by one place, like the arrow buttons.
+async function moveToTier(n, t) {
+  const c = cat(), [e, m] = c.tiers, total = c.items.length;
+  const first = [1, e + 1, e + m + 1][t - 1], last = [e, e + m, total][t - 1];
+  const target = n < first ? first : last;
+  const dir = target > n ? 1 : -1;
+  await busy('מזיז…', async () => { for (let k = n; k !== target; k += dir) await api('POST', `/api/item/${cur}/${k}/move`, { dir }); });
+  await load();
+  openItem(target);
+  toast(`הפריט הועבר לדרגת ${TIERS[t].name} (מקום ${target})`);
+}
 function openItem(n) {
   const c = cat(), i = itemOf(n), d = $('#itemDlg'), two = c.ways.length > 1;
   const f = {
@@ -327,7 +386,7 @@ function openItem(n) {
       h('button', { onclick: () => d.close() }, 'סגירה')),
     h('div', { class: 'dlg-body' }, h('div', { class: 'item-cols' },
       h('div', { class: 'fields' }, pic,
-        h('div', { class: 'badges' }, badges(i)),
+        h('div', { class: 'badges' }, h('span', { class: 'pill ' + TIERS[i.tier].tone }, `דרגת קושי: ${TIERS[i.tier].name}`), badges(i)),
         cr ? h('div', { class: 'hint' }, `מקור: ${cr.via || 'ויקיפדיה / ויקישיתוף'}${cr.license ? ' · ' + cr.license : ''}${cr.author && cr.author !== '—' ? ' · ' + cr.author : ''}`) : null,
         h('div', { class: 'row' }, fileInput, h('button', { class: 'primary', onclick: () => fileInput.click() }, 'העלאת תמונה'),
           h('button', { disabled: !i.pic, onclick: () => openBlur(n) }, 'טשטוש / חיתוך'),
@@ -348,6 +407,9 @@ function openItem(n) {
         h('div', { class: 'row' }, h('button', { class: 'primary', onclick: async () => { const ok = await busy('שומר…', async () => { await saveOnly(); return true; }); if (ok) { toast('נשמר'); await refresh(); } } }, 'שמירת הפריט'),
           h('button', { disabled: n <= 1, onclick: async () => { await busy('מזיז…', () => api('POST', `/api/item/${cur}/${n}/move`, { dir: -1 })); await load(); openItem(n - 1); } }, 'הזזה למעלה (קל יותר)'),
           h('button', { disabled: n >= c.items.length, onclick: async () => { await busy('מזיז…', () => api('POST', `/api/item/${cur}/${n}/move`, { dir: 1 })); await load(); openItem(n + 1); } }, 'הזזה למטה (קשה יותר)')),
+        h('div', { class: 'hint' }, `מקום ${n} מתוך ${c.items.length} · קושי ${TIERS[i.tier].name}. ${TIERS[i.tier].hint}.`),
+        h('div', { class: 'row' }, h('span', { class: 'hint' }, 'העברה לדרגה:'),
+          ...[1, 2, 3].map((t) => h('button', { disabled: i.tier === t || !c.tiers[t - 1], title: i.tier === t ? 'הפריט כבר בדרגה הזאת' : `מזיז את הפריט לקצה של דרגת ${TIERS[t].name}; הפריטים שביניהם זזים מקום אחד`, onclick: () => moveToTier(n, t) }, TIERS[t].name))),
         h('div', { class: 'row' }, h('button', { class: 'danger', onclick: async () => { if (await ask(`למחוק את הפריט "${i.answer}"? התמונה תעבור לארכיון והפריטים שאחריו יזוזו מקום אחד.`, 'מחיקת הפריט')) { await busy('מוחק…', () => api('DELETE', `/api/item/${cur}/${n}`)); d.close(); await load(); toast('הפריט נמחק'); } } }, 'מחיקת הפריט'))))));
   if (!d.open) d.showModal();
 }

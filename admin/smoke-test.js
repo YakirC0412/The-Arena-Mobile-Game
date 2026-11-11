@@ -35,6 +35,9 @@ const files = () => (fs.existsSync(path.join(MOBILE, 'assets/items', ID)) ? fs.r
   let c = await state();
   check('three items, geresh removed', c.items.length === 3 && c.items[0].answer === 'פיל גירפה', JSON.stringify(c.items.map((i) => i.answer)));
   check('aliases split on commas', c.items[1].aliases?.length === 2);
+  check('difficulty tiers follow the position (1 easy, 2 medium, 3 hard)', c.items.map((i) => i.tier).join() === '1,2,3' && c.tiers.join() === '1,1,1', JSON.stringify([c.items.map((i) => i.tier), c.tiers]));
+  const everything = await (await fetch(`${BASE}/api/data`)).json();
+  check('a real 30-item category is split 12 / 10 / 8', everything.categories.animals.tiers.join('/') === '12/10/8', everything.categories.animals.tiers.join('/'));
   r = await call('POST', `/api/item/${ID}`, { answer: 'מלך החיות' });
   check('answer that equals another item\'s alias is refused', r.status === 400);
   r = await call('PUT', `/api/item/${ID}/3`, { answer: '' });

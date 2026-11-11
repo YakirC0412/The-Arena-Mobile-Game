@@ -6,6 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const cp = require('node:child_process');
 const { serialize } = require('./format');
+const { tierSizes, tierOf } = require('./tiers');
 
 // This folder (admin/) sits at the repo root, next to mobile/ (the app whose files it edits).
 const REPO = path.join(__dirname, '..');
@@ -171,11 +172,13 @@ function snapshot() {
       const cr = credits[`${id}-${n}`] || {};
       return {
         n, ...item,
+        // 1 easy / 2 medium / 3 hard, from the item's position (decision 28)
+        tier: tierOf(i, c.items.length),
         pic: file ? { v: Math.round(fs.statSync(file).mtimeMs), hasOriginal: fs.existsSync(revealFile(id, n)) } : null,
         credit: file ? { via: cr.via, review: !!cr.review, needbox: !!cr.needbox, hidden: cr.hidden, license: cr.license, author: cr.author, source: cr.source } : null,
       };
     });
-    categories[id] = { ...c, items, pictures, playable: pictures >= MIN_PICTURES && c.status === 'active' };
+    categories[id] = { ...c, items, pictures, tiers: tierSizes(c.items.length), playable: pictures >= MIN_PICTURES && c.status === 'active' };
   }
   return { order: data.order, categories, min: MIN_PICTURES };
 }

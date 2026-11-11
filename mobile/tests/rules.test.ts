@@ -29,6 +29,10 @@ import type { CategoryItem } from '../src/game/types';
 import type { GameState } from '../src/game/types';
 import { assert, assertEqual, suite, test } from './harness';
 
+// The tests run under Node (compiled to .engine-test/), where `require` exists; the app's TypeScript config has no Node types.
+declare const require: (path: string) => unknown;
+const nodeRequire = require;
+
 const fixedRandom = () => 0;
 
 // Plays one duel and returns the new state.
@@ -265,6 +269,16 @@ suite('§3 picture mix in a duel (decision 28)', () => {
       const counts = [1, 2, 3].map((tier) => category.items.filter((item) => item.difficulty === tier).length).join('/');
       assertEqual(counts, '12/10/8', `${category.id} tiers`);
     }
+  });
+
+  test('the admin panel splits a list into tiers exactly like the game', () => {
+    // admin/tiers.js is plain Node code (the panel is not part of the app), so it is loaded at run time.
+    const admin = nodeRequire('../../../admin/tiers.js') as { tierSizes: (count: number) => number[]; tierOf: (index: number, count: number) => number };
+    for (let count = 0; count <= 80; count += 1) {
+      assertEqual(admin.tierSizes(count).join('/'), difficultyTierSizes(count).join('/'), `${count} items`);
+    }
+    const category = CATEGORIES.find((entry) => entry.items.length === 30)!;
+    assertEqual(category.items.map((item, index) => item.difficulty === admin.tierOf(index, 30)).every(Boolean), true, 'Every item of a real category');
   });
 
   test('the first picture is always easy and a hard picture never comes before the 4th', () => {

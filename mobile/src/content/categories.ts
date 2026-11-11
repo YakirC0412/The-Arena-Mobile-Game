@@ -8,6 +8,7 @@ import type {
   WayId,
 } from '../game/types';
 import data from './categories-data.json';
+import tierShares from './difficulty-tiers.json';
 import { IMAGED_ITEM_IDS } from './image-manifest';
 
 // The category pool (docs/CATEGORIES.md, decisions 14–15, 19). Every category, its items, answers, ways and
@@ -42,10 +43,11 @@ const DATA = data as unknown as RawData;
 
 // A category's list is split into difficulty tiers by position (decision 28): the first 40% are easy, the next 33% medium
 // and the last 27% hard. A pool of 30 pictures has 12 easy, 10 medium and 8 hard ones.
+// The shares live in difficulty-tiers.json, which the admin panel reads too (admin/tiers.js has the same formula).
 export function difficultyTierSizes(count: number): [easy: number, medium: number, hard: number] {
   if (count <= 0) return [0, 0, 0];
-  const easy = Math.min(count, Math.max(1, Math.round(count * 0.4)));
-  const hard = Math.min(count - easy, Math.round(count * 0.27));
+  const easy = Math.min(count, Math.max(1, Math.round(count * tierShares.easyShare)));
+  const hard = Math.min(count - easy, Math.round(count * tierShares.hardShare));
   return [easy, count - easy - hard, hard];
 }
 

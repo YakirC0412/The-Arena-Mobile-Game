@@ -1,0 +1,5 @@
+{
+  "_readme": "How a category's list is split into difficulty tiers by position (decision 28): the first easyShare of the items are easy, the last hardShare are hard, the rest are medium. Read by content/categories.ts (the game) and admin/tiers.js (the admin panel). 30 items = 12 easy / 10 medium / 8 hard.",
+  "easyShare": 0.4,
+  "hardShare": 0.27
+}

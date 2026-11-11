@@ -16,3 +16,12 @@ server/.env
 # Firebase Hosting web build
 mobile/dist-web/
 .firebase/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Local logs and scratch
+*.log
+.engine-test/
+mobile/dist-pages/

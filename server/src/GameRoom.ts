@@ -55,6 +55,12 @@ export class GameRoom extends Room {
       const result = this.lobby.pickCategory(client.sessionId, String(message?.categoryId), message?.wayId === 'w2' ? 'w2' : 'w1');
       this.afterAction(client, result);
     });
+    // The host can delete the room while it is still a lobby: everyone is disconnected and the room disappears.
+    this.onMessage('closeRoom', (client) => {
+      if (this.game || client.sessionId !== this.lobby.hostId) return;
+      this.broadcast('roomClosed', { reason: 'host' });
+      this.clock.setTimeout(() => this.disconnect(), 300);
+    });
     // A phone says hello once its handlers are ready, and gets everything it may have missed while connecting.
     this.onMessage('hello', (client) => {
       const seat = this.game?.seatOf(client.sessionId) ?? null;

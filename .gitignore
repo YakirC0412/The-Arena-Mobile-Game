@@ -8,3 +8,11 @@ Thumbs.db
 # arena-images skill: secrets and state
 .claude/skills/arena-images/keys.env
 .claude/skills/arena-images/.openai_state.json
+
+# local configuration (Firebase project ids etc.)
+mobile/.env
+server/.env
+
+# Firebase Hosting web build
+mobile/dist-web/
+.firebase/

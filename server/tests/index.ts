@@ -1,6 +1,7 @@
 // Entry point for `npm test` in server/: registers every suite, then runs them (same tiny runner as the game).
 import './gameLoop.test';
 import './auth.test';
+import './firebase.test';
 import './liveDuel.test';
 import './lobby.test';
 import './onlineGame.test';

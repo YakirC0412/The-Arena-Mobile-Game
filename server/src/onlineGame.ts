@@ -63,7 +63,7 @@ export type Timing = {
 
 export const DEFAULT_TIMING: Timing = {
   drawFullMs: 5600, drawBonusExtraMs: 900, drawQuickMs: 1700, botChoiceMs: 1200, announceMs: 2200,
-  resultMs: 5200, resultBannerMs: 1800, botRevealMs: 1300, resultCompactMs: 2400, resultFinalMs: 1800, milestoneMs: 2800, finalRevealMs: 4800,
+  resultMs: 5200, resultBannerMs: 1800, botRevealMs: 1300, resultCompactMs: 4200, resultFinalMs: 1800, milestoneMs: 2800, finalRevealMs: 4800,
   humanChoiceMs: 20_000, awayMs: 30_000,
 };
 

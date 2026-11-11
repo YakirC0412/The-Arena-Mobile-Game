@@ -45,6 +45,10 @@ export function openDb(file: string): Db {
   if (!columns.some((column) => column.name === 'gender')) {
     db.exec("ALTER TABLE users ADD COLUMN gender TEXT NOT NULL DEFAULT 'male'");
   }
+  // Google sign-in (Firebase): the Firebase user id, and whether the player has chosen nickname / avatar / gender yet.
+  if (!columns.some((column) => column.name === 'firebase_uid')) db.exec('ALTER TABLE users ADD COLUMN firebase_uid TEXT');
+  if (!columns.some((column) => column.name === 'profile_done')) db.exec('ALTER TABLE users ADD COLUMN profile_done INTEGER NOT NULL DEFAULT 1');
+  db.exec('CREATE UNIQUE INDEX IF NOT EXISTS users_firebase_uid ON users(firebase_uid)');
   return db;
 }
 

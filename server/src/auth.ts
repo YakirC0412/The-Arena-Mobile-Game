@@ -1,6 +1,7 @@
 // Accounts: email + password (scrypt), login tokens. Real security for the server; the old local accounts stay for solo play.
 import { createHash, randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 import type { Db } from './db';
+import type { FirebaseIdentity } from './firebaseAuth';
 
 export type PublicUser = { id: number; email: string; name: string; avatar: string; gender: 'male' | 'female' };
 export type AuthResult<T> = { ok: true; value: T } | { ok: false; error: string };
@@ -54,8 +55,9 @@ export function login(db: Db, input: { email: string; password: string; gender?:
   // Hash even for an unknown email so the answer takes the same time and says nothing about which emails exist.
   const salt = row?.salt ?? '00000000000000000000000000000000';
   const candidate = Buffer.from(hashPassword(password, salt), 'hex');
-  const stored = Buffer.from(row?.password_hash ?? '0'.repeat(128), 'hex');
-  if (!row || !timingSafeEqual(candidate, stored)) {
+  const stored = Buffer.from(row?.password_hash || '0'.repeat(128), 'hex');
+  // A player who signed up with Google has no password: the password route is closed for them.
+  if (!row || !row.password_hash || !timingSafeEqual(candidate, stored)) {
     const fresh = seen && now - seen.since < WINDOW_MS ? seen : { count: 0, since: now };
     failures.set(email, { count: fresh.count + 1, since: fresh.since });
     return { ok: false, error: 'wrong_login' };
@@ -67,6 +69,40 @@ export function login(db: Db, input: { email: string; password: string; gender?:
     db.prepare('UPDATE users SET gender = ? WHERE id = ?').run(gender, row.id);
   }
   return { ok: true, value: { user: { id: row.id, email: row.email, name: row.name, avatar: row.avatar, gender }, token: newSession(db, row.id) } };
+}
+
+// Google sign-in: `identity` was verified by firebaseAuth.verifyFirebaseToken. The account is found by the Firebase id, else linked
+// to an existing account with the same (Google-verified) email, else created. A new account has no nickname/avatar/gender yet.
+export function loginWithFirebase(db: Db, identity: FirebaseIdentity): AuthResult<{ user: PublicUser; token: string; needsProfile: boolean }> {
+  const select = 'SELECT id, email, name, avatar, gender, profile_done FROM users WHERE ';
+  type Row = { id: number; email: string; name: string; avatar: string; gender: string; profile_done: number };
+  let row = db.prepare(select + 'firebase_uid = ?').get(identity.uid) as Row | undefined;
+  if (!row && identity.email && identity.emailVerified) {
+    row = db.prepare(select + 'email = ?').get(identity.email) as Row | undefined;
+    if (row) db.prepare('UPDATE users SET firebase_uid = ? WHERE id = ?').run(identity.uid, row.id);
+  }
+  if (!row) {
+    if (!identity.email || !identity.emailVerified) return { ok: false, error: 'email_not_verified' };
+    const name = (identity.name ?? '').trim().slice(0, 20) || 'שחקן';
+    const created = db
+      .prepare("INSERT INTO users (email, name, avatar, gender, salt, password_hash, created_at, firebase_uid, profile_done) VALUES (?, ?, 'avatar-01', 'male', '', '', ?, ?, 0)")
+      .run(identity.email, name, Date.now(), identity.uid);
+    row = { id: Number(created.lastInsertRowid), email: identity.email, name, avatar: 'avatar-01', gender: 'male', profile_done: 0 };
+  }
+  const user: PublicUser = { id: row.id, email: row.email, name: row.name, avatar: row.avatar, gender: asGender(row.gender) };
+  return { ok: true, value: { user, token: newSession(db, row.id), needsProfile: row.profile_done === 0 } };
+}
+
+// The first Google sign-in asks for nickname, avatar and gender (Google knows none of the last two).
+export function updateProfile(db: Db, token: string | null | undefined, input: { name?: unknown; avatar?: unknown; gender?: unknown }): AuthResult<PublicUser> {
+  const current = userFromToken(db, token);
+  if (!current) return { ok: false, error: 'not_signed_in' };
+  const name = String(input.name ?? '').trim();
+  if (name.length < 1 || name.length > 20) return { ok: false, error: 'bad_name' };
+  const avatar = /^avatar-\d{2}$/.test(String(input.avatar ?? '')) ? String(input.avatar) : current.avatar;
+  const gender = asGender(input.gender);
+  db.prepare('UPDATE users SET name = ?, avatar = ?, gender = ?, profile_done = 1 WHERE id = ?').run(name, avatar, gender, current.id);
+  return { ok: true, value: { ...current, name, avatar, gender } };
 }
 
 export function userFromToken(db: Db, token: string | null | undefined): PublicUser | null {

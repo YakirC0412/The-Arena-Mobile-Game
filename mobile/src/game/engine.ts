@@ -447,6 +447,15 @@ export function resolveBattle(
     },
   };
 
+  // The bonus system ends when the final is reached (two contestants left): streaks and banked bonuses are cleared,
+  // nobody earns a bonus any more, and the final itself is played with the normal clocks.
+  const finalReached = Object.values(players).filter((player) => player.isActive).length <= 2;
+  if (finalReached) {
+    Object.values(players).forEach((player) => {
+      players[player.id] = { ...player, winStreak: 0, bonusReady: false };
+    });
+  }
+
   const cells = state.cells.map((cell) => (
     cell.ownerId === loserId ? { ...cell, ownerId: winnerId } : cell
   ));
@@ -468,7 +477,7 @@ export function resolveBattle(
     winnerId,
     loserId,
     inheritedCategory,
-    winnerEarnedBonus: progress.earnedBonus,
+    winnerEarnedBonus: finalReached ? false : progress.earnedBonus,
     summary,
   };
 }

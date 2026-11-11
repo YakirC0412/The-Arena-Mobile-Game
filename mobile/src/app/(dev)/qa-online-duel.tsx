@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { OnlineDuel } from '@/features/online/online-duel';
 import type { OnlineView } from '@/game/online-view';
+import { viewToGameState } from '@/online/view-to-state';
 
 // QA: the online duel with a fixed fake view. `?img=cartoons-11` picks the picture (any key from item-images),
 // `?side=attacker|defender|watch` picks who looks at it.
@@ -27,7 +28,7 @@ export default function QaOnlineDuelScreen() {
   } as unknown as OnlineView;
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <OnlineDuel mySide={mySide} receivedAt={Date.now()} send={() => {}} view={view} />
+      <OnlineDuel correctCount={0} muted={false} mySide={mySide} onToggleMuted={() => {}} receivedAt={Date.now()} send={() => {}} state={viewToGameState(view, 'a')} view={view} />
     </SafeAreaView>
   );
 }

@@ -110,9 +110,8 @@ export function ChampionCelebrationScreen({
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.screen}>
-        <Text style={styles.eyebrow} weight="bold">הקרב האחרון הוכרע</Text>
         <Text style={styles.title} weight="black">
-          {winner.isHuman ? 'כבשת את הזירה!' : `${winner.name} ${by(winner, 'כובש', 'כובשת')} את הזירה`}
+          {`${winner.name} ${by(winner, 'כובש', 'כובשת')} את הזירה ו${by(winner, 'מנצח', 'מנצחת')} את המשחק`}
         </Text>
 
         <View style={styles.boardFrame}>
@@ -217,9 +216,6 @@ export function ChampionCelebrationScreen({
         </View>
 
         <Animated.View style={[styles.footer, { opacity: champion }]}>
-          <Text style={styles.footerTitle} weight="black">
-            {winner.isHuman ? by(winner, 'אתה אלוף הזירה 🏆', 'את אלופת הזירה 🏆') : `${winner.name} ${by(winner, 'הוא אלוף', 'היא אלופת')} הזירה 🏆`}
-          </Text>
           <Pressable accessibilityLabel="התחלת משחק חדש" accessibilityRole="button" onPress={onComplete} style={styles.button}>
             <Text style={styles.buttonText} weight="black">התחלת משחק חדש</Text>
           </Pressable>

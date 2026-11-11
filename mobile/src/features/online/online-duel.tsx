@@ -1,12 +1,17 @@
 import { by } from '@/game/gender';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ComponentRef } from 'react';
-import { Image, KeyboardAvoidingView, Platform, Pressable, StyleSheet, TextInput, useWindowDimensions, View } from 'react-native';
+import { Animated, Easing, KeyboardAvoidingView, Platform, Pressable, StyleSheet, TextInput, useWindowDimensions, View } from 'react-native';
 
 import { ITEM_IMAGES } from '@/content/item-images';
 import { AppText } from '@/design/app-text';
-import { AvatarPortrait } from '@/design/avatar-portrait';
+import { ArenaBattleMiniMap } from '@/features/arena/arena-battle-mini-map';
+import { ClockCard, type ClockEvent } from '@/features/battle/battle-clock-cards';
+import { SoundIcon } from '@/features/battle/sound-icon';
+import { useReducedMotion } from '@/design/use-reduced-motion';
+import type { GameState } from '@/game/types';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
+import { isTouchWeb } from '@/design/keyboard-primer';
 import { useWebViewportBox } from '@/design/use-web-viewport-box';
 import { FittedPicture } from '@/features/battle/fitted-picture';
 import { createTapGate } from '@/features/battle/tap-gate';
@@ -24,11 +29,16 @@ type Props = {
   send: (type: string, payload?: object) => void;
   // Called with true when the server confirms a right answer.
   onSkipFeedback?: () => void;
+  // The board (for the mini-map), how many right answers the server confirmed for this phone, and the sound switch.
+  state: GameState;
+  correctCount: number;
+  muted: boolean;
+  onToggleMuted: () => void;
 };
 
 const formatClock = (ms: number) => (Math.max(0, ms) / 1000).toFixed(1);
 
-export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: Props) {
+export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback, state, correctCount, muted, onToggleMuted }: Props) {
   const duel = view.duel!;
   const setup = view.setup!;
   const [now, setNow] = useState(() => Date.now());
@@ -40,7 +50,8 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
   // Always sized to the visible area: on iPhone the page height is not the visible height while Safari's toolbars show.
   const viewportBox = useWebViewportBox(true);
   const { height: windowHeight } = useWindowDimensions();
-  const compact = (viewportBox ? viewportBox.height : windowHeight) < 600;
+  // A player on a phone always gets the compact layout (the keyboard is up for the whole duel); see isTouchWeb.
+  const compact = (viewportBox ? viewportBox.height : windowHeight) < 600 || (mySide !== null && isTouchWeb());
   const fixedBox = viewportBox
     ? ({
       position: 'fixed', top: viewportBox.top, left: 0, right: 0, height: viewportBox.height,
@@ -66,11 +77,88 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
     if (myTurn && text.trim()) send('answer', { text });
   };
 
+  // The answer field takes focus when the duel opens and keeps it for the whole duel (also while the other side plays),
+  // so the iPhone keyboard stays up and nothing jumps when the turn comes to you. iOS only honours this after a tap
+  // (the keyboard is primed by the tap that led here); otherwise any tap on the picture opens it.
+  useEffect(() => {
+    if (!mySide) return undefined;
+    const timer = setTimeout(() => inputRef.current?.focus(), 100);
+    return () => clearTimeout(timer);
+  }, [mySide, myTurn]);
+
+  // ---- feedback, the same as the local duel: "-3" on a skip, a big "נכון!" and a bump on a right answer, a shake on a wrong one ----
+  const reduceMotion = useReducedMotion();
+  const [clockEvents, setClockEvents] = useState<Record<'attacker' | 'defender', ClockEvent>>({ attacker: null, defender: null });
+  const eventKeyRef = useRef(0);
+  const ownEventAtRef = useRef(0);
+  const [verdict] = useState(() => new Animated.Value(0));
+  const [fieldShake] = useState(() => new Animated.Value(0));
+  const [wrong, setWrong] = useState(false);
+  const native = Platform.OS !== 'web';
+  const showVerdict = () => {
+    verdict.stopAnimation();
+    verdict.setValue(0);
+    Animated.sequence([
+      Animated.timing(verdict, { toValue: 1, duration: 120, easing: Easing.out(Easing.exp), useNativeDriver: native }),
+      Animated.delay(380),
+      Animated.timing(verdict, { toValue: 0, duration: 180, useNativeDriver: native }),
+    ]).start();
+  };
+  const emit = (side: 'attacker' | 'defender', kind: 'skip' | 'correct') => {
+    eventKeyRef.current += 1;
+    const event = { key: eventKeyRef.current, kind };
+    setClockEvents((current) => ({ ...current, [side]: event }));
+    if (kind === 'correct') showVerdict();
+  };
+  // My own right answer: the server confirms it at once.
+  const correctSeenRef = useRef(correctCount);
+  useEffect(() => {
+    if (correctCount === correctSeenRef.current) return;
+    correctSeenRef.current = correctCount;
+    if (mySide) {
+      ownEventAtRef.current = Date.now();
+      emit(mySide, 'correct');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [correctCount]);
+  // The other side's skip or right answer shows when the next picture arrives: same turn = a skip, turn passed = a right answer.
+  const previousRef = useRef({ itemId: duel.itemId, active: duel.active });
+  useEffect(() => {
+    const previous = previousRef.current;
+    previousRef.current = { itemId: duel.itemId, active: duel.active };
+    if (previous.itemId === duel.itemId) return;
+    if (Date.now() - ownEventAtRef.current < 2500) return;
+    emit(previous.active, previous.active === duel.active ? 'skip' : 'correct');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [duel.itemId]);
+  const itemRef = useRef(duel.itemId);
+  itemRef.current = duel.itemId;
+  const onWrongSubmit = () => {
+    const submittedItem = duel.itemId;
+    setTimeout(() => {
+      if (itemRef.current !== submittedItem) return;
+      setWrong(true);
+      setTimeout(() => setWrong(false), 700);
+      if (reduceMotion) return;
+      fieldShake.stopAnimation();
+      Animated.sequence([
+        Animated.timing(fieldShake, { toValue: -8, duration: 45, useNativeDriver: native }),
+        Animated.timing(fieldShake, { toValue: 8, duration: 60, useNativeDriver: native }),
+        Animated.timing(fieldShake, { toValue: -5, duration: 55, useNativeDriver: native }),
+        Animated.timing(fieldShake, { toValue: 0, duration: 45, useNativeDriver: native }),
+      ]).start();
+    }, 500);
+  };
+
   const skip = () => {
     if (!myTurn || duel.paused) return;
     inputRef.current?.focus();
     send('skip');
     onSkipFeedback?.();
+    if (mySide) {
+      ownEventAtRef.current = Date.now();
+      emit(mySide, 'skip');
+    }
   };
   const skipRef = useRef(skip);
   useEffect(() => {
@@ -109,28 +197,35 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
 
   const clockCard = (side: 'attacker' | 'defender') => {
     const player = side === 'attacker' ? attacker : defender;
-    const active = duel.active === side && !duel.winner;
-    const bonus = side === 'attacker' ? setup.attackerUsesBonus : setup.defenderUsesBonus;
-    const ms = left(side);
+    const mine = mySide === side;
+    const role = side === 'attacker' ? by(player, 'תוקף', 'תוקפת') : by(player, 'מגן', 'מגנה');
     return (
-      <View style={[styles.clock, compact && styles.clockCompact, active && styles.clockActive, duel.winner === side && styles.clockWinner]}>
-        <View style={styles.clockWho}>
-          <AvatarPortrait avatarId={player.avatar} borderColor={active ? colors.accentGold : colors.brandSky} size={compact ? 26 : 34} />
-          <AppText numberOfLines={1} style={styles.clockName} weight="bold">
-            {player.name}{mySide === side ? ' (אני)' : ''}
-          </AppText>
-        </View>
-        <View style={compact ? styles.clockValueRow : undefined}>
-          <AppText style={[styles.clockValue, compact && styles.clockValueCompact, ms < 8000 && active && { color: colors.danger }]} weight="black">{formatClock(ms)}</AppText>
-          <AppText style={styles.clockRole}>{side === 'attacker' ? by(player, 'תוקף', 'תוקפת') : by(player, 'מגן', 'מגנה')}{bonus ? ' · +5' : ''}</AppText>
-        </View>
-      </View>
+      <ClockCard
+        active={duel.active === side && !duel.winner}
+        avatar={player.avatar}
+        bonus={side === 'attacker' ? setup.attackerUsesBonus : setup.defenderUsesBonus}
+        compact={compact}
+        event={clockEvents[side]}
+        label={`${mine ? by(player, 'אתה', 'את') : player.name} · ${role}`}
+        milliseconds={left(side)}
+        totalMs={(side === 'attacker' ? setup.attackerSeconds : setup.defenderSeconds) * 1000}
+      />
     );
   };
 
   return (
     <KeyboardAvoidingView behavior={Platform.select({ android: 'height', ios: 'padding' })} style={[styles.screen, compact && styles.screenCompact, fixedBox]}>
       <View style={[styles.header, compact && styles.headerCompact]}>
+        <View style={styles.miniMapPosition}>
+          <ArenaBattleMiniMap attackerId={setup.attackerId} compact={compact} defenderId={setup.defenderId} state={state} />
+        </View>
+        <Pressable
+          accessibilityLabel={muted ? 'הפעלת צלילים' : 'השתקת צלילים'}
+          accessibilityRole="button"
+          onPress={onToggleMuted}
+          style={styles.muteButton}>
+          <SoundIcon muted={muted} />
+        </Pressable>
         {compact ? null : <AppText style={styles.eyebrow} weight="bold">{setup.isFinal ? '🏆 הגמר' : `דו־קרב ${view.duels + 1} מתוך 15`}</AppText>}
         <AppText numberOfLines={1} style={[styles.title, compact && styles.titleCompact]} weight="black">{setup.categoryName}</AppText>
         <AppText style={styles.wayLine} weight="bold">{setup.wayLabel}</AppText>
@@ -147,15 +242,18 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
         </AppText>
       </View>}
 
-      <FittedPicture
-        cardStyle={duel.paused ? { borderColor: colors.correct } : undefined}
-        fallback={<AppText style={styles.visual}>❔</AppText>}
-        minHeight={compact ? 64 : 140}
-        source={image}
-      />
+      <Pressable accessible={false} focusable={false} onPress={() => inputRef.current?.focus()} style={styles.pictureTap}>
+        <FittedPicture
+          cardStyle={duel.paused ? { borderColor: colors.correct } : undefined}
+          fallback={<AppText style={styles.visual}>❔</AppText>}
+          minHeight={compact ? 64 : 140}
+          source={image}
+        />
+      </Pressable>
 
       {mySide ? (
         <View style={styles.inputRow}>
+          <Animated.View style={[styles.fieldWrap, { transform: [{ translateX: fieldShake }] }]}>
           <TextInput
             ref={inputRef}
             autoCapitalize="none"
@@ -166,17 +264,22 @@ export function OnlineDuel({ view, receivedAt, mySide, send, onSkipFeedback }: P
             editable={!duel.winner}
             maxFontSizeMultiplier={1.3}
             onChangeText={onChange}
-            onSubmitEditing={() => myTurn && answer.trim() && send('answer', { text: answer })}
+            onSubmitEditing={() => {
+              if (!myTurn || !answer.trim()) return;
+              send('answer', { text: answer });
+              onWrongSubmit();
+            }}
             placeholder={myTurn ? 'הקלידו תשובה…' : `התור של ${activeName}`}
-            placeholderTextColor={colors.textSecondary}
+            placeholderTextColor={myTurn ? colors.inkSoft : colors.textSecondary}
             returnKeyType="done"
             selectionColor={colors.success}
             spellCheck={false}
-            style={[styles.input, !myTurn && styles.inputInactive]}
+            style={[styles.input, !myTurn && styles.inputInactive, wrong && styles.inputWrong]}
             submitBehavior="submit"
             textAlign="right"
             value={answer}
           />
+          </Animated.View>
           <Pressable
             ref={setSkipButton}
             accessibilityLabel="דילוג על התמונה, מינוס 3 שניות"
@@ -205,7 +308,7 @@ const styles = StyleSheet.create({
   title: { color: colors.textPrimary, fontSize: 24, lineHeight: 30, textAlign: 'center' },
   titleCompact: { fontSize: 18, lineHeight: 22 },
   wayLine: { color: colors.success, fontSize: typeScale.caption, textAlign: 'center' },
-  clocks: { flexDirection: 'row', gap: spacing.sm },
+  clocks: { flexDirection: 'row-reverse', gap: spacing.sm },
   clock: { flex: 1, borderRadius: radii.control, borderWidth: 2, borderColor: colors.border, backgroundColor: colors.surface, padding: spacing.sm, alignItems: 'center', gap: 2 },
   clockCompact: { paddingVertical: spacing.xs, gap: 0 },
   clockValueRow: { flexDirection: 'row-reverse', alignItems: 'baseline', gap: spacing.sm },
@@ -220,6 +323,13 @@ const styles = StyleSheet.create({
   turnText: { color: colors.bg, fontSize: typeScale.caption, textAlign: 'center' },
   imageCard: { flex: 1, width: '100%', minHeight: 140, borderRadius: radii.card, backgroundColor: colors.surfaceMuted, borderWidth: 2, borderColor: colors.territoryMeBorder, padding: spacing.xs, justifyContent: 'center', alignItems: 'center', overflow: 'hidden' },
   imageCardCompact: { minHeight: 64 },
+  miniMapPosition: { position: 'absolute', left: 0, top: 0 },
+  muteButton: { position: 'absolute', right: 0, top: 0, width: 44, height: 44, borderRadius: radii.control, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.surface, alignItems: 'center', justifyContent: 'center' },
+  fieldWrap: { flex: 1 },
+  inputWrong: { borderColor: colors.danger },
+  verdict: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, alignItems: 'center', justifyContent: 'center' },
+  verdictText: { color: colors.correct, fontSize: 40, lineHeight: 48, textShadowColor: colors.bg, textShadowOffset: { width: 0, height: 2 }, textShadowRadius: 10 },
+  pictureTap: { flex: 1, width: '100%' },
   imageFill: { position: 'absolute', top: spacing.xs, bottom: spacing.xs, left: spacing.xs, right: spacing.xs },
   itemImage: { width: '100%', height: '100%', borderRadius: radii.control },
   visual: { color: colors.textPrimary, fontSize: 84, lineHeight: 100, textAlign: 'center' },

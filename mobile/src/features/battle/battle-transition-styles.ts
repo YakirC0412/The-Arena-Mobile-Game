@@ -88,6 +88,8 @@ export const styles = StyleSheet.create({
   territoryNumber: { color: colors.textPrimary, fontSize: 27, lineHeight: 30, fontWeight: '900' },
   territoryLabel: { color: colors.textSecondary, fontSize: 12, fontWeight: '800', writingDirection: 'rtl' },
   categoryOutcome: { color: colors.accentGold, fontSize: 12, fontWeight: '900', marginTop: 5, textAlign: 'center', writingDirection: 'rtl' },
+  // The main action of the conquest screen: a real button, not a text link.
+  continueButton: { alignSelf: 'stretch', marginTop: 20 },
   transitionSkipButton: { minHeight: 44, alignSelf: 'center', justifyContent: 'center', paddingHorizontal: 24, marginTop: 2 },
   transitionSkipText: { color: colors.textSecondary, fontSize: 12, fontWeight: '800', writingDirection: 'rtl' },
   decisionScreen: { flex: 1, padding: 24, justifyContent: 'center' },

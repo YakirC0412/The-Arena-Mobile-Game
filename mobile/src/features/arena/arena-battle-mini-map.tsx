@@ -53,8 +53,8 @@ const styles = StyleSheet.create({
     gap: 3,
     padding: 3,
   },
-  frameCompact: { width: 46, height: 46, gap: 2, padding: 2 },
-  cellCompact: { width: 9, height: 9 },
+  frameCompact: { width: 40, height: 40, gap: 2, padding: 2 },
+  cellCompact: { width: 7, height: 7 },
   cell: {
     width: 13,
     height: 13,

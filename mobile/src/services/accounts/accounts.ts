@@ -162,6 +162,25 @@ export function signUpWithGoogle(store: AccountStore, input: GoogleSignUpInput, 
   });
 }
 
+// Signing in with Google: the account is created on this device the first time, and later its profile is refreshed from the server.
+export function signInWithGoogleAccount(store: AccountStore, input: GoogleSignUpInput, id: string): AuthResult {
+  const existing = findByEmail(store, input.email);
+  if (!existing) return signUpWithGoogle(store, input, id);
+  const updated: StoredAccount = {
+    ...existing,
+    fullName: input.fullName.trim() || existing.fullName,
+    nickname: input.nickname.trim().replace(/\s+/g, ' '),
+    avatar: input.avatar,
+    gender: input.gender,
+    provider: 'google',
+  };
+  return {
+    ok: true,
+    store: { ...store, accounts: store.accounts.map((account) => (account.id === existing.id ? updated : account)), currentAccountId: existing.id },
+    user: toUser(updated),
+  };
+}
+
 export function signIn(store: AccountStore, email: string, password: string): AuthResult {
   const errors: FieldErrors = {};
   if (!isValidEmail(email)) errors.email = 'כתובת האימייל לא תקינה';
@@ -181,6 +200,32 @@ export function signIn(store: AccountStore, email: string, password: string): Au
     return { ok: false, errors: {}, message: 'האימייל או הסיסמה שגויים' };
   }
   return { ok: true, store: { ...store, currentAccountId: account.id }, user: toUser(account) };
+}
+
+// The player edits their own nickname and picture (home screen, tap on the avatar). The nickname must stay unique among the
+// OTHER accounts; the account's own current nickname is fine.
+export function updateProfile(
+  store: AccountStore,
+  accountId: string,
+  input: { nickname: string; avatar: string },
+): AuthResult {
+  const account = store.accounts.find((candidate) => candidate.id === accountId);
+  if (!account) return { ok: false, errors: {}, message: 'החשבון לא נמצא' };
+  const errors: FieldErrors = {};
+  const nickname = input.nickname.trim().replace(/\s+/g, ' ');
+  if (nickname.length < NICKNAME_MIN_LENGTH || nickname.length > NICKNAME_MAX_LENGTH) {
+    errors.nickname = `הכינוי צריך להיות באורך ${NICKNAME_MIN_LENGTH}–${NICKNAME_MAX_LENGTH} תווים`;
+  } else if (store.accounts.some((other) => other.id !== accountId && normalizeNickname(other.nickname) === normalizeNickname(nickname))) {
+    errors.nickname = 'הכינוי הזה כבר תפוס';
+  }
+  if (!input.avatar) errors.avatar = 'יש לבחור דמות';
+  if (Object.keys(errors).length > 0) return { ok: false, errors };
+  const updated: StoredAccount = { ...account, nickname, avatar: input.avatar };
+  return {
+    ok: true,
+    store: { ...store, accounts: store.accounts.map((candidate) => (candidate.id === accountId ? updated : candidate)) },
+    user: toUser(updated),
+  };
 }
 
 export function signOut(store: AccountStore): AccountStore {

@@ -9,6 +9,8 @@ export const colors = {
   border: '#1E3F95',
   textPrimary: '#FFFFFF',
   textSecondary: '#B8CBEA',
+  // Hint text on the white answer field (6.3:1 on white; textSecondary would be 1.6:1 there).
+  inkSoft: '#4A5F8F',
   // Primary actions and "your turn" (light blue, was turquoise).
   success: '#7CCBFF',
   // Correct-answer feedback keeps a real green.
@@ -44,6 +46,14 @@ export const colors = {
   brandBlue: '#1F6BFF',
   brandSky: '#7CCBFF',
   brandSkySoft: 'rgba(124, 203, 255, 0.16)',
+  // The darker lower edge of the big play button (a raised, pressable key).
+  brandSkyEdge: '#3F9FE6',
+  // Medal blocks of the hall-of-fame podium (gold uses accentGold): face and darker lower edge.
+  podiumGoldEdge: '#C9962B',
+  podiumSilver: '#C9D6EA',
+  podiumSilverEdge: '#8FA3C4',
+  podiumBronze: '#E39A62',
+  podiumBronzeEdge: '#A8612F',
   brandInk: '#04112F',
   brandError: '#FF8A8A',
 } as const;

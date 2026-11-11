@@ -28,8 +28,10 @@ export type LobbyLink = {
   correctCount: number;
   // Sends a game choice: pickTarget, pickFinalCategory, answer, skip, continue, return.
   send: (type: string, payload?: object) => void;
-  pick: (categoryId: string) => void;
+  pick: (categoryId: string, wayId?: 'w1' | 'w2') => void;
   start: () => void;
+  // The host deletes the room (everyone is disconnected).
+  closeRoom: () => void;
   leave: () => void;
 };
 
@@ -105,9 +107,12 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
     };
   }, [entry.roomId, entry.code, entry.name, entry.isHost, entry.watching, entry.visibility, nickname, avatar, gender]);
 
-  const pick = useCallback((categoryId: string) => {
+  const pick = useCallback((categoryId: string, wayId: 'w1' | 'w2' = 'w1') => {
     setNotice(null);
-    roomRef.current?.send('pickCategory', { categoryId, wayId: 'w1' });
+    roomRef.current?.send('pickCategory', { categoryId, wayId });
+  }, []);
+  const closeRoom = useCallback(() => {
+    roomRef.current?.send('closeRoom');
   }, []);
   const start = useCallback(() => {
     setNotice(null);
@@ -122,7 +127,7 @@ export function useServerLobby(entry: LobbyEntry, nickname: string, avatar: stri
     if (room) void room.leave();
   }, []);
 
-  return { status, fatal, view, myId, watching: entry.watching || role === 'spectator', notice, game: gameState?.view ?? null, gameAt: gameState?.at ?? 0, myPlayerId, correctCount, send, pick, start, leave };
+  return { status, fatal, view, myId, watching: entry.watching || role === 'spectator', notice, game: gameState?.view ?? null, gameAt: gameState?.at ?? 0, myPlayerId, correctCount, send, pick, start, closeRoom, leave };
 }
 
 // ---- Sample data (QA screens only): the same rules as the server, with pretend people -----------------------------------
@@ -136,7 +141,7 @@ const MOCK_PEOPLE = [
 const PICKABLE = CATEGORIES.filter((category) => isPickable(category.id));
 
 export function useMockLobby(entry: LobbyEntry, nickname: string, avatar: string): LobbyLink {
-  const lobby = useMemo(() => new Lobby(entry.name, entry.code, 'public'), [entry.name, entry.code]);
+  const lobby = useMemo(() => new Lobby(entry.name, entry.code, entry.visibility ?? 'public'), [entry.name, entry.code, entry.visibility]);
   const [, setVersion] = useState(0);
   const [notice, setNotice] = useState<string | null>(null);
   const redraw = () => setVersion((value) => value + 1);
@@ -174,8 +179,8 @@ export function useMockLobby(entry: LobbyEntry, nickname: string, avatar: string
     myPlayerId: null,
     correctCount: 0,
     send: () => undefined,
-    pick: (categoryId) => {
-      const result = lobby.pickCategory(ME, categoryId);
+    pick: (categoryId, wayId = 'w1') => {
+      const result = lobby.pickCategory(ME, categoryId, wayId);
       setNotice(result.ok ? null : lobbyMessage(result.error));
       redraw();
     },
@@ -184,6 +189,7 @@ export function useMockLobby(entry: LobbyEntry, nickname: string, avatar: string
       if (!result.ok) setNotice(lobbyMessage(result.error));
       redraw();
     },
+    closeRoom: () => undefined,
     leave: () => undefined,
   };
 }

@@ -4,7 +4,9 @@ import {
   signIn,
   signOut,
   signUp,
+  signInWithGoogleAccount,
   signUpWithGoogle,
+  updateProfile,
   type AccountStore,
   type SignUpInput,
 } from '../src/services/accounts/accounts';
@@ -27,6 +29,24 @@ function registered(): AccountStore {
 }
 
 suite('accounts', () => {
+  test('editing the profile changes nickname and picture, keeps the rest, and refuses a taken or bad nickname', () => {
+    const store = registered();
+    const other = signUp(signOut(store), { ...dana, email: 'yossi@example.com', nickname: 'יוסי' }, 'user-2', 'salt-2');
+    assert(other.ok, 'Second account');
+    const kept = updateProfile(other.store, 'user-2', { nickname: '  יוסי   החדש ', avatar: 'avatar-09' });
+    assert(kept.ok, 'A free nickname is accepted');
+    assertEqual(kept.user.nickname, 'יוסי החדש', 'Spaces tidied');
+    assertEqual(kept.user.avatar, 'avatar-09', 'New picture');
+    assertEqual(kept.user.email, 'yossi@example.com', 'Email untouched');
+    assertEqual(kept.store.accounts.find((account) => account.id === 'user-1')?.nickname, dana.nickname, 'Other accounts untouched');
+    assert(updateProfile(other.store, 'user-2', { nickname: 'יוסי', avatar: 'avatar-09' }).ok, 'Keeping your own nickname is fine');
+    const taken = updateProfile(other.store, 'user-2', { nickname: dana.nickname, avatar: 'avatar-02' });
+    assert(!taken.ok && !!taken.errors.nickname, 'Another player\'s nickname is refused');
+    const short = updateProfile(other.store, 'user-2', { nickname: 'א', avatar: 'avatar-02' });
+    assert(!short.ok && !!short.errors.nickname, 'Too short is refused');
+    assert(!updateProfile(other.store, 'nobody', { nickname: 'שם טוב', avatar: 'avatar-02' }).ok, 'Unknown account');
+  });
+
   test('sha256 matches the standard test vectors', () => {
     assertEqual(sha256Hex(''), 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'Empty string');
     assertEqual(sha256Hex('abc'), 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad', 'abc');
@@ -87,5 +107,19 @@ suite('accounts', () => {
     assert(result.store.accounts[0].passwordHash === undefined, 'No password is stored');
     const attempt = signIn(signOut(result.store), 'yossi@gmail.com', 'anything');
     assert(!attempt.ok && attempt.message === 'החשבון הזה נרשם עם Google', 'Password sign-in points to Google');
+  });
+
+  test('signing in with Google twice is one account: the profile is refreshed, not duplicated, and an old password account is taken over', () => {
+    const input = { fullName: 'יוסי לוי', email: 'Yossi@gmail.com', nickname: 'יוסי', avatar: 'avatar-02', gender: 'male' as const };
+    const first = signInWithGoogleAccount(createEmptyStore(), input, 'g-1');
+    assert(first.ok, 'First Google sign-in creates the account');
+    const second = signInWithGoogleAccount(signOut(first.store), { ...input, nickname: 'יוסי החדש', avatar: 'avatar-05' }, 'g-2');
+    assert(second.ok, 'Second Google sign-in works');
+    assertEqual(second.store.accounts.length, 1, 'No duplicate account');
+    assertEqual(second.user.nickname, 'יוסי החדש', 'Profile refreshed from the server');
+    assertEqual(second.store.currentAccountId, first.user.id, 'Same account id');
+    const withPassword = registered();
+    const taken = signInWithGoogleAccount(signOut(withPassword), { fullName: 'דנה כהן', email: 'dana@example.com', nickname: 'אלופת הטריוויה', avatar: 'avatar-03', gender: 'female' }, 'g-3');
+    assert(taken.ok && taken.user.provider === 'google' && taken.store.accounts.length === 1, 'The same email becomes a Google account');
   });
 });

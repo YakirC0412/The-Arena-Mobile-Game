@@ -5,22 +5,41 @@ import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/desig
 // Styles for the new home (Single / Multi tabs), the room cards, the podium, the sheets and the lobby.
 export const styles = StyleSheet.create({
   shell: { flex: 1, width: '100%', maxWidth: layout.maxContentWidth, alignSelf: 'center' },
-  scroll: { paddingHorizontal: spacing.lg, paddingBottom: spacing.xl, gap: spacing.md },
+  scroll: { flexGrow: 1, paddingHorizontal: spacing.lg, paddingBottom: spacing.xl, gap: spacing.md },
 
   // Top bar
-  topBar: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.md, paddingHorizontal: spacing.lg, paddingTop: spacing.sm, paddingBottom: spacing.sm },
+  topBar: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.md, marginHorizontal: spacing.lg, marginTop: spacing.sm, marginBottom: spacing.sm, padding: spacing.sm, borderRadius: radii.pill, backgroundColor: colors.brandSurface, borderWidth: 1, borderColor: colors.brandBorder },
   topText: { flex: 1 },
   topGreeting: { color: colors.brandSky, fontSize: typeScale.caption, textAlign: 'right' },
   topName: { color: colors.textPrimary, fontSize: typeScale.sectionTitle, textAlign: 'right' },
   smallButton: { minHeight: layout.minTouchTarget, paddingHorizontal: spacing.md, borderRadius: radii.pill, borderWidth: 1, borderColor: colors.brandBorder, justifyContent: 'center' },
   smallButtonText: { color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center' },
 
+  // Avatar = button to the profile editor, with a pencil badge and a one-time hint bubble under it
+  avatarButton: { borderRadius: radii.pill },
+  avatarBadge: { position: 'absolute', bottom: -2, left: -2, width: 22, height: 22, borderRadius: radii.pill, backgroundColor: colors.brandSky, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: colors.brandSurface },
+  avatarBadgeText: { color: colors.bg, fontSize: 12, textAlign: 'center' },
+  hintBubble: { position: 'absolute', top: 66, right: spacing.lg, zIndex: 10, maxWidth: 250, paddingVertical: spacing.sm, paddingHorizontal: spacing.md, borderRadius: radii.card, backgroundColor: colors.brandSky, borderBottomWidth: 3, borderBottomColor: colors.brandSkyEdge },
+  hintArrow: { position: 'absolute', top: -7, right: 20, width: 14, height: 14, backgroundColor: colors.brandSky, transform: [{ rotate: '45deg' }] },
+  hintText: { color: colors.bg, fontSize: typeScale.caption, textAlign: 'right' },
+
+  // Edit-profile sheet
+  editScroll: { flexGrow: 0, maxHeight: 360 },
+  editBody: { gap: spacing.sm, paddingBottom: spacing.sm },
+  editPreview: { alignItems: 'center', paddingVertical: spacing.sm },
+  editLabel: { color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'right' },
+  editError: { color: colors.brandError, fontSize: typeScale.caption, textAlign: 'right' },
+  editAvatarGrid: { flexDirection: 'row-reverse', flexWrap: 'wrap', gap: spacing.sm, justifyContent: 'center' },
+  editAvatarOption: { padding: 3, borderRadius: radii.pill, borderWidth: 2, borderColor: 'transparent' },
+  editAvatarOptionSelected: { borderColor: colors.brandSky, backgroundColor: colors.brandSkySoft },
+
   // Tab bar (bottom)
   tabBar: { flexDirection: 'row-reverse', gap: spacing.sm, padding: spacing.sm, marginHorizontal: spacing.md, marginBottom: spacing.sm, borderRadius: radii.card, backgroundColor: colors.brandSurface, borderWidth: 1, borderColor: colors.brandBorder },
   tab: { flex: 1, minHeight: 52, borderRadius: radii.button, alignItems: 'center', justifyContent: 'center', flexDirection: 'row-reverse', gap: spacing.sm },
-  tabActive: { backgroundColor: colors.brandSky },
+  // Quiet selected state: only the main button of a screen is a solid sky block (One Voice Rule).
+  tabActive: { backgroundColor: colors.brandSkySoft, borderBottomWidth: 3, borderBottomColor: colors.brandSky },
   tabLabel: { color: colors.textSecondary, fontSize: typeScale.button, textAlign: 'center' },
-  tabLabelActive: { color: colors.brandInk },
+  tabLabelActive: { color: colors.brandSky },
 
   // Cards
   card: { backgroundColor: colors.brandSurface, borderRadius: radii.card, borderWidth: 1, borderColor: colors.brandBorder, padding: spacing.lg, gap: spacing.md },
@@ -33,23 +52,18 @@ export const styles = StyleSheet.create({
   liveText: { color: colors.textSecondary, fontSize: typeScale.caption },
 
   // Single tab
-  heroCard: { alignItems: 'center', gap: spacing.md, paddingVertical: spacing.xl },
-  heroAvatarRing: { padding: 5, borderRadius: 36, borderWidth: 3, borderColor: colors.brandSky, backgroundColor: colors.brandSkySoft },
-  heroTitle: { color: colors.textPrimary, fontSize: typeScale.screenTitle, textAlign: 'center', lineHeight: 36 },
-  heroSub: { color: colors.textSecondary, fontSize: typeScale.body, textAlign: 'center', lineHeight: 21 },
-  chips: { flexDirection: 'row-reverse', gap: spacing.sm, justifyContent: 'center' },
-  chip: { flex: 1, backgroundColor: colors.brandNavyDeep, borderRadius: radii.control, paddingVertical: spacing.md, alignItems: 'center', gap: 2, borderWidth: 1, borderColor: colors.brandBorder },
-  chipIcon: { fontSize: 22, textAlign: 'center' },
-  chipValue: { color: colors.brandSky, fontSize: typeScale.sectionTitle, textAlign: 'center' },
-  chipLabel: { color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center' },
+  // The Single tab fills the screen: logo, one line, big button, centred.
+  singleStage: { flex: 1, justifyContent: 'center', gap: spacing.lg, paddingBottom: spacing.lg },
+  multiHero: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.md },
+  multiActions: { flex: 1, gap: spacing.sm },
+  playButton: { minHeight: 64, borderBottomWidth: 5, borderBottomColor: colors.brandSkyEdge },
+  heroSub: { color: colors.textPrimary, fontSize: typeScale.button, textAlign: 'center', lineHeight: 24, paddingHorizontal: spacing.sm },
   actions: { gap: spacing.md },
-  tipRow: { flexDirection: 'row-reverse', gap: spacing.sm, alignItems: 'flex-start' },
-  tipIcon: { fontSize: 18, lineHeight: 22 },
-  tipText: { flex: 1, color: colors.textSecondary, fontSize: typeScale.body, textAlign: 'right', lineHeight: 21 },
 
   // Podium
   hallHeader: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.sm },
   hallTrophy: { fontSize: 30 },
+  hallCompact: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.md },
   podium: { flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'center', gap: spacing.sm, paddingTop: spacing.sm },
   podiumSlot: { flex: 1, alignItems: 'center', gap: 4 },
   podiumMedal: { fontSize: 26, textAlign: 'center' },
@@ -106,7 +120,7 @@ export const styles = StyleSheet.create({
   errorText: { color: colors.brandError, fontSize: typeScale.body, textAlign: 'center' },
   segment: { flexDirection: 'row-reverse', backgroundColor: colors.brandNavyDeep, borderRadius: radii.pill, padding: spacing.xs },
   segmentOption: { flex: 1, minHeight: layout.minTouchTarget, borderRadius: radii.pill, alignItems: 'center', justifyContent: 'center' },
-  segmentActive: { backgroundColor: colors.brandBlue },
+  segmentActive: { backgroundColor: colors.brandSkySoft, borderWidth: 1.5, borderColor: colors.brandSky },
   segmentText: { color: colors.textSecondary, fontSize: typeScale.body, textAlign: 'center' },
   segmentTextActive: { color: colors.textPrimary },
 
@@ -116,6 +130,16 @@ export const styles = StyleSheet.create({
   codePill: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.sm, backgroundColor: colors.brandNavyDeep, borderRadius: radii.pill, paddingHorizontal: spacing.lg, paddingVertical: spacing.sm, borderWidth: 1, borderColor: colors.brandSky },
   codeLabel: { color: colors.textSecondary, fontSize: typeScale.caption },
   codeValue: { color: colors.brandSky, fontSize: typeScale.sectionTitle, letterSpacing: 4 },
+  // Category choice in the lobby: the required full-screen gate and the "my category" card.
+  gateHeader: { gap: spacing.xs, alignItems: 'center', paddingHorizontal: spacing.lg, paddingTop: spacing.lg, paddingBottom: spacing.sm },
+  gateTitle: { color: colors.textPrimary, fontSize: typeScale.screenTitle, lineHeight: 34, textAlign: 'center' },
+  gateBody: { paddingHorizontal: spacing.lg, paddingBottom: spacing.md, gap: spacing.sm },
+  myCategory: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.md, padding: spacing.md, borderRadius: radii.card, borderWidth: 1.5, borderColor: colors.brandSky, backgroundColor: colors.brandSkySoft },
+  myCategoryIcon: { fontSize: 34 },
+  myCategoryName: { color: colors.textPrimary, fontSize: typeScale.sectionTitle, textAlign: 'right' },
+  myCategoryChange: { color: colors.brandSky, fontSize: typeScale.body, textAlign: 'center' },
+  copyButton: { minHeight: layout.minTouchTarget, paddingHorizontal: spacing.lg, borderRadius: radii.pill, borderWidth: 1.5, borderColor: colors.brandSky, backgroundColor: colors.brandSkySoft, alignItems: 'center', justifyContent: 'center' },
+  copyButtonText: { color: colors.textPrimary, fontSize: typeScale.body, textAlign: 'center' },
   memberRow: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.md },
   memberText: { flex: 1 },
   memberName: { color: colors.textPrimary, fontSize: typeScale.button, textAlign: 'right' },

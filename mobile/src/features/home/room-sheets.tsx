@@ -61,7 +61,7 @@ export function CreateRoomSheet({ host, onClose, onCreated, source, visible }: {
       <View style={{ gap: 6 }}>
         <Text style={styles.label} weight="bold">מי יכול להצטרף?</Text>
         <View accessibilityRole="tablist" style={styles.segment}>
-          {([['public', '🌐 ציבורי'], ['private', '🔒 בקוד בלבד']] as const).map(([value, label]) => (
+          {([['public', '🌐 ציבורי'], ['private', '🔒 פרטי']] as const).map(([value, label]) => (
             <Pressable
               accessibilityRole="tab"
               accessibilityState={{ selected: visibility === value }}
@@ -72,11 +72,6 @@ export function CreateRoomSheet({ host, onClose, onCreated, source, visible }: {
             </Pressable>
           ))}
         </View>
-        <Text style={styles.hint}>
-          {visibility === 'public'
-            ? 'החדר מופיע ברשימה וכל אחד יכול להצטרף עד שיש 6 שחקנים.'
-            : 'החדר מופיע ברשימה עם מנעול. נכנסים רק עם הקוד שתשתפו.'}
-        </Text>
       </View>
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <BrandPrimaryButton disabled={busy} icon="➕" label={busy ? 'פותח חדר…' : 'פתיחת החדר'} onPress={create} />
@@ -115,7 +110,7 @@ export function JoinCodeSheet({ onClose, onFound, source, visible }: {
 
   return (
     <BottomSheet onClose={onClose} title="הכנסת קוד חדר" visible={visible}>
-      <Text style={styles.hint}>הקוד בן 4 תווים – אותיות באנגלית וספרות. מי שפתח את החדר מקבל אותו ויכול לשתף אותו.</Text>
+      <Text style={styles.hint}>יש להכניס את הקוד בין 4 תווים</Text>
       <TextInput
         accessibilityLabel="קוד החדר"
         autoCapitalize="characters"

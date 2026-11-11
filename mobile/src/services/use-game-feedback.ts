@@ -18,6 +18,7 @@ const SOURCES = {
   skip: require('../../assets/sounds/skip.wav'),
   timeUp: require('../../assets/sounds/time-up.wav'),
   draw: require('../../assets/sounds/draw.wav'),
+  drawRoll: require('../../assets/sounds/draw-roll.wav'),
   conquest: require('../../assets/sounds/conquest.wav'),
   champion: require('../../assets/sounds/champion.wav'),
 } as const;
@@ -94,6 +95,8 @@ const actions = {
   dangerTick: () => { play('tick'); haptic('select'); },
   timeUp: () => { play('timeUp'); haptic('error'); },
   draw: () => { play('draw'); haptic('select'); },
+  // The whole draw in one sound: the decelerating tocks and the landing chime (starts with the animation).
+  drawRoll: () => { play('drawRoll'); },
   conquest: () => { play('conquest'); haptic('medium'); },
   champion: () => { play('champion'); haptic('success'); },
 };

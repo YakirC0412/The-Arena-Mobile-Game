@@ -23,27 +23,24 @@ export function RoomCard({ now, onAction, room }: { now: number; onAction: (room
         </View>
         <Text numberOfLines={1} style={styles.roomName} weight="bold">{room.name}</Text>
       </View>
-      <Text style={styles.roomHost}>מארח: {room.host}{room.watchers > 0 ? ` · ${room.watchers} צופים` : ''}</Text>
+      {/* Host and status share one line; the card is two short rows plus the action. */}
+      <View style={styles.statusRow}>
+        <View style={[styles.statusDot, { backgroundColor: dotColor }]} />
+        <Text style={styles.statusText}>{info.statusLabel}</Text>
+        {info.timer ? <Text style={styles.timer} weight="bold">⏱ {info.timer}</Text> : null}
+        <Text style={styles.roomHost}>· מארח: {room.host}{room.watchers > 0 ? ` · ${room.watchers} צופים` : ''}</Text>
+      </View>
       <View style={styles.roomBottom}>
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => onAction(room)}
-          style={[styles.roomAction, info.action !== 'join' && styles.roomActionGhost]}>
-          <Text style={[styles.roomActionText, info.action !== 'join' && styles.roomActionGhostText]} weight="black">{ACTION_LABEL[info.action]}</Text>
-        </Pressable>
-        <View style={{ alignItems: 'flex-end', gap: 6 }}>
-          <View style={styles.seatRow}>
-            <Text style={styles.seatCount} weight="bold">{room.humans}/{room.maxHumans}</Text>
-            {Array.from({ length: room.maxHumans }, (_, index) => (
-              <View key={index} style={[styles.seat, index < room.humans && styles.seatTaken]} />
-            ))}
-          </View>
-          <View style={styles.statusRow}>
-            {info.timer ? <Text style={styles.timer} weight="bold">⏱ {info.timer}</Text> : null}
-            <Text style={styles.statusText}>{info.statusLabel}</Text>
-            <View style={[styles.statusDot, { backgroundColor: dotColor }]} />
-          </View>
+        <View style={styles.seatRow}>
+          {Array.from({ length: room.maxHumans }, (_, index) => (
+            <View key={index} style={[styles.seat, index < room.humans && styles.seatTaken]} />
+          ))}
+          <Text style={styles.seatCount} weight="bold">{room.humans}/{room.maxHumans}</Text>
         </View>
+        {/* Only "open a room" is a solid key; joining is an outline. */}
+        <Pressable accessibilityRole="button" onPress={() => onAction(room)} style={[styles.roomAction, styles.roomActionGhost]}>
+          <Text style={[styles.roomActionText, styles.roomActionGhostText]} weight="black">{ACTION_LABEL[info.action]}</Text>
+        </Pressable>
       </View>
     </View>
   );

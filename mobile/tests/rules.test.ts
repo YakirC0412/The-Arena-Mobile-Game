@@ -128,6 +128,24 @@ suite('§5 streak and bonus (decision 2)', () => {
     assertEqual(fourth.attackerSeconds, 45, 'The 4th duel starts with 45 seconds');
   });
 
+  test('scenario D: reaching the final clears every bonus and streak, and nobody earns a bonus in the semi-final or the final', () => {
+    let state = createInitialGame('animals', fixedRandom);
+    let last = duel(state, 'human', firstNeighbor(state, 'human'), 'human');
+    state = last.state;
+    while (Object.values(state.players).filter((player) => player.isActive).length > 2) {
+      last = duel(state, 'human', firstNeighbor(state, 'human'), 'human');
+      state = last.state;
+    }
+    const finalists = Object.values(state.players).filter((player) => player.isActive);
+    assertEqual(finalists.length, 2, 'Two contestants are left');
+    assert(finalists.every((player) => !player.bonusReady && player.winStreak === 0), 'No bonus or streak survives into the final');
+    assert(!last.winnerEarnedBonus, 'The duel that reaches the final earns no bonus');
+    const final = createBattleSetup(state, finalists[0].id, finalists[1].id);
+    assert(!final.attackerUsesBonus && !final.defenderUsesBonus && final.attackerSeconds === 40, 'The final uses normal clocks');
+    const decided = resolveBattle(state, final, finalists[0].id);
+    assert(!decided.winnerEarnedBonus, 'Winning the final earns no bonus');
+  });
+
   test('the bonus also applies when drawn as attacker after returning', () => {
     let state = createInitialGame('animals', fixedRandom);
     for (let win = 0; win < 3; win += 1) state = duel(state, 'human', firstNeighbor(state, 'human'), 'human').state;

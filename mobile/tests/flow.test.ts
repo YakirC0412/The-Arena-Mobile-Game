@@ -89,6 +89,8 @@ suite('screen flow', () => {
     assertEqual(state.screen, 'home', 'Home after the intro');
     const remembered = flowReducer(createFlowState(1, TEST_USER), { type: 'INTRO_COMPLETE' });
     assertEqual(remembered.screen, 'home', 'A remembered user goes from the intro straight home');
+    const edited = flowReducer(state, { type: 'PROFILE_UPDATED', nickname: 'שם חדש', avatar: 'avatar-09' });
+    assertEqual(`${edited.screen}/${edited.user?.nickname}/${edited.user?.avatar}`, 'home/שם חדש/avatar-09', 'Editing the profile stays on home');
     assertEqual(flowReducer(state, { type: 'HOME_GUIDE' }).screen, 'guide', 'Instructions');
     assertEqual(flowReducer(flowReducer(state, { type: 'HOME_GUIDE' }), { type: 'GUIDE_BACK' }).screen, 'home', 'Back from the guide');
     const setup = flowReducer(state, { type: 'HOME_NEW_GAME' });

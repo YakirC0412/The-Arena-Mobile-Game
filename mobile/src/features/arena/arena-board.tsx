@@ -173,11 +173,25 @@ export function ArenaBoard({
                 mode={mode}
                 ownerAvatar={owner.avatar}
                 ownerName={owner.name}
+                cellsWide={Math.round(region.width / 25)}
+                cellsHigh={Math.round(region.height / 25)}
               />
             </View>
           );
         })}
       </View>
+    </View>
+  );
+}
+
+// The label of one territory laid over the board (also used by the draw animation, which draws its own cells).
+export function TerritoryLabelBox({ region, ...label }: {
+  region: ReturnType<typeof getTerritoryLabelRegion>;
+  categoryName: string; isMe: boolean; mode: ArenaBoardMode; ownerAvatar: string; ownerName: string;
+}) {
+  return (
+    <View pointerEvents="none" style={[styles.territoryLabelPosition, { height: `${region.height}%`, left: `${region.left}%`, top: `${region.top}%`, width: `${region.width}%` }]}>
+      <TerritoryLabel {...label} cellsWide={Math.round(region.width / 25)} cellsHigh={Math.round(region.height / 25)} />
     </View>
   );
 }
@@ -188,7 +202,12 @@ function TerritoryLabel({
   mode,
   ownerAvatar,
   ownerName,
+  cellsWide,
+  cellsHigh,
 }: {
+  // Size of the label area in cells: bigger territories get bigger text, small ones wrap instead of cutting.
+  cellsWide: number;
+  cellsHigh: number;
   categoryName: string;
   isMe: boolean;
   mode: ArenaBoardMode;
@@ -196,14 +215,17 @@ function TerritoryLabel({
   ownerName: string;
 }) {
   const compactLabel = mode !== 'overview';
+  const area = cellsWide * cellsHigh;
+  // One cell is ~80 pt wide: 13 pt text that wraps over up to 3 lines. Bigger areas have room for larger text.
+  const size = area >= 8 ? { fontSize: 22, lineHeight: 26 } : area >= 4 ? { fontSize: 18, lineHeight: 22 } : area >= 2 || cellsWide >= 2 ? { fontSize: 15, lineHeight: 18 } : { fontSize: 13, lineHeight: 15 };
   return (
     <View pointerEvents="none" style={styles.label}>
-      <AppText numberOfLines={1} style={[styles.category, isMe && styles.meText]} weight="bold">
+      <AppText numberOfLines={3} style={[styles.category, size, isMe && styles.meText, isMe && size]} weight="bold">
         {categoryName}
       </AppText>
       <View style={styles.ownerRow}>
-        <AvatarPortrait avatarId={ownerAvatar} borderColor={isMe ? colors.boardFrame : colors.textPrimary} size={compactLabel ? 24 : 28} />
-        <AppText numberOfLines={1} style={[styles.owner, isMe && styles.meOwner]} weight="bold">
+        <AvatarPortrait avatarId={ownerAvatar} borderColor={isMe ? colors.boardFrame : colors.textPrimary} size={compactLabel || area < 2 ? 24 : 28} />
+        <AppText numberOfLines={2} style={[styles.owner, isMe && styles.meOwner]} weight="bold">
           {ownerName}
         </AppText>
       </View>
@@ -269,7 +291,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 3,
   },
   meText: { color: colors.boardFrame, fontSize: 16, lineHeight: 19, textShadowRadius: 0 },
-  ownerRow: { maxWidth: '100%', flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.xs },
-  owner: { flexShrink: 1, color: colors.textPrimary, fontSize: typeScale.caption, lineHeight: 15, textAlign: 'center' },
+  ownerRow: { maxWidth: '100%', flexDirection: 'row-reverse', alignItems: 'center', justifyContent: 'center', gap: spacing.xs },
+  owner: { flexShrink: 1, minWidth: 0, color: colors.textPrimary, fontSize: typeScale.caption, lineHeight: 15, textAlign: 'center' },
   meOwner: { color: colors.boardFrame },
 });

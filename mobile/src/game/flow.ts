@@ -98,6 +98,7 @@ export type FlowAction =
   | { type: 'INTRO_COMPLETE' }
   | { type: 'SIGNED_IN'; user: FlowUser }
   | { type: 'SIGN_OUT' }
+  | { type: 'PROFILE_UPDATED'; nickname: string; avatar: string }
   | { type: 'HOME_GUIDE' }
   | { type: 'HOME_NEW_GAME' }
   | { type: 'HOME_TAB'; tab: HomeTab }
@@ -185,6 +186,7 @@ function reduce(state: FlowState, action: FlowAction, random: RandomSource): Flo
     // The intro plays again before the home screen, as a welcome.
     case 'SIGNED_IN': return { ...state, user: action.user, screen: 'intro' };
     case 'SIGN_OUT': return { ...state, ...CLEARED_BATTLE, user: null, game: null, lobby: null, homeTab: 'single', screen: 'welcome' };
+    case 'PROFILE_UPDATED': return state.user ? { ...state, user: { ...state.user, nickname: action.nickname, avatar: action.avatar } } : state;
     case 'HOME_GUIDE': return at('guide');
     case 'HOME_NEW_GAME': return at('setup');
     case 'HOME_TAB': return state.homeTab === action.tab ? state : { ...state, homeTab: action.tab };

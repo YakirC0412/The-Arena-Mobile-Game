@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import type { Gender } from '@/game/gender';
 import { Pressable, ScrollView, TextInput, useWindowDimensions, View } from 'react-native';
 
@@ -7,11 +7,14 @@ import { AppText as Text } from '@/design/app-text';
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { ArenaLogo, BrandBackground, BrandPrimaryButton } from '@/design/brand';
 import { colors } from '@/design/tokens';
+import { isGoogleConfigured, preloadFirebase, signInWithGoogle } from '@/online/firebase-auth';
+import { googleErrorMessage, loginWithGoogleToken, rememberGoogleAccount, saveGoogleProfile, type GoogleServerUser } from '@/online/google-account';
 import { loadAccountStore, saveAccountStore, createLocalId } from '@/services/accounts/account-storage';
 import {
   NICKNAME_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
   signIn,
+  signInWithGoogleAccount,
   signUp,
   type AccountUser,
   type FieldErrors,
@@ -63,7 +66,164 @@ export function WelcomeScreen({ onSignedIn }: { onSignedIn: (user: AccountUser) 
     onSignedIn(result.user);
   };
 
+  // ---- Google (Firebase): popup -> the server checks the token -> a first-time player picks nickname, avatar and gender ----
+  const googleReady = isGoogleConfigured();
+  const [googleBusy, setGoogleBusy] = useState(false);
+  const [googleProfile, setGoogleProfile] = useState<{ token: string; user: GoogleServerUser } | null>(null);
+  // Load Google's sign-in code now, so the popup can open inside the tap (iPhone blocks popups that open late).
+  useEffect(() => {
+    if (googleReady) void preloadFirebase().catch(() => undefined);
+  }, [googleReady]);
+
+  // An empty token means the Arena server was not reachable: the sign-in is kept on this device only (single-player works,
+  // multiplayer asks to sign in again once the server is there).
+  const finishGoogle = (user: GoogleServerUser, token: string) => {
+    if (token) rememberGoogleAccount(user, token);
+    const result = signInWithGoogleAccount(
+      loadAccountStore(),
+      { fullName: user.name, email: user.email, nickname: user.name, avatar: user.avatar, gender: user.gender },
+      createLocalId('user'),
+    );
+    if (!result.ok) {
+      setMessage(result.errors.nickname ?? result.message ?? 'לא הצלחנו להיכנס עם החשבון הזה');
+      return;
+    }
+    saveAccountStore(result.store);
+    onSignedIn(result.user);
+  };
+
+  const startGoogle = async () => {
+    if (googleBusy) return;
+    setGoogleBusy(true);
+    setMessage('');
+    try {
+      const google = await signInWithGoogle();
+      let login;
+      try {
+        login = await loginWithGoogleToken(google.idToken);
+      } catch (error) {
+        if (!(error instanceof Error) || error.message !== 'server_offline' || !google.email) throw error;
+        // No server: sign in on this device with what Google told us.
+        const email = google.email.trim().toLowerCase();
+        const known = loadAccountStore().accounts.find((account) => account.email === email);
+        if (known) {
+          finishGoogle({ id: 0, email, name: known.nickname, avatar: known.avatar, gender: known.gender ?? 'male' }, '');
+        } else {
+          setNickname(google.name.trim().slice(0, NICKNAME_MAX_LENGTH));
+          setGoogleProfile({ token: '', user: { id: 0, email, name: google.name, avatar, gender: 'male' } });
+        }
+        return;
+      }
+      if (login.needsProfile) {
+        setNickname(login.user.name);
+        setAvatar(login.user.avatar);
+        setGoogleProfile({ token: login.token, user: login.user });
+      } else {
+        finishGoogle(login.user, login.token);
+      }
+    } catch (error) {
+      const code = (error as { code?: string }).code ?? (error instanceof Error ? error.message : undefined);
+      // Closing Google's window is a choice, not a failure.
+      // The technical code stays visible (small, in brackets) so a failure on a phone can be diagnosed from a screenshot.
+      if (!/popup-closed|cancelled-popup/.test(code ?? '')) setMessage(`${googleErrorMessage(code)}${code ? ` (${code})` : ''}`);
+    } finally {
+      setGoogleBusy(false);
+    }
+  };
+
+  const saveProfile = async () => {
+    if (!googleProfile) return;
+    const next: FieldErrors = {};
+    const name = nickname.trim().replace(/\s+/g, ' ');
+    if (name.length < 1 || name.length > NICKNAME_MAX_LENGTH) next.nickname = `הכינוי צריך להיות בין 1 ל־${NICKNAME_MAX_LENGTH} תווים`;
+    if (!gender) next.gender = 'יש לבחור גבר או אישה';
+    if (Object.keys(next).length > 0) {
+      setErrors(next);
+      return;
+    }
+    setGoogleBusy(true);
+    try {
+      const user = googleProfile.token
+        ? await saveGoogleProfile(googleProfile.token, { name, avatar, gender: gender as Gender })
+        : { ...googleProfile.user, name, avatar, gender: gender as Gender };
+      finishGoogle(user, googleProfile.token);
+    } catch (error) {
+      setMessage(googleErrorMessage(error instanceof Error ? error.message : undefined));
+    } finally {
+      setGoogleBusy(false);
+    }
+  };
+
   const isSignUp = mode === 'signup';
+
+  // First Google sign-in: Google knows neither the nickname the other players see, nor the avatar, nor the gender.
+  if (googleProfile) {
+    return (
+      <BrandBackground>
+        <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
+          <View style={styles.column}>
+            <View style={styles.card}>
+              <Text style={styles.cardTitle} weight="black">עוד רגע ואתם בזירה</Text>
+              <Text style={styles.cardSubtitle}>{googleProfile.user.email} · בחרו כינוי, דמות ומין, והמשחק יכיר אתכם.</Text>
+
+              <Field error={errors.nickname} hint="כך יראו אותך שאר השחקנים בזירה" label="כינוי בזירה">
+                <TextInput
+                  accessibilityLabel="כינוי בזירה"
+                  maxLength={NICKNAME_MAX_LENGTH}
+                  onChangeText={(value) => { setNickname(value); setErrors((current) => ({ ...current, nickname: undefined })); }}
+                  placeholder="למשל: אלוף הטריוויה"
+                  placeholderTextColor={colors.textSecondary}
+                  style={[styles.input, errors.nickname && styles.inputError]}
+                  textAlign="right"
+                  value={nickname}
+                />
+              </Field>
+
+              <Field error={errors.gender} hint="כדי שהמשחק ידבר אליך נכון: ניצח / ניצחה, כובש / כובשת" label="אני">
+                <View accessibilityLabel="אני" style={styles.toggle}>
+                  {([['male', 'גבר'], ['female', 'אישה']] as const).map(([value, label]) => (
+                    <Pressable
+                      accessibilityRole="radio"
+                      accessibilityState={{ selected: gender === value }}
+                      key={value}
+                      onPress={() => { setGender(value); setErrors((current) => ({ ...current, gender: undefined })); }}
+                      style={[styles.toggleOption, gender === value && styles.toggleOptionActive]}>
+                      <Text style={[styles.toggleText, gender === value && styles.toggleTextActive]} weight="bold">{label}</Text>
+                    </Pressable>
+                  ))}
+                </View>
+              </Field>
+
+              <Field label="בחירת דמות">
+                <View accessibilityLabel="בחירת דמות" style={styles.avatarGrid}>
+                  {AVATARS.map(({ id }) => {
+                    const selected = avatar === id;
+                    return (
+                      <Pressable
+                        accessibilityLabel={`דמות ${id}`}
+                        accessibilityRole="radio"
+                        accessibilityState={{ selected }}
+                        key={id}
+                        onPress={() => setAvatar(id)}
+                        style={[styles.avatarOption, selected && styles.avatarOptionSelected]}>
+                        <AvatarPortrait avatarId={id} borderColor={selected ? colors.brandSky : colors.brandBorder} size={52} />
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              </Field>
+
+              {!!message && <Text accessibilityRole="alert" style={styles.formMessage} weight="bold">{message}</Text>}
+              <BrandPrimaryButton disabled={googleBusy} label={googleBusy ? 'שומרים…' : 'כניסה לזירה'} onPress={saveProfile} />
+              <Pressable accessibilityRole="button" onPress={() => { setGoogleProfile(null); setMessage(''); }} style={styles.switchLink}>
+                <Text style={styles.switchTextStrong} weight="bold">ביטול</Text>
+              </Pressable>
+            </View>
+          </View>
+        </ScrollView>
+      </BrandBackground>
+    );
+  }
 
   return (
     <BrandBackground>
@@ -99,20 +259,22 @@ export function WelcomeScreen({ onSignedIn }: { onSignedIn: (user: AccountUser) 
             </Text>
 
             <Pressable
-              accessibilityHint="התחברות עם Google תתאפשר בשלב מאוחר יותר"
               accessibilityRole="button"
-              accessibilityState={{ disabled: true }}
-              disabled
-              style={styles.googleButton}>
+              accessibilityState={{ disabled: !googleReady || googleBusy }}
+              disabled={!googleReady || googleBusy}
+              onPress={startGoogle}
+              style={[styles.googleButton, googleReady && styles.googleButtonReady]}>
               <View style={styles.googleGlyph}>
                 <Text style={styles.googleGlyphText} weight="black">G</Text>
               </View>
               <Text style={styles.googleText} weight="bold">
-                {isSignUp ? 'הרשמה עם Google' : 'התחברות עם Google'}
+                {googleBusy ? 'מתחברים…' : isSignUp ? 'הרשמה עם Google' : 'התחברות עם Google'}
               </Text>
-              <View style={styles.soonBadge}>
-                <Text style={styles.soonText} weight="bold">בקרוב</Text>
-              </View>
+              {googleReady ? null : (
+                <View style={styles.soonBadge}>
+                  <Text style={styles.soonText} weight="bold">בקרוב</Text>
+                </View>
+              )}
             </Pressable>
 
             <View style={styles.divider}>

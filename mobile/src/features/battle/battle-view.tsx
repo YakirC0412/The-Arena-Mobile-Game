@@ -4,6 +4,7 @@ import { useFocusEffect } from 'expo-router';
 import {
   AccessibilityInfo,
   Animated,
+  Easing,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -14,10 +15,11 @@ import {
   View,
 } from 'react-native';
 
-import { BattleClockCards, type BattleRole } from '@/features/battle/battle-clock-cards';
+import { BattleClockCards, type BattleRole, type ClockEvent } from '@/features/battle/battle-clock-cards';
 import { ArenaBattleMiniMap } from '@/features/arena/arena-battle-mini-map';
 import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
+import { isTouchWeb } from '@/design/keyboard-primer';
 import { useWebViewportBox } from '@/design/use-web-viewport-box';
 import { useGameFeedback } from '@/services/use-game-feedback';
 import { CATEGORY_BY_ID, getWay, getWayItems } from '@/content/categories';
@@ -34,6 +36,7 @@ import type { BattleSetup, GameState } from '@/game/types';
 import { FittedPicture } from './fitted-picture';
 import { ITEM_IMAGES } from '@/content/item-images';
 import { createTapGate } from '@/features/battle/tap-gate';
+import { SoundIcon } from './sound-icon';
 
 type BattleViewProps = {
   state: GameState;
@@ -57,12 +60,13 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   } = useGameFeedback();
   // iPhone Safari: while the keyboard is up the duel sits in a fixed box that is exactly the visible area, so
   // nothing is cut at the top or hidden under the keyboard (the picture panel shrinks instead).
-  const viewportBox = useWebViewportBox();
+  const viewportBox = useWebViewportBox(true);
   // On a short visible area (the keyboard is up) the surrounding panels get flatter, so the picture panel and the
   // answer row always fit. The picture panel takes whatever height is left and is the same in every category:
   // the picture inside never changes its size (it is absolutely positioned).
   const { height: windowHeight } = useWindowDimensions();
-  const compact = (viewportBox ? viewportBox.height : windowHeight) < 600;
+  // Always compact on a phone: the keyboard is up for the whole duel, and a layout that switched on and off with it jumped.
+  const compact = (viewportBox ? viewportBox.height : windowHeight) < 600 || isTouchWeb();
   const fixedBox = viewportBox
     ? ({
       position: 'fixed',
@@ -104,6 +108,17 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   const [imageOpacity] = useState(() => new Animated.Value(1));
   const [imageScale] = useState(() => new Animated.Value(1));
   const [correctGlow] = useState(() => new Animated.Value(0));
+  // Event feedback (see BattleClockCards): which side's clock just got a skip or a right answer, the big "נכון!" over the
+  // picture, and the shake of the answer field after a wrong answer was submitted.
+  const [clockEvents, setClockEvents] = useState<Record<BattleRole, ClockEvent>>({ attacker: null, defender: null });
+  const eventKeyRef = useRef(0);
+  const emitClockEvent = useCallback((side: BattleRole, kind: 'skip' | 'correct') => {
+    eventKeyRef.current += 1;
+    const event = { key: eventKeyRef.current, kind };
+    setClockEvents((current) => ({ ...current, [side]: event }));
+  }, []);
+  const [verdict] = useState(() => new Animated.Value(0));
+  const [fieldShake] = useState(() => new Animated.Value(0));
   const item = currentItem(duel);
   const itemImage = item.imageKey ? ITEM_IMAGES[item.imageKey] : undefined;
 
@@ -159,19 +174,41 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [duel.position, item.id, duel.deck]);
 
-  const animateCorrect = useCallback(() => {
+  const animateCorrect = useCallback((side: BattleRole) => {
+    emitClockEvent(side, 'correct');
+    verdict.stopAnimation();
+    verdict.setValue(0);
+    Animated.sequence([
+      Animated.timing(verdict, { toValue: 1, duration: 120, easing: Easing.out(Easing.exp), useNativeDriver: Platform.OS !== 'web' }),
+      Animated.delay(380),
+      Animated.timing(verdict, { toValue: 0, duration: 180, useNativeDriver: Platform.OS !== 'web' }),
+    ]).start();
     correctGlow.stopAnimation();
     correctGlow.setValue(0);
     Animated.sequence([
       Animated.timing(correctGlow, { toValue: 1, duration: reduceMotion ? 80 : 120, useNativeDriver: false }),
       Animated.timing(correctGlow, { toValue: 0, duration: reduceMotion ? 80 : 160, useNativeDriver: false }),
     ]).start();
-  }, [correctGlow, reduceMotion]);
+  }, [correctGlow, emitClockEvent, reduceMotion, verdict]);
 
-  const animateSkip = useCallback(() => {
+  const animateSkip = useCallback((side: BattleRole) => {
+    emitClockEvent(side, 'skip');
     if (reduceMotion) return;
     Animated.timing(imageOpacity, { toValue: 0.2, duration: 140, useNativeDriver: Platform.OS !== 'web' }).start();
-  }, [imageOpacity, reduceMotion]);
+  }, [emitClockEvent, imageOpacity, reduceMotion]);
+
+  // A wrong answer was submitted (Enter): a short side-to-side shake of the field; reduced motion gets a text hint instead.
+  const animateWrong = useCallback(() => {
+    if (reduceMotion) return;
+    const native = Platform.OS !== 'web';
+    fieldShake.stopAnimation();
+    Animated.sequence([
+      Animated.timing(fieldShake, { toValue: -8, duration: 45, useNativeDriver: native }),
+      Animated.timing(fieldShake, { toValue: 8, duration: 60, useNativeDriver: native }),
+      Animated.timing(fieldShake, { toValue: -5, duration: 55, useNativeDriver: native }),
+      Animated.timing(fieldShake, { toValue: 0, duration: 45, useNativeDriver: native }),
+    ]).start();
+  }, [fieldShake, reduceMotion]);
 
   const focusInput = useCallback(() => {
     const focusTimer = setTimeout(() => inputRef.current?.focus(), 100);
@@ -219,12 +256,12 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
       const outcome = decideAiDuelOutcome(botItem.difficulty, remainingMs(current, side, now), random);
       if (outcome === 'correct') {
         commit(applyAnswer(current, botItem.answer, now, correctAnswerPauseMs(random), env).state);
-        animateCorrect();
+        animateCorrect(side);
         playCorrectFeedback();
         setFeedback('נכון!');
       } else if (outcome === 'skip') {
         commit(applySkip(current, now, env));
-        animateSkip();
+        animateSkip(side);
         playSkipFeedback();
         setFeedback(`${state.players[botId].name} ${by(state.players[botId], 'דילג', 'דילגה')}: ‎−3 שניות`);
       } else {
@@ -247,7 +284,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     const result = applyAnswer(current, text, Date.now(), correctAnswerPauseMs(random), env);
     if (!result.correct) return false;
     commit(result.state);
-    animateCorrect();
+    animateCorrect(side);
     playCorrectFeedback();
     setFeedback('נכון!');
     return true;
@@ -297,7 +334,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
     // Tapping the button would otherwise take focus and close the keyboard.
     inputRef.current?.focus();
     commit(applySkip(current, Date.now(), env));
-    animateSkip();
+    animateSkip(current.active);
     playSkipFeedback();
     setFeedback('דילגת: ‎−3 שניות');
   };
@@ -359,22 +396,23 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
           accessibilityRole="button"
           onPress={toggleMuted}
           style={styles.muteButton}>
-          <AppText style={styles.muteButtonText} weight="bold">
-            {muted ? 'שקט' : 'קול'}
-          </AppText>
+          <SoundIcon muted={muted} />
         </Pressable>
-        {compact ? null : <AppText style={styles.eyebrow} weight="bold">דו־קרב · קטגוריית המגן</AppText>}
         <AppText numberOfLines={1} style={[styles.title, compact && styles.titleCompact]} weight="black">{category.name}</AppText>
         <AppText style={styles.wayLine} weight="bold">{way.label}</AppText>
       </View>
 
       <BattleClockCards
         attackerBonus={setup.attackerUsesBonus}
-        attackerColor={attacker.color}
+        attackerAvatar={attacker.avatar}
+        attackerTotalMs={setup.attackerSeconds * 1000}
+        attackerEvent={clockEvents.attacker}
         attackerLabel={`${attacker.isHuman ? by(attacker, 'אתה', 'את') : attacker.name} · ${by(attacker, 'תוקף', 'תוקפת')}`}
         compact={compact}
         defenderBonus={setup.defenderUsesBonus}
-        defenderColor={defender.color}
+        defenderAvatar={defender.avatar}
+        defenderTotalMs={setup.defenderSeconds * 1000}
+        defenderEvent={clockEvents.defender}
         defenderLabel={`${defender.isHuman ? by(defender, 'אתה', 'את') : defender.name} · ${by(defender, 'מגן', 'מגנה')}`}
         duel={duel}
         onDangerTick={playDangerTick}
@@ -388,6 +426,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         </View>
       )}
 
+      <View style={styles.pictureWrap}>
       <FittedPicture
         Card={Animated.View as never}
         cardStyle={{
@@ -402,6 +441,15 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
         minHeight={compact ? 64 : 140}
         source={itemImage}
       />
+      <Animated.View
+        pointerEvents="none"
+        style={[styles.verdict, {
+          opacity: verdict,
+          transform: [{ scale: verdict.interpolate({ inputRange: [0, 1], outputRange: [0.7, 1] }) }],
+        }]}>
+        <AppText style={styles.verdictText} weight="black">נכון!</AppText>
+      </Animated.View>
+      </View>
 
       <AppText accessibilityLiveRegion="polite" style={styles.feedback} weight="bold">
         {feedback || (compact
@@ -411,6 +459,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
 
       <View style={styles.controls}>
         <View style={styles.inputRow}>
+          <Animated.View style={[styles.fieldWrap, { transform: [{ translateX: fieldShake }] }]}>
           <TextInput
             ref={inputRef}
             autoCapitalize="none"
@@ -420,12 +469,16 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
             // Enter never closes the keyboard; it only re-checks the answer.
             blurOnSubmit={false}
             submitBehavior="submit"
-            onSubmitEditing={() => checkAnswer(answer)}
+            onSubmitEditing={() => {
+              if (checkAnswer(answer) || !answer.trim() || !isHumanTurn || locked) return;
+              if (reduceMotion) showHint('לא נכון, נסו שוב');
+              else animateWrong();
+            }}
             onChangeText={handleAnswerChange}
             spellCheck={false}
             autoComplete="off"
             placeholder={isHumanTurn ? 'הקלידו תשובה…' : `התור של ${activePlayer.name}`}
-            placeholderTextColor={colors.textSecondary}
+            placeholderTextColor={isHumanTurn ? colors.inkSoft : colors.textSecondary}
             maxFontSizeMultiplier={1.3}
             returnKeyType="done"
             selectionColor={colors.success}
@@ -433,6 +486,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
             textAlign="right"
             value={answer}
           />
+          </Animated.View>
           {/* Skip sits beside the field, so the iPhone keyboard bar never hides it. */}
           <Pressable
             ref={setSkipButton}
@@ -465,14 +519,14 @@ const styles = StyleSheet.create({
   },
   screenCompact: { paddingTop: spacing.xs, paddingBottom: spacing.sm },
   header: { minHeight: 70, alignItems: 'center', justifyContent: 'center', marginBottom: spacing.sm },
-  headerCompact: { minHeight: 46, marginBottom: spacing.xs },
+  headerCompact: { minHeight: 44, marginBottom: spacing.xs },
   miniMapPosition: { position: 'absolute', left: 0, top: 0 },
   muteButton: {
     position: 'absolute',
     right: 0,
     top: 0,
-    minWidth: 48,
-    minHeight: 44,
+    width: 44,
+    height: 44,
     borderRadius: radii.control,
     borderWidth: 1,
     borderColor: colors.border,
@@ -480,8 +534,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  muteButtonText: { color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center' },
-  eyebrow: { color: colors.accentGold, fontSize: typeScale.caption, textAlign: 'center' },
   wayLine: { color: colors.success, fontSize: typeScale.caption, textAlign: 'center' },
   title: { color: colors.textPrimary, fontSize: 24, lineHeight: 30, textAlign: 'center', marginTop: spacing.xs },
   titleCompact: { fontSize: 18, lineHeight: 22, marginTop: 0, maxWidth: '62%' },
@@ -516,7 +568,19 @@ const styles = StyleSheet.create({
   imageFill: { position: 'absolute', top: spacing.xs, bottom: spacing.xs, left: spacing.xs, right: spacing.xs },
   itemImage: { width: '100%', height: '100%', borderRadius: radii.control },
   visual: { color: colors.bg, fontSize: 84, lineHeight: 100, textAlign: 'center' },
-  feedback: { minHeight: 22, color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center', marginVertical: spacing.xs },
+  pictureWrap: { flex: 1, width: '100%' },
+  fieldWrap: { flex: 1 },
+  // Big confirmation over the picture while the clocks are paused after a right answer.
+  verdict: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, alignItems: 'center', justifyContent: 'center' },
+  verdictText: {
+    color: colors.correct,
+    fontSize: 40,
+    lineHeight: 48,
+    textShadowColor: colors.bg,
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 10,
+  },
+  feedback: { minHeight: 20, color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center', marginVertical: spacing.xs },
   controls: { gap: spacing.sm },
   inputRow: { minHeight: 52, flexDirection: 'row-reverse', gap: spacing.sm },
   input: {

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ArenaBoard } from '@/features/arena/arena-board';
@@ -11,13 +12,19 @@ const FIXED_RANDOM = () => 0;
 
 export default function QaArenaBoardScreen() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  // `?wins=N` = how many duels the human has already won (bigger territory); `?mode=overview` shows the plain board.
+  const params = useLocalSearchParams<{ mode?: string; wins?: string }>();
+  const wins = Math.min(8, Math.max(2, Number(params.wins) || 2));
   const state = useMemo(() => {
     let expanded = createInitialGame('animals', FIXED_RANDOM, 'שחקן בדיקה');
-    const firstTarget = getNeighborPlayerIds(expanded, 'human')[0];
-    expanded = resolveBattle(expanded, createBattleSetup(expanded, 'human', firstTarget), 'human').state;
-    const secondTarget = getNeighborPlayerIds(expanded, 'human')[0];
-    return resolveBattle(expanded, createBattleSetup(expanded, 'human', secondTarget), 'human').state;
-  }, []);
+    for (let index = 0; index < wins; index += 1) {
+      const target = getNeighborPlayerIds(expanded, 'human')[0];
+      if (!target) break;
+      expanded = resolveBattle(expanded, createBattleSetup(expanded, 'human', target), 'human').state;
+    }
+    return expanded;
+  }, [wins]);
+
   const targets = getNeighborPlayerIds(state, 'human');
 
   return (
@@ -28,7 +35,7 @@ export default function QaArenaBoardScreen() {
       </View>
       <ArenaBoard
         meId="human"
-        mode="select-target"
+        mode={params.mode === 'overview' ? 'overview' : 'select-target'}
         onSelectTarget={setSelectedId}
         selectedId={selectedId}
         state={state}

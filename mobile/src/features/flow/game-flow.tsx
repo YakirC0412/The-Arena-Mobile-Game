@@ -1,5 +1,5 @@
 import { genderOfAvatar } from '@/game/gender';
-import { useMemo, useReducer, type ReactNode } from 'react';
+import { useCallback, useMemo, useReducer, type ReactNode } from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -27,7 +27,10 @@ import { createServerRoomsSource } from '@/online/server-rooms-source';
 import { createSeed, createSeededRandom } from '@/game/rng';
 import type { WayId } from '@/game/types';
 import { loadAccountStore, saveAccountStore } from '@/services/accounts/account-storage';
-import { getCurrentUser, signOut } from '@/services/accounts/accounts';
+import { getCurrentUser, signOut, updateProfile } from '@/services/accounts/accounts';
+import { syncServerProfile } from '@/online/server-session';
+import { signOutGoogle } from '@/online/firebase-auth';
+import { forgetGoogleAccount } from '@/online/google-account';
 import { AppText as Text } from '@/design/app-text';
 import { ArenaScreen } from './arena-screen';
 import { styles } from './flow-styles';
@@ -68,6 +71,9 @@ export function GameFlow() {
     signedIn: (user: FlowUser) => dispatch({ type: 'SIGNED_IN', user }),
     signOut: () => {
       saveAccountStore(signOut(loadAccountStore()));
+      // A Google account also signs out of Google and forgets its server login.
+      void forgetGoogleAccount();
+      void signOutGoogle();
       dispatch({ type: 'SIGN_OUT' });
     },
     homeGuide: () => dispatch({ type: 'HOME_GUIDE' }),
@@ -103,6 +109,17 @@ export function GameFlow() {
     eliminatedContinue: () => dispatch({ type: 'ELIMINATED_CONTINUE' }),
     victoryComplete: () => dispatch({ type: 'VICTORY_COMPLETE' }),
   }), []);
+  // Editing nickname/picture from the home top bar: saved on this phone, then the server account follows (best effort).
+  const currentUser = flow.user;
+  const saveProfile = useCallback((nextName: string, nextAvatar: string): string | null => {
+    if (!currentUser) return 'לא מחוברים';
+    const result = updateProfile(loadAccountStore(), currentUser.id, { nickname: nextName, avatar: nextAvatar });
+    if (!result.ok) return result.errors.nickname ?? result.errors.avatar ?? result.message ?? 'לא הצלחנו לשמור';
+    saveAccountStore(result.store);
+    void syncServerProfile(currentUser.nickname, { nickname: result.user.nickname, avatar: result.user.avatar, gender: result.user.gender });
+    dispatch({ type: 'PROFILE_UPDATED', nickname: result.user.nickname, avatar: result.user.avatar });
+    return null;
+  }, [currentUser]);
   // The live duel gets its own seeded source, fixed for the whole duel.
   const battleRandom = useMemo(() => createSeededRandom(flow.battleSeed), [flow.battleSeed]);
 
@@ -127,10 +144,12 @@ export function GameFlow() {
           onGuide={on.homeGuide}
           onNewGame={on.homeNewGame}
           onOpenLobby={on.openLobby}
+          onSaveProfile={saveProfile}
           onSignOut={on.signOut}
           onTab={on.homeTab}
           source={roomsSource}
           tab={flow.homeTab}
+          userId={flow.user.id}
         />
       );
     case 'lobby':

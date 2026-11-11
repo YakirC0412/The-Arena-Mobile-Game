@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { CATEGORY_BY_ID, getWay } from '@/content/categories';
 import { AppText as Text } from '@/design/app-text';
 import { ArenaBoard } from '@/features/arena/arena-board';
-import { getNeighborPlayerIds, getRoundProgress } from '@/game/engine';
+import { getActivePlayers, getNeighborPlayerIds } from '@/game/engine';
 import type { GameState } from '@/game/types';
 import { styles } from './flow-styles';
 
@@ -30,13 +30,17 @@ export function ArenaScreen({
   selectingTarget: boolean;
 }) {
   const human = game.players[game.humanPlayerId];
+  const activeCount = getActivePlayers(game).length;
+  const duelNumber = Math.min(16 - activeCount + 1, 15);
+  const remainingText = activeCount === 1 ? 'מתמודד אחד נותר' : `${activeCount} מתמודדים נותרו`;
+  const duelText = `דו־קרב ${duelNumber} מתוך 15`;
+  const cellsText = human.cellIds.length === 1 ? 'משבצת 1 בשליטה שלך' : `${human.cellIds.length} משבצות בשליטה שלך`;
   const targetIds = selectingTarget && game.selectedPlayerId
     ? getNeighborPlayerIds(game, game.selectedPlayerId)
     : [];
   const selected = game.selectedPlayerId ? game.players[game.selectedPlayerId] : null;
   const selectedTarget = selectedTargetId ? game.players[selectedTargetId] : null;
   const selectedTargetCategory = selectedTarget ? CATEGORY_BY_ID[selectedTarget.categoryId] : null;
-  const roundProgress = getRoundProgress(game);
   const [confirmingSkip, setConfirmingSkip] = useState(false);
 
   return (
@@ -47,22 +51,19 @@ export function ArenaScreen({
           <Text style={styles.arenaHeaderSubtitle}>הזירה שלך</Text>
         </View>
 
-        <View style={styles.hudRow}>
-          <View style={styles.hudChip}>
-            <Text style={styles.hudChipLabel}>סבב</Text>
-            <Text style={styles.hudChipValue}>{game.round}</Text>
-            <Text style={styles.hudChipMeta}>{roundProgress.drawn}/{roundProgress.total} הוגרלו</Text>
-          </View>
-          <View style={[styles.hudChip, styles.hudChipPrimary]}>
-            <Text style={styles.hudChipLabel}>השטח שלי</Text>
-            <Text style={styles.hudChipValue}>{human.cellIds.length} משבצות</Text>
-            <Text style={styles.hudChipMeta}>{CATEGORY_BY_ID[human.categoryId].name}</Text>
-          </View>
-          <View style={[styles.hudChip, human.bonusReady && styles.hudChipBonus]}>
-            <Text style={styles.hudChipLabel}>{human.bonusReady ? 'בונוס' : 'רצף'}</Text>
-            <Text style={styles.hudChipValue}>{human.bonusReady ? '+5' : `${human.winStreak}/3`}</Text>
-            <Text style={styles.hudChipMeta}>{human.bonusReady ? 'מוכן לקרב' : 'ניצחונות'}</Text>
-          </View>
+        {/* One rounded line: who is left, which duel this is, and how many cells I hold (no rounds, no win counts). */}
+        <View accessibilityLabel={`${remainingText}, ${duelText}, ${cellsText}`} style={styles.hudPanel}>
+          <Text style={styles.hudPanelText} weight="bold">{remainingText}</Text>
+          <View style={styles.hudDivider} />
+          <Text style={styles.hudPanelText} weight="bold">{duelText}</Text>
+          <View style={styles.hudDivider} />
+          <Text style={styles.hudPanelText} weight="bold">{cellsText}</Text>
+          {human.bonusReady ? (
+            <>
+              <View style={styles.hudDivider} />
+              <Text style={[styles.hudPanelText, styles.hudPanelBonus]} weight="black">⭐ +5</Text>
+            </>
+          ) : null}
         </View>
 
         <ArenaBoard

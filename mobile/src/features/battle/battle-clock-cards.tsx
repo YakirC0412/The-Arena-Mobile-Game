@@ -1,23 +1,33 @@
 import { useEffect, useRef, useState } from 'react';
-import { AccessibilityInfo, Animated, Platform, StyleSheet, View } from 'react-native';
+import { AccessibilityInfo, Animated, Easing, Platform, StyleSheet, View } from 'react-native';
 
 import { AppText } from '@/design/app-text';
+import { AvatarPortrait } from '@/design/avatar-portrait';
 import { colors, fontFamilies, radii, spacing, typeScale } from '@/design/tokens';
 import { remainingMs } from '@/game/duel';
 import type { DuelSide, DuelState } from '@/game/duel';
 
 export type BattleRole = DuelSide;
 
+// Something just happened to this side's clock: a skip (the -3 s penalty) or a right answer. `key` changes on every event,
+// so two skips in a row both animate.
+export type ClockEvent = { key: number; kind: 'skip' | 'correct' } | null;
+
 type BattleClockCardsProps = {
   // The duel state machine (game/duel.ts) is the single source of truth; these cards only show it.
   duel: DuelState;
+  attackerAvatar: string;
   attackerBonus: boolean;
-  attackerColor: string;
+  // Time the side started with (ms): the bar under the numerals shows how much of it is left.
+  attackerTotalMs: number;
+  attackerEvent?: ClockEvent;
   attackerLabel: string;
   // Short screens (iPhone with the keyboard up): a flatter card so the picture keeps its room.
   compact?: boolean;
+  defenderAvatar: string;
   defenderBonus: boolean;
-  defenderColor: string;
+  defenderTotalMs: number;
+  defenderEvent?: ClockEvent;
   defenderLabel: string;
   onDangerTick?: () => void;
 };
@@ -30,11 +40,15 @@ function formatClock(milliseconds: number): string {
 // and the end of the duel all live in the duel state.
 export function BattleClockCards({
   duel,
+  attackerAvatar,
   attackerBonus,
-  attackerColor,
+  attackerTotalMs,
+  attackerEvent = null,
   attackerLabel,
+  defenderAvatar,
   defenderBonus,
-  defenderColor,
+  defenderTotalMs,
+  defenderEvent = null,
   defenderLabel,
   compact = false,
   onDangerTick,
@@ -78,17 +92,21 @@ export function BattleClockCards({
     <View style={styles.row}>
       <ClockCard
         active={activeRole === 'attacker'}
+        avatar={attackerAvatar}
         bonus={attackerBonus}
+        totalMs={attackerTotalMs}
         compact={compact}
-        color={attackerColor}
+        event={attackerEvent}
         label={attackerLabel}
         milliseconds={attackerMs}
       />
       <ClockCard
         active={activeRole === 'defender'}
+        avatar={defenderAvatar}
         bonus={defenderBonus}
+        totalMs={defenderTotalMs}
         compact={compact}
-        color={defenderColor}
+        event={defenderEvent}
         label={defenderLabel}
         milliseconds={defenderMs}
       />
@@ -96,25 +114,34 @@ export function BattleClockCards({
   );
 }
 
-function ClockCard({
+export function ClockCard({
   active,
+  avatar,
   bonus,
   compact,
-  color,
+  event,
   label,
   milliseconds,
+  totalMs,
 }: {
   active: boolean;
+  avatar: string;
   bonus: boolean;
+  totalMs: number;
   compact: boolean;
-  color: string;
+  event: ClockEvent;
   label: string;
   milliseconds: number;
 }) {
   const [reduceMotion, setReduceMotion] = useState(false);
   const [pulse] = useState(() => new Animated.Value(1));
   const [shake] = useState(() => new Animated.Value(0));
-  const urgency = !active ? 'inactive' : milliseconds <= 5000 ? 'danger' : milliseconds <= 10000 ? 'warning' : 'normal';
+  // Event feedback: a tint flash over the card (red for a skip, green for a right answer), a small bump on a right
+  // answer and a "-3" that floats up from the numerals on a skip. Reduced motion keeps the flash and drops the movement.
+  const [flash] = useState(() => new Animated.Value(0));
+  const [bump] = useState(() => new Animated.Value(1));
+  const [floatUp] = useState(() => new Animated.Value(0));
+  const [lastKind, setLastKind] = useState<'skip' | 'correct'>('skip');  const urgency = !active ? 'inactive' : milliseconds <= 5000 ? 'danger' : milliseconds <= 10000 ? 'warning' : 'normal';
 
   useEffect(() => {
     void AccessibilityInfo.isReduceMotionEnabled().then(setReduceMotion);
@@ -137,6 +164,37 @@ function ClockCard({
   }, [pulse, reduceMotion, urgency]);
 
   useEffect(() => {
+    if (!event) return;
+    const native = Platform.OS !== 'web';
+    setLastKind(event.kind);
+    flash.stopAnimation();
+    flash.setValue(0);
+    floatUp.stopAnimation();
+    floatUp.setValue(0);
+    bump.stopAnimation();
+    bump.setValue(1);
+    const out = Easing.out(Easing.exp);
+    const animations = [
+      Animated.sequence([
+        Animated.timing(flash, { toValue: 1, duration: 90, useNativeDriver: native }),
+        Animated.timing(flash, { toValue: 0, duration: 420, easing: out, useNativeDriver: native }),
+      ]),
+    ];
+    if (!reduceMotion && event.kind === 'skip') {
+      animations.push(Animated.timing(floatUp, { toValue: 1, duration: 750, easing: out, useNativeDriver: native }));
+    }
+    if (!reduceMotion && event.kind === 'correct') {
+      animations.push(Animated.sequence([
+        Animated.timing(bump, { toValue: 1.07, duration: 110, useNativeDriver: native }),
+        Animated.timing(bump, { toValue: 1, duration: 260, easing: out, useNativeDriver: native }),
+      ]));
+    }
+    Animated.parallel(animations).start();
+    // Runs once per event.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event?.key]);
+
+  useEffect(() => {
     if (milliseconds !== 0 || reduceMotion) return;
     Animated.sequence([
       Animated.timing(shake, { toValue: -7, duration: 55, useNativeDriver: Platform.OS !== 'web' }),
@@ -151,12 +209,19 @@ function ClockCard({
       styles.card,
       compact && styles.compactCard,
       active ? styles.activeCard : styles.inactiveCard,
-      active && { borderColor: color, shadowColor: color },
+      active && { borderColor: colors.accentGold, shadowColor: colors.accentGold },
       urgency === 'warning' && styles.warningCard,
       urgency === 'danger' && styles.dangerCard,
-      { transform: [{ scale: pulse }, { translateX: shake }] },
+      { transform: [{ scale: pulse }, { scale: bump }, { translateX: shake }] },
     ]}>
-      <AppText numberOfLines={1} style={styles.label} weight="bold">{label}</AppText>
+      <Animated.View
+        pointerEvents="none"
+        style={[styles.flash, { backgroundColor: lastKind === 'skip' ? colors.danger : colors.correct, opacity: flash.interpolate({ inputRange: [0, 1], outputRange: [0, 0.3] }) }]}
+      />
+      <View style={styles.who}>
+        <AvatarPortrait avatarId={avatar} borderColor={active ? colors.accentGold : colors.brandSky} size={compact ? 22 : 28} />
+        <AppText numberOfLines={1} style={styles.label} weight="bold">{label}</AppText>
+      </View>
       <AppText style={[
         styles.value,
         !active && styles.inactiveValue,
@@ -166,6 +231,20 @@ function ClockCard({
       ]} weight="black">
         {formatClock(milliseconds)}
       </AppText>
+      {!reduceMotion ? (
+        <Animated.Text
+          accessibilityElementsHidden
+          importantForAccessibility="no"
+          style={[styles.penalty, {
+            opacity: floatUp.interpolate({ inputRange: [0, 0.15, 1], outputRange: [0, 1, 0] }),
+            transform: [{ translateY: floatUp.interpolate({ inputRange: [0, 1], outputRange: [6, -30] }) }],
+          }]}>
+          ‎−3
+        </Animated.Text>
+      ) : null}
+      <View pointerEvents="none" style={styles.track}>
+        <View style={[styles.trackFill, { width: `${Math.max(0, Math.min(100, (milliseconds / Math.max(1, totalMs)) * 100))}%`, backgroundColor: urgency === 'danger' ? colors.danger : urgency === 'warning' ? colors.warning : active ? colors.accentGold : colors.brandBorder }]} />
+      </View>
       {bonus ? (
         <View style={styles.bonusBadge}>
           <AppText style={styles.bonusText} weight="black">+5</AppText>
@@ -188,14 +267,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     position: 'relative',
   },
-  compactCard: { minHeight: 58, padding: spacing.xs },
-  compactValue: { fontSize: 34, lineHeight: 38 },
-  compactInactiveValue: { fontSize: 28, lineHeight: 38 },
+  compactCard: { minHeight: 50, paddingVertical: 2, paddingHorizontal: spacing.xs },
+  compactValue: { fontSize: 32, lineHeight: 34 },
+  compactInactiveValue: { fontSize: 28, lineHeight: 34 },
   activeCard: { borderWidth: 3, shadowOpacity: 0.55, shadowRadius: 12 },
   inactiveCard: { borderColor: colors.border },
   warningCard: { borderColor: colors.warning, shadowColor: colors.warning },
   dangerCard: { borderColor: colors.danger, shadowColor: colors.danger, shadowOpacity: 0.8, shadowRadius: 16 },
-  label: { color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center' },
+  who: { flexDirection: 'row-reverse', alignItems: 'center', gap: spacing.xs, maxWidth: '100%' },
+  label: { flexShrink: 1, color: colors.textSecondary, fontSize: typeScale.caption, textAlign: 'center' },
+  track: { position: 'absolute', left: spacing.md, right: spacing.md, bottom: 5, height: 3, borderRadius: 2, backgroundColor: colors.border, overflow: 'hidden' },
+  trackFill: { height: 3, borderRadius: 2, alignSelf: 'flex-end' },
   value: {
     color: colors.textPrimary,
     fontFamily: fontFamilies.black,
@@ -204,9 +286,22 @@ const styles = StyleSheet.create({
     fontVariant: ['tabular-nums'],
     textAlign: 'center',
   },
-  inactiveValue: { color: colors.textSecondary, fontSize: typeScale.clockInactive },
+  inactiveValue: { color: colors.textPrimary, opacity: 0.8, fontSize: typeScale.clockInactive },
   warningValue: { color: colors.warning },
   dangerValue: { color: colors.danger },
+  flash: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, borderRadius: radii.card },
+  penalty: {
+    position: 'absolute',
+    alignSelf: 'center',
+    top: spacing.xs,
+    color: colors.danger,
+    fontFamily: fontFamilies.black,
+    fontSize: 22,
+    lineHeight: 26,
+    textShadowColor: colors.bg,
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 4,
+  },
   bonusBadge: {
     position: 'absolute',
     top: spacing.sm,

@@ -6,7 +6,8 @@ import { AccessibilityInfo, Pressable, StyleSheet, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AvatarPortrait } from '@/design/avatar-portrait';
+import { TerritoryLabelBox } from '@/features/arena/arena-board';
+import { getTerritoryLabelRegion } from '@/features/arena/territory-layout';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import { createRandomDrawSequence, drawStepDelaysMs } from '@/game/engine';
 import type { GameState } from '@/game/types';
@@ -27,7 +28,7 @@ export function DrawAnimationScreen({
 }) {
   const selectedPlayer = state.selectedPlayerId ? state.players[state.selectedPlayerId] : null;
   const reducedMotion = useReducedMotion();
-  const { draw: playDrawFeedback } = useGameFeedback();
+  const { draw: playDrawFeedback, drawRoll: playDrawRoll } = useGameFeedback();
   const candidatePlayerIds = useMemo(() => (
     Object.values(state.players)
       .filter((player) => (
@@ -37,21 +38,14 @@ export function DrawAnimationScreen({
       .map((player) => player.id)
   ), [state]);
   const candidatePlayerIdSet = useMemo(() => new Set(candidatePlayerIds), [candidatePlayerIds]);
-  const anchorIds = useMemo(() => {
-    const anchors = new Map<string, number>();
+  // Same label placement as the main board: the name sits in the territory's biggest rectangle.
+  const labelRegions = useMemo(() => {
+    const regions = new Map<string, ReturnType<typeof getTerritoryLabelRegion>>();
     Object.values(state.players).forEach((player) => {
       if (!player.isActive || player.cellIds.length === 0) return;
-      const cells = player.cellIds.map((cellId) => state.cells[cellId]);
-      const centerRow = cells.reduce((total, cell) => total + cell.row, 0) / cells.length;
-      const centerColumn = cells.reduce((total, cell) => total + cell.column, 0) / cells.length;
-      const anchor = cells.reduce((closest, cell) => {
-        const distance = (cell.row - centerRow) ** 2 + (cell.column - centerColumn) ** 2;
-        const closestDistance = (closest.row - centerRow) ** 2 + (closest.column - centerColumn) ** 2;
-        return distance < closestDistance ? cell : closest;
-      });
-      anchors.set(player.id, anchor.id);
+      regions.set(player.id, getTerritoryLabelRegion(player.cellIds.map((cellId) => state.cells[cellId])));
     });
-    return anchors;
+    return regions;
   }, [state.cells, state.players]);
   const selectedPlayerId = selectedPlayer?.id ?? candidatePlayerIds[0];
   const selectedHasBonus = selectedPlayer?.bonusReady ?? false;
@@ -64,6 +58,10 @@ export function DrawAnimationScreen({
     // Reduce Motion slows the draw down but never removes it: the cursor jumping between squares is the point.
     const delays = quick ? Array.from({ length: 9 }, () => 110) : drawStepDelaysMs(reducedMotion);
     const sequence = createRandomDrawSequence(candidatePlayerIds, delays.length, random);
+    // The full-length draw has its own sound (tocks that slow down, then a chime exactly at the landing); a bot's quick draw
+    // and Reduce Motion (other timings) only play the chime when the cursor lands.
+    const rolls = !quick && !reducedMotion;
+    if (rolls) playDrawRoll();
 
     for (let step = 0; step < sequence.length; step += 1) {
       const playerId = sequence[step];
@@ -74,13 +72,13 @@ export function DrawAnimationScreen({
     timers.push(setTimeout(() => {
       setHighlightedPlayerId(selectedPlayerId);
       setLanded(true);
-      playDrawFeedback();
+      if (!rolls) playDrawFeedback();
       if (selectedPlayer) AccessibilityInfo.announceForAccessibility(`${selectedPlayer.name} ${by(selectedPlayer, 'נבחר', 'נבחרה')} לשחק`);
     }, elapsed));
     if (onComplete) timers.push(setTimeout(onComplete, elapsed + (selectedHasBonus ? 1700 : 800)));
 
     return () => timers.forEach(clearTimeout);
-  }, [candidatePlayerIds, onComplete, playDrawFeedback, quick, random, reducedMotion, selectedHasBonus, selectedPlayer, selectedPlayerId]);
+  }, [candidatePlayerIds, onComplete, playDrawFeedback, playDrawRoll, quick, random, reducedMotion, selectedHasBonus, selectedPlayer, selectedPlayerId]);
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -107,8 +105,6 @@ export function DrawAnimationScreen({
               const category = CATEGORY_BY_ID[owner.categoryId];
               const isCandidate = candidatePlayerIdSet.has(owner.id);
               const isHighlighted = owner.id === highlightedPlayerId;
-              const foreground = isHighlighted ? colors.boardFrame : colors.textPrimary;
-              const isAnchor = anchorIds.get(owner.id) === cell.id;
               const sameOwnerAt = (row: number, column: number) => (
                 row >= 0 && row < 4 && column >= 0 && column < 4
                   ? state.cells[row * 4 + column].ownerId === owner.id
@@ -139,15 +135,24 @@ export function DrawAnimationScreen({
                     isHighlighted && styles.highlightedCell,
                     landed && isHighlighted && styles.landedCell,
                   ]}>
-                  {isAnchor ? (
-                    <>
-                      <Text numberOfLines={1} style={[styles.cellCategory, { color: foreground }]}>{category.name}</Text>
-                      <View style={styles.ownerRow}>
-                        <AvatarPortrait avatarId={owner.avatar} borderColor={foreground} size={25} />
-                        <Text numberOfLines={1} style={[styles.cellName, { color: foreground }]}>{owner.name}</Text>
-                      </View>
-                    </>
-                  ) : null}
+                </View>
+              );
+            })}
+            {Object.values(state.players).map((owner) => {
+              const region = labelRegions.get(owner.id);
+              if (!region) return null;
+              const highlighted = owner.id === highlightedPlayerId;
+              return (
+                // zIndex above the highlighted cell (3): otherwise the cell the cursor sits on hides its own label.
+                <View key={`label-${owner.id}`} pointerEvents="none" style={[StyleSheet.absoluteFill, { zIndex: 5 }, !owner.isActive && styles.inactiveCell]}>
+                  <TerritoryLabelBox
+                    categoryName={CATEGORY_BY_ID[owner.categoryId].name}
+                    isMe={highlighted}
+                    mode="simulation"
+                    ownerAvatar={owner.avatar}
+                    ownerName={owner.name}
+                    region={region}
+                  />
                 </View>
               );
             })}

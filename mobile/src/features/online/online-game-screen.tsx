@@ -1,3 +1,4 @@
+import { primeWebKeyboard } from '@/design/keyboard-primer';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
@@ -71,7 +72,8 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
   const mySide = setup && me ? (setup.attackerId === me ? 'attacker' : setup.defenderId === me ? 'defender' : null) : null;
 
   const drawState = useFrozen(`draw-${view.duels}-${view.attackerId}`, state);
-  const revealState = useFrozen('finalReveal', state);
+  // The final reveal shows the board as it is when that stage starts (two finalists); before that the key changes, so it follows the game.
+  const revealState = useFrozen(view.stage === 'finalReveal' ? 'finalReveal' : `before-reveal-${view.duels}`, state);
   const beforeFrozen = useFrozen(`before-${view.duels}-${view.stage === 'result' || view.stage === 'done'}`, beforeRef.current);
   const resultFrozen = useFrozen(`result-${view.duels}-${view.stage}`, lastResultRef.current);
 
@@ -82,7 +84,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
   if (view.stage === 'finalReveal') {
     return <FinalRevealScreen state={revealState} />;
   }
-  if (view.stage === 'result' && view.result && !view.result.compact && !view.result.decisive && !view.result.banner && beforeFrozen && resultFrozen) {
+  if (view.stage === 'result' && view.result && !view.result.decisive && !view.result.banner && beforeFrozen && resultFrozen) {
     return <ConquestAnimationScreen beforeState={beforeFrozen} resolution={resultFrozen.resolution} />;
   }
   if (view.stage === 'done' && beforeFrozen && resultFrozen) {
@@ -91,7 +93,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
   if (view.stage === 'duel' && view.duel && setup) {
     return (
       <BrandBackground>
-        <OnlineDuel mySide={mySide} onSkipFeedback={feedback.skip} receivedAt={link.gameAt} send={link.send} view={view} />
+        <OnlineDuel correctCount={link.correctCount} muted={feedback.muted} mySide={mySide} onSkipFeedback={feedback.skip} onToggleMuted={feedback.toggleMuted} receivedAt={link.gameAt} send={link.send} state={state} view={view} />
       </BrandBackground>
     );
   }
@@ -137,7 +139,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
               icon={CATEGORY_BY_ID[categoryId].icon}
               key={categoryId}
               label={CATEGORY_BY_ID[categoryId].name}
-              onPress={() => link.send('pickFinalCategory', { categoryId })}
+              onPress={() => { primeWebKeyboard(); link.send('pickFinalCategory', { categoryId }); }}
             />
           ))}
         </View>
@@ -179,7 +181,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
     if (mineToChoose) {
       body = (
         <View style={styles.choiceRow}>
-          <BrandPrimaryButton icon="⚔️" label="להמשיך לתקוף" onPress={() => link.send('continue')} />
+          <BrandPrimaryButton icon="⚔️" label="להמשיך לתקוף" onPress={() => { primeWebKeyboard(); link.send('continue'); }} />
           <BrandSecondaryButton icon="🏠" label="לחזור לזירה" onPress={() => link.send('return')} />
         </View>
       );
@@ -212,7 +214,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
       <ScrollView contentContainerStyle={styles.shell} showsVerticalScrollIndicator={false} style={styles.scroll}>
         <View style={styles.topBar}>
           <AppText style={styles.topText} weight="bold">
-            {view.stage === 'done' ? 'המשחק נגמר' : `דו־קרב ${Math.min(view.duels + 1, 15)} מתוך 15 · סיבוב ${view.round}`}
+            {view.stage === 'done' ? 'המשחק נגמר' : `דו־קרב ${Math.min(view.duels + 1, 15)} מתוך 15`}
           </AppText>
           <Pressable accessibilityRole="button" onPress={onLeave} style={styles.leave}>
             <AppText style={styles.leaveText} weight="bold">{view.stage === 'done' ? 'סיום' : 'יציאה'}</AppText>
@@ -230,7 +232,7 @@ export function OnlineGameScreen({ link, onLeave }: { link: LobbyLink; onLeave: 
           <ArenaBoard
             meId={botReveal ? view.attackerId : me}
             mode={boardMode}
-            onSelectTarget={(targetId) => link.send('pickTarget', { targetId })}
+            onSelectTarget={(targetId) => { primeWebKeyboard(); link.send('pickTarget', { targetId }); }}
             selectedId={highlighted}
             state={state}
             targetIds={optionIds}

@@ -8,6 +8,7 @@ import { CATEGORY_BY_ID } from '@/content/categories';
 import type { BattleResolution, GameState } from '@/game/types';
 import { useGameFeedback } from '@/services/use-game-feedback';
 import { useReducedMotion } from '@/design/use-reduced-motion';
+import { BrandPrimaryButton } from '@/design/brand';
 import { styles } from './battle-transition-styles';
 
 export function ConquestAnimationScreen({
@@ -190,9 +191,7 @@ export function ConquestAnimationScreen({
           </Text>
         </View>
         {onComplete ? (
-          <Pressable accessibilityLabel="דילוג על אנימציית ההשתלטות" accessibilityRole="button" onPress={onComplete} style={styles.transitionSkipButton}>
-            <Text style={styles.transitionSkipText}>המשך</Text>
-          </Pressable>
+          <BrandPrimaryButton accessibilityLabel="המשך, דילוג על אנימציית ההשתלטות" label="המשך" onPress={onComplete} style={styles.continueButton} />
         ) : null}
       </View>
     </SafeAreaView>

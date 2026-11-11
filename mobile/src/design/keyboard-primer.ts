@@ -19,4 +19,18 @@ export function primeWebKeyboard() {
     document.body.appendChild(primer);
   }
   primer.focus();
+  // If no answer field takes over (the duel never starts), do not leave the keyboard hanging open.
+  if (releaseTimer) clearTimeout(releaseTimer);
+  releaseTimer = setTimeout(() => {
+    if (document.activeElement === primer) primer?.blur();
+  }, 8000);
+}
+
+let releaseTimer: ReturnType<typeof setTimeout> | null = null;
+
+// A phone browser (touch screen). The duel screens use their compact layout there from the start, so opening or closing
+// the keyboard only changes the height of the picture and never switches the whole layout (which made the screen jump).
+export function isTouchWeb(): boolean {
+  if (Platform.OS !== 'web' || typeof window === 'undefined' || !window.matchMedia) return false;
+  return window.matchMedia('(pointer: coarse)').matches;
 }

@@ -44,6 +44,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     opacity: 0.6,
   },
+  // Configured: a real, tappable button (the dimmed look is for "coming soon").
+  googleButtonReady: { opacity: 1, borderColor: colors.brandSky },
   googleGlyph: {
     width: 26,
     height: 26,

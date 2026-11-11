@@ -3,7 +3,7 @@ import { Animated, Easing, Platform, StyleSheet, useWindowDimensions, View } fro
 
 import { ArenaLogo } from '@/design/brand';
 import { colors } from '@/design/tokens';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 // The front door of the game: the logo (the arena with its 16 contestants) big, on a pool of light, floating gently.
 // The float stops when the phone asks for reduced motion.

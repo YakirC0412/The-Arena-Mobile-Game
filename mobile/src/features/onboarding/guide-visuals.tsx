@@ -4,7 +4,7 @@ import { Image, StyleSheet, View } from 'react-native';
 import { ITEM_IMAGES } from '@/content/item-images';
 import { AppText as Text } from '@/design/app-text';
 import { colors, radii, spacing } from '@/design/tokens';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 import type { GuideVisualKey } from './guide-pages';
 

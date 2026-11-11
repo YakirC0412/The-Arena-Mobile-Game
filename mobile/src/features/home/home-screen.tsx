@@ -4,7 +4,7 @@ import { Pressable, ScrollView, View } from 'react-native';
 import { AppText as Text } from '@/design/app-text';
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { BrandBackground, BrandPrimaryButton, BrandSecondaryButton } from '@/design/brand';
-import { BottomSheet } from './bottom-sheet';
+import { BottomSheet } from '@/design/bottom-sheet';
 import { colors } from '@/design/tokens';
 import type { HomeTab, LobbyEntry } from '@/game/flow';
 import type { RoomsSource } from '@/online/rooms-source';

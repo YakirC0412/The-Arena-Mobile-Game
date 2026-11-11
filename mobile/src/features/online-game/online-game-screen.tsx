@@ -1,4 +1,4 @@
-import { primeWebKeyboard } from '@/design/keyboard-primer';
+import { primeWebKeyboard } from '@/hooks/keyboard-primer';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
@@ -17,7 +17,7 @@ import { by } from '@/game/gender';
 import type { OnlineView, ViewPlayer } from '@/game/online-view';
 import type { BattleResolution, GameState } from '@/game/types';
 import { viewToGameState } from '@/online/view-to-state';
-import { useGameFeedback } from '@/services/use-game-feedback';
+import { useGameFeedback } from '@/hooks/use-game-feedback';
 import { OnlineDuel } from './online-duel';
 
 // Keeps the first value seen for a key. The animation screens restart when their state object changes, and the

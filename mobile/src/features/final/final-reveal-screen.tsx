@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { AppText as Text } from '@/design/app-text';
 import { colors } from '@/design/tokens';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import { getActivePlayers } from '@/game/engine';
 import { getTerritoryLabelRegion } from '@/features/arena/territory-layout';

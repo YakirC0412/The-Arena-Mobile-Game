@@ -13,7 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import type { GameState } from '@/game/types';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 export function ArenaBuildScreen({
   onComplete,

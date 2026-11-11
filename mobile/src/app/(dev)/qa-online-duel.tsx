@@ -1,7 +1,7 @@
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { OnlineDuel } from '@/features/online/online-duel';
+import { OnlineDuel } from '@/features/online-game/online-duel';
 import type { OnlineView } from '@/game/online-view';
 import { viewToGameState } from '@/online/view-to-state';
 

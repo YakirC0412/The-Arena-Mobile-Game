@@ -7,7 +7,7 @@ import { colors } from '@/design/tokens';
 import { isCompleteRoomCode, normalizeRoomCode } from '@/online/format';
 import type { RoomsSource } from '@/online/rooms-source';
 import type { RoomSummary, RoomVisibility } from '@/online/types';
-import { BottomSheet } from './bottom-sheet';
+import { BottomSheet } from '@/design/bottom-sheet';
 import { styles } from './home-styles';
 
 const MAX_NAME = 24;

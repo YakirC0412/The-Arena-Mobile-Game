@@ -4,7 +4,7 @@ import { AccessibilityInfo, Animated, Easing, Platform, StyleSheet, useWindowDim
 import { AppText as Text } from '@/design/app-text';
 import { ArenaLogo, BrandBackground } from '@/design/brand';
 import { colors, spacing, typeScale } from '@/design/tokens';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { NumberOneBadge } from './number-one-badge';
 
 const NATIVE = Platform.OS !== 'web';

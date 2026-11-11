@@ -8,7 +8,7 @@ import { AppText as Text } from '@/design/app-text';
 import { ArenaBoard } from '@/features/arena/arena-board';
 import { getActivePlayers, getNeighborPlayerIds } from '@/game/engine';
 import type { GameState } from '@/game/types';
-import { styles } from './flow-styles';
+import { styles } from '../flow/flow-styles';
 
 // The arena between duels: HUD, board, and either the draw button or the
 // human's target picker.

@@ -19,9 +19,9 @@ import { BattleClockCards, type BattleRole, type ClockEvent } from '@/features/b
 import { ArenaBattleMiniMap } from '@/features/arena/arena-battle-mini-map';
 import { AppText } from '@/design/app-text';
 import { colors, fontFamilies, layout, radii, spacing, typeScale } from '@/design/tokens';
-import { isTouchWeb } from '@/design/keyboard-primer';
-import { useWebViewportBox } from '@/design/use-web-viewport-box';
-import { useGameFeedback } from '@/services/use-game-feedback';
+import { isTouchWeb } from '@/hooks/keyboard-primer';
+import { useWebViewportBox } from '@/hooks/use-web-viewport-box';
+import { useGameFeedback } from '@/hooks/use-game-feedback';
 import { CATEGORY_BY_ID, getWay, getWayItems } from '@/content/categories';
 import { applyAnswer, applySkip, currentItem, remainingMs, startDuel, tick } from '@/game/duel';
 import type { DuelState } from '@/game/duel';
@@ -33,10 +33,10 @@ import {
 } from '@/game/engine';
 import { by } from '@/game/gender';
 import type { BattleSetup, GameState } from '@/game/types';
-import { FittedPicture } from './fitted-picture';
+import { FittedPicture } from '@/design/fitted-picture';
 import { ITEM_IMAGES } from '@/content/item-images';
 import { createTapGate } from '@/features/battle/tap-gate';
-import { SoundIcon } from './sound-icon';
+import { SoundIcon } from '@/design/sound-icon';
 
 type BattleViewProps = {
   state: GameState;

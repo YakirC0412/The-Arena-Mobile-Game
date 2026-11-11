@@ -8,9 +8,9 @@ import { CATEGORY_BY_ID } from '@/content/categories';
 import { AppText as Text } from '@/design/app-text';
 import { AvatarPortrait } from '@/design/avatar-portrait';
 import { colors } from '@/design/tokens';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import type { BattleResolution, GameState } from '@/game/types';
-import { useGameFeedback } from '@/services/use-game-feedback';
+import { useGameFeedback } from '@/hooks/use-game-feedback';
 
 const NATIVE = Platform.OS !== 'web';
 const TAKEOVER_MS = 2400;

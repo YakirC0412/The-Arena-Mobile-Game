@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { KeyboardAvoidingView, Modal, Platform, Pressable, View } from 'react-native';
 
 import { AppText as Text } from '@/design/app-text';
-import { styles } from './home-styles';
+import { styles } from '../features/home/home-styles';
 
 // A bottom sheet: dims the screen, slides in from the bottom edge, closes with the X or a tap outside.
 export function BottomSheet({ children, onClose, title, visible }: { children: ReactNode; onClose: () => void; title: string; visible: boolean }) {

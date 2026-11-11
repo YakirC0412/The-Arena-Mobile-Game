@@ -8,7 +8,7 @@ import { AvatarPortrait } from '@/design/avatar-portrait';
 import { CATEGORY_BY_ID, getWay } from '@/content/categories';
 import type { BattleSetup, GameState } from '@/game/types';
 import { styles } from './battle-transition-styles';
-import { primeWebKeyboard } from '@/design/keyboard-primer';
+import { primeWebKeyboard } from '@/hooks/keyboard-primer';
 
 export function BattleIntroScreen({
   battleNumber = 1,

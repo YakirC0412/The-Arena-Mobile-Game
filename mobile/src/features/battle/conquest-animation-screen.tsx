@@ -6,8 +6,8 @@ import { AppText as Text } from '@/design/app-text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import type { BattleResolution, GameState } from '@/game/types';
-import { useGameFeedback } from '@/services/use-game-feedback';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useGameFeedback } from '@/hooks/use-game-feedback';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 import { BrandPrimaryButton } from '@/design/brand';
 import { styles } from './battle-transition-styles';
 

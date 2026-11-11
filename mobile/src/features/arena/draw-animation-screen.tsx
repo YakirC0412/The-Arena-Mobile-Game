@@ -11,8 +11,8 @@ import { getTerritoryLabelRegion } from '@/features/arena/territory-layout';
 import { CATEGORY_BY_ID } from '@/content/categories';
 import { createRandomDrawSequence, drawStepDelaysMs } from '@/game/engine';
 import type { GameState } from '@/game/types';
-import { useGameFeedback } from '@/services/use-game-feedback';
-import { useReducedMotion } from '@/design/use-reduced-motion';
+import { useGameFeedback } from '@/hooks/use-game-feedback';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 export function DrawAnimationScreen({
   onComplete,

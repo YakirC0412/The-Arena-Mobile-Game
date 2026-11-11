@@ -7,7 +7,7 @@ import { BrandPrimaryButton } from '@/design/brand';
 import { colors } from '@/design/tokens';
 import { AVATARS } from '@/content/avatars';
 import { NICKNAME_MAX_LENGTH } from '@/services/accounts/accounts';
-import { BottomSheet } from './bottom-sheet';
+import { BottomSheet } from '@/design/bottom-sheet';
 import { styles } from './home-styles';
 
 // Tap on your avatar in the home top bar: change the nickname and the picture. `onSave` answers with an error text, or null when saved.

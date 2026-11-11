@@ -32,7 +32,7 @@ import { syncServerProfile } from '@/online/server-session';
 import { signOutGoogle } from '@/online/firebase-auth';
 import { forgetGoogleAccount } from '@/online/google-account';
 import { AppText as Text } from '@/design/app-text';
-import { ArenaScreen } from './arena-screen';
+import { ArenaScreen } from '../arena/arena-screen';
 import { styles } from './flow-styles';
 import { ResultScreen } from './result-screen';
 import { SetupScreen } from './setup-screen';

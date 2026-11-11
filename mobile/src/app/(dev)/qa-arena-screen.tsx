@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { ArenaScreen } from '@/features/flow/arena-screen';
+import { ArenaScreen } from '@/features/arena/arena-screen';
 import { createInitialGame, createBattleSetup, getNeighborPlayerIds, resolveBattle } from '@/game/engine';
 import { useLocalSearchParams } from 'expo-router';
 

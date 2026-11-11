@@ -78,7 +78,7 @@ flowchart TD
 ### The duel
 
 - The picture comes from the **defender's category** and the way it is played (see below). The attacker starts.
-- A picture never repeats within a game (the deck is reshuffled only if a category runs out).
+- A picture never repeats within a duel. Pictures come in random order but get harder as the duel goes on: each category has 12 easy, 10 medium and 8 hard pictures, the first picture is always easy, and a hard one cannot appear before the 4th.
 - Whoever's clock hits zero first loses.
 
 ### After a duel
@@ -107,7 +107,7 @@ When two contestants remain, the one holding more squares chooses the category f
 
 ### Bots
 
-Bots choose targets by territory size, the risk of revenge and a random factor, and answer through a simulated thinking delay. A duel between two bots is decided in the background with the same rules.
+Bots choose targets by territory size, the risk of revenge and a random factor. In a live duel a bot answers after a thinking delay that grows with the answer's length (about 0.24 s per letter, a pause between words) and with the picture's difficulty, and its accuracy drops on harder pictures (77% / 62% / 47%). A duel between two bots is decided in the background with the same rules.
 
 ### Skip to my turn (single player)
 

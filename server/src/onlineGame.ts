@@ -301,7 +301,7 @@ export class OnlineGame {
 
   private duelEnv(setup: BattleSetup) {
     const items = getWayItems(CATEGORY_BY_ID[setup.categoryId], setup.wayId);
-    return { refill: () => createBattleDeck(items, this.options.random) };
+    return { refill: () => createBattleDeck(items, this.options.random, items.length) };
   }
 
   private updateDuel(stage: Extract<Stage, { kind: 'duel' }>, now: number) {

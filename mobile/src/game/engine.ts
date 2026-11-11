@@ -42,13 +42,48 @@ function shuffle<T>(values: T[], random: RandomSource): T[] {
   return copy;
 }
 
+// The pictures of a duel appear in random order but with a rising difficulty (decision 28): for each place in the
+// duel there is a chance for an easy / medium / hard picture. The first picture is always easy and a hard one cannot
+// come before the 4th; later places have more and more hard pictures. `upTo` is the first place (0-based) NOT covered.
+export const PICTURE_MIX: readonly { upTo: number; weights: readonly [easy: number, medium: number, hard: number] }[] = [
+  { upTo: 1, weights: [1, 0, 0] },
+  { upTo: 3, weights: [0.8, 0.2, 0] },
+  { upTo: 6, weights: [0.55, 0.38, 0.07] },
+  { upTo: 10, weights: [0.38, 0.4, 0.22] },
+  { upTo: 15, weights: [0.25, 0.4, 0.35] },
+  { upTo: 20, weights: [0.15, 0.38, 0.47] },
+  { upTo: Infinity, weights: [0.1, 0.3, 0.6] },
+];
+
+export function pictureMixAt(place: number): readonly [number, number, number] {
+  return (PICTURE_MIX.find((row) => place < row.upTo) ?? PICTURE_MIX[PICTURE_MIX.length - 1]).weights;
+}
+
+// Builds the whole deck: for every place a tier is drawn by the chances above (tiers that ran out are skipped, so
+// every picture appears exactly once), then a random picture of that tier. `startPlace` lets a refilled deck carry on
+// with the late-duel chances instead of starting easy again.
 export function createBattleDeck(
   items: CategoryItem[],
   random: RandomSource = Math.random,
+  startPlace = 0,
 ): CategoryItem[] {
-  return ([1, 2, 3] as const).flatMap((difficulty) => (
-    shuffle(items.filter((item) => item.difficulty === difficulty), random)
-  ));
+  const tiers = ([1, 2, 3] as const).map((difficulty) => shuffle(items.filter((item) => item.difficulty === difficulty), random));
+  const deck: CategoryItem[] = [];
+  for (let place = startPlace; deck.length < items.length; place += 1) {
+    const weights = pictureMixAt(place).map((weight, tier) => (tiers[tier].length > 0 ? weight : 0));
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    let tier = tiers.findIndex((list) => list.length > 0); // the chances are all used up here: take the easiest tier left
+    if (total > 0) {
+      let roll = random() * total;
+      tier = weights.findIndex((weight) => {
+        roll -= weight;
+        return weight > 0 && roll < 0;
+      });
+      if (tier < 0) tier = weights.findIndex((weight) => weight > 0);
+    }
+    deck.push(tiers[tier].pop() as CategoryItem);
+  }
+  return deck;
 }
 
 // Decision 14: the 15 bot categories are drawn with a wide spread of levels.
@@ -592,13 +627,13 @@ export type AiDuelOutcome = 'correct' | 'skip' | 'retry';
 
 // How long a bot takes to "type": a person needs more time for a long answer, so the bot does too (decision 27).
 // Tune these three numbers to make the bots faster or slower overall.
-// (All values were scaled by 1.2 after friends found the bots too fast: with the real picture order an average typist
-// then wins about 55-60% of duels.)
-export const AI_TYPING_MS_PER_LETTER = 276;
-export const AI_WORD_SWITCH_MS = 360;
-export const AI_BASE_MS = 720;
-export const AI_DIFFICULTY_STEP_MS = 420;
-export const AI_MIN_THINK_MS = 1200;
+// (Calibrated with a simulation of whole duels over the real pictures: with the rising-difficulty mix of decision 28
+// an average typist wins about 59% of duels, a fast one about 85% and a slow one about 30%.)
+export const AI_TYPING_MS_PER_LETTER = 242;
+export const AI_WORD_SWITCH_MS = 315;
+export const AI_BASE_MS = 630;
+export const AI_DIFFICULTY_STEP_MS = 370;
+export const AI_MIN_THINK_MS = 1050;
 
 // What the bot "types". Letters are counted after the same normalisation the answer check uses, without spaces.
 // Some answers have a shorter accepted form ("ארהב" for "ארצות הברית"): people sometimes type it and sometimes do not, so

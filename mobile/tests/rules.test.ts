@@ -10,6 +10,7 @@ import {
   correctAnswerPauseMs,
   CORRECT_PAUSE_MAX_MS,
   CORRECT_PAUSE_MIN_MS,
+  createBattleDeck,
   createBattleSetup,
   createInitialGame,
   decideAiContinue,
@@ -18,10 +19,13 @@ import {
   getDrawCandidates,
   getNeighborPlayerIds,
   getRoundProgress,
+  pictureMixAt,
   resolveBattle,
   returnWinnerToArena,
 } from '../src/game/engine';
+import { CATEGORIES, difficultyTierSizes } from '../src/content/categories';
 import { createSeededRandom } from '../src/game/rng';
+import type { CategoryItem } from '../src/game/types';
 import type { GameState } from '../src/game/types';
 import { assert, assertEqual, suite, test } from './harness';
 
@@ -238,5 +242,79 @@ suite('§7 bot response time follows the answer', () => {
     const slow = aiThinkDelayMs(item('פורטלנד טרייל בלייזרס', 3), () => 0.5);
     assert(quick < 2200, `A three-letter easy picture takes under 2.2 s (${quick} ms)`);
     assert(slow > 6000, `A 19-letter hard picture takes over 6 s (${slow} ms)`);
+  });
+});
+
+// Decision 28: a category's pictures are 12 easy / 10 medium / 8 hard, and a duel shows them in random order with a
+// difficulty that rises as the duel goes on.
+suite('§3 picture mix in a duel (decision 28)', () => {
+  const pool = (easy = 12, medium = 10, hard = 8): CategoryItem[] => {
+    const make = (count: number, difficulty: 1 | 2 | 3, offset: number) => Array.from({ length: count }, (_, index) => ({
+      id: `p${offset + index}`, visual: '?', answer: `a${offset + index}`, aliases: [], difficulty,
+    }));
+    return [...make(easy, 1, 0), ...make(medium, 2, 100), ...make(hard, 3, 200)];
+  };
+  const decks = (count: number, items = pool()) => Array.from({ length: count }, (_, seed) => createBattleDeck(items, createSeededRandom(seed + 1)));
+
+  test('a list of 30 pictures is split 12 / 10 / 8, and every real category follows it', () => {
+    assertEqual(difficultyTierSizes(30).join('/'), '12/10/8', '30 pictures');
+    assertEqual(difficultyTierSizes(1).join('/'), '1/0/0', 'A single picture is easy');
+    assertEqual(difficultyTierSizes(0).join('/'), '0/0/0', 'No pictures');
+    for (const count of [2, 5, 17, 40]) assertEqual(difficultyTierSizes(count).reduce((a, b) => a + b, 0), count, `${count} pictures add up`);
+    for (const category of CATEGORIES.filter((entry) => entry.items.length === 30)) {
+      const counts = [1, 2, 3].map((tier) => category.items.filter((item) => item.difficulty === tier).length).join('/');
+      assertEqual(counts, '12/10/8', `${category.id} tiers`);
+    }
+  });
+
+  test('the first picture is always easy and a hard picture never comes before the 4th', () => {
+    for (const deck of decks(400)) {
+      assertEqual(deck[0].difficulty, 1, 'First picture is easy');
+      assert(deck.slice(0, 3).every((item) => item.difficulty < 3), 'No hard picture in the first three');
+    }
+    assertEqual(pictureMixAt(0).join(','), '1,0,0', 'The table says the same');
+    assertEqual(pictureMixAt(2)[2], 0, 'No hard chance at place 3');
+  });
+
+  test('the deck holds every picture exactly once', () => {
+    for (const deck of decks(50)) {
+      assertEqual(deck.length, 30, 'All pictures');
+      assertEqual(new Set(deck.map((item) => item.id)).size, 30, 'No repeats');
+    }
+  });
+
+  test('the same seed gives the same deck, different seeds give different decks', () => {
+    const [a, b] = [createBattleDeck(pool(), createSeededRandom(7)), createBattleDeck(pool(), createSeededRandom(7))];
+    assertEqual(a.map((item) => item.id).join(), b.map((item) => item.id).join(), 'Same seed');
+    assert(a.map((item) => item.id).join() !== createBattleDeck(pool(), createSeededRandom(8)).map((item) => item.id).join(), 'Other seed');
+  });
+
+  test('difficulty rises along the duel and the first 22 pictures mix like the pool', () => {
+    const all = decks(3000);
+    const hardShare = (from: number, to: number) => {
+      let hard = 0;
+      let total = 0;
+      for (const deck of all) for (const item of deck.slice(from, to)) { total += 1; if (item.difficulty === 3) hard += 1; }
+      return hard / total;
+    };
+    const early = hardShare(3, 8);
+    const middle = hardShare(8, 14);
+    const late = hardShare(14, 20);
+    assert(early < middle && middle < late, `Hard share rises: ${early.toFixed(2)} < ${middle.toFixed(2)} < ${late.toFixed(2)}`);
+    assert(early < 0.2 && late > 0.3, 'Few hard pictures early, many late');
+    const shares = [1, 2, 3].map((tier) => all.reduce((sum, deck) => sum + deck.slice(0, 22).filter((item) => item.difficulty === tier).length, 0) / (all.length * 22));
+    assert(shares[0] > 0.32 && shares[0] < 0.44, `Easy share of the first 22: ${shares[0].toFixed(2)}`);
+    assert(shares[1] > 0.29 && shares[1] < 0.39, `Medium share of the first 22: ${shares[1].toFixed(2)}`);
+    assert(shares[2] > 0.24 && shares[2] < 0.34, `Hard share of the first 22: ${shares[2].toFixed(2)}`);
+  });
+
+  test('odd pools still work: a missing tier, a single picture, and a refilled deck that carries on hard', () => {
+    const noEasy = createBattleDeck(pool(0, 10, 8), createSeededRandom(3));
+    assertEqual(noEasy[0].difficulty, 2, 'Without easy pictures the first one is medium');
+    assertEqual(noEasy.length, 18, 'Nothing is lost');
+    assertEqual(createBattleDeck(pool(1, 0, 0), createSeededRandom(3)).length, 1, 'A single picture');
+    const late = Array.from({ length: 300 }, (_, seed) => createBattleDeck(pool(), createSeededRandom(seed + 1), 30));
+    const hardAtStart = late.reduce((sum, deck) => sum + deck.slice(0, 5).filter((item) => item.difficulty === 3).length, 0) / (late.length * 5);
+    assert(hardAtStart > 0.4, `A refilled deck starts with the late chances (${hardAtStart.toFixed(2)} hard)`);
   });
 });

@@ -84,7 +84,7 @@ export function BattleView({ state, setup, onComplete, random = Math.random }: B
   // The duel plays the defender's way: e.g. flag → capital instead of flag → country.
   const way = getWay(category, setup.wayId);
   const [wayItems] = useState(() => getWayItems(category, setup.wayId));
-  const env = useMemo(() => ({ refill: () => createBattleDeck(wayItems, random) }), [wayItems, random]);
+  const env = useMemo(() => ({ refill: () => createBattleDeck(wayItems, random, wayItems.length) }), [wayItems, random]);
 
   // The one source of truth. `duelRef` always holds the latest state, so event handlers never act on a stale one.
   const [duel, setDuel] = useState<DuelState>(() => startDuel(

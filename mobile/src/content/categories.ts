@@ -13,7 +13,7 @@ import { IMAGED_ITEM_IDS } from './image-manifest';
 // The category pool (docs/CATEGORIES.md, decisions 14–15, 19). Every category, its items, answers, ways and
 // levels live in categories-data.json, which the admin panel edits (`npm run admin` from mobile/, code in the top-level admin/ folder).
 // Item n of a category has the id `<category>-<n>` and its picture `assets/items/<category>/<category>-<n>`;
-// its difficulty comes from its position in the list (first third easy, last third hard).
+// its difficulty comes from its position in the list (first 40% easy, then 33% medium, last 27% hard: 12/10/8 of 30).
 //
 // Every category is played with pictures only (no emoji): it shows only items that have a picture
 // (`npm run images`) and unlocks once MIN_PICTURE_ITEMS have one, so a long duel never runs out of pictures.
@@ -40,8 +40,17 @@ export const MIN_PICTURE_ITEMS = 30;
 const IMAGED = new Set(IMAGED_ITEM_IDS);
 const DATA = data as unknown as RawData;
 
+// A category's list is split into difficulty tiers by position (decision 28): the first 40% are easy, the next 33% medium
+// and the last 27% hard. A pool of 30 pictures has 12 easy, 10 medium and 8 hard ones.
+export function difficultyTierSizes(count: number): [easy: number, medium: number, hard: number] {
+  if (count <= 0) return [0, 0, 0];
+  const easy = Math.min(count, Math.max(1, Math.round(count * 0.4)));
+  const hard = Math.min(count - easy, Math.round(count * 0.27));
+  return [easy, count - easy - hard, hard];
+}
+
 function makeItems(categoryId: string, rows: RawItem[]): CategoryItem[] {
-  const tierSize = Math.ceil(rows.length / 3);
+  const [easyCount, mediumCount] = difficultyTierSizes(rows.length);
   return rows.map((row, index) => ({
     id: `${categoryId}-${index + 1}`,
     visual: row.visual,
@@ -49,7 +58,7 @@ function makeItems(categoryId: string, rows: RawItem[]): CategoryItem[] {
     answer: row.answer,
     aliases: row.aliases ?? [],
     secondAnswer: row.second ? { answer: row.second.answer, aliases: row.second.aliases ?? [] } : undefined,
-    difficulty: (index < tierSize ? 1 : index < tierSize * 2 ? 2 : 3) as Difficulty,
+    difficulty: (index < easyCount ? 1 : index < easyCount + mediumCount ? 2 : 3) as Difficulty,
   }));
 }
 

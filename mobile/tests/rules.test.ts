@@ -1,6 +1,8 @@
 // One test per scenario in docs/GAME_RULES.md. When a rule changes, change it
 // there first, then here.
 import {
+  AI_DIFFICULTY_STEP_MS,
+  AI_MIN_THINK_MS,
   AI_WORD_SWITCH_MS,
   aiThinkDelayMs,
   aiTypingLoad,
@@ -223,18 +225,18 @@ suite('§7 bot response time follows the answer', () => {
   });
 
   test('harder pictures take longer, and the variation stays within 15%', () => {
-    assertEqual(delay(item('אריה', 2)) - delay(item('אריה', 1)), 350, 'One difficulty step');
+    assertEqual(delay(item('אריה', 2)) - delay(item('אריה', 1)), AI_DIFFICULTY_STEP_MS, 'One difficulty step');
     const middle = delay(item('התנשמית', 2));
     const fastest = aiThinkDelayMs(item('התנשמית', 2), () => 0);
     const slowest = aiThinkDelayMs(item('התנשמית', 2), () => 1);
     assert(fastest >= Math.round(middle * 0.85) - 1 && slowest <= Math.round(middle * 1.15) + 1, 'Within +-15%');
-    assert(aiThinkDelayMs(item('אב'), () => 0) >= 1000, 'Never faster than one second');
+    assert(aiThinkDelayMs(item('אב'), () => 0) >= AI_MIN_THINK_MS, 'Never faster than the minimum');
   });
 
   test('over the real content a bot is not instant on long answers and quick on short ones', () => {
     const quick = aiThinkDelayMs(item('כלב', 1), () => 0.5);
     const slow = aiThinkDelayMs(item('פורטלנד טרייל בלייזרס', 3), () => 0.5);
-    assert(quick < 2000, `A three-letter easy picture takes under 2 s (${quick} ms)`);
-    assert(slow > 5000, `A 19-letter hard picture takes over 5 s (${slow} ms)`);
+    assert(quick < 2200, `A three-letter easy picture takes under 2.2 s (${quick} ms)`);
+    assert(slow > 6000, `A 19-letter hard picture takes over 6 s (${slow} ms)`);
   });
 });

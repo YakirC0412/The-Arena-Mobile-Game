@@ -592,11 +592,13 @@ export type AiDuelOutcome = 'correct' | 'skip' | 'retry';
 
 // How long a bot takes to "type": a person needs more time for a long answer, so the bot does too (decision 27).
 // Tune these three numbers to make the bots faster or slower overall.
-export const AI_TYPING_MS_PER_LETTER = 230;
-export const AI_WORD_SWITCH_MS = 300;
-export const AI_BASE_MS = 600;
-const AI_DIFFICULTY_STEP_MS = 350;
-const AI_MIN_THINK_MS = 1000;
+// (All values were scaled by 1.2 after friends found the bots too fast: with the real picture order an average typist
+// then wins about 55-60% of duels.)
+export const AI_TYPING_MS_PER_LETTER = 276;
+export const AI_WORD_SWITCH_MS = 360;
+export const AI_BASE_MS = 720;
+export const AI_DIFFICULTY_STEP_MS = 420;
+export const AI_MIN_THINK_MS = 1200;
 
 // What the bot "types". Letters are counted after the same normalisation the answer check uses, without spaces.
 // Some answers have a shorter accepted form ("ארהב" for "ארצות הברית"): people sometimes type it and sometimes do not, so

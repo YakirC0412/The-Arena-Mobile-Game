@@ -7,13 +7,14 @@ const path = require('node:path');
 const cp = require('node:child_process');
 const { serialize } = require('./format');
 
-const MOBILE = path.join(__dirname, '..', '..');
-const REPO = path.join(MOBILE, '..');
+// This folder (admin/) sits at the repo root, next to mobile/ (the app whose files it edits).
+const REPO = path.join(__dirname, '..');
+const MOBILE = path.join(REPO, 'mobile');
 const P = {
   data: path.join(MOBILE, 'src', 'content', 'categories-data.json'),
   items: path.join(MOBILE, 'assets', 'items'),
   credits: path.join(MOBILE, 'assets', 'items', 'credits.json'),
-  sources: path.join(MOBILE, 'scripts', 'image-sources.json'),
+  sources: path.join(__dirname, 'image-sources.json'),
   archive: path.join(REPO, 'archive'),
   skill: path.join(REPO, '.claude', 'skills', 'arena-images', 'scripts', 'arena_images.py'),
 };

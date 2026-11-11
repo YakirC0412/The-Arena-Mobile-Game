@@ -18,7 +18,7 @@ PY="$LOCALAPPDATA/Programs/Python/Python312/python.exe"
 
 ## 1. Sources entry (once per category)
 
-If the category is not in `mobile/scripts/image-sources.json`, add it. Read the category's item list in
+If the category is not in `admin/image-sources.json`, add it. Read the category's item list in
 `categories.ts` and write one English entry per item, **same order** (entry n = item `<category>-n`):
 
 ```json

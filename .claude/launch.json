@@ -19,9 +19,18 @@
       "name": "arena-admin",
       "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
       "runtimeArgs": [
-        "mobile/scripts/admin/server.js"
+        "admin/server.js"
       ],
       "port": 8095,
+      "autoPort": false
+    },
+    {
+      "name": "arena-server",
+      "runtimeExecutable": "C:/Program Files/nodejs/node.exe",
+      "runtimeArgs": [
+        "server/dist/server/src/index.js"
+      ],
+      "port": 2567,
       "autoPort": false
     }
   ]

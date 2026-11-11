@@ -11,7 +11,7 @@ import data from './categories-data.json';
 import { IMAGED_ITEM_IDS } from './image-manifest';
 
 // The category pool (docs/CATEGORIES.md, decisions 14–15, 19). Every category, its items, answers, ways and
-// levels live in categories-data.json, which the admin panel edits (`npm run admin`, mobile/scripts/admin/).
+// levels live in categories-data.json, which the admin panel edits (`npm run admin` from mobile/, code in the top-level admin/ folder).
 // Item n of a category has the id `<category>-<n>` and its picture `assets/items/<category>/<category>-<n>`;
 // its difficulty comes from its position in the list (first third easy, last third hard).
 //

@@ -1,12 +1,12 @@
 // End-to-end check of the admin server (it must be running: `npm run admin`). Creates a throwaway category
 // "zz-test" with its own pictures, exercises every operation and removes it again (files go to archive/).
-// Run: node scripts/admin/smoke-test.js
+// Run (from the repo root): node admin/smoke-test.js
 'use strict';
 const fs = require('node:fs');
 const path = require('node:path');
 
 const BASE = `http://localhost:${process.env.ARENA_ADMIN_PORT || 8095}`;
-const MOBILE = path.join(__dirname, '..', '..');
+const MOBILE = path.join(__dirname, '..', 'mobile');
 const ID = 'zz-test';
 const JSON_HEADERS = { 'X-Admin': '1', 'Content-Type': 'application/json' };
 let failed = 0;

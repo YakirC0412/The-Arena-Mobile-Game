@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fill a whole Arena category with pictures, item by item.
 
-Reads mobile/scripts/image-sources.json (falls back to wiki-sources.json), finds a
+Reads admin/image-sources.json (falls back to wiki-sources.json), finds a
 picture for every item (Wikipedia lead image -> photo search -> AI), resizes it,
 saves it as mobile/assets/items/<category>/<category>-<n>.webp, records credits,
 connects the pictures to the game and writes a contact sheet for review.
@@ -26,7 +26,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.dirname(SKILL_DIR)))
 MOBILE = os.path.join(REPO, "mobile")
 ITEMS_DIR = os.path.join(MOBILE, "assets", "items")
 CREDITS = os.path.join(ITEMS_DIR, "credits.json")
-SOURCES = os.path.join(MOBILE, "scripts", "image-sources.json")
+SOURCES = os.path.join(REPO, "admin", "image-sources.json")
 WIKI_SOURCES = os.path.join(MOBILE, "scripts", "wiki-sources.json")
 ARCHIVE = os.path.join(REPO, "archive")
 UA = "TheArenaPrototype/0.1 (private trivia game; picture download)"
@@ -548,7 +548,7 @@ def load_config(category):
             continue
         if cfg:
             return cfg if isinstance(cfg, dict) else {"kind": "photo", "items": cfg}
-    sys.exit(f"No entry for '{category}' in mobile/scripts/image-sources.json – add it first (see SKILL.md).")
+    sys.exit(f"No entry for '{category}' in admin/image-sources.json – add it first (see SKILL.md).")
 
 
 def main():

@@ -49,7 +49,7 @@
     "test": "npm run test:engine",
     "images": "node scripts/build-item-images.js",
     "wiki-images": "node scripts/fetch-wiki-images.js",
-    "admin": "node scripts/admin/server.js"
+    "admin": "node ../admin/server.js"
   },
   "private": true
 }

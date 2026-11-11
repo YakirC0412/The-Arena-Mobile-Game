@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T11:35:34.036037+00:00",
+  "title": "Design System: THE ARENA (הזירה)",
+  "extensions": {
+    "colorMeta": {
+      "sky-blue": {
+        "role": "primary",
+        "displayName": "Floodlight Sky",
+        "canonical": "#7CCBFF",
+        "tonalRamp": [
+          "#0F2B3D",
+          "#005187",
+          "#0074C1",
+          "#0098FB",
+          "#37AFFF",
+          "#71C7FF",
+          "#ABDEFF",
+          "#EBF4FA"
+        ]
+      },
+      "arena-blue": {
+        "role": "primary",
+        "displayName": "Arena Blue",
+        "canonical": "#1F6BFF",
+        "tonalRamp": [
+          "#0F1F3D",
+          "#002E87",
+          "#0042C1",
+          "#0055FB",
+          "#377BFF",
+          "#71A1FF",
+          "#ABC8FF",
+          "#EBF0FA"
+        ]
+      },
+      "signal-cyan": {
+        "role": "primary",
+        "displayName": "Signal Cyan",
+        "canonical": "#4DF3FF",
+        "tonalRamp": [
+          "#0F3A3D",
+          "#007E87",
+          "#00B4C1",
+          "#00EAFB",
+          "#37F1FF",
+          "#71F5FF",
+          "#ABF9FF",
+          "#EBF9FA"
+        ]
+      },
+      "trophy-gold": {
+        "role": "secondary",
+        "displayName": "Trophy Gold",
+        "canonical": "#F8C95C",
+        "tonalRamp": [
+          "#3B2F11",
+          "#815C06",
+          "#B98408",
+          "#F1AC0A",
+          "#F7BF3F",
+          "#F9D277",
+          "#FCE4AF",
+          "#F9F5EB"
+        ]
+      },
+      "selected-gold": {
+        "role": "secondary",
+        "displayName": "Selected Gold",
+        "canonical": "#FFD25A",
+        "tonalRamp": [
+          "#3D310F",
+          "#876200",
+          "#C18C00",
+          "#FBB700",
+          "#FFC837",
+          "#FFD871",
+          "#FFE8AB",
+          "#FAF6EB"
+        ]
+      },
+      "correct-green": {
+        "role": "tertiary",
+        "displayName": "Correct Green",
+        "canonical": "#3DDC97",
+        "tonalRamp": [
+          "#163628",
+          "#15724A",
+          "#1EA469",
+          "#26D589",
+          "#55E0A4",
+          "#87E9BE",
+          "#B8F2D9",
+          "#EDF8F3"
+        ]
+      },
+      "alert-red": {
+        "role": "tertiary",
+        "displayName": "Alert Red",
+        "canonical": "#FF4D4D",
+        "tonalRamp": [
+          "#3D0F0F",
+          "#870000",
+          "#C10000",
+          "#FB0000",
+          "#FF3737",
+          "#FF7171",
+          "#FFABAB",
+          "#FAEBEB"
+        ]
+      },
+      "warning-amber": {
+        "role": "tertiary",
+        "displayName": "Warning Amber",
+        "canonical": "#FFB020",
+        "tonalRamp": [
+          "#3D2D0F",
+          "#875700",
+          "#C17D00",
+          "#FBA200",
+          "#FFB837",
+          "#FFCD71",
+          "#FFE1AB",
+          "#FAF4EB"
+        ]
+      },
+      "error-soft-red": {
+        "role": "tertiary",
+        "displayName": "Soft Error Red",
+        "canonical": "#FF8A8A",
+        "tonalRamp": [
+          "#3D0F0F",
+          "#870000",
+          "#C10000",
+          "#FB0000",
+          "#FF3737",
+          "#FF7171",
+          "#FFABAB",
+          "#FAEBEB"
+        ]
+      },
+      "navy-deep": {
+        "role": "neutral",
+        "displayName": "Navy Deep",
+        "canonical": "#030A24",
+        "tonalRamp": [
+          "#131B3A",
+          "#0A237C",
+          "#0F32B2",
+          "#1340E8",
+          "#466AF0",
+          "#7C95F4",
+          "#B2C1F9",
+          "#ECEFF9"
+        ]
+      },
+      "navy": {
+        "role": "neutral",
+        "displayName": "Navy",
+        "canonical": "#071A4D",
+        "tonalRamp": [
+          "#131E39",
+          "#0B2A7C",
+          "#103CB1",
+          "#154EE6",
+          "#4775EE",
+          "#7D9DF3",
+          "#B2C5F8",
+          "#ECEFF9"
+        ]
+      },
+      "ink-navy": {
+        "role": "neutral",
+        "displayName": "Ink Navy",
+        "canonical": "#04112F",
+        "tonalRamp": [
+          "#131F3A",
+          "#0B2D7C",
+          "#0F40B2",
+          "#1454E8",
+          "#4679EF",
+          "#7CA0F4",
+          "#B2C7F8",
+          "#ECF0F9"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#0C2466",
+        "tonalRamp": [
+          "#141E38",
+          "#0E2B79",
+          "#143DAD",
+          "#1A4FE1",
+          "#4C76EA",
+          "#809EF0",
+          "#B4C6F6",
+          "#ECEFF8"
+        ]
+      },
+      "surface-muted": {
+        "role": "neutral",
+        "displayName": "Surface Muted",
+        "canonical": "#0A1D55",
+        "tonalRamp": [
+          "#141D38",
+          "#0E2979",
+          "#143BAD",
+          "#1A4DE1",
+          "#4C74EA",
+          "#809CF0",
+          "#B4C5F6",
+          "#ECEFF8"
+        ]
+      },
+      "surface-raised": {
+        "role": "neutral",
+        "displayName": "Surface Raised",
+        "canonical": "#123180",
+        "tonalRamp": [
+          "#151F38",
+          "#112D76",
+          "#1841A9",
+          "#1F54DC",
+          "#4F7AE6",
+          "#82A1ED",
+          "#B6C7F5",
+          "#ECF0F8"
+        ]
+      },
+      "border-blue": {
+        "role": "neutral",
+        "displayName": "Border Blue",
+        "canonical": "#1E3F95",
+        "tonalRamp": [
+          "#171F36",
+          "#172F70",
+          "#2044A1",
+          "#2A58D1",
+          "#587DDD",
+          "#89A3E7",
+          "#B9C9F1",
+          "#EDF0F7"
+        ]
+      },
+      "brand-border": {
+        "role": "neutral",
+        "displayName": "Brand Border",
+        "canonical": "#2B53B8",
+        "tonalRamp": [
+          "#182035",
+          "#1A316D",
+          "#25479C",
+          "#305CCC",
+          "#5D80D9",
+          "#8CA5E4",
+          "#BBCAEF",
+          "#EDF0F7"
+        ]
+      },
+      "board-frame": {
+        "role": "neutral",
+        "displayName": "Board Frame",
+        "canonical": "#0B2470",
+        "tonalRamp": [
+          "#131D39",
+          "#0C277B",
+          "#1139B0",
+          "#164AE5",
+          "#4971ED",
+          "#7E9BF2",
+          "#B3C4F8",
+          "#ECEFF9"
+        ]
+      },
+      "board-frame-border": {
+        "role": "neutral",
+        "displayName": "Board Frame Border",
+        "canonical": "#3FA9FF",
+        "tonalRamp": [
+          "#0F293D",
+          "#004A87",
+          "#006BC1",
+          "#008BFB",
+          "#37A5FF",
+          "#71BFFF",
+          "#ABD9FF",
+          "#EBF3FA"
+        ]
+      },
+      "arena-floor": {
+        "role": "neutral",
+        "displayName": "Arena Floor",
+        "canonical": "#0A1F5C",
+        "tonalRamp": [
+          "#141D39",
+          "#0D297A",
+          "#133BAE",
+          "#194CE3",
+          "#4A74EB",
+          "#7F9CF1",
+          "#B3C5F7",
+          "#ECEFF8"
+        ]
+      },
+      "arena-floor-border": {
+        "role": "neutral",
+        "displayName": "Arena Floor Border",
+        "canonical": "#1C3C8C",
+        "tonalRamp": [
+          "#172036",
+          "#163070",
+          "#2045A1",
+          "#2A5AD1",
+          "#587EDE",
+          "#89A4E7",
+          "#B9C9F1",
+          "#EDF0F7"
+        ]
+      },
+      "board-cell-dark": {
+        "role": "neutral",
+        "displayName": "Board Cell Dark",
+        "canonical": "#06123A",
+        "tonalRamp": [
+          "#141C39",
+          "#0D267A",
+          "#1236AF",
+          "#1847E4",
+          "#496FEC",
+          "#7E99F2",
+          "#B3C3F7",
+          "#ECEFF8"
+        ]
+      },
+      "board-cell-dark-border": {
+        "role": "neutral",
+        "displayName": "Board Cell Dark Border",
+        "canonical": "#102456",
+        "tonalRamp": [
+          "#171F36",
+          "#153072",
+          "#1E44A3",
+          "#2759D4",
+          "#567DE0",
+          "#87A3E9",
+          "#B8C9F2",
+          "#EDF0F8"
+        ]
+      },
+      "territory-me-start": {
+        "role": "neutral",
+        "displayName": "Territory Me Start",
+        "canonical": "#B4EBFF",
+        "tonalRamp": [
+          "#0F313D",
+          "#006387",
+          "#008EC1",
+          "#00B8FB",
+          "#37CAFF",
+          "#71D9FF",
+          "#ABE9FF",
+          "#EBF6FA"
+        ]
+      },
+      "territory-me-border": {
+        "role": "neutral",
+        "displayName": "Territory Me Border",
+        "canonical": "#D9F7FF",
+        "tonalRamp": [
+          "#0F343D",
+          "#006A87",
+          "#0098C1",
+          "#00C6FB",
+          "#37D5FF",
+          "#71E1FF",
+          "#ABEDFF",
+          "#EBF7FA"
+        ]
+      },
+      "text-primary": {
+        "role": "neutral",
+        "displayName": "Text Primary",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#262626",
+          "#434343",
+          "#616161",
+          "#7E7E7E",
+          "#9B9B9B",
+          "#B8B8B8",
+          "#D5D5D5",
+          "#F2F2F2"
+        ]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Text Secondary",
+        "canonical": "#B8CBEA",
+        "tonalRamp": [
+          "#1A2333",
+          "#1F3B68",
+          "#2C5495",
+          "#396DC2",
+          "#648ED1",
+          "#91AFDF",
+          "#BED0EC",
+          "#EEF1F6"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "screen-title": {
+        "displayName": "Screen title",
+        "purpose": "Screen headings."
+      },
+      "duel-title": {
+        "displayName": "Duel title",
+        "purpose": "Category name in a duel."
+      },
+      "section-title": {
+        "displayName": "Section title",
+        "purpose": "Sections inside cards and sheets."
+      },
+      "clock": {
+        "displayName": "Clock",
+        "purpose": "Duel clocks; the biggest numerals."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "All button labels."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Explanations and lists."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Eyebrows and secondary lines; never below 12."
+      }
+    },
+    "shadows": [
+      {
+        "name": "primary-glow",
+        "value": "0 4px 16px rgba(124,203,255,0.45)",
+        "purpose": "Primary button halo."
+      },
+      {
+        "name": "board-glow",
+        "value": "0 0 14px rgba(63,169,255,0.4)",
+        "purpose": "Arena frame and mini-maps."
+      }
+    ],
+    "motion": [
+      {
+        "name": "instant",
+        "value": "100ms",
+        "purpose": "Press feedback."
+      },
+      {
+        "name": "fast",
+        "value": "150ms",
+        "purpose": "Small state changes."
+      },
+      {
+        "name": "standard",
+        "value": "250ms",
+        "purpose": "Default transitions."
+      },
+      {
+        "name": "dramatic",
+        "value": "400ms",
+        "purpose": "Reveals (draw, conquest)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-height",
+        "value": "visible height < 600px (keyboard open)"
+      },
+      {
+        "name": "max-content-width",
+        "value": "430px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action on a screen, full width.",
+      "html": "<button class=\"ds-btn-primary\">המשך</button>",
+      "css": ".ds-btn-primary{font-family:Heebo,system-ui,sans-serif;direction:rtl;background:#7CCBFF;color:#04112F;font-weight:900;font-size:16px;height:56px;padding:0 16px;border:none;border-radius:14px;box-shadow:0 4px 16px rgba(124,203,255,.45);width:100%;transition:transform .15s}.ds-btn-primary:active{transform:scale(.98)}.ds-btn-primary:focus-visible{outline:3px solid #D9F7FF;outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A quieter action next to the primary one.",
+      "html": "<button class=\"ds-btn-secondary\">הוראות המשחק</button>",
+      "css": ".ds-btn-secondary{font-family:Heebo,system-ui,sans-serif;direction:rtl;background:rgba(124,203,255,.16);color:#fff;font-weight:700;font-size:16px;height:56px;padding:0 16px;border:2px solid #7CCBFF;border-radius:14px;width:100%}.ds-btn-secondary:active{transform:scale(.98)}.ds-btn-secondary:focus-visible{outline:3px solid #D9F7FF;outline-offset:2px}"
+    },
+    {
+      "name": "Answer Input",
+      "kind": "input",
+      "refersTo": "answer-input",
+      "description": "Where the player types the answer in a duel.",
+      "html": "<input class=\"ds-input\" placeholder=\"הקלידו תשובה…\"/>",
+      "css": ".ds-input{font-family:Heebo,system-ui,sans-serif;direction:rtl;background:#fff;color:#04112F;font-weight:700;font-size:16px;height:52px;border-radius:12px;border:2px solid #7CCBFF;padding:0 12px;width:100%;box-sizing:border-box;text-align:right}.ds-input:focus-visible{outline:3px solid #D9F7FF}"
+    },
+    {
+      "name": "Clock Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "One side's clock in a duel; the active side has a gold border.",
+      "html": "<div class=\"ds-clock\"><div class=\"ds-clock-name\">נועם</div><div class=\"ds-clock-num\">12.6</div><div class=\"ds-clock-role\">תוקף</div></div>",
+      "css": ".ds-clock{font-family:Heebo,system-ui,sans-serif;direction:rtl;background:#0A1D55;border:2px solid #F8C95C;border-radius:12px;padding:8px;text-align:center;color:#fff;width:150px}.ds-clock-name{font-weight:700;font-size:14px}.ds-clock-num{font-weight:900;font-size:34px;line-height:40px}.ds-clock-role{color:#B8CBEA;font-size:12px}"
+    },
+    {
+      "name": "Turn Pill",
+      "kind": "chip",
+      "refersTo": "turn-pill",
+      "description": "Says whose turn it is.",
+      "html": "<span class=\"ds-pill\">התור שלך · הקלידו את התשובה</span>",
+      "css": ".ds-pill{font-family:Heebo,system-ui,sans-serif;direction:rtl;display:inline-flex;align-items:center;height:34px;padding:0 16px;border-radius:999px;background:#7CCBFF;color:#04112F;font-weight:900;font-size:12px}"
+    },
+    {
+      "name": "Skip Button",
+      "kind": "button",
+      "refersTo": "skip-button",
+      "description": "Skip a picture for -3 seconds; sits beside the answer field.",
+      "html": "<button class=\"ds-skip\"><b>דילוג</b><span>-3 שנ׳</span></button>",
+      "css": ".ds-skip{font-family:Heebo,system-ui,sans-serif;direction:rtl;display:flex;flex-direction:column;align-items:center;justify-content:center;width:76px;height:52px;border:2px solid #F8C95C;border-radius:12px;background:transparent;color:#F8C95C}.ds-skip b{font-size:14px}.ds-skip span{font-size:12px}.ds-skip:active{opacity:.7}"
+    },
+    {
+      "name": "Arena Cells",
+      "kind": "custom",
+      "refersTo": "card",
+      "description": "Territory cells of the 4x4 arena: attackable, mine, plain floor.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-cell ds-target\">אתרים</div><div class=\"ds-cell ds-me\">חיות</div><div class=\"ds-cell ds-floor\">פירות</div></div>",
+      "css": ".ds-board{display:flex;gap:6px;padding:8px;border:2px solid #3FA9FF;border-radius:20px;background:#0B2470;box-shadow:0 0 14px rgba(63,169,255,.4)}.ds-cell{font-family:Heebo,system-ui,sans-serif;direction:rtl;font-weight:700;font-size:13px;width:80px;height:80px;display:flex;align-items:center;justify-content:center;border-radius:8px;color:#fff}.ds-target{background:#1F6BFF;border:3px solid #4DF3FF}.ds-me{background:#7CCBFF;border:2px solid #D9F7FF;color:#0B2470}.ds-floor{background:#0A1F5C;border:1px solid #1C3C8C}"
+    }
+  ],
+  "narrative": {
+    "northStar": "זירת הלילה (The Night Arena)",
+    "overview": "A stadium at night: deep navy fills everything, light blue is the floodlight, and gold appears only at the moments that matter (a chosen target, a skip, the champion). The screen is dark and tense but never noisy; it stays readable under a running clock. Everything is built for one thumb on a phone in portrait, in Hebrew, right to left.\n\nThe system is flat in structure and glowing in emphasis. Surfaces are tonal steps of the same navy; important things (the main button, the arena frame, the active clock) get a soft coloured glow instead of a classic drop shadow. Controls are large, rounded and confident, with a clear pressed response. The picture being identified is always the largest thing on a duel screen.",
+    "keyCharacteristics": [
+      "Dark only; one navy family from `navy-deep` to `surface-raised`, plus a single light-blue voice.",
+      "Glow, not shadow: depth is expressed by coloured halos and outlines.",
+      "Gold is rare and means \"chosen / special\".",
+      "Large touch targets (44 pt minimum), rounded corners, tactile press feedback.",
+      "Hebrew first, RTL layout; text is Heebo only."
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Light blue is the only action colour; gold never competes with it for the same job.",
+        "section": "colors"
+      },
+      {
+        "name": "The Real Green Rule",
+        "body": "Green means \"correct answer\" and nothing else.",
+        "section": "colors"
+      },
+      {
+        "name": "The Floor Colour Rule",
+        "body": "Board colours keep one meaning in every situation: floor = ordinary territory, light blue = me/drawn/winner, blue with cyan outline = can be attacked, gold = chosen, dark = not relevant now.",
+        "section": "colors"
+      },
+      {
+        "name": "The Black Is Rare Rule",
+        "body": "The Black face is for headings, clocks and buttons; everything else uses Bold or Medium.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glow Not Shadow Rule",
+        "body": "If something needs to stand out it glows in its own colour; nothing casts a grey shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "- **Do** use only tokens from `design/tokens.ts`; never raw hex in screens.",
+      "- **Do** keep the picture the largest element of a duel, even with the keyboard open.",
+      "- **Do** make every touch target at least 44 pt and every main action 56 pt.",
+      "- **Do** express emphasis with a coloured glow or a gold border.",
+      "- **Do** write all copy in Hebrew, correctly gendered (masculine/feminine forms)."
+    ],
+    "donts": [
+      "- **Don't** add a second action colour or use gold for ordinary buttons.",
+      "- **Don't** use grey drop shadows, light surfaces or white screens.",
+      "- **Don't** cut text with an ellipsis where it can wrap (category names, player names).",
+      "- **Don't** use text under 12 pt.",
+      "- **Don't** shift layout on press; use opacity or a small scale only.",
+      "- **Don't** change the logo's navy and light-blue identity."
+    ]
+  }
+}
